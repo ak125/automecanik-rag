@@ -1,0 +1,29 @@
+# AutoMecanik RAG Service - Dependencies
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+
+# Configuration
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# AI/LLM
+anthropic>=0.18.0
+openai>=1.10.0
+
+# Vector Database
+weaviate-client>=4.4.0
+
+# Cache
+redis>=5.0.0
+
+# HTTP Client
+httpx>=0.26.0
+
+# Markdown parsing
+python-frontmatter>=1.1.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.23.0
