@@ -1,4 +1,4 @@
-"""Weaviate client for hybrid search."""
+"""Weaviate client for hybrid search with local embeddings."""
 
 import logging
 from typing import Optional
@@ -6,6 +6,7 @@ import weaviate
 from weaviate.classes.query import HybridFusion
 
 from app.config import get_settings
+from app.services.embeddings import get_embeddings_service
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +17,7 @@ class WeaviateClient:
     COLLECTION_NAME = "Prod_Chatbot"
 
     def __init__(self):
-        """Initialize Weaviate client."""
+        """Initialize Weaviate client with local embeddings."""
         settings = get_settings()
         self.client = weaviate.connect_to_custom(
             http_host=settings.weaviate_url.replace("http://", "").replace("https://", "").split(":")[0],
@@ -27,6 +28,7 @@ class WeaviateClient:
             grpc_secure=False,
         )
         self.settings = settings
+        self.embeddings = get_embeddings_service()
 
     async def hybrid_search(
         self,
@@ -51,8 +53,12 @@ class WeaviateClient:
         try:
             collection = self.client.collections.get(self.COLLECTION_NAME)
 
+            # Generate query embedding locally (100% gratuit)
+            query_vector = self.embeddings.embed(query)
+
             response = collection.query.hybrid(
                 query=query,
+                vector=query_vector,
                 limit=limit,
                 alpha=alpha,
                 fusion_type=HybridFusion.RELATIVE_SCORE,
@@ -66,12 +72,19 @@ class WeaviateClient:
                 # Filter by minimum score threshold
                 if score >= self.settings.min_score_threshold:
                     results.append({
+                        # Core properties
                         "content": obj.properties.get("content", ""),
                         "title": obj.properties.get("title", ""),
                         "source_type": obj.properties.get("source_type", ""),
                         "source_path": obj.properties.get("source_path", ""),
                         "category": obj.properties.get("category", ""),
                         "score": score,
+                        # Truth Level properties (Semantic Brain L1-L4)
+                        "truth_level": obj.properties.get("truth_level", "L3"),
+                        "verification_status": obj.properties.get("verification_status", "unverified"),
+                        "confidence_score": obj.properties.get("confidence_score", 0.5),
+                        "last_verified_date": obj.properties.get("last_verified_date", ""),
+                        "verified_by": obj.properties.get("verified_by", ""),
                     })
 
             logger.info(f"Hybrid search for '{query[:50]}...' returned {len(results)} results")

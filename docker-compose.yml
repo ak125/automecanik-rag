@@ -1,4 +1,5 @@
 # AutoMecanik RAG Service - Docker Compose
+# Version 100% gratuite (sentence-transformers local)
 version: "3.8"
 
 services:
@@ -13,9 +14,12 @@ services:
       - DEBUG=${DEBUG:-false}
       - WEAVIATE_URL=http://weaviate:8080
       - REDIS_URL=redis://redis:6379
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
       - RAG_API_KEY=${RAG_API_KEY}
+      - KNOWLEDGE_PATH=/knowledge
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+    volumes:
+      - ./knowledge:/knowledge  # Monte le corpus (rw pour admin CRUD)
+      - ./app:/app/app:ro  # Monte le code source pour dev
     depends_on:
       weaviate:
         condition: service_healthy
@@ -36,9 +40,7 @@ services:
       QUERY_DEFAULTS_LIMIT: 25
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
-      DEFAULT_VECTORIZER_MODULE: 'text2vec-openai'
-      ENABLE_MODULES: 'text2vec-openai'
-      OPENAI_APIKEY: ${OPENAI_API_KEY}
+      DEFAULT_VECTORIZER_MODULE: 'none'
       CLUSTER_HOSTNAME: 'node1'
     volumes:
       - weaviate_data:/var/lib/weaviate

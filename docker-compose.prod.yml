@@ -1,0 +1,98 @@
+# AutoMecanik RAG Service - Production Docker Compose
+# P2 SECURITY: Internal network, no exposed Weaviate port
+#
+# Usage: docker compose -f docker-compose.prod.yml up -d
+# Requires: .env.prod (copy from .env.prod.example)
+
+version: "3.8"
+
+services:
+  # === RAG API Service ===
+  rag-api:
+    build: .
+    container_name: rag-api-prod
+    # PROD: Expose only RAG API, not Weaviate/Redis
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=prod
+      - DEBUG=false
+      - AI_PROD_WRITE=false  # KILL SWITCH
+      - WEAVIATE_URL=http://weaviate:8080
+      - REDIS_URL=redis://redis:6379
+      - RAG_API_KEY=${PROD_RAG_API_KEY}
+      - KNOWLEDGE_PATH=/knowledge
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - MIN_SCORE_THRESHOLD=0.70
+      - MIN_RESULTS_REQUIRED=3
+    volumes:
+      - ./knowledge:/knowledge:ro  # READ-ONLY en PROD
+    depends_on:
+      weaviate:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - rag-internal
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # === Weaviate Vector Database ===
+  weaviate:
+    image: cr.weaviate.io/semitechnologies/weaviate:1.28.0
+    container_name: weaviate-prod
+    # P2 SECURITY: NO PORTS EXPOSED in PROD
+    # ports:
+    #   - "8080:8080"  # DISABLED - internal only
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'false'  # PROD: disable anonymous
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      DEFAULT_VECTORIZER_MODULE: 'none'
+      CLUSTER_HOSTNAME: 'node1'
+    volumes:
+      - weaviate_data_prod:/var/lib/weaviate
+    networks:
+      - rag-internal
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/.well-known/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # === Redis Cache ===
+  redis:
+    image: redis:7-alpine
+    container_name: redis-rag-prod
+    # P2 SECURITY: NO PORTS EXPOSED in PROD
+    # ports:
+    #   - "6379:6379"  # DISABLED - internal only
+    volumes:
+      - redis_data_prod:/data
+    networks:
+      - rag-internal
+    restart: always
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+volumes:
+  weaviate_data_prod:
+    driver: local
+  redis_data_prod:
+    driver: local
+
+networks:
+  rag-internal:
+    driver: bridge
+    internal: true  # P2 SECURITY: No external access to this network

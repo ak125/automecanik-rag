@@ -1,0 +1,47 @@
+# AutoMecanik RAG Service - Development Docker Compose Override
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+# Or: docker compose --profile dev up -d
+
+version: "3.8"
+
+services:
+  # === RAG API Service - DEV Overrides ===
+  rag-api:
+    container_name: rag-api-dev
+    environment:
+      - ENV=dev
+      - DEBUG=true
+      - AI_PROD_WRITE=true  # DEV: Write enabled
+      - RAG_API_KEY=${DEV_RAG_API_KEY:-automecanik-rag-dev-2026}
+      - MIN_SCORE_THRESHOLD=0.50  # Relaxed for testing
+      - MIN_RESULTS_REQUIRED=1    # Relaxed for testing
+    volumes:
+      - ./knowledge:/knowledge  # RW pour admin CRUD
+      - ./app:/app/app:ro       # Hot reload du code
+    # DEV: Expose additional debug port
+    ports:
+      - "8000:8000"
+      - "5678:5678"  # debugpy
+
+  # === Weaviate - DEV Overrides ===
+  weaviate:
+    container_name: weaviate-dev
+    # DEV: Expose ports for debugging
+    ports:
+      - "8080:8080"
+      - "50051:50051"  # gRPC
+    environment:
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'  # DEV only
+
+  # === Redis - DEV Overrides ===
+  redis:
+    container_name: redis-rag-dev
+    # DEV: Expose port for debugging
+    ports:
+      - "6380:6379"
+
+networks:
+  rag-network:
+    driver: bridge
+    # DEV: External access allowed
+    internal: false

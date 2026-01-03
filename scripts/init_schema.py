@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize Weaviate schema for RAG service."""
+"""Initialize Weaviate schema for RAG service (100% gratuit - sans OpenAI)."""
 
 import os
 import sys
@@ -8,38 +8,25 @@ from weaviate.classes.config import Property, DataType, Configure
 
 # Weaviate connection
 WEAVIATE_URL = os.getenv("WEAVIATE_URL", "http://localhost:8080")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-# Schema definition
-SCHEMA = {
-    "class": "Prod_Chatbot",
-    "description": "FAQ et politiques support client AutoMecanik",
-    "properties": [
-        Property(name="content", data_type=DataType.TEXT, description="Document content"),
-        Property(name="title", data_type=DataType.TEXT, description="Document title/ID"),
-        Property(name="source_type", data_type=DataType.TEXT, description="Type: faq, policy, guide"),
-        Property(name="source_path", data_type=DataType.TEXT, description="File path"),
-        Property(name="category", data_type=DataType.TEXT, description="Category"),
-    ],
-}
 
 
 def init_schema():
-    """Initialize Weaviate schema."""
+    """Initialize Weaviate schema with local embeddings (no vectorizer)."""
     print(f"Connecting to Weaviate at {WEAVIATE_URL}...")
 
-    # Connect to Weaviate
-    client = weaviate.connect_to_local(
-        host=WEAVIATE_URL.replace("http://", "").replace("https://", "").split(":")[0],
-        port=int(WEAVIATE_URL.split(":")[-1]) if ":" in WEAVIATE_URL.split("/")[-1] else 8080,
-        headers={"X-OpenAI-Api-Key": OPENAI_API_KEY} if OPENAI_API_KEY else None,
-    )
+    # Parse host and port
+    url_clean = WEAVIATE_URL.replace("http://", "").replace("https://", "")
+    host = url_clean.split(":")[0]
+    port = int(url_clean.split(":")[-1]) if ":" in url_clean else 8080
+
+    # Connect to Weaviate (no API keys needed)
+    client = weaviate.connect_to_local(host=host, port=port)
 
     try:
         # Check if collection exists
         if client.collections.exists("Prod_Chatbot"):
             print("Collection 'Prod_Chatbot' already exists.")
-            response = input("Do you want to delete and recreate it? (y/N): ")
+            response = input("Delete and recreate? (y/N): ")
             if response.lower() == "y":
                 client.collections.delete("Prod_Chatbot")
                 print("Deleted existing collection.")
@@ -47,32 +34,57 @@ def init_schema():
                 print("Keeping existing collection.")
                 return
 
-        # Create collection with OpenAI vectorizer
-        print("Creating collection 'Prod_Chatbot'...")
+        # Create collection WITHOUT vectorizer (we use sentence-transformers)
+        print("Creating collection 'Prod_Chatbot' (vectorizer: none)...")
         client.collections.create(
             name="Prod_Chatbot",
-            description="FAQ et politiques support client AutoMecanik",
-            vectorizer_config=Configure.Vectorizer.text2vec_openai(
-                model="text-embedding-3-small",
-            ),
+            description="Corpus métier AutoMecanik - 100% gratuit avec niveaux de vérité",
+            vectorizer_config=Configure.Vectorizer.none(),
             properties=[
+                # Core properties
                 Property(name="content", data_type=DataType.TEXT),
                 Property(name="title", data_type=DataType.TEXT),
                 Property(name="source_type", data_type=DataType.TEXT),
                 Property(name="source_path", data_type=DataType.TEXT),
                 Property(name="category", data_type=DataType.TEXT),
+                # Truth Level System (Semantic Brain L1-L4)
+                Property(name="truth_level", data_type=DataType.TEXT),  # L1|L2|L3|L4
+                Property(name="verification_status", data_type=DataType.TEXT),  # verified|unverified|disputed
+                Property(name="confidence_score", data_type=DataType.NUMBER),  # 0.0-1.0
+                Property(name="last_verified_date", data_type=DataType.TEXT),  # ISO date string
+                Property(name="verified_by", data_type=DataType.TEXT),  # who verified
             ],
         )
-
         print("Collection 'Prod_Chatbot' created successfully!")
+
+        # Create Dev_Full collection (optional)
+        if not client.collections.exists("Dev_Full"):
+            print("Creating collection 'Dev_Full' (vectorizer: none)...")
+            client.collections.create(
+                name="Dev_Full",
+                description="Knowledge + code + audits (DEV only) avec niveaux de vérité",
+                vectorizer_config=Configure.Vectorizer.none(),
+                properties=[
+                    # Core properties
+                    Property(name="content", data_type=DataType.TEXT),
+                    Property(name="title", data_type=DataType.TEXT),
+                    Property(name="source_type", data_type=DataType.TEXT),
+                    Property(name="source_path", data_type=DataType.TEXT),
+                    Property(name="language", data_type=DataType.TEXT),
+                    Property(name="category", data_type=DataType.TEXT),
+                    # Truth Level System (Semantic Brain L1-L4)
+                    Property(name="truth_level", data_type=DataType.TEXT),  # L1|L2|L3|L4
+                    Property(name="verification_status", data_type=DataType.TEXT),  # verified|unverified|disputed
+                    Property(name="confidence_score", data_type=DataType.NUMBER),  # 0.0-1.0
+                    Property(name="last_verified_date", data_type=DataType.TEXT),  # ISO date string
+                    Property(name="verified_by", data_type=DataType.TEXT),  # who verified
+                ],
+            )
+            print("Collection 'Dev_Full' created successfully!")
 
     finally:
         client.close()
 
 
 if __name__ == "__main__":
-    if not OPENAI_API_KEY:
-        print("ERROR: OPENAI_API_KEY environment variable is required")
-        sys.exit(1)
-
     init_schema()
