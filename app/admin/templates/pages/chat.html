@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Chat Test{% endblock %}
+{% block content %}
+<div class="space-y-4">
+    <h1 class="text-2xl font-bold">Test Chat RAG</h1>
+    <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white rounded shadow p-4">
+            <h2 class="font-semibold mb-4">Message</h2>
+            <form id="chat-form" class="space-y-4">
+                <textarea id="message" rows="4" class="w-full rounded border-gray-300" placeholder="Comment changer les plaquettes?"></textarea>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Envoyer</button>
+            </form>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+            <h2 class="font-semibold mb-4">Reponse</h2>
+            <div id="response" class="text-sm"><p class="text-gray-400">Reponse ici...</p></div>
+        </div>
+    </div>
+    <div class="bg-white rounded shadow p-4">
+        <h2 class="font-semibold mb-4">Sources</h2>
+        <div id="sources" class="text-sm text-gray-500">Sources ici...</div>
+    </div>
+</div>
+<script>
+document.getElementById('chat-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById('message').value;
+    if (!msg) return;
+    document.getElementById('response').innerHTML = '<p class="text-gray-400">...</p>';
+    try {
+        const res = await fetch('/chat', {method:'POST', headers:{'Content-Type':'application/json','X-API-Key':'dev'}, body:JSON.stringify({message:msg})});
+        const data = await res.json();
+        document.getElementById('response').innerHTML = '<p>' + (data.response || data.detail) + '</p>';
+        if (data.sources) {
+            let h = '<ul class="space-y-1">';
+            data.sources.forEach(s => h += '<li class="p-2 bg-gray-50 rounded">' + s.title + ' <span class="text-xs bg-gray-200 px-1 rounded">' + s.truth_level + '</span></li>');
+            document.getElementById('sources').innerHTML = h + '</ul>';
+        }
+    } catch (err) { document.getElementById('response').innerHTML = '<p class="text-red-600">' + err + '</p>'; }
+};
+</script>
+{% endblock %}

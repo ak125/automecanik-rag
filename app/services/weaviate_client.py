@@ -45,7 +45,7 @@ class WeaviateClient:
             alpha: Balance between BM25 (0) and vector (1). Default from settings.
 
         Returns:
-            List of matching documents with scores
+            List of matching documents with scores (deduplicated by source_path)
         """
         if alpha is None:
             alpha = self.settings.retrieval_alpha
@@ -56,10 +56,14 @@ class WeaviateClient:
             # Generate query embedding locally (100% gratuit)
             query_vector = self.embeddings.embed(query)
 
+            # Fetch more results to account for potential duplicates
+            # After dedupe, we trim to the original limit
+            fetch_limit = limit * 2
+
             response = collection.query.hybrid(
                 query=query,
                 vector=query_vector,
-                limit=limit,
+                limit=fetch_limit,
                 alpha=alpha,
                 fusion_type=HybridFusion.RELATIVE_SCORE,
                 return_metadata=["score"],
@@ -87,8 +91,28 @@ class WeaviateClient:
                         "verified_by": obj.properties.get("verified_by", ""),
                     })
 
-            logger.info(f"Hybrid search for '{query[:50]}...' returned {len(results)} results")
-            return results
+            # DEDUPE: Keep only first occurrence per source_path (highest score)
+            # Results are already sorted by score from Weaviate
+            seen_sources: set[str] = set()
+            deduped_results: list[dict] = []
+            for r in results:
+                source_path = r.get("source_path", "")
+                if source_path and source_path not in seen_sources:
+                    seen_sources.add(source_path)
+                    deduped_results.append(r)
+
+            # Log dedupe stats for debugging
+            if len(results) != len(deduped_results):
+                logger.info(
+                    f"Dedupe: {len(results)} -> {len(deduped_results)} results "
+                    f"({len(results) - len(deduped_results)} duplicates removed)"
+                )
+
+            # Trim to original limit after dedupe
+            final_results = deduped_results[:limit]
+
+            logger.info(f"Hybrid search for '{query[:50]}...' returned {len(final_results)} results")
+            return final_results
 
         except Exception as e:
             logger.error(f"Weaviate search error: {e}")
@@ -108,6 +132,37 @@ class WeaviateClient:
                 "status": "unhealthy",
                 "error": str(e),
             }
+
+    async def is_healthy(self) -> bool:
+        """Check if Weaviate is healthy (for startup validation)."""
+        try:
+            return self.client.is_ready()
+        except Exception as e:
+            logger.error(f"Weaviate is_healthy check failed: {e}")
+            return False
+
+    async def get_schema(self) -> Optional[dict]:
+        """Get schema for the collection (for dimension validation)."""
+        try:
+            collection = self.client.collections.get(self.COLLECTION_NAME)
+            config = collection.config.get()
+            return {
+                "vectorDimension": self.settings.embedding_dimension,  # Assume config matches
+                "class": self.COLLECTION_NAME,
+            }
+        except Exception as e:
+            logger.error(f"Failed to get schema: {e}")
+            return None
+
+    async def count_documents(self) -> int:
+        """Count documents in the collection (for corpus validation)."""
+        try:
+            collection = self.client.collections.get(self.COLLECTION_NAME)
+            response = collection.aggregate.over_all(total_count=True)
+            return response.total_count or 0
+        except Exception as e:
+            logger.error(f"Failed to count documents: {e}")
+            return 0
 
     def close(self):
         """Close Weaviate connection."""

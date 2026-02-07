@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Nouveau Document{% endblock %}
+{% block content %}
+<div class="max-w-4xl">
+    <a href="/admin/documents" class="text-blue-600 text-sm">&larr; Retour</a>
+    <h1 class="text-2xl font-bold mt-2 mb-4">Nouveau Document</h1>
+
+    <form action="/admin/documents/new" method="POST" class="bg-white rounded shadow p-6 space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Titre</label>
+            <input type="text" name="title" required class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Type</label>
+                <select name="source_type" required class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+                    {% for st in source_types %}<option value="{{ st }}">{{ st }}</option>{% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Categorie</label>
+                <input type="text" name="category" required class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Niveau</label>
+                <select name="truth_level" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+                    <option value="L3" selected>L3 - Hypothese</option>
+                    <option value="L4">L4 - Heuristique</option>
+                    <option value="L2">L2 - Regle</option>
+                    <option value="L1">L1 - Fait</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Contenu (Markdown)</label>
+            <textarea id="content-editor" name="content" required></textarea>
+        </div>
+        <div class="flex justify-end gap-2">
+            <a href="/admin/documents" class="px-4 py-2 border rounded hover:bg-gray-50">Annuler</a>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Creer</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const easyMDE = new EasyMDE({
+        element: document.getElementById('content-editor'),
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            uniqueId: 'rag-create-doc',
+            delay: 1000
+        },
+        toolbar: [
+            'bold', 'italic', 'heading', '|',
+            'quote', 'unordered-list', 'ordered-list', '|',
+            'link', 'image', 'table', '|',
+            'preview', 'side-by-side', 'fullscreen', '|',
+            'guide'
+        ],
+        placeholder: '# Titre du document\n\nEcrivez votre contenu en Markdown...',
+        minHeight: '400px',
+        status: ['autosave', 'lines', 'words'],
+        renderingConfig: {
+            codeSyntaxHighlighting: true
+        }
+    });
+});
+</script>
+{% endblock %}

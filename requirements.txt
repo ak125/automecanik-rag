@@ -9,9 +9,8 @@ uvicorn[standard]>=0.27.0
 pydantic>=2.5.0
 pydantic-settings>=2.1.0
 
-# Embeddings (GRATUIT - local)
-sentence-transformers>=2.2.0
-torch>=2.0.0
+# Embeddings (GRATUIT - local, FastEmbed = Rust backend, ~80% moins de RAM)
+fastembed>=0.2.0
 
 # Vector Database
 weaviate-client>=4.4.0
@@ -22,12 +21,27 @@ redis>=5.0.0
 # HTTP Client
 httpx>=0.26.0
 
+# LLM (Claude API - V2 spec)
+anthropic>=0.18.0
+
+# LangGraph (Pipeline orchestration - V2 spec)
+langgraph>=0.0.40
+langchain-core>=0.1.0
+
 # Markdown parsing
 python-frontmatter>=1.1.0
 
 # Utils
 numpy>=1.24.0
 
+# YAML Config (Quarantine Mode)
+pyyaml>=6.0
+
 # Testing
 pytest>=7.4.0
 pytest-asyncio>=0.23.0
+
+# Admin Interface
+jinja2>=3.1.0
+python-multipart>=0.0.9
+aiofiles>=23.0.0

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Modifier - {{ document.title }}{% endblock %}
+{% block content %}
+<div class="max-w-4xl">
+    <a href="/admin/documents/{{ document.id }}" class="text-blue-600 text-sm">&larr; Retour</a>
+    <h1 class="text-2xl font-bold mt-2 mb-4">Modifier Document</h1>
+
+    <form action="/admin/documents/{{ document.id }}/edit" method="POST" class="bg-white rounded shadow p-6 space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Titre</label>
+            <input type="text" name="title" required value="{{ document.title }}" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Type</label>
+                <select name="source_type" required class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+                    {% for st in source_types %}<option value="{{ st }}" {% if document.source_type == st %}selected{% endif %}>{{ st }}</option>{% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Categorie</label>
+                <input type="text" name="category" required value="{{ document.category }}" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Niveau</label>
+                <select name="truth_level" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+                    <option value="L1" {% if document.truth_level == 'L1' %}selected{% endif %}>L1 - Fait</option>
+                    <option value="L2" {% if document.truth_level == 'L2' %}selected{% endif %}>L2 - Regle</option>
+                    <option value="L3" {% if document.truth_level == 'L3' %}selected{% endif %}>L3 - Hypothese</option>
+                    <option value="L4" {% if document.truth_level == 'L4' %}selected{% endif %}>L4 - Heuristique</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Contenu (Markdown)</label>
+            <textarea id="content-editor" name="content" required>{{ document.content }}</textarea>
+        </div>
+        <div class="flex justify-end gap-2">
+            <a href="/admin/documents/{{ document.id }}" class="px-4 py-2 border rounded hover:bg-gray-50">Annuler</a>
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Enregistrer</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const easyMDE = new EasyMDE({
+        element: document.getElementById('content-editor'),
+        spellChecker: false,
+        autosave: {
+            enabled: true,
+            uniqueId: 'rag-edit-{{ document.id }}',
+            delay: 1000
+        },
+        toolbar: [
+            'bold', 'italic', 'heading', '|',
+            'quote', 'unordered-list', 'ordered-list', '|',
+            'link', 'image', 'table', '|',
+            'preview', 'side-by-side', 'fullscreen', '|',
+            'guide'
+        ],
+        minHeight: '400px',
+        status: ['autosave', 'lines', 'words'],
+        renderingConfig: {
+            codeSyntaxHighlighting: true
+        }
+    });
+});
+</script>
+{% endblock %}

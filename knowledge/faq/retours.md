@@ -2,6 +2,8 @@
 title: "FAQ - Retours et échanges"
 source_type: faq
 category: retours
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

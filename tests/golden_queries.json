@@ -1,0 +1,296 @@
+{
+  "version": "1.0.0",
+  "date": "2026-01-07",
+  "description": "Golden test queries for RAG validation before activation",
+  "success_criteria": {
+    "pass_rate_minimum": 0.80,
+    "refusal_accuracy": 1.0,
+    "citation_rate_minimum": 0.90,
+    "average_score_minimum": 0.75
+  },
+  "tests": [
+    {
+      "id": "GT01",
+      "query": "Quelles sont les causes d'un bruit de freinage ?",
+      "category": "diagnostic",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["diagnostic/bruits-freinage.md"]
+      }
+    },
+    {
+      "id": "GT02",
+      "query": "Vibrations au volant quand je freine",
+      "category": "diagnostic",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["diagnostic/vibrations.md"]
+      }
+    },
+    {
+      "id": "GT03",
+      "query": "Que signifie le temoin orange sur le tableau de bord ?",
+      "category": "diagnostic",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["diagnostic/temoins-tableau-bord.md"]
+      }
+    },
+    {
+      "id": "GT04",
+      "query": "Comment diagnostiquer un probleme de frein",
+      "category": "diagnostic",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["diagnostic/bruits-freinage.md", "diagnostic/vibrations.md"]
+      }
+    },
+    {
+      "id": "GT05",
+      "query": "Grincement plaquettes de frein neuves",
+      "category": "diagnostic",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["diagnostic/bruits-freinage.md"]
+      }
+    },
+    {
+      "id": "GT06",
+      "query": "Comment retourner une piece ?",
+      "category": "faq",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["faq/retours.md", "policies/remboursement.md"]
+      }
+    },
+    {
+      "id": "GT07",
+      "query": "Delai de livraison en France",
+      "category": "faq",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["faq/livraison.md", "policies/livraison.md"]
+      }
+    },
+    {
+      "id": "GT08",
+      "query": "Quelle est la garantie sur les pieces auto ?",
+      "category": "faq",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["policies/garantie.md"]
+      }
+    },
+    {
+      "id": "GT09",
+      "query": "Comment suivre ma commande ?",
+      "category": "faq",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["faq/suivi-commande.md"]
+      }
+    },
+    {
+      "id": "GT10",
+      "query": "Quels modes de paiement acceptez-vous ?",
+      "category": "faq",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["faq/paiement.md"]
+      }
+    },
+    {
+      "id": "GT11",
+      "query": "Plaquettes de frein pour Renault Clio 3",
+      "category": "vehicle",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["vehicle/renault-clio-3.md"]
+      }
+    },
+    {
+      "id": "GT12",
+      "query": "Freins pour Peugeot 206",
+      "category": "vehicle",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["vehicle/peugeot-206.md"]
+      }
+    },
+    {
+      "id": "GT13",
+      "query": "Entretien Renault Clio phase 2",
+      "category": "vehicle",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.60,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["vehicle/renault-clio-3.md"]
+      }
+    },
+    {
+      "id": "GT14",
+      "query": "Comment trouver la reference OEM d'une plaquette ?",
+      "category": "guides",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["guides/references-oem.md"]
+      }
+    },
+    {
+      "id": "GT15",
+      "query": "Comment choisir des plaquettes de frein ?",
+      "category": "guides",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.70,
+        "min_results": 1,
+        "should_cite": true,
+        "expected_sources": ["guides/choisir-plaquettes.md"]
+      }
+    },
+    {
+      "id": "GT16",
+      "query": "Prix action Tesla en bourse",
+      "category": "refusal",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "hors-sujet"
+      }
+    },
+    {
+      "id": "GT17",
+      "query": "Recette gateau au chocolat",
+      "category": "refusal",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "hors-sujet"
+      }
+    },
+    {
+      "id": "GT18",
+      "query": "Meteo demain a Paris",
+      "category": "refusal",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "hors-sujet"
+      }
+    },
+    {
+      "id": "GT19",
+      "query": "Pieces moteur pour Ferrari F40 1988",
+      "category": "refusal",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "vehicule-non-couvert"
+      }
+    },
+    {
+      "id": "GT20",
+      "query": "Comment pirater un site web",
+      "category": "refusal",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "securite"
+      }
+    },
+    {
+      "id": "GT21",
+      "query": "freinage",
+      "category": "edge_case",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.50,
+        "min_results": 1,
+        "note": "mot seul - peut avoir score faible"
+      }
+    },
+    {
+      "id": "GT22",
+      "query": "BRUITS DE FREIN AU RALENTI",
+      "category": "edge_case",
+      "expected": {
+        "has_results": true,
+        "min_score": 0.65,
+        "min_results": 1,
+        "note": "majuscules - doit etre normalise"
+      }
+    },
+    {
+      "id": "GT23",
+      "query": "brake noise when stopping",
+      "category": "edge_case",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "langue-non-supportee",
+        "note": "anglais - corpus en francais uniquement"
+      }
+    },
+    {
+      "id": "GT24",
+      "query": "",
+      "category": "edge_case",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "requete-vide"
+      }
+    },
+    {
+      "id": "GT25",
+      "query": "!@#$%^&*()",
+      "category": "edge_case",
+      "expected": {
+        "has_results": false,
+        "should_refuse": true,
+        "refuse_reason": "caracteres-invalides"
+      }
+    }
+  ]
+}

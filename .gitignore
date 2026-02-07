@@ -49,6 +49,10 @@ data/
 *.db
 
 # Secrets (never commit)
+.env.*
 *.pem
 *.key
 credentials*.json
+
+# Backup files
+*.backup-before-migration

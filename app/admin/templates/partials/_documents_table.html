@@ -1,0 +1,38 @@
+<div class="bg-white rounded shadow overflow-hidden">
+    <table class="w-full">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-4 py-2 text-left text-xs text-gray-500">Titre</th>
+                <th class="px-4 py-2 text-left text-xs text-gray-500">Type</th>
+                <th class="px-4 py-2 text-left text-xs text-gray-500">Categorie</th>
+                <th class="px-4 py-2 text-left text-xs text-gray-500">Niveau</th>
+                <th class="px-4 py-2 text-right text-xs text-gray-500">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y">
+            {% for doc in documents %}
+            <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2"><a href="/admin/documents/{{ doc.id }}" class="text-blue-600">{{ doc.title[:40] }}{% if doc.title|length > 40 %}...{% endif %}</a></td>
+                <td class="px-4 py-2 text-sm text-gray-500">{{ doc.source_type }}</td>
+                <td class="px-4 py-2 text-sm text-gray-500">{{ doc.category }}</td>
+                <td class="px-4 py-2"><span class="px-2 py-0.5 rounded text-xs text-white {% if doc.truth_level == 'L1' %}bg-green-500{% elif doc.truth_level == 'L2' %}bg-blue-500{% elif doc.truth_level == 'L3' %}bg-amber-500{% else %}bg-red-500{% endif %}">{{ doc.truth_level }}</span></td>
+                <td class="px-4 py-2 text-right text-sm">
+                    <a href="/admin/documents/{{ doc.id }}/edit" class="text-gray-600">Edit</a>
+                    <button hx-post="/admin/documents/{{ doc.id }}/delete" hx-confirm="Supprimer?" class="text-red-600 ml-2">Del</button>
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="px-4 py-4 text-center text-gray-500">Aucun document</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if pages > 1 %}
+    <div class="p-4 border-t flex justify-between text-sm">
+        <span>Page {{ page }}/{{ pages }}</span>
+        <div>
+            {% if page > 1 %}<a href="/admin/documents?page={{ page - 1 }}" class="px-2 py-1 border rounded">Prec</a>{% endif %}
+            {% if page < pages %}<a href="/admin/documents?page={{ page + 1 }}" class="px-2 py-1 border rounded ml-2">Suiv</a>{% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>

@@ -2,6 +2,8 @@
 title: "Politique de remboursement"
 source_type: policy
 category: remboursement
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

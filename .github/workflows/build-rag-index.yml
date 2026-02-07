@@ -1,0 +1,117 @@
+name: 📚 Build RAG Index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'knowledge/**'
+  workflow_dispatch:
+    inputs:
+      full_reindex:
+        description: 'Force full reindex of all documents'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  validate:
+    name: 🔍 Validate Knowledge Files
+    runs-on: ubuntu-latest
+    outputs:
+      has_valid_docs: ${{ steps.validate.outputs.has_valid_docs }}
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🔍 Validate frontmatter and truth_level
+        id: validate
+        run: |
+          echo "🔍 Validating knowledge files..."
+
+          VALID_COUNT=0
+          INVALID_COUNT=0
+
+          for file in $(find knowledge -name "*.md" -type f); do
+            echo "Checking: $file"
+
+            # Check for YAML frontmatter
+            if ! head -n 1 "$file" | grep -q "^---$"; then
+              echo "  ⚠️ Missing frontmatter - IGNORED (Règle d'Or #1)"
+              INVALID_COUNT=$((INVALID_COUNT + 1))
+              continue
+            fi
+
+            # Check for truth_level field (Règle d'Or: PAS D'INDICATEUR = SUPPRESSION)
+            if ! grep -q "^truth_level:" "$file"; then
+              echo "  ⚠️ Missing truth_level - IGNORED (Règle d'Or #1)"
+              INVALID_COUNT=$((INVALID_COUNT + 1))
+              continue
+            fi
+
+            # Validate truth_level value (L1-L4)
+            LEVEL=$(grep "^truth_level:" "$file" | cut -d':' -f2 | tr -d ' "')
+            if [[ ! "$LEVEL" =~ ^L[1-4]$ ]]; then
+              echo "  ❌ Invalid truth_level: $LEVEL (must be L1, L2, L3, or L4)"
+              INVALID_COUNT=$((INVALID_COUNT + 1))
+              continue
+            fi
+
+            echo "  ✅ Valid ($LEVEL)"
+            VALID_COUNT=$((VALID_COUNT + 1))
+          done
+
+          echo ""
+          echo "📊 Summary: $VALID_COUNT valid, $INVALID_COUNT ignored"
+
+          if [ $VALID_COUNT -gt 0 ]; then
+            echo "has_valid_docs=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_valid_docs=false" >> $GITHUB_OUTPUT
+            echo "⚠️ No valid documents to index"
+          fi
+
+  build-index:
+    name: 📥 Build and Push Index
+    runs-on: ubuntu-latest
+    needs: validate
+    if: needs.validate.outputs.has_valid_docs == 'true'
+    environment: build
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: 🔨 Build and index knowledge
+        run: python scripts/build_index.py knowledge/
+        env:
+          WEAVIATE_URL: ${{ secrets.WEAVIATE_URL }}
+          EMBEDDING_MODEL: all-MiniLM-L6-v2
+
+      - name: 📊 Summary
+        if: always()
+        run: |
+          echo "# 📚 RAG Index Build" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Branch | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Full Reindex | ${{ inputs.full_reindex || 'false' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Namespace | prod:chatbot |" >> $GITHUB_STEP_SUMMARY

@@ -2,6 +2,8 @@
 title: "Fiche véhicule - Renault Clio 3"
 source_type: vehicle
 category: renault
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

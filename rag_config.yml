@@ -1,0 +1,227 @@
+# /opt/automecanik/rag/rag_config.yml
+# CONFIG DETERMINISTE - Quarantine Mode
+# Version: 1.0.0 | Date: 2026-01-07
+#
+# REGLES:
+# - Ce fichier est la source unique de config RAG
+# - ENV vars peuvent override (priorite ENV > YAML)
+# - Mode quarantine = validation stricte au demarrage
+
+mode: quarantine  # quarantine | active
+version: "1.0.0"
+
+# =============================================================================
+# VECTOR STORE - Weaviate
+# Ref: init_schema.py, weaviate_client.py
+# =============================================================================
+vector_store:
+  type: weaviate
+  url: "${WEAVIATE_URL:-http://weaviate:8080}"
+  class_name: Prod_Chatbot      # PROD - corpus /knowledge/ (weaviate_client.py:17)
+  dev_class_name: Dev_Full      # DEV - knowledge + code + audits (init_schema.py:61)
+  consistency_level: ONE
+  batch_size: 100
+  timeout_seconds: 30
+
+# =============================================================================
+# EMBEDDINGS - all-MiniLM-L6-v2 (GRATUIT, local)
+# =============================================================================
+embeddings:
+  model: all-MiniLM-L6-v2
+  dimension: 384  # DOIT matcher schema Weaviate - NE PAS MODIFIER
+  provider: sentence-transformers
+  normalize: true
+  batch_size: 32
+
+# =============================================================================
+# RETRIEVAL - Hybrid Search (BM25 + Vector)
+# =============================================================================
+retrieval:
+  top_k: 8                    # Augmenté pour avoir plus de diversité après dedupe
+  alpha: 0.7                  # 70% vector, 30% BM25
+  min_score_threshold: 0.70   # REFUS si < 0.70
+  min_results_required: 3     # REFUS si < 3 resultats
+  max_chunks_per_doc: 1       # Limiter chunks par document (dedupe)
+  enable_reranking: false     # P2: A activer apres golden tests
+
+# =============================================================================
+# LLM - Claude (generation reponses)
+# =============================================================================
+llm:
+  model: claude-3-5-sonnet-20241022
+  max_tokens: 1024
+  temperature: 0.3
+  timeout_seconds: 30
+
+# =============================================================================
+# TRUTH LEVELS - Semantic Brain L1-L4
+# =============================================================================
+truth_levels:
+  L1:
+    name: "Faits verifies"
+    weight: 1.0
+    emoji: "check"
+  L2:
+    name: "Regles metier"
+    weight: 0.9
+    emoji: "clipboard"
+  L3:
+    name: "Hypotheses"
+    weight: 0.6
+    emoji: "question"
+  L4:
+    name: "Heuristiques"
+    weight: 0.4
+    emoji: "thought"
+
+# =============================================================================
+# NAMESPACE GUARD - PROD securite
+# Ref: namespace_guard.py (HARDCODED - ce fichier est informatif seulement)
+# =============================================================================
+namespaces:
+  # PROD chatbot - HARDCODED dans namespace_guard.py:49-55
+  allowed_prod:
+    - "knowledge:vehicle"
+    - "knowledge:diagnostic"
+    - "knowledge:faq"
+    - "knowledge:guide"
+    - "knowledge:policy"
+  # DEV agents - full access (namespace_guard.py:59)
+  allowed_dev:
+    - "knowledge:vehicle"
+    - "knowledge:diagnostic"
+    - "knowledge:faq"
+    - "knowledge:seo"
+    - "knowledge:guide"
+    - "knowledge:policy"
+    - "internal:code"
+    - "internal:audits"
+    - "internal:configs"
+    - "internal:runbooks"
+  default: "knowledge:faq"  # PROD_CHATBOT_NAMESPACE (namespace_guard.py:65)
+
+# =============================================================================
+# SECURITY - Kill switches et limites
+# =============================================================================
+security:
+  ai_prod_write: false  # KILL SWITCH - JAMAIS true en PROD
+  rate_limit_rpm: 60
+  max_request_size_bytes: 1048576  # 1MB
+  request_timeout_seconds: 30
+  enable_pii_detection: true
+  enable_injection_detection: true
+
+# =============================================================================
+# GATING - Refusal-first policy
+# =============================================================================
+gating:
+  refuse_if_score_below: 0.70
+  refuse_if_results_below: 3
+  refuse_message_fr: "Je n'ai pas assez d'informations fiables pour repondre. Veuillez contacter notre support."
+  refuse_message_en: "I don't have enough reliable information to answer. Please contact our support."
+  require_citations: true
+  max_level_mixing:
+    - "L1"
+    - "L2"
+
+# =============================================================================
+# LOGGING - Diagnostic
+# =============================================================================
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_queries: true
+  log_retrieval_scores: true
+  log_truth_levels: true
+  audit_enabled: true
+
+# =============================================================================
+# WIKI.JS - Source humaine editable
+# =============================================================================
+wiki:
+  enabled: true
+  # Git sync (backup automatique Wiki.js)
+  git_repo: "${WIKI_GIT_REPO:-git@github.com:automecanik/wiki-backup.git}"
+  branch: main
+  sync_interval_minutes: 5
+  # Export
+  export_path: "/opt/automecanik/rag/wiki_export"
+  export_format: markdown  # markdown | json
+  # GraphQL API (alternative au Git sync)
+  graphql_url: "${WIKI_GRAPHQL_URL:-http://wiki:3000/graphql}"
+  graphql_enabled: false  # Utiliser Git sync par defaut
+
+# =============================================================================
+# LANGGRAPH - Orchestrateur runtime
+# =============================================================================
+langgraph:
+  enabled: true
+  nodes:
+    - classify      # Classification requete (on-topic/off-topic)
+    - retrieve      # Recherche Weaviate
+    - guardrails    # Verification score/results
+    - generate      # Generation reponse Claude
+    - tools         # Appels API metier (optionnel)
+  streaming: true   # SSE streaming pour reponses progressives
+  max_retries: 2
+  timeout_seconds: 60
+
+# =============================================================================
+# QUARANTINE MODE - Validation au demarrage
+# =============================================================================
+quarantine:
+  enabled: true
+  fail_fast: true  # Exit si validation echoue
+  checks:
+    - weaviate_connection
+    - embedding_dimension_match
+    - corpus_not_empty
+  on_failure: exit  # exit | warn | disable_rag
+
+# =============================================================================
+# ORCHESTRATOR - AI Orchestrator (BUILD Plane Only)
+# CRITICAL: Runs ONLY in dev/ci, NEVER in prod
+# Ref: orchestrator/kill_switch.py, orchestrator/pipeline.py
+# =============================================================================
+orchestrator:
+  enabled: true
+  # Data sources
+  sources:
+    minio:
+      enabled: true
+      endpoint: "${MINIO_ENDPOINT:-minio:9000}"
+      buckets:
+        - docs
+        - exports
+      secure: false
+    wiki:
+      enabled: true
+      mode: git  # git | graphql
+      repo_path: "/opt/automecanik/rag/wiki_export"
+      graphql_url: "${WIKI_GRAPHQL_URL:-http://wiki:3000/graphql}"
+    knowledge:
+      enabled: true
+      path: "/opt/automecanik/rag/knowledge"
+  # Document processing
+  processing:
+    chunk_size: 500        # Target tokens per chunk
+    chunk_overlap: 50      # Token overlap between chunks
+    batch_size: 100        # Weaviate batch insert size
+    min_chunk_size: 100    # Minimum tokens for a chunk
+  # Index versioning
+  versioning:
+    create_version: true
+    promote_latest: true
+    keep_versions: 5
+  # Kill switch environments (HARDCODED in kill_switch.py, this is informational)
+  environments:
+    allowed:
+      - dev
+      - ci
+      - staging
+      - development
+      - test
+    blocked:
+      - prod
+      - production
+      - live

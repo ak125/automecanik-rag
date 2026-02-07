@@ -21,6 +21,7 @@ from app.api.chat import router as chat_router
 from app.api.search import router as search_router
 from app.api.health import router as health_router
 from app.api.knowledge import router as knowledge_router
+from app.admin.router import router as admin_router
 from app.middleware.rate_limiter import (
     RateLimitMiddleware,
     RateLimitConfig,
@@ -28,6 +29,8 @@ from app.middleware.rate_limiter import (
     rate_limit_exceeded_handler,
 )
 from app.services.security_validator import get_security_validator, SecurityRisk
+from app.services.startup_validator import StartupValidator
+from app.services.weaviate_client import get_weaviate_client
 import json
 
 # Configure logging
@@ -283,6 +286,9 @@ app.include_router(
     dependencies=[Depends(verify_api_key)]
 )
 
+# Admin UI (no auth - accessed via monorepo staff level 5)
+app.include_router(admin_router)
+
 
 # ============================================
 # Startup / Shutdown Events
@@ -292,6 +298,39 @@ async def startup_event():
     """Initialize services and validate configuration on startup."""
     logger.info(f"Starting RAG service in {settings.env} mode")
     logger.info(f"Weaviate URL: {settings.weaviate_url}")
+
+    # Log full configuration for debugging
+    settings.log_startup_config()
+
+    # ========== QUARANTINE MODE VALIDATION ==========
+    if settings.is_quarantine_mode:
+        logger.warning("=" * 60)
+        logger.warning("RAG SERVICE IN QUARANTINE MODE")
+        logger.warning("Real responses DISABLED until validation passes")
+        logger.warning("=" * 60)
+
+        # Run startup validation
+        try:
+            weaviate_client = get_weaviate_client()
+            validator = StartupValidator(settings, weaviate_client)
+            is_valid, errors = await validator.validate_all()
+
+            if not is_valid:
+                if settings.quarantine_fail_fast:
+                    logger.critical(f"Startup validation FAILED: {errors}")
+                    logger.critical("Service will exit due to fail_fast=true")
+                    raise RuntimeError(f"Quarantine validation failed: {errors}")
+                else:
+                    logger.error(f"Validation errors (non-fatal): {errors}")
+                    logger.warning("Service starting with validation errors - use with caution")
+            else:
+                logger.info("Quarantine validation PASSED - RAG service ready")
+        except RuntimeError:
+            raise  # Re-raise fail-fast errors
+        except Exception as e:
+            logger.error(f"Startup validation error: {e}")
+            if settings.quarantine_fail_fast:
+                raise RuntimeError(f"Quarantine validation failed: {e}")
 
     # P1 SECURITY: Validate Kill Switch in PROD
     if settings.env == "prod":

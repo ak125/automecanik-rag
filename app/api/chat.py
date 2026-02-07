@@ -1,9 +1,14 @@
-"""Chat endpoint - Returns context with Truth Levels for Claude CLI (Semantic Brain).
+"""Chat endpoint - Returns context with Truth Levels.
+
+ARCHITECTURE:
+- v1 (POST /chat): Mode Context-Only - Pas de génération LLM
+- v2 (POST /chat/v2): Mode LangGraph - Full pipeline avec guardrails + génération
 
 SECURITY:
 - Namespace is HARDCODED to knowledge:faq in production
 - No namespace parameter exposed to API
 - NamespaceGuard validates all requests
+- LangGraph v2 adds classify node for off-topic detection
 """
 
 from fastapi import APIRouter, HTTPException
@@ -14,6 +19,7 @@ import logging
 
 from app.services.rag_service import get_rag_service
 from app.services.namespace_guard import get_namespace_guard
+from app.services.langgraph_flow import run_chat_pipeline
 from app.config import get_settings
 
 logger = logging.getLogger(__name__)
@@ -24,7 +30,7 @@ PROD_CHATBOT_NAMESPACE = "knowledge:faq"
 
 
 class ChatRequest(BaseModel):
-    """Request body for chat endpoint."""
+    """Request body for chat endpoint - Context-Only mode."""
     message: str = Field(..., min_length=1, max_length=2000, description="User message")
     session_id: Optional[str] = Field(None, description="Session ID for tracking")
     limit: int = Field(5, ge=1, le=20, description="Number of sources to retrieve")
@@ -49,8 +55,8 @@ class TruthMetadataResponse(BaseModel):
 
 
 class ChatResponse(BaseModel):
-    """Response body for chat endpoint with Semantic Brain metadata."""
-    context: str = Field(..., description="Formatted context for Claude CLI")
+    """Response body for chat endpoint - Context-Only mode."""
+    context: str = Field(..., description="Formatted context from knowledge base")
     sources: list[str] = Field(default_factory=list, description="Source file paths")
     session_id: str = Field(..., description="Session ID")
     total_sources: int = Field(0, description="Number of relevant sources found")
@@ -64,12 +70,15 @@ class ChatResponse(BaseModel):
 @router.post("", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """
-    Get RAG context with Truth Levels for Claude CLI (Semantic Brain).
+    Get RAG context with Truth Levels (Context-Only Mode).
+
+    Le chatbot répond uniquement à partir de la source de vérité.
+    Pas de génération LLM - le frontend formate le contexte.
 
     1. Search relevant documents in Weaviate
     2. Analyze truth levels (L1-L4)
     3. Format context with truth indicators
-    4. Return context + truth metadata for Claude CLI
+    4. Return context + truth metadata
 
     Truth Levels:
     - L1: Faits vérifiés (documentation officielle)
@@ -120,6 +129,7 @@ async def chat(request: ChatRequest):
             reasoning_chain=result.truth_metadata.reasoning_chain,
         )
 
+        # Context-Only: Return context directly, no LLM generation
         return ChatResponse(
             context=result.context,
             sources=sources,
@@ -140,4 +150,105 @@ async def chat(request: ChatRequest):
         raise HTTPException(
             status_code=500,
             detail="Error retrieving context"
+        )
+
+
+# =============================================================================
+# V2: LangGraph Pipeline with Guardrails + Generation
+# =============================================================================
+
+class ChatRequestV2(BaseModel):
+    """Request body for chat v2 endpoint - LangGraph mode."""
+    message: str = Field(..., min_length=1, max_length=2000, description="User message")
+    session_id: Optional[str] = Field(None, description="Session ID for tracking")
+    locale: str = Field("fr", description="User locale (fr/en)")
+
+
+class ChatResponseV2(BaseModel):
+    """Response body for chat v2 endpoint - LangGraph mode."""
+    response: str = Field(..., description="Generated response or refusal message")
+    citations: list[str] = Field(default_factory=list, description="Citations from sources")
+    sources: list[str] = Field(default_factory=list, description="Source file paths")
+    session_id: str = Field(..., description="Session ID")
+    # Classification and guardrails
+    query_type: Optional[str] = Field(None, description="Query type: on_topic, off_topic, ambiguous")
+    passed_guardrails: bool = Field(False, description="Whether query passed guardrails")
+    refusal_reason: Optional[str] = Field(None, description="Reason for refusal if any")
+    # Truth metadata
+    truth_metadata: dict = Field(default_factory=dict, description="Truth level metadata")
+    # Error info
+    error: Optional[str] = Field(None, description="Error message if any")
+
+
+@router.post("/v2", response_model=ChatResponseV2)
+async def chat_v2(request: ChatRequestV2):
+    """
+    Chat with LangGraph pipeline (Full Generation Mode).
+
+    Flow: classify → retrieve → guardrails → generate/refuse
+
+    1. Classify query (on-topic, off-topic, ambiguous)
+    2. Retrieve relevant documents from Weaviate
+    3. Apply guardrails (score >= 0.70, results >= 3)
+    4. Generate response with Claude OR refuse with helpful message
+
+    Guardrails:
+    - Off-topic queries are refused immediately
+    - Score < 0.70 triggers refusal
+    - < 3 results triggers refusal for ambiguous queries
+
+    Args:
+        request: Chat request with message and locale
+
+    Returns:
+        ChatResponseV2 with response, citations, and metadata
+    """
+    try:
+        session_id = request.session_id or str(uuid.uuid4())
+        settings = get_settings()
+
+        # Log request
+        logger.info(f"Chat v2 request - session={session_id}, locale={request.locale}")
+
+        # Check if LangGraph is enabled
+        if not settings.langgraph_enabled:
+            raise HTTPException(
+                status_code=503,
+                detail="LangGraph pipeline is disabled"
+            )
+
+        # Run the full LangGraph pipeline
+        result = await run_chat_pipeline(
+            query=request.message,
+            session_id=session_id,
+            user_locale=request.locale,
+        )
+
+        # Log result
+        logger.info(
+            f"Chat v2 result - session={session_id}, "
+            f"type={result.get('query_type')}, "
+            f"guardrails={result.get('passed_guardrails')}, "
+            f"refusal={result.get('refusal_reason')}"
+        )
+
+        return ChatResponseV2(
+            response=result.get("response", ""),
+            citations=result.get("citations", []),
+            sources=result.get("sources", []),
+            session_id=session_id,
+            query_type=result.get("query_type"),
+            passed_guardrails=result.get("passed_guardrails", False),
+            refusal_reason=result.get("refusal_reason"),
+            truth_metadata=result.get("truth_metadata", {}),
+            error=result.get("error"),
+        )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Chat v2 error: {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail="Error processing chat request"
         )

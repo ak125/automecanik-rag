@@ -2,6 +2,8 @@
 title: "Diagnostic - Vibrations véhicule"
 source_type: diagnostic
 category: suspension
+truth_level: L2
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

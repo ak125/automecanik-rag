@@ -2,6 +2,8 @@
 title: "Fiche véhicule - Peugeot 206"
 source_type: vehicle
 category: peugeot
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

@@ -1,0 +1,231 @@
+pg_id;gamme;famille;trends_index;seo_score;serp_score;google_suggest;bing_suggest;competitor_presence;competition_difficulty;competition_level;search_intent;intent_confidence;shopping_likely;paa_count;commercial_value;current_g_level;recommended_g_level;action_recommended
+3902;"Injecteur";"Système d'alimentation";87;96;74;10;12;4;90;HARD;TRANSACTIONAL;25;OUI;18;95;G2;G1;PROMOUVOIR_G1
+1145;"Vanne EGR";"Système d'alimentation";87;97;88;10;4;4;55;MEDIUM;TRANSACTIONAL;35;OUI;15;80;G1;G1;
+290;"Feu arrière";"Eclairage";87;96;88;10;3;4;55;MEDIUM;TRANSACTIONAL;35;OUI;10;80;G2;G1;PROMOUVOIR_G1
+854;"Amortisseur";"Amortisseur et suspension";86;97;80;10;9;4;75;HARD;TRANSACTIONAL;25;OUI;18;90;G1;G1;
+2;"Démarreur";"Système électrique";85;91;80;10;12;4;75;HARD;TRANSACTIONAL;45;OUI;18;50;G1;G1;
+1361;"Serrure de porte";"Accessoires";85;82;67;10;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;9;50;G3;G2;PROMOUVOIR_INDEX
+247;"Support moteur";"Support moteur";84;85;57;10;6;4;70;HARD;COMMERCIAL_INVESTIGATION;30;NON;12;95;G1;G1;
+4;"Alternateur";"Système électrique";83;90;80;10;10;4;75;HARD;TRANSACTIONAL;45;OUI;18;50;G1;G1;
+13;"Cardan";"Transmission";82;95;80;10;12;4;75;HARD;TRANSACTIONAL;35;OUI;18;80;G1;G1;
+3890;"Electrovanne";"Capteurs";82;79;55;10;2;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;9;80;G3;G2;PROMOUVOIR_INDEX
+1373;"Poignée de porte";"Accessoires";82;86;67;10;11;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;11;80;G3;G1;PROMOUVOIR_G1
+306;"Courroie de distribution";"Courroie, galet, poulie et chaîne";80;99;92;10;10;4;45;MEDIUM;TRANSACTIONAL;35;OUI;14;90;G2;G1;PROMOUVOIR_G1
+432;"Culbuteur";"Moteur";80;75;55;10;3;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;13;50;G3;G2;PROMOUVOIR_INDEX
+318;"Joint de culasse";"Moteur";80;93;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;13;50;G2;G1;PROMOUVOIR_G1
+274;"Barre stabilisatrice";"Direction et liaison au sol";79;76;63;10;1;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;17;50;G3;G2;PROMOUVOIR_INDEX
+2234;"Turbo";"Turbo";79;90;74;10;12;4;90;HARD;TRANSACTIONAL;25;OUI;18;65;G1;G1;
+429;"Catalyseur";"Echappement";77;89;65;10;7;4;75;HARD;TRANSACTIONAL;20;NON;18;80;G2;G1;PROMOUVOIR_G1
+111;"Ampoule feu stop";"Eclairage";75;70;67;3;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;7;50;G3;G2;PROMOUVOIR_INDEX
+82;"Disque de frein";"Freinage";74;98;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;15;90;G1;G1;
+1260;"Pompe à eau";"Courroie, galet, poulie et chaîne";74;97;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;17;80;G1;G1;
+2066;"Rotule de direction";"Direction et liaison au sol";74;97;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;12;80;G1;G1;
+1260;"Pompe à eau";"Refroidissement";74;97;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;17;80;G1;G1;
+39;"Attelage";"Accessoires";74;77;41;10;12;4;85;HARD;NAVIGATIONAL;30;NON;16;80;G2;G2;
+8;"Filtre à air";"Filtres";72;92;88;10;12;4;55;MEDIUM;TRANSACTIONAL;35;OUI;11;60;G1;G1;
+1123;"Chaîne de distribution";"Courroie, galet, poulie et chaîne";72;97;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;18;80;G2;G1;PROMOUVOIR_G1
+479;"Kit d'embrayage";"Embrayage";72;77;82;3;1;4;70;HARD;TRANSACTIONAL;55;OUI;8;65;G1;G2;
+3904;"Pompe à injection";"Système d'alimentation";71;92;92;7;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;14;80;G3;G1;PROMOUVOIR_G1
+402;"Plaquette de frein";"Freinage";69;96;88;10;10;4;55;MEDIUM;TRANSACTIONAL;35;OUI;13;90;G1;G1;
+78;"Étrier de frein";"Freinage";65;97;92;10;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;16;90;G2;G1;PROMOUVOIR_G1
+115;"Ampoule feu arrière";"Eclairage";65;75;67;8;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;6;50;G3;G2;PROMOUVOIR_INDEX
+10;"Courroie d'accessoire";"Courroie, galet, poulie et chaîne";64;91;88;10;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;13;90;G1;G1;
+1367;"Neiman";"Système électrique";64;75;55;10;12;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;13;50;G2;G2;
+657;"Boulon de roue";"Accessoires";64;77;63;10;12;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;5;50;G3;G2;PROMOUVOIR_INDEX
+3927;"Débitmètre d'air";"Système d'alimentation";62;76;63;10;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;7;80;G1;G2;
+1561;"Lève-vitre";"Accessoires";61;74;55;10;0;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;6;80;G2;G2;
+130;"Amortisseur de direction";"Direction et liaison au sol";60;81;92;3;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;5;60;G3;G2;PROMOUVOIR_INDEX
+817;"Capteur pression de carburant";"Capteurs";60;78;92;2;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;8;50;G2;G2;
+7;"Filtre à huile";"Filtres";58;96;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;9;90;G1;G1;
+424;"Filtre d'habitacle";"Filtres";57;77;88;5;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;12;60;G2;G2;
+424;"Filtre d'habitacle";"Climatisation";57;77;88;5;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;12;60;G2;G2;
+285;"Barre de direction";"Direction et liaison au sol";52;93;92;10;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;8;80;G2;G1;PROMOUVOIR_G1
+316;"Thermostat";"Refroidissement";50;77;55;10;12;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;18;80;G2;G2;
+158;"Boîtier papillon";"Système d'alimentation";49;77;63;10;3;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;11;80;G2;G2;
+689;"Bobine d'allumage";"Préchauffage et allumage";48;79;63;10;12;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;14;80;G2;G2;
+107;"Ampoule feu avant";"Eclairage";45;65;67;3;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;6;50;G3;G2;PROMOUVOIR_INDEX
+2462;"Rotule de suspension";"Direction et liaison au sol";44;87;92;10;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;50;G1;G1;
+593;"Bouchon de vidange";"Moteur";44;79;67;10;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;10;80;G3;G2;PROMOUVOIR_INDEX
+297;"Avertisseur sonore";"Accessoires";42;70;63;10;2;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;9;50;G3;G2;PROMOUVOIR_INDEX
+243;"Bougie de préchauffage";"Préchauffage et allumage";41;85;82;10;10;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;OUI;14;90;G1;G1;
+273;"Bras de suspension";"Direction et liaison au sol";41;91;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;9;80;G1;G1;
+548;"Bouchon de radiateur";"Refroidissement";40;97;96;10;12;4;35;EASY;TRANSACTIONAL;35;OUI;4;80;G3;G1;PROMOUVOIR_G1
+1256;"FAP";"Echappement";40;75;55;10;12;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;18;80;G2;G2;
+123;"Tambour de frein";"Freinage";35;74;92;1;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;8;60;G2;G2;
+2275;"Capteur de pluie";"Accessoires";35;74;92;2;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;6;50;G3;G2;PROMOUVOIR_INDEX
+653;"Moyeu de roue";"Direction et liaison au sol";34;79;71;10;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;4;50;G3;G2;PROMOUVOIR_INDEX
+26;"Silencieux";"Echappement";34;74;55;10;12;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;18;80;G2;G2;
+686;"Bougie d'allumage";"Préchauffage et allumage";33;83;88;10;2;4;55;MEDIUM;TRANSACTIONAL;35;OUI;13;60;G1;G2;
+478;"Câble d'embrayage";"Embrayage";32;71;82;4;0;4;70;HARD;TRANSACTIONAL;35;OUI;9;65;G2;G2;
+577;"Volant moteur";"Embrayage";32;85;82;10;1;4;70;HARD;TRANSACTIONAL;35;OUI;16;95;G2;G1;PROMOUVOIR_G1
+1211;"Colonne de direction";"Direction et liaison au sol";30;90;92;10;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;80;G2;G1;PROMOUVOIR_G1
+83;"Flexible de frein";"Freinage";28;82;92;7;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;60;G2;G2;
+592;"Carter d'huile";"Moteur";28;71;63;10;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;12;80;G2;G2;
+412;"Capteur ABS";"Freinage";26;83;88;10;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;8;80;G2;G2;
+412;"Capteur ABS";"Capteurs";26;83;88;10;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;8;80;G2;G2;
+469;"Radiateur d'huile";"Moteur";25;83;88;10;0;4;55;MEDIUM;TRANSACTIONAL;25;OUI;12;80;G3;G2;PROMOUVOIR_INDEX
+3230;"Biellette de barre stabilisatrice";"Direction et liaison au sol";23;64;67;5;7;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;13;50;G2;G2;
+447;"Compresseur de climatisation";"Climatisation";22;76;67;10;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;6;80;G1;G2;
+307;"Kit de distribution";"Courroie, galet, poulie et chaîne";19;83;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;12;50;G1;G2;
+12;"Pompe de direction assistée";"Direction et liaison au sol";18;71;92;2;11;4;45;MEDIUM;TRANSACTIONAL;35;OUI;11;50;G2;G2;
+1533;"Vis de culasse";"Moteur";17;62;61;2;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;2;50;G2;G2;
+508;"Ventilateur de refroidissement";"Refroidissement";17;77;71;10;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;4;50;G2;G2;
+596;"Pompe à huile";"Moteur";16;83;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;13;50;G3;G2;PROMOUVOIR_INDEX
+2126;"Ampoule feu de position";"Eclairage";16;58;67;2;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;9;50;G3;G2;PROMOUVOIR_INDEX
+475;"Durite de refroidissement";"Refroidissement";12;82;92;10;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;7;50;G2;G2;
+193;"Soufflet de Cardan";"Transmission";11;78;88;5;12;4;55;MEDIUM;TRANSACTIONAL;35;OUI;12;80;G2;G2;
+259;"Feu avant";"Eclairage";11;71;67;10;2;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;4;80;G2;G2;
+9;"Filtre à carburant";"Filtres";10;82;88;10;12;4;55;MEDIUM;TRANSACTIONAL;35;OUI;13;60;G1;G2;
+655;"Roulement de roue";"Direction et liaison au sol";9;82;92;10;12;4;45;MEDIUM;TRANSACTIONAL;45;OUI;11;50;G2;G2;
+48;"Butée d'embrayage";"Embrayage";9;62;82;1;0;4;70;HARD;TRANSACTIONAL;35;OUI;12;65;G2;G2;
+903;"Pompe à air";"Système d'alimentation";9;82;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;10;50;G3;G2;PROMOUVOIR_INDEX
+146;"Joint de boîte vitesse";"Moteur";9;54;67;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;5;50;G3;G3;
+407;"Témoin d'usure";"Freinage";7;51;63;2;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;7;50;G2;G3;
+3213;"Poulie vilebrequin";"Courroie, galet, poulie et chaîne";7;55;63;5;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;7;50;G2;G2;
+566;"Arbre à came";"Moteur";7;67;67;6;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;10;80;G3;G2;PROMOUVOIR_INDEX
+455;"Joint de carter d'huile";"Moteur";7;57;67;2;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;9;50;G3;G2;PROMOUVOIR_INDEX
+3922;"Sonde lambda";"Capteurs";6;72;63;10;6;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;18;80;G2;G2;
+3922;"Sonde lambda";"Echappement";6;72;63;10;6;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;18;80;G2;G2;
+295;"Moteur d'essuie-glace";"Accessoires";6;66;82;4;0;4;70;HARD;TRANSACTIONAL;35;OUI;7;65;G3;G2;PROMOUVOIR_INDEX
+50;"Rétroviseur  extérieur";"Accessoires";6;74;71;10;0;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;3;80;G2;G2;
+54;"Vis de disque";"Freinage";5;77;96;3;12;4;35;EASY;TRANSACTIONAL;25;OUI;4;50;G3;G1;PROMOUVOIR_G1
+168;"Régulateur de pression carburant";"Système d'alimentation";5;53;67;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;5;50;G3;G3;
+114;"Ampoule feu de recul";"Eclairage";5;56;67;2;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;7;50;G3;G2;PROMOUVOIR_INDEX
+618;"Câble d'accélérateur";"Accessoires";5;56;67;5;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;4;50;G3;G2;PROMOUVOIR_INDEX
+56;"Bouchon vase d'expansion";"Refroidissement";4;55;67;1;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;4;50;G3;G2;PROMOUVOIR_INDEX
+467;"Radiateur de chauffage";"Refroidissement";4;85;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;11;80;G2;G1;PROMOUVOIR_G1
+397;"Vase d'expansion";"Refroidissement";4;80;73;10;5;4;55;MEDIUM;TRANSACTIONAL;20;NON;13;80;G3;G2;PROMOUVOIR_INDEX
+62;"Feu clignotant";"Eclairage";4;64;63;10;2;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;8;50;G2;G2;
+298;"Balais d'essuie-glace";"Accessoires";4;56;59;7;0;4;65;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;16;50;G1;G2;
+5032;"Vérin de coffre";"Accessoires";4;64;53;10;12;4;55;MEDIUM;NAVIGATIONAL;30;NON;5;50;G3;G2;PROMOUVOIR_INDEX
+234;"Emetteur d'embrayage";"Embrayage";3;63;82;2;0;4;70;HARD;TRANSACTIONAL;25;OUI;11;65;G2;G2;
+105;"Ampoule feu clignotant";"Eclairage";3;58;61;1;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+301;"Bras d'essuie-glace";"Accessoires";3;58;84;0;0;4;65;MEDIUM;TRANSACTIONAL;25;OUI;8;50;G3;G2;PROMOUVOIR_INDEX
+277;"Cylindre de roue";"Freinage";2;59;67;4;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;5;50;G2;G2;
+74;"Servo frein";"Freinage";2;65;88;3;0;4;55;MEDIUM;TRANSACTIONAL;45;OUI;8;60;G2;G2;
+188;"Ressort de suspension";"Amortisseur et suspension";2;74;92;6;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;50;G2;G2;
+458;"Pompe à carburant";"Système d'alimentation";2;84;88;10;12;4;55;MEDIUM;TRANSACTIONAL;35;OUI;12;80;G1;G2;
+3918;"Pompe à haute pression";"Système d'alimentation";2;85;92;10;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;6;80;G3;G1;PROMOUVOIR_G1
+3964;"Tube de distributeur carburant";"Système d'alimentation";2;55;57;0;8;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;2;50;G3;G2;PROMOUVOIR_INDEX
+3219;"Bride de liquide de refroidissement";"Refroidissement";2;59;71;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;3;50;G3;G2;PROMOUVOIR_INDEX
+448;"Condenseur de climatisation";"Climatisation";2;74;77;6;12;4;45;MEDIUM;TRANSACTIONAL;30;NON;5;80;G2;G2;
+17;"Tube d'échappement";"Echappement";2;66;63;10;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;7;80;G2;G2;
+468;"Intercooler";"Turbo";2;69;55;10;5;4;75;HARD;COMMERCIAL_INVESTIGATION;30;NON;12;80;G3;G2;PROMOUVOIR_INDEX
+685;"Faisceau d'allumage";"Préchauffage et allumage";1;79;88;10;0;4;55;MEDIUM;TRANSACTIONAL;35;OUI;13;80;G2;G2;
+1218;"Module d'allumage";"Préchauffage et allumage";1;55;67;5;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;3;50;G3;G2;PROMOUVOIR_INDEX
+191;"Soufflet de direction";"Direction et liaison au sol";1;71;92;4;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;50;G2;G2;
+249;"Support de boîte vitesse";"Support moteur";1;73;96;1;12;4;35;EASY;TRANSACTIONAL;35;OUI;4;50;G2;G2;
+4688;"Guide d'embrayage";"Embrayage";1;47;56;0;0;4;60;MEDIUM;INFORMATIONAL;100;OUI;0;65;G3;G3;
+4813;"Capteur impulsion";"Capteurs";1;57;82;0;0;4;45;MEDIUM;TRANSACTIONAL;25;OUI;0;50;G2;G2;
+830;"Sonde de refroidissement";"Capteurs";1;75;61;10;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;80;G2;G2;
+3894;"Joint d'injecteur";"Système d'alimentation";1;63;82;2;0;4;70;HARD;TRANSACTIONAL;35;OUI;8;65;G2;G2;
+862;"Pompe d'amorcage";"Système d'alimentation";1;62;82;3;0;4;45;MEDIUM;TRANSACTIONAL;25;OUI;1;50;G3;G2;PROMOUVOIR_INDEX
+321;"Joint de cache culbuteurs";"Moteur";1;73;96;1;12;4;35;EASY;TRANSACTIONAL;35;OUI;4;50;G2;G2;
+40;"Joint de collecteur";"Moteur";1;70;86;1;9;4;35;EASY;TRANSACTIONAL;35;OUI;2;50;G2;G2;
+1270;"Soupape d'échappement";"Moteur";1;48;57;2;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;0;50;G2;G3;
+1385;"Commande de ventilation";"Refroidissement";1;65;61;6;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G2;G2;
+470;"Radiateur de refroidissement";"Refroidissement";1;80;92;7;12;4;45;MEDIUM;TRANSACTIONAL;35;OUI;6;80;G1;G2;
+830;"Sonde de refroidissement";"Refroidissement";1;88;86;10;12;4;35;EASY;TRANSACTIONAL;35;OUI;1;80;G2;G1;PROMOUVOIR_G1
+1385;"Commande de ventilation";"Climatisation";1;65;61;6;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G2;G2;
+183;"Détendeur de climatisation";"Climatisation";1;73;71;3;12;4;35;EASY;TRANSACTIONAL;20;NON;2;80;G2;G2;
+1543;"Collecteur d'échappement";"Echappement";1;64;57;10;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;1;80;G3;G2;PROMOUVOIR_INDEX
+1431;"Ballast à lampe xénon";"Eclairage";1;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+2623;"Capteur parctronic";"Accessoires";1;61;78;0;0;4;30;EASY;TRANSACTIONAL;25;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+416;"Filtre de boîte auto";"Filtres";0;67;92;0;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;6;60;G2;G2;
+415;"Agregat de freinage";"Freinage";0;56;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;60;G2;G2;
+124;"Câble de frein à main";"Freinage";0;57;67;2;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;6;60;G2;G2;
+806;"Interrupteur des feux de freins";"Freinage";0;62;77;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;3;60;G2;G2;
+3859;"Kit de freins arrière";"Freinage";0;73;96;0;12;4;35;EASY;TRANSACTIONAL;25;OUI;3;60;G2;G2;
+70;"Mâchoires de frein";"Freinage";0;74;96;1;12;4;35;EASY;TRANSACTIONAL;35;OUI;4;60;G2;G2;
+258;"Maître cylindre de frein";"Freinage";0;77;92;7;11;4;45;MEDIUM;TRANSACTIONAL;35;OUI;8;60;G2;G2;
+387;"Pompe à vide de freinage";"Freinage";0;76;96;2;12;4;35;EASY;TRANSACTIONAL;35;OUI;3;60;G3;G1;PROMOUVOIR_G1
+73;"Répartiteur de frein";"Freinage";0;74;67;10;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;8;90;G3;G2;PROMOUVOIR_INDEX
+312;"Galet enrouleur de courroie d'accessoire";"Courroie, galet, poulie et chaîne";0;59;82;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;OUI;6;60;G2;G2;
+313;"Galet enrouleur de courroie de distribution";"Courroie, galet, poulie et chaîne";0;56;72;0;0;4;20;EASY;COMMERCIAL_INVESTIGATION;26;OUI;2;60;G3;G2;PROMOUVOIR_INDEX
+310;"Galet tendeur de courroie d'accessoire";"Courroie, galet, poulie et chaîne";0;59;82;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;OUI;6;60;G2;G2;
+308;"Galet tendeur de courroie de distribution";"Courroie, galet, poulie et chaîne";0;65;86;0;0;4;35;EASY;TRANSACTIONAL;35;OUI;1;60;G3;G2;PROMOUVOIR_INDEX
+1389;"Kit de chaîne de distribution";"Courroie, galet, poulie et chaîne";0;73;96;1;12;4;35;EASY;TRANSACTIONAL;45;OUI;3;50;G2;G2;
+1108;"Poulie d'alternateur";"Courroie, galet, poulie et chaîne";0;60;88;1;0;4;55;MEDIUM;TRANSACTIONAL;45;OUI;6;50;G2;G2;
+1067;"Poulie d'arbre à came";"Courroie, galet, poulie et chaîne";0;59;71;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;3;50;G2;G2;
+1750;"Boîtier de préchauffage";"Préchauffage et allumage";0;57;67;3;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;6;50;G2;G2;
+683;"Distributeur d'allumage";"Préchauffage et allumage";0;46;57;1;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G3;
+286;"Crémaillière de direction";"Direction et liaison au sol";0;74;88;4;12;4;55;MEDIUM;TRANSACTIONAL;35;OUI;8;80;G2;G2;
+3252;"Détecteur de l'angle de braquage";"Direction et liaison au sol";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+1182;"Butée élastique d'amortisseur";"Amortisseur et suspension";0;69;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;1;60;G2;G2;
+1632;"Kit de butée de suspension";"Amortisseur et suspension";0;73;100;0;7;4;20;EASY;TRANSACTIONAL;25;OUI;4;50;G2;G2;
+1718;"Sphère de suspension";"Amortisseur et suspension";0;57;61;1;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+3419;"Fourchette d'embrayage";"Embrayage";0;62;86;1;0;4;60;MEDIUM;TRANSACTIONAL;35;OUI;4;65;G3;G2;PROMOUVOIR_INDEX
+620;"Récepteur d'embrayage";"Embrayage";0;59;82;0;0;4;70;HARD;TRANSACTIONAL;25;OUI;8;65;G2;G2;
+1650;"Tringle de vitesses";"Embrayage";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+624;"Bague d'étanchéité cardan";"Transmission";0;62;82;0;0;4;20;EASY;TRANSACTIONAL;25;OUI;2;50;G3;G2;PROMOUVOIR_INDEX
+1427;"Joint arbre longitudinal";"Transmission";0;54;57;0;4;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G3;
+2109;"Palier d'arbre de transmission";"Transmission";0;55;67;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;5;65;G3;G2;PROMOUVOIR_INDEX
+1147;"Trépied arbre de commande";"Transmission";0;51;57;0;1;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G3;
+682;"Contacteur démarreur";"Système électrique";0;66;82;5;1;4;45;MEDIUM;TRANSACTIONAL;25;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+3921;"Capteur de cognement";"Capteurs";0;70;86;1;12;4;35;EASY;TRANSACTIONAL;25;OUI;2;50;G2;G2;
+3908;"Capteur de pédale d'accélérateur";"Capteurs";0;67;82;0;11;4;20;EASY;TRANSACTIONAL;25;OUI;1;50;G3;G2;PROMOUVOIR_INDEX
+3996;"Capteur de pression Common Rail";"Capteurs";0;71;96;0;12;4;35;EASY;TRANSACTIONAL;25;OUI;4;50;G3;G2;PROMOUVOIR_INDEX
+1289;"Capteur niveau d'huile moteur";"Capteurs";0;67;90;0;12;4;50;MEDIUM;TRANSACTIONAL;25;OUI;3;65;G2;G2;
+4272;"Capteur pression de gaz d'échappement";"Capteurs";0;65;92;0;12;4;45;MEDIUM;TRANSACTIONAL;25;OUI;5;50;G3;G2;PROMOUVOIR_INDEX
+3947;"Capteur pression du tuyau d'admission";"Capteurs";0;54;72;0;12;4;45;MEDIUM;INFORMATIONAL;30;OUI;6;50;G2;G3;
+4175;"Capteur pression et température d'huile";"Capteurs";0;67;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;1;50;G2;G2;
+3939;"Capteur température d'air admission";"Capteurs";0;71;96;0;12;4;35;EASY;TRANSACTIONAL;25;OUI;3;50;G2;G2;
+806;"Interrupteur des feux de freins";"Capteurs";0;62;77;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;3;60;G2;G2;
+2197;"Interrupteur position de marche";"Capteurs";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+805;"Pressostat d'huile";"Capteurs";0;46;57;1;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;1;50;G2;G3;
+1298;"Valve de réglage du ralenti";"Capteurs";0;55;57;0;5;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G2;G2;
+1303;"Accumulateur de pression de carburant";"Système d'alimentation";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+3916;"Conduite à haute pression d'injection";"Système d'alimentation";0;53;57;0;3;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G3;
+3893;"Joint de pompe d'injection";"Système d'alimentation";0;67;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;1;50;G3;G2;PROMOUVOIR_INDEX
+3640;"Refroidisseur de carburant";"Système d'alimentation";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+904;"Soupape d'air secondaire";"Système d'alimentation";0;58;67;0;5;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+1136;"Soupape d'aspiration d'air secondaire";"Système d'alimentation";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+5656;"Soupape de rampe commune d'injection";"Système d'alimentation";0;51;57;0;1;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;0;50;G3;G3;
+1137;"Soupape réaspiration des gaz d'échappement";"Système d'alimentation";0;50;57;0;0;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;1;50;G3;G3;
+3937;"Tuyau carburant de fuite";"Système d'alimentation";0;59;71;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;3;50;G3;G2;PROMOUVOIR_INDEX
+626;"Bague d'étanchéité boîte automatique";"Moteur";0;52;57;0;2;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G3;
+3874;"Bagues d'étanchéité moteur";"Moteur";0;52;51;0;2;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;65;G2;G3;
+2197;"Interrupteur position de marche";"Moteur";0;55;57;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+599;"Jauge de niveau d'huile";"Moteur";0;59;67;4;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;5;50;G3;G2;PROMOUVOIR_INDEX
+568;"Joint carter de distribution";"Moteur";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+128;"Joint chemise de cylindre";"Moteur";0;55;57;0;6;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+322;"Joint tige de soupape";"Moteur";0;65;71;4;10;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;3;50;G3;G2;PROMOUVOIR_INDEX
+3320;"Kit de poussoir culbuteur";"Moteur";0;55;72;0;1;4;20;EASY;COMMERCIAL_INVESTIGATION;26;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+3072;"Mécatronique boîte automatique";"Moteur";0;56;61;0;11;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+560;"Pochette joints moteur";"Moteur";0;51;55;0;12;4;50;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;0;65;G3;G3;
+1216;"Poussoir de soupape";"Moteur";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;0;50;G2;G2;
+1269;"Soupape d'admission";"Moteur";0;46;57;1;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;1;50;G2;G3;
+792;"Moteur électrique de ventilateur";"Refroidissement";0;51;55;0;12;4;50;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;1;65;G3;G3;
+2669;"Pulseur d'air d'habitacle";"Refroidissement";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;2;50;G2;G2;
+851;"Bouteille déshydratante";"Climatisation";0;48;57;2;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;0;50;G2;G3;
+2054;"Capteur température de climatisation";"Climatisation";0;71;86;2;12;4;35;EASY;TRANSACTIONAL;25;OUI;0;50;G2;G2;
+2094;"Conduite de climatisation";"Climatisation";0;61;67;2;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+471;"Evaporateur de climatisation";"Climatisation";0;71;61;7;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;1;80;G2;G2;
+2408;"Gicleur détendeur";"Climatisation";0;48;53;0;0;4;30;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G3;
+1360;"Pressostat de climatisation";"Climatisation";0;65;71;4;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;4;50;G3;G2;PROMOUVOIR_INDEX
+2669;"Pulseur d'air d'habitacle";"Climatisation";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;2;50;G2;G2;
+2073;"Valve magnétique";"Climatisation";0;51;63;0;0;4;30;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G3;
+138;"Joint d'échappement";"Echappement";0;54;67;4;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;3;50;G3;G3;
+117;"Ampoule éclairage intérieur";"Eclairage";0;73;67;10;12;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+112;"Ampoule feu éclaireur de plaque";"Eclairage";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+1432;"Commande correcteur de portée";"Eclairage";0;55;57;0;11;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+809;"Commande d'éclairage";"Eclairage";0;48;57;2;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;1;50;G2;G3;
+807;"Contacteur feu de recul";"Eclairage";0;53;67;0;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;8;50;G2;G3;
+700;"Correcteur de portée";"Eclairage";0;56;61;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+289;"Phares antibrouillard";"Eclairage";0;53;63;4;1;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;26;NON;6;50;G3;G3;
+61;"Relais de clignotant";"Eclairage";0;56;67;2;12;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;6;50;G3;G2;PROMOUVOIR_INDEX
+602;"Bouchon réservoir de carburant";"Accessoires";0;59;61;2;12;4;35;EASY;COMMERCIAL_INVESTIGATION;26;NON;1;50;G3;G2;PROMOUVOIR_INDEX
+1238;"Câble de capot moteur";"Accessoires";0;55;51;0;12;4;35;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;65;G3;G2;PROMOUVOIR_INDEX
+2232;"Capteur contrôle de pression des pneus";"Accessoires";0;67;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+751;"Commande d'essuie-glace";"Accessoires";0;46;63;0;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;6;50;G2;G3;
+179;"Faisceau d'attelage";"Accessoires";0;48;63;1;0;4;55;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;5;50;G3;G3;
+864;"Interrupteur verrouilage des portes";"Accessoires";0;56;57;1;12;4;20;EASY;COMMERCIAL_INVESTIGATION;26;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+1209;"Parctronic";"Accessoires";0;41;45;0;0;4;50;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G3;
+795;"Pompe nettoyage des phares";"Accessoires";0;67;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+794;"Pompe nettoyage des vitres";"Accessoires";0;67;82;0;12;4;20;EASY;TRANSACTIONAL;25;OUI;0;50;G3;G2;PROMOUVOIR_INDEX
+300;"Tringlerie d'essuie-glace";"Accessoires";0;48;67;0;0;4;45;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;4;50;G3;G3;
+514;"Vérin capot moteur";"Accessoires";0;51;55;0;12;4;50;MEDIUM;COMMERCIAL_INVESTIGATION;30;NON;0;65;G3;G3;
+2454;"Vérin vitre arrière";"Accessoires";0;58;67;0;12;4;20;EASY;COMMERCIAL_INVESTIGATION;30;NON;0;50;G3;G2;PROMOUVOIR_INDEX
+3553;"Capteur de pression turbo";"Turbo";0;66;86;0;12;4;60;MEDIUM;TRANSACTIONAL;25;OUI;10;65;G3;G2;PROMOUVOIR_INDEX
+3314;"Gaine de turbo";"Turbo";0;64;80;0;5;4;50;MEDIUM;TRANSACTIONAL;25;OUI;0;65;G3;G2;PROMOUVOIR_INDEX
+4314;"Valve de turbo";"Turbo";0;64;80;0;12;4;50;MEDIUM;TRANSACTIONAL;25;OUI;0;65;G3;G2;PROMOUVOIR_INDEX

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<div class="space-y-4">
+    <h1 class="text-2xl font-bold">Settings</h1>
+    <div class="bg-white rounded shadow p-4">
+        <h2 class="font-semibold mb-4">Configuration</h2>
+        <dl class="grid grid-cols-2 gap-4 text-sm">
+            <div><dt class="text-gray-500">Environnement</dt><dd class="font-medium">{{ env }}</dd></div>
+            <div><dt class="text-gray-500">Weaviate</dt><dd class="font-mono text-xs">{{ weaviate_url }}</dd></div>
+            <div><dt class="text-gray-500">Redis</dt><dd class="font-mono text-xs">{{ redis_url }}</dd></div>
+            <div><dt class="text-gray-500">Rate Limit</dt><dd>{{ rate_limit }} req/min</dd></div>
+            <div><dt class="text-gray-500">Ecriture</dt><dd>{% if can_write %}Oui{% else %}Non{% endif %}</dd></div>
+        </dl>
+    </div>
+    <div class="bg-white rounded shadow p-4">
+        <h2 class="font-semibold mb-4">Reindexation</h2>
+        {% if can_write %}
+        <form hx-post="/admin/settings/reindex" hx-target="#status" hx-swap="innerHTML">
+            <button type="submit" class="px-4 py-2 bg-amber-600 text-white rounded">Lancer Reindex</button>
+        </form>
+        <div id="status" class="mt-4"></div>
+        {% else %}<p class="text-gray-500">Desactive en PROD</p>{% endif %}
+    </div>
+    <div class="bg-white rounded shadow p-4">
+        <h2 class="font-semibold mb-4">Truth Levels</h2>
+        <div class="grid grid-cols-4 gap-2 text-sm">
+            <div class="p-2 border-l-4 border-green-500 bg-green-50"><b>L1</b> Fait</div>
+            <div class="p-2 border-l-4 border-blue-500 bg-blue-50"><b>L2</b> Regle</div>
+            <div class="p-2 border-l-4 border-amber-500 bg-amber-50"><b>L3</b> Hypothese</div>
+            <div class="p-2 border-l-4 border-red-500 bg-red-50"><b>L4</b> Heuristique</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

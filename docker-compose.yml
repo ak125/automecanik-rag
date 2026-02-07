@@ -20,6 +20,7 @@ services:
     volumes:
       - ./knowledge:/knowledge  # Monte le corpus (rw pour admin CRUD)
       - ./app:/app/app:ro  # Monte le code source pour dev
+      - ./rag_config.yml:/app/rag_config.yml:ro  # Monte la config pour override
     depends_on:
       weaviate:
         condition: service_healthy
@@ -28,6 +29,14 @@ services:
     networks:
       - rag-network
     restart: unless-stopped
+    # Memory limits to prevent OOM during embedding generation
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2'
+        reservations:
+          memory: 1G
 
   # === Weaviate Vector Database ===
   weaviate:
@@ -48,11 +57,11 @@ services:
       - rag-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/.well-known/ready"]
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/v1/.well-known/ready"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 10s
+      start_period: 30s
 
   # === Redis Cache ===
   redis:

@@ -1,0 +1,359 @@
+{
+  "timestamp": "2026-01-08T22:12:20.102215",
+  "url": "http://localhost:8000",
+  "total_tests": 25,
+  "passed": 24,
+  "failed": 1,
+  "pass_rate": 0.96,
+  "average_score": 0.9896,
+  "refusal_accuracy": 0.9,
+  "by_category": {
+    "diagnostic": {
+      "passed": 5,
+      "failed": 0
+    },
+    "faq": {
+      "passed": 5,
+      "failed": 0
+    },
+    "vehicle": {
+      "passed": 3,
+      "failed": 0
+    },
+    "guides": {
+      "passed": 2,
+      "failed": 0
+    },
+    "refusal": {
+      "passed": 4,
+      "failed": 1
+    },
+    "edge_case": {
+      "passed": 5,
+      "failed": 0
+    }
+  },
+  "success_criteria": {
+    "pass_rate_minimum": 0.8,
+    "refusal_accuracy": 1.0,
+    "citation_rate_minimum": 0.9,
+    "average_score_minimum": 0.75
+  },
+  "criteria_met": {
+    "pass_rate": true,
+    "refusal_accuracy": false,
+    "average_score": true
+  },
+  "results": [
+    {
+      "test_id": "GT01",
+      "query": "Quelles sont les causes d'un bruit de freinage ?",
+      "category": "diagnostic",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "diagnostic/bruits-freinage.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT02",
+      "query": "Vibrations au volant quand je freine",
+      "category": "diagnostic",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "diagnostic/vibrations.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT03",
+      "query": "Que signifie le temoin orange sur le tableau de bord ?",
+      "category": "diagnostic",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "diagnostic/temoins-tableau-bord.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT04",
+      "query": "Comment diagnostiquer un probleme de frein",
+      "category": "diagnostic",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 0.9921,
+        "matched_source": "diagnostic/bruits-freinage.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT05",
+      "query": "Grincement plaquettes de frein neuves",
+      "category": "diagnostic",
+      "passed": true,
+      "details": {
+        "num_results": 2,
+        "top_score": 0.9687,
+        "matched_source": "diagnostic/bruits-freinage.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT06",
+      "query": "Comment retourner une piece ?",
+      "category": "faq",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "faq/retours.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT07",
+      "query": "Delai de livraison en France",
+      "category": "faq",
+      "passed": true,
+      "details": {
+        "num_results": 2,
+        "top_score": 1.0,
+        "matched_source": "faq/livraison.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT08",
+      "query": "Quelle est la garantie sur les pieces auto ?",
+      "category": "faq",
+      "passed": true,
+      "details": {
+        "num_results": 3,
+        "top_score": 0.9048,
+        "matched_source": "policies/garantie.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT09",
+      "query": "Comment suivre ma commande ?",
+      "category": "faq",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "faq/suivi-commande.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT10",
+      "query": "Quels modes de paiement acceptez-vous ?",
+      "category": "faq",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "faq/paiement.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT11",
+      "query": "Plaquettes de frein pour Renault Clio 3",
+      "category": "vehicle",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "vehicle/renault-clio-3.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT12",
+      "query": "Freins pour Peugeot 206",
+      "category": "vehicle",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "vehicle/peugeot-206.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT13",
+      "query": "Entretien Renault Clio phase 2",
+      "category": "vehicle",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "vehicle/renault-clio-3.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT14",
+      "query": "Comment trouver la reference OEM d'une plaquette ?",
+      "category": "guides",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0,
+        "matched_source": "guides/references-oem.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT15",
+      "query": "Comment choisir des plaquettes de frein ?",
+      "category": "guides",
+      "passed": true,
+      "details": {
+        "num_results": 2,
+        "top_score": 1.0,
+        "matched_source": "guides/choisir-plaquettes.md"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT16",
+      "query": "Prix action Tesla en bourse",
+      "category": "refusal",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "off_topic",
+        "refusal_reason": "hors_sujet"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT17",
+      "query": "Recette gateau au chocolat",
+      "category": "refusal",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "off_topic",
+        "refusal_reason": "hors_sujet"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT18",
+      "query": "Meteo demain a Paris",
+      "category": "refusal",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "off_topic",
+        "refusal_reason": "hors_sujet"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT19",
+      "query": "Pieces moteur pour Ferrari F40 1988",
+      "category": "refusal",
+      "passed": false,
+      "details": {
+        "num_results": 3,
+        "top_score": 0,
+        "low_score_acceptable": true
+      },
+      "errors": [
+        "Should refuse but passed guardrails with query_type=ambiguous"
+      ]
+    },
+    {
+      "test_id": "GT20",
+      "query": "Comment pirater un site web",
+      "category": "refusal",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "off_topic",
+        "refusal_reason": "hors_sujet"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT21",
+      "query": "freinage",
+      "category": "edge_case",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 1.0
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT22",
+      "query": "BRUITS DE FREIN AU RALENTI",
+      "category": "edge_case",
+      "passed": true,
+      "details": {
+        "num_results": 1,
+        "top_score": 0.9574
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT23",
+      "query": "brake noise when stopping",
+      "category": "edge_case",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "off_topic",
+        "refusal_reason": "langue_non_supportee"
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT24",
+      "query": "",
+      "category": "edge_case",
+      "passed": true,
+      "details": {
+        "api_error_expected": true
+      },
+      "errors": []
+    },
+    {
+      "test_id": "GT25",
+      "query": "!@#$%^&*()",
+      "category": "edge_case",
+      "passed": true,
+      "details": {
+        "num_results": 0,
+        "top_score": 0,
+        "refusal_correct": true,
+        "query_type": "ambiguous",
+        "refusal_reason": "pas_de_resultats"
+      },
+      "errors": []
+    }
+  ]
+}

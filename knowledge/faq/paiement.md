@@ -2,6 +2,8 @@
 title: "FAQ - Paiement"
 source_type: faq
 category: paiement
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

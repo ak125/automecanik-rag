@@ -2,6 +2,8 @@
 title: "Politique de garantie"
 source_type: policy
 category: garantie
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 

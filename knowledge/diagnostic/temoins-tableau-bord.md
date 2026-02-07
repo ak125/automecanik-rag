@@ -2,6 +2,8 @@
 title: "Diagnostic - Témoins tableau de bord"
 source_type: diagnostic
 category: electronique
+truth_level: L1
+verification_status: verified
 updated_at: 2026-01-01
 ---
 
