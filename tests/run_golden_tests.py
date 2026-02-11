@@ -38,7 +38,7 @@ def run_search(
         response = httpx.post(
             f"{url}/search",
             json={"query": query, "limit": limit},
-            headers={"X-API-Key": api_key},
+            headers={"X-RAG-API-Key": api_key},
             timeout=timeout
         )
         response.raise_for_status()
@@ -62,7 +62,7 @@ def run_chat(
         response = httpx.post(
             f"{url}/chat/v2",
             json={"message": query},
-            headers={"X-API-Key": api_key},
+            headers={"X-RAG-API-Key": api_key},
             timeout=timeout
         )
         response.raise_for_status()

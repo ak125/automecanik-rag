@@ -81,7 +81,7 @@ app.add_middleware(
     allow_origins=cors_origins,
     allow_credentials=allow_credentials,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["X-API-Key", "Content-Type", "Authorization"],
+    allow_headers=["X-RAG-API-Key", "Content-Type", "Authorization"],
 )
 
 
@@ -253,7 +253,7 @@ async def add_timeout_header(request: Request, call_next):
 # ============================================
 async def verify_api_key(request: Request):
     """Verify API key from request headers."""
-    api_key = request.headers.get("X-API-Key")
+    api_key = request.headers.get("X-RAG-API-Key")
 
     if not api_key or api_key != settings.rag_api_key:
         raise HTTPException(

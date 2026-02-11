@@ -18,7 +18,7 @@ document.getElementById('search-form').onsubmit = async (e) => {
     if (!q) return;
     document.getElementById('results').innerHTML = '<p class="text-gray-400 text-center py-8">...</p>';
     try {
-        const res = await fetch('/search', {method:'POST', headers:{'Content-Type':'application/json','X-API-Key':'dev'}, body:JSON.stringify({query:q,limit:10})});
+        const res = await fetch('/search', {method:'POST', headers:{'Content-Type':'application/json','X-RAG-API-Key':'dev'}, body:JSON.stringify({query:q,limit:10})});
         const data = await res.json();
         if (data.results?.length) {
             let h = '';

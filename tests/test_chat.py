@@ -17,7 +17,7 @@ def client():
 @pytest.fixture
 def api_key_header():
     """API key header for authenticated requests."""
-    return {"X-API-Key": "test-api-key"}
+    return {"X-RAG-API-Key": "test-api-key"}
 
 
 class TestHealthEndpoint:

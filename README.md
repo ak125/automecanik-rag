@@ -55,7 +55,7 @@ docker-compose exec rag-api python scripts/build_index.py /path/to/knowledge
 ```bash
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: your-api-key" \
+  -H "X-RAG-API-Key: your-api-key" \
   -d '{"message": "Quels sont les délais de livraison?"}'
 ```
 

@@ -28,7 +28,7 @@ document.getElementById('chat-form').onsubmit = async (e) => {
     if (!msg) return;
     document.getElementById('response').innerHTML = '<p class="text-gray-400">...</p>';
     try {
-        const res = await fetch('/chat', {method:'POST', headers:{'Content-Type':'application/json','X-API-Key':'dev'}, body:JSON.stringify({message:msg})});
+        const res = await fetch('/chat', {method:'POST', headers:{'Content-Type':'application/json','X-RAG-API-Key':'dev'}, body:JSON.stringify({message:msg})});
         const data = await res.json();
         document.getElementById('response').innerHTML = '<p>' + (data.response || data.detail) + '</p>';
         if (data.sources) {

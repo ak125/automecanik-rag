@@ -85,7 +85,7 @@ echo ""
 echo -e "${BLUE}Recherche dans le corpus...${NC}"
 RAG_RESPONSE=$(curl -s -X POST "$RAG_URL/chat" \
     -H "Content-Type: application/json" \
-    -H "X-API-Key: $RAG_API_KEY" \
+    -H "X-RAG-API-Key: $RAG_API_KEY" \
     -d "{\"message\": \"$QUERY\", \"limit\": $LIMIT}")
 
 # Vérifier si la réponse est valide
