@@ -3,7 +3,7 @@
 import logging
 from typing import Optional
 import weaviate
-from weaviate.classes.query import HybridFusion
+from weaviate.classes.query import HybridFusion, Filter
 
 from app.config import get_settings
 from app.services.embeddings import get_embeddings_service
@@ -17,7 +17,6 @@ class WeaviateClient:
     COLLECTION_NAME = "Prod_Chatbot"
 
     def __init__(self):
-        """Initialize Weaviate client with local embeddings."""
         settings = get_settings()
         self.client = weaviate.connect_to_custom(
             http_host=settings.weaviate_url.replace("http://", "").replace("https://", "").split(":")[0],
@@ -29,89 +28,156 @@ class WeaviateClient:
         )
         self.settings = settings
         self.embeddings = get_embeddings_service()
+        self.collection_by_family = {
+            "catalog": self.settings.weaviate_collection_catalog,
+            "diagnostic": self.settings.weaviate_collection_diagnostic,
+            "knowledge": self.settings.weaviate_collection_knowledge,
+            "media": self.settings.weaviate_collection_media,
+            "router_memory": self.settings.weaviate_collection_router_memory,
+        }
+
+    def resolve_collection(self, namespace: Optional[str] = None, routing: Optional[dict] = None) -> str:
+        if routing and isinstance(routing, dict):
+            family = routing.get("intentFamily")
+            if isinstance(family, str) and family in self.collection_by_family:
+                return self.collection_by_family[family]
+
+        if namespace:
+            ns = namespace.lower()
+            if "diagnostic" in ns:
+                return self.settings.weaviate_collection_diagnostic
+            if "gamme" in ns or "catalog" in ns:
+                return self.settings.weaviate_collection_catalog
+            if "media" in ns:
+                return self.settings.weaviate_collection_media
+            if "router" in ns:
+                return self.settings.weaviate_collection_router_memory
+
+        return self.settings.weaviate_collection_knowledge
+
+    def _format_result(self, obj, score: float, target_collection: str) -> dict:
+        props = obj.properties
+        return {
+            "content": props.get("content") or "",
+            "title": props.get("title") or "",
+            "source_type": props.get("source_type") or "",
+            "doc_family": props.get("doc_family") or "knowledge",
+            "source_path": props.get("source_path") or "",
+            "source_uri": props.get("source_uri") or "",
+            "source_ref": props.get("source_ref") or "",
+            "category": props.get("category") or "",
+            "score": score,
+            "truth_level": props.get("truth_level") or "L3",
+            "verification_status": props.get("verification_status") or "unverified",
+            "confidence_score": props.get("confidence_score") if props.get("confidence_score") is not None else 0.5,
+            "evidence_grade": props.get("evidence_grade") or "",
+            "last_verified_date": props.get("last_verified_date") or "",
+            "verified_by": props.get("verified_by") or "",
+            "chunk_id": props.get("chunk_id") or "",
+            "parent_id": props.get("parent_id") or "",
+            "intent": props.get("intent") or "",
+            "domain": props.get("domain") or "general",
+            "entities": props.get("entities", []) or [],
+            "anchors": props.get("anchors", []) or [],
+            "doc_weight": props.get("doc_weight") if props.get("doc_weight") is not None else 0.7,
+            "is_canonical": bool(props.get("is_canonical", False)),
+            "canonical_weight": props.get("canonical_weight") if props.get("canonical_weight") is not None else 0.0,
+            "created_at": props.get("created_at") or "",
+            "updated_at": props.get("updated_at") or "",
+            "content_hash": props.get("content_hash") or "",
+            "collection": target_collection,
+        }
 
     async def hybrid_search(
         self,
         query: str,
         limit: int = 5,
         alpha: Optional[float] = None,
+        collection_name: Optional[str] = None,
+        domain: Optional[str] = None,
+        exclude_disputed: bool = False,
+        min_score: Optional[float] = None,
     ) -> list[dict]:
-        """
-        Perform hybrid search (BM25 + vector).
-
-        Args:
-            query: Search query
-            limit: Number of results to return
-            alpha: Balance between BM25 (0) and vector (1). Default from settings.
-
-        Returns:
-            List of matching documents with scores (deduplicated by source_path)
-        """
         if alpha is None:
             alpha = self.settings.retrieval_alpha
+        if min_score is None:
+            min_score = self.settings.min_score_threshold
 
         try:
-            collection = self.client.collections.get(self.COLLECTION_NAME)
-
-            # Generate query embedding locally (100% gratuit)
+            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+            collection = self.client.collections.get(target_collection)
             query_vector = self.embeddings.embed(query)
 
-            # Fetch more results to account for potential duplicates
-            # After dedupe, we trim to the original limit
-            fetch_limit = limit * 2
+            canonical_limit = max(1, limit // 2)
+            domain_filter = None
+            if domain and domain != "general":
+                domain_filter = Filter.by_property("domain").equal(domain)
 
-            response = collection.query.hybrid(
+            canonical_filters = Filter.by_property("is_canonical").equal(True)
+            if domain_filter is not None:
+                canonical_filters = canonical_filters & domain_filter
+
+            general_filters = domain_filter
+            merged_results: list[dict] = []
+
+            # Canonical pass is optional: some legacy collections may not yet have is_canonical.
+            try:
+                canonical_response = collection.query.hybrid(
+                    query=query,
+                    vector=query_vector,
+                    limit=canonical_limit,
+                    alpha=alpha,
+                    fusion_type=HybridFusion.RELATIVE_SCORE,
+                    filters=canonical_filters,
+                    return_metadata=["score"],
+                )
+                for obj in canonical_response.objects:
+                    score = obj.metadata.score if obj.metadata else 0.0
+                    if score >= min_score:
+                        merged_results.append(self._format_result(obj, score, target_collection))
+            except Exception as exc:  # noqa: BLE001
+                logger.warning(
+                    "Canonical query skipped in %s (likely missing is_canonical): %s",
+                    target_collection,
+                    exc,
+                )
+
+            general_fetch_limit = limit * 3
+            general_response = collection.query.hybrid(
                 query=query,
                 vector=query_vector,
-                limit=fetch_limit,
+                limit=general_fetch_limit,
                 alpha=alpha,
                 fusion_type=HybridFusion.RELATIVE_SCORE,
+                filters=general_filters,
                 return_metadata=["score"],
             )
 
-            results = []
-            for obj in response.objects:
+            for obj in general_response.objects:
                 score = obj.metadata.score if obj.metadata else 0.0
+                if score >= min_score:
+                    merged_results.append(self._format_result(obj, score, target_collection))
 
-                # Filter by minimum score threshold
-                if score >= self.settings.min_score_threshold:
-                    results.append({
-                        # Core properties
-                        "content": obj.properties.get("content", ""),
-                        "title": obj.properties.get("title", ""),
-                        "source_type": obj.properties.get("source_type", ""),
-                        "source_path": obj.properties.get("source_path", ""),
-                        "category": obj.properties.get("category", ""),
-                        "score": score,
-                        # Truth Level properties (Semantic Brain L1-L4)
-                        "truth_level": obj.properties.get("truth_level", "L3"),
-                        "verification_status": obj.properties.get("verification_status", "unverified"),
-                        "confidence_score": obj.properties.get("confidence_score", 0.5),
-                        "last_verified_date": obj.properties.get("last_verified_date", ""),
-                        "verified_by": obj.properties.get("verified_by", ""),
-                    })
+            if exclude_disputed:
+                merged_results = [
+                    r for r in merged_results
+                    if str(r.get("verification_status", "unverified")).lower() != "disputed"
+                ]
 
-            # DEDUPE: Keep only first occurrence per source_path (highest score)
-            # Results are already sorted by score from Weaviate
-            seen_sources: set[str] = set()
+            seen_keys: set[str] = set()
             deduped_results: list[dict] = []
-            for r in results:
-                source_path = r.get("source_path", "")
-                if source_path and source_path not in seen_sources:
-                    seen_sources.add(source_path)
+            for r in merged_results:
+                dedupe_key = r.get("chunk_id") or r.get("source_path")
+                if dedupe_key and dedupe_key not in seen_keys:
+                    seen_keys.add(dedupe_key)
                     deduped_results.append(r)
 
-            # Log dedupe stats for debugging
-            if len(results) != len(deduped_results):
-                logger.info(
-                    f"Dedupe: {len(results)} -> {len(deduped_results)} results "
-                    f"({len(results) - len(deduped_results)} duplicates removed)"
-                )
-
-            # Trim to original limit after dedupe
             final_results = deduped_results[:limit]
-
-            logger.info(f"Hybrid search for '{query[:50]}...' returned {len(final_results)} results")
+            canonical_count = sum(1 for r in final_results if r.get("is_canonical"))
+            logger.info(
+                f"Hybrid search '{query[:40]}...' in {target_collection}: "
+                f"{len(final_results)} results ({canonical_count} canonical first, domain={domain or 'any'}, strict={exclude_disputed})"
+            )
             return final_results
 
         except Exception as e:
@@ -119,45 +185,33 @@ class WeaviateClient:
             return []
 
     async def health_check(self) -> dict:
-        """Check Weaviate connection health."""
         try:
             is_ready = self.client.is_ready()
-            return {
-                "status": "healthy" if is_ready else "unhealthy",
-                "ready": is_ready,
-            }
+            return {"status": "healthy" if is_ready else "unhealthy", "ready": is_ready}
         except Exception as e:
             logger.error(f"Weaviate health check failed: {e}")
-            return {
-                "status": "unhealthy",
-                "error": str(e),
-            }
+            return {"status": "unhealthy", "error": str(e)}
 
     async def is_healthy(self) -> bool:
-        """Check if Weaviate is healthy (for startup validation)."""
         try:
             return self.client.is_ready()
         except Exception as e:
             logger.error(f"Weaviate is_healthy check failed: {e}")
             return False
 
-    async def get_schema(self) -> Optional[dict]:
-        """Get schema for the collection (for dimension validation)."""
+    async def get_schema(self, collection_name: Optional[str] = None) -> Optional[dict]:
         try:
-            collection = self.client.collections.get(self.COLLECTION_NAME)
-            config = collection.config.get()
-            return {
-                "vectorDimension": self.settings.embedding_dimension,  # Assume config matches
-                "class": self.COLLECTION_NAME,
-            }
+            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+            _ = self.client.collections.get(target_collection).config.get()
+            return {"vectorDimension": self.settings.embedding_dimension, "class": target_collection}
         except Exception as e:
             logger.error(f"Failed to get schema: {e}")
             return None
 
-    async def count_documents(self) -> int:
-        """Count documents in the collection (for corpus validation)."""
+    async def count_documents(self, collection_name: Optional[str] = None) -> int:
         try:
-            collection = self.client.collections.get(self.COLLECTION_NAME)
+            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+            collection = self.client.collections.get(target_collection)
             response = collection.aggregate.over_all(total_count=True)
             return response.total_count or 0
         except Exception as e:
@@ -165,17 +219,14 @@ class WeaviateClient:
             return 0
 
     def close(self):
-        """Close Weaviate connection."""
         if self.client:
             self.client.close()
 
 
-# Singleton instance
 _weaviate_client: Optional[WeaviateClient] = None
 
 
 def get_weaviate_client() -> WeaviateClient:
-    """Get or create Weaviate client instance."""
     global _weaviate_client
     if _weaviate_client is None:
         _weaviate_client = WeaviateClient()
