@@ -269,6 +269,9 @@ CI workflow:
 - `.github/workflows/rag-eval-gate.yml` (manual dispatch)
 - requires repository secret `RAG_API_KEY`
 
+Runbook ops:
+- `docs/RAG_RUNBOOK.md`
+
 ## Knowledge Base Structure
 
 The service indexes markdown files from the `/knowledge` directory:

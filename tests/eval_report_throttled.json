@@ -1,0 +1,817 @@
+{
+  "summary": {
+    "timestamp": "2026-02-12T19:11:44.044674Z",
+    "total_queries": 50,
+    "k": 5,
+    "recall_at_k_by_collection": {
+      "KB_Knowledge": 0.8,
+      "KB_Diagnostic": 1.0,
+      "KB_Catalog": 0.3333
+    },
+    "fallback_rate": 0.2,
+    "no_evidence_rate": 0.2,
+    "satisfaction": 0.8
+  },
+  "details": [
+    {
+      "id": "E001",
+      "query": "C'est quoi ECE R90 ?",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "refuse",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.49,
+      "satisfied": false
+    },
+    {
+      "id": "E002",
+      "query": "Bruit au freinage a faible vitesse",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.86,
+      "satisfied": true
+    },
+    {
+      "id": "E003",
+      "query": "Quelle plaquette pour Peugeot 208 1.2 PureTech",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E004",
+      "query": "Comment choisir des disques de frein",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.71,
+      "satisfied": true
+    },
+    {
+      "id": "E005",
+      "query": "Voyant ABS allume apres remplacement",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.88,
+      "satisfied": true
+    },
+    {
+      "id": "E006",
+      "query": "Delai livraison Maroc",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.9,
+      "satisfied": true
+    },
+    {
+      "id": "E007",
+      "query": "Compatibilite VIN VF3XXXXXXXX",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.72,
+      "satisfied": true
+    },
+    {
+      "id": "E008",
+      "query": "Difference disque plein et ventile",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.52,
+      "satisfied": false
+    },
+    {
+      "id": "E009",
+      "query": "Entretien freins tous les combien",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.84,
+      "satisfied": true
+    },
+    {
+      "id": "E010",
+      "query": "Prix plaquettes avant 208",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E011",
+      "query": "C'est quoi ECE R90 ?",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "refuse",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.49,
+      "satisfied": false
+    },
+    {
+      "id": "E012",
+      "query": "Bruit au freinage a faible vitesse",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.86,
+      "satisfied": true
+    },
+    {
+      "id": "E013",
+      "query": "Quelle plaquette pour Peugeot 208 1.2 PureTech",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E014",
+      "query": "Comment choisir des disques de frein",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.71,
+      "satisfied": true
+    },
+    {
+      "id": "E015",
+      "query": "Voyant ABS allume apres remplacement",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.88,
+      "satisfied": true
+    },
+    {
+      "id": "E016",
+      "query": "Delai livraison Maroc",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.9,
+      "satisfied": true
+    },
+    {
+      "id": "E017",
+      "query": "Compatibilite VIN VF3XXXXXXXX",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.72,
+      "satisfied": true
+    },
+    {
+      "id": "E018",
+      "query": "Difference disque plein et ventile",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.52,
+      "satisfied": false
+    },
+    {
+      "id": "E019",
+      "query": "Entretien freins tous les combien",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.84,
+      "satisfied": true
+    },
+    {
+      "id": "E020",
+      "query": "Prix plaquettes avant 208",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E021",
+      "query": "C'est quoi ECE R90 ?",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "refuse",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.49,
+      "satisfied": false
+    },
+    {
+      "id": "E022",
+      "query": "Bruit au freinage a faible vitesse",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.86,
+      "satisfied": true
+    },
+    {
+      "id": "E023",
+      "query": "Quelle plaquette pour Peugeot 208 1.2 PureTech",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E024",
+      "query": "Comment choisir des disques de frein",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.71,
+      "satisfied": true
+    },
+    {
+      "id": "E025",
+      "query": "Voyant ABS allume apres remplacement",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.88,
+      "satisfied": true
+    },
+    {
+      "id": "E026",
+      "query": "Delai livraison Maroc",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.9,
+      "satisfied": true
+    },
+    {
+      "id": "E027",
+      "query": "Compatibilite VIN VF3XXXXXXXX",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.72,
+      "satisfied": true
+    },
+    {
+      "id": "E028",
+      "query": "Difference disque plein et ventile",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.52,
+      "satisfied": false
+    },
+    {
+      "id": "E029",
+      "query": "Entretien freins tous les combien",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.84,
+      "satisfied": true
+    },
+    {
+      "id": "E030",
+      "query": "Prix plaquettes avant 208",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E031",
+      "query": "C'est quoi ECE R90 ?",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "refuse",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.49,
+      "satisfied": false
+    },
+    {
+      "id": "E032",
+      "query": "Bruit au freinage a faible vitesse",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.86,
+      "satisfied": true
+    },
+    {
+      "id": "E033",
+      "query": "Quelle plaquette pour Peugeot 208 1.2 PureTech",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E034",
+      "query": "Comment choisir des disques de frein",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.71,
+      "satisfied": true
+    },
+    {
+      "id": "E035",
+      "query": "Voyant ABS allume apres remplacement",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.88,
+      "satisfied": true
+    },
+    {
+      "id": "E036",
+      "query": "Delai livraison Maroc",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.9,
+      "satisfied": true
+    },
+    {
+      "id": "E037",
+      "query": "Compatibilite VIN VF3XXXXXXXX",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.72,
+      "satisfied": true
+    },
+    {
+      "id": "E038",
+      "query": "Difference disque plein et ventile",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.52,
+      "satisfied": false
+    },
+    {
+      "id": "E039",
+      "query": "Entretien freins tous les combien",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.84,
+      "satisfied": true
+    },
+    {
+      "id": "E040",
+      "query": "Prix plaquettes avant 208",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E041",
+      "query": "C'est quoi ECE R90 ?",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "refuse",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.49,
+      "satisfied": false
+    },
+    {
+      "id": "E042",
+      "query": "Bruit au freinage a faible vitesse",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.86,
+      "satisfied": true
+    },
+    {
+      "id": "E043",
+      "query": "Quelle plaquette pour Peugeot 208 1.2 PureTech",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    },
+    {
+      "id": "E044",
+      "query": "Comment choisir des disques de frein",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.71,
+      "satisfied": true
+    },
+    {
+      "id": "E045",
+      "query": "Voyant ABS allume apres remplacement",
+      "expected_collections": [
+        "KB_Diagnostic",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Diagnostic"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.88,
+      "satisfied": true
+    },
+    {
+      "id": "E046",
+      "query": "Delai livraison Maroc",
+      "expected_collections": [
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.9,
+      "satisfied": true
+    },
+    {
+      "id": "E047",
+      "query": "Compatibilite VIN VF3XXXXXXXX",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.72,
+      "satisfied": true
+    },
+    {
+      "id": "E048",
+      "query": "Difference disque plein et ventile",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": true,
+      "needs_clarification": true,
+      "confidence": 0.52,
+      "satisfied": false
+    },
+    {
+      "id": "E049",
+      "query": "Entretien freins tous les combien",
+      "expected_collections": [
+        "KB_Knowledge",
+        "KB_Catalog"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.84,
+      "satisfied": true
+    },
+    {
+      "id": "E050",
+      "query": "Prix plaquettes avant 208",
+      "expected_collections": [
+        "KB_Catalog",
+        "KB_Knowledge"
+      ],
+      "retrieved_collections": [
+        "KB_Knowledge"
+      ],
+      "mode": "answer",
+      "fallback": false,
+      "needs_clarification": false,
+      "confidence": 0.77,
+      "satisfied": true
+    }
+  ]
+}

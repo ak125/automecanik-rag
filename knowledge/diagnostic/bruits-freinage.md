@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Bruits de freinage"
-source_type: diagnostic
 category: freinage
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Bruits de freinage
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Bruits de freinage - Diagnostic complet

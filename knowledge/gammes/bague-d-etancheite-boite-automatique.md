@@ -1,63 +1,138 @@
 ---
-entity_type: gamme
-title: Bague d'étanchéité boîte automatique
-slug: bague-d-etancheite-boite-automatique
-pg_id: 626
 category: moteur
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: fuite_detectee_ou_niveau_bas
+  then: identifier_origine_fuite_et_verifier_joints
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Assurer l'etancheite des arbres de la boite automatique
+  confusion_with: {}
   must_be_true:
+  - assurer l'etancheite
+  - isoler
+  must_not_contain_concepts:
+  - freinage
+  - climatisation
+  - direction
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Assurer l'etancheite des arbres de la boite automatique
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Bague d'étanchéité boîte automatique compatible avec
+      mon vehicule ?
+  - answer: En cas de fuites d huile sous la boite ou de degradation mesurable, il
+      faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Bague d'étanchéité boîte automatique ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Bague d'étanchéité boîte automatique sans verification
+      atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Bague d'étanchéité boîte
+    automatique.
+  id: 626
+  intro:
+    role: Bague d'étanchéité boîte automatique intervient directement sur moteur du
+      vehicule. Un choix conforme protege la combustion et limite les pannes secondaires.
+    syncParts:
     - assurer l'etancheite
     - isoler
-  must_not_contain_concepts:
-    - freinage
-    - climatisation
-    - direction
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: fuite_detectee_ou_niveau_bas
-    then: identifier_origine_fuite_et_verifier_joints
-symptoms:
-  - id: S1
-    label: Fuites d huile sous la boite
-    description: fuites d huile sous la boite
-    risk_level: confort
-    evidence:
-      - 'Observation: fuites d huile sous la boite'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Niveau d huile qui baisse
-    description: niveau d huile qui baisse
-    risk_level: confort
-    evidence:
-      - 'Observation: niveau d huile qui baisse'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Taches au sol au niveau de la transmission
-    description: taches au sol au niveau de la transmission
-    risk_level: confort
-    evidence:
-      - 'Observation: taches au sol au niveau de la transmission'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Bague d'étanchéité boîte automatique ?
+  pgId: '626'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - MISSING_REQUIRED_TERMS
+    - TOO_SHORT
+    score: 60
+    source: reindex:gammes/bague-d-etancheite-boite-automatique.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Bague d'étanchéité boîte automatique a temps ?
+  symptoms:
+  - fuites d huile sous la boite
+  - niveau d huile qui baisse
+  - taches au sol au niveau de la transmission
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 626
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: bague-d-etancheite-boite-automatique
+source_type: gamme
+symptoms:
+- description: fuites d huile sous la boite
+  evidence:
+  - 'Observation: fuites d huile sous la boite'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Fuites d huile sous la boite
+  risk_level: confort
+- description: niveau d huile qui baisse
+  evidence:
+  - 'Observation: niveau d huile qui baisse'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Niveau d huile qui baisse
+  risk_level: confort
+- description: taches au sol au niveau de la transmission
+  evidence:
+  - 'Observation: taches au sol au niveau de la transmission'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Taches au sol au niveau de la transmission
+  risk_level: confort
+title: Bague d'étanchéité boîte automatique
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Bague d'étanchéité boîte automatique - Guide Diagnostic Complet
 
 ## Fonction et Rôle

@@ -33,6 +33,8 @@ class NamespaceGuard:
         "knowledge:seo",
         "knowledge:guide",
         "knowledge:policy",
+        "knowledge:gamme",
+        "knowledge:media",
     ]
 
     # Internal namespaces - DEV/CI only, NEVER in production
@@ -52,6 +54,8 @@ class NamespaceGuard:
             "knowledge:faq",
             "knowledge:guide",
             "knowledge:policy",
+            "knowledge:gamme",
+            "knowledge:media",
         ],
         # Production support - extended knowledge access
         "support_prod": KNOWLEDGE_NAMESPACES,

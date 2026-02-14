@@ -60,6 +60,11 @@ class Settings(BaseSettings):
 
     # Weaviate Vector Database
     weaviate_url: str = "http://weaviate:8080"
+    weaviate_collection_catalog: str = _yaml_config.get("vector_store", {}).get("catalog_class_name", "KB_Catalog")
+    weaviate_collection_diagnostic: str = _yaml_config.get("vector_store", {}).get("diagnostic_class_name", "KB_Diagnostic")
+    weaviate_collection_knowledge: str = _yaml_config.get("vector_store", {}).get("knowledge_class_name", "KB_Knowledge")
+    weaviate_collection_media: str = _yaml_config.get("vector_store", {}).get("media_class_name", "KB_Media")
+    weaviate_collection_router_memory: str = _yaml_config.get("vector_store", {}).get("router_memory_class_name", "KB_RouterMemory")
 
     # Redis Cache
     redis_url: str = "redis://redis:6379"
@@ -225,6 +230,14 @@ class Settings(BaseSettings):
         logger.info(f"Quarantine Fail-Fast: {self.quarantine_fail_fast}")
         logger.info(f"LangGraph Enabled: {self.langgraph_enabled}")
         logger.info(f"Weaviate URL: {self.weaviate_url}")
+        logger.info(
+            "Collections: "
+            f"catalog={self.weaviate_collection_catalog}, "
+            f"diagnostic={self.weaviate_collection_diagnostic}, "
+            f"knowledge={self.weaviate_collection_knowledge}, "
+            f"media={self.weaviate_collection_media}, "
+            f"router_memory={self.weaviate_collection_router_memory}"
+        )
         logger.info(f"Embedding Model: {self.embedding_model}")
         logger.info(f"Embedding Dimension: {self.embedding_dimension}")
         logger.info(f"Min Score Threshold: {self.min_score_threshold}")

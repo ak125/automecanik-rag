@@ -60,6 +60,10 @@ class ChatResponse(BaseModel):
     sources: list[str] = Field(default_factory=list, description="Source file paths")
     session_id: str = Field(..., description="Session ID")
     total_sources: int = Field(0, description="Number of relevant sources found")
+    response_mode: str = Field("answer", description="answer|partial|clarify")
+    needs_clarification: bool = Field(False, description="Whether evidence is insufficient")
+    clarify_questions: list[str] = Field(default_factory=list, description="Up to 2 clarification questions")
+    sources_citation: str = Field("", description="Formatted sources citation block")
     # Semantic Brain - Truth Level metadata
     truth_metadata: TruthMetadataResponse = Field(
         default_factory=TruthMetadataResponse,
@@ -135,6 +139,10 @@ async def chat(request: ChatRequest):
             sources=sources,
             session_id=session_id,
             total_sources=result.total,
+            response_mode=result.response_mode,
+            needs_clarification=result.needs_clarification,
+            clarify_questions=result.clarify_questions[:2],
+            sources_citation=result.sources_citation,
             truth_metadata=truth_metadata,
         )
 
@@ -162,6 +170,7 @@ class ChatRequestV2(BaseModel):
     message: str = Field(..., min_length=1, max_length=2000, description="User message")
     session_id: Optional[str] = Field(None, description="Session ID for tracking")
     locale: str = Field("fr", description="User locale (fr/en)")
+    vehicle_context: Optional[dict] = Field(None, description="Vehicle context: brand, model, engine, year")
 
 
 class ChatResponseV2(BaseModel):
@@ -176,6 +185,7 @@ class ChatResponseV2(BaseModel):
     refusal_reason: Optional[str] = Field(None, description="Reason for refusal if any")
     # Truth metadata
     truth_metadata: dict = Field(default_factory=dict, description="Truth level metadata")
+    clarify_questions: list[str] = Field(default_factory=list, description="Up to 2 clarification questions")
     # Error info
     error: Optional[str] = Field(None, description="Error message if any")
 
@@ -222,6 +232,7 @@ async def chat_v2(request: ChatRequestV2):
             query=request.message,
             session_id=session_id,
             user_locale=request.locale,
+            vehicle_context=request.vehicle_context,
         )
 
         # Log result
@@ -241,6 +252,7 @@ async def chat_v2(request: ChatRequestV2):
             passed_guardrails=result.get("passed_guardrails", False),
             refusal_reason=result.get("refusal_reason"),
             truth_metadata=result.get("truth_metadata", {}),
+            clarify_questions=result.get("clarify_questions", []),
             error=result.get("error"),
         )
 

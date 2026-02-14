@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Amortisseurs et suspension"
-source_type: diagnostic
 category: suspension
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Amortisseurs et suspension
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Amortisseurs et suspension - Diagnostic complet

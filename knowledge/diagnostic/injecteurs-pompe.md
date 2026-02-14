@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Injecteurs et systeme injection"
-source_type: diagnostic
 category: injection
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Injecteurs et systeme injection
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Injecteurs et systeme injection - Diagnostic complet

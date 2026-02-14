@@ -1,79 +1,152 @@
 ---
-entity_type: gamme
-title: Ampoule feu stop
-slug: ampoule-feu-stop
-pg_id: 111
 category: eclairage
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: symptome_general_detecte
+  then: inspection_visuelle_et_test_fonctionnel
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Produit la lumière pour signaler le freinage du véhicule
+  confusion_with: {}
   must_be_true:
+  - produire
+  - emettre
+  - signaler
+  must_not_contain_concepts:
+  - feu complet
+  - optique
+  - relais
+  - commande
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Produit la lumière pour signaler le freinage du véhicule
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "visibilite parfaite"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Ampoule feu stop compatible avec mon vehicule ?
+  - answer: En cas de un seul feu stop ne s allume pas ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Ampoule feu stop ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Ampoule feu stop sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Ampoule feu stop.
+  id: 111
+  intro:
+    role: Produit la lumière pour signaler le freinage du véhicule
+    syncParts:
     - produire
     - emettre
     - signaler
-  must_not_contain_concepts:
-    - feu complet
-    - optique
-    - relais
-    - commande
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: symptome_general_detecte
-    then: inspection_visuelle_et_test_fonctionnel
-symptoms:
-  - id: S1
-    label: Un seul feu stop ne s allume pas
-    description: un seul feu stop ne s allume pas
-    risk_level: confort
-    evidence:
-      - 'Observation: un seul feu stop ne s allume pas'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Feu stop qui clignote ou s allume faiblement
-    description: feu stop qui clignote ou s allume faiblement
-    risk_level: confort
-    evidence:
-      - 'Observation: feu stop qui clignote ou s allume faiblement'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Ampoule noircie visible a travers le feu
-    description: ampoule noircie visible a travers le feu
-    risk_level: confort
-    evidence:
-      - 'Observation: ampoule noircie visible a travers le feu'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Message defaut feux au tableau de bord
-    description: message defaut feux au tableau de bord
-    risk_level: confort
-    evidence:
-      - 'Observation: message defaut feux au tableau de bord'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Feux stop grillent souvent verifier
-    description: feux stop grillent souvent verifier
-    risk_level: confort
-    evidence:
-      - 'Observation: feux stop grillent souvent verifier'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Ampoule feu stop ?
+  pgId: '111'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/ampoule-feu-stop.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Ampoule feu stop a temps ?
+  symptoms:
+  - un seul feu stop ne s allume pas
+  - feu stop qui clignote ou s allume faiblement
+  - ampoule noircie visible a travers le feu
+  - message defaut feux au tableau de bord
+  - feux stop grillent souvent verifier
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 111
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: ampoule-feu-stop
+source_type: gamme
+symptoms:
+- description: un seul feu stop ne s allume pas
+  evidence:
+  - 'Observation: un seul feu stop ne s allume pas'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Un seul feu stop ne s allume pas
+  risk_level: confort
+- description: feu stop qui clignote ou s allume faiblement
+  evidence:
+  - 'Observation: feu stop qui clignote ou s allume faiblement'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Feu stop qui clignote ou s allume faiblement
+  risk_level: confort
+- description: ampoule noircie visible a travers le feu
+  evidence:
+  - 'Observation: ampoule noircie visible a travers le feu'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Ampoule noircie visible a travers le feu
+  risk_level: confort
+- description: message defaut feux au tableau de bord
+  evidence:
+  - 'Observation: message defaut feux au tableau de bord'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Message defaut feux au tableau de bord
+  risk_level: confort
+- description: feux stop grillent souvent verifier
+  evidence:
+  - 'Observation: feux stop grillent souvent verifier'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Feux stop grillent souvent verifier
+  risk_level: confort
+title: Ampoule feu stop
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Ampoule feu stop - Guide Diagnostic Complet
 
 ## Fonction et Rôle

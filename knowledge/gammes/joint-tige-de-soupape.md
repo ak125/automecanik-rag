@@ -1,64 +1,134 @@
 ---
-entity_type: gamme
-title: Joint tige de soupape
-slug: joint-tige-de-soupape
-pg_id: 322
 category: moteur
-subcategory: joints
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: fuite_detectee_ou_niveau_bas
+  then: identifier_origine_fuite_et_verifier_joints
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Empecher l'huile de descendre dans la chambre de combustion
+  confusion_with: {}
   must_be_true:
+  - assurer l'etancheite
+  - empecher
+  must_not_contain_concepts:
+  - freinage
+  - climatisation
+  - direction
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Empecher l'huile de descendre dans la chambre de combustion
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Joint tige de soupape compatible avec mon vehicule ?
+  - answer: En cas de fumee bleue au demarrage ou de degradation mesurable, il faut
+      controler rapidement avant panne secondaire.
+    question: Quand remplacer Joint tige de soupape ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Joint tige de soupape sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Joint tige de soupape.
+  id: 322
+  intro:
+    role: Empecher l'huile de descendre dans la chambre de combustion
+    syncParts:
     - assurer l'etancheite
     - empecher
-  must_not_contain_concepts:
-    - freinage
-    - climatisation
-    - direction
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: fuite_detectee_ou_niveau_bas
-    then: identifier_origine_fuite_et_verifier_joints
-symptoms:
-  - id: S1
-    label: Fumee bleue au demarrage
-    description: fumee bleue au demarrage
-    risk_level: confort
-    evidence:
-      - 'Observation: fumee bleue au demarrage'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Consommation d huile excessive
-    description: consommation d huile excessive
-    risk_level: confort
-    evidence:
-      - 'Observation: consommation d huile excessive'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Depots sur les bougies
-    description: depots sur les bougies
-    risk_level: confort
-    evidence:
-      - 'Observation: depots sur les bougies'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Joint tige de soupape ?
+  pgId: '322'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/joint-tige-de-soupape.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Joint tige de soupape a temps ?
+  symptoms:
+  - fumee bleue au demarrage
+  - consommation d huile excessive
+  - depots sur les bougies
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 322
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: joint-tige-de-soupape
+source_type: gamme
+subcategory: joints
+symptoms:
+- description: fumee bleue au demarrage
+  evidence:
+  - 'Observation: fumee bleue au demarrage'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Fumee bleue au demarrage
+  risk_level: confort
+- description: consommation d huile excessive
+  evidence:
+  - 'Observation: consommation d huile excessive'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Consommation d huile excessive
+  risk_level: confort
+- description: depots sur les bougies
+  evidence:
+  - 'Observation: depots sur les bougies'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Depots sur les bougies
+  risk_level: confort
+title: Joint tige de soupape
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Joint tige de soupape - Guide Diagnostic Complet
 
 ## Fonction et Rôle

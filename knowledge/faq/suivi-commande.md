@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Suivi de commande"
-source_type: faq
 category: commande
+doc_family: knowledge
+source_type: faq
+title: FAQ - Suivi de commande
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Questions fréquentes - Suivi de commande

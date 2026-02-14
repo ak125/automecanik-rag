@@ -25,6 +25,7 @@ services:
     volumes:
       - ./knowledge:/knowledge:ro
       - ./rag_config.yml:/app/rag_config.yml:ro
+      - ./pdfs:/app/pdfs:ro
     depends_on:
       weaviate:
         condition: service_healthy
@@ -37,7 +38,7 @@ services:
       resources:
         limits:
           cpus: '2'
-          memory: 2G
+          memory: 12G
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 30s

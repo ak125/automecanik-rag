@@ -1,10 +1,11 @@
 ---
-title: "Fiche vehicule - Ford Focus 3"
-source_type: vehicle
 category: ford
+doc_family: catalog
+source_type: vehicle
+title: Fiche vehicule - Ford Focus 3
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Ford Focus 3 (2011-2018)

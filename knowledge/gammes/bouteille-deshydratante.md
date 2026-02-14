@@ -1,88 +1,166 @@
 ---
-entity_type: gamme
-title: Bouteille déshydratante
-slug: bouteille-deshydratante
-pg_id: 851
 category: climatisation
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+- if: voyant_tableau_bord_allume
+  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Filtre et assèche le fluide frigorigène
+  confusion_with: {}
   must_be_true:
+  - filtrer
+  - assecher
+  - retenir l'humidite
+  must_not_contain_concepts:
+  - injection
+  - freinage
+  - allumage
+  - embrayage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Filtre et assèche le fluide frigorigène
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "refroidit le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Bouteille déshydratante compatible avec mon vehicule
+      ?
+  - answer: En cas de circuit de clim ouvert recemment intervention ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Bouteille déshydratante ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Bouteille déshydratante sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de climatisation pour confirmer Bouteille déshydratante.
+  id: 851
+  intro:
+    role: Bouteille déshydratante intervient directement sur climatisation du vehicule.
+      Un choix conforme protege la froid et limite les pannes secondaires.
+    syncParts:
     - filtrer
     - assecher
     - retenir l'humidite
-  must_not_contain_concepts:
-    - injection
-    - freinage
-    - allumage
-    - embrayage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-  - if: voyant_tableau_bord_allume
-    then: lecture_codes_defaut_obd_et_diagnostic_electronique
-symptoms:
-  - id: S1
-    label: Circuit de clim ouvert recemment intervention
-    description: circuit de clim ouvert recemment intervention
-    risk_level: confort
-    evidence:
-      - 'Observation: circuit de clim ouvert recemment intervention'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Clim moins performante apres une reparation
-    description: clim moins performante apres une reparation
-    risk_level: confort
-    evidence:
-      - 'Observation: clim moins performante apres une reparation'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Compresseur qui fait un bruit anormal
-    description: compresseur qui fait un bruit anormal
-    risk_level: confort
-    evidence:
-      - 'Observation: compresseur qui fait un bruit anormal'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Humidite visible dans le voyant du deshydrateur
-    description: humidite visible dans le voyant du deshydrateur
-    risk_level: confort
-    evidence:
-      - 'Observation: humidite visible dans le voyant du deshydrateur'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Gaz recupere trouble ou avec impuretes
-    description: gaz recupere trouble ou avec impuretes
-    risk_level: confort
-    evidence:
-      - 'Observation: gaz recupere trouble ou avec impuretes'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Remplacement de compresseur prevu preventif
-    description: remplacement de compresseur prevu preventif
-    risk_level: confort
-    evidence:
-      - 'Observation: remplacement de compresseur prevu preventif'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Bouteille déshydratante ?
+  pgId: '851'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/bouteille-deshydratante.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
+      électronique'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Bouteille déshydratante a temps ?
+  symptoms:
+  - circuit de clim ouvert recemment intervention
+  - clim moins performante apres une reparation
+  - compresseur qui fait un bruit anormal
+  - humidite visible dans le voyant du deshydrateur
+  - gaz recupere trouble ou avec impuretes
+  - remplacement de compresseur prevu preventif
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 851
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: bouteille-deshydratante
+source_type: gamme
+symptoms:
+- description: circuit de clim ouvert recemment intervention
+  evidence:
+  - 'Observation: circuit de clim ouvert recemment intervention'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Circuit de clim ouvert recemment intervention
+  risk_level: confort
+- description: clim moins performante apres une reparation
+  evidence:
+  - 'Observation: clim moins performante apres une reparation'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Clim moins performante apres une reparation
+  risk_level: confort
+- description: compresseur qui fait un bruit anormal
+  evidence:
+  - 'Observation: compresseur qui fait un bruit anormal'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Compresseur qui fait un bruit anormal
+  risk_level: confort
+- description: humidite visible dans le voyant du deshydrateur
+  evidence:
+  - 'Observation: humidite visible dans le voyant du deshydrateur'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Humidite visible dans le voyant du deshydrateur
+  risk_level: confort
+- description: gaz recupere trouble ou avec impuretes
+  evidence:
+  - 'Observation: gaz recupere trouble ou avec impuretes'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Gaz recupere trouble ou avec impuretes
+  risk_level: confort
+- description: remplacement de compresseur prevu preventif
+  evidence:
+  - 'Observation: remplacement de compresseur prevu preventif'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Remplacement de compresseur prevu preventif
+  risk_level: confort
+title: Bouteille déshydratante
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Bouteille déshydratante - Guide Diagnostic Complet
 
 ## Fonction et Rôle

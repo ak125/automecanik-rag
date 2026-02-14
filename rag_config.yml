@@ -1,13 +1,7 @@
 # /opt/automecanik/rag/rag_config.yml
-# CONFIG DETERMINISTE - Quarantine Mode
-# Version: 1.0.0 | Date: 2026-01-07
-#
-# REGLES:
-# - Ce fichier est la source unique de config RAG
-# - ENV vars peuvent override (priorite ENV > YAML)
-# - Mode quarantine = validation stricte au demarrage
+# Source unique de config RAG. ENV vars peuvent override (priorite ENV > YAML).
 
-mode: quarantine  # quarantine | active
+mode: active  # quarantine | active
 version: "1.0.0"
 
 # =============================================================================
@@ -17,7 +11,12 @@ version: "1.0.0"
 vector_store:
   type: weaviate
   url: "${WEAVIATE_URL:-http://weaviate:8080}"
-  class_name: Prod_Chatbot      # PROD - corpus /knowledge/ (weaviate_client.py:17)
+  class_name: KB_Knowledge      # Legacy default for scripts/orchestrator
+  catalog_class_name: KB_Catalog
+  diagnostic_class_name: KB_Diagnostic
+  knowledge_class_name: KB_Knowledge
+  media_class_name: KB_Media
+  router_memory_class_name: KB_RouterMemory
   dev_class_name: Dev_Full      # DEV - knowledge + code + audits (init_schema.py:61)
   consistency_level: ONE
   batch_size: 100
@@ -79,14 +78,16 @@ truth_levels:
 # Ref: namespace_guard.py (HARDCODED - ce fichier est informatif seulement)
 # =============================================================================
 namespaces:
-  # PROD chatbot - HARDCODED dans namespace_guard.py:49-55
+  # PROD chatbot - HARDCODED dans namespace_guard.py:49-56
   allowed_prod:
     - "knowledge:vehicle"
     - "knowledge:diagnostic"
     - "knowledge:faq"
     - "knowledge:guide"
     - "knowledge:policy"
-  # DEV agents - full access (namespace_guard.py:59)
+    - "knowledge:gamme"
+    - "knowledge:media"
+  # DEV agents - full access (namespace_guard.py:60)
   allowed_dev:
     - "knowledge:vehicle"
     - "knowledge:diagnostic"
@@ -94,6 +95,8 @@ namespaces:
     - "knowledge:seo"
     - "knowledge:guide"
     - "knowledge:policy"
+    - "knowledge:gamme"
+    - "knowledge:media"
     - "internal:code"
     - "internal:audits"
     - "internal:configs"

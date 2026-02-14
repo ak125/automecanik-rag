@@ -10,7 +10,14 @@
             <label class="block text-sm font-medium text-gray-700">Titre</label>
             <input type="text" name="title" required value="{{ document.title }}" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
         </div>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-4 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Famille</label>
+                <select name="doc_family" class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">
+                    <option value="">auto</option>
+                    {% for fam in doc_families %}<option value="{{ fam }}" {% if document.doc_family == fam %}selected{% endif %}>{{ fam }}</option>{% endfor %}
+                </select>
+            </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700">Type</label>
                 <select name="source_type" required class="mt-1 w-full rounded border-gray-300 px-3 py-2 border">

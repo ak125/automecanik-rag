@@ -1,85 +1,162 @@
 ---
-entity_type: gamme
-title: Neiman
-slug: neiman
-pg_id: 1367
 category: electrique
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: vehicule_immobilise_ou_symptome_critique
+  then: verification_urgente_piece_et_alimentation
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Verrouiller la direction et alimenter les circuits electriques
+  confusion_with: {}
   must_be_true:
+  - verrouiller
+  - alimenter
+  - securiser
+  must_not_contain_concepts:
+  - injection
+  - climatisation
+  - freinage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Verrouiller la direction et alimenter les circuits electriques
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "demarrage garanti"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Neiman compatible avec mon vehicule ?
+  - answer: En cas de tableau de bord qui ne s allume pas au contact ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Neiman ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Neiman sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de electrique pour confirmer Neiman.
+  id: 1367
+  intro:
+    role: Verrouiller la direction et alimenter les circuits electriques
+    syncParts:
     - verrouiller
     - alimenter
     - securiser
-  must_not_contain_concepts:
-    - injection
-    - climatisation
-    - freinage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: vehicule_immobilise_ou_symptome_critique
-    then: verification_urgente_piece_et_alimentation
-symptoms:
-  - id: S1
-    label: Tableau de bord qui ne s allume pas au contact
-    description: tableau de bord qui ne s allume pas au contact
-    risk_level: confort
-    evidence:
-      - 'Observation: tableau de bord qui ne s allume pas au contact'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Cle qui tourne dans le vide sans effet
-    description: cle qui tourne dans le vide sans effet
-    risk_level: confort
-    evidence:
-      - 'Observation: cle qui tourne dans le vide sans effet'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Direction bloquee impossible a debloquer
-    description: direction bloquee impossible a debloquer
-    risk_level: immobilisation
-    evidence:
-      - 'Observation: direction bloquee impossible a debloquer'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Contact electrique intermittent coupures
-    description: contact electrique intermittent coupures
-    risk_level: confort
-    evidence:
-      - 'Observation: contact electrique intermittent coupures'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Odeur de plastique brule court-circuit interne
-    description: odeur de plastique brule court-circuit interne
-    risk_level: confort
-    evidence:
-      - 'Observation: odeur de plastique brule court-circuit interne'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Difficulte recurrente a tourner la cle
-    description: difficulte recurrente a tourner la cle
-    risk_level: confort
-    evidence:
-      - 'Observation: difficulte recurrente a tourner la cle'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Neiman ?
+  pgId: '1367'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - MISSING_REQUIRED_TERMS
+    - TOO_SHORT
+    score: 60
+    source: reindex:gammes/neiman.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Pièce HS** - Le neiman peut être hors service et nécessiter un remplacement'
+    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
+      électronique'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Pièce HS** - Le neiman peut être hors service et nécessiter un
+      remplacement'
+    title: Pourquoi remplacer Neiman a temps ?
+  symptoms:
+  - tableau de bord qui ne s allume pas au contact
+  - cle qui tourne dans le vide sans effet
+  - direction bloquee impossible a debloquer
+  - contact electrique intermittent coupures
+  - odeur de plastique brule court-circuit interne
+  - difficulte recurrente a tourner la cle
+  - '**Direction bloquee impossible a debloquer**'
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 1367
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: neiman
+source_type: gamme
+symptoms:
+- description: tableau de bord qui ne s allume pas au contact
+  evidence:
+  - 'Observation: tableau de bord qui ne s allume pas au contact'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Tableau de bord qui ne s allume pas au contact
+  risk_level: confort
+- description: cle qui tourne dans le vide sans effet
+  evidence:
+  - 'Observation: cle qui tourne dans le vide sans effet'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Cle qui tourne dans le vide sans effet
+  risk_level: confort
+- description: direction bloquee impossible a debloquer
+  evidence:
+  - 'Observation: direction bloquee impossible a debloquer'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Direction bloquee impossible a debloquer
+  risk_level: immobilisation
+- description: contact electrique intermittent coupures
+  evidence:
+  - 'Observation: contact electrique intermittent coupures'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Contact electrique intermittent coupures
+  risk_level: confort
+- description: odeur de plastique brule court-circuit interne
+  evidence:
+  - 'Observation: odeur de plastique brule court-circuit interne'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Odeur de plastique brule court-circuit interne
+  risk_level: confort
+- description: difficulte recurrente a tourner la cle
+  evidence:
+  - 'Observation: difficulte recurrente a tourner la cle'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Difficulte recurrente a tourner la cle
+  risk_level: confort
+title: Neiman
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Neiman - Guide Diagnostic Complet
 
 ## Fonction et Rôle

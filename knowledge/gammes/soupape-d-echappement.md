@@ -1,85 +1,165 @@
 ---
-entity_type: gamme
-title: Soupape d'échappement
-slug: soupape-d-echappement
-pg_id: 1270
 category: moteur
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Ouvrir et fermer le passage des gaz d'echappement
+  confusion_with: {}
   must_be_true:
+  - ouvrir
+  - fermer
+  - evacuer
+  must_not_contain_concepts:
+  - admission
+  - air frais
+  - carburant
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Ouvrir et fermer le passage des gaz d'echappement
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "plus de puissance"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Soupape d'échappement compatible avec mon vehicule ?
+  - answer: En cas de perte de compression sur un cylindre ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Soupape d'échappement ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Soupape d'échappement sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Soupape d'échappement.
+  id: 1270
+  intro:
+    role: Soupape d'échappement intervient directement sur moteur du vehicule. Un
+      choix conforme protege la combustion et limite les pannes secondaires.
+    syncParts:
     - ouvrir
     - fermer
     - evacuer
-  must_not_contain_concepts:
-    - admission
-    - air frais
-    - carburant
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-symptoms:
-  - id: S1
-    label: Perte de compression sur un cylindre
-    description: perte de compression sur un cylindre
-    risk_level: confort
-    evidence:
-      - 'Observation: perte de compression sur un cylindre'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Surchauffe localisee du moteur
-    description: surchauffe localisee du moteur
-    risk_level: confort
-    evidence:
-      - 'Observation: surchauffe localisee du moteur'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Claquement ou rate d allumage
-    description: claquement ou rate d allumage
-    risk_level: degats_volant_moteur
-    evidence:
-      - 'Observation: claquement ou rate d allumage'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Soupape grillee ou deformee endoscopie
-    description: soupape grillee ou deformee endoscopie
-    risk_level: confort
-    evidence:
-      - 'Observation: soupape grillee ou deformee endoscopie'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Perte de puissance notable
-    description: perte de puissance notable
-    risk_level: confort
-    evidence:
-      - 'Observation: perte de puissance notable'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Refection culasse prevue remplacement preventif
-    description: refection culasse prevue remplacement preventif
-    risk_level: confort
-    evidence:
-      - 'Observation: refection culasse prevue remplacement preventif'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Soupape d'échappement ?
+  pgId: '1270'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - MISSING_REQUIRED_TERMS
+    - TOO_SHORT
+    score: 60
+    source: reindex:gammes/soupape-d-echappement.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Soupape d'échappement a temps ?
+  symptoms:
+  - perte de compression sur un cylindre
+  - surchauffe localisee du moteur
+  - claquement ou rate d allumage
+  - soupape grillee ou deformee endoscopie
+  - perte de puissance notable
+  - refection culasse prevue remplacement preventif
+  - '**Claquement ou rate d allumage**'
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 1270
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: soupape-d-echappement
+source_type: gamme
+symptoms:
+- description: perte de compression sur un cylindre
+  evidence:
+  - 'Observation: perte de compression sur un cylindre'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Perte de compression sur un cylindre
+  risk_level: confort
+- description: surchauffe localisee du moteur
+  evidence:
+  - 'Observation: surchauffe localisee du moteur'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Surchauffe localisee du moteur
+  risk_level: confort
+- description: claquement ou rate d allumage
+  evidence:
+  - 'Observation: claquement ou rate d allumage'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Claquement ou rate d allumage
+  risk_level: degats_volant_moteur
+- description: soupape grillee ou deformee endoscopie
+  evidence:
+  - 'Observation: soupape grillee ou deformee endoscopie'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Soupape grillee ou deformee endoscopie
+  risk_level: confort
+- description: perte de puissance notable
+  evidence:
+  - 'Observation: perte de puissance notable'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Perte de puissance notable
+  risk_level: confort
+- description: refection culasse prevue remplacement preventif
+  evidence:
+  - 'Observation: refection culasse prevue remplacement preventif'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Refection culasse prevue remplacement preventif
+  risk_level: confort
+title: Soupape d'échappement
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Soupape d'échappement - Guide Diagnostic Complet
 
 ## Fonction et Rôle

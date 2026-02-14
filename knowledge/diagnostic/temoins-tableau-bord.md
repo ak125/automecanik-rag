@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Témoins tableau de bord"
-source_type: diagnostic
 category: electronique
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Témoins tableau de bord
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Témoins tableau de bord - Guide complet

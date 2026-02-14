@@ -1,65 +1,139 @@
 ---
-entity_type: gamme
-title: Ampoule éclairage intérieur
-slug: ampoule-eclairage-interieur
-pg_id: 117
 category: eclairage
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: symptome_general_detecte
+  then: inspection_visuelle_et_test_fonctionnel
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Produit la lumière pour éclairer l'intérieur de l'habitacle
+  confusion_with: {}
   must_be_true:
+  - produire
+  - emettre
+  - eclairer
+  must_not_contain_concepts:
+  - feu complet
+  - optique
+  - relais
+  - commande
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Produit la lumière pour éclairer l'intérieur de l'habitacle
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "visibilite parfaite"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Ampoule éclairage intérieur compatible avec mon vehicule
+      ?
+  - answer: En cas de plafonnier qui ne s allume plus ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Ampoule éclairage intérieur ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Ampoule éclairage intérieur sans verification atelier
+      ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Ampoule éclairage
+    intérieur.
+  id: 117
+  intro:
+    role: Produit la lumière pour éclairer l'intérieur de l'habitacle
+    syncParts:
     - produire
     - emettre
     - eclairer
-  must_not_contain_concepts:
-    - feu complet
-    - optique
-    - relais
-    - commande
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: symptome_general_detecte
-    then: inspection_visuelle_et_test_fonctionnel
-symptoms:
-  - id: S1
-    label: Plafonnier qui ne s allume plus
-    description: plafonnier qui ne s allume plus
-    risk_level: confort
-    evidence:
-      - 'Observation: plafonnier qui ne s allume plus'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Lumiere qui clignote ou vacille
-    description: lumiere qui clignote ou vacille
-    risk_level: confort
-    evidence:
-      - 'Observation: lumiere qui clignote ou vacille'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Eclairage tres faible
-    description: eclairage tres faible
-    risk_level: confort
-    evidence:
-      - 'Observation: eclairage tres faible'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Ampoule éclairage intérieur ?
+  pgId: '117'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/ampoule-eclairage-interieur.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Ampoule éclairage intérieur a temps ?
+  symptoms:
+  - plafonnier qui ne s allume plus
+  - lumiere qui clignote ou vacille
+  - eclairage tres faible
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 117
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: ampoule-eclairage-interieur
+source_type: gamme
+symptoms:
+- description: plafonnier qui ne s allume plus
+  evidence:
+  - 'Observation: plafonnier qui ne s allume plus'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Plafonnier qui ne s allume plus
+  risk_level: confort
+- description: lumiere qui clignote ou vacille
+  evidence:
+  - 'Observation: lumiere qui clignote ou vacille'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Lumiere qui clignote ou vacille
+  risk_level: confort
+- description: eclairage tres faible
+  evidence:
+  - 'Observation: eclairage tres faible'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Eclairage tres faible
+  risk_level: confort
+title: Ampoule éclairage intérieur
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Ampoule éclairage intérieur - Guide Diagnostic Complet
 
 ## Fonction et Rôle

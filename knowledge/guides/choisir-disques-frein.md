@@ -1,104 +1,79 @@
 ---
-title: "Guide - Choisir ses disques de frein"
-source_type: guide
 category: freinage
+created_at: 2026-02-12
+doc_family: knowledge
+doc_kind: article
+entity_scope: piece
+id: freinage_disques__guide__choisir-disque-ventile-plein__fr__v1
+lang: fr
+source_type: guide
+title: 'Choisir ses disques de frein : le guide'
 truth_level: L2
+updated_at: 2026-02-12
 verification_status: verified
-updated_at: 2026-01-08
 ---
 
-# Comment choisir ses disques de frein
+# Choisir ses disques de frein : le guide
 
-## Types de disques
+## Comment savoir si ton vehicule a des disques ventiles / pleins
 
-### Disques pleins
-- **Usage** : Arriere sur la plupart des vehicules
-- **Avantage** : Cout reduit
-- **Inconvenient** : Dissipation chaleur limitee
+- Controle visuel: un disque ventile a un canal interne entre deux pistes.
+- Verification via reference constructeur (VIN) ou catalogue technique.
+- Regle generale: avant souvent ventile, arriere souvent plein (avec exceptions).
 
-### Disques ventiles
-- **Usage** : Avant sur tous vehicules, arriere sur puissants
-- **Avantage** : Meilleure evacuation chaleur
-- **Structure** : Ailettes internes
+## Traitements anti-corrosion : utile quand ? (reference ISO 9227)
+
+- Utiles pour limiter la corrosion de surface hors piste de friction.
+- Pertinent en usage urbain, zones humides ou salees.
+- N'ameliorent pas directement la puissance de freinage.
+- La piste de friction doit rester propre et conforme au montage.
+
+## Perces/rainures : avantages/inconvenients reels
 
 ### Disques perces
-- **Usage** : Sport, freinage intensif
-- **Avantage** : Evacuation gaz, eau
-- **Inconvenient** : Usure plaquettes acceleree
 
-### Disques raines (stries)
-- **Usage** : Sport route
-- **Avantage** : Nettoyage plaquettes, mordant
-- **Inconvenient** : Bruit possible
+- Avantages: evacuation gaz/eau, reponse plus vive en usage dynamique.
+- Inconvenients: bruit possible, usure plaquettes parfois acceleree.
 
-## Criteres de choix
+### Disques rainures
 
-### 1. Dimensions exactes
-| Mesure | Tolerance |
-|--------|-----------|
-| Diametre | +/- 0mm (exact) |
-| Epaisseur | Standard vehicule |
-| Entraxe | Nombre de trous, diametre |
+- Avantages: nettoyage de surface, mordant plus franc.
+- Inconvenients: bruit, confort legerement reduit.
 
-### 2. Type de fixation
-- **Plein** : Sans moyeu integre
-- **Avec moyeu** : Integre (ex: Renault)
-- **Avec roulement** : Kit complet (ex: certains PSA)
+### Disques pleins/ventiles standard
 
-### 3. Qualite
-| Niveau | Materiau | Usage |
-|--------|----------|-------|
-| Economique | Fonte standard | Urbain calme |
-| Standard | Fonte haute carbone | Mixte |
-| Sport | Composite, traite | Dynamique |
+- Avantages: cout maitrise, bon compromis route quotidienne.
+- Inconvenients: gestion thermique inferieure sur usage intensif (surtout pleins).
 
-## Marques de reference
+## Check-list compatibilite (dimensions, ventilation, capteur, etc.)
 
-### Premium
-| Marque | Specialite |
-|--------|------------|
-| **Brembo** | Sport, qualite OEM premium |
-| **ATE** | Premiere monte europeenne |
-| **TRW** | Large gamme, fiabilite |
+- Diametre du disque.
+- Epaisseur nominale et mini.
+- Hauteur (offset/chapeau).
+- Nombre de trous et entraxe.
+- Type plein ou ventile.
+- Presence bague ABS/capteurs selon montage.
+- Compatibilite etrier/plaquette.
+- Couple de serrage et visserie adaptee.
 
-### Milieu de gamme
-| Marque | Specialite |
-|--------|------------|
-| **Bosch** | Qualite constante |
-| **Ferodo** | Bon rapport qualite/prix |
-| **Valeo** | Kits complets |
+## FAQ (5-10 questions)
 
-## Regles de remplacement
+### Peut-on changer seulement les disques sans plaquettes ?
 
-### Toujours par paire
-- **Essieu avant** : Gauche + Droite
-- **Essieu arriere** : Gauche + Droite
+Non recommande. Changer disques + plaquettes ensemble assure un contact correct.
 
-### Avec les plaquettes
-- **Obligatoire** : Nouvelles plaquettes sur nouveaux disques
-- **Raison** : Rodage correct, usure uniforme
+### Faut-il changer les deux cotes ?
 
-### Epaisseur minimum
-- Gravee sur disque (MIN TH ou MIN)
-- Mesure au pied a coulisse
-- Sous minimum = remplacement obligatoire
+Oui, toujours par paire sur le meme essieu.
 
-## Signes de remplacement
+### Le rodage est-il obligatoire ?
 
-### Visuels
-- Rainure profonde (>1.5mm)
-- Corrosion importante
-- Fissures, craquelures
-- Voile visible
+Oui. Prevoir environ 200 km de freinages progressifs.
 
-### Au ressenti
-- Vibrations au freinage
-- Freinage spongieux
-- Allongement distance freinage
+### Un disque bleu est-il recuperable ?
 
-## Conseils pratiques
+Souvent non. Cela signale une surchauffe; controle complet requis.
 
-1. **Mesurer avant** : Verifier diametre et epaisseur
-2. **Kit disques + plaquettes** : Economies et compatibilite garantie
-3. **Rodage** : 200 km de freinages progressifs
-4. **Nettoyage** : Degraissant sur disques neufs (huile de protection)
+### Quand remplacer un disque ?
+
+Des que l'epaisseur mini est atteinte, ou en cas de fissure/voile important.

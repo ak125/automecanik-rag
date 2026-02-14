@@ -1,153 +1,142 @@
 ---
-entity_type: gamme
-title: Disque de frein
-slug: disque-de-frein
-pg_id: 82
 category: freinage
-subcategory: disques
+created_at: 2026-02-12
+doc_family: catalog
+doc_kind: fiche_produit
+entity_scope: piece
+id: freinage_disques__gamme__disque-de-frein__fr__v2
+lang: fr
+page_contract:
+  antiMistakes:
+  - Melanger des references non compatibles.
+  - Remplacer un seul cote.
+  - Ne pas respecter couples de serrage.
+  - Utiliser des graisses non adaptees en zone de friction.
+  - Nettoyage/remontage conforme des surfaces.
+  - Entretien etrier + guidages.
+  - Remplacement plaquettes si necessaire.
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Disque de frein compatible avec mon vehicule ?
+  - answer: En cas de vibrations au volant au freinage. ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Disque de frein ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Disque de frein sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type, motorisation puis comparez references
+    et dimensions. Validez ensuite les contraintes de frein pour confirmer Disque
+    de frein.
+  id: 82
+  intro:
+    role: Le disque de frein transforme l'energie cinetique en chaleur par friction
+      avec les plaquettes afin de ralentir le vehicule de maniere stable et repetable.
+    syncParts:
+    - Verifier les pieces associees au montage.
+    - Controler la reference exacte.
+    title: A quoi sert Disque de frein ?
+  pgId: '82'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/disque-de-frein.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un controle precoce reduit le risque technique et financier.
+    consequences:
+    - Risque de panne secondaire si la piece reste degradee.
+    - Risque d immobilisation et de surcout atelier.
+    - Risque de baisse de securite et de fiabilite globale.
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: Reporter le remplacement de Disque de frein augmente progressivement
+      le risque de panne, de perte de performance et de surcout atelier.
+    title: Pourquoi remplacer Disque de frein a temps ?
+  symptoms:
+  - Vibrations au volant au freinage.
+  - Pulsation dans la pedale.
+  - Bruit de grincement ou frottement.
+  - Distance de freinage allongee.
+  - Traces bleutees ou rainures profondes sur la piste.
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Epaisseur sous minimum constructeur.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 82
+source_type: gamme
+title: 'Disque de frein : fiche gamme'
 truth_level: L2
+updated_at: 2026-02-12
 verification_status: draft
-updated_at: '2026-01-14'
-intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
-mechanical_rules:
-  role_summary: Support de friction et dissipation thermique lors du freinage
-  must_be_true:
-    - dissiper la chaleur
-    - recevoir la friction
-    - ralentir la rotation
-  must_not_contain_concepts:
-    - tambour
-    - machoire
-    - hydraulique
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: vibrations_anormales
-    then: verifier_equilibrage_et_fixations
-  - if: kilometrage_eleve_ou_usure_visible
-    then: remplacement_preventif_recommande
-symptoms:
-  - id: S1
-    label: Vibrations dans le volant au freinage
-    description: vibrations dans le volant au freinage
-    risk_level: securite
-    evidence:
-      - 'Observation: vibrations dans le volant au freinage'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Sillon circulaire visible sur la surface du disque
-    description: sillon circulaire visible sur la surface du disque
-    risk_level: confort
-    evidence:
-      - 'Observation: sillon circulaire visible sur la surface du disque'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Bord du disque en relief levre d usure
-    description: bord du disque en relief levre d usure
-    risk_level: confort
-    evidence:
-      - 'Observation: bord du disque en relief levre d usure'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Crissement metallique au freinage
-    description: crissement metallique au freinage
-    risk_level: securite
-    evidence:
-      - 'Observation: crissement metallique au freinage'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Odeur de brule apres freinages repetes
-    description: odeur de brule apres freinages repetes
-    risk_level: securite
-    evidence:
-      - 'Observation: odeur de brule apres freinages repetes'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Epaisseur sous le minimum indique sur le disque
-    description: epaisseur sous le minimum indique sur le disque
-    risk_level: confort
-    evidence:
-      - 'Observation: epaisseur sous le minimum indique sur le disque'
-      - Vérification visuelle ou auditive
-purchase_guardrails:
-  requires_vehicle: true
-  forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
 ---
-# Disque de frein - Guide Diagnostic Complet
 
-## Fonction et Rôle
+# Disque de frein : fiche gamme
 
-Support de friction et dissipation thermique lors du freinage
+## Role de la piece
 
-**Actions principales:** dissiper la chaleur, recevoir la friction, ralentir la rotation, resister a l'echauffement, evacuer la chaleur
+Le disque de frein transforme l'energie cinetique en chaleur par friction avec les plaquettes afin de ralentir le vehicule de maniere stable et repetable.
 
-## Symptômes de Défaillance
+## Symptomes observables
 
-### 🟡 Symptômes de Sécurité
+- Vibrations au volant au freinage.
+- Pulsation dans la pedale.
+- Bruit de grincement ou frottement.
+- Distance de freinage allongee.
+- Traces bleutees ou rainures profondes sur la piste.
 
-- **Vibrations dans le volant au freinage**
-  vibrations dans le volant au freinage
-- **Crissement metallique au freinage**
-  crissement metallique au freinage
-- **Odeur de brule apres freinages repetes**
-  odeur de brule apres freinages repetes
+## Causes probables (du + frequent au + rare)
 
-### 🟢 Autres Symptômes
+1. Usure normale au kilometrage.
+2. Echauffement excessif et deformation.
+3. Montage non conforme (moyeu, serrage, contamination).
+4. Etrier ou guidages defaillants.
+5. Mauvaise association disque/plaquette.
 
-- sillon circulaire visible sur la surface du disque
-- bord du disque en relief levre d usure
-- epaisseur sous le minimum indique sur le disque
+## Tests simples (sans outil)
 
-## Procédure de Diagnostic
+- Inspection visuelle de la piste de freinage.
+- Verification bruit a froid/chaud.
+- Essai route pour confirmer vibrations au freinage.
 
-Pour diagnostiquer un problème de disque de frein:
+## Tests atelier (comparateur / mesure epaisseur)
 
-1. **Inspection visuelle** - Examiner l'état du disque de frein
-2. **Mesure d'usure** - Contrôler l'épaisseur et l'état de surface
-3. **Test au roulage** - Vérifier l'efficacité et les bruits
+- Mesure du voile au comparateur.
+- Mesure d'epaisseur en plusieurs points.
+- Verification cote mini gravee sur disque.
+- Controle faux-rond du moyeu.
 
-## Causes Probables
+## Solutions (par ordre de cout/effort)
 
-- **Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé
-- **Défaillance progressive** - Usure normale due à l'utilisation
-- **Conditions d'utilisation** - Sollicitations excessives ou environnement défavorable
+1. Nettoyage/remontage conforme des surfaces.
+2. Entretien etrier + guidages.
+3. Remplacement plaquettes si necessaire.
+4. Remplacement disques + plaquettes par paire.
 
-## Pièces Associées
+## Erreurs a eviter
 
-Lors du remplacement, vérifier également:
+- Melanger des references non compatibles.
+- Remplacer un seul cote.
+- Ne pas respecter couples de serrage.
+- Utiliser des graisses non adaptees en zone de friction.
 
-- cable-de-frein-a-main
-- capteur-abs
-- etrier-de-frein
-- interrupteur-des-feux-de-freins
-- plaquette-de-frein
-- roulement-de-roue
-- servo-frein
+## Quand remplacer immediatement (securite)
 
-## Critères de Compatibilité
-
-Pour commander le bon disque de frein, vous devez connaître:
-
-- **Marque** de votre véhicule
-- **Modele** de votre véhicule
-- **Annee** de votre véhicule
-
-## ❌ Attention aux Fausses Promesses
-
-Méfiez-vous des vendeurs qui utilisent ces termes interdits:
-
-- ❌ "homologué CT"
-- ❌ "sécurité garantie"
-- ❌ "zéro panne"
-- ❌ "garanti à vie"
-- ❌ "freinage garanti"
+- Epaisseur sous minimum constructeur.
+- Fissure, deformation visible, forte surchauffe.
+- Freinage instable ou perte d'efficacite.

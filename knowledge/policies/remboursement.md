@@ -1,10 +1,11 @@
 ---
-title: "Politique de remboursement"
-source_type: policy
 category: remboursement
+doc_family: knowledge
+source_type: policy
+title: Politique de remboursement
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Politique de Remboursement AutoMecanik

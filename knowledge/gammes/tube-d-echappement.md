@@ -1,87 +1,164 @@
 ---
-entity_type: gamme
-title: Tube d'échappement
-slug: tube-d-echappement
-pg_id: 17
 category: echappement
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+- if: vibrations_anormales
+  then: verifier_equilibrage_et_fixations
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Achemine et évacue les gaz d'échappement traités vers l'extérieur
+  confusion_with: {}
   must_be_true:
+  - evacuer
+  - acheminer
+  - conduire
+  must_not_contain_concepts:
+  - injection
+  - freinage
+  - climatisation
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Achemine et évacue les gaz d'échappement traités vers l'extérieur
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "passe le controle technique"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Tube d'échappement compatible avec mon vehicule ?
+  - answer: En cas de bruit echappement anormalement fort metallique ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Tube d'échappement ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Tube d'échappement sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Tube d'échappement.
+  id: 17
+  intro:
+    role: Achemine et évacue les gaz d'échappement traités vers l'extérieur
+    syncParts:
     - evacuer
     - acheminer
     - conduire
-  must_not_contain_concepts:
-    - injection
-    - freinage
-    - climatisation
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-  - if: vibrations_anormales
-    then: verifier_equilibrage_et_fixations
-symptoms:
-  - id: S1
-    label: Bruit echappement anormalement fort metallique
-    description: bruit echappement anormalement fort metallique
-    risk_level: confort
-    evidence:
-      - 'Observation: bruit echappement anormalement fort metallique'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Trou ou rouille visible sous le vehicule visuel
-    description: trou ou rouille visible sous le vehicule visuel
-    risk_level: confort
-    evidence:
-      - 'Observation: trou ou rouille visible sous le vehicule visuel'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Odeur echappement habitacle olfactif
-    description: odeur echappement habitacle olfactif
-    risk_level: confort
-    evidence:
-      - 'Observation: odeur echappement habitacle olfactif'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Vibrations excessives ressenties plancher comportement
-    description: vibrations excessives ressenties plancher comportement
-    risk_level: confort
-    evidence:
-      - 'Observation: vibrations excessives ressenties plancher comportement'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Fumee vapeur echappant sous vehicule
-    description: fumee vapeur echappant sous vehicule
-    risk_level: confort
-    evidence:
-      - 'Observation: fumee vapeur echappant sous vehicule'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Vehicule plus roulant preventif
-    description: vehicule plus roulant preventif
-    risk_level: confort
-    evidence:
-      - 'Observation: vehicule plus roulant preventif'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Tube d'échappement ?
+  pgId: '17'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/tube-d-echappement.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Tube d'échappement a temps ?
+  symptoms:
+  - bruit echappement anormalement fort metallique
+  - trou ou rouille visible sous le vehicule visuel
+  - odeur echappement habitacle olfactif
+  - vibrations excessives ressenties plancher comportement
+  - fumee vapeur echappant sous vehicule
+  - vehicule plus roulant preventif
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 17
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: tube-d-echappement
+source_type: gamme
+symptoms:
+- description: bruit echappement anormalement fort metallique
+  evidence:
+  - 'Observation: bruit echappement anormalement fort metallique'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Bruit echappement anormalement fort metallique
+  risk_level: confort
+- description: trou ou rouille visible sous le vehicule visuel
+  evidence:
+  - 'Observation: trou ou rouille visible sous le vehicule visuel'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Trou ou rouille visible sous le vehicule visuel
+  risk_level: confort
+- description: odeur echappement habitacle olfactif
+  evidence:
+  - 'Observation: odeur echappement habitacle olfactif'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Odeur echappement habitacle olfactif
+  risk_level: confort
+- description: vibrations excessives ressenties plancher comportement
+  evidence:
+  - 'Observation: vibrations excessives ressenties plancher comportement'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Vibrations excessives ressenties plancher comportement
+  risk_level: confort
+- description: fumee vapeur echappant sous vehicule
+  evidence:
+  - 'Observation: fumee vapeur echappant sous vehicule'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Fumee vapeur echappant sous vehicule
+  risk_level: confort
+- description: vehicule plus roulant preventif
+  evidence:
+  - 'Observation: vehicule plus roulant preventif'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Vehicule plus roulant preventif
+  risk_level: confort
+title: Tube d'échappement
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Tube d'échappement - Guide Diagnostic Complet
 
 ## Fonction et Rôle

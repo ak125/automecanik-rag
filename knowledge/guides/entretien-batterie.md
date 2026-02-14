@@ -1,10 +1,11 @@
 ---
-title: "Guide - Entretien et choix batterie"
-source_type: guide
 category: electrique
+doc_family: knowledge
+source_type: guide
+title: Guide - Entretien et choix batterie
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Entretien et choix de batterie

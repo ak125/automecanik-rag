@@ -1,9 +1,15 @@
 ---
+category: vehicles
+doc_family: catalog
+fuels:
+- essence
+- diesel
+- hybrid
 marque: renault
 modele: clio
+source_type: vehicle
 truth_level: L2
-updated_at: "2026-01-15"
-fuels: [essence, diesel, hybrid]
+updated_at: '2026-01-15'
 ---
 
 # Renault Clio

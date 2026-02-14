@@ -1,10 +1,11 @@
 """MinIO Extractor - Extract documents from S3-compatible storage.
 
-Supports:
-- PDF files (requires pypdf or pdfplumber)
-- DOCX files (requires python-docx)
-- Markdown files
-- Text files
+Routes files to specialized pipelines based on extension:
+- PDF  -> ingest_pdfs pipeline (H2/H3-aware chunking + OCR)
+- Images -> ingest_images pipeline (OCR + vision captions)
+- Logs -> ingest_logs pipeline (profile + error patterns)
+- CSV/XLSX -> tabular pipeline
+- DOCX/Markdown/Text -> inline extraction
 
 The extractor downloads files from MinIO buckets, converts them to markdown,
 and returns them for chunking and indexing.
@@ -17,6 +18,29 @@ import tempfile
 import os
 
 logger = logging.getLogger(__name__)
+
+# Format routing map: extension -> pipeline type
+FORMAT_HANDLERS = {
+    ".pdf": "pdf",
+    ".csv": "tabular",
+    ".xlsx": "tabular",
+    ".xls": "tabular",
+    ".json": "structured",
+    ".xml": "structured",
+    ".png": "image",
+    ".jpg": "image",
+    ".jpeg": "image",
+    ".webp": "image",
+    ".bmp": "image",
+    ".tif": "image",
+    ".tiff": "image",
+    ".log": "log",
+    ".out": "log",
+    ".err": "log",
+    ".txt": "text",
+    ".md": "markdown",
+    ".docx": "docx",
+}
 
 
 class MinIOExtractor:
@@ -109,13 +133,11 @@ class MinIOExtractor:
         return docs
 
     async def _extract_object(self, client, bucket_name: str, object_name: str) -> Optional[dict]:
-        """Extract content from a single object."""
-        # Determine file type
+        """Extract content from a single object, routing to specialized pipelines."""
         ext = Path(object_name).suffix.lower()
+        format_type = FORMAT_HANDLERS.get(ext)
 
-        # Only process supported file types
-        supported_extensions = {".md", ".txt", ".pdf", ".docx"}
-        if ext not in supported_extensions:
+        if format_type is None:
             logger.debug(f"Skipping unsupported file type: {object_name}")
             return None
 
@@ -127,17 +149,25 @@ class MinIOExtractor:
             logger.error(f"Failed to download {object_name}: {e}")
             return None
 
-        # Extract content based on file type
         content = None
+        source_type = "minio"
         try:
-            if ext == ".md" or ext == ".txt":
-                content = local_path.read_text(encoding="utf-8")
-            elif ext == ".pdf":
-                content = self._extract_pdf(local_path)
-            elif ext == ".docx":
+            if format_type == "pdf":
+                content, source_type = self._extract_via_pdf_pipeline(local_path)
+            elif format_type == "image":
+                content, source_type = self._extract_via_image_pipeline(local_path)
+            elif format_type == "log":
+                content, source_type = self._extract_via_log_pipeline(local_path, object_name)
+            elif format_type in ("markdown", "text"):
+                content = local_path.read_text(encoding="utf-8", errors="replace")
+            elif format_type == "docx":
                 content = self._extract_docx(local_path)
+            else:
+                # tabular, structured, etc. — read as text fallback
+                content = local_path.read_text(encoding="utf-8", errors="replace")
+
+            logger.info(f"Routed {object_name} to {format_type} pipeline")
         finally:
-            # Cleanup temp file
             if local_path.exists():
                 local_path.unlink()
 
@@ -148,13 +178,51 @@ class MinIOExtractor:
             "source_path": f"minio/{bucket_name}/{object_name}",
             "content": content,
             "title": Path(object_name).stem,
-            "source_type": "minio",
+            "source_type": source_type,
             "metadata": {
                 "bucket": bucket_name,
                 "object_name": object_name,
                 "file_type": ext,
+                "pipeline": format_type,
             },
         }
+
+    def _extract_via_pdf_pipeline(self, file_path: Path) -> tuple[Optional[str], str]:
+        """Route PDF to specialized pipeline with page markers and OCR."""
+        try:
+            # Import from ingest_pdfs for full extraction (page markers + OCR)
+            from scripts.ingest_pdfs import extract_pdf_text
+            content, stats = extract_pdf_text(file_path, enable_ocr=True)
+            logger.debug(f"PDF pipeline: pages_text={stats['pages_text']} pages_ocr={stats['pages_ocr']}")
+            return content, "guide"
+        except ImportError:
+            # Fallback to basic extraction
+            return self._extract_pdf(file_path), "minio"
+
+    def _extract_via_image_pipeline(self, file_path: Path) -> tuple[Optional[str], str]:
+        """Route image to OCR + caption pipeline."""
+        try:
+            from scripts.ingest_images import extract_ocr_blocks, build_caption, render_ocr_markdown
+            ocr_blocks = extract_ocr_blocks(file_path)
+            caption = build_caption(file_path, ocr_blocks)
+            ocr_md = render_ocr_markdown(ocr_blocks)
+            content = f"## Caption\n\n{caption}\n\n{ocr_md}"
+            return content, "media"
+        except ImportError:
+            logger.warning("ingest_images not available, skipping image")
+            return None, "media"
+
+    def _extract_via_log_pipeline(self, file_path: Path, object_name: str) -> tuple[Optional[str], str]:
+        """Route log to profile + error pattern pipeline."""
+        try:
+            from scripts.ingest_logs import extract_log_profile, render_profile_markdown
+            content = file_path.read_text(encoding="utf-8", errors="replace")
+            profile = extract_log_profile(content, object_name)
+            md = render_profile_markdown(profile)
+            return md, "diagnostic"
+        except ImportError:
+            logger.warning("ingest_logs not available, skipping log")
+            return None, "diagnostic"
 
     def _extract_pdf(self, file_path: Path) -> Optional[str]:
         """Extract text from PDF file."""

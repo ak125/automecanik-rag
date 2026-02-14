@@ -1,3 +1,9 @@
+---
+category: README.md
+doc_family: knowledge
+source_type: general
+---
+
 # Corpus Métier AutoMecanik
 
 Ce dossier contient la base de connaissance métier pour le système RAG.

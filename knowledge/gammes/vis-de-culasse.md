@@ -1,83 +1,158 @@
 ---
-entity_type: gamme
-title: Vis de culasse
-slug: vis-de-culasse
-pg_id: 1533
 category: moteur
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: fuite_detectee_ou_niveau_bas
+  then: identifier_origine_fuite_et_verifier_joints
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Fixer la culasse sur le bloc moteur avec un couple de serrage precis
+  confusion_with: {}
   must_be_true:
+  - fixer
+  - serrer
+  - maintenir
+  must_not_contain_concepts:
+  - reparation
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Fixer la culasse sur le bloc moteur avec un couple de serrage precis
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Vis de culasse compatible avec mon vehicule ?
+  - answer: En cas de depose culasse prevue remplacement obligatoire ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Vis de culasse ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Vis de culasse sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Vis de culasse.
+  id: 1533
+  intro:
+    role: Fixer la culasse sur le bloc moteur avec un couple de serrage precis
+    syncParts:
     - fixer
     - serrer
     - maintenir
-  must_not_contain_concepts:
-    - reparation
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: fuite_detectee_ou_niveau_bas
-    then: identifier_origine_fuite_et_verifier_joints
-symptoms:
-  - id: S1
-    label: Depose culasse prevue remplacement obligatoire
-    description: depose culasse prevue remplacement obligatoire
-    risk_level: confort
-    evidence:
-      - 'Observation: depose culasse prevue remplacement obligatoire'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Joint de culasse qui fuit apres remontage
-    description: joint de culasse qui fuit apres remontage
-    risk_level: confort
-    evidence:
-      - 'Observation: joint de culasse qui fuit apres remontage'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Vis visiblement etiree ou deformee
-    description: vis visiblement etiree ou deformee
-    risk_level: confort
-    evidence:
-      - 'Observation: vis visiblement etiree ou deformee'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Taraudage endommage dans le bloc vis foiree
-    description: taraudage endommage dans le bloc vis foiree
-    risk_level: confort
-    evidence:
-      - 'Observation: taraudage endommage dans le bloc vis foiree'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Surchauffe apres intervention culasse
-    description: surchauffe apres intervention culasse
-    risk_level: confort
-    evidence:
-      - 'Observation: surchauffe apres intervention culasse'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Fuite entre bloc et culasse
-    description: fuite entre bloc et culasse
-    risk_level: confort
-    evidence:
-      - 'Observation: fuite entre bloc et culasse'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Vis de culasse ?
+  pgId: '1533'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - MISSING_REQUIRED_TERMS
+    - TOO_SHORT
+    score: 60
+    source: reindex:gammes/vis-de-culasse.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Vis de culasse a temps ?
+  symptoms:
+  - depose culasse prevue remplacement obligatoire
+  - joint de culasse qui fuit apres remontage
+  - vis visiblement etiree ou deformee
+  - taraudage endommage dans le bloc vis foiree
+  - surchauffe apres intervention culasse
+  - fuite entre bloc et culasse
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 1533
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: vis-de-culasse
+source_type: gamme
+symptoms:
+- description: depose culasse prevue remplacement obligatoire
+  evidence:
+  - 'Observation: depose culasse prevue remplacement obligatoire'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Depose culasse prevue remplacement obligatoire
+  risk_level: confort
+- description: joint de culasse qui fuit apres remontage
+  evidence:
+  - 'Observation: joint de culasse qui fuit apres remontage'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Joint de culasse qui fuit apres remontage
+  risk_level: confort
+- description: vis visiblement etiree ou deformee
+  evidence:
+  - 'Observation: vis visiblement etiree ou deformee'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Vis visiblement etiree ou deformee
+  risk_level: confort
+- description: taraudage endommage dans le bloc vis foiree
+  evidence:
+  - 'Observation: taraudage endommage dans le bloc vis foiree'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Taraudage endommage dans le bloc vis foiree
+  risk_level: confort
+- description: surchauffe apres intervention culasse
+  evidence:
+  - 'Observation: surchauffe apres intervention culasse'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Surchauffe apres intervention culasse
+  risk_level: confort
+- description: fuite entre bloc et culasse
+  evidence:
+  - 'Observation: fuite entre bloc et culasse'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Fuite entre bloc et culasse
+  risk_level: confort
+title: Vis de culasse
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Vis de culasse - Guide Diagnostic Complet
 
 ## Fonction et Rôle

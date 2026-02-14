@@ -1,63 +1,135 @@
 ---
-entity_type: gamme
-title: Radiateur d'huile
-slug: radiateur-d-huile
-pg_id: 469
 category: moteur
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: fuite_detectee_ou_niveau_bas
+  then: identifier_origine_fuite_et_verifier_joints
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Refroidir l'huile moteur
+  confusion_with: {}
   must_be_true:
+  - refroidir
+  - echanger
+  - maintenir la temperature
+  must_not_contain_concepts:
+  - eau
+  - liquide refroidissement
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Refroidir l'huile moteur
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Radiateur d'huile compatible avec mon vehicule ?
+  - answer: En cas de huile surchauffee ou de degradation mesurable, il faut controler
+      rapidement avant panne secondaire.
+    question: Quand remplacer Radiateur d'huile ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Radiateur d'huile sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Radiateur d'huile.
+  id: 469
+  intro:
+    role: Radiateur d'huile intervient directement sur moteur du vehicule. Un choix
+      conforme protege la combustion et limite les pannes secondaires.
+    syncParts:
     - refroidir
     - echanger
     - maintenir la temperature
-  must_not_contain_concepts:
-    - eau
-    - liquide refroidissement
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: fuite_detectee_ou_niveau_bas
-    then: identifier_origine_fuite_et_verifier_joints
-symptoms:
-  - id: S1
-    label: Huile surchauffee
-    description: huile surchauffee
-    risk_level: confort
-    evidence:
-      - 'Observation: huile surchauffee'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Melange eau-huile
-    description: melange eau-huile
-    risk_level: confort
-    evidence:
-      - 'Observation: melange eau-huile'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Fuites externes au niveau du radiateur
-    description: fuites externes au niveau du radiateur
-    risk_level: confort
-    evidence:
-      - 'Observation: fuites externes au niveau du radiateur'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Radiateur d'huile ?
+  pgId: '469'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/radiateur-d-huile.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Radiateur d'huile a temps ?
+  symptoms:
+  - huile surchauffee
+  - melange eau-huile
+  - fuites externes au niveau du radiateur
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 469
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: radiateur-d-huile
+source_type: gamme
+symptoms:
+- description: huile surchauffee
+  evidence:
+  - 'Observation: huile surchauffee'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Huile surchauffee
+  risk_level: confort
+- description: melange eau-huile
+  evidence:
+  - 'Observation: melange eau-huile'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Melange eau-huile
+  risk_level: confort
+- description: fuites externes au niveau du radiateur
+  evidence:
+  - 'Observation: fuites externes au niveau du radiateur'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Fuites externes au niveau du radiateur
+  risk_level: confort
+title: Radiateur d'huile
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Radiateur d'huile - Guide Diagnostic Complet
 
 ## Fonction et Rôle

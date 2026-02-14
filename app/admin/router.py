@@ -7,6 +7,9 @@ import json
 import io
 import gc
 import uuid
+import os
+import subprocess
+import time
 from fastapi.templating import Jinja2Templates
 from pathlib import Path
 from typing import Optional, List
@@ -21,6 +24,8 @@ from app.services.embeddings import get_embeddings_service
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/admin", tags=["Admin"])
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
+PDF_INGEST_JOBS: dict[str, dict] = {}
+PDF_INGEST_JOBS_STORE = Path(os.getenv("PDF_INGEST_JOBS_STORE", "/tmp/rag_pdf_ingest_jobs.json"))
 
 
 # ============================================
@@ -43,6 +48,37 @@ class ListFilesResponse(BaseModel):
     """Response from list-files endpoint."""
     files: List[str]
     count: int
+
+
+class PdfIngestRunRequest(BaseModel):
+    """Start background PDF ingest+index pipeline."""
+    input_dir: str = "/opt/automecanik/rag/pdfs"
+    truth_level: str = "L2"
+    max_retries: int = 1
+    timeout_seconds: int = 1800
+
+
+class PdfIngestRunResponse(BaseModel):
+    """Response for a started PDF ingest job."""
+    job_id: str
+    status: str
+    pid: int
+    log_path: str
+
+
+class PdfIngestJobStatusResponse(BaseModel):
+    """Status payload for one PDF ingest job."""
+    job_id: str
+    status: str
+    pid: int
+    started_at: int
+    finished_at: Optional[int] = None
+    return_code: Optional[int] = None
+    log_path: str
+    log_tail: List[str] = []
+    attempts: int = 0
+    max_retries: int = 1
+    timeout_seconds: int = 1800
 
 
 # ============================================
@@ -78,6 +114,154 @@ def get_context(request: Request) -> dict:
     return {"request": request, "env": settings.env, "debug": settings.debug}
 
 
+def _resolve_job_status(job: dict) -> dict:
+    return _refresh_job_status(job)
+
+
+def _load_jobs_store() -> None:
+    if not PDF_INGEST_JOBS_STORE.exists():
+        return
+    try:
+        payload = json.loads(PDF_INGEST_JOBS_STORE.read_text(encoding="utf-8"))
+        if isinstance(payload, dict):
+            for jid, job in payload.items():
+                if isinstance(job, dict):
+                    PDF_INGEST_JOBS[jid] = job
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"Failed to load ingest jobs store: {exc}")
+
+
+def _save_jobs_store() -> None:
+    try:
+        PDF_INGEST_JOBS_STORE.parent.mkdir(parents=True, exist_ok=True)
+        serializable = {}
+        for jid, job in PDF_INGEST_JOBS.items():
+            serializable[jid] = {
+                "id": job.get("id"),
+                "pid": job.get("pid"),
+                "log_path": job.get("log_path"),
+                "started_at": job.get("started_at"),
+                "last_started_at": job.get("last_started_at"),
+                "finished_at": job.get("finished_at"),
+                "return_code": job.get("return_code"),
+                "status": job.get("status", "running"),
+                "attempts": int(job.get("attempts", 0)),
+                "max_retries": int(job.get("max_retries", 1)),
+                "timeout_seconds": int(job.get("timeout_seconds", 1800)),
+                "cmd_base": job.get("cmd_base", ""),
+                "rc_path": job.get("rc_path", ""),
+                "input_dir": job.get("input_dir", ""),
+                "truth_level": job.get("truth_level", ""),
+            }
+        PDF_INGEST_JOBS_STORE.write_text(json.dumps(serializable, ensure_ascii=True, indent=2), encoding="utf-8")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"Failed to persist ingest jobs store: {exc}")
+
+
+def _pid_alive(pid: int) -> bool:
+    if not isinstance(pid, int) or pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except Exception:
+        return False
+
+
+def _spawn_ingest_job(job: dict) -> int:
+    rc_path = str(job["rc_path"])
+    cmd_base = str(job["cmd_base"])
+    wrapped = f"set +e; {cmd_base}; rc=$?; echo $rc > '{rc_path}'; exit $rc"
+    log_path = Path(job["log_path"])
+    with log_path.open("a", encoding="utf-8") as logf:
+        proc = subprocess.Popen(  # noqa: S603
+            ["/bin/bash", "-lc", wrapped],
+            stdout=logf,
+            stderr=subprocess.STDOUT,
+        )
+    return proc.pid
+
+
+def _append_job_log(job: dict, message: str) -> None:
+    try:
+        with Path(job["log_path"]).open("a", encoding="utf-8") as logf:
+            logf.write(message.rstrip() + "\n")
+    except Exception:
+        pass
+
+
+def _refresh_job_status(job: dict) -> dict:
+    now = int(time.time())
+    status = job.get("status", "running")
+    pid = int(job.get("pid") or 0)
+    rc_path = Path(str(job.get("rc_path") or ""))
+    max_retries = int(job.get("max_retries", 1))
+    attempts = int(job.get("attempts", 0))
+    timeout_seconds = int(job.get("timeout_seconds", 1800))
+    last_started_at = int(job.get("last_started_at") or job.get("started_at") or now)
+
+    # timeout guard
+    if status == "running" and timeout_seconds > 0 and (now - last_started_at) > timeout_seconds and _pid_alive(pid):
+        try:
+            os.kill(pid, 15)
+        except Exception:
+            pass
+        job["status"] = "failed"
+        job["finished_at"] = now
+        job["return_code"] = 124
+        _append_job_log(job, f"[governance] timeout reached ({timeout_seconds}s), process terminated")
+        _save_jobs_store()
+        return {"status": "failed", "finished_at": now, "return_code": 124}
+
+    if status == "running":
+        if rc_path.exists():
+            try:
+                code = int(rc_path.read_text(encoding="utf-8", errors="ignore").strip() or "1")
+            except Exception:
+                code = 1
+            if code == 0:
+                job["status"] = "done"
+                job["finished_at"] = now
+                job["return_code"] = 0
+            else:
+                if attempts < max_retries:
+                    job["attempts"] = attempts + 1
+                    _append_job_log(job, f"[governance] retry {job['attempts']}/{max_retries} after exit code {code}")
+                    try:
+                        rc_path.unlink(missing_ok=True)
+                    except Exception:
+                        pass
+                    new_pid = _spawn_ingest_job(job)
+                    job["pid"] = new_pid
+                    job["status"] = "running"
+                    job["last_started_at"] = now
+                    job["return_code"] = None
+                    _save_jobs_store()
+                    return {"status": "running", "finished_at": None, "return_code": None}
+                job["status"] = "failed"
+                job["finished_at"] = now
+                job["return_code"] = code
+        elif not _pid_alive(pid):
+            # process died without rc marker
+            job["status"] = "failed"
+            job["finished_at"] = now
+            job["return_code"] = job.get("return_code", 1)
+
+    _save_jobs_store()
+    return {
+        "status": job.get("status", "running"),
+        "finished_at": job.get("finished_at"),
+        "return_code": job.get("return_code"),
+    }
+
+
+_load_jobs_store()
+
+
 # ============================================
 # Dashboard
 # ============================================
@@ -89,16 +273,19 @@ async def dashboard(request: Request):
 
     by_truth_level = {"L1": 0, "L2": 0, "L3": 0, "L4": 0}
     by_source_type = {}
+    by_doc_family = {}
 
     for doc in result.documents:
         by_truth_level[doc.truth_level] = by_truth_level.get(doc.truth_level, 0) + 1
         by_source_type[doc.source_type] = by_source_type.get(doc.source_type, 0) + 1
+        by_doc_family[doc.doc_family] = by_doc_family.get(doc.doc_family, 0) + 1
 
     context = get_context(request)
     context.update({
         "total": result.total,
         "by_truth_level": by_truth_level,
         "by_source_type": by_source_type,
+        "by_doc_family": by_doc_family,
         "recent_documents": result.documents[:5],
     })
     return templates.TemplateResponse("pages/dashboard.html", context)
@@ -113,25 +300,44 @@ async def documents_list(
     page: int = Query(1, ge=1),
     search: Optional[str] = None,
     truth_level: Optional[str] = None,
+    doc_family: Optional[str] = None,
     source_type: Optional[str] = None,
 ):
     """List documents with filters."""
     service = get_knowledge_service()
+    # Default admin view: show full corpus (raw) without hidden source types.
+    exclude_types = None
     result = service.list_documents(
         page=page, limit=20, search=search,
-        truth_level=truth_level, source_type=source_type
+        truth_level=truth_level, doc_family=doc_family, source_type=source_type,
+        exclude_source_types=exclude_types,
+        deduplicate=False,
     )
+
+    # Raw total without admin clean-view exclusions/dedup to avoid confusion.
+    raw_result = service.list_documents(
+        page=1, limit=10000, search=search,
+        truth_level=truth_level, doc_family=doc_family, source_type=source_type,
+        exclude_source_types=None,
+        deduplicate=False,
+    )
+    raw_total = raw_result.total
+    hidden_total = max(0, raw_total - result.total)
 
     context = get_context(request)
     context.update({
         "documents": result.documents,
         "total": result.total,
+        "raw_total": raw_total,
+        "hidden_total": hidden_total,
         "page": page,
         "pages": (result.total + 19) // 20,
+        "doc_families": result.doc_families,
         "source_types": result.source_types,
         "filters": {
             "search": search or "",
             "truth_level": truth_level or "",
+            "doc_family": doc_family or "",
             "source_type": source_type or ""
         }
     })
@@ -145,7 +351,8 @@ async def documents_list(
 async def document_create_form(request: Request):
     """Create document form."""
     context = get_context(request)
-    context["source_types"] = ["diagnostic", "faq", "policy", "guide", "vehicle", "general"]
+    context["doc_families"] = ["knowledge", "catalog", "diagnostic", "media"]
+    context["source_types"] = ["auto", "diagnostic", "faq", "policy", "guide", "vehicle", "gamme", "general"]
     return templates.TemplateResponse("pages/documents/create.html", context)
 
 
@@ -155,14 +362,22 @@ async def document_create_submit(
     content: str = Form(...),
     source_type: str = Form(...),
     category: str = Form(...),
+    doc_family: str = Form(""),
     truth_level: str = Form("L3"),
 ):
     """Create document."""
     service = get_knowledge_service()
-    doc = service.create_document(
-        title=title, content=content, source_type=source_type,
-        category=category, truth_level=truth_level
-    )
+    try:
+        doc = service.create_document(
+            title=title,
+            content=content,
+            source_type=source_type,
+            category=category,
+            doc_family=doc_family,
+            truth_level=truth_level,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     if not doc:
         raise HTTPException(status_code=500, detail="Failed to create document")
     return RedirectResponse(url=f"/admin/documents/{doc.id}", status_code=303)
@@ -191,7 +406,8 @@ async def document_edit_form(request: Request, doc_id: str):
 
     context = get_context(request)
     context["document"] = doc
-    context["source_types"] = ["diagnostic", "faq", "policy", "guide", "vehicle", "general"]
+    context["doc_families"] = ["knowledge", "catalog", "diagnostic", "media"]
+    context["source_types"] = ["auto", "diagnostic", "faq", "policy", "guide", "vehicle", "gamme", "general"]
     return templates.TemplateResponse("pages/documents/edit.html", context)
 
 
@@ -202,14 +418,23 @@ async def document_edit_submit(
     content: str = Form(...),
     source_type: str = Form(...),
     category: str = Form(...),
+    doc_family: str = Form(""),
     truth_level: str = Form(...),
 ):
     """Update document."""
     service = get_knowledge_service()
-    doc = service.update_document(
-        doc_id=doc_id, title=title, content=content,
-        source_type=source_type, category=category, truth_level=truth_level
-    )
+    try:
+        doc = service.update_document(
+            doc_id=doc_id,
+            title=title,
+            content=content,
+            source_type=source_type,
+            category=category,
+            doc_family=doc_family,
+            truth_level=truth_level,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
     return RedirectResponse(url=f"/admin/documents/{doc_id}", status_code=303)
@@ -298,6 +523,163 @@ async def trigger_reindex(request: Request):
 
 
 # ============================================
+# PDF Ingest API (Swagger)
+# ============================================
+@router.post("/ingest/pdf/run", response_model=PdfIngestRunResponse)
+async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_api_key)):
+    """Start PDF import+index pipeline in background."""
+    truth = payload.truth_level.strip().upper()
+    if truth not in {"L1", "L2", "L3", "L4"}:
+        raise HTTPException(status_code=400, detail="truth_level must be one of: L1, L2, L3, L4")
+    if payload.max_retries < 0 or payload.max_retries > 5:
+        raise HTTPException(status_code=400, detail="max_retries must be between 0 and 5")
+    if payload.timeout_seconds < 60 or payload.timeout_seconds > 86400:
+        raise HTTPException(status_code=400, detail="timeout_seconds must be between 60 and 86400")
+
+    input_dir = Path(payload.input_dir).expanduser()
+    if not input_dir.exists() or not input_dir.is_dir():
+        raise HTTPException(status_code=400, detail=f"input_dir not found: {input_dir}")
+
+    pdf_count = len(list(input_dir.glob("*.pdf")))
+    if pdf_count == 0:
+        raise HTTPException(status_code=400, detail=f"No PDF found in: {input_dir}")
+
+    app_root = Path(os.getenv("RAG_APP_ROOT", "/app"))
+    if not (app_root / "scripts" / "import_and_index_pdfs.sh").exists():
+        # Local/dev fallback outside container
+        app_root = Path("/opt/automecanik/rag")
+
+    ingest_script = app_root / "scripts" / "ingest_pdfs.py"
+    reindex_script = app_root / "scripts" / "reindex.py"
+    if not ingest_script.exists():
+        raise HTTPException(status_code=500, detail=f"ingest script not found: {ingest_script}")
+    if not reindex_script.exists():
+        raise HTTPException(status_code=500, detail=f"reindex script not found: {reindex_script}")
+
+    job_id = uuid.uuid4().hex[:12]
+    logs_dir = Path(os.getenv("PDF_INGEST_LOG_DIR", "/tmp/rag_pdf_ingest_logs"))
+    logs_dir.mkdir(parents=True, exist_ok=True)
+    log_path = logs_dir / f"pdf_ingest_{job_id}.log"
+    rc_path = logs_dir / f"pdf_ingest_{job_id}.rc"
+
+    import_base_dir = Path(os.getenv("PDF_IMPORT_KNOWLEDGE_DIR", "/tmp/knowledge-import"))
+    import_dir = import_base_dir / job_id
+    low_memory = os.getenv("LOW_MEMORY", "1")
+    reindex_batch_size = os.getenv("REINDEX_BATCH_SIZE", "16")
+    reindex_max_files = os.getenv("REINDEX_MAX_FILES", "0")
+    quarantine_log = logs_dir / f"quarantine_{job_id}.jsonl"
+
+    cmd_base = (
+        "set -euo pipefail; "
+        f"cd '{app_root}'; "
+        f"rm -rf '{import_dir}'; "
+        f"mkdir -p '{import_dir}'; "
+        f"ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
+        "if [ \""
+        f"{low_memory}"
+        "\" = \"1\" ]; then "
+        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE={reindex_batch_size} STRICT_ROUTING=1 "
+        f"REINDEX_QUARANTINE_LOG='{quarantine_log}' "
+        f"python scripts/reindex.py --path '{import_dir}' --collection AUTO --batch-size {reindex_batch_size} "
+        f"--max-files {reindex_max_files} --cpu-strict --strict-routing --quarantine-log '{quarantine_log}'; "
+        "else "
+        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 STRICT_ROUTING=1 REINDEX_QUARANTINE_LOG='{quarantine_log}' "
+        f"python scripts/reindex.py --path '{import_dir}' --collection AUTO --strict-routing --quarantine-log '{quarantine_log}'; "
+        "fi"
+    )
+    wrapped_cmd = f"set +e; {cmd_base}; rc=$?; echo $rc > '{rc_path}'; exit $rc"
+    with log_path.open("w", encoding="utf-8") as logf:
+        proc = subprocess.Popen(  # noqa: S603
+            ["/bin/bash", "-lc", wrapped_cmd],
+            stdout=logf,
+            stderr=subprocess.STDOUT,
+        )
+
+    PDF_INGEST_JOBS[job_id] = {
+        "id": job_id,
+        "pid": proc.pid,
+        "log_path": str(log_path),
+        "rc_path": str(rc_path),
+        "cmd_base": cmd_base,
+        "status": "running",
+        "started_at": int(time.time()),
+        "last_started_at": int(time.time()),
+        "finished_at": None,
+        "return_code": None,
+        "attempts": 0,
+        "max_retries": payload.max_retries,
+        "timeout_seconds": payload.timeout_seconds,
+        "input_dir": str(input_dir),
+        "truth_level": truth,
+    }
+    _save_jobs_store()
+
+    return PdfIngestRunResponse(
+        job_id=job_id,
+        status="running",
+        pid=proc.pid,
+        log_path=str(log_path),
+    )
+
+
+@router.get("/ingest/pdf/jobs", response_model=List[PdfIngestJobStatusResponse])
+async def list_pdf_ingest_jobs(_: bool = Depends(verify_api_key)):
+    """List known PDF ingest jobs."""
+    out: list[PdfIngestJobStatusResponse] = []
+    for job_id, job in sorted(PDF_INGEST_JOBS.items(), key=lambda kv: int(kv[1].get("started_at", 0)), reverse=True):
+        st = _resolve_job_status(job)
+        out.append(
+            PdfIngestJobStatusResponse(
+                job_id=job_id,
+                status=st["status"],
+                pid=job["pid"],
+                started_at=job["started_at"],
+                finished_at=st["finished_at"],
+                return_code=st["return_code"],
+                log_path=job["log_path"],
+                log_tail=[],
+                attempts=int(job.get("attempts", 0)),
+                max_retries=int(job.get("max_retries", 1)),
+                timeout_seconds=int(job.get("timeout_seconds", 1800)),
+            )
+        )
+    return out
+
+
+@router.get("/ingest/pdf/jobs/{job_id}", response_model=PdfIngestJobStatusResponse)
+async def get_pdf_ingest_job(
+    job_id: str,
+    tail_lines: int = Query(50, ge=1, le=500),
+    _: bool = Depends(verify_api_key),
+):
+    """Get one PDF ingest job status and log tail."""
+    job = PDF_INGEST_JOBS.get(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="job not found")
+
+    st = _resolve_job_status(job)
+    log_path = Path(job["log_path"])
+    tail: list[str] = []
+    if log_path.exists():
+        lines = log_path.read_text(encoding="utf-8", errors="ignore").splitlines()
+        tail = lines[-tail_lines:]
+
+    return PdfIngestJobStatusResponse(
+        job_id=job_id,
+        status=st["status"],
+        pid=job["pid"],
+        started_at=job["started_at"],
+        finished_at=st["finished_at"],
+        return_code=st["return_code"],
+        log_path=job["log_path"],
+        log_tail=tail,
+        attempts=int(job.get("attempts", 0)),
+        max_retries=int(job.get("max_retries", 1)),
+        timeout_seconds=int(job.get("timeout_seconds", 1800)),
+    )
+
+
+# ============================================
 # BullMQ Worker API Endpoints
 # ============================================
 
@@ -349,11 +731,16 @@ def _chunk_content(content: str, source_path: str, metadata: dict) -> List[dict]
             "chunk_index": chunk_index,
         })
 
-        start = end - CHUNK_OVERLAP
         chunk_index += 1
 
-        if start >= len(content):
+        # Ensure forward progress and terminate cleanly on final chunk.
+        if end >= len(content):
             break
+
+        next_start = end - CHUNK_OVERLAP
+        if next_start <= start:
+            next_start = end
+        start = next_start
 
     return chunks
 

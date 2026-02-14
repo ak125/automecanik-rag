@@ -56,3 +56,12 @@ credentials*.json
 
 # Backup files
 *.backup-before-migration
+
+# Large binary assets (PDFs, images)
+pdfs/
+pdfs_hold/
+pdf-images/
+knowledge_pdf_batch/
+
+# Raw ingestion data
+knowledge/_raw/

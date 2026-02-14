@@ -1,10 +1,11 @@
 ---
-title: "Fiche vehicule - Volkswagen Golf 6"
-source_type: vehicle
 category: volkswagen
+doc_family: catalog
+source_type: vehicle
+title: Fiche vehicule - Volkswagen Golf 6
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Volkswagen Golf 6 (2008-2012)

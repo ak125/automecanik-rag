@@ -1,65 +1,139 @@
 ---
-entity_type: gamme
-title: Régulateur de pression carburant
-slug: regulateur-de-pression-carburant
-pg_id: 168
 category: alimentation
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: symptome_general_detecte
+  then: inspection_visuelle_et_test_fonctionnel
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Maintenir une pression constante dans le circuit carburant
+  confusion_with: {}
   must_be_true:
+  - reguler
+  - maintenir
+  - stabiliser
+  must_not_contain_concepts:
+  - freinage
+  - climatisation
+  - distribution
+  - embrayage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Maintenir une pression constante dans le circuit carburant
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare l'injection"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Régulateur de pression carburant compatible avec mon
+      vehicule ?
+  - answer: En cas de ralenti instable ou de degradation mesurable, il faut controler
+      rapidement avant panne secondaire.
+    question: Quand remplacer Régulateur de pression carburant ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Régulateur de pression carburant sans verification atelier
+      ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Régulateur de
+    pression carburant.
+  id: 168
+  intro:
+    role: Maintenir une pression constante dans le circuit carburant
+    syncParts:
     - reguler
     - maintenir
     - stabiliser
-  must_not_contain_concepts:
-    - freinage
-    - climatisation
-    - distribution
-    - embrayage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: symptome_general_detecte
-    then: inspection_visuelle_et_test_fonctionnel
-symptoms:
-  - id: S1
-    label: Ralenti instable
-    description: ralenti instable
-    risk_level: confort
-    evidence:
-      - 'Observation: ralenti instable'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Demarrage a chaud difficile
-    description: demarrage a chaud difficile
-    risk_level: confort
-    evidence:
-      - 'Observation: demarrage a chaud difficile'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Odeur de carburant dans le compartiment moteur
-    description: odeur de carburant dans le compartiment moteur
-    risk_level: confort
-    evidence:
-      - 'Observation: odeur de carburant dans le compartiment moteur'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Régulateur de pression carburant ?
+  pgId: '168'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/regulateur-de-pression-carburant.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Régulateur de pression carburant a temps ?
+  symptoms:
+  - ralenti instable
+  - demarrage a chaud difficile
+  - odeur de carburant dans le compartiment moteur
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 168
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: regulateur-de-pression-carburant
+source_type: gamme
+symptoms:
+- description: ralenti instable
+  evidence:
+  - 'Observation: ralenti instable'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Ralenti instable
+  risk_level: confort
+- description: demarrage a chaud difficile
+  evidence:
+  - 'Observation: demarrage a chaud difficile'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Demarrage a chaud difficile
+  risk_level: confort
+- description: odeur de carburant dans le compartiment moteur
+  evidence:
+  - 'Observation: odeur de carburant dans le compartiment moteur'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Odeur de carburant dans le compartiment moteur
+  risk_level: confort
+title: Régulateur de pression carburant
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Régulateur de pression carburant - Guide Diagnostic Complet
 
 ## Fonction et Rôle

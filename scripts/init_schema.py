@@ -2,12 +2,56 @@
 """Initialize Weaviate schema for RAG service (100% gratuit - sans OpenAI)."""
 
 import os
-import sys
 import weaviate
 from weaviate.classes.config import Property, DataType, Configure
 
 # Weaviate connection
 WEAVIATE_URL = os.getenv("WEAVIATE_URL", "http://localhost:8080")
+TARGET_COLLECTIONS = [
+    "KB_Catalog",
+    "KB_Diagnostic",
+    "KB_Knowledge",
+    "KB_Media",
+    "KB_RouterMemory",
+]
+
+
+def build_gold_properties() -> list[Property]:
+    """Canonical chunk schema used across all collections."""
+    return [
+        # Required
+        Property(name="chunk_id", data_type=DataType.TEXT),
+        Property(name="parent_id", data_type=DataType.TEXT),
+        Property(name="source_path", data_type=DataType.TEXT),
+        Property(name="source_uri", data_type=DataType.TEXT),
+        Property(name="source_ref", data_type=DataType.TEXT),
+        Property(name="title", data_type=DataType.TEXT),
+        Property(name="content", data_type=DataType.TEXT),
+        Property(name="anchors", data_type=DataType.TEXT_ARRAY),
+        Property(name="intent", data_type=DataType.TEXT),
+        Property(name="domain", data_type=DataType.TEXT),
+        Property(name="entities", data_type=DataType.TEXT_ARRAY),
+        Property(name="truth_level", data_type=DataType.TEXT),
+        Property(name="verification_status", data_type=DataType.TEXT),
+        Property(name="doc_weight", data_type=DataType.NUMBER),
+        Property(name="evidence_grade", data_type=DataType.TEXT),
+        Property(name="is_canonical", data_type=DataType.BOOL),
+        Property(name="canonical_weight", data_type=DataType.NUMBER),
+        # Useful
+        Property(name="chunk_index", data_type=DataType.INT),
+        Property(name="created_at", data_type=DataType.TEXT),
+        Property(name="updated_at", data_type=DataType.TEXT),
+        Property(name="content_hash", data_type=DataType.TEXT),
+        # Backward-compatible fields still used in some filters
+        Property(name="source_type", data_type=DataType.TEXT),
+        Property(name="doc_family", data_type=DataType.TEXT),
+        Property(name="namespace", data_type=DataType.TEXT),
+        Property(name="category", data_type=DataType.TEXT),
+        Property(name="language", data_type=DataType.TEXT),
+        Property(name="confidence_score", data_type=DataType.NUMBER),
+        Property(name="last_verified_date", data_type=DataType.TEXT),
+        Property(name="verified_by", data_type=DataType.TEXT),
+    ]
 
 
 def init_schema():
@@ -23,62 +67,30 @@ def init_schema():
     client = weaviate.connect_to_local(host=host, port=port)
 
     try:
-        # Check if collection exists
-        if client.collections.exists("Prod_Chatbot"):
-            print("Collection 'Prod_Chatbot' already exists.")
-            response = input("Delete and recreate? (y/N): ")
-            if response.lower() == "y":
-                client.collections.delete("Prod_Chatbot")
-                print("Deleted existing collection.")
-            else:
-                print("Keeping existing collection.")
-                return
+        properties = build_gold_properties()
 
-        # Create collection WITHOUT vectorizer (we use sentence-transformers)
-        print("Creating collection 'Prod_Chatbot' (vectorizer: none)...")
-        client.collections.create(
-            name="Prod_Chatbot",
-            description="Corpus métier AutoMecanik - 100% gratuit avec niveaux de vérité",
-            vectorizer_config=Configure.Vectorizer.none(),
-            properties=[
-                # Core properties
-                Property(name="content", data_type=DataType.TEXT),
-                Property(name="title", data_type=DataType.TEXT),
-                Property(name="source_type", data_type=DataType.TEXT),
-                Property(name="source_path", data_type=DataType.TEXT),
-                Property(name="category", data_type=DataType.TEXT),
-                # Truth Level System (Semantic Brain L1-L4)
-                Property(name="truth_level", data_type=DataType.TEXT),  # L1|L2|L3|L4
-                Property(name="verification_status", data_type=DataType.TEXT),  # verified|unverified|disputed
-                Property(name="confidence_score", data_type=DataType.NUMBER),  # 0.0-1.0
-                Property(name="last_verified_date", data_type=DataType.TEXT),  # ISO date string
-                Property(name="verified_by", data_type=DataType.TEXT),  # who verified
-            ],
-        )
-        print("Collection 'Prod_Chatbot' created successfully!")
+        for collection_name in TARGET_COLLECTIONS:
+            if client.collections.exists(collection_name):
+                print(f"Collection '{collection_name}' already exists.")
+                continue
 
-        # Create Dev_Full collection (optional)
+            print(f"Creating collection '{collection_name}' (vectorizer: none)...")
+            client.collections.create(
+                name=collection_name,
+                description=f"{collection_name} - corpus AutoMecanik segmente",
+                vectorizer_config=Configure.Vectorizer.none(),
+                properties=properties,
+            )
+            print(f"Collection '{collection_name}' created successfully!")
+
+        # Keep legacy dev collection for tooling compatibility.
         if not client.collections.exists("Dev_Full"):
             print("Creating collection 'Dev_Full' (vectorizer: none)...")
             client.collections.create(
                 name="Dev_Full",
-                description="Knowledge + code + audits (DEV only) avec niveaux de vérité",
+                description="Knowledge + code + audits (DEV only) avec niveaux de verite",
                 vectorizer_config=Configure.Vectorizer.none(),
-                properties=[
-                    # Core properties
-                    Property(name="content", data_type=DataType.TEXT),
-                    Property(name="title", data_type=DataType.TEXT),
-                    Property(name="source_type", data_type=DataType.TEXT),
-                    Property(name="source_path", data_type=DataType.TEXT),
-                    Property(name="language", data_type=DataType.TEXT),
-                    Property(name="category", data_type=DataType.TEXT),
-                    # Truth Level System (Semantic Brain L1-L4)
-                    Property(name="truth_level", data_type=DataType.TEXT),  # L1|L2|L3|L4
-                    Property(name="verification_status", data_type=DataType.TEXT),  # verified|unverified|disputed
-                    Property(name="confidence_score", data_type=DataType.NUMBER),  # 0.0-1.0
-                    Property(name="last_verified_date", data_type=DataType.TEXT),  # ISO date string
-                    Property(name="verified_by", data_type=DataType.TEXT),  # who verified
-                ],
+                properties=properties,
             )
             print("Collection 'Dev_Full' created successfully!")
 

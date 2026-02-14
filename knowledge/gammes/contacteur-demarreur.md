@@ -1,65 +1,137 @@
 ---
-entity_type: gamme
-title: Contacteur démarreur
-slug: contacteur-demarreur
-pg_id: 682
 category: electrique
-subcategory: demarrage
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: symptome_general_detecte
+  then: inspection_visuelle_et_test_fonctionnel
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Commuter le circuit electrique du demarreur
+  confusion_with: {}
   must_be_true:
+  - commuter
+  - activer
+  - alimenter
+  must_not_contain_concepts:
+  - injection
+  - climatisation
+  - freinage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Commuter le circuit electrique du demarreur
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "demarrage garanti"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Contacteur démarreur compatible avec mon vehicule ?
+  - answer: En cas de aucune reaction a la cle de contact ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Contacteur démarreur ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Contacteur démarreur sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de electrique pour confirmer Contacteur démarreur.
+  id: 682
+  intro:
+    role: Commuter le circuit electrique du demarreur
+    syncParts:
     - commuter
     - activer
     - alimenter
-  must_not_contain_concepts:
-    - injection
-    - climatisation
-    - freinage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: symptome_general_detecte
-    then: inspection_visuelle_et_test_fonctionnel
-symptoms:
-  - id: S1
-    label: Aucune reaction a la cle de contact
-    description: aucune reaction a la cle de contact
-    risk_level: confort
-    evidence:
-      - 'Observation: aucune reaction a la cle de contact'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Demarrage intermittent
-    description: demarrage intermittent
-    risk_level: confort
-    evidence:
-      - 'Observation: demarrage intermittent'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Tableau de bord qui ne s allume pas
-    description: tableau de bord qui ne s allume pas
-    risk_level: confort
-    evidence:
-      - 'Observation: tableau de bord qui ne s allume pas'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Contacteur démarreur ?
+  pgId: '682'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - MISSING_REQUIRED_TERMS
+    - TOO_SHORT
+    score: 60
+    source: reindex:gammes/contacteur-demarreur.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Contacteur démarreur a temps ?
+  symptoms:
+  - aucune reaction a la cle de contact
+  - demarrage intermittent
+  - tableau de bord qui ne s allume pas
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 682
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: contacteur-demarreur
+source_type: gamme
+subcategory: demarrage
+symptoms:
+- description: aucune reaction a la cle de contact
+  evidence:
+  - 'Observation: aucune reaction a la cle de contact'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Aucune reaction a la cle de contact
+  risk_level: confort
+- description: demarrage intermittent
+  evidence:
+  - 'Observation: demarrage intermittent'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Demarrage intermittent
+  risk_level: confort
+- description: tableau de bord qui ne s allume pas
+  evidence:
+  - 'Observation: tableau de bord qui ne s allume pas'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Tableau de bord qui ne s allume pas
+  risk_level: confort
+title: Contacteur démarreur
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Contacteur démarreur - Guide Diagnostic Complet
 
 ## Fonction et Rôle

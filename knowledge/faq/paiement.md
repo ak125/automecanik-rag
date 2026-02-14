@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Paiement"
-source_type: faq
 category: paiement
+doc_family: knowledge
+source_type: faq
+title: FAQ - Paiement
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Questions fréquentes - Paiement

@@ -28,6 +28,15 @@
     </div>
 
     <div class="bg-white rounded shadow p-4">
+        <h2 class="font-semibold mb-2">Par Famille</h2>
+        <div class="flex flex-wrap gap-2">
+            {% for fam, count in by_doc_family.items() %}
+            <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded">{{ count }} {{ fam }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bg-white rounded shadow p-4">
         <h2 class="font-semibold mb-2">Par Type</h2>
         <div class="flex flex-wrap gap-2">
             {% for type, count in by_source_type.items() %}

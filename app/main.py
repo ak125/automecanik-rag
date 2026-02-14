@@ -48,8 +48,8 @@ app = FastAPI(
     title="AutoMecanik RAG Service",
     description="Service RAG pour le support client AutoMecanik",
     version="1.0.0",
-    docs_url="/docs" if settings.debug else None,
-    redoc_url="/redoc" if settings.debug else None,
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
 

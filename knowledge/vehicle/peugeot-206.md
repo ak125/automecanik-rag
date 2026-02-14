@@ -1,10 +1,11 @@
 ---
-title: "Fiche véhicule - Peugeot 206"
-source_type: vehicle
 category: peugeot
+doc_family: catalog
+source_type: vehicle
+title: Fiche véhicule - Peugeot 206
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Peugeot 206 (1998-2012)

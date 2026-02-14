@@ -23,13 +23,22 @@ class SearchResult(BaseModel):
     title: str
     content: str
     source_path: str
+    source_uri: str = Field("", description="Source URI")
+    source_ref: str = Field("", description="Source reference (#p, #t, #row, #chunk)")
     source_type: str
+    doc_family: str = Field("knowledge", description="Document family")
     category: str
     score: float
     # Truth Level properties (Semantic Brain L1-L4)
     truth_level: str = Field("L3", description="Truth level: L1|L2|L3|L4")
     verification_status: str = Field("unverified", description="verified|unverified|disputed")
     confidence_score: float = Field(0.5, description="Source confidence 0-1")
+    evidence_grade: str = Field("", description="Chunk evidence grade A|B|C")
+    collection: str = Field("", description="Collection source")
+    chunk_id: str = Field("", description="Chunk identifier")
+    canonical_weight: float = Field(0.0, description="Canonical weighting factor")
+    created_at: str = Field("", description="Chunk creation timestamp")
+    updated_at: str = Field("", description="Chunk update timestamp")
 
 
 class TruthComposition(BaseModel):
@@ -56,6 +65,10 @@ class SearchResponse(BaseModel):
     query: str
     total: int
     context: str = Field("", description="Formatted context for Claude CLI")
+    response_mode: str = Field("answer", description="answer|partial|clarify")
+    needs_clarification: bool = Field(False, description="Whether evidence is insufficient")
+    clarify_questions: list[str] = Field(default_factory=list, description="Up to 2 clarification questions")
+    sources_citation: str = Field("", description="Formatted sources citation block")
     # Semantic Brain - Truth Level metadata
     truth_metadata: TruthMetadataResponse = Field(
         default_factory=TruthMetadataResponse,
@@ -110,19 +123,32 @@ async def search(request: SearchRequest):
                         else r.get("content", "")
                     ),
                     source_path=r.get("source_path", ""),
+                    source_uri=r.get("source_uri", ""),
+                    source_ref=r.get("source_ref") or "",
                     source_type=r.get("source_type", ""),
+                    doc_family=r.get("doc_family", "knowledge"),
                     category=r.get("category", ""),
                     score=r.get("score", 0),
                     # Truth Level properties
                     truth_level=r.get("truth_level", "L3"),
                     verification_status=r.get("verification_status", "unverified"),
-                    confidence_score=r.get("confidence_score", 0.5),
+                    confidence_score=float(r.get("confidence_score") if r.get("confidence_score") is not None else 0.5),
+                    evidence_grade=r.get("evidence_grade") or "",
+                    collection=r.get("collection", ""),
+                    chunk_id=r.get("chunk_id", ""),
+                    canonical_weight=float(r.get("canonical_weight") if r.get("canonical_weight") is not None else 0.0),
+                    created_at=r.get("created_at") or "",
+                    updated_at=r.get("updated_at") or "",
                 )
                 for r in result.results
             ],
             query=result.query,
             total=result.total,
             context=result.context,
+            response_mode=result.response_mode,
+            needs_clarification=result.needs_clarification,
+            clarify_questions=result.clarify_questions[:2],
+            sources_citation=result.sources_citation,
             truth_metadata=truth_metadata,
         )
 

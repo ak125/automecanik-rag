@@ -1,10 +1,13 @@
 ---
+category: vehicles
 constructeur: renault
-pays: france
+doc_family: catalog
 groupe: renault-nissan-mitsubishi
+pays: france
+source_type: vehicle
 truth_level: L1
+updated_at: '2026-01-15'
 verification_status: verified
-updated_at: "2026-01-15"
 ---
 
 # Renault

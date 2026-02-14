@@ -1,3 +1,9 @@
+---
+category: seo-data
+doc_family: knowledge
+source_type: general
+---
+
 # SEO Data - RAG Knowledge
 
 Données SEO pour le corpus RAG AutoMecanik.

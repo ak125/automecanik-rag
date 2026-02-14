@@ -1,10 +1,11 @@
 ---
-title: "Fiche véhicule - Renault Clio 3"
-source_type: vehicle
 category: renault
+doc_family: catalog
+source_type: vehicle
+title: Fiche véhicule - Renault Clio 3
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Renault Clio 3 (2005-2014)

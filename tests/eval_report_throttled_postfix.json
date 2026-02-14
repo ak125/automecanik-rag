@@ -1,0 +1,15 @@
+{
+  "summary": {
+    "timestamp": "2026-02-12T19:16:07.239707Z",
+    "total_queries": 50,
+    "k": 5,
+    "recall_at_k_by_collection": {
+      "KB_Knowledge": 1.0,
+      "KB_Diagnostic": 1.0,
+      "KB_Catalog": 0.8333
+    },
+    "fallback_rate": 0.2,
+    "no_evidence_rate": 0.2,
+    "satisfaction": 0.8
+  }
+}

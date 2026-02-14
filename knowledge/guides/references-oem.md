@@ -1,10 +1,11 @@
 ---
-title: "Guide - Comprendre les références OEM"
+category: paiement
+doc_family: knowledge
 source_type: guide
-category: general
+title: Guide - Comprendre les références OEM
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Comprendre les références OEM (Origine Équipementier)

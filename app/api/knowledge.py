@@ -46,8 +46,9 @@ class DocumentCreate(BaseModel):
     """Request body for creating a document."""
     title: str = Field(..., min_length=1, max_length=200)
     content: str = Field(..., min_length=1)
-    source_type: str = Field(..., pattern="^(diagnostic|faq|policy|guide|vehicle|general)$")
+    source_type: str = Field(..., pattern="^(diagnostic|faq|policy|guide|vehicle|gamme|knowledge|canonical|general|media|image|video|audio|json|csv|support|auto)$")
     category: str = Field(..., min_length=1, max_length=100)
+    doc_family: str = Field("", pattern="^(|catalog|diagnostic|knowledge|media|router_memory)$")
     truth_level: str = Field("L3", pattern="^(L1|L2|L3|L4)$")
 
 
@@ -55,8 +56,9 @@ class DocumentUpdate(BaseModel):
     """Request body for updating a document."""
     title: Optional[str] = Field(None, min_length=1, max_length=200)
     content: Optional[str] = Field(None, min_length=1)
-    source_type: Optional[str] = Field(None, pattern="^(diagnostic|faq|policy|guide|vehicle|general)$")
+    source_type: Optional[str] = Field(None, pattern="^(diagnostic|faq|policy|guide|vehicle|gamme|knowledge|canonical|general|media|image|video|audio|json|csv|support|auto)$")
     category: Optional[str] = Field(None, min_length=1, max_length=100)
+    doc_family: Optional[str] = Field(None, pattern="^(catalog|diagnostic|knowledge|media|router_memory)$")
     truth_level: Optional[str] = Field(None, pattern="^(L1|L2|L3|L4)$")
     verification_status: Optional[str] = Field(None, pattern="^(verified|unverified|disputed)$")
 
@@ -68,6 +70,7 @@ class DocumentResponse(BaseModel):
     content: str
     source_type: str
     category: str
+    doc_family: str
     truth_level: str
     verification_status: str
     source_path: str
@@ -83,6 +86,7 @@ class DocumentListResponse(BaseModel):
     limit: int
     categories: list[str]
     source_types: list[str]
+    doc_families: list[str]
 
 
 class ReindexResponse(BaseModel):
@@ -108,6 +112,7 @@ def doc_to_response(doc: KnowledgeDocument) -> DocumentResponse:
         content=doc.content,
         source_type=doc.source_type,
         category=doc.category,
+        doc_family=doc.doc_family,
         truth_level=doc.truth_level,
         verification_status=doc.verification_status,
         source_path=doc.source_path,
@@ -121,6 +126,7 @@ async def list_documents(
     page: int = 1,
     limit: int = 20,
     category: Optional[str] = None,
+    doc_family: Optional[str] = None,
     source_type: Optional[str] = None,
     truth_level: Optional[str] = None,
     search: Optional[str] = None,
@@ -144,6 +150,7 @@ async def list_documents(
         page=page,
         limit=limit,
         category=category,
+        doc_family=doc_family,
         source_type=source_type,
         truth_level=truth_level,
         search=search,
@@ -156,6 +163,7 @@ async def list_documents(
         limit=result.limit,
         categories=result.categories,
         source_types=result.source_types,
+        doc_families=result.doc_families,
     )
 
 
@@ -202,13 +210,17 @@ async def create_document(body: DocumentCreate):
     """Create a new knowledge document. BUILD PLANE ONLY."""
     require_build_plane()
     service = get_knowledge_service()
-    doc = service.create_document(
-        title=body.title,
-        content=body.content,
-        source_type=body.source_type,
-        category=body.category,
-        truth_level=body.truth_level,
-    )
+    try:
+        doc = service.create_document(
+            title=body.title,
+            content=body.content,
+            source_type=body.source_type,
+            category=body.category,
+            doc_family=body.doc_family,
+            truth_level=body.truth_level,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     if not doc:
         raise HTTPException(status_code=500, detail="Failed to create document")
@@ -222,15 +234,19 @@ async def update_document(doc_id: str, body: DocumentUpdate):
     """Update an existing document. BUILD PLANE ONLY."""
     require_build_plane()
     service = get_knowledge_service()
-    doc = service.update_document(
-        doc_id=doc_id,
-        title=body.title,
-        content=body.content,
-        source_type=body.source_type,
-        category=body.category,
-        truth_level=body.truth_level,
-        verification_status=body.verification_status,
-    )
+    try:
+        doc = service.update_document(
+            doc_id=doc_id,
+            title=body.title,
+            content=body.content,
+            source_type=body.source_type,
+            category=body.category,
+            doc_family=body.doc_family,
+            truth_level=body.truth_level,
+            verification_status=body.verification_status,
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
@@ -270,6 +286,68 @@ async def promote_document(doc_id: str):
 
     logger.info(f"Promoted document {doc_id} to {doc.truth_level}")
     return doc_to_response(doc)
+
+
+@router.post("/{doc_id}/quarantine", response_model=DocumentResponse)
+async def quarantine_document(doc_id: str):
+    """
+    Quarantine a document (set verification_status to 'disputed'). BUILD PLANE ONLY.
+
+    Quarantined documents are excluded from search results when exclude_disputed=True.
+    """
+    require_build_plane()
+    service = get_knowledge_service()
+    doc = service.update_document(doc_id, verification_status="disputed")
+
+    if not doc:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    logger.info(f"Quarantined document {doc_id}")
+    return doc_to_response(doc)
+
+
+@router.post("/{doc_id}/unquarantine", response_model=DocumentResponse)
+async def unquarantine_document(doc_id: str):
+    """
+    Remove quarantine from a document. BUILD PLANE ONLY.
+    """
+    require_build_plane()
+    service = get_knowledge_service()
+    doc = service.update_document(doc_id, verification_status="unverified")
+
+    if not doc:
+        raise HTTPException(status_code=404, detail="Document not found")
+
+    logger.info(f"Unquarantined document {doc_id}")
+    return doc_to_response(doc)
+
+
+class TombstoneResponse(BaseModel):
+    """Tombstone record response."""
+    source_uri: str
+    source_path: str
+    title: str
+    deleted_at: str
+    reason: str
+
+
+@router.get("/tombstones/list")
+async def list_tombstones():
+    """List all tombstone records (deleted documents that won't be re-ingested)."""
+    service = get_knowledge_service()
+    records = service.list_tombstones()
+    return {"tombstones": records, "total": len(records)}
+
+
+@router.post("/tombstones/revive")
+async def revive_tombstone(source_uri: str):
+    """Remove a tombstone so the document can be re-ingested. BUILD PLANE ONLY."""
+    require_build_plane()
+    service = get_knowledge_service()
+    success = service.revive_tombstone(source_uri)
+    if not success:
+        raise HTTPException(status_code=404, detail="Tombstone not found")
+    return {"success": True, "message": f"Tombstone revived for {source_uri}"}
 
 
 def run_reindex():

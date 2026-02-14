@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Distribution et courroie"
-source_type: diagnostic
 category: distribution
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Distribution et courroie
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Distribution et courroie - Diagnostic complet

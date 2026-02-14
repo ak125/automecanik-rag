@@ -13,6 +13,34 @@ WEAVIATE_URL = os.getenv("WEAVIATE_URL", "http://localhost:8080")
 KNOWLEDGE_PATH = os.getenv("KNOWLEDGE_PATH", "/knowledge")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 
+# Directory name -> canonical source_type mapping
+DIR_TO_SOURCE_TYPE = {
+    "diagnostic": "diagnostic", "diagnostics": "diagnostic",
+    "gamme": "gamme", "gammes": "gamme",
+    "faq": "faq", "faqs": "faq",
+    "guide": "guide", "guides": "guide",
+    "vehicle": "vehicle", "vehicles": "vehicle",
+    "policy": "policy", "policies": "policy",
+}
+
+
+def resolve_source_type(metadata: dict, rel_path: str) -> str:
+    """Resolve source_type with priority: source_type > entity_type > directory inference."""
+    st = metadata.get("source_type")
+    if st:
+        return st
+
+    et = metadata.get("entity_type")
+    if et and et != "unknown":
+        return et
+
+    parts = rel_path.split("/")
+    if parts:
+        first_dir = parts[0].lower()
+        return DIR_TO_SOURCE_TYPE.get(first_dir, "general")
+
+    return "general"
+
 
 def load_markdown_files(base_path: str) -> list[dict]:
     """Load all markdown files from knowledge directory."""
@@ -31,8 +59,9 @@ def load_markdown_files(base_path: str) -> list[dict]:
             post = frontmatter.load(md_file)
 
             # Extract metadata from frontmatter
+            rel_path = str(md_file.relative_to(base))
             title = post.metadata.get("title", md_file.stem)
-            source_type = post.metadata.get("source_type", "guide")
+            source_type = resolve_source_type(post.metadata, rel_path)
             category = post.metadata.get("category", md_file.parent.name)
 
             # Truth Level System (Semantic Brain L1-L4)
@@ -47,8 +76,9 @@ def load_markdown_files(base_path: str) -> list[dict]:
                 "content": post.content,
                 "title": title,
                 "source_type": source_type,
-                "source_path": str(md_file.relative_to(base)),
+                "source_path": rel_path,
                 "category": category,
+                "namespace": f"knowledge:{source_type}",
                 # Truth Level metadata
                 "truth_level": truth_level,
                 "verification_status": verification_status,

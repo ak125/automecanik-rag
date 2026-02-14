@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Systeme de refroidissement"
-source_type: diagnostic
 category: refroidissement
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Systeme de refroidissement
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Systeme de refroidissement - Diagnostic complet

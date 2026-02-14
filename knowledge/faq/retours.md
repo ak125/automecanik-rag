@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Retours et échanges"
-source_type: faq
 category: retours
+doc_family: knowledge
+source_type: faq
+title: FAQ - Retours et échanges
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-01
+verification_status: verified
 ---
 
 # Questions fréquentes - Retours et échanges

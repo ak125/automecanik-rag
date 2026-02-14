@@ -1,10 +1,11 @@
 ---
-title: "Diagnostic - Embrayage"
-source_type: diagnostic
 category: embrayage
+doc_family: diagnostic
+source_type: diagnostic
+title: Diagnostic - Embrayage
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Embrayage - Diagnostic complet

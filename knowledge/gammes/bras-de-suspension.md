@@ -1,91 +1,170 @@
 ---
-entity_type: gamme
-title: Bras de suspension
-slug: bras-de-suspension
-pg_id: 273
 category: direction
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+- if: vibrations_anormales
+  then: verifier_equilibrage_et_fixations
+- if: kilometrage_eleve_ou_usure_visible
+  then: remplacement_preventif_recommande
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: >-
-    Maintenir la geometrie de la roue et supporter les efforts verticaux -
-    Element structurel de la suspension
+  confusion_with: {}
   must_be_true:
+  - maintenir
+  - supporter
+  - guider
+  must_not_contain_concepts:
+  - direction
+  - cremailliere
+  - volant
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Maintenir la geometrie de la roue et supporter les efforts verticaux
+    - Element structurel de la suspension
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "securite garantie"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Bras de suspension compatible avec mon vehicule ?
+  - answer: En cas de claquements ou cognements sur routes degradees ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Bras de suspension ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Bras de suspension sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Bras de suspension.
+  id: 273
+  intro:
+    role: Maintenir la geometrie de la roue et supporter les efforts verticaux - Element
+      structurel de la suspension
+    syncParts:
     - maintenir
     - supporter
     - guider
-  must_not_contain_concepts:
-    - direction
-    - cremailliere
-    - volant
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-  - if: vibrations_anormales
-    then: verifier_equilibrage_et_fixations
-  - if: kilometrage_eleve_ou_usure_visible
-    then: remplacement_preventif_recommande
-symptoms:
-  - id: S1
-    label: Claquements ou cognements sur routes degradees
-    description: claquements ou cognements sur routes degradees
-    risk_level: degats_volant_moteur
-    evidence:
-      - 'Observation: claquements ou cognements sur routes degradees'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Vehicule qui tire a droite ou a gauche au freinage
-    description: vehicule qui tire a droite ou a gauche au freinage
-    risk_level: securite
-    evidence:
-      - 'Observation: vehicule qui tire a droite ou a gauche au freinage'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Usure irreguliere pneus epaules interieures
-    description: usure irreguliere pneus epaules interieures
-    risk_level: securite
-    evidence:
-      - 'Observation: usure irreguliere pneus epaules interieures'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Vibrations dans le volant a certaines vitesses
-    description: vibrations dans le volant a certaines vitesses
-    risk_level: confort
-    evidence:
-      - 'Observation: vibrations dans le volant a certaines vitesses'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Silentblocs fissures ou decolles visibles
-    description: silentblocs fissures ou decolles visibles
-    risk_level: confort
-    evidence:
-      - 'Observation: silentblocs fissures ou decolles visibles'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Tenue de route degradee en virage
-    description: tenue de route degradee en virage
-    risk_level: confort
-    evidence:
-      - 'Observation: tenue de route degradee en virage'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Bras de suspension ?
+  pgId: '273'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/bras-de-suspension.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
+      est recommandé'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Bras de suspension a temps ?
+  symptoms:
+  - claquements ou cognements sur routes degradees
+  - vehicule qui tire a droite ou a gauche au freinage
+  - usure irreguliere pneus epaules interieures
+  - vibrations dans le volant a certaines vitesses
+  - silentblocs fissures ou decolles visibles
+  - tenue de route degradee en virage
+  - '**Claquements ou cognements sur routes degradees**'
+  - '**Vehicule qui tire a droite ou a gauche au freinage**'
+  - '**Usure irreguliere pneus epaules interieures**'
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 273
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: bras-de-suspension
+source_type: gamme
+symptoms:
+- description: claquements ou cognements sur routes degradees
+  evidence:
+  - 'Observation: claquements ou cognements sur routes degradees'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Claquements ou cognements sur routes degradees
+  risk_level: degats_volant_moteur
+- description: vehicule qui tire a droite ou a gauche au freinage
+  evidence:
+  - 'Observation: vehicule qui tire a droite ou a gauche au freinage'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Vehicule qui tire a droite ou a gauche au freinage
+  risk_level: securite
+- description: usure irreguliere pneus epaules interieures
+  evidence:
+  - 'Observation: usure irreguliere pneus epaules interieures'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Usure irreguliere pneus epaules interieures
+  risk_level: securite
+- description: vibrations dans le volant a certaines vitesses
+  evidence:
+  - 'Observation: vibrations dans le volant a certaines vitesses'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Vibrations dans le volant a certaines vitesses
+  risk_level: confort
+- description: silentblocs fissures ou decolles visibles
+  evidence:
+  - 'Observation: silentblocs fissures ou decolles visibles'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Silentblocs fissures ou decolles visibles
+  risk_level: confort
+- description: tenue de route degradee en virage
+  evidence:
+  - 'Observation: tenue de route degradee en virage'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Tenue de route degradee en virage
+  risk_level: confort
+title: Bras de suspension
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Bras de suspension - Guide Diagnostic Complet
 
 ## Fonction et Rôle

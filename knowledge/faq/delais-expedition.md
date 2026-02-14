@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Delais expedition"
-source_type: faq
 category: livraison
+doc_family: knowledge
+source_type: faq
+title: FAQ - Delais expedition
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Questions frequentes - Delais d'expedition

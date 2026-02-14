@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Facturation"
-source_type: faq
 category: facturation
+doc_family: knowledge
+source_type: faq
+title: FAQ - Facturation
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Questions frequentes - Facturation

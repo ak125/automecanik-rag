@@ -1,10 +1,11 @@
 ---
-title: "FAQ - Compte client"
-source_type: faq
 category: compte
+doc_family: knowledge
+source_type: faq
+title: FAQ - Compte client
 truth_level: L1
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Questions frequentes - Compte client

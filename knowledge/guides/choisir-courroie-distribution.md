@@ -1,10 +1,11 @@
 ---
-title: "Guide - Choisir son kit distribution"
-source_type: guide
 category: distribution
+doc_family: knowledge
+source_type: guide
+title: Guide - Choisir son kit distribution
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Comment choisir son kit de distribution

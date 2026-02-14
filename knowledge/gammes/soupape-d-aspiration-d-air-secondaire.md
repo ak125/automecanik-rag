@@ -1,67 +1,143 @@
 ---
-entity_type: gamme
-title: Soupape d'aspiration d'air secondaire
-slug: soupape-d-aspiration-d-air-secondaire
-pg_id: 1136
 category: alimentation
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+- if: voyant_tableau_bord_allume
+  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Admettre l'air secondaire pour la depollution a froid
+  confusion_with: {}
   must_be_true:
+  - aspirer
+  - admettre
+  - controler
+  must_not_contain_concepts:
+  - freinage
+  - climatisation
+  - distribution
+  - embrayage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Admettre l'air secondaire pour la depollution a froid
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare l'injection"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Soupape d'aspiration d'air secondaire compatible avec
+      mon vehicule ?
+  - answer: En cas de voyant moteur avec code air secondaire ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Soupape d'aspiration d'air secondaire ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Soupape d'aspiration d'air secondaire sans verification
+      atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Soupape d'aspiration
+    d'air secondaire.
+  id: 1136
+  intro:
+    role: Admettre l'air secondaire pour la depollution a froid
+    syncParts:
     - aspirer
     - admettre
     - controler
-  must_not_contain_concepts:
-    - freinage
-    - climatisation
-    - distribution
-    - embrayage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-  - if: voyant_tableau_bord_allume
-    then: lecture_codes_defaut_obd_et_diagnostic_electronique
-symptoms:
-  - id: S1
-    label: Voyant moteur avec code air secondaire
-    description: voyant moteur avec code air secondaire
-    risk_level: confort
-    evidence:
-      - 'Observation: voyant moteur avec code air secondaire'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Bruit anormal au demarrage a froid
-    description: bruit anormal au demarrage a froid
-    risk_level: confort
-    evidence:
-      - 'Observation: bruit anormal au demarrage a froid'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Ralenti irregulier a froid
-    description: ralenti irregulier a froid
-    risk_level: confort
-    evidence:
-      - 'Observation: ralenti irregulier a froid'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Soupape d'aspiration d'air secondaire ?
+  pgId: '1136'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/soupape-d-aspiration-d-air-secondaire.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
+      électronique'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Soupape d'aspiration d'air secondaire a temps ?
+  symptoms:
+  - voyant moteur avec code air secondaire
+  - bruit anormal au demarrage a froid
+  - ralenti irregulier a froid
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 1136
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: soupape-d-aspiration-d-air-secondaire
+source_type: gamme
+symptoms:
+- description: voyant moteur avec code air secondaire
+  evidence:
+  - 'Observation: voyant moteur avec code air secondaire'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Voyant moteur avec code air secondaire
+  risk_level: confort
+- description: bruit anormal au demarrage a froid
+  evidence:
+  - 'Observation: bruit anormal au demarrage a froid'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Bruit anormal au demarrage a froid
+  risk_level: confort
+- description: ralenti irregulier a froid
+  evidence:
+  - 'Observation: ralenti irregulier a froid'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Ralenti irregulier a froid
+  risk_level: confort
+title: Soupape d'aspiration d'air secondaire
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Soupape d'aspiration d'air secondaire - Guide Diagnostic Complet
 
 ## Fonction et Rôle

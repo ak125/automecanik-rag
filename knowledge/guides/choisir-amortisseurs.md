@@ -1,10 +1,11 @@
 ---
-title: "Guide - Choisir ses amortisseurs"
-source_type: guide
 category: suspension
+doc_family: knowledge
+source_type: guide
+title: Guide - Choisir ses amortisseurs
 truth_level: L2
-verification_status: verified
 updated_at: 2026-01-08
+verification_status: verified
 ---
 
 # Comment choisir ses amortisseurs

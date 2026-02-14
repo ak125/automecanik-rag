@@ -1,88 +1,167 @@
 ---
-entity_type: gamme
-title: Ressort de suspension
-slug: ressort-de-suspension
-pg_id: 188
 category: suspension
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: bruit_anormal_detecte
+  then: localiser_source_et_verifier_usure_mecanique
+- if: kilometrage_eleve_ou_usure_visible
+  then: remplacement_preventif_recommande
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: >-
-    Supporter la charge du vehicule et maintenir la hauteur de caisse. Stocke et
-    restitue l'energie. N'AMORTIT PAS!
+  confusion_with: {}
   must_be_true:
+  - supporter
+  - maintenir la hauteur
+  - porter
+  must_not_contain_concepts:
+  - direction
+  - freinage
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Supporter la charge du vehicule et maintenir la hauteur de caisse.
+    Stocke et restitue l'energie. N'AMORTIT PAS!
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "tenue de route parfaite"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Ressort de suspension compatible avec mon vehicule ?
+  - answer: En cas de vehicule affaisse d un cote avant ou arriere ou de degradation
+      mesurable, il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Ressort de suspension ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Ressort de suspension sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de suspension pour confirmer Ressort de suspension.
+  id: 188
+  intro:
+    role: Supporter la charge du vehicule et maintenir la hauteur de caisse. Stocke
+      et restitue l'energie. N'AMORTIT PAS!
+    syncParts:
     - supporter
     - maintenir la hauteur
     - porter
-  must_not_contain_concepts:
-    - direction
-    - freinage
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: bruit_anormal_detecte
-    then: localiser_source_et_verifier_usure_mecanique
-  - if: kilometrage_eleve_ou_usure_visible
-    then: remplacement_preventif_recommande
-symptoms:
-  - id: S1
-    label: Vehicule affaisse d un cote avant ou arriere
-    description: vehicule affaisse d un cote avant ou arriere
-    risk_level: confort
-    evidence:
-      - 'Observation: vehicule affaisse d un cote avant ou arriere'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Bruit de claquement metallique sur bosses
-    description: bruit de claquement metallique sur bosses
-    risk_level: degats_volant_moteur
-    evidence:
-      - 'Observation: bruit de claquement metallique sur bosses'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Spire de ressort visiblement cassee ou fissuree
-    description: spire de ressort visiblement cassee ou fissuree
-    risk_level: degats_volant_moteur
-    evidence:
-      - 'Observation: spire de ressort visiblement cassee ou fissuree'
-      - Vérification visuelle ou auditive
-  - id: S4
-    label: Tenue de route degradee en virage et freinage
-    description: tenue de route degradee en virage et freinage
-    risk_level: securite
-    evidence:
-      - 'Observation: tenue de route degradee en virage et freinage'
-      - Vérification visuelle ou auditive
-  - id: S5
-    label: Odeur metallique ressort frotte contre
-    description: odeur metallique ressort frotte contre
-    risk_level: confort
-    evidence:
-      - 'Observation: odeur metallique ressort frotte contre'
-      - Vérification visuelle ou auditive
-  - id: S6
-    label: Plus de 150 000 km ou controle technique refuse
-    description: plus de 150 000 km ou controle technique refuse
-    risk_level: confort
-    evidence:
-      - 'Observation: plus de 150 000 km ou controle technique refuse'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Ressort de suspension ?
+  pgId: '188'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/ressort-de-suspension.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
+      internes'
+    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
+      est recommandé'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
+      composants internes'
+    title: Pourquoi remplacer Ressort de suspension a temps ?
+  symptoms:
+  - vehicule affaisse d un cote avant ou arriere
+  - bruit de claquement metallique sur bosses
+  - spire de ressort visiblement cassee ou fissuree
+  - tenue de route degradee en virage et freinage
+  - odeur metallique ressort frotte contre
+  - plus de 150 000 km ou controle technique refuse
+  - '**Bruit de claquement metallique sur bosses**'
+  - '**Spire de ressort visiblement cassee ou fissuree**'
+  - '**Tenue de route degradee en virage et freinage**'
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 188
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: ressort-de-suspension
+source_type: gamme
+symptoms:
+- description: vehicule affaisse d un cote avant ou arriere
+  evidence:
+  - 'Observation: vehicule affaisse d un cote avant ou arriere'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Vehicule affaisse d un cote avant ou arriere
+  risk_level: confort
+- description: bruit de claquement metallique sur bosses
+  evidence:
+  - 'Observation: bruit de claquement metallique sur bosses'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Bruit de claquement metallique sur bosses
+  risk_level: degats_volant_moteur
+- description: spire de ressort visiblement cassee ou fissuree
+  evidence:
+  - 'Observation: spire de ressort visiblement cassee ou fissuree'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Spire de ressort visiblement cassee ou fissuree
+  risk_level: degats_volant_moteur
+- description: tenue de route degradee en virage et freinage
+  evidence:
+  - 'Observation: tenue de route degradee en virage et freinage'
+  - Vérification visuelle ou auditive
+  id: S4
+  label: Tenue de route degradee en virage et freinage
+  risk_level: securite
+- description: odeur metallique ressort frotte contre
+  evidence:
+  - 'Observation: odeur metallique ressort frotte contre'
+  - Vérification visuelle ou auditive
+  id: S5
+  label: Odeur metallique ressort frotte contre
+  risk_level: confort
+- description: plus de 150 000 km ou controle technique refuse
+  evidence:
+  - 'Observation: plus de 150 000 km ou controle technique refuse'
+  - Vérification visuelle ou auditive
+  id: S6
+  label: Plus de 150 000 km ou controle technique refuse
+  risk_level: confort
+title: Ressort de suspension
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Ressort de suspension - Guide Diagnostic Complet
 
 ## Fonction et Rôle

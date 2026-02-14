@@ -1,62 +1,134 @@
 ---
-entity_type: gamme
-title: Bouchon de vidange
-slug: bouchon-de-vidange
-pg_id: 593
 category: moteur
-truth_level: L2
-verification_status: draft
-updated_at: '2026-01-14'
+diagnostic_tree:
+- if: fuite_detectee_ou_niveau_bas
+  then: identifier_origine_fuite_et_verifier_joints
+doc_family: catalog
+entity_type: gamme
 intent_targets:
-  - diagnostic
-  - achat
-  - compatibilite
+- diagnostic
+- achat
+- compatibilite
 mechanical_rules:
-  role_summary: Fermer le circuit d'huile
+  confusion_with: {}
   must_be_true:
+  - fermer
+  - drainer
+  - maintenir
+  must_not_contain_concepts:
+  - reparation
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  role_summary: Fermer le circuit d'huile
+page_contract:
+  antiMistakes:
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  - ❌ "zéro panne"
+  - ❌ "garanti à vie"
+  - ❌ "repare le moteur"
+  arguments:
+  - content: Selection guidee par vehicule et references techniques.
+    icon: check-circle
+    title: Compatibilite verifiee
+  - content: Un remplacement a temps limite les risques de panne secondaire.
+    icon: shield-check
+    title: Priorite securite
+  - content: Le guide structure les controles avant commande.
+    icon: clock
+    title: Decision rapide
+  - content: La verification des pieces associees reduit les retours atelier.
+    icon: list-check
+    title: Montage maitrise
+  faq:
+  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
+      exacte avant montage.
+    question: Comment choisir Bouchon de vidange compatible avec mon vehicule ?
+  - answer: En cas de fuite d huile au niveau du carter ou de degradation mesurable,
+      il faut controler rapidement avant panne secondaire.
+    question: Quand remplacer Bouchon de vidange ?
+  - answer: Le montage peut exiger controles de couple, alignement et references.
+      En cas de doute, appliquez la procedure constructeur.
+    question: Puis-je monter Bouchon de vidange sans verification atelier ?
+  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de moteur pour confirmer Bouchon de vidange.
+  id: 593
+  intro:
+    role: Bouchon de vidange intervient directement sur moteur du vehicule. Un choix
+      conforme protege la combustion et limite les pannes secondaires.
+    syncParts:
     - fermer
     - drainer
     - maintenir
-  must_not_contain_concepts:
-    - reparation
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
-  confusion_with: {}
-diagnostic_tree:
-  - if: fuite_detectee_ou_niveau_bas
-    then: identifier_origine_fuite_et_verifier_joints
-symptoms:
-  - id: S1
-    label: Fuite d huile au niveau du carter
-    description: fuite d huile au niveau du carter
-    risk_level: confort
-    evidence:
-      - 'Observation: fuite d huile au niveau du carter'
-      - Vérification visuelle ou auditive
-  - id: S2
-    label: Difficulte a visser devisser le bouchon
-    description: difficulte a visser devisser le bouchon
-    risk_level: confort
-    evidence:
-      - 'Observation: difficulte a visser devisser le bouchon'
-      - Vérification visuelle ou auditive
-  - id: S3
-    label: Filetage endommage
-    description: filetage endommage
-    risk_level: confort
-    evidence:
-      - 'Observation: filetage endommage'
-      - Vérification visuelle ou auditive
+    title: A quoi sert Bouchon de vidange ?
+  pgId: '593'
+  quality:
+    flags:
+    - FAQ_TOO_SMALL
+    - TOO_SHORT
+    score: 76
+    source: reindex:gammes/bouchon-de-vidange.md
+    version: GammeContentContract.v1
+  risk:
+    conclusion: Un diagnostic precoce reduit le risque technique et financier.
+    consequences:
+    - '**Défaillance progressive** - Usure normale due à l''utilisation'
+    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
+      défavorable'
+    - ❌ "homologué CT"
+    - ❌ "sécurité garantie"
+    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
+    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+    title: Pourquoi remplacer Bouchon de vidange a temps ?
+  symptoms:
+  - fuite d huile au niveau du carter
+  - difficulte a visser devisser le bouchon
+  - filetage endommage
+  timing:
+    km: Controle a chaque revision constructeur
+    note: Ne pas attendre la panne complete pour intervenir.
+    title: Quand intervenir ?
+    years: Controle annuel recommande
+pg_id: 593
 purchase_guardrails:
-  requires_vehicle: true
   forbidden_terms:
-    - universel
-    - tous modèles
-    - compatible tout véhicule
-    - adaptable
+  - universel
+  - tous modèles
+  - compatible tout véhicule
+  - adaptable
+  requires_vehicle: true
+slug: bouchon-de-vidange
+source_type: gamme
+symptoms:
+- description: fuite d huile au niveau du carter
+  evidence:
+  - 'Observation: fuite d huile au niveau du carter'
+  - Vérification visuelle ou auditive
+  id: S1
+  label: Fuite d huile au niveau du carter
+  risk_level: confort
+- description: difficulte a visser devisser le bouchon
+  evidence:
+  - 'Observation: difficulte a visser devisser le bouchon'
+  - Vérification visuelle ou auditive
+  id: S2
+  label: Difficulte a visser devisser le bouchon
+  risk_level: confort
+- description: filetage endommage
+  evidence:
+  - 'Observation: filetage endommage'
+  - Vérification visuelle ou auditive
+  id: S3
+  label: Filetage endommage
+  risk_level: confort
+title: Bouchon de vidange
+truth_level: L2
+updated_at: '2026-01-14'
+verification_status: draft
 ---
+
 # Bouchon de vidange - Guide Diagnostic Complet
 
 ## Fonction et Rôle
