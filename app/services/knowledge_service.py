@@ -426,6 +426,7 @@ class KnowledgeService:
             "direction": [r"direction", r"cr[eé]maill[eè]re", r"rotule"],
             "embrayage": [r"embrayage", r"but[eé]e", r"volant moteur"],
             "transmission": [r"transmission", r"cardan", r"bo[iî]te"],
+            "electrique": [r"alternateur", r"g[eé]n[eé]rateur", r"d[eé]marreur", r"stator", r"r[eé]gulateur", r"batterie"],
             "livraison": [r"livraison", r"d[eé]lai", r"exp[eé]dition"],
             "retours": [r"retour", r"remboursement", r"r[eé]tractation"],
             "paiement": [r"paiement", r"carte", r"virement", r"facture"],

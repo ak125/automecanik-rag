@@ -25,7 +25,8 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/admin", tags=["Admin"])
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 PDF_INGEST_JOBS: dict[str, dict] = {}
-PDF_INGEST_JOBS_STORE = Path(os.getenv("PDF_INGEST_JOBS_STORE", "/tmp/rag_pdf_ingest_jobs.json"))
+_settings = get_settings()
+PDF_INGEST_JOBS_STORE = Path(os.getenv("PDF_INGEST_JOBS_STORE", _settings.pdf_ingest_jobs_store))
 
 
 # ============================================
@@ -105,7 +106,7 @@ async def verify_api_key(x_rag_api_key: str = Header(None, alias="X-RAG-API-Key"
 CHUNK_SIZE = 2000
 CHUNK_OVERLAP = 200
 BATCH_SIZE = 10
-FASTEMBED_MODEL = "BAAI/bge-small-en-v1.5"
+FASTEMBED_MODEL = _settings.fastembed_model
 
 
 def get_context(request: Request) -> dict:
@@ -511,7 +512,7 @@ async def trigger_reindex(request: Request):
 
     import subprocess
     try:
-        subprocess.Popen(["python", "scripts/build_index.py"], cwd="/opt/automecanik/rag")
+        subprocess.Popen(["python", "scripts/tools/build_index.py"], cwd="/opt/automecanik/rag")
         msg, ok = "Reindex started in background", True
     except Exception as e:
         msg, ok = f"Failed: {e}", False
@@ -545,11 +546,11 @@ async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_
         raise HTTPException(status_code=400, detail=f"No PDF found in: {input_dir}")
 
     app_root = Path(os.getenv("RAG_APP_ROOT", "/app"))
-    if not (app_root / "scripts" / "import_and_index_pdfs.sh").exists():
+    if not (app_root / "scripts" / "importers" / "import_and_index_pdfs.sh").exists():
         # Local/dev fallback outside container
         app_root = Path("/opt/automecanik/rag")
 
-    ingest_script = app_root / "scripts" / "ingest_pdfs.py"
+    ingest_script = app_root / "scripts" / "ingestors" / "ingest_pdfs.py"
     reindex_script = app_root / "scripts" / "reindex.py"
     if not ingest_script.exists():
         raise HTTPException(status_code=500, detail=f"ingest script not found: {ingest_script}")
@@ -557,12 +558,12 @@ async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_
         raise HTTPException(status_code=500, detail=f"reindex script not found: {reindex_script}")
 
     job_id = uuid.uuid4().hex[:12]
-    logs_dir = Path(os.getenv("PDF_INGEST_LOG_DIR", "/tmp/rag_pdf_ingest_logs"))
+    logs_dir = Path(os.getenv("PDF_INGEST_LOG_DIR", _settings.pdf_ingest_log_dir))
     logs_dir.mkdir(parents=True, exist_ok=True)
     log_path = logs_dir / f"pdf_ingest_{job_id}.log"
     rc_path = logs_dir / f"pdf_ingest_{job_id}.rc"
 
-    import_base_dir = Path(os.getenv("PDF_IMPORT_KNOWLEDGE_DIR", "/tmp/knowledge-import"))
+    import_base_dir = Path(os.getenv("PDF_IMPORT_KNOWLEDGE_DIR", _settings.knowledge_import_dir))
     import_dir = import_base_dir / job_id
     low_memory = os.getenv("LOW_MEMORY", "1")
     reindex_batch_size = os.getenv("REINDEX_BATCH_SIZE", "16")
@@ -571,10 +572,12 @@ async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_
 
     cmd_base = (
         "set -euo pipefail; "
+        "exec 8>/tmp/rag-global.lock; "
+        "if ! flock -n 8; then echo 'Another RAG operation active (global lock), aborting'; exit 1; fi; "
         f"cd '{app_root}'; "
         f"rm -rf '{import_dir}'; "
         f"mkdir -p '{import_dir}'; "
-        f"ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
+        f"ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingestors/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
         "if [ \""
         f"{low_memory}"
         "\" = \"1\" ]; then "
@@ -698,49 +701,34 @@ def _parse_frontmatter(content: str) -> dict:
 
 
 def _chunk_content(content: str, source_path: str, metadata: dict) -> List[dict]:
-    """Chunk content into smaller pieces with deterministic UUIDs."""
+    """Chunk content into smaller pieces with deterministic UUIDs.
+
+    Uses TokenAwareChunker for heading-aware, FAQ/procedure-aware splitting.
+    """
+    from orchestrator.processors.chunker import TokenAwareChunker
+
+    chunker = TokenAwareChunker(
+        chunk_size=CHUNK_SIZE // TokenAwareChunker.CHARS_PER_TOKEN,
+        chunk_overlap=CHUNK_OVERLAP // TokenAwareChunker.CHARS_PER_TOKEN,
+    )
+    raw_chunks = chunker.chunk(content)
+
     chunks = []
-    start = 0
-    chunk_index = 0
-
-    while start < len(content):
-        end = min(start + CHUNK_SIZE, len(content))
-
-        # Try to break at newline
-        if end < len(content):
-            newline_pos = content.rfind("\n", start, end)
-            if newline_pos > start + CHUNK_SIZE // 2:
-                end = newline_pos + 1
-
-        chunk_content = content[start:end]
-
-        # Generate deterministic UUID
+    for rc in raw_chunks:
         chunk_uuid = str(uuid.uuid5(
             uuid.NAMESPACE_DNS,
-            f"{source_path}:{chunk_index}"
+            f"{source_path}:{rc['chunk_index']}"
         ))
-
         chunks.append({
             "uuid": chunk_uuid,
-            "content": chunk_content,
+            "content": rc["content"],
             "title": metadata.get("title", Path(source_path).stem),
             "source_path": source_path,
             "source_type": "knowledge",
             "truth_level": metadata.get("truth_level", "L2"),
             "namespace": f"knowledge:{metadata.get('entity_type', 'unknown')}",
-            "chunk_index": chunk_index,
+            "chunk_index": rc["chunk_index"],
         })
-
-        chunk_index += 1
-
-        # Ensure forward progress and terminate cleanly on final chunk.
-        if end >= len(content):
-            break
-
-        next_start = end - CHUNK_OVERLAP
-        if next_start <= start:
-            next_start = end
-        start = next_start
 
     return chunks
 

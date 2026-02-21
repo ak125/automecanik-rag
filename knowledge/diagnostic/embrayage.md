@@ -1,6 +1,7 @@
 ---
 category: embrayage
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Embrayage
 truth_level: L2

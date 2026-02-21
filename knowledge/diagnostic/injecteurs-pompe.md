@@ -1,6 +1,7 @@
 ---
 category: injection
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Injecteurs et systeme injection
 truth_level: L2

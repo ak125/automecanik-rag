@@ -1,6 +1,7 @@
 ---
 category: suspension
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Amortisseurs et suspension
 truth_level: L2

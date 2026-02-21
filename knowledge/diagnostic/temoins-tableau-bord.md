@@ -1,6 +1,7 @@
 ---
 category: electronique
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Témoins tableau de bord
 truth_level: L1

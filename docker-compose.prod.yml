@@ -26,6 +26,9 @@ services:
       - ./knowledge:/knowledge:ro
       - ./rag_config.yml:/app/rag_config.yml:ro
       - ./pdfs:/app/pdfs:ro
+      - ./scripts:/app/scripts:ro
+      - ./app:/app/app:ro
+      - ./orchestrator:/app/orchestrator:ro
     depends_on:
       weaviate:
         condition: service_healthy

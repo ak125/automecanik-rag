@@ -60,6 +60,7 @@ class Settings(BaseSettings):
 
     # Weaviate Vector Database
     weaviate_url: str = "http://weaviate:8080"
+    weaviate_grpc_port: int = 50051
     weaviate_collection_catalog: str = _yaml_config.get("vector_store", {}).get("catalog_class_name", "KB_Catalog")
     weaviate_collection_diagnostic: str = _yaml_config.get("vector_store", {}).get("diagnostic_class_name", "KB_Diagnostic")
     weaviate_collection_knowledge: str = _yaml_config.get("vector_store", {}).get("knowledge_class_name", "KB_Knowledge")
@@ -84,6 +85,13 @@ class Settings(BaseSettings):
     # Embeddings (sentence-transformers - GRATUIT)
     embedding_model: str = "all-MiniLM-L6-v2"
     embedding_dimension: int = 384  # all-MiniLM-L6-v2 outputs 384 dimensions
+    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+
+    # Reindex chunking params
+    reindex_target_max_tokens: int = 900  # Max tokens per chunk in reindex.py
+
+    # Temp file paths (centralized)
+    tmp_base_dir: str = "/tmp"
 
     # RAG Settings (from rag_config.yml)
     retrieval_top_k: int = _yaml_config.get("retrieval", {}).get("top_k", 8)
@@ -165,6 +173,20 @@ class Settings(BaseSettings):
         """True if RAG is in quarantine mode (validation required)."""
         return self.mode == "quarantine" and self.quarantine_enabled
 
+    # ========== TEMP FILE PATHS ==========
+
+    @property
+    def pdf_ingest_jobs_store(self) -> str:
+        return f"{self.tmp_base_dir}/rag_pdf_ingest_jobs.json"
+
+    @property
+    def pdf_ingest_log_dir(self) -> str:
+        return f"{self.tmp_base_dir}/rag_pdf_ingest_logs"
+
+    @property
+    def knowledge_import_dir(self) -> str:
+        return f"{self.tmp_base_dir}/knowledge-import"
+
     # ========== LANGGRAPH ==========
 
     @property
@@ -230,6 +252,7 @@ class Settings(BaseSettings):
         logger.info(f"Quarantine Fail-Fast: {self.quarantine_fail_fast}")
         logger.info(f"LangGraph Enabled: {self.langgraph_enabled}")
         logger.info(f"Weaviate URL: {self.weaviate_url}")
+        logger.info(f"Weaviate gRPC Port: {self.weaviate_grpc_port}")
         logger.info(
             "Collections: "
             f"catalog={self.weaviate_collection_catalog}, "
@@ -240,9 +263,12 @@ class Settings(BaseSettings):
         )
         logger.info(f"Embedding Model: {self.embedding_model}")
         logger.info(f"Embedding Dimension: {self.embedding_dimension}")
+        logger.info(f"FastEmbed Model: {self.fastembed_model}")
+        logger.info(f"Reindex Max Tokens: {self.reindex_target_max_tokens}")
         logger.info(f"Min Score Threshold: {self.min_score_threshold}")
         logger.info(f"Min Results Required: {self.min_results_required}")
         logger.info(f"Kill Switch (ai_prod_write): {self.ai_prod_write}")
+        logger.info(f"Tmp Base Dir: {self.tmp_base_dir}")
         logger.info("=" * 50)
 
 

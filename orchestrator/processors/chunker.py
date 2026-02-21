@@ -5,6 +5,9 @@ with `chunk_overlap` tokens of overlap between consecutive chunks.
 
 Features:
 - **Heading-aware splitting** (H1/H2/H3 are primary boundaries)
+- **FAQ detection** — Q/A pairs kept as atomic chunks
+- **Procedure detection** — numbered step lists kept together when possible
+- **Small chunk merging** — undersized chunks merged within same heading
 - Token-aware splitting within sections that exceed chunk_size
 - Respects sentence and paragraph boundaries
 - Preserves heading context as prefix in each chunk
@@ -19,6 +22,13 @@ logger = logging.getLogger(__name__)
 
 # Regex to match markdown headings (H1-H3)
 _HEADING_RE = re.compile(r"^(#{1,3})\s+(.+)$", re.MULTILINE)
+
+# FAQ patterns: "Q:", "Question:", or lines ending with "?"
+_FAQ_LINE_RE = re.compile(r"^(Q\s*[:\-]|Question\s*[:\-])", re.IGNORECASE)
+
+# Procedure keywords (French + English)
+_PROCEDURE_KEYWORDS = ["étape", "etape", "procédure", "procedure", "tutoriel", "comment faire", "step"]
+_PROCEDURE_NUMBERED_RE = re.compile(r"^\s*\d+[\.)]\s+", re.MULTILINE)
 
 
 class TokenAwareChunker:
@@ -86,7 +96,12 @@ class TokenAwareChunker:
         return self._chunk_by_tokens(text)
 
     def _chunk_by_headings(self, text: str) -> List[dict]:
-        """Split text by headings, then sub-chunk oversized sections."""
+        """Split text by headings, then sub-chunk oversized sections.
+
+        Detects FAQ and procedure sections for special handling:
+        - FAQ: each Q/A pair becomes an atomic chunk
+        - Procedure: kept as single chunk if within size limit
+        """
         sections = self._split_into_sections(text)
         char_limit = self.chunk_size * self.CHARS_PER_TOKEN
 
@@ -102,7 +117,56 @@ class TokenAwareChunker:
             if not body:
                 continue
 
-            # Build content: prefix heading into the chunk body for context
+            title_hint = (heading or "").lower()
+
+            # --- FAQ detection ---
+            if "faq" in title_hint or _FAQ_LINE_RE.search(body):
+                faq_chunks = self._split_faq_chunks(body)
+                if faq_chunks:
+                    for fc in faq_chunks:
+                        if heading:
+                            prefix = f"{'#' * heading_level} {heading}\n\n"
+                            fc_content = prefix + fc
+                        else:
+                            fc_content = fc
+                        chunks.append({
+                            "content": fc_content.strip(),
+                            "chunk_index": chunk_index,
+                            "start_char": section_start,
+                            "end_char": section_start + len(body),
+                            "token_estimate": len(fc_content.strip()) // self.CHARS_PER_TOKEN,
+                            "heading": heading,
+                            "heading_level": heading_level,
+                            "chunk_type": "faq",
+                            "is_atomic": True,
+                        })
+                        chunk_index += 1
+                    continue
+
+            # --- Procedure detection ---
+            if self._is_procedure(body):
+                if heading:
+                    prefix = f"{'#' * heading_level} {heading}\n\n"
+                    full_content = prefix + body
+                else:
+                    full_content = body
+                if len(full_content) <= char_limit:
+                    chunks.append({
+                        "content": full_content.strip(),
+                        "chunk_index": chunk_index,
+                        "start_char": section_start,
+                        "end_char": section_start + len(body),
+                        "token_estimate": len(full_content.strip()) // self.CHARS_PER_TOKEN,
+                        "heading": heading,
+                        "heading_level": heading_level,
+                        "chunk_type": "procedure",
+                        "is_atomic": True,
+                    })
+                    chunk_index += 1
+                    continue
+                # Procedure too large: fall through to token-based splitting
+
+            # --- Standard text handling ---
             if heading:
                 prefix = f"{'#' * heading_level} {heading}\n\n"
                 full_content = prefix + body
@@ -121,6 +185,8 @@ class TokenAwareChunker:
                         "token_estimate": len(full_content.strip()) // self.CHARS_PER_TOKEN,
                         "heading": heading,
                         "heading_level": heading_level,
+                        "chunk_type": "text",
+                        "is_atomic": False,
                     })
                     chunk_index += 1
             else:
@@ -135,10 +201,90 @@ class TokenAwareChunker:
                     sc["chunk_index"] = chunk_index
                     sc["heading"] = heading
                     sc["heading_level"] = heading_level
+                    sc["chunk_type"] = "text"
+                    sc["is_atomic"] = False
                     chunks.append(sc)
                     chunk_index += 1
 
+        # --- Small chunk merging (within same heading) ---
+        chunks = self._merge_small_chunks(chunks)
+
         return chunks
+
+    # ----- FAQ / Procedure / Merge helpers -----
+
+    @staticmethod
+    def _split_faq_chunks(text: str) -> List[str]:
+        """Split FAQ-like text into individual Q/A pair chunks."""
+        lines = text.splitlines()
+        chunks: List[str] = []
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            if _FAQ_LINE_RE.match(line) or line.endswith("?"):
+                q_lines = [lines[i]]
+                i += 1
+                while i < len(lines):
+                    nxt = lines[i].strip()
+                    if _FAQ_LINE_RE.match(nxt) or (nxt.endswith("?") and not nxt.startswith(" ")):
+                        break
+                    if nxt.startswith("## ") or nxt.startswith("### "):
+                        break
+                    q_lines.append(lines[i])
+                    i += 1
+                chunk = "\n".join(q_lines).strip()
+                if chunk:
+                    chunks.append(chunk)
+                continue
+            i += 1
+        return chunks
+
+    @staticmethod
+    def _is_procedure(text: str) -> bool:
+        """Detect procedure/tutorial content (numbered steps + keywords)."""
+        t = text.lower()
+        has_keyword = any(kw in t for kw in _PROCEDURE_KEYWORDS)
+        has_numbered = bool(_PROCEDURE_NUMBERED_RE.search(text))
+        return has_keyword and has_numbered
+
+    def _merge_small_chunks(self, chunks: List[dict]) -> List[dict]:
+        """Merge undersized non-atomic chunks within the same heading.
+
+        Rules:
+        - Never merge atomic chunks (FAQ, procedure)
+        - Never merge across different headings
+        - Only merge if combined size <= chunk_size
+        """
+        if len(chunks) < 2:
+            return chunks
+
+        min_chars = self.min_chunk_size * self.CHARS_PER_TOKEN
+        max_chars = self.chunk_size * self.CHARS_PER_TOKEN
+        merged: List[dict] = []
+
+        for chunk in chunks:
+            if chunk.get("is_atomic"):
+                merged.append(chunk)
+                continue
+
+            if (merged
+                    and not merged[-1].get("is_atomic")
+                    and merged[-1].get("heading") == chunk.get("heading")
+                    and len(merged[-1]["content"]) < min_chars):
+                combined = merged[-1]["content"] + "\n\n" + chunk["content"]
+                if len(combined) <= max_chars:
+                    merged[-1]["content"] = combined
+                    merged[-1]["token_estimate"] = len(combined) // self.CHARS_PER_TOKEN
+                    merged[-1]["end_char"] = chunk.get("end_char", merged[-1]["end_char"])
+                    continue
+
+            merged.append(chunk)
+
+        # Re-index after merging
+        for i, ch in enumerate(merged):
+            ch["chunk_index"] = i
+
+        return merged
 
     def _split_into_sections(self, text: str) -> List[dict]:
         """Split text into sections based on heading positions.
@@ -216,6 +362,8 @@ class TokenAwareChunker:
                     "token_estimate": len(chunk_content) // self.CHARS_PER_TOKEN,
                     "heading": None,
                     "heading_level": None,
+                    "chunk_type": "text",
+                    "is_atomic": False,
                 })
                 chunk_index += 1
 

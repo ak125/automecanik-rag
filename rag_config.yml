@@ -111,8 +111,8 @@ security:
   rate_limit_rpm: 60
   max_request_size_bytes: 1048576  # 1MB
   request_timeout_seconds: 30
-  enable_pii_detection: true
-  enable_injection_detection: true
+  # enable_pii_detection: REMOVED — not implemented (Phase F cleanup 2026-02-21)
+  # enable_injection_detection: REMOVED — not implemented (Phase F cleanup 2026-02-21)
 
 # =============================================================================
 # GATING - Refusal-first policy
@@ -139,20 +139,10 @@ logging:
   audit_enabled: true
 
 # =============================================================================
-# WIKI.JS - Source humaine editable
+# WIKI.JS - REMOVED (Phase F cleanup 2026-02-21)
+# Wiki.js git sync and GraphQL API were never implemented.
+# If re-enabled, add config here and implement in wiki_ingester.py.
 # =============================================================================
-wiki:
-  enabled: true
-  # Git sync (backup automatique Wiki.js)
-  git_repo: "${WIKI_GIT_REPO:-git@github.com:automecanik/wiki-backup.git}"
-  branch: main
-  sync_interval_minutes: 5
-  # Export
-  export_path: "/opt/automecanik/rag/wiki_export"
-  export_format: markdown  # markdown | json
-  # GraphQL API (alternative au Git sync)
-  graphql_url: "${WIKI_GRAPHQL_URL:-http://wiki:3000/graphql}"
-  graphql_enabled: false  # Utiliser Git sync par defaut
 
 # =============================================================================
 # LANGGRAPH - Orchestrateur runtime

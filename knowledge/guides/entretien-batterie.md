@@ -1,6 +1,7 @@
 ---
 category: electrique
 doc_family: knowledge
+site_section: guide-achat
 source_type: guide
 title: Guide - Entretien et choix batterie
 truth_level: L2

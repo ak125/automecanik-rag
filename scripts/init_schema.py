@@ -2,11 +2,20 @@
 """Initialize Weaviate schema for RAG service (100% gratuit - sans OpenAI)."""
 
 import os
+import sys
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 import weaviate
 from weaviate.classes.config import Property, DataType, Configure
+from app.config import get_settings
 
 # Weaviate connection
-WEAVIATE_URL = os.getenv("WEAVIATE_URL", "http://localhost:8080")
+_settings = get_settings()
+WEAVIATE_URL = _settings.weaviate_url
 TARGET_COLLECTIONS = [
     "KB_Catalog",
     "KB_Diagnostic",

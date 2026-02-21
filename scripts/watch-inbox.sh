@@ -30,6 +30,6 @@ while read -r dir event file; do
   # Petit delai pour s'assurer que le fichier est complet (rsync, scp...)
   sleep 5
   log "Launching pipeline for $file"
-  /opt/automecanik/rag/scripts/auto-enrich-pipeline.sh 2>&1 | tee -a "$LOG" || true
+  /opt/automecanik/rag/scripts/pipeline/auto-enrich-pipeline.sh 2>&1 | tee -a "$LOG" || true
   log "Pipeline finished for $file"
 done

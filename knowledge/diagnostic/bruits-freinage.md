@@ -1,6 +1,7 @@
 ---
 category: freinage
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Bruits de freinage
 truth_level: L2

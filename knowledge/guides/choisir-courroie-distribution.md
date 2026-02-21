@@ -1,6 +1,7 @@
 ---
 category: distribution
 doc_family: knowledge
+site_section: guide-achat
 source_type: guide
 title: Guide - Choisir son kit distribution
 truth_level: L2

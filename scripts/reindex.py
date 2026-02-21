@@ -19,20 +19,21 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from app.services.gamme_page_contract import build_and_validate_gamme_page_contract
+from app.config import get_settings
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-DEFAULT_KNOWLEDGE_PATH = "/knowledge"
-DEFAULT_WEAVIATE_URL = "http://weaviate:8080"
-DEFAULT_WEAVIATE_GRPC_PORT = 50051
+_settings = get_settings()
+DEFAULT_KNOWLEDGE_PATH = _settings.knowledge_path
+DEFAULT_WEAVIATE_URL = _settings.weaviate_url
+DEFAULT_WEAVIATE_GRPC_PORT = _settings.weaviate_grpc_port
 DEFAULT_COLLECTION = "KB_Knowledge"
 DEFAULT_BATCH_SIZE = int(os.environ.get("REINDEX_BATCH_SIZE", "10"))
-FASTEMBED_MODEL = "BAAI/bge-small-en-v1.5"
+FASTEMBED_MODEL = _settings.fastembed_model
 ALLOWED_ENVIRONMENTS = frozenset(["dev", "development", "ci", "staging", "test"])
 
-TARGET_MIN_TOKENS = 350
-TARGET_MAX_TOKENS = 900
+TARGET_MAX_TOKENS = _settings.reindex_target_max_tokens
 CANONICAL_MIN_TOKENS = 100
 CANONICAL_MAX_TOKENS = 250
 
@@ -68,6 +69,22 @@ DIR_TO_SOURCE_TYPE = {
     "vehicle": "vehicle", "vehicles": "vehicle",
     "policy": "policy", "policies": "policy", "knowledge": "knowledge", "canonical": "canonical",
 }
+
+# V3 gamme template: H2 heading (lowercase) -> per-chunk intent override
+V3_H2_INTENT_MAP = {
+    "reference technique": "define",
+    "diagnostic": "troubleshoot",
+    "guide d achat": "choose",
+    "entretien": "maintain",
+}
+
+
+def is_v3_gamme(metadata: Dict[str, Any], content: str) -> bool:
+    """Detect if a gamme file uses the V3 template (4 canonical H2 sections)."""
+    if str(metadata.get("source_type", "")).lower() != "gamme":
+        return False
+    content_lower = content.lower()
+    return all(f"## {h}" in content_lower for h in V3_H2_INTENT_MAP)
 
 DOMAIN_KEYWORDS = {
     "freinage": ["frein", "disque", "plaquette", "etrier", "mastervac", "abs"],
@@ -273,181 +290,39 @@ def normalize_created_at(metadata: Dict[str, Any], path: Path) -> str:
     return datetime.fromtimestamp(path.stat().st_ctime, tz=timezone.utc).isoformat()
 
 
-def split_sections_by_headings(content: str) -> List[Tuple[str, str]]:
-    lines = content.splitlines()
-    sections: List[Tuple[str, List[str]]] = []
-    current_heading = ""
-    current_lines: List[str] = []
-
-    for line in lines:
-        if line.startswith("## ") or line.startswith("### "):
-            if current_lines:
-                sections.append((current_heading, current_lines))
-            current_heading = line.lstrip("#").strip()
-            current_lines = [line]
-        else:
-            current_lines.append(line)
-
-    if current_lines:
-        sections.append((current_heading, current_lines))
-
-    result = []
-    for heading, section_lines in sections:
-        text = "\n".join(section_lines).strip()
-        if text:
-            result.append((heading, text))
-    return result
 
 
-def split_faq_chunks(section_text: str) -> List[str]:
-    lines = section_text.splitlines()
-    chunks = []
-    i = 0
-    while i < len(lines):
-        line = lines[i].strip()
-        if re.match(r"^(Q\s*[:\-]|Question\s*[:\-])", line, flags=re.IGNORECASE) or line.endswith("?"):
-            q_lines = [lines[i]]
-            i += 1
-            a_lines = []
-            while i < len(lines):
-                nxt = lines[i].strip()
-                if re.match(r"^(Q\s*[:\-]|Question\s*[:\-])", nxt, flags=re.IGNORECASE):
-                    break
-                if nxt.startswith("## ") or nxt.startswith("### "):
-                    break
-                a_lines.append(lines[i])
-                i += 1
-            chunk = "\n".join(q_lines + a_lines).strip()
-            if chunk:
-                chunks.append(chunk)
-            continue
-        i += 1
-    return chunks
+def chunk_document_anchored(doc: Dict[str, Any]) -> List[Tuple[str, str]]:
+    """Chunk document content by headings.
 
+    Delegates splitting to TokenAwareChunker (FAQ, procedure, merge-aware).
+    Returns list of (chunk_text, parent_h2) tuples for downstream enrichment.
+    """
+    from orchestrator.processors.chunker import TokenAwareChunker
 
-def contains_procedure(section_text: str) -> bool:
-    t = section_text.lower()
-    return any(k in t for k in ["étape", "etape", "procédure", "procedure", "tutoriel", "comment faire"]) and bool(re.search(r"^\s*\d+[\.)]\s+", section_text, flags=re.MULTILINE))
+    chunker = TokenAwareChunker(
+        chunk_size=TARGET_MAX_TOKENS,
+        chunk_overlap=50,
+        min_chunk_size=50,  # Low threshold: original code never dropped small sections
+    )
+    raw_chunks = chunker.chunk(doc["content"])
 
-
-def split_by_token_window(text: str, min_tokens: int, max_tokens: int) -> List[str]:
-    paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
-    if not paragraphs:
+    if not raw_chunks:
         return []
 
-    chunks: List[str] = []
-    buf: List[str] = []
-    buf_tokens = 0
+    # Derive parent_h2 from heading metadata (track last H2 seen)
+    result: List[Tuple[str, str]] = []
+    last_h2 = ""
+    for chunk in raw_chunks:
+        heading = chunk.get("heading") or ""
+        level = chunk.get("heading_level")
+        if level == 2:
+            last_h2 = heading
+        text = chunk["content"].strip()
+        if text:
+            result.append((text, last_h2))
 
-    for para in paragraphs:
-        p_tokens = estimate_tokens(para)
-        if p_tokens >= max_tokens:
-            sentences = re.split(r"(?<=[\.!?])\s+", para)
-            for sent in sentences:
-                s = sent.strip()
-                if not s:
-                    continue
-                s_tokens = estimate_tokens(s)
-                if buf_tokens + s_tokens > max_tokens and buf:
-                    chunks.append("\n\n".join(buf).strip())
-                    buf, buf_tokens = [], 0
-                buf.append(s)
-                buf_tokens += s_tokens
-                if buf_tokens >= min_tokens:
-                    chunks.append("\n\n".join(buf).strip())
-                    buf, buf_tokens = [], 0
-            continue
-
-        if buf_tokens + p_tokens > max_tokens and buf:
-            chunks.append("\n\n".join(buf).strip())
-            buf, buf_tokens = [], 0
-
-        buf.append(para)
-        buf_tokens += p_tokens
-
-        if buf_tokens >= min_tokens:
-            chunks.append("\n\n".join(buf).strip())
-            buf, buf_tokens = [], 0
-
-    if buf:
-        chunks.append("\n\n".join(buf).strip())
-
-    return [c for c in chunks if c]
-
-
-def is_faq_like(chunk: str) -> bool:
-    c = chunk.strip()
-    return bool(re.match(r"^(Q\s*[:\-]|Question\s*[:\-])", c, flags=re.IGNORECASE)) or ("?" in c and "\n" in c and len(c) < 1200)
-
-
-def merge_small_chunks(chunks: List[str], min_tokens: int, max_tokens: int) -> List[str]:
-    merged: List[str] = []
-    buffer = ""
-
-    def flush_buffer():
-        nonlocal buffer
-        if buffer.strip():
-            merged.append(buffer.strip())
-            buffer = ""
-
-    for chunk in chunks:
-        ch = chunk.strip()
-        if not ch:
-            continue
-
-        if is_faq_like(ch) or contains_procedure(ch):
-            flush_buffer()
-            merged.append(ch)
-            continue
-
-        if not buffer:
-            buffer = ch
-            continue
-
-        candidate = buffer + "\n\n" + ch
-        if estimate_tokens(candidate) <= max_tokens:
-            buffer = candidate
-        else:
-            if estimate_tokens(buffer) < min_tokens and merged and not is_faq_like(merged[-1]):
-                prev = merged.pop()
-                combo = prev + "\n\n" + buffer
-                if estimate_tokens(combo) <= max_tokens:
-                    merged.append(combo)
-                else:
-                    merged.extend([prev, buffer])
-            else:
-                merged.append(buffer)
-            buffer = ch
-
-    flush_buffer()
-    return merged
-
-
-def chunk_document_anchored(doc: Dict[str, Any]) -> List[str]:
-    sections = split_sections_by_headings(doc["content"])
-    if not sections:
-        return split_by_token_window(doc["content"], TARGET_MIN_TOKENS, TARGET_MAX_TOKENS)
-
-    final_chunks: List[str] = []
-    for heading, section_text in sections:
-        title_hint = heading.lower()
-
-        if "faq" in title_hint or re.search(r"\bq\s*[:\-]", section_text, flags=re.IGNORECASE):
-            faq_chunks = split_faq_chunks(section_text)
-            if faq_chunks:
-                final_chunks.extend(faq_chunks)
-                continue
-
-        if contains_procedure(section_text):
-            if estimate_tokens(section_text) <= TARGET_MAX_TOKENS:
-                final_chunks.append(section_text)
-            else:
-                final_chunks.extend(split_by_token_window(section_text, TARGET_MIN_TOKENS, TARGET_MAX_TOKENS))
-            continue
-
-        final_chunks.extend(split_by_token_window(section_text, TARGET_MIN_TOKENS, TARGET_MAX_TOKENS))
-
-    return [c for c in merge_small_chunks(final_chunks, TARGET_MIN_TOKENS, TARGET_MAX_TOKENS) if c.strip()]
+    return result
 
 
 def build_canonical_snippet(text: str) -> str:
@@ -506,6 +381,7 @@ def iter_documents(knowledge_path: str, max_files: int = 0) -> Generator[Dict[st
                     logger.warning("gamme_contract warning %s: %s", relative_path, warning)
 
             yield {
+                "_raw_metadata": metadata,
                 "source_path": relative_path,
                 "content": content,
                 "title": str(metadata.get("title", md_file.stem)),
@@ -668,7 +544,7 @@ def resolve_namespace(source_type: str) -> str:
     return f"knowledge:{st or 'general'}"
 
 
-def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None) -> Dict[str, Any]:
+def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None, chunk_intent: str | None = None) -> Dict[str, Any]:
     suffix = "canonical" if canonical else "body"
     page_numbers = page_numbers or []
     bbox_ref = extract_bbox_ref(chunk_text)
@@ -706,7 +582,7 @@ def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, p
         "title": doc["title"],
         "content": clean_chunk,
         "anchors": doc["anchors"],
-        "intent": doc["intent"],
+        "intent": chunk_intent if chunk_intent and chunk_intent in ALLOWED_INTENTS else doc["intent"],
         "domain": doc["domain"],
         "entities": doc["entities"],
         "truth_level": truth_level,
@@ -734,22 +610,30 @@ def chunk_document(doc: Dict[str, Any]) -> List[Dict[str, Any]]:
     chunks: List[Dict[str, Any]] = []
     parent_id = str(uuid.uuid5(uuid.NAMESPACE_URL, doc["source_path"]))
 
-    body_chunks = chunk_document_anchored(doc)
+    # Detect V3 gamme template for per-chunk intent
+    raw_metadata = doc.get("_raw_metadata") or {}
+    v3 = is_v3_gamme(raw_metadata, doc["content"])
+
+    body_chunks = chunk_document_anchored(doc)  # List[(text, parent_h2)]
     chunk_index = 0
-    for part in body_chunks:
-        page_numbers = extract_pdf_pages(part)
-        clean_part = strip_pdf_page_markers(part)
+    for part_text, parent_h2 in body_chunks:
+        page_numbers = extract_pdf_pages(part_text)
+        clean_part = strip_pdf_page_markers(part_text)
         if not clean_part:
             continue
-        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers))
+        # Resolve per-chunk intent from parent H2 (V3 only)
+        chunk_intent = None
+        if v3 and parent_h2:
+            chunk_intent = V3_H2_INTENT_MAP.get(parent_h2.strip().lower())
+        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers, chunk_intent=chunk_intent))
         chunk_index += 1
 
     # Canonical layer: only from explicit canonical corpus/docs.
     if doc.get("is_canonical") or doc.get("source_type") == "canonical":
         canonical_added = 0
-        for body in body_chunks:
-            page_numbers = extract_pdf_pages(body)
-            canonical = build_canonical_snippet(strip_pdf_page_markers(body))
+        for body_text, _ in body_chunks:
+            page_numbers = extract_pdf_pages(body_text)
+            canonical = build_canonical_snippet(strip_pdf_page_markers(body_text))
             if not canonical:
                 continue
             tok = estimate_tokens(canonical)

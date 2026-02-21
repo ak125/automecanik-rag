@@ -1,6 +1,7 @@
 ---
 category: suspension
 doc_family: knowledge
+site_section: guide-achat
 source_type: guide
 title: Guide - Choisir ses amortisseurs
 truth_level: L2

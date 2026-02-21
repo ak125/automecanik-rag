@@ -112,12 +112,19 @@ class RAGService:
             plan["source_plan"],
         )
 
+        # When explicit filters target gamme source_type, ensure KB_Catalog is searched
+        if filters and isinstance(filters, dict) and filters.get("source_type") == "gamme":
+            catalog = self.settings.weaviate_collection_catalog
+            if catalog not in plan["source_plan"]:
+                plan["source_plan"].insert(0, catalog)
+
         raw_results, pass_info = await self._run_multi_pass_retrieval(
             query=query,
             source_plan=plan["source_plan"],
             domain=plan["domain"],
             primary_intent=plan["primary_intent"],
             limit=limit,
+            filters=filters,
         )
 
         required_evidence = self._required_evidence_count(query=query, router_plan=plan)
@@ -282,6 +289,7 @@ class RAGService:
         domain: str,
         primary_intent: str,
         limit: int,
+        filters: Optional[dict] = None,
     ) -> tuple[list[dict], dict]:
         min_score = self.settings.min_score_threshold
         min_required = max(3, self.settings.min_results_required)
@@ -320,6 +328,9 @@ class RAGService:
                 domain=domain if strict else None,
                 exclude_disputed=strict,
                 min_score=min_score_override,
+                intent=filters.get("intent") if filters else None,
+                source_type=filters.get("source_type") if filters else None,
+                doc_family=filters.get("doc_family") if filters else None,
             )
             pass_info["passes"].append(
                 {

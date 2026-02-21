@@ -1,6 +1,7 @@
 ---
 category: freinage
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Vibrations véhicule
 truth_level: L2

@@ -191,7 +191,7 @@ class MinIOExtractor:
         """Route PDF to specialized pipeline with page markers and OCR."""
         try:
             # Import from ingest_pdfs for full extraction (page markers + OCR)
-            from scripts.ingest_pdfs import extract_pdf_text
+            from scripts.ingestors.ingest_pdfs import extract_pdf_text
             content, stats = extract_pdf_text(file_path, enable_ocr=True)
             logger.debug(f"PDF pipeline: pages_text={stats['pages_text']} pages_ocr={stats['pages_ocr']}")
             return content, "guide"
@@ -202,7 +202,7 @@ class MinIOExtractor:
     def _extract_via_image_pipeline(self, file_path: Path) -> tuple[Optional[str], str]:
         """Route image to OCR + caption pipeline."""
         try:
-            from scripts.ingest_images import extract_ocr_blocks, build_caption, render_ocr_markdown
+            from scripts.ingestors.ingest_images import extract_ocr_blocks, build_caption, render_ocr_markdown
             ocr_blocks = extract_ocr_blocks(file_path)
             caption = build_caption(file_path, ocr_blocks)
             ocr_md = render_ocr_markdown(ocr_blocks)
@@ -215,7 +215,7 @@ class MinIOExtractor:
     def _extract_via_log_pipeline(self, file_path: Path, object_name: str) -> tuple[Optional[str], str]:
         """Route log to profile + error pattern pipeline."""
         try:
-            from scripts.ingest_logs import extract_log_profile, render_profile_markdown
+            from scripts.ingestors.ingest_logs import extract_log_profile, render_profile_markdown
             content = file_path.read_text(encoding="utf-8", errors="replace")
             profile = extract_log_profile(content, object_name)
             md = render_profile_markdown(profile)

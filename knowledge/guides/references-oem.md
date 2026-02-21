@@ -1,6 +1,7 @@
 ---
 category: paiement
 doc_family: knowledge
+site_section: guide-achat
 source_type: guide
 title: Guide - Comprendre les références OEM
 truth_level: L2

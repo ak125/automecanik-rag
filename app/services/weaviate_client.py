@@ -97,6 +97,9 @@ class WeaviateClient:
         domain: Optional[str] = None,
         exclude_disputed: bool = False,
         min_score: Optional[float] = None,
+        intent: Optional[str] = None,
+        source_type: Optional[str] = None,
+        doc_family: Optional[str] = None,
     ) -> list[dict]:
         if alpha is None:
             alpha = self.settings.retrieval_alpha
@@ -109,15 +112,26 @@ class WeaviateClient:
             query_vector = self.embeddings.embed(query)
 
             canonical_limit = max(1, limit // 2)
-            domain_filter = None
+
+            # Build combined property filter from domain + intent + source_type + doc_family
+            prop_filter = None
             if domain and domain != "general":
-                domain_filter = Filter.by_property("domain").equal(domain)
+                prop_filter = Filter.by_property("domain").equal(domain)
+            if intent:
+                f = Filter.by_property("intent").equal(intent)
+                prop_filter = (prop_filter & f) if prop_filter else f
+            if source_type:
+                f = Filter.by_property("source_type").equal(source_type)
+                prop_filter = (prop_filter & f) if prop_filter else f
+            if doc_family:
+                f = Filter.by_property("doc_family").equal(doc_family)
+                prop_filter = (prop_filter & f) if prop_filter else f
 
             canonical_filters = Filter.by_property("is_canonical").equal(True)
-            if domain_filter is not None:
-                canonical_filters = canonical_filters & domain_filter
+            if prop_filter is not None:
+                canonical_filters = canonical_filters & prop_filter
 
-            general_filters = domain_filter
+            general_filters = prop_filter
             merged_results: list[dict] = []
 
             # Canonical pass is optional: some legacy collections may not yet have is_canonical.

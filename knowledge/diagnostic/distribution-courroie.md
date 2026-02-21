@@ -1,6 +1,7 @@
 ---
 category: distribution
 doc_family: diagnostic
+site_section: diagnostic
 source_type: diagnostic
 title: Diagnostic - Distribution et courroie
 truth_level: L2
