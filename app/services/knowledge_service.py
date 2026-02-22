@@ -826,8 +826,8 @@ class KnowledgeService:
         for f in sorted(tombstone_dir.glob("*.json")):
             try:
                 records.append(json.loads(f.read_text(encoding="utf-8")))
-            except Exception:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to read tombstone {f.name}: {e}")
         return records
 
     def _delete_weaviate_chunks(self, doc: "KnowledgeDocument") -> None:

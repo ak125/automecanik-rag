@@ -228,8 +228,14 @@ class WeaviateClient:
     async def get_schema(self, collection_name: Optional[str] = None) -> Optional[dict]:
         try:
             target_collection = collection_name or self.settings.weaviate_collection_knowledge
-            _ = self.client.collections.get(target_collection).config.get()
-            return {"vectorDimension": self.settings.embedding_dimension, "class": target_collection}
+            collection = self.client.collections.get(target_collection)
+            config = collection.config.get()
+            # Use config to verify collection exists and is accessible
+            return {
+                "vectorDimension": self.settings.embedding_dimension,
+                "class": target_collection,
+                "vectorizer": str(config.vectorizer) if hasattr(config, 'vectorizer') else "none",
+            }
         except Exception as e:
             logger.error(f"Failed to get schema: {e}")
             return None

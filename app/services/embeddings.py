@@ -95,14 +95,15 @@ class EmbeddingsService:
                 valid_texts.append(text)
 
         if not valid_texts:
-            return [[0.0] * self.dimension] * len(texts)
+            return [[0.0] * self.dimension for _ in range(len(texts))]
 
         # Generate embeddings for valid texts
         embeddings_iter = self._model.embed(valid_texts, batch_size=batch_size)
         valid_embeddings = [e.tolist() for e in embeddings_iter]
 
         # Rebuild full result list with zero vectors for empty texts
-        result = [[0.0] * self.dimension] * len(texts)
+        # Use list comprehension to create independent list objects
+        result = [[0.0] * self.dimension for _ in range(len(texts))]
         for idx, emb in zip(valid_indices, valid_embeddings):
             result[idx] = emb
 
