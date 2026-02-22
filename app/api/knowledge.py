@@ -173,6 +173,7 @@ async def list_documents(
 async def get_stats():
     """Get statistics about the knowledge corpus."""
     service = get_knowledge_service()
+    # TODO: replace with a dedicated count-only method to avoid loading full docs
     all_docs = service.list_documents(page=1, limit=10000)
 
     by_source_type: dict[str, int] = {}

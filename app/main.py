@@ -32,7 +32,7 @@ from app.middleware.rate_limiter import (
 )
 from app.services.security_validator import get_security_validator, SecurityRisk
 from app.services.startup_validator import StartupValidator
-from app.services.weaviate_client import get_weaviate_client
+from app.services.weaviate_client import get_weaviate_client, reset_weaviate_client
 import json
 
 # Configure logging
@@ -380,6 +380,7 @@ async def shutdown_event():
     try:
         client = get_weaviate_client()
         client.close()
+        reset_weaviate_client()
         logger.info("Weaviate client closed")
     except Exception:
         pass

@@ -136,10 +136,10 @@ class InMemoryRateLimiter:
             )
             return False, retry_after
 
-        # Evict oldest entries if tracking too many clients (DDoS protection)
+        # Evict an entry if tracking too many clients (DDoS protection, O(1))
         if len(self._requests) >= self.MAX_TRACKED_CLIENTS and client_id not in self._requests:
-            oldest_client = min(self._requests, key=lambda k: self._requests[k][-1] if self._requests[k] else 0)
-            del self._requests[oldest_client]
+            evict_key = next(iter(self._requests))
+            del self._requests[evict_key]
 
         # Record this request
         self._requests[client_id].append(now)

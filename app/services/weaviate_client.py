@@ -263,3 +263,9 @@ def get_weaviate_client() -> WeaviateClient:
     if _weaviate_client is None:
         _weaviate_client = WeaviateClient()
     return _weaviate_client
+
+
+def reset_weaviate_client():
+    """Reset the singleton after close (used during shutdown)."""
+    global _weaviate_client
+    _weaviate_client = None

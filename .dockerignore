@@ -32,7 +32,15 @@ tests/
 docs/
 _removed/
 
+# Large data directories (volume-mounted in production)
+knowledge/
+pdfs/
+pdfs_hold/
+pdf-images/
+knowledge_pdf_batch/
+ingest/
+logs/
+
 # Temporary files
 *.log
 *.tmp
-ingest/tmp/

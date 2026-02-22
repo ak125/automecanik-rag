@@ -23,15 +23,15 @@ async def health_check():
         weaviate = get_weaviate_client()
         weaviate_status = await weaviate.health_check()
     except Exception as e:
-        logger.error(f"Health check - Weaviate error: {e}")
-        weaviate_status = {"status": "unhealthy", "error": str(e)}
+        logger.error(f"Health check - Weaviate error: {e}", exc_info=True)
+        weaviate_status = {"status": "unhealthy", "error": "service unavailable"}
 
     try:
         embeddings = get_embeddings_service()
         embeddings_status = embeddings.health_check()
     except Exception as e:
-        logger.error(f"Health check - Embeddings error: {e}")
-        embeddings_status = {"status": "unhealthy", "error": str(e)}
+        logger.error(f"Health check - Embeddings error: {e}", exc_info=True)
+        embeddings_status = {"status": "unhealthy", "error": "service unavailable"}
 
     all_healthy = (
         weaviate_status.get("status") == "healthy"
@@ -66,10 +66,10 @@ async def readiness_check():
         weaviate = get_weaviate_client()
         weaviate_status = await weaviate.health_check()
     except Exception as e:
-        logger.error(f"Readiness check - Weaviate error: {e}")
+        logger.error(f"Readiness check - Weaviate error: {e}", exc_info=True)
         return JSONResponse(
             status_code=503,
-            content={"ready": False, "reason": f"Weaviate error: {e}"}
+            content={"ready": False, "reason": "dependency unavailable"}
         )
 
     if weaviate_status.get("status") != "healthy":

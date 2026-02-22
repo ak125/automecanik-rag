@@ -1,5 +1,6 @@
 """RAG Admin Interface - NO LOGIN (auth via monorepo staff level 5)."""
 
+import hmac
 from fastapi import APIRouter, Request, HTTPException, Form, Query, UploadFile, File, Header
 from fastapi.responses import HTMLResponse, RedirectResponse
 import csv
@@ -87,7 +88,6 @@ class PdfIngestJobStatusResponse(BaseModel):
 # ============================================
 async def verify_api_key(x_rag_api_key: str = Header(None, alias="X-RAG-API-Key")):
     """Verify API key from X-RAG-API-Key header (timing-safe)."""
-    import hmac
     settings = get_settings()
 
     # If no API key configured, allow (dev mode)
