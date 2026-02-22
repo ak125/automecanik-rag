@@ -1,6 +1,5 @@
 # AutoMecanik RAG Service - Docker Compose
 # Version 100% gratuite (sentence-transformers local)
-version: "3.8"
 
 services:
   # === RAG API Service ===

@@ -133,7 +133,8 @@ class Settings(BaseSettings):
 
         CRITICAL SECURITY:
         - PROD: Always returns False (kill switch)
-        - DEV/CI: Returns True only if ai_prod_write is True
+        - DEV/CI/STAGING: Returns True (Build Plane)
+        - Unknown environments: Returns False (fail-closed)
 
         Returns:
             True if writes are allowed, False otherwise
@@ -235,9 +236,31 @@ class Settings(BaseSettings):
                 f"(risk of hallucinations)"
             )
 
-        # Check API key exists (warning only)
-        if not self.rag_api_key:
-            logger.warning("RAG_API_KEY not set - endpoints will be unprotected")
+        # Production-specific validations
+        if self.env == "prod":
+            if not self.rag_api_key:
+                errors.append(
+                    "RAG_API_KEY not set in production - API will be unprotected"
+                )
+            if self.cors_origins == "*":
+                errors.append(
+                    "CORS_ORIGINS='*' in production - must be set to specific domains"
+                )
+            if not self.anthropic_api_key:
+                errors.append(
+                    "ANTHROPIC_API_KEY not set in production - LLM generation will fail"
+                )
+        else:
+            # Dev/CI: warnings only
+            if not self.rag_api_key:
+                logger.warning("RAG_API_KEY not set - endpoints will be unprotected")
+
+        # Warn about quarantine/mode contradiction
+        if self.mode == "active" and self.quarantine_enabled:
+            logger.warning(
+                "mode='active' but quarantine.enabled=true in config - "
+                "quarantine is effectively disabled (requires mode='quarantine')"
+            )
 
         return errors
 

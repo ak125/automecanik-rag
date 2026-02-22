@@ -2,6 +2,7 @@
 
 import logging
 from typing import Optional
+from urllib.parse import urlparse
 import weaviate
 from weaviate.classes.query import HybridFusion, Filter
 
@@ -18,12 +19,16 @@ class WeaviateClient:
 
     def __init__(self):
         settings = get_settings()
+        parsed = urlparse(settings.weaviate_url)
+        http_host = parsed.hostname or "weaviate"
+        http_port = parsed.port or 8080
+        http_secure = parsed.scheme == "https"
         self.client = weaviate.connect_to_custom(
-            http_host=settings.weaviate_url.replace("http://", "").replace("https://", "").split(":")[0],
-            http_port=int(settings.weaviate_url.split(":")[-1]) if ":" in settings.weaviate_url.split("/")[-1] else 8080,
-            http_secure=settings.weaviate_url.startswith("https"),
-            grpc_host=settings.weaviate_url.replace("http://", "").replace("https://", "").split(":")[0],
-            grpc_port=50051,
+            http_host=http_host,
+            http_port=http_port,
+            http_secure=http_secure,
+            grpc_host=http_host,
+            grpc_port=settings.weaviate_grpc_port,
             grpc_secure=False,
         )
         self.settings = settings
@@ -202,7 +207,7 @@ class WeaviateClient:
             return final_results
 
         except Exception as e:
-            logger.error(f"Weaviate search error: {e}")
+            logger.error(f"Weaviate search error: {e}", exc_info=True)
             return []
 
     async def health_check(self) -> dict:
@@ -223,8 +228,14 @@ class WeaviateClient:
     async def get_schema(self, collection_name: Optional[str] = None) -> Optional[dict]:
         try:
             target_collection = collection_name or self.settings.weaviate_collection_knowledge
-            _ = self.client.collections.get(target_collection).config.get()
-            return {"vectorDimension": self.settings.embedding_dimension, "class": target_collection}
+            collection = self.client.collections.get(target_collection)
+            config = collection.config.get()
+            # Use config to verify collection exists and is accessible
+            return {
+                "vectorDimension": self.settings.embedding_dimension,
+                "class": target_collection,
+                "vectorizer": str(config.vectorizer) if hasattr(config, 'vectorizer') else "none",
+            }
         except Exception as e:
             logger.error(f"Failed to get schema: {e}")
             return None
@@ -252,3 +263,9 @@ def get_weaviate_client() -> WeaviateClient:
     if _weaviate_client is None:
         _weaviate_client = WeaviateClient()
     return _weaviate_client
+
+
+def reset_weaviate_client():
+    """Reset the singleton after close (used during shutdown)."""
+    global _weaviate_client
+    _weaviate_client = None

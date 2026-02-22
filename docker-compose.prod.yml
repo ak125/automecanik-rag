@@ -16,8 +16,8 @@ services:
       - ENV=prod
       - DEBUG=false
       - AI_PROD_WRITE=false  # KILL SWITCH
-      - WEAVIATE_URL=http://weaviate-prod:8080
-      - REDIS_URL=redis://redis-rag-prod:6379
+      - WEAVIATE_URL=http://weaviate:8080
+      - REDIS_URL=redis://redis:6379
       - KNOWLEDGE_PATH=/knowledge
       - EMBEDDING_MODEL=all-MiniLM-L6-v2
       - MIN_SCORE_THRESHOLD=0.70

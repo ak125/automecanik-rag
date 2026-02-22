@@ -587,7 +587,12 @@ class KnowledgeService:
         """Get a single document by ID."""
         # Convert ID back to path
         source_path = doc_id.replace(".", "/") + ".md"
-        file_path = self.knowledge_path / source_path
+        file_path = (self.knowledge_path / source_path).resolve()
+
+        # Prevent path traversal attacks
+        if not str(file_path).startswith(str(self.knowledge_path.resolve())):
+            logger.warning(f"Path traversal attempt blocked: doc_id={doc_id}")
+            return None
 
         if not file_path.exists():
             # Try searching for the document
@@ -821,8 +826,8 @@ class KnowledgeService:
         for f in sorted(tombstone_dir.glob("*.json")):
             try:
                 records.append(json.loads(f.read_text(encoding="utf-8")))
-            except Exception:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to read tombstone {f.name}: {e}")
         return records
 
     def _delete_weaviate_chunks(self, doc: "KnowledgeDocument") -> None:

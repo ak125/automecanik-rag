@@ -45,7 +45,7 @@ def require_build_plane():
 class DocumentCreate(BaseModel):
     """Request body for creating a document."""
     title: str = Field(..., min_length=1, max_length=200)
-    content: str = Field(..., min_length=1)
+    content: str = Field(..., min_length=1, max_length=500000)
     source_type: str = Field(..., pattern="^(diagnostic|faq|policy|guide|vehicle|gamme|knowledge|canonical|general|media|image|video|audio|json|csv|support|auto)$")
     category: str = Field(..., min_length=1, max_length=100)
     doc_family: str = Field("", pattern="^(|catalog|diagnostic|knowledge|media|router_memory)$")
@@ -55,7 +55,7 @@ class DocumentCreate(BaseModel):
 class DocumentUpdate(BaseModel):
     """Request body for updating a document."""
     title: Optional[str] = Field(None, min_length=1, max_length=200)
-    content: Optional[str] = Field(None, min_length=1)
+    content: Optional[str] = Field(None, min_length=1, max_length=500000)
     source_type: Optional[str] = Field(None, pattern="^(diagnostic|faq|policy|guide|vehicle|gamme|knowledge|canonical|general|media|image|video|audio|json|csv|support|auto)$")
     category: Optional[str] = Field(None, min_length=1, max_length=100)
     doc_family: Optional[str] = Field(None, pattern="^(catalog|diagnostic|knowledge|media|router_memory)$")
@@ -135,13 +135,15 @@ async def list_documents(
     List all knowledge documents with optional filters.
 
     Query parameters:
-    - page: Page number (default: 1)
-    - limit: Items per page (default: 20, max: 100)
+    - page: Page number (default: 1, min: 1)
+    - limit: Items per page (default: 20, max: 500)
     - category: Filter by category
     - source_type: Filter by source type (diagnostic, faq, policy, guide, vehicle)
     - truth_level: Filter by truth level (L1, L2, L3, L4)
     - search: Search in title and content
     """
+    if page < 1:
+        page = 1
     if limit > 500:
         limit = 500
 
@@ -171,14 +173,12 @@ async def list_documents(
 async def get_stats():
     """Get statistics about the knowledge corpus."""
     service = get_knowledge_service()
-    result = service.list_documents(page=1, limit=1000)  # Get all for stats
+    # TODO: replace with a dedicated count-only method to avoid loading full docs
+    all_docs = service.list_documents(page=1, limit=10000)
 
     by_source_type: dict[str, int] = {}
     by_truth_level: dict[str, int] = {}
     by_category: dict[str, int] = {}
-
-    # Count from all documents (need to get full list)
-    all_docs = service.list_documents(page=1, limit=10000)
 
     for doc in all_docs.documents:
         by_source_type[doc.source_type] = by_source_type.get(doc.source_type, 0) + 1
@@ -353,17 +353,17 @@ async def revive_tombstone(source_uri: str):
 def run_reindex():
     """Run the reindex script in background."""
     try:
-        settings = get_settings()
-        # Run the build_index.py script
+        from pathlib import Path
+        script_path = Path(__file__).parent.parent.parent / "scripts" / "tools" / "build_index.py"
         result = subprocess.run(
-            ["python", "scripts/build_index.py"],
+            ["python", str(script_path)],
             capture_output=True,
             text=True,
             timeout=300,  # 5 minute timeout
         )
-        logger.info(f"Reindex completed: {result.stdout}")
+        logger.info(f"Reindex completed: {result.stdout[-2000:]}")
         if result.returncode != 0:
-            logger.error(f"Reindex error: {result.stderr}")
+            logger.error(f"Reindex error: {result.stderr[-2000:]}")
     except Exception as e:
         logger.error(f"Reindex failed: {e}")
 
