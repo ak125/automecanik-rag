@@ -353,7 +353,7 @@ def run_reindex():
     """Run the reindex script in background."""
     try:
         from pathlib import Path
-        script_path = Path(__file__).parent.parent.parent / "scripts" / "build_index.py"
+        script_path = Path(__file__).parent.parent.parent / "scripts" / "tools" / "build_index.py"
         result = subprocess.run(
             ["python", str(script_path)],
             capture_output=True,

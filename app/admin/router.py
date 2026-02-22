@@ -1,6 +1,6 @@
 """RAG Admin Interface - NO LOGIN (auth via monorepo staff level 5)."""
 
-from fastapi import APIRouter, Request, HTTPException, Form, Query, UploadFile, File, Header, Depends
+from fastapi import APIRouter, Request, HTTPException, Form, Query, UploadFile, File, Header
 from fastapi.responses import HTMLResponse, RedirectResponse
 import csv
 import json
@@ -528,7 +528,7 @@ async def trigger_reindex(request: Request):
 # PDF Ingest API (Swagger)
 # ============================================
 @router.post("/ingest/pdf/run", response_model=PdfIngestRunResponse)
-async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_api_key)):
+async def run_pdf_ingest(payload: PdfIngestRunRequest):
     """Start PDF import+index pipeline in background."""
     truth = payload.truth_level.strip().upper()
     if truth not in {"L1", "L2", "L3", "L4"}:
@@ -627,7 +627,7 @@ async def run_pdf_ingest(payload: PdfIngestRunRequest, _: bool = Depends(verify_
 
 
 @router.get("/ingest/pdf/jobs", response_model=List[PdfIngestJobStatusResponse])
-async def list_pdf_ingest_jobs(_: bool = Depends(verify_api_key)):
+async def list_pdf_ingest_jobs():
     """List known PDF ingest jobs."""
     out: list[PdfIngestJobStatusResponse] = []
     for job_id, job in sorted(PDF_INGEST_JOBS.items(), key=lambda kv: int(kv[1].get("started_at", 0)), reverse=True):
@@ -654,7 +654,6 @@ async def list_pdf_ingest_jobs(_: bool = Depends(verify_api_key)):
 async def get_pdf_ingest_job(
     job_id: str,
     tail_lines: int = Query(50, ge=1, le=500),
-    _: bool = Depends(verify_api_key),
 ):
     """Get one PDF ingest job status and log tail."""
     job = PDF_INGEST_JOBS.get(job_id)
@@ -768,7 +767,7 @@ def _clear_collection(collection_name: str):
 
 
 @router.get("/list-files", response_model=ListFilesResponse)
-async def list_files(_: bool = Depends(verify_api_key)):
+async def list_files():
     """
     List all markdown files available for indexation.
 
@@ -801,7 +800,6 @@ async def list_files(_: bool = Depends(verify_api_key)):
 @router.post("/index-batch", response_model=IndexBatchResponse)
 async def index_batch(
     request: IndexBatchRequest,
-    _: bool = Depends(verify_api_key)
 ):
     """
     Index a batch of files using TRUE STREAMING.
