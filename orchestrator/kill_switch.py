@@ -22,6 +22,7 @@ Rules:
 
 import os
 import logging
+from functools import wraps
 from typing import Optional
 
 logger = logging.getLogger(__name__)
@@ -165,12 +166,11 @@ def require_build_plane(func):
             pass
     """
 
+    @wraps(func)
     def wrapper(*args, **kwargs):
         enforce_build_plane(operation=func.__name__)
         return func(*args, **kwargs)
 
-    wrapper.__name__ = func.__name__
-    wrapper.__doc__ = func.__doc__
     return wrapper
 
 
