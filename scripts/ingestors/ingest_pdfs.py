@@ -334,7 +334,8 @@ def run(args: argparse.Namespace) -> int:
 
             if args.dry_run:
                 logger.info(
-                    f"[DRY-RUN] {rel_name} -> source_type={src} category={cat} "
+                    f"[DRY-RUN] FILE_WOULD_CREATE pdf_name={rel_name} "
+                    f"source_type={src} category={cat} "
                     f"pages={stats['pages_text']}+{stats['pages_ocr']}ocr"
                 )
                 if index_enabled:
@@ -360,6 +361,11 @@ def run(args: argparse.Namespace) -> int:
                 continue
 
             created += 1
+            logger.info(
+                f"FILE_CREATED path={doc.source_path} "
+                f"source=pdf pdf_name={rel_name} "
+                f"source_type={doc.source_type} truth_level={args.truth_level}"
+            )
 
             # Step 2: Chunk + embed + index to Weaviate
             if index_enabled:

@@ -623,6 +623,12 @@ def run(args: argparse.Namespace) -> int:
             is_catalog = classify_catalog(markdown, page_title)
 
             if args.dry_run:
+                out_subdir = "web-catalog" if is_catalog else "web"
+                for sec in sections:
+                    logger.info(
+                        f"[DRY-RUN] FILE_WOULD_CREATE path={out_subdir}/{page_hash[:12]}-s{sec['idx']:03d}.md "
+                        f"title={page_title} - {sec['title']} source_type={'gamme' if is_catalog else 'guide'}"
+                    )
                 logger.info(
                     f"[DRY-RUN] url={url} sections={len(sections)} catalog={is_catalog}"
                 )
@@ -639,7 +645,7 @@ def run(args: argparse.Namespace) -> int:
                 eline = sec["end_line"]
                 source_uri = f"{url}#section={anchor}&line={sline}-{eline}"
                 doc_title = f"{page_title} - {sec['title']}"
-                write_doc(
+                doc_path = write_doc(
                     out_dir=out_dir,
                     title=doc_title,
                     content=sec["content"],
@@ -652,6 +658,11 @@ def run(args: argparse.Namespace) -> int:
                     section_idx=sec["idx"],
                 )
                 created += 1
+                logger.info(
+                    f"FILE_CREATED path={doc_path.relative_to(knowledge_root)} "
+                    f"source=web url={url} source_type={source_type} "
+                    f"section_idx={sec['idx']} truth_level={args.truth_level}"
+                )
 
             logger.info(
                 f"Ingested url={url} sections={len(sections)} images={len(image_map)} catalog={is_catalog} raw_sha256={raw_sha}"
