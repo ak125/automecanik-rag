@@ -169,7 +169,7 @@ class ChatRequestV2(BaseModel):
     """Request body for chat v2 endpoint - LangGraph mode."""
     message: str = Field(..., min_length=1, max_length=2000, description="User message")
     session_id: Optional[str] = Field(None, description="Session ID for tracking")
-    locale: str = Field("fr", description="User locale (fr/en)")
+    locale: str = Field("fr", pattern="^(fr|en)$", description="User locale (fr/en)")
     vehicle_context: Optional[dict] = Field(None, description="Vehicle context: brand, model, engine, year")
     filters: Optional[dict] = Field(None, description="Retrieval filters (truth_levels, include_categories)")
 

@@ -95,7 +95,7 @@ NO_CONTEXT_RESPONSE = """Je n'ai pas trouvé d'information pertinente pour répo
 
 Vous pouvez :
 - Reformuler votre question avec des termes différents
-- Contacter notre service client au 01 XX XX XX XX
+- Contacter notre service client via notre page de contact
 - Consulter notre FAQ sur automecanik.com/faq"""
 
 
