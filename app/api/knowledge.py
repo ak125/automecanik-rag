@@ -171,14 +171,11 @@ async def list_documents(
 async def get_stats():
     """Get statistics about the knowledge corpus."""
     service = get_knowledge_service()
-    result = service.list_documents(page=1, limit=1000)  # Get all for stats
+    all_docs = service.list_documents(page=1, limit=10000)
 
     by_source_type: dict[str, int] = {}
     by_truth_level: dict[str, int] = {}
     by_category: dict[str, int] = {}
-
-    # Count from all documents (need to get full list)
-    all_docs = service.list_documents(page=1, limit=10000)
 
     for doc in all_docs.documents:
         by_source_type[doc.source_type] = by_source_type.get(doc.source_type, 0) + 1

@@ -56,12 +56,16 @@ class ClaudeClient:
                 ]
             )
 
+            if not response.content:
+                logger.warning("Claude returned empty response content")
+                return NO_CONTEXT_RESPONSE
+
             answer = response.content[0].text
             logger.info(f"Generated response for '{user_message[:50]}...'")
             return answer
 
         except Exception as e:
-            logger.error(f"Claude generation error: {e}")
+            logger.error(f"Claude generation error: {e}", exc_info=True)
             raise
 
     async def health_check(self) -> dict:

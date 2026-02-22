@@ -86,7 +86,8 @@ class PdfIngestJobStatusResponse(BaseModel):
 # API Key Verification for Worker Endpoints
 # ============================================
 async def verify_api_key(x_rag_api_key: str = Header(None, alias="X-RAG-API-Key")):
-    """Verify API key from X-RAG-API-Key header."""
+    """Verify API key from X-RAG-API-Key header (timing-safe)."""
+    import hmac
     settings = get_settings()
 
     # If no API key configured, allow (dev mode)
@@ -94,7 +95,7 @@ async def verify_api_key(x_rag_api_key: str = Header(None, alias="X-RAG-API-Key"
         logger.warning("RAG_API_KEY not configured - allowing unauthenticated access")
         return True
 
-    if x_rag_api_key != settings.rag_api_key:
+    if not x_rag_api_key or not hmac.compare_digest(x_rag_api_key, settings.rag_api_key):
         raise HTTPException(status_code=401, detail="Invalid or missing X-RAG-API-Key")
 
     return True

@@ -12,7 +12,9 @@ P0 SECURITY FEATURES:
 from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+import hmac
 import logging
+import re
 import sys
 import time
 
@@ -111,7 +113,7 @@ class SecurityValidationMiddleware:
     3. Replay the body so the endpoint can parse it
     """
 
-    PROTECTED_PATHS = ["/chat", "/search"]
+    PROTECTED_PREFIXES = ["/chat", "/search"]
 
     def __init__(self, app):
         self.app = app
@@ -122,11 +124,11 @@ class SecurityValidationMiddleware:
             await self.app(scope, receive, send)
             return
 
-        # Only validate POST/PUT to protected paths
+        # Only validate POST/PUT to protected paths (prefix match)
         path = scope.get("path", "")
         method = scope.get("method", "")
 
-        if method not in ["POST", "PUT"] or path not in self.PROTECTED_PATHS:
+        if method not in ["POST", "PUT"] or not any(path.startswith(p) for p in self.PROTECTED_PREFIXES):
             await self.app(scope, receive, send)
             return
 
@@ -201,10 +203,16 @@ async def limit_request_size(request: Request, call_next):
     """Limit request body size to prevent OOM attacks."""
     content_length = request.headers.get("content-length")
     if content_length:
-        if int(content_length) > settings.max_request_size:
+        try:
+            if int(content_length) > settings.max_request_size:
+                return JSONResponse(
+                    status_code=413,
+                    content={"detail": "Request body too large"}
+                )
+        except ValueError:
             return JSONResponse(
-                status_code=413,
-                content={"detail": "Request body too large"}
+                status_code=400,
+                content={"detail": "Invalid Content-Length header"}
             )
     return await call_next(request)
 
@@ -217,8 +225,10 @@ async def audit_log_middleware(request: Request, call_next):
     """Log all requests for audit trail."""
     start_time = time.time()
 
-    # Get client info
-    client_ip = request.headers.get("X-Forwarded-For", request.client.host if request.client else "unknown")
+    # Get client info - sanitize X-Forwarded-For to prevent log injection
+    raw_ip = request.headers.get("X-Forwarded-For", request.client.host if request.client else "unknown")
+    # Take only first IP, strip whitespace, remove newlines, limit length
+    client_ip = re.sub(r"[\n\r]", "", raw_ip.split(",")[0].strip())[:45]
 
     # Process request
     response = await call_next(request)
@@ -242,9 +252,10 @@ async def audit_log_middleware(request: Request, call_next):
 # ============================================
 @app.middleware("http")
 async def add_timeout_header(request: Request, call_next):
-    """Add timeout info to response headers."""
+    """Add timeout info to response headers (debug mode only)."""
     response = await call_next(request)
-    response.headers["X-Request-Timeout"] = str(settings.request_timeout)
+    if settings.debug:
+        response.headers["X-Request-Timeout"] = str(settings.request_timeout)
     return response
 
 
@@ -252,10 +263,14 @@ async def add_timeout_header(request: Request, call_next):
 # API Key + Security Validation
 # ============================================
 async def verify_api_key(request: Request):
-    """Verify API key from request headers."""
+    """Verify API key from request headers (timing-safe)."""
+    if not settings.rag_api_key:
+        logger.warning("RAG_API_KEY not configured - API authentication disabled")
+        return True
+
     api_key = request.headers.get("X-RAG-API-Key")
 
-    if not api_key or api_key != settings.rag_api_key:
+    if not api_key or not hmac.compare_digest(api_key, settings.rag_api_key):
         raise HTTPException(
             status_code=401,
             detail="Invalid or missing API key"
@@ -286,8 +301,11 @@ app.include_router(
     dependencies=[Depends(verify_api_key)]
 )
 
-# Admin UI (no auth - accessed via monorepo staff level 5)
-app.include_router(admin_router)
+# Admin UI - protected by API key (also accessible via monorepo staff level 5)
+app.include_router(
+    admin_router,
+    dependencies=[Depends(verify_api_key)]
+)
 
 
 # ============================================
@@ -359,6 +377,12 @@ async def startup_event():
 async def shutdown_event():
     """Cleanup on shutdown."""
     logger.info("Shutting down RAG service")
+    try:
+        client = get_weaviate_client()
+        client.close()
+        logger.info("Weaviate client closed")
+    except Exception:
+        pass
 
 
 # ============================================
@@ -366,7 +390,9 @@ async def shutdown_event():
 # ============================================
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
-    """Global exception handler."""
+    """Global exception handler - re-raises HTTPException to preserve status codes."""
+    if isinstance(exc, HTTPException):
+        raise exc
     logger.error(f"Unhandled exception: {exc}", exc_info=True)
     return JSONResponse(
         status_code=500,

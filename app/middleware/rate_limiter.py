@@ -53,6 +53,8 @@ class InMemoryRateLimiter:
     For production with multiple instances, use Redis-based limiter.
     """
 
+    MAX_TRACKED_CLIENTS = 10000  # Cap to prevent memory exhaustion under DDoS
+
     def __init__(self, config: Optional[RateLimitConfig] = None):
         self.config = config or RateLimitConfig()
         self._requests: dict[str, list[float]] = defaultdict(list)
@@ -64,7 +66,8 @@ class InMemoryRateLimiter:
         # Try X-Forwarded-For first (behind proxy)
         forwarded = request.headers.get("X-Forwarded-For")
         if forwarded:
-            return forwarded.split(",")[0].strip()
+            # Take only the first IP, sanitize
+            return forwarded.split(",")[0].strip()[:45]
 
         # Fall back to direct client IP
         if request.client:
@@ -132,6 +135,11 @@ class InMemoryRateLimiter:
                 f"{requests_last_hour}/{self.config.requests_per_hour} rph"
             )
             return False, retry_after
+
+        # Evict oldest entries if tracking too many clients (DDoS protection)
+        if len(self._requests) >= self.MAX_TRACKED_CLIENTS and client_id not in self._requests:
+            oldest_client = min(self._requests, key=lambda k: self._requests[k][-1] if self._requests[k] else 0)
+            del self._requests[oldest_client]
 
         # Record this request
         self._requests[client_id].append(now)
