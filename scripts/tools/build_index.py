@@ -116,7 +116,7 @@ def index_documents(documents: list[dict], embeddings_model: SentenceTransformer
     client = weaviate.connect_to_local(host=host, port=port)
 
     try:
-        collection = client.collections.get("Prod_Chatbot")
+        collection = client.collections.get(_settings.weaviate_collection_knowledge)
 
         # Note: Skip clearing - the collection is fresh or we'll replace by re-indexing
         # For incremental updates, consider using upsert or clearing via schema recreation

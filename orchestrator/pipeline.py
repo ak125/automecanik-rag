@@ -256,7 +256,7 @@ class PipelineConfig:
 
     # Weaviate
     weaviate_url: str = "http://weaviate:8080"
-    collection_name: str = "Prod_Chatbot"
+    collection_name: str = "KB_Knowledge"
 
     @classmethod
     def from_yaml(cls, config: dict) -> "PipelineConfig":
@@ -289,7 +289,7 @@ class PipelineConfig:
             keep_versions=versioning.get("keep_versions", 5),
             # Weaviate from main config
             weaviate_url=config.get("vector_store", {}).get("url", "http://weaviate:8080"),
-            collection_name=config.get("vector_store", {}).get("class_name", "Prod_Chatbot"),
+            collection_name=config.get("vector_store", {}).get("class_name", "KB_Knowledge"),
         )
 
 

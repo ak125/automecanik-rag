@@ -825,7 +825,7 @@ async def index_batch(
         )
 
     knowledge_path = Path(settings.knowledge_path)
-    collection_name = "Prod_Chatbot"
+    collection_name = settings.weaviate_collection_knowledge
     indexed = 0
     errors = []
 

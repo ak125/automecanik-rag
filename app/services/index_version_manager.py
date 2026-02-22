@@ -6,17 +6,17 @@ Usage:
     manager = IndexVersionManager()
 
     # Create new version
-    version = manager.create_version("Prod_Chatbot")
-    # Returns: "Prod_Chatbot_v20260102_120000"
+    version = manager.create_version("KB_Knowledge")
+    # Returns: "KB_Knowledge_v20260102_120000"
 
     # Get current @latest
-    latest = manager.get_latest("Prod_Chatbot")
+    latest = manager.get_latest("KB_Knowledge")
 
     # Rollback to previous
-    manager.rollback("Prod_Chatbot")
+    manager.rollback("KB_Knowledge")
 
     # Cleanup old versions (keep last N)
-    manager.cleanup("Prod_Chatbot", keep_last=3)
+    manager.cleanup("KB_Knowledge", keep_last=3)
 """
 
 import os

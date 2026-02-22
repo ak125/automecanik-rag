@@ -45,7 +45,7 @@ class WikiIngester:
     def __init__(
         self,
         weaviate_url: str = _settings.weaviate_url,
-        collection_name: str = "Prod_Chatbot",
+        collection_name: str = _settings.weaviate_collection_knowledge,
         embedding_model: str = "all-MiniLM-L6-v2",
         chunk_size: int = 500,
         chunk_overlap: int = 50,

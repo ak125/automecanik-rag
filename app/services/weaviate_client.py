@@ -15,8 +15,6 @@ logger = logging.getLogger(__name__)
 class WeaviateClient:
     """Client for Weaviate vector database."""
 
-    COLLECTION_NAME = "Prod_Chatbot"
-
     def __init__(self):
         settings = get_settings()
         parsed = urlparse(settings.weaviate_url)
