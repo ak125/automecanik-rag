@@ -171,6 +171,7 @@ class ChatRequestV2(BaseModel):
     session_id: Optional[str] = Field(None, description="Session ID for tracking")
     locale: str = Field("fr", description="User locale (fr/en)")
     vehicle_context: Optional[dict] = Field(None, description="Vehicle context: brand, model, engine, year")
+    filters: Optional[dict] = Field(None, description="Retrieval filters (truth_levels, include_categories)")
 
 
 class ChatResponseV2(BaseModel):
@@ -233,6 +234,7 @@ async def chat_v2(request: ChatRequestV2):
             session_id=session_id,
             user_locale=request.locale,
             vehicle_context=request.vehicle_context,
+            filters=request.filters,
         )
 
         # Log result

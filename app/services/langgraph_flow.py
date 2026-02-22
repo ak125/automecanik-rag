@@ -17,6 +17,7 @@ class ChatState(TypedDict):
     session_id: str
     user_locale: str
     vehicle_context: Optional[dict]
+    filters: Optional[dict]
 
     query_type: Optional[Literal["on_topic", "off_topic", "ambiguous"]]
 
@@ -113,6 +114,7 @@ async def retrieve_node(state: ChatState) -> ChatState:
             limit=settings.retrieval_top_k,
             namespace=namespace,
             routing=routing,
+            filters=state.get("filters"),
         )
 
         return {
@@ -286,6 +288,7 @@ async def run_chat_pipeline(
     session_id: str = "",
     user_locale: str = "fr",
     vehicle_context: Optional[dict] = None,
+    filters: Optional[dict] = None,
 ) -> dict:
     graph = get_chat_graph()
 
@@ -294,6 +297,7 @@ async def run_chat_pipeline(
         "session_id": session_id,
         "user_locale": user_locale,
         "vehicle_context": vehicle_context,
+        "filters": filters,
         "query_type": None,
         "results": [],
         "context": "",

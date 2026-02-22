@@ -142,8 +142,8 @@ async def list_documents(
     - truth_level: Filter by truth level (L1, L2, L3, L4)
     - search: Search in title and content
     """
-    if limit > 100:
-        limit = 100
+    if limit > 500:
+        limit = 500
 
     service = get_knowledge_service()
     result = service.list_documents(

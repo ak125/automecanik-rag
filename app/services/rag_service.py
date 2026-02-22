@@ -331,6 +331,7 @@ class RAGService:
                 intent=filters.get("intent") if filters else None,
                 source_type=filters.get("source_type") if filters else None,
                 doc_family=filters.get("doc_family") if filters else None,
+                truth_levels=filters.get("truth_levels") if filters else None,
             )
             pass_info["passes"].append(
                 {

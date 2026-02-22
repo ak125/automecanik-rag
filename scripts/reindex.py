@@ -346,7 +346,7 @@ def iter_documents(knowledge_path: str, max_files: int = 0) -> Generator[Dict[st
         return
 
     yielded = 0
-    ignored_dirs = {"_trash", "_raw", "__pycache__"}
+    ignored_dirs = {"_trash", "_raw", "__pycache__", "_quarantine"}
     for md_file in path.rglob("*.md"):
         if md_file.name == "README.md" or ".backup" in str(md_file):
             continue

@@ -100,6 +100,7 @@ class WeaviateClient:
         intent: Optional[str] = None,
         source_type: Optional[str] = None,
         doc_family: Optional[str] = None,
+        truth_levels: Optional[list[str]] = None,
     ) -> list[dict]:
         if alpha is None:
             alpha = self.settings.retrieval_alpha
@@ -125,6 +126,12 @@ class WeaviateClient:
                 prop_filter = (prop_filter & f) if prop_filter else f
             if doc_family:
                 f = Filter.by_property("doc_family").equal(doc_family)
+                prop_filter = (prop_filter & f) if prop_filter else f
+            if truth_levels:
+                if len(truth_levels) == 1:
+                    f = Filter.by_property("truth_level").equal(truth_levels[0])
+                else:
+                    f = Filter.by_property("truth_level").contains_any(truth_levels)
                 prop_filter = (prop_filter & f) if prop_filter else f
 
             canonical_filters = Filter.by_property("is_canonical").equal(True)
