@@ -13,7 +13,7 @@ Ce dossier contient la base de connaissance métier pour le système RAG.
 ```
 knowledge/
 ├── diagnostic/     # Diagnostics véhicule (symptômes, causes, solutions)
-├── vehicle/        # Compatibilité véhicule/pièces
+├── vehicles/       # Fiches véhicules et marques
 ├── faq/            # FAQ support client
 ├── policies/       # Politiques (retours, garantie, livraison)
 └── guides/         # Guides pratiques

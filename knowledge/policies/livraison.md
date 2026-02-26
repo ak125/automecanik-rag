@@ -68,11 +68,17 @@ Supplément pour pièces encombrantes (>30kg ou >120cm) :
 
 ### Délai de préparation
 - **Produits en stock** : Expédition le jour même si commande avant 14h
-- **Produits sur commande** : Délai indiqué sur la fiche produit
+- **Produits sur commande** : Délai fournisseur 3 à 7 jours ouvrés (délai exact sur la fiche produit)
 
 ### Confirmation d'expédition
 - Email avec numéro de suivi
 - SMS optionnel (si numéro renseigné)
+
+### Suivi de commande
+1. Connectez-vous à votre compte client
+2. Accédez à "Mes commandes"
+3. Cliquez sur le numéro de commande
+4. Le lien de suivi transporteur est disponible dès l'expédition
 
 ## Réception du colis
 
@@ -85,6 +91,12 @@ Supplément pour pièces encombrantes (>30kg ou >120cm) :
 - **Colis endommagé** : Refusez ou émettez des réserves écrites
 - **Colis ouvert** : Refusez et contactez-nous
 - **Produit manquant** : Contactez-nous sous 48h avec photos
+
+### Commande non reçue
+1. Vérifiez le suivi dans votre espace client
+2. Contactez le transporteur avec le numéro de suivi
+3. Si pas de nouvelles après 48h, contactez notre service client
+- **Délai maximum France** : 7 jours ouvrés après expédition — au-delà, enquête transporteur
 
 ## Absence lors de la livraison
 
@@ -112,6 +124,10 @@ Tous nos colis sont assurés. En cas de perte ou dommage imputable au transporte
 - Vérifiez l'adresse avant validation
 - En cas d'erreur, contactez-nous avant expédition
 - Frais de réexpédition à la charge du client
+
+### Modification d'adresse de livraison
+- **Avant expédition** : Contactez le service client — modification possible si commande non préparée
+- **Après expédition** : Contactez directement le transporteur — redirection possible (frais éventuels)
 
 ### Colis retourné "NPAI"
 (N'habite Pas à l'Adresse Indiquée)

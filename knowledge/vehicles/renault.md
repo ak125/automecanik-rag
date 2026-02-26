@@ -16,8 +16,8 @@ Constructeur automobile francais fonde en 1899. Membre de l'Alliance Renault-Nis
 
 ## Modeles
 
-- Clio -> renault-clio.md
-- Megane -> renault-megane.md
+- Clio -> renault-clio-3.md
+- Megane -> renault-megane-3.md
 - Captur, Kadjar, Austral...
 
 ## Points faibles communs
