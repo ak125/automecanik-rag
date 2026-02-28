@@ -60,7 +60,45 @@ def build_gold_properties() -> list[Property]:
         Property(name="confidence_score", data_type=DataType.NUMBER),
         Property(name="last_verified_date", data_type=DataType.TEXT),
         Property(name="verified_by", data_type=DataType.TEXT),
+        # Role classification (Phase 1)
+        Property(name="section_key", data_type=DataType.TEXT),
+        Property(name="primary_role", data_type=DataType.TEXT),
+        Property(name="allowed_roles", data_type=DataType.TEXT_ARRAY),
+        Property(name="purity_score", data_type=DataType.INT),
+        Property(name="contamination_flags", data_type=DataType.TEXT_ARRAY),
+        # Chunk kind classification (Phase 2)
+        Property(name="chunk_kind", data_type=DataType.TEXT),
     ]
+
+
+ROLE_PROPERTIES = [
+    Property(name="section_key", data_type=DataType.TEXT),
+    Property(name="primary_role", data_type=DataType.TEXT),
+    Property(name="allowed_roles", data_type=DataType.TEXT_ARRAY),
+    Property(name="purity_score", data_type=DataType.INT),
+    Property(name="contamination_flags", data_type=DataType.TEXT_ARRAY),
+    Property(name="chunk_kind", data_type=DataType.TEXT),
+]
+
+
+def migrate_add_role_properties(client):
+    """Add Phase 1 role properties to existing collections (non-destructive)."""
+    all_collections = TARGET_COLLECTIONS + ["Dev_Full"]
+    for collection_name in all_collections:
+        if not client.collections.exists(collection_name):
+            continue
+        collection = client.collections.get(collection_name)
+        config = collection.config.get()
+        existing_names = {p.name for p in config.properties}
+        added = 0
+        for prop in ROLE_PROPERTIES:
+            if prop.name not in existing_names:
+                collection.config.add_property(prop)
+                added += 1
+        if added:
+            print(f"  Added {added} role properties to '{collection_name}'")
+        else:
+            print(f"  '{collection_name}' already has all role properties")
 
 
 def init_schema():
@@ -102,6 +140,10 @@ def init_schema():
                 properties=properties,
             )
             print("Collection 'Dev_Full' created successfully!")
+
+        # Migrate existing collections: add Phase 1 role properties
+        print("\nMigrating existing collections (add role properties)...")
+        migrate_add_role_properties(client)
 
     finally:
         client.close()

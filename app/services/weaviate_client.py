@@ -89,6 +89,14 @@ class WeaviateClient:
             "updated_at": props.get("updated_at") or "",
             "content_hash": props.get("content_hash") or "",
             "collection": target_collection,
+            # Role classification (Phase 1)
+            "section_key": props.get("section_key") or "",
+            "primary_role": props.get("primary_role") or "",
+            "allowed_roles": props.get("allowed_roles", []) or [],
+            "purity_score": props.get("purity_score") if props.get("purity_score") is not None else 0,
+            "contamination_flags": props.get("contamination_flags", []) or [],
+            # Chunk kind (Phase 2)
+            "chunk_kind": props.get("chunk_kind") or "other",
         }
 
     async def hybrid_search(
@@ -104,6 +112,7 @@ class WeaviateClient:
         source_type: Optional[str] = None,
         doc_family: Optional[str] = None,
         truth_levels: Optional[list[str]] = None,
+        target_role: Optional[str] = None,
     ) -> list[dict]:
         if alpha is None:
             alpha = self.settings.retrieval_alpha
@@ -135,6 +144,10 @@ class WeaviateClient:
                     f = Filter.by_property("truth_level").equal(truth_levels[0])
                 else:
                     f = Filter.by_property("truth_level").contains_any(truth_levels)
+                prop_filter = (prop_filter & f) if prop_filter else f
+            # Phase 1: role-based filtering (behind feature flag)
+            if target_role and self.settings.role_filtering_enabled:
+                f = Filter.by_property("allowed_roles").contains_any([target_role])
                 prop_filter = (prop_filter & f) if prop_filter else f
 
             canonical_filters = Filter.by_property("is_canonical").equal(True)

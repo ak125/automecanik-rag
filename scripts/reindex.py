@@ -20,6 +20,7 @@ if str(ROOT_DIR) not in sys.path:
 
 from app.services.gamme_page_contract import build_and_validate_gamme_page_contract
 from app.config import get_settings
+from orchestrator.processors.role_classifier import classify_chunk
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -544,7 +545,7 @@ def resolve_namespace(source_type: str) -> str:
     return f"knowledge:{st or 'general'}"
 
 
-def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None, chunk_intent: str | None = None) -> Dict[str, Any]:
+def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None, chunk_intent: str | None = None, heading: str | None = None, chunk_type: str = "text") -> Dict[str, Any]:
     suffix = "canonical" if canonical else "body"
     page_numbers = page_numbers or []
     bbox_ref = extract_bbox_ref(chunk_text)
@@ -603,6 +604,8 @@ def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, p
         "confidence_score": doc["confidence_score"],
         "last_verified_date": doc["last_verified_date"],
         "verified_by": doc["verified_by"],
+        # Role classification (Phase 1)
+        **classify_chunk(heading=heading, chunk_type=chunk_type, content=clean_chunk, source_type=doc["source_type"]),
     }
 
 
@@ -625,7 +628,7 @@ def chunk_document(doc: Dict[str, Any]) -> List[Dict[str, Any]]:
         chunk_intent = None
         if v3 and parent_h2:
             chunk_intent = V3_H2_INTENT_MAP.get(parent_h2.strip().lower())
-        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers, chunk_intent=chunk_intent))
+        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers, chunk_intent=chunk_intent, heading=parent_h2))
         chunk_index += 1
 
     # Canonical layer: only from explicit canonical corpus/docs.

@@ -99,6 +99,12 @@ class Settings(BaseSettings):
     min_score_threshold: float = _yaml_config.get("retrieval", {}).get("min_score_threshold", 0.70)
     min_results_required: int = _yaml_config.get("retrieval", {}).get("min_results_required", 3)
 
+    # Phase 1: Role-based filtering (observe-only when false)
+    role_filtering_enabled: bool = False
+
+    # Phase 2: Chunk kind quotas for retrieval diversification (observe-only when false)
+    chunk_kind_quotas_enabled: bool = False
+
     # P0 SECURITY: CORS Configuration
     cors_origins: str = "*"  # Comma-separated list for PROD
 

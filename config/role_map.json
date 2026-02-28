@@ -1,0 +1,37 @@
+{
+  "R1_ROUTER": {
+    "label": "Routeur",
+    "allowed_chunk_kinds": ["buy_args", "equipementiers", "motorisations"],
+    "purity_threshold": 0.8
+  },
+  "R2_PRODUCT": {
+    "label": "Produit",
+    "allowed_chunk_kinds": [],
+    "purity_threshold": 0.9
+  },
+  "R3_GUIDE": {
+    "label": "Guide d'achat",
+    "allowed_chunk_kinds": ["intro_role", "risk", "timing", "how_to_choose", "selection_criteria", "decision_tree", "anti_mistakes", "use_cases", "faq"],
+    "purity_threshold": 0.7
+  },
+  "R3_CONSEILS": {
+    "label": "Conseils DIY",
+    "allowed_chunk_kinds": ["intro_role", "timing", "how_to_choose", "faq", "costs"],
+    "purity_threshold": 0.7
+  },
+  "R4_REFERENCE": {
+    "label": "Référence",
+    "allowed_chunk_kinds": ["composition", "confusions", "regles_metier"],
+    "purity_threshold": 0.85
+  },
+  "R5_DIAGNOSTIC": {
+    "label": "Diagnostic",
+    "allowed_chunk_kinds": ["symptoms", "perception", "sign_test", "obd_codes", "costs"],
+    "purity_threshold": 0.8
+  },
+  "R6_SUPPORT": {
+    "label": "Support",
+    "allowed_chunk_kinds": [],
+    "purity_threshold": 0.9
+  }
+}

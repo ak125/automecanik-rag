@@ -685,6 +685,15 @@ class OrchestratorPipeline:
         if not category:
             category = doc_family
 
+        # Role classification (Phase 1)
+        from .processors.role_classifier import classify_chunk as _classify_chunk
+        role_fields = _classify_chunk(
+            heading=chunk.heading,
+            chunk_type="text",
+            content=chunk.content,
+            source_type=chunk.document.source_type,
+        )
+
         return {
             "chunk_id": chunk_id,
             "parent_id": chunk.document.source_id,
@@ -715,6 +724,7 @@ class OrchestratorPipeline:
             "confidence_score": {"A": 0.92, "B": 0.75, "C": 0.55, "D": 0.35}.get(evidence_grade, 0.5),
             "last_verified_date": "",
             "verified_by": "",
+            **role_fields,
         }
 
     async def _embed_and_upsert_streaming(self) -> int:

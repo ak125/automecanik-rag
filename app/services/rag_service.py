@@ -391,7 +391,15 @@ class RAGService:
         return deduped[: limit * 3], pass_info
 
 
-    def _build_evidence(self, results: list[dict], min_chunks: int, limit: int) -> list[dict]:
+    # Phase 2: chunk_kind quotas per role
+    _CHUNK_KIND_QUOTAS: dict[str, dict[str, int]] = {
+        "R1_ROUTER": {"definition": 2, "selection_checks": 2, "faq": 1, "table_rows": 1, "trust": 1, "support": 0, "procedure": 0, "other": 2},
+        "R3_GUIDE": {"definition": 1, "selection_checks": 3, "faq": 2, "table_rows": 2, "trust": 1, "support": 0, "procedure": 1, "other": 2},
+        "R4_REFERENCE": {"definition": 3, "selection_checks": 1, "faq": 1, "table_rows": 3, "trust": 0, "support": 0, "procedure": 0, "other": 2},
+        "R5_DIAGNOSTIC": {"definition": 1, "selection_checks": 1, "faq": 1, "table_rows": 2, "trust": 0, "support": 0, "procedure": 2, "other": 2},
+    }
+
+    def _build_evidence(self, results: list[dict], min_chunks: int, limit: int, target_role: str | None = None) -> list[dict]:
         diversified: list[dict] = []
         used_diversity_keys = set()
 
@@ -418,7 +426,43 @@ class RAGService:
                 if len(diversified) >= limit:
                     break
 
-        return diversified[:limit]
+        diversified = diversified[:limit]
+
+        # Phase 2: apply chunk_kind quotas
+        diversified = self._apply_chunk_kind_quotas(diversified, target_role)
+
+        return diversified
+
+    def _apply_chunk_kind_quotas(self, results: list[dict], target_role: str | None) -> list[dict]:
+        """Apply per-chunk_kind quotas to limit retrieval homogeneity (Phase 2)."""
+        if not self.settings.chunk_kind_quotas_enabled or not target_role:
+            return results
+
+        quotas = self._CHUNK_KIND_QUOTAS.get(target_role)
+        if not quotas:
+            return results
+
+        filtered: list[dict] = []
+        kind_counts: dict[str, int] = {}
+        dropped = 0
+
+        for r in results:
+            kind = r.get("chunk_kind") or "other"
+            max_allowed = quotas.get(kind, 99)
+            current = kind_counts.get(kind, 0)
+            if current >= max_allowed:
+                dropped += 1
+                continue
+            kind_counts[kind] = current + 1
+            filtered.append(r)
+
+        if dropped:
+            logger.info(
+                "chunk_kind quotas for %s: dropped %d chunks (counts: %s)",
+                target_role, dropped, kind_counts,
+            )
+
+        return filtered
 
     def _evidence_diversity_key(self, result: dict) -> tuple[str, str, str]:
         source = result.get("source_path") or result.get("source_uri") or ""
