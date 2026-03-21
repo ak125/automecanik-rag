@@ -81,6 +81,17 @@ document.addEventListener('DOMContentLoaded', function() {
         gfm: true
     });
 
+    // Rewrite image paths to public media endpoint (no auth needed)
+    const renderer = new marked.Renderer();
+    const origImage = renderer.image.bind(renderer);
+    renderer.image = function(token) {
+        if (token.href && token.href.startsWith('_raw/web-images/')) {
+            token.href = '/media/knowledge-images/' + token.href.replace('_raw/web-images/', '');
+        }
+        return origImage(token);
+    };
+    marked.use({ renderer: renderer });
+
     // Render markdown preview
     const previewEl = document.getElementById('content-preview');
     const sourceEl = document.getElementById('content-source');

@@ -25,7 +25,7 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from app.config import get_settings  # noqa: E402
 
@@ -51,8 +51,35 @@ IMG_SRC_RE = re.compile(r'src=["\']([^"\']+)["\']', re.IGNORECASE)
 IMG_ALT_RE = re.compile(r'alt=["\']([^"\']*)["\']', re.IGNORECASE)
 VALID_IMG_EXT = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 SKIP_URL_PATTERNS = re.compile(
-    r"(flag|icon|logo|nav|footer|tracking|pixel|analytics|spacer|blank|sprite|badge|social|share|arrow|chevron|caret)",
+    r"(flag|icon|logo|nav|footer|tracking|pixel|analytics|spacer|blank|sprite|"
+    r"badge|social|share|arrow|chevron|caret|thumbnail|avatar|header-bg|"
+    r"banner-ad|placeholder|loader|spinner|1x1|widget|button|emoji|smiley|"
+    r"cookie|gdpr|consent|certification|iso-|partner-logo|team-photo|"
+    r"map-marker|pin|decorat|ornament|divider|separator|background-|bg-pattern)",
     re.IGNORECASE,
+)
+# Alt-text patterns indicating decorative/promo images (not product-specific)
+SKIP_ALT_PATTERNS = re.compile(
+    r"(masters of motion|diagnostic.*kit|unboxing|déballage|"
+    r"aperçu.*kit|how to|comment.*remplacer|comment.*trouver|"
+    r"comment.*calibrer|training.*\d+.*x.*\d+|diagnostics.*\d+.*x.*\d+|"
+    # Sidebar / recommended articles (blog sites)
+    r"ceinture de s[eé]curit[eé]|r[eé]troviseur|adblue|"
+    r"alternateur.*choisir|bo[iî]tier.*papillon|climatisation.*voiture|"
+    r"recharger.*climatisation|amazon|housse.*protection|motards.*arrachent|"
+    r"bonne occaz|peugeot rc[cz]|volkswagen.*tiguan.*motorisation|"
+    r"miroir.*r[eé]troviseur|quel alternateur|comment savoir si le boitier|"
+    r"comment d[eé]bloquer une ceinture|contenance.*r[eé]servoir|"
+    # Generic promo banners with dimensions
+    r"^\d+\s*x\s*\d+\s*(px)?$|^delphi\s*-\s*(training|diagnostics)\s*-\s*\d+)",
+    re.IGNORECASE,
+)
+# HTML containers that typically hold sidebar/unrelated content
+SKIP_CONTAINER_RE = re.compile(
+    r"<(aside|nav|footer)[^>]*>.*?</\1>|"
+    r"<[^>]+class=\"[^\"]*\b(sidebar|related|recommend|widget|newsletter|"
+    r"social|share|ad-|advert|cookie|popup|modal|offcanvas)\b[^\"]*\"[^>]*>.*?</[^>]+>",
+    re.IGNORECASE | re.DOTALL,
 )
 
 
@@ -85,10 +112,16 @@ def strip_tags(fragment: str) -> str:
 
 
 def extract_images(raw_html: str, base_url: str) -> list[tuple[str, str]]:
-    """Extract (absolute_url, alt_text) pairs from <img> tags in raw HTML."""
+    """Extract (absolute_url, alt_text) pairs from <img> tags in raw HTML.
+
+    Strips sidebar/aside/footer containers first to avoid picking up
+    unrelated recommended-article thumbnails.
+    """
+    # Remove sidebar/aside/footer/widget containers before scanning
+    clean_html = SKIP_CONTAINER_RE.sub("", raw_html)
     images: list[tuple[str, str]] = []
     seen = set()
-    for img_tag in re.finditer(r"<img[^>]+>", raw_html, re.IGNORECASE):
+    for img_tag in re.finditer(r"<img[^>]+>", clean_html, re.IGNORECASE):
         tag = img_tag.group(0)
         src_m = IMG_SRC_RE.search(tag)
         if not src_m:
@@ -111,6 +144,10 @@ def extract_images(raw_html: str, base_url: str) -> list[tuple[str, str]]:
             continue
         alt_m = IMG_ALT_RE.search(tag)
         alt = html.unescape(alt_m.group(1).strip()) if alt_m else ""
+        # Alt-text filter (skip promo/decorative content)
+        if alt and SKIP_ALT_PATTERNS.search(alt):
+            logging.debug("Skipping image with decorative alt: %s", alt[:60])
+            continue
         images.append((abs_url, alt))
     return images
 
@@ -118,10 +155,13 @@ def extract_images(raw_html: str, base_url: str) -> list[tuple[str, str]]:
 def download_images(
     images: list[tuple[str, str]],
     knowledge_root: Path,
-    max_images: int = 20,
-    min_size: int = 5000,
+    max_images: int = 30,
+    min_size: int = 10_000,
+    max_size: int = 5_000_000,
     timeout: int = 10,
     user_agent: str = "AutoMecanikRAG-WebIngest/1.0",
+    source_url: str = "",
+    gamme: str | None = None,
 ) -> dict[str, str]:
     """Download images and return {original_url: relative_path} for successful downloads."""
     img_dir = knowledge_root / "_raw" / "web-images"
@@ -140,6 +180,27 @@ def download_images(
             if len(data) < min_size:
                 logger.debug(f"Skip small image ({len(data)} bytes): {img_url}")
                 continue
+            if len(data) > max_size:
+                logger.debug(f"Skip oversized image ({len(data)} bytes): {img_url}")
+                continue
+
+            # Dimension filter: skip banners (ratio > 5:1) and tiny images (< 100px)
+            try:
+                from PIL import Image as PILImage
+                import io
+                img = PILImage.open(io.BytesIO(data))
+                w, h = img.size
+                if w > 0 and h > 0:
+                    ratio = max(w, h) / min(w, h)
+                    if ratio > 5:
+                        logger.debug(f"Skip banner image (ratio {ratio:.1f}): {img_url}")
+                        continue
+                    if w < 100 and h < 100:
+                        logger.debug(f"Skip tiny image ({w}x{h}): {img_url}")
+                        continue
+            except Exception:
+                pass  # PIL not available or corrupt image — keep it
+
             digest = hashlib.sha256(data).hexdigest()
             ext = os.path.splitext(urllib.parse.urlparse(img_url).path.lower())[1] or ".jpg"
             fname = f"{digest[:16]}{ext}"
@@ -150,10 +211,59 @@ def download_images(
             mapping[img_url] = rel_path
             downloaded += 1
             logger.debug(f"Downloaded image ({len(data)} bytes): {img_url} -> {fname}")
+
+            # Generate .prompt.md sidecar with metadata
+            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url, gamme=gamme)
+
         except Exception as exc:  # noqa: BLE001
             logger.debug(f"Failed to download image {img_url}: {exc}")
     logger.info(f"Downloaded {downloaded} images ({len(images)} candidates)")
     return mapping
+
+
+def _write_prompt_sidecar(
+    img_dir: Path,
+    hash16: str,
+    image_url: str,
+    alt_text: str,
+    source_url: str,
+    gamme: str | None = None,
+) -> None:
+    """Write a .prompt.md sidecar file for a downloaded image.
+
+    REGLE COPYRIGHT: Ne JAMAIS inclure de noms de marques dans la description.
+    Le champ alt_text conserve le texte original (donnee factuelle),
+    mais la description en corps utilise un placeholder neutre.
+    """
+    sidecar_path = img_dir / f"{hash16}.prompt.md"
+    if sidecar_path.exists():
+        return  # Don't overwrite existing (may have been enriched by describe-images)
+
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Clean alt text for YAML (remove quotes, newlines)
+    safe_alt = alt_text.replace('"', '\\"').replace("\n", " ").strip()
+    # Body description: placeholder neutre (enrichi plus tard par describe-images)
+    description = "(description a generer via describe-images)"
+    gamme_yaml = f'"{gamme}"' if gamme else "null"
+
+    content = f"""---
+hash: "{hash16}"
+source_url: "{source_url}"
+image_url: "{image_url}"
+alt_text: "{safe_alt}"
+gamme: {gamme_yaml}
+type: "produit"
+usage: "page-gamme"
+style: "photo-produit"
+priority: "moyenne"
+ingested_at: "{now}"
+ingested_by: "web-scraper"
+---
+
+{description}
+"""
+    sidecar_path.write_text(content, encoding="utf-8")
+    logger.debug(f"Wrote sidecar: {hash16}.prompt.md")
 
 
 def extract_title(raw_html: str, fallback: str) -> str:
@@ -573,6 +683,34 @@ def collect_urls(args: argparse.Namespace) -> list[str]:
     return dedup
 
 
+def _send_webhook(
+    webhook_url: str,
+    webhook_key: str | None,
+    source: str,
+    created_files: list[str],
+) -> None:
+    """POST ingestion completion webhook to NestJS (best-effort, non-blocking)."""
+    import time
+
+    job_id = f"{source}-{int(time.time() * 1000)}"
+    payload = json.dumps({
+        "job_id": job_id,
+        "source": source,
+        "status": "done",
+        "files_created": created_files,
+    }).encode("utf-8")
+    headers = {"Content-Type": "application/json"}
+    if webhook_key:
+        headers["X-Internal-Key"] = webhook_key
+    try:
+        req = urllib.request.Request(webhook_url, data=payload, headers=headers, method="POST")
+        with urllib.request.urlopen(req, timeout=10) as resp:  # noqa: S310
+            body = resp.read().decode("utf-8", errors="replace")
+            logger.info(f"Webhook OK ({resp.status}): {body[:200]}")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"Webhook failed (non-blocking): {exc}")
+
+
 def run(args: argparse.Namespace) -> int:
     settings = get_settings()
     if not settings.can_write() and not args.dry_run:
@@ -589,6 +727,7 @@ def run(args: argparse.Namespace) -> int:
     catalog_dir = knowledge_root / "web-catalog"
     created = 0
     failed = 0
+    created_files: list[str] = []  # relative paths for webhook
 
     for url in urls:
         try:
@@ -616,6 +755,8 @@ def run(args: argparse.Namespace) -> int:
                         min_size=args.min_image_size,
                         timeout=min(args.timeout, 10),
                         user_agent=args.user_agent,
+                        source_url=args.source_url or url,
+                        gamme=args.gamme,
                     )
 
             markdown = html_to_markdown(raw_html, page_title, image_map=image_map, base_url=url)
@@ -658,8 +799,10 @@ def run(args: argparse.Namespace) -> int:
                     section_idx=sec["idx"],
                 )
                 created += 1
+                rel_path = str(doc_path.relative_to(knowledge_root))
+                created_files.append(rel_path)
                 logger.info(
-                    f"FILE_CREATED path={doc_path.relative_to(knowledge_root)} "
+                    f"FILE_CREATED path={rel_path} "
                     f"source=web url={url} source_type={source_type} "
                     f"section_idx={sec['idx']} truth_level={args.truth_level}"
                 )
@@ -675,6 +818,13 @@ def run(args: argparse.Namespace) -> int:
             logger.error(f"Failed to ingest {url}: {exc}")
 
     logger.info(f"Done. created={created}, failed={failed}, total_urls={len(urls)}")
+
+    # Notify NestJS via webhook if configured (CLI args or env vars)
+    webhook_url = getattr(args, "webhook_url", None) or os.environ.get("NESTJS_WEBHOOK_URL")
+    webhook_key = getattr(args, "webhook_key", None) or os.environ.get("NESTJS_WEBHOOK_KEY")
+    if webhook_url and created_files and not args.dry_run:
+        _send_webhook(webhook_url, webhook_key, "web", created_files)
+
     return 0 if failed == 0 else 2
 
 
@@ -698,9 +848,13 @@ def main() -> int:
     parser.add_argument("--render-js", action="store_true", help="Render JavaScript with Playwright before extraction")
     parser.add_argument("--download-images", action="store_true", default=True, help="Download images (default: on)")
     parser.add_argument("--no-images", dest="download_images", action="store_false", help="Skip image downloading")
-    parser.add_argument("--max-images", type=int, default=20, help="Max images per page (default: 20)")
-    parser.add_argument("--min-image-size", type=int, default=5000, help="Min image size in bytes (default: 5000)")
+    parser.add_argument("--max-images", type=int, default=30, help="Max images per page (default: 30)")
+    parser.add_argument("--min-image-size", type=int, default=10000, help="Min image size in bytes (default: 10000)")
+    parser.add_argument("--source-url", default="", help="Source page URL (written to .prompt.md sidecars)")
+    parser.add_argument("--gamme", default=None, help="Gamme alias to assign to downloaded images (e.g. disque-de-frein)")
     parser.add_argument("--dry-run", action="store_true", help="Preview only")
+    parser.add_argument("--webhook-url", help="NestJS webhook URL to call after ingestion")
+    parser.add_argument("--webhook-key", help="X-Internal-Key for webhook auth")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logs")
     args = parser.parse_args()
 

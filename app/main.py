@@ -309,6 +309,46 @@ app.include_router(
 
 
 # ============================================
+# Knowledge Images (public, hash-based auth)
+# ============================================
+import re as _re
+from pathlib import Path as _Path
+from fastapi.responses import FileResponse as _FileResponse
+
+_IMAGE_CONTENT_TYPES = {
+    ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+    ".png": "image/png", ".webp": "image/webp", ".gif": "image/gif",
+}
+_IMAGE_FILENAME_RE = _re.compile(r'^[a-f0-9]{16}\.(jpg|jpeg|png|webp|gif)$')
+
+
+@app.get("/media/knowledge-images/{filename}", tags=["Media"])
+async def serve_knowledge_image(filename: str):
+    """Serve images from knowledge/_raw/web-images/ (hash-based, immutable).
+
+    No API key required — filenames are SHA256 hashes (unguessable),
+    and content is public product imagery.
+    """
+    if not _IMAGE_FILENAME_RE.match(filename):
+        raise HTTPException(status_code=400, detail="Invalid image filename")
+
+    base_dir = (_Path(settings.knowledge_path) / "_raw" / "web-images").resolve()
+    image_path = (base_dir / filename).resolve()
+
+    if not str(image_path).startswith(str(base_dir)):
+        raise HTTPException(status_code=400, detail="Invalid path")
+    if not image_path.exists():
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    ext = image_path.suffix.lower()
+    return _FileResponse(
+        path=str(image_path),
+        media_type=_IMAGE_CONTENT_TYPES.get(ext, "application/octet-stream"),
+        headers={"Cache-Control": "public, max-age=31536000, immutable"},
+    )
+
+
+# ============================================
 # Startup / Shutdown Events
 # ============================================
 @app.on_event("startup")

@@ -21,6 +21,7 @@ from pydantic import BaseModel
 from app.config import get_settings
 from app.services.knowledge_service import get_knowledge_service
 from app.services.embeddings import get_embeddings_service
+from app.admin.kp_service import KeywordPlannerService
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/admin", tags=["Admin"])
@@ -578,7 +579,7 @@ async def run_pdf_ingest(payload: PdfIngestRunRequest):
         f"cd '{app_root}'; "
         f"rm -rf '{import_dir}'; "
         f"mkdir -p '{import_dir}'; "
-        f"ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingestors/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
+        f"PYTHONPATH=/app ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingestors/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
         "if [ \""
         f"{low_memory}"
         "\" = \"1\" ]; then "
@@ -934,3 +935,67 @@ async def index_batch(
         errors=errors,
         duration_ms=duration_ms
     )
+
+
+# ============================================
+# Keyword Planner (KP)
+# ============================================
+
+@router.get("/keyword-planner", response_class=HTMLResponse)
+async def keyword_planner_page(request: Request):
+    """Page Keyword Planner — génération de prompts SEO par gamme et rôle."""
+    kp = KeywordPlannerService()
+    context = get_context(request)
+    context.update({
+        "gammes": kp.load_active_gammes(),
+        "coverage": kp.get_coverage_report(),
+        "total_gammes": 221,
+        "roles": kp.ROLE_LABELS,
+    })
+    return templates.TemplateResponse("pages/keyword-planner.html", context)
+
+
+@router.post("/keyword-planner/generate", response_class=HTMLResponse)
+async def keyword_planner_generate(
+    request: Request,
+    pg_alias: str = Form(...),
+    role: str = Form("all"),
+):
+    """Génère le(s) prompt(s) pour une gamme + rôle."""
+    kp = KeywordPlannerService()
+    roles = kp.ALL_ROLES if role == "all" else [role]
+    results = []
+    for r in roles:
+        prompt, meta = kp.generate_prompt(pg_alias, r)
+        results.append({"role": r, "label": kp.ROLE_LABELS.get(r, r), "prompt": prompt, **meta})
+
+    context = get_context(request)
+    context.update({
+        "results": results,
+        "pg_alias": pg_alias,
+        "selected_role": role,
+    })
+
+    if request.headers.get("HX-Request"):
+        return templates.TemplateResponse("partials/_kp_results.html", context)
+    return templates.TemplateResponse("pages/keyword-planner.html", context)
+
+
+@router.post("/keyword-planner/import", response_class=HTMLResponse)
+async def keyword_planner_import(
+    request: Request,
+    pg_id: int = Form(...),
+    role: str = Form(...),
+    json_content: str = Form(...),
+    dry_run: bool = Form(False),
+):
+    """Valide et importe un JSON Claude Chrome en DB."""
+    kp = KeywordPlannerService()
+    result = kp.import_json(json_content, role, pg_id, dry_run=dry_run)
+
+    context = get_context(request)
+    context.update({"import_result": result, "role": role, "pg_id": pg_id})
+
+    if request.headers.get("HX-Request"):
+        return templates.TemplateResponse("partials/_kp_import_result.html", context)
+    return templates.TemplateResponse("pages/keyword-planner.html", context)
