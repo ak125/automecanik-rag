@@ -1,0 +1,135 @@
+{
+  "contamination_flags": {
+    "HAS_HOWTO_MARKERS": {
+      "pattern": "installer|monter|d[ée]monter|d[ée]poser|remonter",
+      "weight": 35,
+      "excluded_roles": ["R3_CONSEILS", "R5_DIAGNOSTIC"]
+    },
+    "HAS_DIAG_MARKERS": {
+      "pattern": "sympt[oô]me|panne|diagnostic",
+      "weight": 35,
+      "trigger_roles": ["R1_ROUTER"]
+    },
+    "HAS_VEHICLE_EXAMPLES": {
+      "pattern": "(?:renault|peugeot|citro[eë]n|volkswagen|bmw|audi|mercedes|ford|opel|toyota|fiat|hyundai|dacia)\\s+(?:clio|megane|208|308|c3|c4|golf|polo|serie|classe|focus|fiesta|corsa|yaris|punto|i[23]0|sandero|duster)",
+      "weight": 25,
+      "excluded_roles": ["R4_REFERENCE", "R5_DIAGNOSTIC"]
+    },
+    "HAS_PRICE_PUSH": {
+      "pattern": "prix|tarif|\\u20ac|EUR|co[uû]t(?:e|er|ant)?|budget|pas cher|meilleur prix|promotion",
+      "weight": 20,
+      "excluded_roles": ["R2_PRODUCT"]
+    },
+    "HAS_ABSOLUTE_CLAIMS": {
+      "pattern": "(?:toujours|jamais|z[ée]ro|aucun(?:e)?)\\s+(?:panne|probl[eè]me|risque|d[ée]faut|usure)|garanti(?:e)?\\s+(?:à vie|illimit[ée]e)|infaillible",
+      "weight": 20,
+      "excluded_roles": []
+    },
+    "HAS_UNSOURCED_NUMBERS": {
+      "pattern": "(?:(?:en moyenne|environ|pr[eè]s de|jusqu['''`]?[aà])\\s+)?\\d{2,}\\s*(?:%|pour cent|km|euros?|\\u20ac|ann[ée]es?|mois|heures?)",
+      "weight": 25,
+      "trigger_roles": ["R1_ROUTER", "R3_GUIDE", "R4_REFERENCE"]
+    }
+  },
+  "table_safety_flags": {
+    "TABLE_HAS_IMPERATIVES": {
+      "pattern": "\\b(remplacez|installez|d[ée]montez|d[ée]posez)\\b",
+      "weight": 15
+    },
+    "TABLE_HAS_STEP_SEQUENCE": {
+      "pattern": "(?:^|\\|)\\s*[123]\\.\\s",
+      "weight": 15
+    }
+  },
+  "roles": {
+    "R1_ROUTER": {
+      "label": "Routeur",
+      "allowed_chunk_kinds": ["buy_args", "equipementiers", "motorisations"],
+      "purity_threshold": 0.8
+    },
+    "R2_PRODUCT": {
+      "label": "Produit",
+      "allowed_chunk_kinds": [],
+      "purity_threshold": 0.9
+    },
+    "R3_GUIDE": {
+      "label": "Guide d'achat",
+      "allowed_chunk_kinds": ["intro_role", "risk", "timing", "how_to_choose", "selection_criteria", "decision_tree", "anti_mistakes", "use_cases", "faq"],
+      "purity_threshold": 0.7
+    },
+    "R3_CONSEILS": {
+      "label": "Conseils DIY",
+      "allowed_chunk_kinds": ["intro_role", "timing", "how_to_choose", "faq", "costs"],
+      "purity_threshold": 0.7
+    },
+    "R4_REFERENCE": {
+      "label": "Référence",
+      "allowed_chunk_kinds": ["composition", "confusions", "regles_metier"],
+      "purity_threshold": 0.85
+    },
+    "R5_DIAGNOSTIC": {
+      "label": "Diagnostic",
+      "allowed_chunk_kinds": ["symptoms", "perception", "sign_test", "obd_codes", "costs"],
+      "purity_threshold": 0.8
+    },
+    "R6_SUPPORT": {
+      "label": "Support",
+      "allowed_chunk_kinds": [],
+      "purity_threshold": 0.9
+    }
+  },
+  "section_to_role": {
+    "definition": "R4_REFERENCE",
+    "selection": "R3_GUIDE",
+    "faq": "R3_GUIDE",
+    "symptoms": "R5_DIAGNOSTIC",
+    "timing": "R3_GUIDE",
+    "procedure": "R3_CONSEILS",
+    "trust": "R1_ROUTER",
+    "support": "R6_SUPPORT",
+    "other": "R1_ROUTER"
+  },
+  "section_tolerant_roles": {
+    "definition": ["R1_ROUTER", "R4_REFERENCE"],
+    "selection": ["R3_GUIDE", "R1_ROUTER"],
+    "faq": ["R3_GUIDE", "R1_ROUTER", "R3_CONSEILS"],
+    "symptoms": ["R5_DIAGNOSTIC", "R3_CONSEILS"],
+    "trust": ["R1_ROUTER", "R3_GUIDE"],
+    "procedure": ["R3_CONSEILS", "R5_DIAGNOSTIC"],
+    "timing": ["R3_GUIDE", "R3_CONSEILS"],
+    "support": ["R6_SUPPORT"],
+    "other": []
+  },
+  "retrieval_recipes": {
+    "R1_ROUTER": {
+      "quotas": {"definition": 2, "selection_checks": 2, "trust": 1, "support": 1},
+      "forbidden_kinds": ["procedure", "faq"],
+      "min_purity": 75,
+      "forbid_flags": ["HAS_HOWTO_MARKERS", "HAS_DIAG_MARKERS"]
+    },
+    "R3_GUIDE": {
+      "quotas": {"definition": 1, "selection_checks": 3, "faq": 2, "trust": 1},
+      "forbidden_kinds": ["procedure"],
+      "min_purity": 60,
+      "forbid_flags": ["HAS_DIAG_MARKERS"]
+    },
+    "R4_REFERENCE": {
+      "quotas": {"definition": 2, "faq": 2, "table_rows": 1, "trust": 1},
+      "forbidden_kinds": ["procedure", "support"],
+      "min_purity": 70,
+      "forbid_flags": ["HAS_HOWTO_MARKERS", "HAS_PRICE_PUSH", "HAS_VEHICLE_EXAMPLES"]
+    },
+    "R5_DIAGNOSTIC": {
+      "quotas": {"definition": 1, "procedure": 2, "faq": 1, "trust": 1},
+      "forbidden_kinds": ["support"],
+      "min_purity": 55,
+      "forbid_flags": ["HAS_PRICE_PUSH"]
+    },
+    "R3_CONSEILS": {
+      "quotas": {"procedure": 3, "definition": 1, "faq": 1, "trust": 1},
+      "forbidden_kinds": [],
+      "min_purity": 50,
+      "forbid_flags": ["HAS_PRICE_PUSH"]
+    }
+  }
+}

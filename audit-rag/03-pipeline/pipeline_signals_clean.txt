@@ -1,0 +1,1414 @@
+./app/services/index_version_manager.py:146:    def __init__(self, weaviate_url: str = None):
+./app/services/index_version_manager.py:147:        self.weaviate_url = weaviate_url or os.getenv("WEAVIATE_URL", "http://localhost:8080")
+./ingest/logs/ingest_jobs.jsonl:1:{"event": "ingest_tabular", "timestamp": "2026-02-12T18:20:52.033330+00:00", "source": "/tmp/rag_smoke_products.csv", "source_type": "csv", "rows_total": 3, "profile_path": "/opt/automecanik/rag/knowledge/tabular/profiles/rag_smoke_products_dataset_profile.md", "snapshots_enabled": true, "snapshot_key": "product_id", "snapshot_count": 3, "index_raw_data": false}
+./ingest/logs/ingest_jobs.jsonl:2:{"event": "ingest_structured", "timestamp": "2026-02-12T18:20:52.135027+00:00", "source": "/tmp/rag_smoke_export.json", "source_type": "json", "records_total": 2, "profile_path": "/opt/automecanik/rag/knowledge/structured/profiles/rag_smoke_export_structure_profile.md", "snapshots_enabled": true, "snapshot_key": "id", "snapshot_count": 2, "index_raw_data": false}
+./app/services/namespace_guard.py:64:        # CI/CD pipeline - full access for indexation
+./app/services/namespace_guard.py:65:        "pipeline_ci": KNOWLEDGE_NAMESPACES + INTERNAL_NAMESPACES,
+./app/services/namespace_guard.py:90:            return "pipeline_ci"
+./app/services/namespace_guard.py:118:        if namespace.startswith("internal:") and actor in ["agents_dev", "pipeline_ci"]:
+./app/services/knowledge_service.py:642:        # Idempotent create for ingestion pipelines: same source_uri => update existing doc.
+./app/services/knowledge_service.py:751:        """Delete a document and optionally leave a tombstone to prevent re-ingestion.
+./app/services/knowledge_service.py:756:                source_uri is not re-ingested on the next pipeline run.
+./app/services/knowledge_service.py:773:                self._delete_weaviate_chunks(doc)
+./app/services/knowledge_service.py:812:        """Remove a tombstone so the document can be re-ingested."""
+./app/services/knowledge_service.py:833:    def _delete_weaviate_chunks(self, doc: "KnowledgeDocument") -> None:
+./app/services/knowledge_service.py:834:        """Best-effort deletion of Weaviate chunks belonging to this document."""
+./app/services/knowledge_service.py:836:            from app.services.weaviate_client import get_weaviate_client
+./app/services/knowledge_service.py:837:            from weaviate.classes.query import Filter
+./app/services/knowledge_service.py:839:            weaviate_client = get_weaviate_client()
+./app/services/knowledge_service.py:840:            target = weaviate_client.resolve_collection(
+./app/services/knowledge_service.py:843:            collection = weaviate_client.client.collections.get(target)
+./app/services/knowledge_service.py:844:            # Delete all chunks whose parent_id matches this doc
+./app/services/knowledge_service.py:848:            logger.info(f"Weaviate chunks deleted for parent_id={doc.id} in {target}")
+./app/services/knowledge_service.py:850:            logger.debug("Weaviate client not available, skipping vector cleanup")
+./app/services/knowledge_service.py:852:            logger.warning(f"Weaviate chunk cleanup failed: {exc}")
+./app/services/security_validator.py:4:- Detects and blocks prompt injection attacks
+./app/services/security_validator.py:27:    PROMPT_INJECTION = "prompt_injection"
+./app/services/security_validator.py:59:    (r"reveal\s+(?:your|the)\s+(?:system\s+)?prompt", "reveal_prompt"),
+./app/services/security_validator.py:155:        # Check for prompt injection first
+./app/services/security_validator.py:174:        """Check for prompt injection patterns."""
+./app/services/security_validator.py:180:                    reason="Message contains potential prompt injection attempt",
+./app/services/weaviate_client.py:1:"""Weaviate client for hybrid search with local embeddings."""
+./app/services/weaviate_client.py:6:import weaviate
+./app/services/weaviate_client.py:7:from weaviate.classes.query import HybridFusion, Filter
+./app/services/weaviate_client.py:10:from app.services.embeddings import get_embeddings_service
+./app/services/weaviate_client.py:16:    """Client for Weaviate vector database."""
+./app/services/weaviate_client.py:20:        parsed = urlparse(settings.weaviate_url)
+./app/services/weaviate_client.py:21:        http_host = parsed.hostname or "weaviate"
+./app/services/weaviate_client.py:24:        self.client = weaviate.connect_to_custom(
+./app/services/weaviate_client.py:29:            grpc_port=settings.weaviate_grpc_port,
+./app/services/weaviate_client.py:33:        self.embeddings = get_embeddings_service()
+./app/services/weaviate_client.py:35:            "catalog": self.settings.weaviate_collection_catalog,
+./app/services/weaviate_client.py:36:            "diagnostic": self.settings.weaviate_collection_diagnostic,
+./app/services/weaviate_client.py:37:            "knowledge": self.settings.weaviate_collection_knowledge,
+./app/services/weaviate_client.py:38:            "media": self.settings.weaviate_collection_media,
+./app/services/weaviate_client.py:39:            "router_memory": self.settings.weaviate_collection_router_memory,
+./app/services/weaviate_client.py:51:                return self.settings.weaviate_collection_diagnostic
+./app/services/weaviate_client.py:53:                return self.settings.weaviate_collection_catalog
+./app/services/weaviate_client.py:55:                return self.settings.weaviate_collection_media
+./app/services/weaviate_client.py:57:                return self.settings.weaviate_collection_router_memory
+./app/services/weaviate_client.py:59:        return self.settings.weaviate_collection_knowledge
+./app/services/weaviate_client.py:79:            "chunk_id": props.get("chunk_id") or "",
+./app/services/weaviate_client.py:99:            "chunk_kind": props.get("chunk_kind") or "other",
+./app/services/weaviate_client.py:123:            alpha = self.settings.retrieval_alpha
+./app/services/weaviate_client.py:128:            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+./app/services/weaviate_client.py:130:            query_vector = self.embeddings.embed(query)
+./app/services/weaviate_client.py:163:                        f = Filter.by_property("chunk_kind").not_equal(kind)
+./app/services/weaviate_client.py:177:                    vector=query_vector,
+./app/services/weaviate_client.py:198:                vector=query_vector,
+./app/services/weaviate_client.py:220:                dedupe_key = r.get("chunk_id") or r.get("source_path")
+./app/services/weaviate_client.py:254:            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+./app/services/weaviate_client.py:259:                "vectorDimension": self.settings.embedding_dimension,
+./app/services/weaviate_client.py:261:                "vectorizer": str(config.vectorizer) if hasattr(config, 'vectorizer') else "none",
+./app/services/weaviate_client.py:269:            target_collection = collection_name or self.settings.weaviate_collection_knowledge
+./app/services/weaviate_client.py:282:_weaviate_client: Optional[WeaviateClient] = None
+./app/services/weaviate_client.py:285:def get_weaviate_client() -> WeaviateClient:
+./app/services/weaviate_client.py:286:    global _weaviate_client
+./app/services/weaviate_client.py:287:    if _weaviate_client is None:
+./app/services/weaviate_client.py:288:        _weaviate_client = WeaviateClient()
+./app/services/weaviate_client.py:289:    return _weaviate_client
+./app/services/weaviate_client.py:292:def reset_weaviate_client():
+./app/services/weaviate_client.py:294:    global _weaviate_client
+./app/services/weaviate_client.py:295:    _weaviate_client = None
+./app/services/startup_validator.py:25:    def __init__(self, config, weaviate_client=None):
+./app/services/startup_validator.py:31:            weaviate_client: Optional Weaviate client for connection checks
+./app/services/startup_validator.py:34:        self.weaviate = weaviate_client
+./app/services/startup_validator.py:52:        if self.weaviate:
+./app/services/startup_validator.py:53:            weaviate_ok = await self._check_weaviate()
+./app/services/startup_validator.py:54:            if not weaviate_ok:
+./app/services/startup_validator.py:58:            dimension_ok = await self._check_embedding_dimension()
+./app/services/startup_validator.py:87:    async def _check_weaviate(self) -> bool:
+./app/services/startup_validator.py:95:            is_healthy = await self.weaviate.is_healthy()
+./app/services/startup_validator.py:105:    async def _check_embedding_dimension(self) -> bool:
+./app/services/startup_validator.py:107:        Check embedding dimension matches Weaviate schema.
+./app/services/startup_validator.py:114:            schema = await self.weaviate.get_schema()
+./app/services/startup_validator.py:117:                logger.warning("Could not retrieve Weaviate schema - skipping dimension check")
+./app/services/startup_validator.py:120:            # Get vector dimension from schema
+./app/services/startup_validator.py:121:            expected = self.config.embedding_dimension
+./app/services/startup_validator.py:122:            actual = schema.get("vectorDimension", expected)
+./app/services/startup_validator.py:127:                    f"config={expected}, weaviate_schema={actual}"
+./app/services/startup_validator.py:146:            count = await self.weaviate.count_documents()
+./app/services/startup_validator.py:160:def run_startup_validation(config, weaviate_client=None) -> Tuple[bool, List[str]]:
+./app/services/startup_validator.py:168:        weaviate_client: Optional Weaviate client
+./app/services/startup_validator.py:175:    validator = StartupValidator(config, weaviate_client)
+./app/services/claude_client.py:8:from app.prompts.templates import SYSTEM_PROMPT, NO_CONTEXT_RESPONSE
+./app/services/claude_client.py:28:        system_prompt: Optional[str] = None,
+./app/services/claude_client.py:36:            system_prompt: Optional custom system prompt
+./app/services/claude_client.py:45:        # Format system prompt with context
+./app/services/claude_client.py:46:        prompt = (system_prompt or SYSTEM_PROMPT).format(context=context)
+./app/services/claude_client.py:53:                system=prompt,
+./app/services/langgraph_pipeline.py:20:    """State for the RAG pipeline."""
+./app/services/langgraph_pipeline.py:135:    """Build the RAG pipeline graph (Context-Only Mode)."""
+./app/services/langgraph_pipeline.py:172:async def run_rag_pipeline(query: str, session_id: str = "") -> dict:
+./app/services/langgraph_pipeline.py:173:    """Run the full RAG pipeline (Context-Only Mode)."""
+./app/services/langgraph_flow.py:77:async def retrieve_node(state: ChatState) -> ChatState:
+./app/services/langgraph_flow.py:114:            limit=settings.retrieval_top_k,
+./app/services/langgraph_flow.py:262:    graph.add_node("retrieve", retrieve_node)
+./app/services/langgraph_flow.py:268:    graph.add_edge("classify", "retrieve")
+./app/services/langgraph_flow.py:269:    graph.add_edge("retrieve", "guardrails")
+./app/services/langgraph_flow.py:286:async def run_chat_pipeline(
+./app/services/langgraph_flow.py:329:        logger.error(f"Chat pipeline failed: {e}")
+./app/main.py:35:from app.services.weaviate_client import get_weaviate_client, reset_weaviate_client
+./app/main.py:108:    ASGI Middleware for security validation (prompt injection + PII).
+./app/main.py:156:                                f"SECURITY: Blocked prompt injection on {path}"
+./app/main.py:318:    logger.info(f"Weaviate URL: {settings.weaviate_url}")
+./app/main.py:332:            weaviate_client = get_weaviate_client()
+./app/main.py:333:            validator = StartupValidator(settings, weaviate_client)
+./app/main.py:381:        client = get_weaviate_client()
+./app/main.py:383:        reset_weaviate_client()
+./app/services/embeddings.py:1:"""Memory-efficient embeddings service using FastEmbed (Rust backend).
+./app/services/embeddings.py:14:from fastembed import TextEmbedding
+./app/services/embeddings.py:29:    Memory-efficient embeddings service using FastEmbed.
+./app/services/embeddings.py:50:        config_model = settings.embedding_model
+./app/services/embeddings.py:51:        self.dimension = settings.embedding_dimension
+./app/services/embeddings.py:54:        fastembed_model = MODEL_MAPPING.get(config_model, "BAAI/bge-small-en-v1.5")
+./app/services/embeddings.py:56:        logger.info(f"Loading FastEmbed model: {fastembed_model}")
+./app/services/embeddings.py:60:            self._model = TextEmbedding(model_name=fastembed_model)
+./app/services/embeddings.py:66:    def embed(self, text: str) -> List[float]:
+./app/services/embeddings.py:67:        """Generate embedding for a single text."""
+./app/services/embeddings.py:69:            # Return zero vector for empty text
+./app/services/embeddings.py:72:        embeddings = list(self._model.embed([text]))
+./app/services/embeddings.py:73:        return embeddings[0].tolist()
+./app/services/embeddings.py:75:    def embed_batch(self, texts: List[str], batch_size: int = 32) -> List[List[float]]:
+./app/services/embeddings.py:77:        Generate embeddings for multiple texts efficiently.
+./app/services/embeddings.py:80:            texts: List of texts to embed
+./app/services/embeddings.py:84:            List of embedding vectors
+./app/services/embeddings.py:100:        # Generate embeddings for valid texts
+./app/services/embeddings.py:101:        embeddings_iter = self._model.embed(valid_texts, batch_size=batch_size)
+./app/services/embeddings.py:102:        valid_embeddings = [e.tolist() for e in embeddings_iter]
+./app/services/embeddings.py:104:        # Rebuild full result list with zero vectors for empty texts
+./app/services/embeddings.py:107:        for idx, emb in zip(valid_indices, valid_embeddings):
+./app/services/embeddings.py:113:        """Return embedding dimension."""
+./app/services/embeddings.py:117:        """Check embeddings service health."""
+./app/services/embeddings.py:119:            test_embedding = self.embed("test")
+./app/services/embeddings.py:122:                "backend": "fastembed",
+./app/services/embeddings.py:124:                    get_settings().embedding_model,
+./app/services/embeddings.py:127:                "dimension": len(test_embedding),
+./app/services/embeddings.py:134:_embeddings_service: Optional[EmbeddingsService] = None
+./app/services/embeddings.py:137:def get_embeddings_service() -> EmbeddingsService:
+./app/services/embeddings.py:138:    """Get or create embeddings service instance."""
+./app/services/embeddings.py:139:    global _embeddings_service
+./app/services/embeddings.py:140:    if _embeddings_service is None:
+./app/services/embeddings.py:141:        _embeddings_service = EmbeddingsService()
+./app/services/embeddings.py:142:    return _embeddings_service
+./app/services/rag_service.py:10:from app.services.weaviate_client import get_weaviate_client
+./app/services/rag_service.py:22:    logger.info("Loaded role_map_defaults.json for retrieval recipes (%d recipes)",
+./app/services/rag_service.py:23:                len(_ROLE_MAP.get("retrieval_recipes", {})))
+./app/services/rag_service.py:110:        self.weaviate = get_weaviate_client()
+./app/services/rag_service.py:134:            catalog = self.settings.weaviate_collection_catalog
+./app/services/rag_service.py:138:        raw_results, pass_info = await self._run_multi_pass_retrieval(
+./app/services/rag_service.py:149:        evidence = self._build_evidence(raw_results, min_chunks=required_evidence, limit=limit, target_role=target_role)
+./app/services/rag_service.py:177:            self._build_canonical_chunk_suggestion(plan=plan, evidence=evidence)
+./app/services/rag_service.py:233:            "troubleshoot": [self.settings.weaviate_collection_diagnostic, self.settings.weaviate_collection_knowledge],
+./app/services/rag_service.py:234:            "fitment": [self.settings.weaviate_collection_catalog, self.settings.weaviate_collection_knowledge],
+./app/services/rag_service.py:235:            "policy": [self.settings.weaviate_collection_knowledge],
+./app/services/rag_service.py:236:            "define": [self.settings.weaviate_collection_knowledge, self.settings.weaviate_collection_catalog],
+./app/services/rag_service.py:237:            "choose": [self.settings.weaviate_collection_knowledge, self.settings.weaviate_collection_catalog],
+./app/services/rag_service.py:238:            "do": [self.settings.weaviate_collection_knowledge, self.settings.weaviate_collection_catalog],
+./app/services/rag_service.py:239:            "maintain": [self.settings.weaviate_collection_knowledge, self.settings.weaviate_collection_catalog],
+./app/services/rag_service.py:240:            "compare": [self.settings.weaviate_collection_knowledge, self.settings.weaviate_collection_catalog],
+./app/services/rag_service.py:242:            "cost": [self.settings.weaviate_collection_catalog, self.settings.weaviate_collection_knowledge],
+./app/services/rag_service.py:245:        source_plan = source_plan_map.get(primary_intent, [self.settings.weaviate_collection_knowledge])
+./app/services/rag_service.py:248:            forced = self.weaviate.resolve_collection(namespace=namespace, routing=routing)
+./app/services/rag_service.py:304:    async def _run_multi_pass_retrieval(
+./app/services/rag_service.py:321:            source_plan = [self.settings.weaviate_collection_knowledge]
+./app/services/rag_service.py:326:            # Cost queries are often noisy for catalog retrieval; keep product/vehicle signal.
+./app/services/rag_service.py:327:            if primary_intent == "cost" and collection == self.settings.weaviate_collection_catalog:
+./app/services/rag_service.py:336:        recipe = self._get_retrieval_recipe(target_role)
+./app/services/rag_service.py:349:            res = await self.weaviate.hybrid_search(
+./app/services/rag_service.py:389:            await run_pass(collection=self.settings.weaviate_collection_knowledge, strict=True, fallback=True)
+./app/services/rag_service.py:405:            if self.settings.weaviate_collection_knowledge not in relaxed_plan:
+./app/services/rag_service.py:406:                relaxed_plan.append(self.settings.weaviate_collection_knowledge)
+./app/services/rag_service.py:410:        # dedupe by chunk_id then source_path
+./app/services/rag_service.py:414:            key = r.get("chunk_id") or r.get("source_path")
+./app/services/rag_service.py:422:    # Phase 2: chunk_kind quotas per role (hardcoded fallback if role_map_defaults.json missing)
+./app/services/rag_service.py:430:    def _get_retrieval_recipe(self, target_role: str | None) -> dict:
+./app/services/rag_service.py:431:        """Get retrieval recipe for a role from role_map_defaults.json."""
+./app/services/rag_service.py:434:        recipes = _ROLE_MAP.get("retrieval_recipes", {})
+./app/services/rag_service.py:437:    def _build_evidence(self, results: list[dict], min_chunks: int, limit: int, target_role: str | None = None) -> list[dict]:
+./app/services/rag_service.py:454:        if len(diversified) < min_chunks:
+./app/services/rag_service.py:455:            existing = {r.get("chunk_id") or r.get("source_path") for r in diversified}
+./app/services/rag_service.py:457:                key = r.get("chunk_id") or r.get("source_path")
+./app/services/rag_service.py:466:        # Phase 2+3: apply retrieval recipe (quotas + forbidden kinds + forbid flags)
+./app/services/rag_service.py:467:        diversified = self._apply_retrieval_recipe(diversified, target_role)
+./app/services/rag_service.py:471:    def _apply_retrieval_recipe(self, results: list[dict], target_role: str | None) -> list[dict]:
+./app/services/rag_service.py:472:        """Apply per-role retrieval recipe: quotas, forbidden_kinds, forbid_flags (Phase 3)."""
+./app/services/rag_service.py:473:        if not self.settings.chunk_kind_quotas_enabled or not target_role:
+./app/services/rag_service.py:476:        recipe = self._get_retrieval_recipe(target_role)
+./app/services/rag_service.py:489:            kind = r.get("chunk_kind") or "other"
+./app/services/rag_service.py:494:            # Drop chunks with forbidden contamination flags
+./app/services/rag_service.py:495:            chunk_flags = set(r.get("contamination_flags") or [])
+./app/services/rag_service.py:496:            if chunk_flags & forbid_flags:
+./app/services/rag_service.py:511:                "retrieval recipe for %s: dropped %d chunks (counts: %s)",
+./app/services/rag_service.py:531:            # For short define/policy/cost questions, 2 diversified chunks are enough.
+./app/services/rag_service.py:570:    def _build_canonical_chunk_suggestion(self, plan: dict, evidence: list[dict]) -> str:
+./app/services/rag_service.py:575:            "Auto-improvement: proposer un chunk canonical "
+./app/services/rag_service.py:624:        # 1) retriever score + diversity
+./app/services/rag_service.py:745:                "chunk_id": r.get("chunk_id", ""),
+./app/api/health.py:7:from app.services.weaviate_client import get_weaviate_client
+./app/api/health.py:8:from app.services.embeddings import get_embeddings_service
+./app/api/health.py:23:        weaviate = get_weaviate_client()
+./app/api/health.py:24:        weaviate_status = await weaviate.health_check()
+./app/api/health.py:27:        weaviate_status = {"status": "unhealthy", "error": "service unavailable"}
+./app/api/health.py:30:        embeddings = get_embeddings_service()
+./app/api/health.py:31:        embeddings_status = embeddings.health_check()
+./app/api/health.py:34:        embeddings_status = {"status": "unhealthy", "error": "service unavailable"}
+./app/api/health.py:37:        weaviate_status.get("status") == "healthy"
+./app/api/health.py:38:        and embeddings_status.get("status") == "healthy"
+./app/api/health.py:49:                "weaviate": weaviate_status,
+./app/api/health.py:50:                "embeddings": embeddings_status,
+./app/api/health.py:66:        weaviate = get_weaviate_client()
+./app/api/health.py:67:        weaviate_status = await weaviate.health_check()
+./app/api/health.py:75:    if weaviate_status.get("status") != "healthy":
+./app/api/knowledge.py:39:                f"Use GitHub Actions or CI/CD pipeline to update the corpus."
+./app/api/knowledge.py:336:    """List all tombstone records (deleted documents that won't be re-ingested)."""
+./app/api/knowledge.py:344:    """Remove a tombstone so the document can be re-ingested. BUILD PLANE ONLY."""
+./app/api/knowledge.py:377:    from the knowledge corpus into the Weaviate vector database.
+./app/api/chat.py:5:- v2 (POST /chat/v2): Mode LangGraph - Full pipeline avec guardrails + génération
+./app/api/chat.py:22:from app.services.langgraph_flow import run_chat_pipeline
+./app/api/chat.py:36:    limit: int = Field(5, ge=1, le=20, description="Number of sources to retrieve")
+./app/api/chat.py:197:    Chat with LangGraph pipeline (Full Generation Mode).
+./app/api/chat.py:199:    Flow: classify → retrieve → guardrails → generate/refuse
+./app/api/chat.py:228:                detail="LangGraph pipeline is disabled"
+./app/api/chat.py:231:        # Run the full LangGraph pipeline
+./app/api/chat.py:232:        result = await run_chat_pipeline(
+./app/api/search.py:28:    source_ref: str = Field("", description="Source reference (#p, #t, #row, #chunk)")
+./app/api/search.py:39:    chunk_id: str = Field("", description="Chunk identifier")
+./app/api/search.py:46:    allowed_roles: list[str] = Field(default_factory=list, description="Roles this chunk is allowed in")
+./app/api/search.py:49:    chunk_kind: str = Field("other", description="Chunk kind: definition, selection_checks, faq, table_rows, trust, procedure, other")
+./app/api/search.py:95:    Uses hybrid search (BM25 + vector) in Weaviate with truth level analysis.
+./app/api/search.py:150:                    chunk_id=r.get("chunk_id", ""),
+./app/api/search.py:160:                    chunk_kind=r.get("chunk_kind") or "other",
+./app/config.py:62:    weaviate_url: str = "http://weaviate:8080"
+./app/config.py:63:    weaviate_grpc_port: int = 50051
+./app/config.py:64:    weaviate_collection_catalog: str = _yaml_config.get("vector_store", {}).get("catalog_class_name", "KB_Catalog")
+./app/config.py:65:    weaviate_collection_diagnostic: str = _yaml_config.get("vector_store", {}).get("diagnostic_class_name", "KB_Diagnostic")
+./app/config.py:66:    weaviate_collection_knowledge: str = _yaml_config.get("vector_store", {}).get("knowledge_class_name", "KB_Knowledge")
+./app/config.py:67:    weaviate_collection_media: str = _yaml_config.get("vector_store", {}).get("media_class_name", "KB_Media")
+./app/config.py:68:    weaviate_collection_router_memory: str = _yaml_config.get("vector_store", {}).get("router_memory_class_name", "KB_RouterMemory")
+./app/config.py:86:    embedding_model: str = "all-MiniLM-L6-v2"
+./app/config.py:87:    embedding_dimension: int = 384  # all-MiniLM-L6-v2 outputs 384 dimensions
+./app/config.py:88:    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+./app/config.py:90:    # Reindex chunking params
+./app/config.py:91:    reindex_target_max_tokens: int = 900  # Max tokens per chunk in reindex.py
+./app/config.py:97:    retrieval_top_k: int = _yaml_config.get("retrieval", {}).get("top_k", 8)
+./app/config.py:98:    retrieval_alpha: float = _yaml_config.get("retrieval", {}).get("alpha", 0.7)
+./app/config.py:99:    min_score_threshold: float = _yaml_config.get("retrieval", {}).get("min_score_threshold", 0.70)
+./app/config.py:100:    min_results_required: int = _yaml_config.get("retrieval", {}).get("min_results_required", 3)
+./app/config.py:105:    # Phase 2: Chunk kind quotas for retrieval diversification (observe-only when false)
+./app/config.py:106:    chunk_kind_quotas_enabled: bool = False
+./app/config.py:186:    def pdf_ingest_jobs_store(self) -> str:
+./app/config.py:187:        return f"{self.tmp_base_dir}/rag_pdf_ingest_jobs.json"
+./app/config.py:190:    def pdf_ingest_log_dir(self) -> str:
+./app/config.py:191:        return f"{self.tmp_base_dir}/rag_pdf_ingest_logs"
+./app/config.py:201:        """True if LangGraph pipeline is enabled."""
+./app/config.py:231:        # Check embedding dimension is expected value
+./app/config.py:232:        if self.embedding_dimension != 384:
+./app/config.py:234:                f"Embedding dimension mismatch: {self.embedding_dimension} != 384 "
+./app/config.py:283:        logger.info(f"Weaviate URL: {self.weaviate_url}")
+./app/config.py:284:        logger.info(f"Weaviate gRPC Port: {self.weaviate_grpc_port}")
+./app/config.py:287:            f"catalog={self.weaviate_collection_catalog}, "
+./app/config.py:288:            f"diagnostic={self.weaviate_collection_diagnostic}, "
+./app/config.py:289:            f"knowledge={self.weaviate_collection_knowledge}, "
+./app/config.py:290:            f"media={self.weaviate_collection_media}, "
+./app/config.py:291:            f"router_memory={self.weaviate_collection_router_memory}"
+./app/config.py:293:        logger.info(f"Embedding Model: {self.embedding_model}")
+./app/config.py:294:        logger.info(f"Embedding Dimension: {self.embedding_dimension}")
+./app/config.py:295:        logger.info(f"FastEmbed Model: {self.fastembed_model}")
+./docker-compose.yml:14:      - WEAVIATE_URL=http://weaviate:8080
+./docker-compose.yml:24:      weaviate:
+./docker-compose.yml:31:    # Memory limits to prevent OOM during embedding generation
+./docker-compose.yml:41:  weaviate:
+./docker-compose.yml:42:    image: cr.weaviate.io/semitechnologies/weaviate:1.28.0
+./docker-compose.yml:43:    container_name: weaviate
+./docker-compose.yml:50:      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+./docker-compose.yml:54:      - weaviate_data:/var/lib/weaviate
+./docker-compose.yml:79:  weaviate_data:
+./docker-compose.dev.yml:27:  weaviate:
+./docker-compose.dev.yml:28:    container_name: weaviate-dev
+./requirements.txt:13:fastembed>=0.2.0
+./requirements.txt:16:weaviate-client>=4.4.0
+./requirements.txt:41:# DB connectors (ingestion DB views)
+./app/admin/router.py:23:from app.services.embeddings import get_embeddings_service
+./app/admin/router.py:30:PDF_INGEST_JOBS_STORE = Path(os.getenv("PDF_INGEST_JOBS_STORE", _settings.pdf_ingest_jobs_store))
+./app/admin/router.py:56:    """Start background PDF ingest+index pipeline."""
+./app/admin/router.py:64:    """Response for a started PDF ingest job."""
+./app/admin/router.py:65:    job_id: str
+./app/admin/router.py:72:    """Status payload for one PDF ingest job."""
+./app/admin/router.py:73:    job_id: str
+./app/admin/router.py:110:FASTEMBED_MODEL = _settings.fastembed_model
+./app/admin/router.py:119:def _resolve_job_status(job: dict) -> dict:
+./app/admin/router.py:120:    return _refresh_job_status(job)
+./app/admin/router.py:123:def _load_jobs_store() -> None:
+./app/admin/router.py:129:            for jid, job in payload.items():
+./app/admin/router.py:130:                if isinstance(job, dict):
+./app/admin/router.py:131:                    PDF_INGEST_JOBS[jid] = job
+./app/admin/router.py:133:        logger.warning(f"Failed to load ingest jobs store: {exc}")
+./app/admin/router.py:136:def _save_jobs_store() -> None:
+./app/admin/router.py:140:        for jid, job in PDF_INGEST_JOBS.items():
+./app/admin/router.py:142:                "id": job.get("id"),
+./app/admin/router.py:143:                "pid": job.get("pid"),
+./app/admin/router.py:144:                "log_path": job.get("log_path"),
+./app/admin/router.py:145:                "started_at": job.get("started_at"),
+./app/admin/router.py:146:                "last_started_at": job.get("last_started_at"),
+./app/admin/router.py:147:                "finished_at": job.get("finished_at"),
+./app/admin/router.py:148:                "return_code": job.get("return_code"),
+./app/admin/router.py:149:                "status": job.get("status", "running"),
+./app/admin/router.py:150:                "attempts": int(job.get("attempts", 0)),
+./app/admin/router.py:151:                "max_retries": int(job.get("max_retries", 1)),
+./app/admin/router.py:152:                "timeout_seconds": int(job.get("timeout_seconds", 1800)),
+./app/admin/router.py:153:                "cmd_base": job.get("cmd_base", ""),
+./app/admin/router.py:154:                "rc_path": job.get("rc_path", ""),
+./app/admin/router.py:155:                "input_dir": job.get("input_dir", ""),
+./app/admin/router.py:156:                "truth_level": job.get("truth_level", ""),
+./app/admin/router.py:160:        logger.warning(f"Failed to persist ingest jobs store: {exc}")
+./app/admin/router.py:177:def _spawn_ingest_job(job: dict) -> int:
+./app/admin/router.py:178:    rc_path = str(job["rc_path"])
+./app/admin/router.py:179:    cmd_base = str(job["cmd_base"])
+./app/admin/router.py:181:    log_path = Path(job["log_path"])
+./app/admin/router.py:191:def _append_job_log(job: dict, message: str) -> None:
+./app/admin/router.py:193:        with Path(job["log_path"]).open("a", encoding="utf-8") as logf:
+./app/admin/router.py:199:def _refresh_job_status(job: dict) -> dict:
+./app/admin/router.py:201:    status = job.get("status", "running")
+./app/admin/router.py:202:    pid = int(job.get("pid") or 0)
+./app/admin/router.py:203:    rc_path = Path(str(job.get("rc_path") or ""))
+./app/admin/router.py:204:    max_retries = int(job.get("max_retries", 1))
+./app/admin/router.py:205:    attempts = int(job.get("attempts", 0))
+./app/admin/router.py:206:    timeout_seconds = int(job.get("timeout_seconds", 1800))
+./app/admin/router.py:207:    last_started_at = int(job.get("last_started_at") or job.get("started_at") or now)
+./app/admin/router.py:215:        job["status"] = "failed"
+./app/admin/router.py:216:        job["finished_at"] = now
+./app/admin/router.py:217:        job["return_code"] = 124
+./app/admin/router.py:218:        _append_job_log(job, f"[governance] timeout reached ({timeout_seconds}s), process terminated")
+./app/admin/router.py:219:        _save_jobs_store()
+./app/admin/router.py:229:                job["status"] = "done"
+./app/admin/router.py:230:                job["finished_at"] = now
+./app/admin/router.py:231:                job["return_code"] = 0
+./app/admin/router.py:234:                    job["attempts"] = attempts + 1
+./app/admin/router.py:235:                    _append_job_log(job, f"[governance] retry {job['attempts']}/{max_retries} after exit code {code}")
+./app/admin/router.py:240:                    new_pid = _spawn_ingest_job(job)
+./app/admin/router.py:241:                    job["pid"] = new_pid
+./app/admin/router.py:242:                    job["status"] = "running"
+./app/admin/router.py:243:                    job["last_started_at"] = now
+./app/admin/router.py:244:                    job["return_code"] = None
+./app/admin/router.py:245:                    _save_jobs_store()
+./app/admin/router.py:247:                job["status"] = "failed"
+./app/admin/router.py:248:                job["finished_at"] = now
+./app/admin/router.py:249:                job["return_code"] = code
+./app/admin/router.py:252:            job["status"] = "failed"
+./app/admin/router.py:253:            job["finished_at"] = now
+./app/admin/router.py:254:            job["return_code"] = job.get("return_code", 1)
+./app/admin/router.py:256:    _save_jobs_store()
+./app/admin/router.py:258:        "status": job.get("status", "running"),
+./app/admin/router.py:259:        "finished_at": job.get("finished_at"),
+./app/admin/router.py:260:        "return_code": job.get("return_code"),
+./app/admin/router.py:264:_load_jobs_store()
+./app/admin/router.py:499:        "weaviate_url": settings.weaviate_url,
+./app/admin/router.py:530:@router.post("/ingest/pdf/run", response_model=PdfIngestRunResponse)
+./app/admin/router.py:531:async def run_pdf_ingest(payload: PdfIngestRunRequest):
+./app/admin/router.py:532:    """Start PDF import+index pipeline in background."""
+./app/admin/router.py:554:    ingest_script = app_root / "scripts" / "ingestors" / "ingest_pdfs.py"
+./app/admin/router.py:556:    if not ingest_script.exists():
+./app/admin/router.py:557:        raise HTTPException(status_code=500, detail=f"ingest script not found: {ingest_script}")
+./app/admin/router.py:561:    job_id = uuid.uuid4().hex[:12]
+./app/admin/router.py:562:    logs_dir = Path(os.getenv("PDF_INGEST_LOG_DIR", _settings.pdf_ingest_log_dir))
+./app/admin/router.py:564:    log_path = logs_dir / f"pdf_ingest_{job_id}.log"
+./app/admin/router.py:565:    rc_path = logs_dir / f"pdf_ingest_{job_id}.rc"
+./app/admin/router.py:568:    import_dir = import_base_dir / job_id
+./app/admin/router.py:572:    quarantine_log = logs_dir / f"quarantine_{job_id}.jsonl"
+./app/admin/router.py:581:        f"PYTHONPATH=/app ENV=dev KNOWLEDGE_PATH='{import_dir}' python scripts/ingestors/ingest_pdfs.py --input '{input_dir}' --truth-level {truth}; "
+./app/admin/router.py:585:        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE={reindex_batch_size} STRICT_ROUTING=1 "
+./app/admin/router.py:590:        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 STRICT_ROUTING=1 REINDEX_QUARANTINE_LOG='{quarantine_log}' "
+./app/admin/router.py:602:    PDF_INGEST_JOBS[job_id] = {
+./app/admin/router.py:603:        "id": job_id,
+./app/admin/router.py:619:    _save_jobs_store()
+./app/admin/router.py:622:        job_id=job_id,
+./app/admin/router.py:629:@router.get("/ingest/pdf/jobs", response_model=List[PdfIngestJobStatusResponse])
+./app/admin/router.py:630:async def list_pdf_ingest_jobs():
+./app/admin/router.py:631:    """List known PDF ingest jobs."""
+./app/admin/router.py:633:    for job_id, job in sorted(PDF_INGEST_JOBS.items(), key=lambda kv: int(kv[1].get("started_at", 0)), reverse=True):
+./app/admin/router.py:634:        st = _resolve_job_status(job)
+./app/admin/router.py:637:                job_id=job_id,
+./app/admin/router.py:639:                pid=job["pid"],
+./app/admin/router.py:640:                started_at=job["started_at"],
+./app/admin/router.py:643:                log_path=job["log_path"],
+./app/admin/router.py:645:                attempts=int(job.get("attempts", 0)),
+./app/admin/router.py:646:                max_retries=int(job.get("max_retries", 1)),
+./app/admin/router.py:647:                timeout_seconds=int(job.get("timeout_seconds", 1800)),
+./app/admin/router.py:653:@router.get("/ingest/pdf/jobs/{job_id}", response_model=PdfIngestJobStatusResponse)
+./app/admin/router.py:654:async def get_pdf_ingest_job(
+./app/admin/router.py:655:    job_id: str,
+./app/admin/router.py:658:    """Get one PDF ingest job status and log tail."""
+./app/admin/router.py:659:    job = PDF_INGEST_JOBS.get(job_id)
+./app/admin/router.py:660:    if not job:
+./app/admin/router.py:661:        raise HTTPException(status_code=404, detail="job not found")
+./app/admin/router.py:663:    st = _resolve_job_status(job)
+./app/admin/router.py:664:    log_path = Path(job["log_path"])
+./app/admin/router.py:671:        job_id=job_id,
+./app/admin/router.py:673:        pid=job["pid"],
+./app/admin/router.py:674:        started_at=job["started_at"],
+./app/admin/router.py:677:        log_path=job["log_path"],
+./app/admin/router.py:679:        attempts=int(job.get("attempts", 0)),
+./app/admin/router.py:680:        max_retries=int(job.get("max_retries", 1)),
+./app/admin/router.py:681:        timeout_seconds=int(job.get("timeout_seconds", 1800)),
+./app/admin/router.py:703:def _chunk_content(content: str, source_path: str, metadata: dict) -> List[dict]:
+./app/admin/router.py:708:    from orchestrator.processors.chunker import TokenAwareChunker
+./app/admin/router.py:710:    chunker = TokenAwareChunker(
+./app/admin/router.py:711:        chunk_size=CHUNK_SIZE // TokenAwareChunker.CHARS_PER_TOKEN,
+./app/admin/router.py:712:        chunk_overlap=CHUNK_OVERLAP // TokenAwareChunker.CHARS_PER_TOKEN,
+./app/admin/router.py:714:    raw_chunks = chunker.chunk(content)
+./app/admin/router.py:716:    chunks = []
+./app/admin/router.py:717:    for rc in raw_chunks:
+./app/admin/router.py:718:        chunk_uuid = str(uuid.uuid5(
+./app/admin/router.py:720:            f"{source_path}:{rc['chunk_index']}"
+./app/admin/router.py:722:        chunks.append({
+./app/admin/router.py:723:            "uuid": chunk_uuid,
+./app/admin/router.py:730:            "chunk_index": rc["chunk_index"],
+./app/admin/router.py:733:    return chunks
+./app/admin/router.py:738:    import weaviate
+./app/admin/router.py:739:    from weaviate.classes.config import Configure, Property, DataType
+./app/admin/router.py:742:    host = settings.weaviate_url.replace("http://", "").split(":")[0]
+./app/admin/router.py:743:    port = int(settings.weaviate_url.split(":")[-1])
+./app/admin/router.py:745:    client = weaviate.connect_to_local(host=host, port=port)
+./app/admin/router.py:760:            Property(name="chunk_index", data_type=DataType.INT),
+./app/admin/router.py:762:        vectorizer_config=Configure.Vectorizer.none(),
+./app/admin/router.py:774:    Used by BullMQ worker to discover files and create batch jobs.
+./app/admin/router.py:807:    Called by BullMQ worker with batches of ~50 files.
+./app/admin/router.py:828:    collection_name = settings.weaviate_collection_knowledge
+./app/admin/router.py:842:    # Use existing embeddings service (singleton - no new model loading)
+./app/admin/router.py:844:        embeddings_service = get_embeddings_service()
+./app/admin/router.py:845:        logger.info("Using existing embeddings service (singleton)")
+./app/admin/router.py:847:        error_msg = f"Failed to get embeddings service: {str(e)}"
+./app/admin/router.py:857:        import weaviate
+./app/admin/router.py:858:        host = settings.weaviate_url.replace("http://", "").split(":")[0]
+./app/admin/router.py:859:        port = int(settings.weaviate_url.split(":")[-1])
+./app/admin/router.py:860:        client = weaviate.connect_to_local(host=host, port=port)
+./app/admin/router.py:886:            chunks = _chunk_content(content, file_path, metadata)
+./app/admin/router.py:888:            if not chunks:
+./app/admin/router.py:892:            for i in range(0, len(chunks), BATCH_SIZE):
+./app/admin/router.py:893:                batch_chunks = chunks[i:i + BATCH_SIZE]
+./app/admin/router.py:894:                texts = [c["content"] for c in batch_chunks]
+./app/admin/router.py:896:                # Generate embeddings using singleton service
+./app/admin/router.py:897:                embeddings = embeddings_service.embed_batch(texts, batch_size=BATCH_SIZE)
+./app/admin/router.py:901:                    for chunk, embedding in zip(batch_chunks, embeddings):
+./app/admin/router.py:903:                            properties={k: v for k, v in chunk.items() if k != "uuid"},
+./app/admin/router.py:904:                            vector=embedding,  # Already a list from embed_batch
+./app/admin/router.py:905:                            uuid=chunk["uuid"],
+./app/admin/router.py:909:                # Free embeddings memory
+./app/admin/router.py:910:                del embeddings
+./app/admin/router.py:913:            del content, chunks
+./app/admin/router.py:930:    logger.info(f"Batch complete: {indexed} chunks indexed, {len(errors)} errors, {duration_ms}ms")
+./tests/test_verified_rag_api.py:38:                "chunk_id": "chunk-ece-r90-12-13",
+./tests/test_verified_rag_api.py:52:                "Auto-improvement: proposer un chunk canonical (intent=define, domain=freinage, canonical_hits=1)",
+./tests/run_eval_set.py:2:"""Run Ultra eval set and compute key retrieval metrics."""
+./tests/run_eval_set.py:94:        retrieved_collections = {r.get("collection", "") for r in top_results if r.get("collection")}
+./tests/run_eval_set.py:98:            if c in retrieved_collections:
+./tests/run_eval_set.py:128:                "retrieved_collections": sorted(retrieved_collections),
+./scripts/init_ingest_tree.sh:4:BASE="${1:-/opt/automecanik/rag/ingest}"
+./scripts/init_ingest_tree.sh:20:  "$BASE/chunks/KB_Knowledge"
+./scripts/init_ingest_tree.sh:21:  "$BASE/chunks/KB_Diagnostic"
+./scripts/init_ingest_tree.sh:22:  "$BASE/chunks/KB_Catalog"
+./scripts/init_ingest_tree.sh:23:  "$BASE/chunks/KB_Media"
+./scripts/init_ingest_tree.sh:34:: > "$BASE/logs/ingest_jobs.jsonl"
+./scripts/init_ingest_tree.sh:35:: > "$BASE/logs/retrieval_logs.jsonl"
+./scripts/init_ingest_tree.sh:40:chmod 640 "$BASE/inbox/urls.txt" "$BASE/logs/ingest_jobs.jsonl" "$BASE/logs/retrieval_logs.jsonl"
+./scripts/watch-inbox.sh:3:# watch-inbox.sh — Watcher inotifywait pour le pipeline RAG
+./scripts/watch-inbox.sh:5:# Surveille /opt/automecanik/rag/pdfs/inbox/ et lance le pipeline
+./scripts/watch-inbox.sh:32:  log "Launching pipeline for $file"
+./scripts/watch-inbox.sh:33:  /opt/automecanik/rag/scripts/pipeline/auto-enrich-pipeline.sh 2>&1 | tee -a "$LOG" || true
+./scripts/ingestors/ingest_logs.py:8:  ENV=dev python scripts/ingest_logs.py --input /path/to/logs
+./scripts/ingestors/ingest_logs.py:9:  ENV=dev python scripts/ingest_logs.py --input /path/to/logs --dry-run
+./scripts/ingestors/ingest_logs.py:190:            logger.error(f"Failed to ingest {rel_name}: {exc}")
+./scripts/ingestors/ingest_tabular.py:214:    ingest_root = Path(args.ingest_root or "/opt/automecanik/rag/ingest").resolve()
+./scripts/ingestors/ingest_tabular.py:341:        ingest_root / "logs" / "ingest_jobs.jsonl",
+./scripts/ingestors/ingest_tabular.py:343:            "event": "ingest_tabular",
+./scripts/ingestors/ingest_tabular.py:370:    parser.add_argument("--ingest-root", help="Override ingest root for logs")
+./scripts/tools/extract_pdf_images.py:2:"""Extract embedded images from PDF files and build a JSON manifest.
+./scripts/tools/extract_pdf_images.py:94:    parser = argparse.ArgumentParser(description="Extract embedded images from PDF files")
+./scripts/tools/wiki_exporter.py:3:Wiki.js Exporter - Export wiki content for RAG ingestion.
+./scripts/tools/wiki_exporter.py:44:    """Export wiki content for RAG ingestion."""
+./scripts/tools/rag-query.sh:127:# Construire le prompt pour Claude
+./scripts/ingestors/ingest_pdfs.py:2:"""Ingest local PDF files into knowledge corpus with chunking + Weaviate indexing.
+./scripts/ingestors/ingest_pdfs.py:4:Full pipeline: extract → chunk (H2/H3-aware) → embed → index to Weaviate.
+./scripts/ingestors/ingest_pdfs.py:7:  ENV=dev python scripts/ingest_pdfs.py --input /path/to/pdfs
+./scripts/ingestors/ingest_pdfs.py:8:  ENV=dev python scripts/ingest_pdfs.py --input /path/to/pdfs --truth-level L2
+./scripts/ingestors/ingest_pdfs.py:9:  ENV=dev python scripts/ingest_pdfs.py --input /path/to/pdfs --dry-run
+./scripts/ingestors/ingest_pdfs.py:10:  ENV=dev python scripts/ingest_pdfs.py --input /path/to/pdfs --no-index
+./scripts/ingestors/ingest_pdfs.py:50:        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+./scripts/ingestors/ingest_pdfs.py:51:            h.update(chunk)
+./scripts/ingestors/ingest_pdfs.py:64:    with tempfile.TemporaryDirectory(prefix="ingest-ocr-") as tmp_dir:
+./scripts/ingestors/ingest_pdfs.py:102:    """Extract plain text from a PDF file with page anchors for downstream chunk source_uri."""
+./scripts/ingestors/ingest_pdfs.py:138:            "ingested_at": datetime.now(timezone.utc).isoformat(),
+./scripts/ingestors/ingest_pdfs.py:146:def _detect_page_for_chunk(chunk_content: str) -> int | None:
+./scripts/ingestors/ingest_pdfs.py:147:    """Find the last [[PDF_PAGE:N]] marker within a chunk to identify its page."""
+./scripts/ingestors/ingest_pdfs.py:148:    matches = list(_PAGE_MARKER_RE.finditer(chunk_content))
+./scripts/ingestors/ingest_pdfs.py:154:def _make_chunk_id(source_uri: str, chunk_index: int, content: str) -> str:
+./scripts/ingestors/ingest_pdfs.py:155:    """Deterministic UUID v5 chunk ID for idempotent upserts."""
+./scripts/ingestors/ingest_pdfs.py:157:    name = f"{source_uri}:{chunk_index}:{content_hash}"
+./scripts/ingestors/ingest_pdfs.py:161:def chunk_and_index(
+./scripts/ingestors/ingest_pdfs.py:169:    chunk_size: int = 500,
+./scripts/ingestors/ingest_pdfs.py:170:    chunk_overlap: int = 50,
+./scripts/ingestors/ingest_pdfs.py:173:    """Chunk PDF content, embed, and index to Weaviate.
+./scripts/ingestors/ingest_pdfs.py:176:        dict with keys: chunks_total, chunks_indexed, collection
+./scripts/ingestors/ingest_pdfs.py:178:    from orchestrator.processors.chunker import TokenAwareChunker
+./scripts/ingestors/ingest_pdfs.py:179:    from app.services.embeddings import get_embeddings_service
+./scripts/ingestors/ingest_pdfs.py:180:    from app.services.weaviate_client import get_weaviate_client
+./scripts/ingestors/ingest_pdfs.py:182:    chunker = TokenAwareChunker(
+./scripts/ingestors/ingest_pdfs.py:183:        chunk_size=chunk_size,
+./scripts/ingestors/ingest_pdfs.py:184:        chunk_overlap=chunk_overlap,
+./scripts/ingestors/ingest_pdfs.py:185:        min_chunk_size=50,
+./scripts/ingestors/ingest_pdfs.py:188:    raw_chunks = chunker.chunk(content)
+./scripts/ingestors/ingest_pdfs.py:190:    if not raw_chunks:
+./scripts/ingestors/ingest_pdfs.py:191:        logger.warning(f"No chunks produced for {source_uri}")
+./scripts/ingestors/ingest_pdfs.py:192:        return {"chunks_total": 0, "chunks_indexed": 0, "collection": ""}
+./scripts/ingestors/ingest_pdfs.py:195:        for i, c in enumerate(raw_chunks):
+./scripts/ingestors/ingest_pdfs.py:197:            page = _detect_page_for_chunk(c["content"])
+./scripts/ingestors/ingest_pdfs.py:199:                f"  [DRY-RUN] chunk {i}: {c['token_estimate']} tokens, "
+./scripts/ingestors/ingest_pdfs.py:202:        return {"chunks_total": len(raw_chunks), "chunks_indexed": 0, "collection": ""}
+./scripts/ingestors/ingest_pdfs.py:204:    # Embed all chunks
+./scripts/ingestors/ingest_pdfs.py:205:    embeddings_service = get_embeddings_service()
+./scripts/ingestors/ingest_pdfs.py:206:    texts = [c["content"] for c in raw_chunks]
+./scripts/ingestors/ingest_pdfs.py:207:    vectors = embeddings_service.embed_batch(texts, batch_size=32)
+./scripts/ingestors/ingest_pdfs.py:210:    weaviate_client = get_weaviate_client()
+./scripts/ingestors/ingest_pdfs.py:211:    target_collection = weaviate_client.resolve_collection(
+./scripts/ingestors/ingest_pdfs.py:215:    # Build chunk objects for Weaviate
+./scripts/ingestors/ingest_pdfs.py:216:    from orchestrator.pipeline import (
+./scripts/ingestors/ingest_pdfs.py:226:    for i, raw_chunk in enumerate(raw_chunks):
+./scripts/ingestors/ingest_pdfs.py:227:        page = _detect_page_for_chunk(raw_chunk["content"])
+./scripts/ingestors/ingest_pdfs.py:228:        chunk_source_uri = f"{source_uri}#page={page}" if page else source_uri
+./scripts/ingestors/ingest_pdfs.py:229:        chunk_id = _make_chunk_id(source_uri, i, raw_chunk["content"])
+./scripts/ingestors/ingest_pdfs.py:230:        content_hash = hashlib.sha256(raw_chunk["content"].encode()).hexdigest()[:32]
+./scripts/ingestors/ingest_pdfs.py:232:        chunk_content = raw_chunk["content"]
+./scripts/ingestors/ingest_pdfs.py:233:        domain = classify_domain(chunk_content)
+./scripts/ingestors/ingest_pdfs.py:234:        intent = classify_intent(chunk_content)
+./scripts/ingestors/ingest_pdfs.py:235:        entities = extract_entities(chunk_content)
+./scripts/ingestors/ingest_pdfs.py:237:        heading = raw_chunk.get("heading")
+./scripts/ingestors/ingest_pdfs.py:239:            content=chunk_content, truth_level=truth_level,
+./scripts/ingestors/ingest_pdfs.py:248:            "chunk_id": chunk_id,
+./scripts/ingestors/ingest_pdfs.py:251:            "source_uri": chunk_source_uri,
+./scripts/ingestors/ingest_pdfs.py:254:            "content": chunk_content,
+./scripts/ingestors/ingest_pdfs.py:265:            "chunk_index": i,
+./scripts/ingestors/ingest_pdfs.py:278:        objects_to_index.append((props, vectors[i]))
+./scripts/ingestors/ingest_pdfs.py:281:    collection = weaviate_client.client.collections.get(target_collection)
+./scripts/ingestors/ingest_pdfs.py:284:        for props, vector in objects_to_index:
+./scripts/ingestors/ingest_pdfs.py:285:            batch.add_object(properties=props, vector=vector)
+./scripts/ingestors/ingest_pdfs.py:289:        f"Indexed {indexed}/{len(raw_chunks)} chunks to {target_collection} "
+./scripts/ingestors/ingest_pdfs.py:292:    return {"chunks_total": len(raw_chunks), "chunks_indexed": indexed, "collection": target_collection}
+./scripts/ingestors/ingest_pdfs.py:301:    """POST ingestion completion webhook to NestJS (best-effort, non-blocking)."""
+./scripts/ingestors/ingest_pdfs.py:305:    job_id = f"{source}-{int(time.time() * 1000)}"
+./scripts/ingestors/ingest_pdfs.py:307:        "job_id": job_id,
+./scripts/ingestors/ingest_pdfs.py:343:    total_chunks = 0
+./scripts/ingestors/ingest_pdfs.py:373:                    chunk_and_index(
+./scripts/ingestors/ingest_pdfs.py:402:            # Step 2: Chunk + embed + index to Weaviate
+./scripts/ingestors/ingest_pdfs.py:404:                result = chunk_and_index(
+./scripts/ingestors/ingest_pdfs.py:413:                total_chunks += result["chunks_total"]
+./scripts/ingestors/ingest_pdfs.py:414:                total_indexed += result["chunks_indexed"]
+./scripts/ingestors/ingest_pdfs.py:423:            logger.error(f"Failed to ingest {rel_name}: {exc}")
+./scripts/ingestors/ingest_pdfs.py:427:        summary += f", chunks={total_chunks}, indexed={total_indexed}"
+./scripts/ingestors/ingest_pdfs.py:448:    parser.add_argument("--dry-run", action="store_true", help="Preview classification and chunking only")
+./scripts/ingestors/ingest_pdfs.py:450:    parser.add_argument("--webhook-url", help="NestJS webhook URL to call after ingestion")
+./scripts/ingestors/ingest_web.py:161:            # Generate .prompt.md sidecar with metadata
+./scripts/ingestors/ingest_web.py:162:            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url)
+./scripts/ingestors/ingest_web.py:170:def _write_prompt_sidecar(
+./scripts/ingestors/ingest_web.py:177:    """Write a .prompt.md sidecar file for a downloaded image.
+./scripts/ingestors/ingest_web.py:183:    sidecar_path = img_dir / f"{hash16}.prompt.md"
+./scripts/ingestors/ingest_web.py:185:        return  # Don't overwrite existing (may have been enriched by describe-images)
+./scripts/ingestors/ingest_web.py:190:    # Body description: placeholder neutre (enrichi plus tard par describe-images)
+./scripts/ingestors/ingest_web.py:203:ingested_at: "{now}"
+./scripts/ingestors/ingest_web.py:204:ingested_by: "web-scraper"
+./scripts/ingestors/ingest_web.py:210:    logger.debug(f"Wrote sidecar: {hash16}.prompt.md")
+./scripts/ingestors/ingest_web.py:285:    images at the end of the markdown that fall into a single chunk.
+./scripts/ingestors/ingest_web.py:636:    """POST ingestion completion webhook to NestJS (best-effort, non-blocking)."""
+./scripts/ingestors/ingest_web.py:639:    job_id = f"{source}-{int(time.time() * 1000)}"
+./scripts/ingestors/ingest_web.py:641:        "job_id": job_id,
+./scripts/ingestors/ingest_web.py:761:            logger.error(f"Failed to ingest {url}: {exc}")
+./scripts/ingestors/ingest_web.py:776:    parser.add_argument("--url", action="append", help="URL to ingest (repeatable)")
+./scripts/ingestors/ingest_web.py:796:    parser.add_argument("--source-url", default="", help="Source page URL (written to .prompt.md sidecars)")
+./scripts/ingestors/ingest_web.py:798:    parser.add_argument("--webhook-url", help="NestJS webhook URL to call after ingestion")
+./scripts/ingestors/ingest_structured.py:5:- Keep raw as source of truth (DB/files), not in vector index.
+./scripts/ingestors/ingest_structured.py:197:    ingest_root = Path(args.ingest_root or "/opt/automecanik/rag/ingest").resolve()
+./scripts/ingestors/ingest_structured.py:313:        ingest_root / "logs" / "ingest_jobs.jsonl",
+./scripts/ingestors/ingest_structured.py:315:            "event": "ingest_structured",
+./scripts/ingestors/ingest_structured.py:342:    parser.add_argument("--ingest-root", help="Override ingest root for logs")
+./scripts/ingestors/ingest_images.py:8:  ENV=dev python scripts/ingest_images.py --input /path/to/images
+./scripts/ingestors/ingest_images.py:9:  ENV=dev python scripts/ingest_images.py --input /path/to/images --no-vision
+./scripts/ingestors/ingest_images.py:10:  ENV=dev python scripts/ingest_images.py --input /path/to/images --truth-level L2
+./scripts/ingestors/ingest_images.py:11:  ENV=dev python scripts/ingest_images.py --input /path/to/images --dry-run
+./scripts/ingestors/ingest_images.py:48:        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+./scripts/ingestors/ingest_images.py:49:            h.update(chunk)
+./scripts/ingestors/ingest_images.py:54:    """Store immutable raw image under knowledge/_raw/web-images/<sha256>.<ext> with .prompt.md sidecar."""
+./scripts/ingestors/ingest_images.py:64:    sidecar = raw_dir / f"{digest}.prompt.md"
+./scripts/ingestors/ingest_images.py:66:        ingested_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+./scripts/ingestors/ingest_images.py:67:        prompt_content = f'''---
+./scripts/ingestors/ingest_images.py:71:ingested_at: "{ingested_at}"
+./scripts/ingestors/ingest_images.py:81:        sidecar.write_text(prompt_content, encoding="utf-8")
+./scripts/ingestors/ingest_images.py:351:            logger.error(f"Failed to ingest {rel_name}: {exc}")
+./scripts/ingestors/ingest_images.py:366:    parser.add_argument("--dry-run", action="store_true", help="Preview ingestion only")
+./scripts/pipeline/reindex_low_memory.sh:26:  ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 \
+./scripts/pipeline/auto-enrich-pipeline.sh:3:# auto-enrich-pipeline.sh — Pipeline RAG Auto-Enrichissement
+./scripts/pipeline/auto-enrich-pipeline.sh:8:#   ./auto-enrich-pipeline.sh              # Production (dryRun=false)
+./scripts/pipeline/auto-enrich-pipeline.sh:9:#   DRY_RUN=true ./auto-enrich-pipeline.sh # Preview mode
+./scripts/pipeline/auto-enrich-pipeline.sh:12:#   */30 * * * * /opt/automecanik/rag/scripts/auto-enrich-pipeline.sh
+./scripts/pipeline/auto-enrich-pipeline.sh:29:LOG_FILE="$BASE_DIR/logs/auto-enrich.log"
+./scripts/pipeline/auto-enrich-pipeline.sh:30:LOCK_FILE="/tmp/auto-enrich-pipeline.lock"
+./scripts/pipeline/auto-enrich-pipeline.sh:33:# Max poll time for ingestion (30 min = 60 iterations * 30s)
+./scripts/pipeline/auto-enrich-pipeline.sh:48:# --- Local lock (prevent concurrent pipeline runs) ---
+./scripts/pipeline/auto-enrich-pipeline.sh:51:  echo "[$(date -Is)] Another pipeline run active, skipping" >> "$LOG_FILE"
+./scripts/pipeline/auto-enrich-pipeline.sh:86:ingest_pdf() {
+./scripts/pipeline/auto-enrich-pipeline.sh:88:  local run_id response job_id status
+./scripts/pipeline/auto-enrich-pipeline.sh:98:  # Trigger ingestion via RAG API
+./scripts/pipeline/auto-enrich-pipeline.sh:99:  response=$(curl -sf -X POST "$RAG_URL/admin/ingest/pdf/run" \
+./scripts/pipeline/auto-enrich-pipeline.sh:108:  job_id=$(echo "$response" | jq -r '.job_id // empty' 2>/dev/null)
+./scripts/pipeline/auto-enrich-pipeline.sh:109:  if [ -z "$job_id" ]; then
+./scripts/pipeline/auto-enrich-pipeline.sh:110:    log "  WARN: No job_id returned from ingestion"
+./scripts/pipeline/auto-enrich-pipeline.sh:115:  log "  Ingestion job started: $job_id"
+./scripts/pipeline/auto-enrich-pipeline.sh:120:    status=$(curl -sf "$RAG_URL/admin/ingest/pdf/jobs/$job_id" \
+./scripts/pipeline/auto-enrich-pipeline.sh:126:        LAST_JOB_ID="$job_id"
+./scripts/pipeline/auto-enrich-pipeline.sh:136:        # still running (processing, queued, etc.)
+./scripts/pipeline/auto-enrich-pipeline.sh:146:# --- Step 2: Detect category from ingested content ---
+./scripts/pipeline/auto-enrich-pipeline.sh:152:  # The RAG service writes markdown to /tmp/knowledge-import/{job_id}/ inside the container
+./scripts/pipeline/auto-enrich-pipeline.sh:209:enrich_gammes() {
+./scripts/pipeline/auto-enrich-pipeline.sh:214:  response=$(curl -sf -w "\n%{http_code}" -X POST "$NESTJS_URL/api/internal/buying-guides/enrich" \
+./scripts/pipeline/auto-enrich-pipeline.sh:227:    local enriched_count
+./scripts/pipeline/auto-enrich-pipeline.sh:228:    enriched_count=$(echo "$body" | jq '.results | length' 2>/dev/null || echo "?")
+./scripts/pipeline/auto-enrich-pipeline.sh:229:    log "  Enrichment OK: $enriched_count gammes processed (dryRun=$dry_flag)"
+./scripts/pipeline/auto-enrich-pipeline.sh:291:  if ingest_pdf "$pdf"; then
+./scripts/pipeline/auto-enrich-pipeline.sh:298:    # Step 3: Get pg_ids and enrich
+./scripts/pipeline/auto-enrich-pipeline.sh:305:      if enrich_gammes "$pg_ids_json"; then
+./scripts/pipeline/auto-enrich-pipeline.sh:308:        log "  PARTIAL: ingestion OK but enrichment failed"
+./scripts/pipeline/auto-enrich-pipeline.sh:311:      log "  WARN: no gammes mapped for category '$category' — skipping enrichment"
+./scripts/pipeline/auto-enrich-pipeline.sh:320:    log "  FAILED: ingestion error"
+./app/admin/templates/pages/settings.html:10:            <div><dt class="text-gray-500">Weaviate</dt><dd class="font-mono text-xs">{{ weaviate_url }}</dd></div>
+./scripts/tools/translate_md_en_to_fr.py:62:    prompt = (
+./scripts/tools/translate_md_en_to_fr.py:77:        messages=[{"role": "user", "content": prompt}],
+./scripts/tools/wiki_ingester.py:7:2. Generates embeddings using sentence-transformers
+./scripts/tools/wiki_ingester.py:11:    python wiki_ingester.py [--manifest PATH] [--dry-run]
+./scripts/tools/wiki_ingester.py:27:import weaviate
+./scripts/tools/wiki_ingester.py:29:from weaviate.classes.config import Configure, Property, DataType
+./scripts/tools/wiki_ingester.py:37:logger = logging.getLogger("wiki_ingester")
+./scripts/tools/wiki_ingester.py:47:        weaviate_url: str = _settings.weaviate_url,
+./scripts/tools/wiki_ingester.py:48:        collection_name: str = _settings.weaviate_collection_knowledge,
+./scripts/tools/wiki_ingester.py:49:        embedding_model: str = "all-MiniLM-L6-v2",
+./scripts/tools/wiki_ingester.py:50:        chunk_size: int = 500,
+./scripts/tools/wiki_ingester.py:51:        chunk_overlap: int = 50,
+./scripts/tools/wiki_ingester.py:54:        self.weaviate_url = weaviate_url
+./scripts/tools/wiki_ingester.py:56:        self.chunk_size = chunk_size
+./scripts/tools/wiki_ingester.py:57:        self.chunk_overlap = chunk_overlap
+./scripts/tools/wiki_ingester.py:60:        # Initialize embedding model
+./scripts/tools/wiki_ingester.py:61:        logger.info(f"Loading embedding model: {embedding_model}")
+./scripts/tools/wiki_ingester.py:62:        self.embedder = SentenceTransformer(embedding_model)
+./scripts/tools/wiki_ingester.py:66:            logger.info(f"Connecting to Weaviate: {weaviate_url}")
+./scripts/tools/wiki_ingester.py:67:            self.client = weaviate.connect_to_local(
+./scripts/tools/wiki_ingester.py:68:                host=weaviate_url.replace("http://", "").replace("https://", "").split(":")[0],
+./scripts/tools/wiki_ingester.py:69:                port=int(weaviate_url.split(":")[-1]) if ":" in weaviate_url else 8080
+./scripts/tools/wiki_ingester.py:74:    def ingest_from_manifest(self, manifest_path: str) -> dict:
+./scripts/tools/wiki_ingester.py:82:            dict with ingestion statistics
+./scripts/tools/wiki_ingester.py:94:            "chunks_created": 0,
+./scripts/tools/wiki_ingester.py:95:            "chunks_inserted": 0,
+./scripts/tools/wiki_ingester.py:100:        all_chunks = []
+./scripts/tools/wiki_ingester.py:104:                chunks = self._process_document(doc)
+./scripts/tools/wiki_ingester.py:105:                all_chunks.extend(chunks)
+./scripts/tools/wiki_ingester.py:107:                stats["chunks_created"] += len(chunks)
+./scripts/tools/wiki_ingester.py:112:        logger.info(f"Created {stats['chunks_created']} chunks from {stats['documents_processed']} documents")
+./scripts/tools/wiki_ingester.py:114:        # Generate embeddings in batches
+./scripts/tools/wiki_ingester.py:115:        if all_chunks:
+./scripts/tools/wiki_ingester.py:116:            logger.info("Generating embeddings...")
+./scripts/tools/wiki_ingester.py:117:            texts = [c["content"] for c in all_chunks]
+./scripts/tools/wiki_ingester.py:118:            embeddings = self.embedder.encode(texts, show_progress_bar=True)
+./scripts/tools/wiki_ingester.py:120:            for i, chunk in enumerate(all_chunks):
+./scripts/tools/wiki_ingester.py:121:                chunk["embedding"] = embeddings[i].tolist()
+./scripts/tools/wiki_ingester.py:124:        if not self.dry_run and all_chunks:
+./scripts/tools/wiki_ingester.py:125:            logger.info(f"Inserting {len(all_chunks)} chunks into Weaviate...")
+./scripts/tools/wiki_ingester.py:126:            stats["chunks_inserted"] = self._insert_chunks(all_chunks)
+./scripts/tools/wiki_ingester.py:128:            logger.info(f"[DRY RUN] Would insert {len(all_chunks)} chunks")
+./scripts/tools/wiki_ingester.py:129:            stats["chunks_inserted"] = 0
+./scripts/tools/wiki_ingester.py:135:        """Process a document into chunks."""
+./scripts/tools/wiki_ingester.py:140:        # Split into chunks
+./scripts/tools/wiki_ingester.py:141:        chunks = self._chunk_text(content)
+./scripts/tools/wiki_ingester.py:143:        # Build chunk objects
+./scripts/tools/wiki_ingester.py:145:        for i, chunk_text in enumerate(chunks):
+./scripts/tools/wiki_ingester.py:146:            # Generate deterministic chunk ID
+./scripts/tools/wiki_ingester.py:147:            chunk_id = self._generate_chunk_id(doc.get("source_path", ""), i, chunk_text)
+./scripts/tools/wiki_ingester.py:149:            chunk = {
+./scripts/tools/wiki_ingester.py:150:                "chunk_id": chunk_id,
+./scripts/tools/wiki_ingester.py:151:                "content": chunk_text,
+./scripts/tools/wiki_ingester.py:159:                "chunk_index": i,
+./scripts/tools/wiki_ingester.py:160:                "total_chunks": len(chunks),
+./scripts/tools/wiki_ingester.py:164:            result.append(chunk)
+./scripts/tools/wiki_ingester.py:168:    def _chunk_text(self, text: str) -> list:
+./scripts/tools/wiki_ingester.py:169:        """Split text into chunks using TokenAwareChunker.
+./scripts/tools/wiki_ingester.py:172:        boundary respect and small chunk merging.
+./scripts/tools/wiki_ingester.py:174:        from orchestrator.processors.chunker import TokenAwareChunker
+./scripts/tools/wiki_ingester.py:176:        chunker = TokenAwareChunker(
+./scripts/tools/wiki_ingester.py:177:            chunk_size=self.chunk_size,
+./scripts/tools/wiki_ingester.py:178:            chunk_overlap=self.chunk_overlap,
+./scripts/tools/wiki_ingester.py:180:        raw_chunks = chunker.chunk(text)
+./scripts/tools/wiki_ingester.py:181:        return [c["content"] for c in raw_chunks]
+./scripts/tools/wiki_ingester.py:183:    def _generate_chunk_id(self, source_path: str, chunk_index: int, content: str) -> str:
+./scripts/tools/wiki_ingester.py:184:        """Generate deterministic chunk ID for upsert."""
+./scripts/tools/wiki_ingester.py:187:        unique = f"{source_path}:{chunk_index}:{content_hash}"
+./scripts/tools/wiki_ingester.py:190:    def _insert_chunks(self, chunks: list) -> int:
+./scripts/tools/wiki_ingester.py:191:        """Insert chunks into Weaviate using upsert logic."""
+./scripts/tools/wiki_ingester.py:202:            for i in range(0, len(chunks), batch_size):
+./scripts/tools/wiki_ingester.py:203:                batch = chunks[i:i + batch_size]
+./scripts/tools/wiki_ingester.py:206:                    for chunk in batch:
+./scripts/tools/wiki_ingester.py:210:                                    "content": chunk["content"],
+./scripts/tools/wiki_ingester.py:211:                                    "title": chunk["title"],
+./scripts/tools/wiki_ingester.py:212:                                    "source_path": chunk["source_path"],
+./scripts/tools/wiki_ingester.py:213:                                    "source_type": chunk["source_type"],
+./scripts/tools/wiki_ingester.py:214:                                    "category": chunk["category"],
+./scripts/tools/wiki_ingester.py:215:                                    "truth_level": chunk["truth_level"],
+./scripts/tools/wiki_ingester.py:216:                                    "verification_status": chunk["verification_status"],
+./scripts/tools/wiki_ingester.py:217:                                    "confidence_score": chunk["confidence_score"],
+./scripts/tools/wiki_ingester.py:219:                                vector=chunk["embedding"],
+./scripts/tools/wiki_ingester.py:220:                                uuid=chunk["chunk_id"]
+./scripts/tools/wiki_ingester.py:224:                            logger.warning(f"Failed to insert chunk {chunk['chunk_id']}: {e}")
+./scripts/tools/wiki_ingester.py:226:                logger.info(f"Inserted batch {i // batch_size + 1}/{(len(chunks) + batch_size - 1) // batch_size}")
+./scripts/tools/wiki_ingester.py:229:            logger.error(f"Error inserting chunks: {e}")
+./scripts/tools/wiki_ingester.py:244:                filters=weaviate.classes.query.Filter.by_property("source_path").like(f"{source_path_prefix}*"),
+./scripts/tools/wiki_ingester.py:274:        "--weaviate-url",
+./scripts/tools/wiki_ingester.py:282:        "--chunk-size",
+./scripts/tools/wiki_ingester.py:300:    # Build ingester
+./scripts/tools/wiki_ingester.py:301:    ingester = WikiIngester(
+./scripts/tools/wiki_ingester.py:302:        weaviate_url=args.weaviate_url or _settings.weaviate_url,
+./scripts/tools/wiki_ingester.py:303:        collection_name=args.collection or _settings.weaviate_collection_knowledge,
+./scripts/tools/wiki_ingester.py:304:        embedding_model=_settings.embedding_model,
+./scripts/tools/wiki_ingester.py:305:        chunk_size=args.chunk_size,
+./scripts/tools/wiki_ingester.py:312:            ingester.cleanup_old_documents("wiki/")
+./scripts/tools/wiki_ingester.py:315:        stats = ingester.ingest_from_manifest(args.manifest)
+./scripts/tools/wiki_ingester.py:319:        print(f"  Chunks created: {stats['chunks_created']}")
+./scripts/tools/wiki_ingester.py:320:        print(f"  Chunks inserted: {stats['chunks_inserted']}")
+./scripts/tools/wiki_ingester.py:327:        ingester.close()
+./scripts/ingestors/ingest_videos.py:69:        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+./scripts/ingestors/ingest_videos.py:70:            h.update(chunk)
+./scripts/ingestors/ingest_videos.py:128:            "ingested_at": datetime.now(timezone.utc).isoformat(),
+./scripts/ingestors/ingest_videos.py:308:        chunk_size = max(1, len(words) // splits)
+./scripts/ingestors/ingest_videos.py:312:            chunk_words = words[i * chunk_size:] if i == splits - 1 else words[i * chunk_size:(i + 1) * chunk_size]
+./scripts/ingestors/ingest_videos.py:313:            chunk_text = " ".join(chunk_words).strip()
+./scripts/ingestors/ingest_videos.py:314:            if chunk_text:
+./scripts/ingestors/ingest_videos.py:315:                out.append({"start": s, "end": e, "text": chunk_text})
+./scripts/ingestors/ingest_videos.py:546:    # Local video ingestion
+./scripts/ingestors/ingest_videos.py:552:        with tempfile.TemporaryDirectory(prefix="vid_ingest_") as tdir:
+./scripts/ingestors/ingest_videos.py:620:    # URL video ingestion
+./scripts/ingestors/ingest_videos.py:624:        with tempfile.TemporaryDirectory(prefix="vid_url_ingest_") as tdir:
+./tests/run_golden_tests.py:60:    """Execute chat query via LangGraph pipeline (with classification/guardrails)."""
+./scripts/run_orchestrator.py:2:"""RAG Orchestrator CLI - Run ingestion pipeline.
+./scripts/run_orchestrator.py:5:    python run_orchestrator.py              # Full ingestion
+./scripts/run_orchestrator.py:29:from orchestrator.pipeline import OrchestratorPipeline, PipelineConfig
+./scripts/run_orchestrator.py:82:async def run_ingestion(args):
+./scripts/run_orchestrator.py:83:    """Run the full ingestion pipeline."""
+./scripts/run_orchestrator.py:99:    # Step 3: Build pipeline config
+./scripts/run_orchestrator.py:100:    pipeline_config = PipelineConfig.from_yaml(config_dict)
+./scripts/run_orchestrator.py:105:            pipeline_config.minio_enabled = False
+./scripts/run_orchestrator.py:106:            pipeline_config.wiki_enabled = False
+./scripts/run_orchestrator.py:108:            pipeline_config.minio_enabled = False
+./scripts/run_orchestrator.py:109:            pipeline_config.knowledge_enabled = False
+./scripts/run_orchestrator.py:111:            pipeline_config.wiki_enabled = False
+./scripts/run_orchestrator.py:112:            pipeline_config.knowledge_enabled = False
+./scripts/run_orchestrator.py:115:        pipeline_config.knowledge_path = args.knowledge_path
+./scripts/run_orchestrator.py:121:        print(f"Knowledge: {pipeline_config.knowledge_enabled} ({pipeline_config.knowledge_path})")
+./scripts/run_orchestrator.py:122:        print(f"Wiki: {pipeline_config.wiki_enabled} (mode={pipeline_config.wiki_mode})")
+./scripts/run_orchestrator.py:123:        print(f"MinIO: {pipeline_config.minio_enabled} (buckets={pipeline_config.minio_buckets})")
+./scripts/run_orchestrator.py:124:        print(f"Chunk size: {pipeline_config.chunk_size} tokens")
+./scripts/run_orchestrator.py:125:        print(f"Chunk overlap: {pipeline_config.chunk_overlap} tokens")
+./scripts/run_orchestrator.py:126:        print(f"Batch size: {pipeline_config.batch_size}")
+./scripts/run_orchestrator.py:127:        print(f"Versioning: {pipeline_config.create_version}")
+./scripts/run_orchestrator.py:131:    # Step 5: Run pipeline
+./scripts/run_orchestrator.py:133:    pipeline = OrchestratorPipeline(pipeline_config)
+./scripts/run_orchestrator.py:134:    result = await pipeline.run()
+./scripts/run_orchestrator.py:142:    print(f"Chunks created: {result.chunks_created}")
+./scripts/run_orchestrator.py:143:    print(f"Chunks indexed: {result.chunks_indexed}")
+./scripts/run_orchestrator.py:162:            "chunks_created": result.chunks_created,
+./scripts/run_orchestrator.py:163:            "chunks_indexed": result.chunks_indexed,
+./scripts/run_orchestrator.py:175:        description="RAG Orchestrator CLI - Run ingestion pipeline",
+./scripts/run_orchestrator.py:179:  %(prog)s                          Run full ingestion
+./scripts/run_orchestrator.py:195:        help="Only validate environment, don't run pipeline",
+./scripts/run_orchestrator.py:200:        help="Preview pipeline config without running",
+./scripts/run_orchestrator.py:238:    # Run ingestion
+./scripts/run_orchestrator.py:240:        return asyncio.run(run_ingestion(args))
+./scripts/init_schema.py:12:import weaviate
+./scripts/init_schema.py:13:from weaviate.classes.config import Property, DataType, Configure
+./scripts/init_schema.py:18:WEAVIATE_URL = _settings.weaviate_url
+./scripts/init_schema.py:29:    """Canonical chunk schema used across all collections."""
+./scripts/init_schema.py:32:        Property(name="chunk_id", data_type=DataType.TEXT),
+./scripts/init_schema.py:50:        Property(name="chunk_index", data_type=DataType.INT),
+./scripts/init_schema.py:70:        Property(name="chunk_kind", data_type=DataType.TEXT),
+./scripts/init_schema.py:83:    Property(name="chunk_kind", data_type=DataType.TEXT),
+./scripts/init_schema.py:134:    """Initialize Weaviate schema with local embeddings (no vectorizer)."""
+./scripts/init_schema.py:143:    client = weaviate.connect_to_local(host=host, port=port)
+./scripts/init_schema.py:153:            print(f"Creating collection '{collection_name}' (vectorizer: none)...")
+./scripts/init_schema.py:157:                vectorizer_config=Configure.Vectorizer.none(),
+./scripts/init_schema.py:164:            print("Creating collection 'Dev_Full' (vectorizer: none)...")
+./scripts/init_schema.py:168:                vectorizer_config=Configure.Vectorizer.none(),
+./scripts/tools/build_index.py:2:"""Build and index knowledge corpus into Weaviate (100% gratuit - embeddings locaux)."""
+./scripts/tools/build_index.py:13:import weaviate
+./scripts/tools/build_index.py:19:WEAVIATE_URL = _settings.weaviate_url
+./scripts/tools/build_index.py:21:EMBEDDING_MODEL = _settings.embedding_model
+./scripts/tools/build_index.py:107:def index_documents(documents: list[dict], embeddings_model: SentenceTransformer):
+./scripts/tools/build_index.py:108:    """Index documents into Weaviate with local embeddings."""
+./scripts/tools/build_index.py:116:    client = weaviate.connect_to_local(host=host, port=port)
+./scripts/tools/build_index.py:119:        collection = client.collections.get(_settings.weaviate_collection_knowledge)
+./scripts/tools/build_index.py:124:        # Generate embeddings for all documents
+./scripts/tools/build_index.py:125:        print(f"Generating embeddings for {len(documents)} documents...")
+./scripts/tools/build_index.py:127:        embeddings = embeddings_model.encode(contents, show_progress_bar=True)
+./scripts/tools/build_index.py:129:        # Batch insert with vectors
+./scripts/tools/build_index.py:135:                    vector=embeddings[i].tolist(),
+./scripts/tools/build_index.py:159:    # Load embedding model (100% gratuit - local)
+./scripts/tools/build_index.py:160:    print(f"\nLoading embedding model: {EMBEDDING_MODEL}")
+./scripts/tools/build_index.py:161:    embeddings_model = SentenceTransformer(EMBEDDING_MODEL)
+./scripts/tools/build_index.py:187:    index_documents(documents, embeddings_model)
+./tests/test_pipeline_enrichment.py:1:"""Unit tests for pipeline enrichment functions.
+./tests/test_pipeline_enrichment.py:3:These functions are executed on EVERY chunk at indexation time.
+./tests/test_pipeline_enrichment.py:4:A silent regression would corrupt the entire vector database.
+./tests/test_pipeline_enrichment.py:6:Run: cd /opt/automecanik/rag && .venv/bin/python -m unittest tests.test_pipeline_enrichment -v
+./tests/test_pipeline_enrichment.py:16:from orchestrator.pipeline import (
+./scripts/importers/import_and_index_structured.sh:45:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_structured.py \
+./scripts/importers/import_and_index_structured.sh:54:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_structured.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/profiles --collection KB_Knowledge
+./scripts/importers/import_and_index_structured.sh:63:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_structured.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/entity_snapshots --collection KB_Catalog
+./scripts/importers/import_and_index_images.sh:5:# 1) ingest local images into /knowledge as media markdown docs (caption + ocr blocks)
+./scripts/importers/import_and_index_images.sh:45:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_images.py --input /app/images --truth-level $TRUTH_LEVEL
+./scripts/importers/import_and_index_images.sh:48:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_images.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_KNOWLEDGE_PATH\" --collection KB_Media
+./scripts/importers/import_and_index_web.sh:5:# 1) ingest web URLs to clean markdown corpus
+./scripts/importers/import_and_index_web.sh:52:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_web.py ${URL_ARGS[*]} --truth-level $TRUTH_LEVEL
+./scripts/importers/import_and_index_web.sh:55:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_web.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web --collection KB_Knowledge
+./scripts/importers/import_and_index_web.sh:63:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_web.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web-catalog --collection KB_Catalog
+./scripts/importers/import_and_index_db.sh:64:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_db.py \
+./scripts/importers/import_and_index_db.sh:73:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_db.sh:76:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/schema --collection KB_Knowledge
+./scripts/importers/import_and_index_db.sh:81:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_db.sh:84:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/entity_snapshots --collection KB_Catalog
+./scripts/importers/import_and_index_pdfs.sh:5:# 1) ingest local PDFs into /knowledge as cleaned/auto-classified markdown
+./scripts/importers/import_and_index_pdfs.sh:43:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_pdfs.py --input /app/pdfs --truth-level $TRUTH_LEVEL
+./scripts/importers/import_and_index_pdfs.sh:45:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_pdfs.sh:48:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import
+./scripts/reindex.py:2:"""Standalone RAG reindex script with anchored chunking and canonical layer."""
+./scripts/reindex.py:23:from orchestrator.processors.role_classifier import classify_chunk
+./scripts/reindex.py:30:DEFAULT_WEAVIATE_URL = _settings.weaviate_url
+./scripts/reindex.py:31:DEFAULT_WEAVIATE_GRPC_PORT = _settings.weaviate_grpc_port
+./scripts/reindex.py:34:FASTEMBED_MODEL = _settings.fastembed_model
+./scripts/reindex.py:74:# V3 gamme template: H2 heading (lowercase) -> per-chunk intent override
+./scripts/reindex.py:312:def chunk_document_anchored(doc: Dict[str, Any]) -> List[Tuple[str, str]]:
+./scripts/reindex.py:316:    Returns list of (chunk_text, parent_h2) tuples for downstream enrichment.
+./scripts/reindex.py:318:    from orchestrator.processors.chunker import TokenAwareChunker
+./scripts/reindex.py:320:    chunker = TokenAwareChunker(
+./scripts/reindex.py:321:        chunk_size=TARGET_MAX_TOKENS,
+./scripts/reindex.py:322:        chunk_overlap=50,
+./scripts/reindex.py:323:        min_chunk_size=50,  # Low threshold: original code never dropped small sections
+./scripts/reindex.py:325:    raw_chunks = chunker.chunk(doc["content"])
+./scripts/reindex.py:327:    if not raw_chunks:
+./scripts/reindex.py:333:    for chunk in raw_chunks:
+./scripts/reindex.py:334:        heading = chunk.get("heading") or ""
+./scripts/reindex.py:335:        level = chunk.get("heading_level")
+./scripts/reindex.py:338:        text = chunk["content"].strip()
+./scripts/reindex.py:514:def format_source_uri(doc: Dict[str, Any], chunk_index: int, page_numbers: List[int]) -> str:
+./scripts/reindex.py:527:        return f"{base}#chunk-{chunk_index}"
+./scripts/reindex.py:529:        return f"{base}#chunk-{chunk_index}"
+./scripts/reindex.py:530:    return f"md://{doc['source_path']}#chunk-{chunk_index}"
+./scripts/reindex.py:533:def format_source_ref(doc: Dict[str, Any], chunk_index: int, page_numbers: List[int]) -> str:
+./scripts/reindex.py:547:        return f"#t=chunk-{chunk_index}"
+./scripts/reindex.py:549:        return f"#chunk-{chunk_index}"
+./scripts/reindex.py:551:        return f"#row={chunk_index}"
+./scripts/reindex.py:552:    return f"#chunk-{chunk_index}"
+./scripts/reindex.py:570:def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None, chunk_intent: str | None = None, heading: str | None = None, chunk_type: str = "text") -> Dict[str, Any]:
+./scripts/reindex.py:573:    bbox_ref = extract_bbox_ref(chunk_text)
+./scripts/reindex.py:574:    video_ts_range = extract_video_ts_range(chunk_text)
+./scripts/reindex.py:575:    clean_chunk = strip_bbox_markers(strip_pdf_page_markers(strip_video_ts_markers(chunk_text)))
+./scripts/reindex.py:576:    chunk_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"{doc['source_path']}:{suffix}:{chunk_index}"))
+./scripts/reindex.py:577:    content_hash = hashlib.sha256(clean_chunk.encode("utf-8")).hexdigest()
+./scripts/reindex.py:582:    source_uri = format_source_uri(doc, chunk_index, page_numbers)
+./scripts/reindex.py:583:    source_ref = format_source_ref(doc, chunk_index, page_numbers)
+./scripts/reindex.py:599:    role_data = classify_chunk(heading=heading, chunk_type=chunk_type, content=clean_chunk, source_type=doc["source_type"], gamme_slug=doc.get("gamme_slug"))
+./scripts/reindex.py:612:    _chunk_kind = role_data.get("chunk_kind", "other")
+./scripts/reindex.py:614:    if _chunk_kind == "table_rows":
+./scripts/reindex.py:616:    elif _chunk_kind == "faq":
+./scripts/reindex.py:620:        "uuid": chunk_id,
+./scripts/reindex.py:621:        "chunk_id": chunk_id,
+./scripts/reindex.py:627:        "content": clean_chunk,
+./scripts/reindex.py:629:        "intent": chunk_intent if chunk_intent and chunk_intent in ALLOWED_INTENTS else doc["intent"],
+./scripts/reindex.py:638:        "chunk_index": chunk_index,
+./scripts/reindex.py:656:def chunk_document(doc: Dict[str, Any]) -> List[Dict[str, Any]]:
+./scripts/reindex.py:657:    chunks: List[Dict[str, Any]] = []
+./scripts/reindex.py:660:    # Detect V3 gamme template for per-chunk intent
+./scripts/reindex.py:664:    body_chunks = chunk_document_anchored(doc)  # List[(text, parent_h2)]
+./scripts/reindex.py:665:    chunk_index = 0
+./scripts/reindex.py:666:    for part_text, parent_h2 in body_chunks:
+./scripts/reindex.py:671:        # Resolve per-chunk intent from parent H2 (V3 only)
+./scripts/reindex.py:672:        chunk_intent = None
+./scripts/reindex.py:674:            chunk_intent = V3_H2_INTENT_MAP.get(parent_h2.strip().lower())
+./scripts/reindex.py:675:        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers, chunk_intent=chunk_intent, heading=parent_h2))
+./scripts/reindex.py:676:        chunk_index += 1
+./scripts/reindex.py:681:        for body_text, _ in body_chunks:
+./scripts/reindex.py:689:            chunks.append(build_chunk_record(doc, canonical, chunk_index, parent_id, canonical=True, page_numbers=page_numbers))
+./scripts/reindex.py:690:            chunk_index += 1
+./scripts/reindex.py:698:                    chunks.append(build_chunk_record(doc, fallback, chunk_index, parent_id, canonical=True, page_numbers=extract_pdf_pages(doc["content"])))
+./scripts/reindex.py:700:    return chunks
+./scripts/reindex.py:703:def build_embedding_input(chunk: Dict[str, Any]) -> str:
+./scripts/reindex.py:705:    Build embedding text from chunk body + structural hints.
+./scripts/reindex.py:706:    Important for retrieval quality: include title and anchors with the content.
+./scripts/reindex.py:708:    title = str(chunk.get("title", "") or "").strip()
+./scripts/reindex.py:709:    anchors = chunk.get("anchors", []) or []
+./scripts/reindex.py:713:    content = str(chunk.get("content", "") or "").strip()
+./scripts/reindex.py:725:def get_weaviate_client(weaviate_url: str):
+./scripts/reindex.py:726:    import weaviate
+./scripts/reindex.py:728:    url_clean = weaviate_url.replace("http://", "").replace("https://", "")
+./scripts/reindex.py:733:    return weaviate.connect_to_custom(
+./scripts/reindex.py:744:    from weaviate.classes.config import Property, DataType
+./scripts/reindex.py:746:        Property(name="chunk_id", data_type=DataType.TEXT),
+./scripts/reindex.py:763:        Property(name="chunk_index", data_type=DataType.INT),
+./scripts/reindex.py:779:    from weaviate.classes.config import Configure
+./scripts/reindex.py:785:        vectorizer_config=Configure.Vectorizer.none(),
+./scripts/reindex.py:790:def clear_collection(weaviate_url: str, collection_name: str):
+./scripts/reindex.py:792:    from weaviate.classes.config import Configure
+./scripts/reindex.py:794:    client = get_weaviate_client(weaviate_url)
+./scripts/reindex.py:802:        vectorizer_config=Configure.Vectorizer.none(),
+./scripts/reindex.py:888:def validate_chunk(chunk: Dict[str, Any]) -> List[str]:
+./scripts/reindex.py:890:        "chunk_id", "parent_id", "source_path", "source_uri", "title", "content",
+./scripts/reindex.py:892:        "chunk_index", "updated_at", "content_hash", "doc_family",
+./scripts/reindex.py:896:        value = chunk.get(field)
+./scripts/reindex.py:899:    if str(chunk.get("intent", "")).strip().lower() not in ALLOWED_INTENTS:
+./scripts/reindex.py:900:        errors.append(f"invalid intent={chunk.get('intent')}")
+./scripts/reindex.py:901:    chunk_domain_raw = chunk.get("domain", "")
+./scripts/reindex.py:902:    chunk_domain = str(chunk_domain_raw.get("role", "")).strip().lower() if isinstance(chunk_domain_raw, dict) else str(chunk_domain_raw).strip().lower()
+./scripts/reindex.py:903:    if chunk_domain not in ALLOWED_DOMAINS:
+./scripts/reindex.py:904:        errors.append(f"invalid domain={chunk_domain}")
+./scripts/reindex.py:905:    if str(chunk.get("truth_level", "")).strip().upper() not in ALLOWED_TRUTH_LEVELS:
+./scripts/reindex.py:906:        errors.append(f"invalid truth_level={chunk.get('truth_level')}")
+./scripts/reindex.py:907:    if str(chunk.get("verification_status", "")).strip().lower() not in ALLOWED_VERIFICATION_STATUS:
+./scripts/reindex.py:908:        errors.append(f"invalid verification_status={chunk.get('verification_status')}")
+./scripts/reindex.py:909:    fam = str(chunk.get("doc_family", "")).strip().lower()
+./scripts/reindex.py:926:    weaviate_url: str,
+./scripts/reindex.py:934:    from fastembed import TextEmbedding
+./scripts/reindex.py:941:    client = get_weaviate_client(weaviate_url)
+./scripts/reindex.py:954:    chunk_count = 0
+./scripts/reindex.py:957:    blocked_chunks = 0
+./scripts/reindex.py:974:    def upsert(collection, chunk: dict, embedding) -> None:
+./scripts/reindex.py:976:        props = {k: v for k, v in chunk.items() if k != "uuid"}
+./scripts/reindex.py:977:        vec = embedding.tolist()
+./scripts/reindex.py:986:                    vector=vec,
+./scripts/reindex.py:987:                    uuid=chunk["uuid"],
+./scripts/reindex.py:995:                    uuid=chunk["uuid"],
+./scripts/reindex.py:997:                    vector=vec,
+./scripts/reindex.py:1003:                uuid=chunk["uuid"],
+./scripts/reindex.py:1005:                vector=vec,
+./scripts/reindex.py:1013:                vector=vec,
+./scripts/reindex.py:1014:                uuid=chunk["uuid"],
+./scripts/reindex.py:1036:        chunks = chunk_document(doc)
+./scripts/reindex.py:1037:        chunk_count += len(chunks)
+./scripts/reindex.py:1038:        if not chunks:
+./scripts/reindex.py:1041:        for i in range(0, len(chunks), batch_size):
+./scripts/reindex.py:1042:            batch_chunks = chunks[i:i + batch_size]
+./scripts/reindex.py:1043:            texts = [build_embedding_input(c) for c in batch_chunks]
+./scripts/reindex.py:1044:            embeddings = list(model.embed(texts, batch_size=batch_size))
+./scripts/reindex.py:1049:                for chunk, embedding in zip(batch_chunks, embeddings):
+./scripts/reindex.py:1050:                    chunk_errors = validate_chunk(chunk)
+./scripts/reindex.py:1051:                    if chunk_errors:
+./scripts/reindex.py:1052:                        blocked_chunks += 1
+./scripts/reindex.py:1054:                            "type": "chunk",
+./scripts/reindex.py:1055:                            "source_path": chunk.get("source_path"),
+./scripts/reindex.py:1056:                            "chunk_id": chunk.get("chunk_id"),
+./scripts/reindex.py:1057:                            "errors": chunk_errors,
+./scripts/reindex.py:1061:                    upsert(target_collection, chunk, embedding)
+./scripts/reindex.py:1065:                    for chunk, embedding in zip(batch_chunks, embeddings):
+./scripts/reindex.py:1066:                        chunk_errors = validate_chunk(chunk)
+./scripts/reindex.py:1067:                        if chunk_errors:
+./scripts/reindex.py:1068:                            blocked_chunks += 1
+./scripts/reindex.py:1070:                                "type": "chunk",
+./scripts/reindex.py:1071:                                "source_path": chunk.get("source_path"),
+./scripts/reindex.py:1072:                                "chunk_id": chunk.get("chunk_id"),
+./scripts/reindex.py:1073:                                "errors": chunk_errors,
+./scripts/reindex.py:1078:                            properties={k: v for k, v in chunk.items() if k != "uuid"},
+./scripts/reindex.py:1079:                            vector=embedding.tolist(),
+./scripts/reindex.py:1080:                            uuid=chunk["uuid"],
+./scripts/reindex.py:1083:            del embeddings
+./scripts/reindex.py:1085:        del doc, chunks
+./scripts/reindex.py:1090:                f"Progress: {doc_count} docs, {chunk_count} chunks, {indexed_count} indexed, "
+./scripts/reindex.py:1091:                f"{blocked_docs} blocked docs, {blocked_chunks} blocked chunks"
+./scripts/reindex.py:1095:    return doc_count, chunk_count, indexed_count, blocked_docs, blocked_chunks
+./scripts/reindex.py:1100:    chunk_count = 0
+./scripts/reindex.py:1105:        chunks = chunk_document(doc)
+./scripts/reindex.py:1106:        chunk_count += len(chunks)
+./scripts/reindex.py:1111:        del doc, chunks
+./scripts/reindex.py:1114:    return doc_count, chunk_count, sample_docs
+./scripts/reindex.py:1120:    parser.add_argument("--weaviate-url", default=os.environ.get("WEAVIATE_URL", DEFAULT_WEAVIATE_URL))
+./scripts/reindex.py:1151:        doc_count, chunk_count, sample_docs = dry_run(args.path, max_files=args.max_files)
+./scripts/reindex.py:1157:        logger.info(f"Total: {doc_count} documents, {chunk_count} chunks")
+./scripts/reindex.py:1163:                clear_collection(args.weaviate_url, cname)
+./scripts/reindex.py:1165:            clear_collection(args.weaviate_url, args.collection)
+./scripts/reindex.py:1167:    doc_count, chunk_count, indexed_count, blocked_docs, blocked_chunks = index_streaming_true(
+./scripts/reindex.py:1169:        args.weaviate_url,
+./scripts/reindex.py:1182:    logger.info(f"Chunks: {chunk_count}")
+./scripts/reindex.py:1185:    logger.info(f"Blocked chunks: {blocked_chunks}")
+./scripts/importers/import_and_index_tabular.sh:45:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_tabular.py \
+./scripts/importers/import_and_index_tabular.sh:54:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_tabular.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/profiles --collection KB_Knowledge
+./scripts/importers/import_and_index_tabular.sh:63:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_tabular.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/entity_snapshots --collection KB_Catalog
+./orchestrator/__init__.py:3:This package handles all RAG ingestion operations and MUST ONLY run in BUILD plane
+./orchestrator/__init__.py:8:- pipeline: Main orchestration flow
+./orchestrator/__init__.py:10:- processors: Document chunking and embedding
+./orchestrator/__init__.py:22:from .pipeline import OrchestratorPipeline, run_full_ingestion
+./orchestrator/__init__.py:31:    "run_full_ingestion",
+./scripts/importers/import_and_index_videos.sh:5:# 1) ingest local videos into /knowledge as media markdown docs (transcript + keyframes)
+./scripts/importers/import_and_index_videos.sh:45:    ENV=dev KNOWLEDGE_PATH=/knowledge-import python scripts/ingestors/ingest_videos.py --input /app/videos --truth-level $TRUTH_LEVEL
+./scripts/importers/import_and_index_videos.sh:48:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_videos.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_PATH\" --collection KB_Media
+./scripts/importers/import_and_index_videos.sh:55:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE=$REINDEX_BATCH_SIZE \
+./scripts/importers/import_and_index_videos.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$CANONICAL_PATH\" --collection KB_Knowledge
+./orchestrator/extractors/wiki_extractor.py:196:    from ..pipeline import Document
+./scripts/archive/build_nanobanana_prompts.py:2:"""Build safe NanoBanana image prompts from selected storyboard shots."""
+./scripts/archive/build_nanobanana_prompts.py:25:def build_prompt(row: dict) -> str:
+./scripts/archive/build_nanobanana_prompts.py:41:    parser = argparse.ArgumentParser(description="Generate NanoBanana-safe prompts CSV")
+./scripts/archive/build_nanobanana_prompts.py:43:    parser.add_argument("--output", required=True, help="output nanobanana_prompts.csv path")
+./scripts/archive/build_nanobanana_prompts.py:58:            "nanobanana_prompt",
+./scripts/archive/build_nanobanana_prompts.py:71:                    "nanobanana_prompt": build_prompt(row),
+./orchestrator/processors/__init__.py:4:- chunker: Token-aware document chunking
+./orchestrator/processors/__init__.py:7:from .chunker import chunk_document, TokenAwareChunker
+./orchestrator/processors/__init__.py:10:    "chunk_document",
+./orchestrator/processors/role_classifier.py:1:"""Role classifier for RAG chunks (v2.5).
+./orchestrator/processors/role_classifier.py:3:Assigns 6 fields to each chunk:
+./orchestrator/processors/role_classifier.py:4:  - section_key: inferred from heading/chunk_type
+./orchestrator/processors/role_classifier.py:6:  - allowed_roles: list of RoleIds this chunk is valid for
+./orchestrator/processors/role_classifier.py:9:  - chunk_kind: content type for retrieval diversification
+./orchestrator/processors/role_classifier.py:124:def heading_to_section_key(heading: Optional[str], chunk_type: str = "text") -> str:
+./orchestrator/processors/role_classifier.py:125:    """Infer section_key from heading text and chunk_type."""
+./orchestrator/processors/role_classifier.py:126:    if chunk_type == "faq":
+./orchestrator/processors/role_classifier.py:128:    if chunk_type == "procedure":
+./orchestrator/processors/role_classifier.py:238:    """Detect unsafe patterns in table_rows chunks (P4c).
+./orchestrator/processors/role_classifier.py:301:    """Compute the list of roles this chunk is valid for.
+./orchestrator/processors/role_classifier.py:336:def classify_chunk_kind(heading: Optional[str], chunk_type: str, content: str) -> str:
+./orchestrator/processors/role_classifier.py:337:    """Classify chunk content type for retrieval diversification.
+./orchestrator/processors/role_classifier.py:346:    section_key = heading_to_section_key(heading, chunk_type)
+./orchestrator/processors/role_classifier.py:353:def classify_chunk(
+./orchestrator/processors/role_classifier.py:355:    chunk_type: str,
+./orchestrator/processors/role_classifier.py:360:    """Classify a chunk and return the 6 role fields.
+./orchestrator/processors/role_classifier.py:364:        chunk_type: Chunk type (text, faq, procedure, etc.)
+./orchestrator/processors/role_classifier.py:365:        content: Raw chunk content
+./orchestrator/processors/role_classifier.py:371:                        purity_score, contamination_flags, chunk_kind
+./orchestrator/processors/role_classifier.py:375:    section_key = heading_to_section_key(heading, chunk_type)
+./orchestrator/processors/role_classifier.py:383:    chunk_kind = classify_chunk_kind(heading, chunk_type, content)
+./orchestrator/processors/role_classifier.py:386:    if chunk_kind == "table_rows":
+./orchestrator/processors/role_classifier.py:405:        "chunk_kind": chunk_kind,
+./orchestrator/extractors/minio_extractor.py:3:Routes files to specialized pipelines based on extension:
+./orchestrator/extractors/minio_extractor.py:4:- PDF  -> ingest_pdfs pipeline (H2/H3-aware chunking + OCR)
+./orchestrator/extractors/minio_extractor.py:5:- Images -> ingest_images pipeline (OCR + vision captions)
+./orchestrator/extractors/minio_extractor.py:6:- Logs -> ingest_logs pipeline (profile + error patterns)
+./orchestrator/extractors/minio_extractor.py:7:- CSV/XLSX -> tabular pipeline
+./orchestrator/extractors/minio_extractor.py:11:and returns them for chunking and indexing.
+./orchestrator/extractors/minio_extractor.py:22:# Format routing map: extension -> pipeline type
+./orchestrator/extractors/minio_extractor.py:136:        """Extract content from a single object, routing to specialized pipelines."""
+./orchestrator/extractors/minio_extractor.py:156:                content, source_type = self._extract_via_pdf_pipeline(local_path)
+./orchestrator/extractors/minio_extractor.py:158:                content, source_type = self._extract_via_image_pipeline(local_path)
+./orchestrator/extractors/minio_extractor.py:160:                content, source_type = self._extract_via_log_pipeline(local_path, object_name)
+./orchestrator/extractors/minio_extractor.py:169:            logger.info(f"Routed {object_name} to {format_type} pipeline")
+./orchestrator/extractors/minio_extractor.py:186:                "pipeline": format_type,
+./orchestrator/extractors/minio_extractor.py:190:    def _extract_via_pdf_pipeline(self, file_path: Path) -> tuple[Optional[str], str]:
+./orchestrator/extractors/minio_extractor.py:191:        """Route PDF to specialized pipeline with page markers and OCR."""
+./orchestrator/extractors/minio_extractor.py:193:            # Import from ingest_pdfs for full extraction (page markers + OCR)
+./orchestrator/extractors/minio_extractor.py:194:            from scripts.ingestors.ingest_pdfs import extract_pdf_text
+./orchestrator/extractors/minio_extractor.py:196:            logger.debug(f"PDF pipeline: pages_text={stats['pages_text']} pages_ocr={stats['pages_ocr']}")
+./orchestrator/extractors/minio_extractor.py:202:    def _extract_via_image_pipeline(self, file_path: Path) -> tuple[Optional[str], str]:
+./orchestrator/extractors/minio_extractor.py:203:        """Route image to OCR + caption pipeline."""
+./orchestrator/extractors/minio_extractor.py:205:            from scripts.ingestors.ingest_images import extract_ocr_blocks, build_caption, render_ocr_markdown
+./orchestrator/extractors/minio_extractor.py:212:            logger.warning("ingest_images not available, skipping image")
+./orchestrator/extractors/minio_extractor.py:215:    def _extract_via_log_pipeline(self, file_path: Path, object_name: str) -> tuple[Optional[str], str]:
+./orchestrator/extractors/minio_extractor.py:216:        """Route log to profile + error pattern pipeline."""
+./orchestrator/extractors/minio_extractor.py:218:            from scripts.ingestors.ingest_logs import extract_log_profile, render_profile_markdown
+./orchestrator/extractors/minio_extractor.py:224:            logger.warning("ingest_logs not available, skipping log")
+./orchestrator/extractors/minio_extractor.py:310:    from ..pipeline import Document
+./docker-compose.prod.yml:19:      - WEAVIATE_URL=http://weaviate:8080
+./docker-compose.prod.yml:35:      weaviate:
+./docker-compose.prod.yml:56:  weaviate:
+./docker-compose.prod.yml:57:    image: cr.weaviate.io/semitechnologies/weaviate:1.28.0
+./docker-compose.prod.yml:58:    container_name: weaviate-prod
+./docker-compose.prod.yml:62:      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+./docker-compose.prod.yml:66:      - weaviate_data_prod:/var/lib/weaviate
+./docker-compose.prod.yml:93:  weaviate_data_prod:
+./orchestrator/processors/chunker.py:3:Splits documents into chunks of approximately `chunk_size` tokens
+./orchestrator/processors/chunker.py:4:with `chunk_overlap` tokens of overlap between consecutive chunks.
+./orchestrator/processors/chunker.py:8:- **FAQ detection** — Q/A pairs kept as atomic chunks
+./orchestrator/processors/chunker.py:10:- **Small chunk merging** — undersized chunks merged within same heading
+./orchestrator/processors/chunker.py:11:- Token-aware splitting within sections that exceed chunk_size
+./orchestrator/processors/chunker.py:13:- Preserves heading context as prefix in each chunk
+./orchestrator/processors/chunker.py:14:- Strips frontmatter before chunking
+./orchestrator/processors/chunker.py:35:    """Token-aware document chunker with heading awareness.
+./orchestrator/processors/chunker.py:49:        chunk_size: int = 500,
+./orchestrator/processors/chunker.py:50:        chunk_overlap: int = 50,
+./orchestrator/processors/chunker.py:51:        min_chunk_size: int = 100,
+./orchestrator/processors/chunker.py:56:        """Initialize chunker.
+./orchestrator/processors/chunker.py:59:            chunk_size: Target number of tokens per chunk
+./orchestrator/processors/chunker.py:60:            chunk_overlap: Number of tokens to overlap between chunks
+./orchestrator/processors/chunker.py:61:            min_chunk_size: Minimum tokens for a chunk (avoids tiny chunks)
+./orchestrator/processors/chunker.py:63:            strip_frontmatter: Remove YAML frontmatter before chunking
+./orchestrator/processors/chunker.py:66:        self.chunk_size = chunk_size
+./orchestrator/processors/chunker.py:67:        self.chunk_overlap = chunk_overlap
+./orchestrator/processors/chunker.py:68:        self.min_chunk_size = min_chunk_size
+./orchestrator/processors/chunker.py:73:    def chunk(self, text: str) -> List[dict]:
+./orchestrator/processors/chunker.py:79:        3. For each section: if within chunk_size, emit as one chunk;
+./orchestrator/processors/chunker.py:81:        4. Each chunk carries its parent heading as metadata
+./orchestrator/processors/chunker.py:84:            text: Text to chunk
+./orchestrator/processors/chunker.py:87:            List of chunk dicts with content, start_char, end_char,
+./orchestrator/processors/chunker.py:94:            return self._chunk_by_headings(text)
+./orchestrator/processors/chunker.py:96:        return self._chunk_by_tokens(text)
+./orchestrator/processors/chunker.py:98:    def _chunk_by_headings(self, text: str) -> List[dict]:
+./orchestrator/processors/chunker.py:99:        """Split text by headings, then sub-chunk oversized sections.
+./orchestrator/processors/chunker.py:102:        - FAQ: each Q/A pair becomes an atomic chunk
+./orchestrator/processors/chunker.py:103:        - Procedure: kept as single chunk if within size limit
+./orchestrator/processors/chunker.py:106:        char_limit = self.chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:108:        chunks: List[dict] = []
+./orchestrator/processors/chunker.py:109:        chunk_index = 0
+./orchestrator/processors/chunker.py:124:                faq_chunks = self._split_faq_chunks(body)
+./orchestrator/processors/chunker.py:125:                if faq_chunks:
+./orchestrator/processors/chunker.py:126:                    for fc in faq_chunks:
+./orchestrator/processors/chunker.py:132:                        chunks.append({
+./orchestrator/processors/chunker.py:134:                            "chunk_index": chunk_index,
+./orchestrator/processors/chunker.py:140:                            "chunk_type": "faq",
+./orchestrator/processors/chunker.py:143:                        chunk_index += 1
+./orchestrator/processors/chunker.py:154:                    chunks.append({
+./orchestrator/processors/chunker.py:156:                        "chunk_index": chunk_index,
+./orchestrator/processors/chunker.py:162:                        "chunk_type": "procedure",
+./orchestrator/processors/chunker.py:165:                    chunk_index += 1
+./orchestrator/processors/chunker.py:177:                # Section fits in one chunk
+./orchestrator/processors/chunker.py:178:                min_chars = self.min_chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:180:                    chunks.append({
+./orchestrator/processors/chunker.py:182:                        "chunk_index": chunk_index,
+./orchestrator/processors/chunker.py:188:                        "chunk_type": "text",
+./orchestrator/processors/chunker.py:191:                    chunk_index += 1
+./orchestrator/processors/chunker.py:193:                # Section too large: sub-chunk by tokens within section
+./orchestrator/processors/chunker.py:194:                sub_chunks = self._chunk_by_tokens(body, base_offset=section_start)
+./orchestrator/processors/chunker.py:195:                for sc in sub_chunks:
+./orchestrator/processors/chunker.py:201:                    sc["chunk_index"] = chunk_index
+./orchestrator/processors/chunker.py:204:                    sc["chunk_type"] = "text"
+./orchestrator/processors/chunker.py:206:                    chunks.append(sc)
+./orchestrator/processors/chunker.py:207:                    chunk_index += 1
+./orchestrator/processors/chunker.py:209:        # --- Small chunk merging (within same heading) ---
+./orchestrator/processors/chunker.py:210:        chunks = self._merge_small_chunks(chunks)
+./orchestrator/processors/chunker.py:212:        return chunks
+./orchestrator/processors/chunker.py:217:    def _split_faq_chunks(text: str) -> List[str]:
+./orchestrator/processors/chunker.py:218:        """Split FAQ-like text into individual Q/A pair chunks."""
+./orchestrator/processors/chunker.py:220:        chunks: List[str] = []
+./orchestrator/processors/chunker.py:235:                chunk = "\n".join(q_lines).strip()
+./orchestrator/processors/chunker.py:236:                if chunk:
+./orchestrator/processors/chunker.py:237:                    chunks.append(chunk)
+./orchestrator/processors/chunker.py:240:        return chunks
+./orchestrator/processors/chunker.py:250:    def _merge_small_chunks(self, chunks: List[dict]) -> List[dict]:
+./orchestrator/processors/chunker.py:251:        """Merge undersized non-atomic chunks within the same heading.
+./orchestrator/processors/chunker.py:254:        - Never merge atomic chunks (FAQ, procedure)
+./orchestrator/processors/chunker.py:256:        - Only merge if combined size <= chunk_size
+./orchestrator/processors/chunker.py:258:        if len(chunks) < 2:
+./orchestrator/processors/chunker.py:259:            return chunks
+./orchestrator/processors/chunker.py:261:        min_chars = self.min_chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:262:        max_chars = self.chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:265:        for chunk in chunks:
+./orchestrator/processors/chunker.py:266:            if chunk.get("is_atomic"):
+./orchestrator/processors/chunker.py:267:                merged.append(chunk)
+./orchestrator/processors/chunker.py:272:                    and merged[-1].get("heading") == chunk.get("heading")
+./orchestrator/processors/chunker.py:274:                combined = merged[-1]["content"] + "\n\n" + chunk["content"]
+./orchestrator/processors/chunker.py:278:                    merged[-1]["end_char"] = chunk.get("end_char", merged[-1]["end_char"])
+./orchestrator/processors/chunker.py:281:            merged.append(chunk)
+./orchestrator/processors/chunker.py:285:            ch["chunk_index"] = i
+./orchestrator/processors/chunker.py:332:    def _chunk_by_tokens(self, text: str, base_offset: int = 0) -> List[dict]:
+./orchestrator/processors/chunker.py:333:        """Token-based chunking (original algorithm).
+./orchestrator/processors/chunker.py:335:        Used as fallback for non-heading text or for sub-chunking
+./orchestrator/processors/chunker.py:338:        char_limit = self.chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:339:        overlap_chars = self.chunk_overlap * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:340:        min_chars = self.min_chunk_size * self.CHARS_PER_TOKEN
+./orchestrator/processors/chunker.py:342:        chunks = []
+./orchestrator/processors/chunker.py:344:        chunk_index = 0
+./orchestrator/processors/chunker.py:354:            chunk_content = text[start:end].strip()
+./orchestrator/processors/chunker.py:356:            if chunk_content and len(chunk_content) >= min_chars // 2:
+./orchestrator/processors/chunker.py:357:                chunks.append({
+./orchestrator/processors/chunker.py:358:                    "content": chunk_content,
+./orchestrator/processors/chunker.py:359:                    "chunk_index": chunk_index,
+./orchestrator/processors/chunker.py:362:                    "token_estimate": len(chunk_content) // self.CHARS_PER_TOKEN,
+./orchestrator/processors/chunker.py:365:                    "chunk_type": "text",
+./orchestrator/processors/chunker.py:368:                chunk_index += 1
+./orchestrator/processors/chunker.py:378:        return chunks
+./orchestrator/processors/chunker.py:421:def chunk_document(document, chunk_size: int = 500, chunk_overlap: int = 50) -> List:
+./orchestrator/processors/chunker.py:425:        document: Document object to chunk
+./orchestrator/processors/chunker.py:426:        chunk_size: Target tokens per chunk
+./orchestrator/processors/chunker.py:427:        chunk_overlap: Token overlap between chunks
+./orchestrator/processors/chunker.py:432:    from ..pipeline import Chunk
+./orchestrator/processors/chunker.py:434:    chunker = TokenAwareChunker(
+./orchestrator/processors/chunker.py:435:        chunk_size=chunk_size,
+./orchestrator/processors/chunker.py:436:        chunk_overlap=chunk_overlap,
+./orchestrator/processors/chunker.py:439:    raw_chunks = chunker.chunk(document.content)
+./orchestrator/processors/chunker.py:444:            content=chunk["content"],
+./orchestrator/processors/chunker.py:445:            chunk_index=chunk["chunk_index"],
+./orchestrator/processors/chunker.py:446:            start_char=chunk["start_char"],
+./orchestrator/processors/chunker.py:447:            end_char=chunk["end_char"],
+./orchestrator/processors/chunker.py:448:            heading=chunk.get("heading"),
+./orchestrator/processors/chunker.py:449:            heading_level=chunk.get("heading_level"),
+./orchestrator/processors/chunker.py:451:        for chunk in raw_chunks
+./orchestrator/processors/chunker.py:456:def chunk_text(
+./orchestrator/processors/chunker.py:458:    chunk_size: int = 500,
+./orchestrator/processors/chunker.py:459:    chunk_overlap: int = 50,
+./orchestrator/processors/chunker.py:464:        text: Text to chunk
+./orchestrator/processors/chunker.py:465:        chunk_size: Target tokens per chunk
+./orchestrator/processors/chunker.py:466:        chunk_overlap: Token overlap between chunks
+./orchestrator/processors/chunker.py:469:        List of chunk content strings
+./orchestrator/processors/chunker.py:471:    chunker = TokenAwareChunker(
+./orchestrator/processors/chunker.py:472:        chunk_size=chunk_size,
+./orchestrator/processors/chunker.py:473:        chunk_overlap=chunk_overlap,
+./orchestrator/processors/chunker.py:475:    chunks = chunker.chunk(text)
+./orchestrator/processors/chunker.py:476:    return [c["content"] for c in chunks]
+./orchestrator/processors/chunker.py:488:This is a test document for the chunker. It contains multiple paragraphs
+./orchestrator/processors/chunker.py:489:and sentences to test the chunking logic.
+./orchestrator/processors/chunker.py:493:Here is some content in section 1. It should be properly chunked based on
+./orchestrator/processors/chunker.py:496:This is another paragraph in section 1. The chunker should handle this well.
+./orchestrator/processors/chunker.py:500:Section 2 has more content. The overlap between chunks should ensure
+./orchestrator/processors/chunker.py:511:    chunker = TokenAwareChunker(chunk_size=100, chunk_overlap=20)
+./orchestrator/processors/chunker.py:512:    chunks = chunker.chunk(test_text)
+./orchestrator/processors/chunker.py:514:    print(f"Created {len(chunks)} chunks:")
+./orchestrator/processors/chunker.py:515:    for i, chunk in enumerate(chunks):
+./orchestrator/processors/chunker.py:516:        heading = chunk.get("heading") or "(no heading)"
+./orchestrator/processors/chunker.py:517:        level = chunk.get("heading_level") or "-"
+./orchestrator/processors/chunker.py:518:        print(f"\n--- Chunk {i} [H{level}: {heading}] ({chunk['token_estimate']} tokens) ---")
+./orchestrator/processors/chunker.py:519:        print(chunk["content"][:200] + "..." if len(chunk["content"]) > 200 else chunk["content"])
+./orchestrator/processors/chunker.py:522:    chunker2 = TokenAwareChunker(chunk_size=100, chunk_overlap=20, respect_headings=False)
+./orchestrator/processors/chunker.py:523:    chunks2 = chunker2.chunk(test_text)
+./orchestrator/processors/chunker.py:524:    print(f"Created {len(chunks2)} chunks (no heading awareness)")
+./orchestrator/pipeline.py:3:This module orchestrates the full RAG ingestion pipeline:
+./orchestrator/pipeline.py:7:4. chunk_documents() - Split into ~500 token chunks
+./orchestrator/pipeline.py:8:5. generate_embeddings() - all-MiniLM-L6-v2
+./orchestrator/pipeline.py:9:6. upsert_weaviate() - Batch insert to Weaviate
+./orchestrator/pipeline.py:12:CRITICAL: This pipeline ONLY runs in BUILD plane (dev/ci).
+./orchestrator/pipeline.py:63:# Heuristic enrichment (intent / domain / entities)
+./orchestrator/pipeline.py:107:    """Classify chunk content into an automotive domain."""
+./orchestrator/pipeline.py:120:    """Classify chunk content intent (diagnostic, guide, comparaison, etc.)."""
+./orchestrator/pipeline.py:133:    """Extract brand names and OEM references from chunk content."""
+./orchestrator/pipeline.py:143:    return entities[:30]  # Cap at 30 entities per chunk
+./orchestrator/pipeline.py:161:    """Compute evidence grade (A/B/C/D) based on chunk quality signals.
+./orchestrator/pipeline.py:228:    """Configuration for the orchestrator pipeline."""
+./orchestrator/pipeline.py:248:    chunk_size: int = 500
+./orchestrator/pipeline.py:249:    chunk_overlap: int = 50
+./orchestrator/pipeline.py:258:    weaviate_url: str = "http://weaviate:8080"
+./orchestrator/pipeline.py:283:            chunk_size=processing.get("chunk_size", 500),
+./orchestrator/pipeline.py:284:            chunk_overlap=processing.get("chunk_overlap", 50),
+./orchestrator/pipeline.py:291:            weaviate_url=config.get("vector_store", {}).get("url", "http://weaviate:8080"),
+./orchestrator/pipeline.py:292:            collection_name=config.get("vector_store", {}).get("class_name", "KB_Knowledge"),
+./orchestrator/pipeline.py:317:    """A chunk of a document."""
+./orchestrator/pipeline.py:321:    chunk_index: int
+./orchestrator/pipeline.py:328:    def chunk_id(self) -> str:
+./orchestrator/pipeline.py:329:        """Generate deterministic chunk ID."""
+./orchestrator/pipeline.py:330:        chunk_hash = hashlib.sha256(self.content.encode()).hexdigest()[:16]
+./orchestrator/pipeline.py:332:            f"{self.document.source_id}:{self.chunk_index}:{chunk_hash}".encode()
+./orchestrator/pipeline.py:338:    """Result of a pipeline run."""
+./orchestrator/pipeline.py:342:    chunks_created: int = 0
+./orchestrator/pipeline.py:343:    chunks_indexed: int = 0
+./orchestrator/pipeline.py:351:    """Main orchestrator pipeline for RAG ingestion.
+./orchestrator/pipeline.py:355:        pipeline = OrchestratorPipeline(config)
+./orchestrator/pipeline.py:356:        result = await pipeline.run()
+./orchestrator/pipeline.py:362:        self.chunks: List[Chunk] = []
+./orchestrator/pipeline.py:366:        """Run the full ingestion pipeline.
+./orchestrator/pipeline.py:390:            await self._chunk_documents()
+./orchestrator/pipeline.py:391:            logger.info(f"  -> Created {len(self.chunks)} chunks")
+./orchestrator/pipeline.py:393:            # Step 4-5: Generate embeddings and upsert in streaming batches (prevents OOM)
+./orchestrator/pipeline.py:395:            indexed_count = await self._embed_and_upsert_streaming()
+./orchestrator/pipeline.py:396:            logger.info(f"  -> Indexed {indexed_count} chunks")
+./orchestrator/pipeline.py:410:            logger.info(f"  Chunks: {len(self.chunks)}")
+./orchestrator/pipeline.py:418:                chunks_created=len(self.chunks),
+./orchestrator/pipeline.py:419:                chunks_indexed=indexed_count,
+./orchestrator/pipeline.py:433:                chunks_created=len(self.chunks),
+./orchestrator/pipeline.py:434:                chunks_indexed=0,
+./orchestrator/pipeline.py:540:    async def _chunk_documents(self) -> None:
+./orchestrator/pipeline.py:542:        self.chunks = []
+./orchestrator/pipeline.py:545:            from .processors.chunker import chunk_document
+./orchestrator/pipeline.py:548:                doc_chunks = chunk_document(
+./orchestrator/pipeline.py:550:                    chunk_size=self.config.chunk_size,
+./orchestrator/pipeline.py:551:                    chunk_overlap=self.config.chunk_overlap,
+./orchestrator/pipeline.py:553:                self.chunks.extend(doc_chunks)
+./orchestrator/pipeline.py:555:            # Fallback: simple chunking
+./orchestrator/pipeline.py:557:                self.chunks.extend(self._simple_chunk(doc))
+./orchestrator/pipeline.py:559:    def _simple_chunk(self, doc: Document) -> List[Chunk]:
+./orchestrator/pipeline.py:560:        """Simple character-based chunking (fallback)."""
+./orchestrator/pipeline.py:561:        chunks = []
+./orchestrator/pipeline.py:563:        chunk_size = self.config.chunk_size * 4  # Approximate chars per token
+./orchestrator/pipeline.py:564:        overlap = self.config.chunk_overlap * 4
+./orchestrator/pipeline.py:567:        chunk_index = 0
+./orchestrator/pipeline.py:570:            end = start + chunk_size
+./orchestrator/pipeline.py:571:            chunk_content = content[start:end]
+./orchestrator/pipeline.py:573:            chunks.append(
+./orchestrator/pipeline.py:576:                    content=chunk_content,
+./orchestrator/pipeline.py:577:                    chunk_index=chunk_index,
+./orchestrator/pipeline.py:584:            chunk_index += 1
+./orchestrator/pipeline.py:589:        return chunks
+./orchestrator/pipeline.py:591:    async def _upsert_weaviate(self, embeddings: List[tuple]) -> int:
+./orchestrator/pipeline.py:592:        """Upsert chunks with embeddings to Weaviate (legacy method).
+./orchestrator/pipeline.py:596:        if not embeddings:
+./orchestrator/pipeline.py:600:            from app.services.weaviate_client import get_weaviate_client
+./orchestrator/pipeline.py:602:            weaviate_client = get_weaviate_client()
+./orchestrator/pipeline.py:607:            for i in range(0, len(embeddings), batch_size):
+./orchestrator/pipeline.py:608:                batch = embeddings[i : i + batch_size]
+./orchestrator/pipeline.py:612:                for chunk, embedding in batch:
+./orchestrator/pipeline.py:613:                    props = self._build_chunk_properties(chunk)
+./orchestrator/pipeline.py:614:                    target = weaviate_client.resolve_collection(
+./orchestrator/pipeline.py:615:                        namespace=chunk.document.namespace,
+./orchestrator/pipeline.py:617:                    vec = embedding.tolist() if hasattr(embedding, "tolist") else list(embedding)
+./orchestrator/pipeline.py:623:                    collection = weaviate_client.client.collections.get(target_collection)
+./orchestrator/pipeline.py:626:                            chunk_uuid = str(uuid.uuid5(
+./orchestrator/pipeline.py:628:                                f"{props['source_path']}:{props['chunk_index']}:{props['content_hash']}",
+./orchestrator/pipeline.py:632:                                vector=vec,
+./orchestrator/pipeline.py:633:                                uuid=chunk_uuid,
+./orchestrator/pipeline.py:643:    def _build_chunk_properties(self, chunk: Chunk) -> Dict[str, Any]:
+./orchestrator/pipeline.py:644:        """Build all 29 gold schema properties for a chunk."""
+./orchestrator/pipeline.py:646:        content_hash = hashlib.sha256(chunk.content.encode()).hexdigest()[:32]
+./orchestrator/pipeline.py:648:        # Deterministic chunk ID (UUID v5)
+./orchestrator/pipeline.py:649:        chunk_id = str(uuid.uuid5(
+./orchestrator/pipeline.py:651:            f"{chunk.document.source_path}:{chunk.chunk_index}:{content_hash}",
+./orchestrator/pipeline.py:654:        # Heuristic enrichment
+./orchestrator/pipeline.py:655:        domain = classify_domain(chunk.content)
+./orchestrator/pipeline.py:656:        intent = classify_intent(chunk.content)
+./orchestrator/pipeline.py:657:        entities = extract_entities(chunk.content)
+./orchestrator/pipeline.py:658:        doc_family = infer_doc_family(chunk.document.source_type, chunk.document.namespace)
+./orchestrator/pipeline.py:659:        is_canonical = chunk.document.truth_level in ("L1", "L2")
+./orchestrator/pipeline.py:660:        doc_weight = compute_doc_weight(chunk.document.truth_level, is_canonical)
+./orchestrator/pipeline.py:662:            content=chunk.content,
+./orchestrator/pipeline.py:663:            truth_level=chunk.document.truth_level,
+./orchestrator/pipeline.py:666:            heading=chunk.heading,
+./orchestrator/pipeline.py:670:        source_uri = chunk.document.source_path
+./orchestrator/pipeline.py:671:        if chunk.heading:
+./orchestrator/pipeline.py:672:            slug = re.sub(r"[^a-z0-9\s-]", "", chunk.heading.lower())
+./orchestrator/pipeline.py:678:        if chunk.heading:
+./orchestrator/pipeline.py:679:            anchors.append(f"heading:{chunk.heading}")
+./orchestrator/pipeline.py:680:        if chunk.heading_level:
+./orchestrator/pipeline.py:681:            anchors.append(f"h{chunk.heading_level}")
+./orchestrator/pipeline.py:684:        category = chunk.document.metadata.get("category", "")
+./orchestrator/pipeline.py:689:        from .processors.role_classifier import classify_chunk as _classify_chunk
+./orchestrator/pipeline.py:690:        role_fields = _classify_chunk(
+./orchestrator/pipeline.py:691:            heading=chunk.heading,
+./orchestrator/pipeline.py:692:            chunk_type="text",
+./orchestrator/pipeline.py:693:            content=chunk.content,
+./orchestrator/pipeline.py:694:            source_type=chunk.document.source_type,
+./orchestrator/pipeline.py:698:            "chunk_id": chunk_id,
+./orchestrator/pipeline.py:699:            "parent_id": chunk.document.source_id,
+./orchestrator/pipeline.py:700:            "source_path": chunk.document.source_path,
+./orchestrator/pipeline.py:703:            "title": chunk.document.title,
+./orchestrator/pipeline.py:704:            "content": chunk.content,
+./orchestrator/pipeline.py:709:            "truth_level": chunk.document.truth_level,
+./orchestrator/pipeline.py:710:            "verification_status": chunk.document.metadata.get("verification_status", "unverified"),
+./orchestrator/pipeline.py:715:            "chunk_index": chunk.chunk_index,
+./orchestrator/pipeline.py:719:            "source_type": chunk.document.source_type,
+./orchestrator/pipeline.py:721:            "namespace": chunk.document.namespace,
+./orchestrator/pipeline.py:730:    async def _embed_and_upsert_streaming(self) -> int:
+./orchestrator/pipeline.py:731:        """Generate embeddings and upsert to Weaviate in streaming batches.
+./orchestrator/pipeline.py:733:        This method processes chunks in small batches to prevent OOM errors.
+./orchestrator/pipeline.py:734:        It combines embedding generation and Weaviate upsert in a single pass.
+./orchestrator/pipeline.py:735:        All 29 gold schema properties are populated with heuristic enrichment.
+./orchestrator/pipeline.py:738:            Number of chunks successfully indexed.
+./orchestrator/pipeline.py:740:        if not self.chunks:
+./orchestrator/pipeline.py:744:            from app.services.embeddings import get_embeddings_service
+./orchestrator/pipeline.py:745:            from app.services.weaviate_client import get_weaviate_client
+./orchestrator/pipeline.py:747:            logger.info("Loading embedding service (FastEmbed)...")
+./orchestrator/pipeline.py:748:            embeddings_service = get_embeddings_service()
+./orchestrator/pipeline.py:751:            weaviate_client = get_weaviate_client()
+./orchestrator/pipeline.py:755:            total_batches = (len(self.chunks) + batch_size - 1) // batch_size
+./orchestrator/pipeline.py:757:            # Group chunks by target collection for correct routing
+./orchestrator/pipeline.py:758:            for i in range(0, len(self.chunks), batch_size):
+./orchestrator/pipeline.py:760:                batch_chunks = self.chunks[i:i + batch_size]
+./orchestrator/pipeline.py:761:                texts = [c.content for c in batch_chunks]
+./orchestrator/pipeline.py:763:                # Generate embeddings for this batch only
+./orchestrator/pipeline.py:764:                vectors = embeddings_service.embed_batch(texts, batch_size=8)
+./orchestrator/pipeline.py:768:                for chunk, vector in zip(batch_chunks, vectors):
+./orchestrator/pipeline.py:769:                    props = self._build_chunk_properties(chunk)
+./orchestrator/pipeline.py:770:                    target = weaviate_client.resolve_collection(
+./orchestrator/pipeline.py:771:                        namespace=chunk.document.namespace,
+./orchestrator/pipeline.py:775:                    collection_groups[target].append((props, vector))
+./orchestrator/pipeline.py:779:                    collection = weaviate_client.client.collections.get(target_collection)
+./orchestrator/pipeline.py:781:                        for props, vector in items:
+./orchestrator/pipeline.py:782:                            chunk_uuid = str(uuid.uuid5(
+./orchestrator/pipeline.py:784:                                f"{props['source_path']}:{props['chunk_index']}:{props['content_hash']}",
+./orchestrator/pipeline.py:788:                                vector=vector,
+./orchestrator/pipeline.py:789:                                uuid=chunk_uuid,
+./orchestrator/pipeline.py:794:                del vectors
+./orchestrator/pipeline.py:797:                logger.info(f"  Batch {batch_num}/{total_batches}: {indexed}/{len(self.chunks)} indexed")
+./orchestrator/pipeline.py:805:            logger.error(f"Streaming embed/upsert failed: {e}")
+./orchestrator/pipeline.py:818:            "chunks": len(self.chunks),
+./orchestrator/pipeline.py:826:async def run_full_ingestion(config: Optional[PipelineConfig] = None) -> PipelineResult:
+./orchestrator/pipeline.py:827:    """Convenience function to run full ingestion pipeline.
+./orchestrator/pipeline.py:838:    pipeline = OrchestratorPipeline(config)
+./orchestrator/pipeline.py:839:    return await pipeline.run()
+./orchestrator/pipeline.py:852:        result = await run_full_ingestion(config)
+./rag_config.yml:9:# Ref: init_schema.py, weaviate_client.py
+./rag_config.yml:11:vector_store:
+./rag_config.yml:12:  type: weaviate
+./rag_config.yml:13:  url: "${WEAVIATE_URL:-http://weaviate:8080}"
+./rag_config.yml:28:embeddings:
+./rag_config.yml:38:retrieval:
+./rag_config.yml:40:  alpha: 0.7                  # 70% vector, 30% BM25
+./rag_config.yml:43:  max_chunks_per_doc: 1       # Limiter chunks par document (dedupe)
+./rag_config.yml:44:  enable_reranking: false     # P2: A activer apres golden tests
+./rag_config.yml:137:  log_retrieval_scores: true
+./rag_config.yml:144:# If re-enabled, add config here and implement in wiki_ingester.py.
+./rag_config.yml:154:    - retrieve      # Recherche Weaviate
+./rag_config.yml:169:    - weaviate_connection
+./rag_config.yml:170:    - embedding_dimension_match
+./rag_config.yml:177:# Ref: orchestrator/kill_switch.py, orchestrator/pipeline.py
+./rag_config.yml:200:    chunk_size: 500        # Target tokens per chunk
+./rag_config.yml:201:    chunk_overlap: 50      # Token overlap between chunks
+./rag_config.yml:203:    min_chunk_size: 100    # Minimum tokens for a chunk
+./docker-compose.minio.yml:1:# Minio S3-compatible storage for catalog data pipeline

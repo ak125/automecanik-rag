@@ -1,0 +1,8 @@
+./Dockerfile
+./.env
+./.env.dev
+./.env.example
+./.env.minio
+./.env.prod
+./.env.prod.example
+./requirements.txt

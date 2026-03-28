@@ -1,0 +1,11 @@
+{
+  "contamination_flags": {
+    "HAS_VEHICLE_EXAMPLES": {
+      "weight": 15
+    },
+    "HAS_UNSOURCED_NUMBERS": {
+      "pattern": "(?:(?:en moyenne|environ)\\s+)?\\d{2,}\\s*(?:A|amp[eè]res?|volts?|V|watts?|W)",
+      "weight": 15
+    }
+  }
+}

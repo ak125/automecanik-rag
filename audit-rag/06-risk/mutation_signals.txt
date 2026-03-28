@@ -1,0 +1,698 @@
+./rag_config.yml:110:  ai_prod_write: false  # KILL SWITCH - JAMAIS true en PROD
+./rag_config.yml:143:# Wiki.js git sync and GraphQL API were never implemented.
+./app/config.py:57:    # KILL SWITCH - Blocks ALL writes in production
+./app/config.py:59:    ai_prod_write: bool = False
+./app/config.py:88:    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+./app/config.py:91:    reindex_target_max_tokens: int = 900  # Max tokens per chunk in reindex.py
+./app/config.py:123:    # Build Plane: DEV/CI - Can write (index, create, update, delete)
+./app/config.py:128:        """True if in Build Plane (DEV or CI) - writes allowed."""
+./app/config.py:136:    def can_write(self) -> bool:
+./app/config.py:138:        Check if write operations are allowed.
+./app/config.py:146:            True if writes are allowed, False otherwise
+./app/config.py:150:            if self.ai_prod_write:
+./app/config.py:157:        # DEV/CI can write if explicitly enabled
+./app/config.py:160:    def require_write_permission(self) -> None:
+./app/config.py:162:        Raise error if writes are not allowed.
+./app/config.py:164:        Use this as a guard at the start of write operations.
+./app/config.py:167:            PermissionError if writes are blocked
+./app/config.py:169:        if not self.can_write():
+./app/config.py:172:                f"Build Plane (dev/ci) required for writes. "
+./app/config.py:296:        logger.info(f"Reindex Max Tokens: {self.reindex_target_max_tokens}")
+./app/config.py:299:        logger.info(f"Kill Switch (ai_prod_write): {self.ai_prod_write}")
+./app/api/knowledge.py:23:    Guard function to block write operations in Runtime Plane (PROD).
+./app/api/knowledge.py:29:    if not settings.can_write():
+./app/api/knowledge.py:125:async def list_documents(
+./app/api/knowledge.py:173:async def get_stats():
+./app/api/knowledge.py:197:async def get_document(doc_id: str):
+./app/api/knowledge.py:209:async def create_document(body: DocumentCreate):
+./app/api/knowledge.py:233:async def update_document(doc_id: str, body: DocumentUpdate):
+./app/api/knowledge.py:258:@router.delete("/{doc_id}")
+./app/api/knowledge.py:259:async def delete_document(doc_id: str):
+./app/api/knowledge.py:263:    success = service.delete_document(doc_id)
+./app/api/knowledge.py:266:        raise HTTPException(status_code=404, detail="Document not found or could not be deleted")
+./app/api/knowledge.py:269:    return {"success": True, "message": f"Document {doc_id} deleted"}
+./app/api/knowledge.py:273:async def promote_document(doc_id: str):
+./app/api/knowledge.py:292:async def quarantine_document(doc_id: str):
+./app/api/knowledge.py:310:async def unquarantine_document(doc_id: str):
+./app/api/knowledge.py:330:    deleted_at: str
+./app/api/knowledge.py:335:async def list_tombstones():
+./app/api/knowledge.py:336:    """List all tombstone records (deleted documents that won't be re-ingested)."""
+./app/api/knowledge.py:343:async def revive_tombstone(source_uri: str):
+./app/api/knowledge.py:353:def run_reindex():
+./app/api/knowledge.py:354:    """Run the reindex script in background."""
+./app/api/knowledge.py:371:@router.post("/reindex", response_model=ReindexResponse)
+./app/api/knowledge.py:372:async def reindex_documents(background_tasks: BackgroundTasks):
+./app/api/knowledge.py:374:    Trigger a reindex of all documents into Weaviate. BUILD PLANE ONLY.
+./app/api/knowledge.py:380:    # Add reindex task to background
+./app/api/knowledge.py:381:    background_tasks.add_task(run_reindex)
+./app/api/health.py:15:async def health_check():
+./app/api/health.py:58:async def readiness_check():
+./app/api/chat.py:75:async def chat(request: ChatRequest):
+./app/api/chat.py:195:async def chat_v2(request: ChatRequestV2):
+./app/services/knowledge_service.py:487:                f.write(frontmatter.dumps(post))
+./app/services/knowledge_service.py:637:        # Tombstone check: skip documents that were explicitly deleted.
+./app/services/knowledge_service.py:667:        # Strict write-path: source_type + doc_family must map to a valid directory.
+./app/services/knowledge_service.py:750:    def delete_document(self, doc_id: str, leave_tombstone: bool = True) -> bool:
+./app/services/knowledge_service.py:755:            leave_tombstone: If True, write a tombstone record so the same
+./app/services/knowledge_service.py:759:            True if the document was deleted successfully.
+./app/services/knowledge_service.py:769:                    self._write_tombstone(doc)
+./app/services/knowledge_service.py:773:                self._delete_weaviate_chunks(doc)
+./app/services/knowledge_service.py:790:    def _write_tombstone(self, doc: "KnowledgeDocument") -> None:
+./app/services/knowledge_service.py:791:        """Write a tombstone record for a deleted document."""
+./app/services/knowledge_service.py:798:            "deleted_at": datetime.now(timezone.utc).isoformat(),
+./app/services/knowledge_service.py:799:            "reason": "deleted_by_user",
+./app/services/knowledge_service.py:802:        path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
+./app/services/knowledge_service.py:806:        """Check whether a source_uri has a tombstone (was previously deleted)."""
+./app/services/knowledge_service.py:833:    def _delete_weaviate_chunks(self, doc: "KnowledgeDocument") -> None:
+./app/services/knowledge_service.py:845:            collection.data.delete_many(
+./app/services/knowledge_service.py:848:            logger.info(f"Weaviate chunks deleted for parent_id={doc.id} in {target}")
+./app/services/weaviate_client.py:105:    async def hybrid_search(
+./app/services/weaviate_client.py:237:    async def health_check(self) -> dict:
+./app/services/weaviate_client.py:245:    async def is_healthy(self) -> bool:
+./app/services/weaviate_client.py:252:    async def get_schema(self, collection_name: Optional[str] = None) -> Optional[dict]:
+./app/services/weaviate_client.py:267:    async def count_documents(self, collection_name: Optional[str] = None) -> int:
+./app/services/claude_client.py:24:    async def generate(
+./app/services/claude_client.py:71:    async def health_check(self) -> dict:
+./app/services/langgraph_flow.py:77:async def retrieve_node(state: ChatState) -> ChatState:
+./app/services/langgraph_flow.py:215:async def generate_node(state: ChatState) -> ChatState:
+./app/services/langgraph_flow.py:286:async def run_chat_pipeline(
+./app/api/search.py:91:async def search(request: SearchRequest):
+./app/services/gamme_page_contract.py:493:    intro_sync_parts = _dedupe_non_empty((mechanical_rules.get("must_be_true") or [])[:4])
+./app/services/gamme_page_contract.py:494:    if not intro_sync_parts:
+./app/services/gamme_page_contract.py:495:        intro_sync_parts = [
+./app/services/gamme_page_contract.py:518:            "syncParts": intro_sync_parts,
+./app/services/gamme_page_contract.py:542:            "source": f"reindex:{source_path}",
+./app/services/gamme_page_contract.py:702:        "source": f"reindex:{source_path}",
+./app/services/rag_service.py:113:    async def search(
+./app/services/rag_service.py:304:    async def _run_multi_pass_retrieval(
+./app/services/rag_service.py:340:        async def run_pass(
+./app/admin/router.py:89:async def verify_api_key(x_rag_api_key: str = Header(None, alias="X-RAG-API-Key")):
+./app/admin/router.py:158:        PDF_INGEST_JOBS_STORE.write_text(json.dumps(serializable, ensure_ascii=True, indent=2), encoding="utf-8")
+./app/admin/router.py:194:            logf.write(message.rstrip() + "\n")
+./app/admin/router.py:271:async def dashboard(request: Request):
+./app/admin/router.py:300:async def documents_list(
+./app/admin/router.py:353:async def document_create_form(request: Request):
+./app/admin/router.py:362:async def document_create_submit(
+./app/admin/router.py:389:async def document_detail(request: Request, doc_id: str):
+./app/admin/router.py:402:async def document_edit_form(request: Request, doc_id: str):
+./app/admin/router.py:417:async def document_edit_submit(
+./app/admin/router.py:445:@router.post("/documents/{doc_id}/delete")
+./app/admin/router.py:446:async def document_delete(request: Request, doc_id: str):
+./app/admin/router.py:449:    success = service.delete_document(doc_id)
+./app/admin/router.py:461:async def document_promote(request: Request, doc_id: str):
+./app/admin/router.py:479:async def chat_page(request: Request):
+./app/admin/router.py:485:async def search_page(request: Request):
+./app/admin/router.py:494:async def settings_page(request: Request):
+./app/admin/router.py:501:        "can_write": settings.can_write(),
+./app/admin/router.py:507:@router.post("/settings/reindex")
+./app/admin/router.py:508:async def trigger_reindex(request: Request):
+./app/admin/router.py:509:    """Trigger corpus reindex."""
+./app/admin/router.py:511:    if not settings.can_write():
+./app/admin/router.py:531:async def run_pdf_ingest(payload: PdfIngestRunRequest):
+./app/admin/router.py:555:    reindex_script = app_root / "scripts" / "reindex.py"
+./app/admin/router.py:558:    if not reindex_script.exists():
+./app/admin/router.py:559:        raise HTTPException(status_code=500, detail=f"reindex script not found: {reindex_script}")
+./app/admin/router.py:570:    reindex_batch_size = os.getenv("REINDEX_BATCH_SIZE", "16")
+./app/admin/router.py:571:    reindex_max_files = os.getenv("REINDEX_MAX_FILES", "0")
+./app/admin/router.py:585:        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE={reindex_batch_size} STRICT_ROUTING=1 "
+./app/admin/router.py:587:        f"python scripts/reindex.py --path '{import_dir}' --collection AUTO --batch-size {reindex_batch_size} "
+./app/admin/router.py:588:        f"--max-files {reindex_max_files} --cpu-strict --strict-routing --quarantine-log '{quarantine_log}'; "
+./app/admin/router.py:591:        f"python scripts/reindex.py --path '{import_dir}' --collection AUTO --strict-routing --quarantine-log '{quarantine_log}'; "
+./app/admin/router.py:630:async def list_pdf_ingest_jobs():
+./app/admin/router.py:654:async def get_pdf_ingest_job(
+./app/admin/router.py:748:        client.collections.delete(collection_name)
+./app/admin/router.py:770:async def list_files():
+./app/admin/router.py:801:async def index_batch(
+./app/admin/router.py:820:    # Verify write permission (BUILD plane only)
+./app/admin/router.py:821:    if not settings.can_write():
+./app/services/startup_validator.py:36:    async def validate_all(self) -> Tuple[bool, List[str]]:
+./app/services/startup_validator.py:87:    async def _check_weaviate(self) -> bool:
+./app/services/startup_validator.py:105:    async def _check_embedding_dimension(self) -> bool:
+./app/services/startup_validator.py:138:    async def _check_corpus(self) -> bool:
+./app/services/startup_validator.py:164:    For use in non-async contexts (e.g., module import).
+./app/services/startup_validator.py:173:    import asyncio
+./app/services/startup_validator.py:177:    # Run async validation in sync context
+./app/services/startup_validator.py:179:        loop = asyncio.get_event_loop()
+./app/services/startup_validator.py:181:            # Already in async context - can't use run_until_complete
+./app/services/startup_validator.py:189:        return asyncio.run(validator.validate_all())
+./app/admin/templates/pages/search.html:15:document.getElementById('search-form').onsubmit = async (e) => {
+./app/admin/templates/partials/_documents_table.html:23:                    <button hx-post="/admin/documents/{{ doc.id }}/delete" hx-confirm="Supprimer?" class="text-red-600 ml-2">Del</button>
+./app/admin/templates/pages/settings.html:13:            <div><dt class="text-gray-500">Ecriture</dt><dd>{% if can_write %}Oui{% else %}Non{% endif %}</dd></div>
+./app/admin/templates/pages/settings.html:18:        {% if can_write %}
+./app/admin/templates/pages/settings.html:19:        <form hx-post="/admin/settings/reindex" hx-target="#status" hx-swap="innerHTML">
+./app/admin/templates/pages/chat.html:25:document.getElementById('chat-form').onsubmit = async (e) => {
+./app/admin/templates/pages/documents/detail.html:12:            <form hx-post="/admin/documents/{{ document.id }}/delete" hx-confirm="Supprimer ce document?">
+./app/services/langgraph_pipeline.py:70:async def search_products(state: RAGState) -> RAGState:
+./app/services/langgraph_pipeline.py:79:async def search_knowledge(state: RAGState) -> RAGState:
+./app/services/langgraph_pipeline.py:172:async def run_rag_pipeline(query: str, session_id: str = "") -> dict:
+./app/main.py:122:    async def __call__(self, scope, receive, send):
+./app/main.py:184:        async def replay_receive():
+./app/main.py:202:async def limit_request_size(request: Request, call_next):
+./app/main.py:224:async def audit_log_middleware(request: Request, call_next):
+./app/main.py:254:async def add_timeout_header(request: Request, call_next):
+./app/main.py:265:async def verify_api_key(request: Request):
+./app/main.py:315:async def startup_event():
+./app/main.py:355:        if settings.ai_prod_write:
+./app/main.py:373:        logger.info(f"  - Kill Switch Active: {not settings.can_write()}")
+./app/main.py:377:async def shutdown_event():
+./app/main.py:393:async def global_exception_handler(request: Request, exc: Exception):
+./app/middleware/rate_limiter.py:16:    async def endpoint(request: Request):
+./app/middleware/rate_limiter.py:158:            async def my_endpoint(request: Request):
+./app/middleware/rate_limiter.py:163:            async def wrapper(request: Request, *args, **kwargs):
+./app/middleware/rate_limiter.py:176:async def rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded) -> JSONResponse:
+./app/middleware/rate_limiter.py:199:    async def __call__(self, scope, receive, send):
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-3307a3.md:458:Software, to program settings specific to the vehicle and open/delete error messages.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-3307a3.md:566:ECU soft reset. ECU soft reset deletes error logs.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-3307a3.md:573:After carrying out the problem-solving actions, delete the entry from the error log by
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-b345c0.md:458:Software, to program settings specific to the vehicle and open/delete error messages.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-b345c0.md:566:ECU soft reset. ECU soft reset deletes error logs.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-b345c0.md:573:After carrying out the problem-solving actions, delete the entry from the error log by
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs.md:458:Software, to program settings specific to the vehicle and open/delete error messages.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs.md:566:ECU soft reset. ECU soft reset deletes error logs.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs.md:573:After carrying out the problem-solving actions, delete the entry from the error log by
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-0c65e3.md:475:Software, to program settings specific to the vehicle and open/delete error messages.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-0c65e3.md:589:ECU soft reset. ECU soft reset deletes error logs.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-0c65e3.md:596:After carrying out the problem-solving actions, delete the entry from the error log by
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-760b62.md:475:Software, to program settings specific to the vehicle and open/delete error messages.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-760b62.md:589:ECU soft reset. ECU soft reset deletes error logs.
+./_removed/en_de_cleanup_20260215/guides/operation-manual-258142859-electronic-brake-system-ebs-760b62.md:596:After carrying out the problem-solving actions, delete the entry from the error log by
+./requirements.txt:47:pytest-asyncio>=0.23.0
+./tests/test_chat.py:5:from unittest.mock import patch, AsyncMock
+./tests/test_chat.py:44:        mock_service = AsyncMock()
+./tests/run_eval_set.py:177:    out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+./tests/test_verified_rag_api.py:3:from unittest.mock import AsyncMock, patch
+./tests/test_verified_rag_api.py:69:    mock_service = AsyncMock()
+./tests/test_verified_rag_api.py:91:    mock_service = AsyncMock()
+./orchestrator/pipeline.py:9:6. upsert_weaviate() - Batch insert to Weaviate
+./orchestrator/pipeline.py:16:import asyncio
+./orchestrator/pipeline.py:365:    async def run(self) -> PipelineResult:
+./orchestrator/pipeline.py:393:            # Step 4-5: Generate embeddings and upsert in streaming batches (prevents OOM)
+./orchestrator/pipeline.py:394:            logger.info("Step 4-5/6: Embedding and upserting (streaming)...")
+./orchestrator/pipeline.py:395:            indexed_count = await self._embed_and_upsert_streaming()
+./orchestrator/pipeline.py:439:    async def _extract_sources(self) -> None:
+./orchestrator/pipeline.py:458:    async def _extract_knowledge(self) -> List[Document]:
+./orchestrator/pipeline.py:495:    async def _extract_wiki(self) -> List[Document]:
+./orchestrator/pipeline.py:506:    async def _extract_minio(self) -> List[Document]:
+./orchestrator/pipeline.py:534:    async def _convert_to_markdown(self) -> None:
+./orchestrator/pipeline.py:540:    async def _chunk_documents(self) -> None:
+./orchestrator/pipeline.py:591:    async def _upsert_weaviate(self, embeddings: List[tuple]) -> int:
+./orchestrator/pipeline.py:640:            logger.error(f"Weaviate upsert failed: {e}")
+./orchestrator/pipeline.py:730:    async def _embed_and_upsert_streaming(self) -> int:
+./orchestrator/pipeline.py:731:        """Generate embeddings and upsert to Weaviate in streaming batches.
+./orchestrator/pipeline.py:734:        It combines embedding generation and Weaviate upsert in a single pass.
+./orchestrator/pipeline.py:805:            logger.error(f"Streaming embed/upsert failed: {e}")
+./orchestrator/pipeline.py:808:    async def _version_index(self) -> str:
+./orchestrator/pipeline.py:826:async def run_full_ingestion(config: Optional[PipelineConfig] = None) -> PipelineResult:
+./orchestrator/pipeline.py:846:    async def main():
+./orchestrator/pipeline.py:855:    asyncio.run(main())
+./docs/GAMME_PAGE_CONTRACT.md:16:- Injection pendant ingestion/reindex:
+./docs/GAMME_PAGE_CONTRACT.md:17:  - `scripts/reindex.py`
+./docs/GAMME_PAGE_CONTRACT.md:75:python3 -m py_compile app/services/gamme_page_contract.py scripts/reindex.py scripts/ensure_gamme_contracts.py tests/test_gamme_page_contract.py
+./scripts/run_orchestrator.py:15:import asyncio
+./scripts/run_orchestrator.py:72:    print(f"Write Operations: {'ALLOWED' if status['write_operations_allowed'] else 'BLOCKED'}")
+./scripts/run_orchestrator.py:79:    return status['write_operations_allowed']
+./scripts/run_orchestrator.py:82:async def run_ingestion(args):
+./scripts/run_orchestrator.py:93:        print("Set ENV=dev to enable writes.")
+./scripts/run_orchestrator.py:119:        logger.info("DRY RUN - No writes will be performed")
+./scripts/run_orchestrator.py:240:        return asyncio.run(run_ingestion(args))
+./scripts/tools/sync_pg_knowledge.py:8:    python scripts/tools/sync_pg_knowledge.py --supabase-url URL --supabase-key KEY
+./scripts/tools/sync_pg_knowledge.py:9:    python scripts/tools/sync_pg_knowledge.py --commit --supabase-url URL --supabase-key KEY
+./scripts/tools/sync_pg_knowledge.py:25:logger = logging.getLogger("sync_pg_knowledge")
+./scripts/video/select_top_shots.py:73:            writer = csv.DictWriter(f, fieldnames=fieldnames)
+./scripts/video/select_top_shots.py:75:                writer.writeheader()
+./scripts/video/select_top_shots.py:80:        writer = csv.DictWriter(f, fieldnames=fieldnames)
+./scripts/video/select_top_shots.py:81:        writer.writeheader()
+./scripts/video/select_top_shots.py:82:        writer.writerows(selected)
+./scripts/tools/extract_pdf_images.py:63:            out_path.write_bytes(data)
+./scripts/tools/extract_pdf_images.py:89:    (doc_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+./scripts/tools/normalize_doc_metadata.py:112:def write_updates(md_file: Path, updates: dict) -> None:
+./scripts/tools/normalize_doc_metadata.py:116:    md_file.write_text(frontmatter.dumps(post), encoding="utf-8")
+./scripts/tools/normalize_doc_metadata.py:159:                write_updates(md_file, updates)
+./scripts/video/build_voiceover_variants.py:96:    short_path.write_text(build_short(rows), encoding="utf-8")
+./scripts/video/build_voiceover_variants.py:97:    long_path.write_text(build_long(rows), encoding="utf-8")
+./scripts/tools/build_index.py:122:        # For incremental updates, consider using upsert or clearing via schema recreation
+./scripts/tools/wiki_exporter.py:6:1. Git sync: Clone/pull wiki backup repository
+./scripts/tools/wiki_exporter.py:63:        Export wiki content via Git sync.
+./scripts/tools/wiki_exporter.py:217:                f.write(doc.get("content", ""))
+./scripts/tools/normalize_pdf_images.py:92:    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+./scripts/tools/ensure_gamme_contracts.py:106:        md_file.write_text(frontmatter.dumps(post), encoding="utf-8")
+./scripts/video/build_video_storyboard.py:150:def write_csv(rows: list[dict[str, Any]], output_csv: Path) -> None:
+./scripts/video/build_video_storyboard.py:153:        output_csv.write_text("", encoding="utf-8")
+./scripts/video/build_video_storyboard.py:158:        writer = csv.DictWriter(f, fieldnames=fieldnames)
+./scripts/video/build_video_storyboard.py:159:        writer.writeheader()
+./scripts/video/build_video_storyboard.py:160:        writer.writerows(rows)
+./scripts/video/build_video_storyboard.py:163:def write_json(rows: list[dict[str, Any]], output_json: Path) -> None:
+./scripts/video/build_video_storyboard.py:176:    output_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+./scripts/video/build_video_storyboard.py:203:    write_csv(rows, output_csv)
+./scripts/video/build_video_storyboard.py:204:    write_json(rows, output_json)
+./scripts/video/build_voiceover_script.py:96:    output.write_text(script, encoding="utf-8")
+./scripts/tools/wiki_ingester.py:184:        """Generate deterministic chunk ID for upsert."""
+./scripts/tools/wiki_ingester.py:191:        """Insert chunks into Weaviate using upsert logic."""
+./scripts/tools/wiki_ingester.py:236:            logger.info(f"[DRY RUN] Would delete documents with source_path starting with: {source_path_prefix}")
+./scripts/tools/wiki_ingester.py:248:            deleted = 0
+./scripts/tools/wiki_ingester.py:250:                collection.data.delete_by_id(obj.uuid)
+./scripts/tools/wiki_ingester.py:251:                deleted += 1
+./scripts/tools/wiki_ingester.py:253:            logger.info(f"Deleted {deleted} old documents with prefix: {source_path_prefix}")
+./scripts/tools/wiki_ingester.py:254:            return deleted
+./scripts/tools/translate_md_en_to_fr.py:140:            dst.write_text(frontmatter.dumps(out), encoding="utf-8")
+./orchestrator/kill_switch.py:14:    # At the start of any write operation
+./orchestrator/kill_switch.py:32:    """Raised when attempting write operations outside BUILD plane."""
+./orchestrator/kill_switch.py:88:def enforce_build_plane(operation: str = "write") -> None:
+./orchestrator/kill_switch.py:92:    of any write operation (index, create, update, delete).
+./orchestrator/kill_switch.py:149:        "write_operations_allowed": is_build_plane(env),
+./orchestrator/kill_switch.py:151:            "OK - BUILD plane, writes allowed"
+./orchestrator/kill_switch.py:153:            else "BLOCKED - Not in BUILD plane, writes denied"
+./orchestrator/kill_switch.py:190:        print("Result: BUILD plane confirmed - writes ALLOWED")
+./scripts/create_rbac_roles.sql:72:-- Knowledge tables (read/write for indexing)
+./scripts/watch-inbox.sh:6:# automatiquement quand un PDF arrive (close_write).
+./scripts/watch-inbox.sh:25:# inotifywait: surveille les fichiers ecrits completement (close_write)
+./scripts/watch-inbox.sh:27:inotifywait -m -e close_write --include '\.[pP][dD][fF]$' "$INBOX" |
+./scripts/watch-inbox.sh:30:  # Petit delai pour s'assurer que le fichier est complet (rsync, scp...)
+./audit-rag/05-prompts/prompt_llm_signals.txt:51:./app/services/startup_validator.py:105:    async def _check_embedding_dimension(self) -> bool:
+./audit-rag/05-prompts/prompt_llm_signals.txt:81:./app/config.py:88:    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+./audit-rag/05-prompts/prompt_llm_signals.txt:120:./orchestrator/pipeline.py:393:            # Step 4-5: Generate embeddings and upsert in streaming batches (prevents OOM)
+./audit-rag/05-prompts/prompt_llm_signals.txt:121:./orchestrator/pipeline.py:395:            indexed_count = await self._embed_and_upsert_streaming()
+./audit-rag/05-prompts/prompt_llm_signals.txt:122:./orchestrator/pipeline.py:591:    async def _upsert_weaviate(self, embeddings: List[tuple]) -> int:
+./audit-rag/05-prompts/prompt_llm_signals.txt:129:./orchestrator/pipeline.py:730:    async def _embed_and_upsert_streaming(self) -> int:
+./audit-rag/05-prompts/prompt_llm_signals.txt:130:./orchestrator/pipeline.py:731:        """Generate embeddings and upsert to Weaviate in streaming batches.
+./audit-rag/05-prompts/prompt_llm_signals.txt:131:./orchestrator/pipeline.py:734:        It combines embedding generation and Weaviate upsert in a single pass.
+./audit-rag/05-prompts/prompt_llm_signals.txt:137:./orchestrator/pipeline.py:805:            logger.error(f"Streaming embed/upsert failed: {e}")
+./audit-rag/05-prompts/prompt_llm_signals.txt:146:./scripts/ingestors/ingest_web.py:162:            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url)
+./audit-rag/05-prompts/prompt_llm_signals.txt:147:./scripts/ingestors/ingest_web.py:170:def _write_prompt_sidecar(
+./audit-rag/05-prompts/prompt_llm_signals.txt:156:./scripts/ingestors/ingest_images.py:81:        sidecar.write_text(prompt_content, encoding="utf-8")
+./audit-rag/05-prompts/prompt_llm_signals.txt:193:./scripts/reindex.py:34:FASTEMBED_MODEL = _settings.fastembed_model
+./audit-rag/05-prompts/prompt_llm_signals.txt:194:./scripts/reindex.py:74:# V3 gamme template: H2 heading (lowercase) -> per-chunk intent override
+./audit-rag/05-prompts/prompt_llm_signals.txt:195:./scripts/reindex.py:84:    """Detect if a gamme file uses the V3 template (4 canonical H2 sections)."""
+./audit-rag/05-prompts/prompt_llm_signals.txt:196:./scripts/reindex.py:660:    # Detect V3 gamme template for per-chunk intent
+./audit-rag/05-prompts/prompt_llm_signals.txt:197:./scripts/reindex.py:703:def build_embedding_input(chunk: Dict[str, Any]) -> str:
+./audit-rag/05-prompts/prompt_llm_signals.txt:198:./scripts/reindex.py:705:    Build embedding text from chunk body + structural hints.
+./audit-rag/05-prompts/prompt_llm_signals.txt:199:./scripts/reindex.py:934:    from fastembed import TextEmbedding
+./audit-rag/05-prompts/prompt_llm_signals.txt:200:./scripts/reindex.py:974:    def upsert(collection, chunk: dict, embedding) -> None:
+./audit-rag/05-prompts/prompt_llm_signals.txt:201:./scripts/reindex.py:977:        vec = embedding.tolist()
+./audit-rag/05-prompts/prompt_llm_signals.txt:202:./scripts/reindex.py:1043:            texts = [build_embedding_input(c) for c in batch_chunks]
+./audit-rag/05-prompts/prompt_llm_signals.txt:203:./scripts/reindex.py:1044:            embeddings = list(model.embed(texts, batch_size=batch_size))
+./audit-rag/05-prompts/prompt_llm_signals.txt:204:./scripts/reindex.py:1049:                for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/05-prompts/prompt_llm_signals.txt:205:./scripts/reindex.py:1061:                    upsert(target_collection, chunk, embedding)
+./audit-rag/05-prompts/prompt_llm_signals.txt:206:./scripts/reindex.py:1065:                    for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/05-prompts/prompt_llm_signals.txt:207:./scripts/reindex.py:1079:                            vector=embedding.tolist(),
+./audit-rag/05-prompts/prompt_llm_signals.txt:208:./scripts/reindex.py:1083:            del embeddings
+./audit-rag/05-prompts/prompt_llm_signals.txt:1106:./audit-rag/03-pipeline/pipeline_signals.txt:62:./app/services/startup_validator.py:105:    async def _check_embedding_dimension(self) -> bool:
+./audit-rag/05-prompts/prompt_llm_signals.txt:1167:./audit-rag/03-pipeline/pipeline_signals.txt:278:./app/config.py:88:    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+./audit-rag/05-prompts/prompt_llm_signals.txt:1190:./audit-rag/03-pipeline/pipeline_signals.txt:509:./scripts/ingestors/ingest_images.py:81:        sidecar.write_text(prompt_content, encoding="utf-8")
+./audit-rag/05-prompts/prompt_llm_signals.txt:1192:./audit-rag/03-pipeline/pipeline_signals.txt:517:./scripts/ingestors/ingest_web.py:162:            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url)
+./audit-rag/05-prompts/prompt_llm_signals.txt:1193:./audit-rag/03-pipeline/pipeline_signals.txt:518:./scripts/ingestors/ingest_web.py:170:def _write_prompt_sidecar(
+./audit-rag/05-prompts/prompt_llm_signals.txt:1243:./audit-rag/03-pipeline/pipeline_signals.txt:1053:./scripts/reindex.py:34:FASTEMBED_MODEL = _settings.fastembed_model
+./audit-rag/05-prompts/prompt_llm_signals.txt:1244:./audit-rag/03-pipeline/pipeline_signals.txt:1054:./scripts/reindex.py:74:# V3 gamme template: H2 heading (lowercase) -> per-chunk intent override
+./audit-rag/05-prompts/prompt_llm_signals.txt:1245:./audit-rag/03-pipeline/pipeline_signals.txt:1096:./scripts/reindex.py:660:    # Detect V3 gamme template for per-chunk intent
+./audit-rag/05-prompts/prompt_llm_signals.txt:1246:./audit-rag/03-pipeline/pipeline_signals.txt:1110:./scripts/reindex.py:703:def build_embedding_input(chunk: Dict[str, Any]) -> str:
+./audit-rag/05-prompts/prompt_llm_signals.txt:1247:./audit-rag/03-pipeline/pipeline_signals.txt:1111:./scripts/reindex.py:705:    Build embedding text from chunk body + structural hints.
+./audit-rag/05-prompts/prompt_llm_signals.txt:1248:./audit-rag/03-pipeline/pipeline_signals.txt:1145:./scripts/reindex.py:934:    from fastembed import TextEmbedding
+./audit-rag/05-prompts/prompt_llm_signals.txt:1249:./audit-rag/03-pipeline/pipeline_signals.txt:1149:./scripts/reindex.py:974:    def upsert(collection, chunk: dict, embedding) -> None:
+./audit-rag/05-prompts/prompt_llm_signals.txt:1250:./audit-rag/03-pipeline/pipeline_signals.txt:1151:./scripts/reindex.py:977:        vec = embedding.tolist()
+./audit-rag/05-prompts/prompt_llm_signals.txt:1251:./audit-rag/03-pipeline/pipeline_signals.txt:1165:./scripts/reindex.py:1043:            texts = [build_embedding_input(c) for c in batch_chunks]
+./audit-rag/05-prompts/prompt_llm_signals.txt:1252:./audit-rag/03-pipeline/pipeline_signals.txt:1166:./scripts/reindex.py:1044:            embeddings = list(model.embed(texts, batch_size=batch_size))
+./audit-rag/05-prompts/prompt_llm_signals.txt:1253:./audit-rag/03-pipeline/pipeline_signals.txt:1167:./scripts/reindex.py:1049:                for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/05-prompts/prompt_llm_signals.txt:1254:./audit-rag/03-pipeline/pipeline_signals.txt:1175:./scripts/reindex.py:1061:                    upsert(target_collection, chunk, embedding)
+./audit-rag/05-prompts/prompt_llm_signals.txt:1255:./audit-rag/03-pipeline/pipeline_signals.txt:1176:./scripts/reindex.py:1065:                    for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/05-prompts/prompt_llm_signals.txt:1256:./audit-rag/03-pipeline/pipeline_signals.txt:1185:./scripts/reindex.py:1079:                            vector=embedding.tolist(),
+./audit-rag/05-prompts/prompt_llm_signals.txt:1257:./audit-rag/03-pipeline/pipeline_signals.txt:1187:./scripts/reindex.py:1083:            del embeddings
+./audit-rag/05-prompts/prompt_llm_signals.txt:1260:./audit-rag/03-pipeline/pipeline_signals.txt:1930:./orchestrator/pipeline.py:393:            # Step 4-5: Generate embeddings and upsert in streaming batches (prevents OOM)
+./audit-rag/05-prompts/prompt_llm_signals.txt:1261:./audit-rag/03-pipeline/pipeline_signals.txt:1931:./orchestrator/pipeline.py:395:            indexed_count = await self._embed_and_upsert_streaming()
+./audit-rag/05-prompts/prompt_llm_signals.txt:1262:./audit-rag/03-pipeline/pipeline_signals.txt:1960:./orchestrator/pipeline.py:591:    async def _upsert_weaviate(self, embeddings: List[tuple]) -> int:
+./audit-rag/05-prompts/prompt_llm_signals.txt:1269:./audit-rag/03-pipeline/pipeline_signals.txt:2017:./orchestrator/pipeline.py:730:    async def _embed_and_upsert_streaming(self) -> int:
+./audit-rag/05-prompts/prompt_llm_signals.txt:1270:./audit-rag/03-pipeline/pipeline_signals.txt:2018:./orchestrator/pipeline.py:731:        """Generate embeddings and upsert to Weaviate in streaming batches.
+./audit-rag/05-prompts/prompt_llm_signals.txt:1271:./audit-rag/03-pipeline/pipeline_signals.txt:2020:./orchestrator/pipeline.py:734:        It combines embedding generation and Weaviate upsert in a single pass.
+./audit-rag/05-prompts/prompt_llm_signals.txt:1277:./audit-rag/03-pipeline/pipeline_signals.txt:2049:./orchestrator/pipeline.py:805:            logger.error(f"Streaming embed/upsert failed: {e}")
+./scripts/archive/build_nanobanana_prompts.py:60:        writer = csv.DictWriter(f, fieldnames=fieldnames)
+./scripts/archive/build_nanobanana_prompts.py:61:        writer.writeheader()
+./scripts/archive/build_nanobanana_prompts.py:63:            writer.writerow(
+./audit-rag/01-structure/all_files.txt:4683:scripts/pipeline/reindex_low_memory.sh
+./audit-rag/01-structure/all_files.txt:4685:scripts/reindex.py
+./audit-rag/01-structure/all_files.txt:4694:scripts/tools/sync_pg_knowledge.py
+./scripts/importers/import_and_index_images.sh:49:      python scripts/reindex.py --path \"$MEDIA_KNOWLEDGE_PATH\" --collection KB_Media --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_images.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_KNOWLEDGE_PATH\" --collection KB_Media
+./knowledge/gammes/galet-tendeur-de-courroie-de-distribution.md:57:  - ❌ "synchronisation parfaite"
+./knowledge/gammes/galet-tendeur-de-courroie-de-distribution.md:210:- ❌ "synchronisation parfaite"
+./scripts/ingestors/ingest_db.py:161:        # For tuple rows, rebuild dicts
+./scripts/ingestors/ingest_db.py:220:def write_markdown_doc(
+./scripts/ingestors/ingest_db.py:243:    path.write_text(payload, encoding="utf-8")
+./scripts/ingestors/ingest_db.py:262:    if not settings.can_write() and not args.dry_run:
+./scripts/ingestors/ingest_db.py:297:            write_markdown_doc(
+./scripts/ingestors/ingest_db.py:336:                json_path.write_text(json.dumps(row, ensure_ascii=True, indent=2), encoding="utf-8")
+./scripts/ingestors/ingest_db.py:352:                write_markdown_doc(
+./audit-rag/03-pipeline/pipeline_signals.txt:21:./app/services/knowledge_service.py:773:                self._delete_weaviate_chunks(doc)
+./audit-rag/03-pipeline/pipeline_signals.txt:23:./app/services/knowledge_service.py:833:    def _delete_weaviate_chunks(self, doc: "KnowledgeDocument") -> None:
+./audit-rag/03-pipeline/pipeline_signals.txt:31:./app/services/knowledge_service.py:848:            logger.info(f"Weaviate chunks deleted for parent_id={doc.id} in {target}")
+./audit-rag/03-pipeline/pipeline_signals.txt:46:./app/services/langgraph_flow.py:77:async def retrieve_node(state: ChatState) -> ChatState:
+./audit-rag/03-pipeline/pipeline_signals.txt:51:./app/services/langgraph_flow.py:286:async def run_chat_pipeline(
+./audit-rag/03-pipeline/pipeline_signals.txt:60:./app/services/startup_validator.py:87:    async def _check_weaviate(self) -> bool:
+./audit-rag/03-pipeline/pipeline_signals.txt:62:./app/services/startup_validator.py:105:    async def _check_embedding_dimension(self) -> bool:
+./audit-rag/03-pipeline/pipeline_signals.txt:159:./app/services/langgraph_pipeline.py:172:async def run_rag_pipeline(query: str, session_id: str = "") -> dict:
+./audit-rag/03-pipeline/pipeline_signals.txt:162:./app/api/knowledge.py:336:    """List all tombstone records (deleted documents that won't be re-ingested)."""
+./audit-rag/03-pipeline/pipeline_signals.txt:215:./app/services/rag_service.py:304:    async def _run_multi_pass_retrieval(
+./audit-rag/03-pipeline/pipeline_signals.txt:278:./app/config.py:88:    fastembed_model: str = "BAAI/bge-small-en-v1.5"  # Used by PDF ingestion (router.py, reindex.py)
+./audit-rag/03-pipeline/pipeline_signals.txt:280:./app/config.py:91:    reindex_target_max_tokens: int = 900  # Max tokens per chunk in reindex.py
+./audit-rag/03-pipeline/pipeline_signals.txt:381:./app/admin/router.py:531:async def run_pdf_ingest(payload: PdfIngestRunRequest):
+./audit-rag/03-pipeline/pipeline_signals.txt:393:./app/admin/router.py:585:        f"ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 REINDEX_BATCH_SIZE={reindex_batch_size} STRICT_ROUTING=1 "
+./audit-rag/03-pipeline/pipeline_signals.txt:400:./app/admin/router.py:630:async def list_pdf_ingest_jobs():
+./audit-rag/03-pipeline/pipeline_signals.txt:412:./app/admin/router.py:654:async def get_pdf_ingest_job(
+./audit-rag/03-pipeline/pipeline_signals.txt:509:./scripts/ingestors/ingest_images.py:81:        sidecar.write_text(prompt_content, encoding="utf-8")
+./audit-rag/03-pipeline/pipeline_signals.txt:517:./scripts/ingestors/ingest_web.py:162:            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url)
+./audit-rag/03-pipeline/pipeline_signals.txt:518:./scripts/ingestors/ingest_web.py:170:def _write_prompt_sidecar(
+./audit-rag/03-pipeline/pipeline_signals.txt:521:./scripts/ingestors/ingest_web.py:185:        return  # Don't overwrite existing (may have been enriched by describe-images)
+./audit-rag/03-pipeline/pipeline_signals.txt:604:./scripts/ingestors/ingest_pdfs.py:155:    """Deterministic UUID v5 chunk ID for idempotent upserts."""
+./audit-rag/03-pipeline/pipeline_signals.txt:750:./scripts/run_orchestrator.py:82:async def run_ingestion(args):
+./audit-rag/03-pipeline/pipeline_signals.txt:780:./scripts/run_orchestrator.py:240:        return asyncio.run(run_ingestion(args))
+./audit-rag/03-pipeline/pipeline_signals.txt:851:./scripts/tools/wiki_ingester.py:184:        """Generate deterministic chunk ID for upsert."""
+./audit-rag/03-pipeline/pipeline_signals.txt:854:./scripts/tools/wiki_ingester.py:191:        """Insert chunks into Weaviate using upsert logic."""
+./audit-rag/03-pipeline/pipeline_signals.txt:924:./scripts/pipeline/auto-enrich-pipeline.sh:152:  # The RAG service writes markdown to /tmp/knowledge-import/{job_id}/ inside the container
+./audit-rag/03-pipeline/pipeline_signals.txt:936:./scripts/pipeline/reindex_low_memory.sh:26:  ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 \
+./audit-rag/03-pipeline/pipeline_signals.txt:940:./scripts/importers/import_and_index_pdfs.sh:48:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import
+./audit-rag/03-pipeline/pipeline_signals.txt:950:./scripts/importers/import_and_index_structured.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/profiles --collection KB_Knowledge
+./audit-rag/03-pipeline/pipeline_signals.txt:952:./scripts/importers/import_and_index_structured.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/entity_snapshots --collection KB_Catalog
+./audit-rag/03-pipeline/pipeline_signals.txt:955:./scripts/importers/import_and_index_db.sh:76:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/schema --collection KB_Knowledge
+./audit-rag/03-pipeline/pipeline_signals.txt:957:./scripts/importers/import_and_index_db.sh:84:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/entity_snapshots --collection KB_Catalog
+./audit-rag/03-pipeline/pipeline_signals.txt:961:./scripts/importers/import_and_index_videos.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_PATH\" --collection KB_Media
+./audit-rag/03-pipeline/pipeline_signals.txt:963:./scripts/importers/import_and_index_videos.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$CANONICAL_PATH\" --collection KB_Knowledge
+./audit-rag/03-pipeline/pipeline_signals.txt:966:./scripts/importers/import_and_index_tabular.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/profiles --collection KB_Knowledge
+./audit-rag/03-pipeline/pipeline_signals.txt:968:./scripts/importers/import_and_index_tabular.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/entity_snapshots --collection KB_Catalog
+./audit-rag/03-pipeline/pipeline_signals.txt:972:./scripts/importers/import_and_index_web.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web --collection KB_Knowledge
+./audit-rag/03-pipeline/pipeline_signals.txt:974:./scripts/importers/import_and_index_web.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web-catalog --collection KB_Catalog
+./audit-rag/03-pipeline/pipeline_signals.txt:978:./scripts/importers/import_and_index_images.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_KNOWLEDGE_PATH\" --collection KB_Media
+./audit-rag/03-pipeline/pipeline_signals.txt:980:./scripts/README.md:11:| `reindex.py` | Indexeur principal Weaviate (1309 lignes) | Appele par tous les importers + cron |
+./audit-rag/03-pipeline/pipeline_signals.txt:1028:./docs/GAMME_PAGE_CONTRACT.md:16:- Injection pendant ingestion/reindex:
+./audit-rag/03-pipeline/pipeline_signals.txt:1049:./scripts/reindex.py:2:"""Standalone RAG reindex script with anchored chunking and canonical layer."""
+./audit-rag/03-pipeline/pipeline_signals.txt:1050:./scripts/reindex.py:23:from orchestrator.processors.role_classifier import classify_chunk
+./audit-rag/03-pipeline/pipeline_signals.txt:1051:./scripts/reindex.py:30:DEFAULT_WEAVIATE_URL = _settings.weaviate_url
+./audit-rag/03-pipeline/pipeline_signals.txt:1052:./scripts/reindex.py:31:DEFAULT_WEAVIATE_GRPC_PORT = _settings.weaviate_grpc_port
+./audit-rag/03-pipeline/pipeline_signals.txt:1053:./scripts/reindex.py:34:FASTEMBED_MODEL = _settings.fastembed_model
+./audit-rag/03-pipeline/pipeline_signals.txt:1054:./scripts/reindex.py:74:# V3 gamme template: H2 heading (lowercase) -> per-chunk intent override
+./audit-rag/03-pipeline/pipeline_signals.txt:1055:./scripts/reindex.py:312:def chunk_document_anchored(doc: Dict[str, Any]) -> List[Tuple[str, str]]:
+./audit-rag/03-pipeline/pipeline_signals.txt:1056:./scripts/reindex.py:316:    Returns list of (chunk_text, parent_h2) tuples for downstream enrichment.
+./audit-rag/03-pipeline/pipeline_signals.txt:1057:./scripts/reindex.py:318:    from orchestrator.processors.chunker import TokenAwareChunker
+./audit-rag/03-pipeline/pipeline_signals.txt:1058:./scripts/reindex.py:320:    chunker = TokenAwareChunker(
+./audit-rag/03-pipeline/pipeline_signals.txt:1059:./scripts/reindex.py:321:        chunk_size=TARGET_MAX_TOKENS,
+./audit-rag/03-pipeline/pipeline_signals.txt:1060:./scripts/reindex.py:322:        chunk_overlap=50,
+./audit-rag/03-pipeline/pipeline_signals.txt:1061:./scripts/reindex.py:323:        min_chunk_size=50,  # Low threshold: original code never dropped small sections
+./audit-rag/03-pipeline/pipeline_signals.txt:1062:./scripts/reindex.py:325:    raw_chunks = chunker.chunk(doc["content"])
+./audit-rag/03-pipeline/pipeline_signals.txt:1063:./scripts/reindex.py:327:    if not raw_chunks:
+./audit-rag/03-pipeline/pipeline_signals.txt:1064:./scripts/reindex.py:333:    for chunk in raw_chunks:
+./audit-rag/03-pipeline/pipeline_signals.txt:1065:./scripts/reindex.py:334:        heading = chunk.get("heading") or ""
+./audit-rag/03-pipeline/pipeline_signals.txt:1066:./scripts/reindex.py:335:        level = chunk.get("heading_level")
+./audit-rag/03-pipeline/pipeline_signals.txt:1067:./scripts/reindex.py:338:        text = chunk["content"].strip()
+./audit-rag/03-pipeline/pipeline_signals.txt:1068:./scripts/reindex.py:514:def format_source_uri(doc: Dict[str, Any], chunk_index: int, page_numbers: List[int]) -> str:
+./audit-rag/03-pipeline/pipeline_signals.txt:1069:./scripts/reindex.py:527:        return f"{base}#chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1070:./scripts/reindex.py:529:        return f"{base}#chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1071:./scripts/reindex.py:530:    return f"md://{doc['source_path']}#chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1072:./scripts/reindex.py:533:def format_source_ref(doc: Dict[str, Any], chunk_index: int, page_numbers: List[int]) -> str:
+./audit-rag/03-pipeline/pipeline_signals.txt:1073:./scripts/reindex.py:547:        return f"#t=chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1074:./scripts/reindex.py:549:        return f"#chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1075:./scripts/reindex.py:551:        return f"#row={chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1076:./scripts/reindex.py:552:    return f"#chunk-{chunk_index}"
+./audit-rag/03-pipeline/pipeline_signals.txt:1077:./scripts/reindex.py:570:def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, parent_id: str, canonical: bool, page_numbers: List[int] | None = None, chunk_intent: str | None = None, heading: str | None = None, chunk_type: str = "text") -> Dict[str, Any]:
+./audit-rag/03-pipeline/pipeline_signals.txt:1078:./scripts/reindex.py:573:    bbox_ref = extract_bbox_ref(chunk_text)
+./audit-rag/03-pipeline/pipeline_signals.txt:1079:./scripts/reindex.py:574:    video_ts_range = extract_video_ts_range(chunk_text)
+./audit-rag/03-pipeline/pipeline_signals.txt:1080:./scripts/reindex.py:575:    clean_chunk = strip_bbox_markers(strip_pdf_page_markers(strip_video_ts_markers(chunk_text)))
+./audit-rag/03-pipeline/pipeline_signals.txt:1081:./scripts/reindex.py:576:    chunk_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"{doc['source_path']}:{suffix}:{chunk_index}"))
+./audit-rag/03-pipeline/pipeline_signals.txt:1082:./scripts/reindex.py:577:    content_hash = hashlib.sha256(clean_chunk.encode("utf-8")).hexdigest()
+./audit-rag/03-pipeline/pipeline_signals.txt:1083:./scripts/reindex.py:582:    source_uri = format_source_uri(doc, chunk_index, page_numbers)
+./audit-rag/03-pipeline/pipeline_signals.txt:1084:./scripts/reindex.py:583:    source_ref = format_source_ref(doc, chunk_index, page_numbers)
+./audit-rag/03-pipeline/pipeline_signals.txt:1085:./scripts/reindex.py:599:    role_data = classify_chunk(heading=heading, chunk_type=chunk_type, content=clean_chunk, source_type=doc["source_type"], gamme_slug=doc.get("gamme_slug"))
+./audit-rag/03-pipeline/pipeline_signals.txt:1086:./scripts/reindex.py:612:    _chunk_kind = role_data.get("chunk_kind", "other")
+./audit-rag/03-pipeline/pipeline_signals.txt:1087:./scripts/reindex.py:614:    if _chunk_kind == "table_rows":
+./audit-rag/03-pipeline/pipeline_signals.txt:1088:./scripts/reindex.py:616:    elif _chunk_kind == "faq":
+./audit-rag/03-pipeline/pipeline_signals.txt:1089:./scripts/reindex.py:620:        "uuid": chunk_id,
+./audit-rag/03-pipeline/pipeline_signals.txt:1090:./scripts/reindex.py:621:        "chunk_id": chunk_id,
+./audit-rag/03-pipeline/pipeline_signals.txt:1091:./scripts/reindex.py:627:        "content": clean_chunk,
+./audit-rag/03-pipeline/pipeline_signals.txt:1092:./scripts/reindex.py:629:        "intent": chunk_intent if chunk_intent and chunk_intent in ALLOWED_INTENTS else doc["intent"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1093:./scripts/reindex.py:638:        "chunk_index": chunk_index,
+./audit-rag/03-pipeline/pipeline_signals.txt:1094:./scripts/reindex.py:656:def chunk_document(doc: Dict[str, Any]) -> List[Dict[str, Any]]:
+./audit-rag/03-pipeline/pipeline_signals.txt:1095:./scripts/reindex.py:657:    chunks: List[Dict[str, Any]] = []
+./audit-rag/03-pipeline/pipeline_signals.txt:1096:./scripts/reindex.py:660:    # Detect V3 gamme template for per-chunk intent
+./audit-rag/03-pipeline/pipeline_signals.txt:1097:./scripts/reindex.py:664:    body_chunks = chunk_document_anchored(doc)  # List[(text, parent_h2)]
+./audit-rag/03-pipeline/pipeline_signals.txt:1098:./scripts/reindex.py:665:    chunk_index = 0
+./audit-rag/03-pipeline/pipeline_signals.txt:1099:./scripts/reindex.py:666:    for part_text, parent_h2 in body_chunks:
+./audit-rag/03-pipeline/pipeline_signals.txt:1100:./scripts/reindex.py:671:        # Resolve per-chunk intent from parent H2 (V3 only)
+./audit-rag/03-pipeline/pipeline_signals.txt:1101:./scripts/reindex.py:672:        chunk_intent = None
+./audit-rag/03-pipeline/pipeline_signals.txt:1102:./scripts/reindex.py:674:            chunk_intent = V3_H2_INTENT_MAP.get(parent_h2.strip().lower())
+./audit-rag/03-pipeline/pipeline_signals.txt:1103:./scripts/reindex.py:675:        chunks.append(build_chunk_record(doc, clean_part, chunk_index, parent_id, canonical=False, page_numbers=page_numbers, chunk_intent=chunk_intent, heading=parent_h2))
+./audit-rag/03-pipeline/pipeline_signals.txt:1104:./scripts/reindex.py:676:        chunk_index += 1
+./audit-rag/03-pipeline/pipeline_signals.txt:1105:./scripts/reindex.py:681:        for body_text, _ in body_chunks:
+./audit-rag/03-pipeline/pipeline_signals.txt:1106:./scripts/reindex.py:689:            chunks.append(build_chunk_record(doc, canonical, chunk_index, parent_id, canonical=True, page_numbers=page_numbers))
+./audit-rag/03-pipeline/pipeline_signals.txt:1107:./scripts/reindex.py:690:            chunk_index += 1
+./audit-rag/03-pipeline/pipeline_signals.txt:1108:./scripts/reindex.py:698:                    chunks.append(build_chunk_record(doc, fallback, chunk_index, parent_id, canonical=True, page_numbers=extract_pdf_pages(doc["content"])))
+./audit-rag/03-pipeline/pipeline_signals.txt:1109:./scripts/reindex.py:700:    return chunks
+./audit-rag/03-pipeline/pipeline_signals.txt:1110:./scripts/reindex.py:703:def build_embedding_input(chunk: Dict[str, Any]) -> str:
+./audit-rag/03-pipeline/pipeline_signals.txt:1111:./scripts/reindex.py:705:    Build embedding text from chunk body + structural hints.
+./audit-rag/03-pipeline/pipeline_signals.txt:1112:./scripts/reindex.py:706:    Important for retrieval quality: include title and anchors with the content.
+./audit-rag/03-pipeline/pipeline_signals.txt:1113:./scripts/reindex.py:708:    title = str(chunk.get("title", "") or "").strip()
+./audit-rag/03-pipeline/pipeline_signals.txt:1114:./scripts/reindex.py:709:    anchors = chunk.get("anchors", []) or []
+./audit-rag/03-pipeline/pipeline_signals.txt:1115:./scripts/reindex.py:713:    content = str(chunk.get("content", "") or "").strip()
+./audit-rag/03-pipeline/pipeline_signals.txt:1116:./scripts/reindex.py:725:def get_weaviate_client(weaviate_url: str):
+./audit-rag/03-pipeline/pipeline_signals.txt:1117:./scripts/reindex.py:726:    import weaviate
+./audit-rag/03-pipeline/pipeline_signals.txt:1118:./scripts/reindex.py:728:    url_clean = weaviate_url.replace("http://", "").replace("https://", "")
+./audit-rag/03-pipeline/pipeline_signals.txt:1119:./scripts/reindex.py:733:    return weaviate.connect_to_custom(
+./audit-rag/03-pipeline/pipeline_signals.txt:1120:./scripts/reindex.py:744:    from weaviate.classes.config import Property, DataType
+./audit-rag/03-pipeline/pipeline_signals.txt:1121:./scripts/reindex.py:746:        Property(name="chunk_id", data_type=DataType.TEXT),
+./audit-rag/03-pipeline/pipeline_signals.txt:1122:./scripts/reindex.py:763:        Property(name="chunk_index", data_type=DataType.INT),
+./audit-rag/03-pipeline/pipeline_signals.txt:1123:./scripts/reindex.py:779:    from weaviate.classes.config import Configure
+./audit-rag/03-pipeline/pipeline_signals.txt:1124:./scripts/reindex.py:785:        vectorizer_config=Configure.Vectorizer.none(),
+./audit-rag/03-pipeline/pipeline_signals.txt:1125:./scripts/reindex.py:790:def clear_collection(weaviate_url: str, collection_name: str):
+./audit-rag/03-pipeline/pipeline_signals.txt:1126:./scripts/reindex.py:792:    from weaviate.classes.config import Configure
+./audit-rag/03-pipeline/pipeline_signals.txt:1127:./scripts/reindex.py:794:    client = get_weaviate_client(weaviate_url)
+./audit-rag/03-pipeline/pipeline_signals.txt:1128:./scripts/reindex.py:802:        vectorizer_config=Configure.Vectorizer.none(),
+./audit-rag/03-pipeline/pipeline_signals.txt:1129:./scripts/reindex.py:888:def validate_chunk(chunk: Dict[str, Any]) -> List[str]:
+./audit-rag/03-pipeline/pipeline_signals.txt:1130:./scripts/reindex.py:890:        "chunk_id", "parent_id", "source_path", "source_uri", "title", "content",
+./audit-rag/03-pipeline/pipeline_signals.txt:1131:./scripts/reindex.py:892:        "chunk_index", "updated_at", "content_hash", "doc_family",
+./audit-rag/03-pipeline/pipeline_signals.txt:1132:./scripts/reindex.py:896:        value = chunk.get(field)
+./audit-rag/03-pipeline/pipeline_signals.txt:1133:./scripts/reindex.py:899:    if str(chunk.get("intent", "")).strip().lower() not in ALLOWED_INTENTS:
+./audit-rag/03-pipeline/pipeline_signals.txt:1134:./scripts/reindex.py:900:        errors.append(f"invalid intent={chunk.get('intent')}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1135:./scripts/reindex.py:901:    chunk_domain_raw = chunk.get("domain", "")
+./audit-rag/03-pipeline/pipeline_signals.txt:1136:./scripts/reindex.py:902:    chunk_domain = str(chunk_domain_raw.get("role", "")).strip().lower() if isinstance(chunk_domain_raw, dict) else str(chunk_domain_raw).strip().lower()
+./audit-rag/03-pipeline/pipeline_signals.txt:1137:./scripts/reindex.py:903:    if chunk_domain not in ALLOWED_DOMAINS:
+./audit-rag/03-pipeline/pipeline_signals.txt:1138:./scripts/reindex.py:904:        errors.append(f"invalid domain={chunk_domain}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1139:./scripts/reindex.py:905:    if str(chunk.get("truth_level", "")).strip().upper() not in ALLOWED_TRUTH_LEVELS:
+./audit-rag/03-pipeline/pipeline_signals.txt:1140:./scripts/reindex.py:906:        errors.append(f"invalid truth_level={chunk.get('truth_level')}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1141:./scripts/reindex.py:907:    if str(chunk.get("verification_status", "")).strip().lower() not in ALLOWED_VERIFICATION_STATUS:
+./audit-rag/03-pipeline/pipeline_signals.txt:1142:./scripts/reindex.py:908:        errors.append(f"invalid verification_status={chunk.get('verification_status')}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1143:./scripts/reindex.py:909:    fam = str(chunk.get("doc_family", "")).strip().lower()
+./audit-rag/03-pipeline/pipeline_signals.txt:1144:./scripts/reindex.py:926:    weaviate_url: str,
+./audit-rag/03-pipeline/pipeline_signals.txt:1145:./scripts/reindex.py:934:    from fastembed import TextEmbedding
+./audit-rag/03-pipeline/pipeline_signals.txt:1146:./scripts/reindex.py:941:    client = get_weaviate_client(weaviate_url)
+./audit-rag/03-pipeline/pipeline_signals.txt:1147:./scripts/reindex.py:954:    chunk_count = 0
+./audit-rag/03-pipeline/pipeline_signals.txt:1148:./scripts/reindex.py:957:    blocked_chunks = 0
+./audit-rag/03-pipeline/pipeline_signals.txt:1149:./scripts/reindex.py:974:    def upsert(collection, chunk: dict, embedding) -> None:
+./audit-rag/03-pipeline/pipeline_signals.txt:1150:./scripts/reindex.py:976:        props = {k: v for k, v in chunk.items() if k != "uuid"}
+./audit-rag/03-pipeline/pipeline_signals.txt:1151:./scripts/reindex.py:977:        vec = embedding.tolist()
+./audit-rag/03-pipeline/pipeline_signals.txt:1152:./scripts/reindex.py:986:                    vector=vec,
+./audit-rag/03-pipeline/pipeline_signals.txt:1153:./scripts/reindex.py:987:                    uuid=chunk["uuid"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1154:./scripts/reindex.py:995:                    uuid=chunk["uuid"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1155:./scripts/reindex.py:997:                    vector=vec,
+./audit-rag/03-pipeline/pipeline_signals.txt:1156:./scripts/reindex.py:1003:                uuid=chunk["uuid"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1157:./scripts/reindex.py:1005:                vector=vec,
+./audit-rag/03-pipeline/pipeline_signals.txt:1158:./scripts/reindex.py:1013:                vector=vec,
+./audit-rag/03-pipeline/pipeline_signals.txt:1159:./scripts/reindex.py:1014:                uuid=chunk["uuid"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1160:./scripts/reindex.py:1036:        chunks = chunk_document(doc)
+./audit-rag/03-pipeline/pipeline_signals.txt:1161:./scripts/reindex.py:1037:        chunk_count += len(chunks)
+./audit-rag/03-pipeline/pipeline_signals.txt:1162:./scripts/reindex.py:1038:        if not chunks:
+./audit-rag/03-pipeline/pipeline_signals.txt:1163:./scripts/reindex.py:1041:        for i in range(0, len(chunks), batch_size):
+./audit-rag/03-pipeline/pipeline_signals.txt:1164:./scripts/reindex.py:1042:            batch_chunks = chunks[i:i + batch_size]
+./audit-rag/03-pipeline/pipeline_signals.txt:1165:./scripts/reindex.py:1043:            texts = [build_embedding_input(c) for c in batch_chunks]
+./audit-rag/03-pipeline/pipeline_signals.txt:1166:./scripts/reindex.py:1044:            embeddings = list(model.embed(texts, batch_size=batch_size))
+./audit-rag/03-pipeline/pipeline_signals.txt:1167:./scripts/reindex.py:1049:                for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/03-pipeline/pipeline_signals.txt:1168:./scripts/reindex.py:1050:                    chunk_errors = validate_chunk(chunk)
+./audit-rag/03-pipeline/pipeline_signals.txt:1169:./scripts/reindex.py:1051:                    if chunk_errors:
+./audit-rag/03-pipeline/pipeline_signals.txt:1170:./scripts/reindex.py:1052:                        blocked_chunks += 1
+./audit-rag/03-pipeline/pipeline_signals.txt:1171:./scripts/reindex.py:1054:                            "type": "chunk",
+./audit-rag/03-pipeline/pipeline_signals.txt:1172:./scripts/reindex.py:1055:                            "source_path": chunk.get("source_path"),
+./audit-rag/03-pipeline/pipeline_signals.txt:1173:./scripts/reindex.py:1056:                            "chunk_id": chunk.get("chunk_id"),
+./audit-rag/03-pipeline/pipeline_signals.txt:1174:./scripts/reindex.py:1057:                            "errors": chunk_errors,
+./audit-rag/03-pipeline/pipeline_signals.txt:1175:./scripts/reindex.py:1061:                    upsert(target_collection, chunk, embedding)
+./audit-rag/03-pipeline/pipeline_signals.txt:1176:./scripts/reindex.py:1065:                    for chunk, embedding in zip(batch_chunks, embeddings):
+./audit-rag/03-pipeline/pipeline_signals.txt:1177:./scripts/reindex.py:1066:                        chunk_errors = validate_chunk(chunk)
+./audit-rag/03-pipeline/pipeline_signals.txt:1178:./scripts/reindex.py:1067:                        if chunk_errors:
+./audit-rag/03-pipeline/pipeline_signals.txt:1179:./scripts/reindex.py:1068:                            blocked_chunks += 1
+./audit-rag/03-pipeline/pipeline_signals.txt:1180:./scripts/reindex.py:1070:                                "type": "chunk",
+./audit-rag/03-pipeline/pipeline_signals.txt:1181:./scripts/reindex.py:1071:                                "source_path": chunk.get("source_path"),
+./audit-rag/03-pipeline/pipeline_signals.txt:1182:./scripts/reindex.py:1072:                                "chunk_id": chunk.get("chunk_id"),
+./audit-rag/03-pipeline/pipeline_signals.txt:1183:./scripts/reindex.py:1073:                                "errors": chunk_errors,
+./audit-rag/03-pipeline/pipeline_signals.txt:1184:./scripts/reindex.py:1078:                            properties={k: v for k, v in chunk.items() if k != "uuid"},
+./audit-rag/03-pipeline/pipeline_signals.txt:1185:./scripts/reindex.py:1079:                            vector=embedding.tolist(),
+./audit-rag/03-pipeline/pipeline_signals.txt:1186:./scripts/reindex.py:1080:                            uuid=chunk["uuid"],
+./audit-rag/03-pipeline/pipeline_signals.txt:1187:./scripts/reindex.py:1083:            del embeddings
+./audit-rag/03-pipeline/pipeline_signals.txt:1188:./scripts/reindex.py:1085:        del doc, chunks
+./audit-rag/03-pipeline/pipeline_signals.txt:1189:./scripts/reindex.py:1090:                f"Progress: {doc_count} docs, {chunk_count} chunks, {indexed_count} indexed, "
+./audit-rag/03-pipeline/pipeline_signals.txt:1190:./scripts/reindex.py:1091:                f"{blocked_docs} blocked docs, {blocked_chunks} blocked chunks"
+./audit-rag/03-pipeline/pipeline_signals.txt:1191:./scripts/reindex.py:1095:    return doc_count, chunk_count, indexed_count, blocked_docs, blocked_chunks
+./audit-rag/03-pipeline/pipeline_signals.txt:1192:./scripts/reindex.py:1100:    chunk_count = 0
+./audit-rag/03-pipeline/pipeline_signals.txt:1193:./scripts/reindex.py:1105:        chunks = chunk_document(doc)
+./audit-rag/03-pipeline/pipeline_signals.txt:1194:./scripts/reindex.py:1106:        chunk_count += len(chunks)
+./audit-rag/03-pipeline/pipeline_signals.txt:1195:./scripts/reindex.py:1111:        del doc, chunks
+./audit-rag/03-pipeline/pipeline_signals.txt:1196:./scripts/reindex.py:1114:    return doc_count, chunk_count, sample_docs
+./audit-rag/03-pipeline/pipeline_signals.txt:1197:./scripts/reindex.py:1120:    parser.add_argument("--weaviate-url", default=os.environ.get("WEAVIATE_URL", DEFAULT_WEAVIATE_URL))
+./audit-rag/03-pipeline/pipeline_signals.txt:1198:./scripts/reindex.py:1151:        doc_count, chunk_count, sample_docs = dry_run(args.path, max_files=args.max_files)
+./audit-rag/03-pipeline/pipeline_signals.txt:1199:./scripts/reindex.py:1157:        logger.info(f"Total: {doc_count} documents, {chunk_count} chunks")
+./audit-rag/03-pipeline/pipeline_signals.txt:1200:./scripts/reindex.py:1163:                clear_collection(args.weaviate_url, cname)
+./audit-rag/03-pipeline/pipeline_signals.txt:1201:./scripts/reindex.py:1165:            clear_collection(args.weaviate_url, args.collection)
+./audit-rag/03-pipeline/pipeline_signals.txt:1202:./scripts/reindex.py:1167:    doc_count, chunk_count, indexed_count, blocked_docs, blocked_chunks = index_streaming_true(
+./audit-rag/03-pipeline/pipeline_signals.txt:1203:./scripts/reindex.py:1169:        args.weaviate_url,
+./audit-rag/03-pipeline/pipeline_signals.txt:1204:./scripts/reindex.py:1182:    logger.info(f"Chunks: {chunk_count}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1205:./scripts/reindex.py:1185:    logger.info(f"Blocked chunks: {blocked_chunks}")
+./audit-rag/03-pipeline/pipeline_signals.txt:1898:./orchestrator/pipeline.py:9:6. upsert_weaviate() - Batch insert to Weaviate
+./audit-rag/03-pipeline/pipeline_signals.txt:1930:./orchestrator/pipeline.py:393:            # Step 4-5: Generate embeddings and upsert in streaming batches (prevents OOM)
+./audit-rag/03-pipeline/pipeline_signals.txt:1931:./orchestrator/pipeline.py:395:            indexed_count = await self._embed_and_upsert_streaming()
+./audit-rag/03-pipeline/pipeline_signals.txt:1938:./orchestrator/pipeline.py:540:    async def _chunk_documents(self) -> None:
+./audit-rag/03-pipeline/pipeline_signals.txt:1960:./orchestrator/pipeline.py:591:    async def _upsert_weaviate(self, embeddings: List[tuple]) -> int:
+./audit-rag/03-pipeline/pipeline_signals.txt:2017:./orchestrator/pipeline.py:730:    async def _embed_and_upsert_streaming(self) -> int:
+./audit-rag/03-pipeline/pipeline_signals.txt:2018:./orchestrator/pipeline.py:731:        """Generate embeddings and upsert to Weaviate in streaming batches.
+./audit-rag/03-pipeline/pipeline_signals.txt:2020:./orchestrator/pipeline.py:734:        It combines embedding generation and Weaviate upsert in a single pass.
+./audit-rag/03-pipeline/pipeline_signals.txt:2049:./orchestrator/pipeline.py:805:            logger.error(f"Streaming embed/upsert failed: {e}")
+./audit-rag/03-pipeline/pipeline_signals.txt:2051:./orchestrator/pipeline.py:826:async def run_full_ingestion(config: Optional[PipelineConfig] = None) -> PipelineResult:
+./audit-rag/03-pipeline/pipeline_signals.txt:3191:./audit-rag/01-structure/all_files.txt:4683:scripts/pipeline/reindex_low_memory.sh
+./knowledge/gammes/arbre-a-came.md:24:  - synchroniser
+./knowledge/gammes/arbre-a-came.md:35:  - synchroniser
+./knowledge/gammes/arbre-a-came.md:130:**Actions principales:** commander, synchroniser, actionner les soupapes
+./knowledge/gammes/galet-enrouleur-de-courroie-de-distribution.md:57:  - ❌ "synchronisation parfaite"
+./knowledge/gammes/galet-enrouleur-de-courroie-de-distribution.md:210:- ❌ "synchronisation parfaite"
+./knowledge/gammes/faisceau-d-attelage.md:43:  - 'Vérifier : clignotants non synchronises'
+./knowledge/gammes/faisceau-d-attelage.md:63:    label: Clignotants non synchronises
+./knowledge/gammes/faisceau-d-attelage.md:135:- clignotants non synchronises
+./knowledge/gammes/capteur-impulsion.md:47:  - 'Vérifier : odeur d essence injection non synchronisee'
+./knowledge/gammes/capteur-impulsion.md:79:    label: Odeur d essence injection non synchronisee
+./knowledge/gammes/capteur-impulsion.md:121:    answer: Les capteurs OES (Bosch, Hella, Valeo) sont recommandés. Le signal doit être précis pour la synchronisation injection/allumage.
+./knowledge/gammes/capteur-impulsion.md:172:- odeur d essence injection non synchronisee
+./knowledge/web/7627e254fd6b-s001.md:17:Le système d'allumage d'un véhicule doit générer une étincelle suffisante au niveau du bon cylindre, au bon moment, et ce plusieurs milliers de fois par minute. La synchronisation de cette étincelle si importante est cruciale. Le moindre décalage peut entraîner divers problèmes de performances, notamment des ratés d'allumage, une réduction de la puissance et une consommation de carburant élevée. Au sein de Delphi, nous sommes conscients de l'importance de faire les choses bien dès la première intervention. C'est la raison pour laquelle nous appliquons plus de 100 ans d'expertise en 1ère monte à chaque bobine d'allumage que nous produisons, en assurant une puissance et une performance de 1ère monte optimales, ainsi qu'une satisfaction totale garantie.
+./knowledge/gammes/tringlerie-d-essuie-glace.md:25:  - synchroniser
+./knowledge/gammes/tringlerie-d-essuie-glace.md:38:  - synchroniser
+./knowledge/gammes/tringlerie-d-essuie-glace.md:44:  - 'Vérifier : essuie-glaces desynchronises'
+./knowledge/gammes/tringlerie-d-essuie-glace.md:63:    label: Essuie-glaces desynchronises
+./knowledge/gammes/tringlerie-d-essuie-glace.md:109:    answer: En cas de essuie-glaces desynchronises ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+./knowledge/gammes/tringlerie-d-essuie-glace.md:132:**Actions principales:** transmettre, entrainer, synchroniser
+./knowledge/gammes/tringlerie-d-essuie-glace.md:143:- essuie-glaces desynchronises
+./knowledge/gammes/chaine-de-distribution.md:23:  - synchroniser
+./knowledge/gammes/chaine-de-distribution.md:34:  - synchroniser
+./knowledge/gammes/chaine-de-distribution.md:157:**Actions principales:** synchroniser, entrainer, transmettre
+./knowledge/gammes/kit-de-distribution.md:23:  - synchroniser
+./knowledge/gammes/kit-de-distribution.md:34:  - synchroniser
+./knowledge/gammes/kit-de-distribution.md:154:**Actions principales:** synchroniser, entrainer, guider
+./knowledge/gammes/poulie-d-arbre-a-came.md:21:  role: Entrainer l'arbre a cames en synchronisation avec le vilebrequin
+./knowledge/gammes/poulie-d-arbre-a-came.md:24:  - synchroniser
+./knowledge/gammes/poulie-d-arbre-a-came.md:35:  - synchroniser
+./knowledge/gammes/poulie-d-arbre-a-came.md:146:Entrainer l'arbre a cames en synchronisation avec le vilebrequin
+./knowledge/gammes/poulie-d-arbre-a-came.md:148:**Actions principales:** entrainer, synchroniser, transmettre
+./scripts/ingestors/ingest_web.py:9:- write markdown docs under /knowledge/web and /knowledge/web-catalog
+./scripts/ingestors/ingest_web.py:155:                out_path.write_bytes(data)
+./scripts/ingestors/ingest_web.py:162:            _write_prompt_sidecar(img_dir, digest[:16], img_url, alt, source_url)
+./scripts/ingestors/ingest_web.py:170:def _write_prompt_sidecar(
+./scripts/ingestors/ingest_web.py:185:        return  # Don't overwrite existing (may have been enriched by describe-images)
+./scripts/ingestors/ingest_web.py:209:    sidecar_path.write_text(content, encoding="utf-8")
+./scripts/ingestors/ingest_web.py:491:        from playwright.sync_api import sync_playwright
+./scripts/ingestors/ingest_web.py:497:        with sync_playwright() as p:
+./scripts/ingestors/ingest_web.py:557:        raw_path.write_text(raw_html, encoding="utf-8")
+./scripts/ingestors/ingest_web.py:561:        sidecar.write_text(
+./scripts/ingestors/ingest_web.py:576:def write_doc(
+./scripts/ingestors/ingest_web.py:604:    path.write_text(payload, encoding="utf-8")
+./scripts/ingestors/ingest_web.py:660:    if not settings.can_write() and not args.dry_run:
+./scripts/ingestors/ingest_web.py:732:                doc_path = write_doc(
+./scripts/ingestors/ingest_structured.py:174:def write_markdown_doc(path: Path, meta: dict[str, Any], body: str) -> None:
+./scripts/ingestors/ingest_structured.py:176:        raise RuntimeError("PyYAML is required to write markdown docs. Install with: pip install pyyaml")
+./scripts/ingestors/ingest_structured.py:179:    path.write_text(payload, encoding="utf-8")
+./scripts/ingestors/ingest_structured.py:185:        f.write(json.dumps(event, ensure_ascii=True) + "\n")
+./scripts/ingestors/ingest_structured.py:260:    write_markdown_doc(
+./scripts/ingestors/ingest_structured.py:288:            json_path.write_text(json.dumps(rec, ensure_ascii=True, indent=2), encoding="utf-8")
+./scripts/ingestors/ingest_structured.py:289:            write_markdown_doc(
+./scripts/ingestors/ingest_images.py:81:        sidecar.write_text(prompt_content, encoding="utf-8")
+./scripts/ingestors/ingest_images.py:275:    if not settings.can_write() and not args.dry_run:
+./scripts/ingestors/ingest_tabular.py:191:def write_markdown_doc(path: Path, meta: dict[str, Any], body: str) -> None:
+./scripts/ingestors/ingest_tabular.py:193:        raise RuntimeError("PyYAML is required to write markdown docs. Install with: pip install pyyaml")
+./scripts/ingestors/ingest_tabular.py:196:    path.write_text(payload, encoding="utf-8")
+./scripts/ingestors/ingest_tabular.py:202:        f.write(json.dumps(event, ensure_ascii=True) + "\n")
+./scripts/ingestors/ingest_tabular.py:286:    write_markdown_doc(
+./scripts/ingestors/ingest_tabular.py:313:            json_path.write_text(
+./scripts/ingestors/ingest_tabular.py:317:            write_markdown_doc(
+./scripts/ingestors/ingest_pdfs.py:141:        sidecar.write_text(json.dumps(metadata, ensure_ascii=True, indent=2), encoding="utf-8")
+./scripts/ingestors/ingest_pdfs.py:155:    """Deterministic UUID v5 chunk ID for idempotent upserts."""
+./scripts/ingestors/ingest_pdfs.py:280:    # Batch upsert to Weaviate
+./scripts/ingestors/ingest_pdfs.py:326:    if not settings.can_write() and not args.dry_run:
+./knowledge/gammes/courroie-de-distribution.md:21:  role: Kit complet pour la synchronisation de la distribution avec tous les composants necessaires
+./knowledge/gammes/courroie-de-distribution.md:23:  - synchroniser
+./knowledge/gammes/courroie-de-distribution.md:35:    difference: Courroie distribution = synchronise moteur (CRITIQUE), Courroie accessoire = alternateur/clim (moins critique)
+./knowledge/gammes/courroie-de-distribution.md:37:  - synchroniser
+./knowledge/gammes/courroie-de-distribution.md:140:Kit complet pour la synchronisation de la distribution avec tous les composants necessaires
+./knowledge/gammes/courroie-de-distribution.md:142:**Actions principales:** synchroniser, entrainer, maintenir
+./knowledge/gammes/courroie-de-distribution.md:191:**Distinction:** Courroie distribution = synchronise moteur (CRITIQUE), Courroie accessoire = alternateur/clim (moins critique)
+./knowledge/gammes/kit-de-chaine-de-distribution.md:23:  - synchroniser
+./knowledge/gammes/kit-de-chaine-de-distribution.md:36:  - synchroniser
+./knowledge/gammes/kit-de-chaine-de-distribution.md:156:**Actions principales:** synchroniser, entrainer, guider
+./scripts/importers/import_and_index_db.sh:74:        python scripts/reindex.py --path /knowledge-import/db/schema --collection KB_Knowledge --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_db.sh:76:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/schema --collection KB_Knowledge
+./scripts/importers/import_and_index_db.sh:82:        python scripts/reindex.py --path /knowledge-import/db/entity_snapshots --collection KB_Catalog --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_db.sh:84:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/db/entity_snapshots --collection KB_Catalog
+./scripts/ingestors/ingest_videos.py:131:        sidecar.write_text(json.dumps(metadata, ensure_ascii=True, indent=2), encoding="utf-8")
+./scripts/ingestors/ingest_videos.py:196:        "--write-auto-sub",
+./scripts/ingestors/ingest_videos.py:197:        "--write-sub",
+./scripts/ingestors/ingest_videos.py:522:    if not settings.can_write() and not args.dry_run:
+./scripts/importers/import_and_index_tabular.sh:55:        python scripts/reindex.py --path /knowledge-import/tabular/profiles --collection KB_Knowledge --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_tabular.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/profiles --collection KB_Knowledge
+./scripts/importers/import_and_index_tabular.sh:64:        python scripts/reindex.py --path /knowledge-import/tabular/entity_snapshots --collection KB_Catalog --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_tabular.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/tabular/entity_snapshots --collection KB_Catalog
+./scripts/importers/import_and_index_pdfs.sh:46:      python scripts/reindex.py --path /knowledge-import --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_pdfs.sh:48:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import
+./scripts/pipeline/auto-enrich-pipeline.sh:152:  # The RAG service writes markdown to /tmp/knowledge-import/{job_id}/ inside the container
+./scripts/importers/import_and_index_structured.sh:55:        python scripts/reindex.py --path /knowledge-import/structured/profiles --collection KB_Knowledge --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_structured.sh:57:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/profiles --collection KB_Knowledge
+./scripts/importers/import_and_index_structured.sh:64:        python scripts/reindex.py --path /knowledge-import/structured/entity_snapshots --collection KB_Catalog --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_structured.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/structured/entity_snapshots --collection KB_Catalog
+./scripts/importers/import_and_index_videos.sh:49:      python scripts/reindex.py --path \"$MEDIA_PATH\" --collection KB_Media --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_videos.sh:51:      ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$MEDIA_PATH\" --collection KB_Media
+./scripts/importers/import_and_index_videos.sh:56:        python scripts/reindex.py --path \"$CANONICAL_PATH\" --collection KB_Knowledge --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_videos.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path \"$CANONICAL_PATH\" --collection KB_Knowledge
+./scripts/importers/import_and_index_web.sh:56:        python scripts/reindex.py --path /knowledge-import/web --collection KB_Knowledge --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_web.sh:58:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web --collection KB_Knowledge
+./scripts/importers/import_and_index_web.sh:64:        python scripts/reindex.py --path /knowledge-import/web-catalog --collection KB_Catalog --batch-size $REINDEX_BATCH_SIZE --max-files $REINDEX_MAX_FILES --cpu-strict
+./scripts/importers/import_and_index_web.sh:66:        ENV=dev WEAVIATE_URL=http://weaviate-prod:8080 python scripts/reindex.py --path /knowledge-import/web-catalog --collection KB_Catalog
+./scripts/ingestors/ingest_logs.py:137:    if not settings.can_write() and not args.dry_run:
+./scripts/pipeline/reindex_low_memory.sh:4:# Low-memory reindex helper.
+./scripts/pipeline/reindex_low_memory.sh:5:# Runs reindex with very small batch + CPU strict mode.
+./scripts/pipeline/reindex_low_memory.sh:8:#   ./scripts/reindex_low_memory.sh
+./scripts/pipeline/reindex_low_memory.sh:9:#   ./scripts/reindex_low_memory.sh /knowledge 1
+./scripts/pipeline/reindex_low_memory.sh:10:#   ./scripts/reindex_low_memory.sh /knowledge 1 50
+./scripts/pipeline/reindex_low_memory.sh:29:  python scripts/reindex.py \
+./audit-rag/00-baseline/git_status.txt:242: M scripts/reindex.py
+./knowledge/canonical/buying-guide-contract.md:29:| `intro_sync_parts` | string[] | Pieces a changer en meme temps (ex: disques + plaquettes) |
+./scripts/README.md:11:| `reindex.py` | Indexeur principal Weaviate (1309 lignes) | Appele par tous les importers + cron |
+./scripts/README.md:12:| `reindex_low_memory.sh` | Wrapper reindex.py avec limites memoire | Manuel |
+./scripts/reindex.py:2:"""Standalone RAG reindex script with anchored chunking and canonical layer."""
+./scripts/reindex.py:37:TARGET_MAX_TOKENS = _settings.reindex_target_max_tokens
+./scripts/reindex.py:796:        client.collections.delete(collection_name)
+./scripts/reindex.py:814:            f.write(json_dump_line(payload))
+./scripts/reindex.py:816:        logger.error(f"Failed to write quarantine log: {exc}")
+./scripts/reindex.py:974:    def upsert(collection, chunk: dict, embedding) -> None:
+./scripts/reindex.py:1061:                    upsert(target_collection, chunk, embedding)
+./orchestrator/__init__.py:12:CRITICAL: All write operations (index, create, update, delete) are blocked in PROD.
+./audit-rag/04-data/data_access_signals.txt:2:./app/api/knowledge.py:258:@router.delete("/{doc_id}")
+./audit-rag/04-data/data_access_signals.txt:5:./app/admin/router.py:446:async def document_delete(request: Request, doc_id: str):
+./audit-rag/04-data/data_access_signals.txt:7:./app/admin/router.py:748:        client.collections.delete(collection_name)
+./audit-rag/04-data/data_access_signals.txt:11:./scripts/tools/sync_pg_knowledge.py:8:    python scripts/tools/sync_pg_knowledge.py --supabase-url URL --supabase-key KEY
+./audit-rag/04-data/data_access_signals.txt:12:./scripts/tools/sync_pg_knowledge.py:9:    python scripts/tools/sync_pg_knowledge.py --commit --supabase-url URL --supabase-key KEY
+./audit-rag/04-data/data_access_signals.txt:13:./scripts/tools/sync_pg_knowledge.py:188:    parser.add_argument("--supabase-url", default=os.environ.get("SUPABASE_URL", ""))
+./audit-rag/04-data/data_access_signals.txt:14:./scripts/tools/sync_pg_knowledge.py:189:    parser.add_argument("--supabase-key", default=os.environ.get("SUPABASE_SERVICE_ROLE_KEY", ""))
+./audit-rag/04-data/data_access_signals.txt:15:./scripts/tools/sync_pg_knowledge.py:194:    if not args.supabase_url or not args.supabase_key:
+./audit-rag/04-data/data_access_signals.txt:16:./scripts/tools/sync_pg_knowledge.py:195:        logger.error("--supabase-url and --supabase-key are required (or set SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY)")
+./audit-rag/04-data/data_access_signals.txt:17:./scripts/tools/sync_pg_knowledge.py:204:    client = SupabaseRest(args.supabase_url, args.supabase_key)
+./audit-rag/04-data/data_access_signals.txt:39:./scripts/reindex.py:19:    sys.path.insert(0, str(ROOT_DIR))
+./audit-rag/04-data/data_access_signals.txt:40:./scripts/reindex.py:796:        client.collections.delete(collection_name)
+./audit-rag/04-data/data_access_signals.txt:41:./scripts/reindex.py:984:                collection.data.insert(
+./audit-rag/04-data/data_access_signals.txt:42:./scripts/reindex.py:1011:            collection.data.insert(
+./orchestrator/extractors/minio_extractor.py:91:    async def extract(self) -> List[dict]:
+./orchestrator/extractors/minio_extractor.py:109:    async def _extract_bucket(self, client, bucket_name: str) -> List[dict]:
+./orchestrator/extractors/minio_extractor.py:135:    async def _extract_object(self, client, bucket_name: str, object_name: str) -> Optional[dict]:
+./orchestrator/extractors/minio_extractor.py:301:async def extract_minio_documents(config) -> List:
+./orchestrator/extractors/wiki_extractor.py:13:import asyncio
+./orchestrator/extractors/wiki_extractor.py:46:    async def extract(self) -> List[dict]:
+./orchestrator/extractors/wiki_extractor.py:60:    async def _extract_git(self) -> List[dict]:
+./orchestrator/extractors/wiki_extractor.py:118:    async def _extract_graphql(self) -> List[dict]:
+./orchestrator/extractors/wiki_extractor.py:149:            async with httpx.AsyncClient() as client:
+./orchestrator/extractors/wiki_extractor.py:187:async def extract_wiki_documents(config) -> List:
+./orchestrator/extractors/__init__.py:5:- Wiki.js (Git sync or GraphQL API)
+./README.md:115:./scripts/reindex_low_memory.sh /knowledge 1 0

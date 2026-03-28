@@ -1,0 +1,7 @@
+./docker-compose.dev.yml
+./docker-compose.minio.yml
+./docker-compose.prod.yml
+./docker-compose.yml
+./Dockerfile
+./.github/workflows/build-rag-index.yml
+./.github/workflows/rag-eval-gate.yml

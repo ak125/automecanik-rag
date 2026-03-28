@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://automecanik.com/rag/role_map.schema.json",
+  "title": "RoleMap Configuration",
+  "description": "Validates role_map_defaults.json and per-gamme role_map.json overlays. Defines contamination flags, weights, role mappings, and purity thresholds for RAG chunk classification.",
+  "type": "object",
+  "properties": {
+    "contamination_flags": {
+      "type": "object",
+      "description": "Map of flag_name -> {pattern, weight, excluded_roles?, trigger_roles?}",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "Regex pattern (Python re syntax, case-insensitive)"
+          },
+          "weight": {
+            "type": "integer",
+            "description": "Penalty points subtracted from purity (positive integer)",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "excluded_roles": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Roles for which this flag is NOT checked"
+          },
+          "trigger_roles": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "If set, flag only triggers when primary_role is one of these"
+          }
+        },
+        "required": ["weight"]
+      }
+    },
+    "table_safety_flags": {
+      "type": "object",
+      "description": "Contamination flags applied only to table_rows chunks",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "Regex pattern (Python re syntax)"
+          },
+          "weight": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": ["weight"]
+      }
+    },
+    "roles": {
+      "type": "object",
+      "description": "Per-role configuration",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "allowed_chunk_kinds": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "purity_threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1.0
+          }
+        }
+      }
+    },
+    "section_to_role": {
+      "type": "object",
+      "description": "section_key -> primary_role mapping for gamme documents",
+      "additionalProperties": { "type": "string" }
+    },
+    "section_tolerant_roles": {
+      "type": "object",
+      "description": "section_key -> list of allowed additional roles",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

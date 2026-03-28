@@ -1,0 +1,67 @@
+./app/services/rag_service.py:136:                plan["source_plan"].insert(0, catalog)
+./app/api/knowledge.py:258:@router.delete("/{doc_id}")
+./app/admin/router.py:286:    context.update({
+./app/admin/router.py:330:    context.update({
+./app/admin/router.py:446:async def document_delete(request: Request, doc_id: str):
+./app/admin/router.py:498:    context.update({
+./app/admin/router.py:748:        client.collections.delete(collection_name)
+./requirements.txt:42:psycopg[binary]>=3.2.0
+./scripts/run_orchestrator.py:22:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/create_rbac_roles.sql:2:-- Usage: psql -U postgres -d automecanik -f create_rbac_roles.sql
+./scripts/tools/sync_pg_knowledge.py:8:    python scripts/tools/sync_pg_knowledge.py --supabase-url URL --supabase-key KEY
+./scripts/tools/sync_pg_knowledge.py:9:    python scripts/tools/sync_pg_knowledge.py --commit --supabase-url URL --supabase-key KEY
+./scripts/tools/sync_pg_knowledge.py:188:    parser.add_argument("--supabase-url", default=os.environ.get("SUPABASE_URL", ""))
+./scripts/tools/sync_pg_knowledge.py:189:    parser.add_argument("--supabase-key", default=os.environ.get("SUPABASE_SERVICE_ROLE_KEY", ""))
+./scripts/tools/sync_pg_knowledge.py:194:    if not args.supabase_url or not args.supabase_key:
+./scripts/tools/sync_pg_knowledge.py:195:        logger.error("--supabase-url and --supabase-key are required (or set SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY)")
+./scripts/tools/sync_pg_knowledge.py:204:    client = SupabaseRest(args.supabase_url, args.supabase_key)
+./scripts/tools/normalize_doc_metadata.py:11:sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+./scripts/tools/build_index.py:10:    sys.path.insert(0, str(ROOT_DIR))
+./tests/test_pipeline_enrichment.py:14:sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+./scripts/tools/ensure_gamme_contracts.py:22:    sys.path.insert(0, str(ROOT_DIR))
+./scripts/init_schema.py:10:    sys.path.insert(0, str(ROOT_DIR))
+./scripts/tools/wiki_ingester.py:25:    sys.path.insert(0, str(ROOT_DIR))
+./scripts/ingestors/ingest_db.py:23:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_db.py:53:    if u.startswith("postgresql://") or u.startswith("postgres://"):
+./scripts/ingestors/ingest_db.py:54:        return "postgres"
+./scripts/ingestors/ingest_db.py:57:    raise ValueError("Unsupported DB URL. Use postgresql:// or mysql://")
+./scripts/ingestors/ingest_db.py:62:    if driver == "postgres":
+./scripts/ingestors/ingest_db.py:64:            import psycopg  # type: ignore
+./scripts/ingestors/ingest_db.py:66:            raise RuntimeError("psycopg is required for PostgreSQL. pip install psycopg[binary]") from exc
+./scripts/ingestors/ingest_db.py:67:        return psycopg.connect(db_url), driver
+./scripts/ingestors/ingest_db.py:159:    # psycopg default row tuple -> map with description
+./scripts/ingestors/ingest_db.py:288:        schema_q = POSTGRES_SCHEMA_QUERY if driver == "postgres" else MYSQL_SCHEMA_QUERY
+./scripts/ingestors/ingest_db.py:289:        fk_q = POSTGRES_FK_QUERY if driver == "postgres" else MYSQL_FK_QUERY
+./scripts/ingestors/ingest_db.py:380:    parser.add_argument("--db-url", help="DB URL (postgresql://... or mysql://...)")
+./scripts/ingestors/ingest_db.py:381:    parser.add_argument("--provider", default="supabase", help="Provider name for source_uri db:<provider>")
+./scripts/ingestors/ingest_images.py:30:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_images.py:49:            h.update(chunk)
+./scripts/reindex.py:19:    sys.path.insert(0, str(ROOT_DIR))
+./scripts/reindex.py:796:        client.collections.delete(collection_name)
+./scripts/reindex.py:984:                collection.data.insert(
+./scripts/reindex.py:1011:            collection.data.insert(
+./scripts/importers/import_and_index_db_starter.sh:8:#   DB_URL='postgresql://user:pass@host:5432/db' ./scripts/import_and_index_db_starter.sh
+./scripts/importers/import_and_index_db_starter.sh:9:#   DB_URL='postgresql://...' ./scripts/import_and_index_db_starter.sh supabase 300
+./scripts/importers/import_and_index_db_starter.sh:12:PROVIDER="${1:-supabase}"
+./scripts/importers/import_and_index_db.sh:9:#   DB_URL='postgresql://...' ./scripts/import_and_index_db.sh \
+./scripts/importers/import_and_index_db.sh:10:#     --provider supabase \
+./scripts/importers/import_and_index_db.sh:14:PROVIDER="supabase"
+./scripts/importers/import_and_index_db.sh:26:      PROVIDER="${2:-supabase}"
+./scripts/ingestors/ingest_tabular.py:29:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_pdfs.py:30:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_pdfs.py:51:            h.update(chunk)
+./scripts/ingestors/ingest_videos.py:27:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_videos.py:70:            h.update(chunk)
+./scripts/ingestors/ingest_logs.py:19:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_structured.py:27:sys.path.insert(0, str(Path(__file__).parent.parent))
+./scripts/ingestors/ingest_structured.py:75:            out.update(flatten_json(v, nk))
+./scripts/ingestors/ingest_structured.py:79:            out.update(flatten_json(obj[0], f"{prefix}[]"))
+./scripts/ingestors/ingest_structured.py:136:        all_keys.update(flat.keys())
+./scripts/ingestors/ingest_web.py:28:sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+./scripts/ingestors/ingest_web.py:338:        removed_images.insert(0, result.pop(i))
+./scripts/ingestors/ingest_web.py:374:        result.insert(insert_pos, "")
+./scripts/ingestors/ingest_web.py:375:        result.insert(insert_pos + 1, img_line)
+./orchestrator/processors/role_classifier.py:388:        contamination_flags.update(table_flags)
+./audit-rag/03-pipeline/pipeline_signals.txt:503:./scripts/ingestors/ingest_images.py:49:            h.update(chunk)
+./audit-rag/03-pipeline/pipeline_signals.txt:596:./scripts/ingestors/ingest_pdfs.py:51:            h.update(chunk)
+./audit-rag/03-pipeline/pipeline_signals.txt:886:./scripts/ingestors/ingest_videos.py:70:            h.update(chunk)

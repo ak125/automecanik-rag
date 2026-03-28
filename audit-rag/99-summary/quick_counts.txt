@@ -1,0 +1,3 @@
+Pipeline signals: 3193
+Data access signals: 67
+Mutation signals: 698
