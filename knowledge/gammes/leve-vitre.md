@@ -1,21 +1,29 @@
 ---
 category: accessoires
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
+slug: leve-vitre
+title: Lève-vitre
+pg_id: 1561
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Monte et descend la vitre de la portière
   must_be_true:
   - lever
   - descendre
   - actionner
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - freinage
   - distribution
@@ -23,14 +31,106 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Monte et descend la vitre de la portière
-page_contract:
-  antiMistakes:
+  related_parts:
+  - lever
+  - descendre
+  - actionner
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "fonctionnement garanti"
+  cost_range:
+    min: 80
+    max: 250
+    currency: EUR
+    unit: mécanisme complet
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Origine constructeur (OE)
+  - tier: Equivalent OE (OES)
+  - tier: Adaptable qualite
+  - tier: Reconditionne
+  - tier: Echange standard
+  brands:
+    premium:
+    - Stabilus
+    - Valeo
+    standard:
+    - Febi
+    - Meyle
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Vitre qui ne monte ou ne descend plus
+    severity: confort
+  - id: S2
+    label: Vitre tres lente arrete cours
+    severity: confort
+  - id: S3
+    label: Bruit de moteur mais vitre immobile cable casse
+    severity: confort
+  - id: S4
+    label: Vitre qui descend toute seule mecanisme use
+    severity: confort
+  - id: S5
+    label: Grincement ou bruit anormal a la montee descente
+    severity: confort
+  - id: S6
+    label: Vitre de travers ou mal guidee dans le rail
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'Usure ou defaillance causant : vitre qui ne monte ou ne descend plus'
+  quick_checks:
+  - 'Observer : vitre qui ne monte ou ne descend plus ?'
+  - 'Observer : vitre tres lente arrete cours ?'
+  - Bruit de moteur mais vitre immobile cable casse ?
+  - 'Observer : vitre qui descend toute seule mecanisme use ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Vitre qui ne monte ou ne descend plus
+  - Vitre tres lente arrete cours
+  - Bruit de moteur mais vitre immobile cable casse
+  - Vitre qui descend toute seule mecanisme use
+  - Grincement ou bruit anormal a la montee descente
+  - Vitre de travers ou mal guidee dans le rail
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '1561'
+  intro_title: A quoi sert Lève-vitre ?
+  risk_title: Pourquoi remplacer Lève-vitre a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -45,62 +145,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Lève-vitre compatible avec mon vehicule ?
-  - answer: En cas de vitre qui ne monte ou ne descend plus ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Lève-vitre ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Lève-vitre sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Lève-vitre.
-  id: 1561
-  intro:
-    role: Monte et descend la vitre de la portière
-    syncParts:
-    - lever
-    - descendre
-    - actionner
-    title: A quoi sert Lève-vitre ?
-  pgId: '1561'
+  - question: Lève-vitre OE ou adaptable ?
+    answer: Les lève-vitres OES (Valeo, Brose) sont de qualité équivalente. Les adaptables conviennent mais vérifiez la compatibilité
+      exacte (avec ou sans moteur, gauche/droite).
+  - question: Comment savoir si mon lève-vitre est HS ?
+    answer: Vitre qui ne monte plus ou très lentement, bruit de moteur sans mouvement (câble cassé), vitre qui descend toute
+      seule, bruit de grincement.
+  - question: Tous les combien changer le lève-vitre ?
+    answer: Pas de périodicité. Durée de vie variable selon usage. Les portières conducteur s'usent plus vite. Peut durer
+      150 000+ km ou tomber en panne avant.
+  - question: Peut-on changer un lève-vitre soi-même ?
+    answer: Oui mais opération délicate. Déposer le panneau de porte, débrancher les connecteurs, dévisser le mécanisme, tenir
+      la vitre. Prévoir 1 à 2h par portière.
+  - question: Quelle erreur éviter ?
+    answer: Maintenir la vitre pendant l'opération (risque de chute). Vérifier l'interrupteur et le fusible avant de changer
+      le mécanisme. Ne pas forcer une vitre bloquée.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/leve-vitre.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Lève-vitre a temps ?
-  symptoms:
-  - vitre qui ne monte ou ne descend plus
-  - vitre tres lente arrete cours
-  - bruit de moteur mais vitre immobile cable casse
-  - vitre qui descend toute seule mecanisme use
-  - grincement ou bruit anormal a la montee descente
-  - vitre de travers ou mal guidee dans le rail
-  - '**Bruit de moteur mais vitre immobile cable casse**'
-  - '**Grincement ou bruit anormal a la montee descente**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1561
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -108,55 +171,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: leve-vitre
-source_type: gamme
-symptoms:
-- description: vitre qui ne monte ou ne descend plus
-  evidence:
-  - 'Observation: vitre qui ne monte ou ne descend plus'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Vitre qui ne monte ou ne descend plus
-  risk_level: confort
-- description: vitre tres lente arrete cours
-  evidence:
-  - 'Observation: vitre tres lente arrete cours'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Vitre tres lente arrete cours
-  risk_level: confort
-- description: bruit de moteur mais vitre immobile cable casse
-  evidence:
-  - 'Observation: bruit de moteur mais vitre immobile cable casse'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Bruit de moteur mais vitre immobile cable casse
-  risk_level: degats_volant_moteur
-- description: vitre qui descend toute seule mecanisme use
-  evidence:
-  - 'Observation: vitre qui descend toute seule mecanisme use'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Vitre qui descend toute seule mecanisme use
-  risk_level: confort
-- description: grincement ou bruit anormal a la montee descente
-  evidence:
-  - 'Observation: grincement ou bruit anormal a la montee descente'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Grincement ou bruit anormal a la montee descente
-  risk_level: degats_volant_moteur
-- description: vitre de travers ou mal guidee dans le rail
-  evidence:
-  - 'Observation: vitre de travers ou mal guidee dans le rail'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Vitre de travers ou mal guidee dans le rail
-  risk_level: confort
-title: Lève-vitre
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: b558ca86-cf40-5fe2-be35-ab7e56300a50
+content_hash: sha256:0a91f62c0d05d9df
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Lève-vitre - Guide Diagnostic Complet
@@ -192,6 +235,12 @@ Pour diagnostiquer un problème de lève-vitre:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -222,3 +271,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "fonctionnement garanti"
+
+## FAQ
+
+**Lève-vitre OE ou adaptable ?**
+Les lève-vitres OES (Valeo, Brose) sont de qualité équivalente. Les adaptables conviennent mais vérifiez la compatibilité exacte (avec ou sans moteur, gauche/droite).
+
+**Comment savoir si mon lève-vitre est HS ?**
+Vitre qui ne monte plus ou très lentement, bruit de moteur sans mouvement (câble cassé), vitre qui descend toute seule, bruit de grincement.
+
+**Tous les combien changer le lève-vitre ?**
+Pas de périodicité. Durée de vie variable selon usage. Les portières conducteur s'usent plus vite. Peut durer 150 000+ km ou tomber en panne avant.
+
+**Peut-on changer un lève-vitre soi-même ?**
+Oui mais opération délicate. Déposer le panneau de porte, débrancher les connecteurs, dévisser le mécanisme, tenir la vitre. Prévoir 1 à 2h par portière.
+
+**Quelle erreur éviter ?**
+Maintenir la vitre pendant l'opération (risque de chute). Vérifier l'interrupteur et le fusible avant de changer le mécanisme. Ne pas forcer une vitre bloquée.

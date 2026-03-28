@@ -1,21 +1,29 @@
 ---
 category: eclairage
-diagnostic_tree:
-- if: symptome_general_detecte
-  then: inspection_visuelle_et_test_fonctionnel
+slug: ampoule-feu-stop
+title: Ampoule feu stop
+pg_id: 111
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-25'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Produit la lumière pour signaler le freinage du véhicule
   must_be_true:
   - produire
   - emettre
   - signaler
-  must_not_contain_concepts:
+  must_not_contain:
   - feu complet
   - optique
   - relais
@@ -24,14 +32,100 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Produit la lumière pour signaler le freinage du véhicule
-page_contract:
-  antiMistakes:
+  related_parts:
+  - ampoule-feu-avant
+  - ampoule-feu-arriere
+  - feu-avant
+  - feu-arriere
+  - phares-antibrouillard
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "visibilite parfaite"
+  cost_range:
+    min: 2
+    max: 15
+    currency: EUR
+    unit: ampoule
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Équipementier d'origine (OE)
+  - tier: Équivalent OE / équipementier éclairage reconnu
+  - tier: Ampoule LED stop compatible
+  brands:
+    premium:
+    - Osram
+    - Philips
+    standard:
+    - Bosch
+    - Hella
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Un seul feu stop ne s allume pas
+    severity: confort
+  - id: S2
+    label: Feu stop qui clignote ou s allume faiblement
+    severity: confort
+  - id: S3
+    label: Ampoule noircie visible a travers le feu
+    severity: confort
+  - id: S4
+    label: Message defaut feux au tableau de bord
+    severity: confort
+  - id: S5
+    label: Feux stop grillent souvent verifier
+    severity: confort
+  causes:
+  - inspection visuelle et test fonctionnel
+  - 'symptome general detecte : inspection visuelle et test fonctionnel'
+  - 'Usure ou defaillance causant : un seul feu stop ne s allume pas'
+  quick_checks:
+  - 'Observer : un seul feu stop ne s allume pas ?'
+  - 'Observer : feu stop qui clignote ou s allume faiblement ?'
+  - 'Observer : ampoule noircie visible a travers le feu ?'
+  - 'Observer : message defaut feux au tableau de bord ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Seul feu stop ne s allume pas
+  - Feu stop qui clignote ou s allume faiblement
+  - Ampoule noircie visible a travers le feu
+  - Message defaut feux au tableau de bord
+  - Feux stop grillent souvent verifier
+  good_practices:
+  - Controle regulier du fonctionnement de tous les feux
+  - Remplacement par paire pour eclairage homogene
+  - 'Ne pas toucher l ampoule a mains nues (halogen: trace = point chaud)'
+  - Reglage des phares apres remplacement d ampoule ou d optique
+rendering:
+  pgId: '111'
+  intro_title: A quoi sert Ampoule feu stop ?
+  risk_title: Pourquoi remplacer Ampoule feu stop a temps ?
+  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_consequences:
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,56 +140,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Ampoule feu stop compatible avec mon vehicule ?
-  - answer: En cas de un seul feu stop ne s allume pas ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Ampoule feu stop ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Ampoule feu stop sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Ampoule feu stop.
-  id: 111
-  intro:
-    role: Produit la lumière pour signaler le freinage du véhicule
-    syncParts:
-    - produire
-    - emettre
-    - signaler
-    title: A quoi sert Ampoule feu stop ?
-  pgId: '111'
+  - question: Quelle ampoule pour mes feux stop ?
+    answer: La plus courante est la P21W (simple filament) ou P21/5W (double filament si combinée avec le feu de position).
+      Vérifiez dans votre carnet d'entretien ou sur l'ampoule d'origine.
+  - question: Puis-je mettre des LED ?
+    answer: Oui, mais attention à la compatibilité. Certains véhicules détectent les LED comme défaillantes (consommation
+      trop faible). Il peut falloir ajouter une résistance.
+  - question: Comment accéder aux ampoules ?
+    answer: 'Généralement par l''intérieur du coffre : déclipsez le cache ou dévissez le bloc feu. Sur certains modèles, il
+      faut retirer le bloc complet depuis l''extérieur.'
+  - question: Quelles sont les erreurs fréquentes à éviter ?
+    answer: Toucher le verre de l'ampoule avec les doigts (graisse = point chaud = grillage). Forcer sur la douille. Ne pas
+      vérifier le fusible si les deux feux sont HS.
+  - question: Comment faire un diagnostic rapide ?
+    answer: Un seul feu HS → ampoule. Les deux HS → fusible ou contacteur. Feu faible → mauvais contact ou ampoule fatiguée.
+      Clignote → contact intermittent.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/ampoule-feu-stop.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
-    title: Pourquoi remplacer Ampoule feu stop a temps ?
-  symptoms:
-  - un seul feu stop ne s allume pas
-  - feu stop qui clignote ou s allume faiblement
-  - ampoule noircie visible a travers le feu
-  - message defaut feux au tableau de bord
-  - feux stop grillent souvent verifier
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 111
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -103,48 +166,41 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: ampoule-feu-stop
-source_type: gamme
-symptoms:
-- description: un seul feu stop ne s allume pas
-  evidence:
-  - 'Observation: un seul feu stop ne s allume pas'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Un seul feu stop ne s allume pas
-  risk_level: confort
-- description: feu stop qui clignote ou s allume faiblement
-  evidence:
-  - 'Observation: feu stop qui clignote ou s allume faiblement'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Feu stop qui clignote ou s allume faiblement
-  risk_level: confort
-- description: ampoule noircie visible a travers le feu
-  evidence:
-  - 'Observation: ampoule noircie visible a travers le feu'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Ampoule noircie visible a travers le feu
-  risk_level: confort
-- description: message defaut feux au tableau de bord
-  evidence:
-  - 'Observation: message defaut feux au tableau de bord'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Message defaut feux au tableau de bord
-  risk_level: confort
-- description: feux stop grillent souvent verifier
-  evidence:
-  - 'Observation: feux stop grillent souvent verifier'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Feux stop grillent souvent verifier
-  risk_level: confort
-title: Ampoule feu stop
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 30194bb1-c54b-540c-804d-8ea1736201e6
+content_hash: sha256:3e22c4aa5b15daf8
+lang: fr
+variants:
+- name: Ampoule halogene
+  aliases:
+  - halogene
+  - H1
+  - H4
+  - H7
+  functional_differences:
+  - Standard, economique
+  - Remplacement simple
+- name: Ampoule LED
+  aliases:
+  - LED
+  functional_differences:
+  - Duree de vie superieure
+  - Consommation reduite
+  - Verifier homologation
+location_on_vehicle:
+  area: Face avant, arriere et laterale du vehicule
+  access: Par le compartiment moteur (avant) ou coffre (arriere)
+  adjacent_parts:
+  - optique
+  - ampoule
+  - connecteur
+  - reflecteur
+installation:
+  difficulty: facile
+  time: 5 a 15 min
+  tools:
+  - tournevis
+  - gants (ne pas toucher ampoule halogene)
+  prerequisite: Moteur eteint, acces par compartiment moteur ou coffre
 ---
 
 # Ampoule feu stop - Guide Diagnostic Complet
@@ -172,6 +228,12 @@ Pour diagnostiquer un problème de ampoule feu stop:
 1. **Inspection visuelle** - Examiner l'état du ampoule feu stop
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -202,3 +264,65 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "visibilite parfaite"
+
+## FAQ
+
+**Quelle ampoule pour mes feux stop ?**
+La plus courante est la P21W (simple filament) ou P21/5W (double filament si combinée avec le feu de position). Vérifiez dans votre carnet d'entretien ou sur l'ampoule d'origine.
+
+**Puis-je mettre des LED ?**
+Oui, mais attention à la compatibilité. Certains véhicules détectent les LED comme défaillantes (consommation trop faible). Il peut falloir ajouter une résistance.
+
+**Comment accéder aux ampoules ?**
+Généralement par l'intérieur du coffre : déclipsez le cache ou dévissez le bloc feu. Sur certains modèles, il faut retirer le bloc complet depuis l'extérieur.
+
+**Quelles sont les erreurs fréquentes à éviter ?**
+Toucher le verre de l'ampoule avec les doigts (graisse = point chaud = grillage). Forcer sur la douille. Ne pas vérifier le fusible si les deux feux sont HS.
+
+**Comment faire un diagnostic rapide ?**
+Un seul feu HS → ampoule. Les deux HS → fusible ou contacteur. Feu faible → mauvais contact ou ampoule fatiguée. Clignote → contact intermittent.
+
+
+## Symptomes supplementaires
+
+<!-- materialized-from-db diagnostic/eclairage-voyants.md 2026-02-15 -->
+### Diagnostic - Éclairage et signalisation
+
+# Éclairage et signalisation - Diagnostic complet
+
+## Phares et feux
+
+### Phares faibles
+- **Ampoules vieillissantes** : Les ampoules halogènes perdent 20-30% de luminosité après 2-3 ans. Remplacement par paire recommandé.
+- **Optiques ternies** : Le polycarbonate des phares jaunit et devient opaque avec le temps. Kit de rénovation ou polissage.
+- **Réglage incorrect** : Phares trop bas après un chargement ou un remplacement. Réglage avec les vis dédiées.
+
+### Ampoules grillées fréquemment
+- **Surtension** : Régulateur d'alternateur défaillant (tension > 14.8V). Mesurer la tension de charge.
+- **Vibrations excessives** : Ampoule mal fixée dans son support, vibrations transmises au filament.
+- **Mauvaise qualité** : Préférer des ampoules de marque (Philips, Osram, Bosch).
+
+### Feux qui ne fonctionnent pas
+- **Fusible grillé** : Vérifier le fusible correspondant dans la boîte à fusibles.
+- **Connecteur oxydé** : Humidité dans le porte-ampoule, nettoyage et graisse contact.
+- **Problème de masse** : Fil de masse corrodé au niveau du feu. Fréquent sur les feux arrière.
+
+## Contrôle technique - Points éclairage
+
+- Tous les feux doivent fonctionner : croisement, route, position, stop, recul, clignotants, antibrouillard arrière
+- Hauteur de faisceau correcte (réglage)
+- Pas de fissure laissant entrer l'eau dans les optiques
+- Couleur conforme : blanc devant, rouge derrière, orange pour les clignotants
+
+## LED vs Halogène vs Xénon
+
+- **Halogène (H7, H4, H1)** : Standard, remplacement facile, coût faible
+- **Xénon (D1S, D2S, D3S)** : Puissant, durée de vie longue, remplacement coûteux, nécessite un ballast
+- **LED** : Très longue durée de vie, faible consommation, remplacement du bloc optique entier en cas de panne
+
+## Quand consulter un professionnel
+
+- Phare xénon qui clignote ou change de couleur (ballast ou ampoule)
+- Feux LED intégrés défaillants (remplacement du bloc complet)
+- Court-circuit récurrent (fusible qui saute à chaque remplacement)
+- Défaut de réglage persistant malgré les ajustements

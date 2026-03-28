@@ -1,21 +1,29 @@
 ---
 category: freinage
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
+slug: vis-de-disque
+title: Vis de disque
+pg_id: 54
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-25'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Fixer le disque de frein sur le moyeu de roue
   must_be_true:
   - fixer
   - maintenir
   - bloquer
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - climatisation
   - embrayage
@@ -24,14 +32,113 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Fixer le disque de frein sur le moyeu de roue
-page_contract:
-  antiMistakes:
+  related_parts:
+  - disque-de-frein
+  - plaquette-de-frein
+  - etrier-de-frein
+  - flexible-de-frein
+  - maitre-cylindre-de-frein
+  - liquide-de-frein
+  confusion_with:
+  - term: piece-de-freinage-voisine
+    difference: 'Verifier la reference exacte : les pieces de freinage se ressemblent mais ne sont pas interchangeables entre
+      essieux ou types de montage.'
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "freinage garanti"
+  cost_range:
+    min: 3
+    max: 15
+    currency: EUR
+    unit: l'unite
+    source: estimation categorie
+  brands:
+    premium:
+    - Brembo
+    - ATE
+    - TRW
+    standard:
+    - Febi Bilstein
+    - Swag
+    - Bosch
+    - Textar
+    budget:
+    - NK
+    - A.B.S.
+    - Mapco
+  quality_tiers:
+  - tier: Origine (OE/OES)
+    description: Vis de disque fabriquées par les équipementiers d'origine. Traitement anti-corrosion et couple de serrage
+      calibrés pour le moyeu spécifique.
+  - tier: Équivalent OE
+    description: Fabricants aftermarket reconnus en visserie de freinage. Conformes aux spécifications constructeur, traitement
+      de surface adapté.
+  - tier: Adaptable
+    description: Vis économiques. Vérifier le type d'empreinte (Torx, Allen, hexagonale), le diamètre et le pas de filetage
+      avant commande.
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Vis grippee impossible a devisser
+    severity: confort
+  - id: S2
+    label: Tete de vis arrondie ou endommagee
+    severity: confort
+  - id: S3
+    label: Vis rouillee visible a travers la jante
+    severity: confort
+  - id: S4
+    label: Disque qui bouge legerement vis desserree
+    severity: confort
+  - id: S5
+    label: Bruit claquement freinage cassee absente
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'Usure ou defaillance causant : vis grippee impossible a devisser'
+  quick_checks:
+  - 'Observer : vis grippee impossible a devisser ?'
+  - 'Observer : tete de vis arrondie ou endommagee ?'
+  - 'Observer : vis rouillee visible a travers la jante ?'
+  - 'Observer : disque qui bouge legerement vis desserree ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Vis grippee impossible a devisser
+  - Tete de vis arrondie ou endommagee
+  - Vis rouillee visible a travers la jante
+  - Disque qui bouge legerement vis desserree
+  - Bruit claquement freinage cassee absente
+  good_practices:
+  - Controle visuel a chaque revision ou tous les 15 000 km
+  - Remplacement par paire (essieu complet) pour equilibre de freinage
+  - Rodage des pieces neuves sur 200 km (freinages progressifs)
+  - Verifier le niveau de liquide de frein lors de chaque intervention
+rendering:
+  pgId: '54'
+  intro_title: A quoi sert Vis de disque ?
+  risk_title: Pourquoi remplacer Vis de disque a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,60 +153,24 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Vis de disque compatible avec mon vehicule ?
-  - answer: En cas de vis grippee impossible a devisser ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Vis de disque ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Vis de disque sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de frein pour confirmer Vis de disque.
-  id: 54
-  intro:
-    role: Fixer le disque de frein sur le moyeu de roue
-    syncParts:
-    - fixer
-    - maintenir
-    - bloquer
-    title: A quoi sert Vis de disque ?
-  pgId: '54'
+  - question: Les vis de disque sont-elles indispensables ?
+    answer: Elles maintiennent le disque en place pendant le montage. Une fois la roue serrée, les écrous de roue assurent
+      le maintien principal.
+  - question: Comment retirer une vis grippée ?
+    answer: 'Dégrippant, chaleur localisée, embout à frapper. En dernier recours : perçage et extraction. Prévoyez des vis
+      neuves.'
+  - question: Faut-il graisser ou freiner les vis ?
+    answer: 'Selon constructeur : certains préconisent du frein-filet (Loctite bleu), d''autres de la graisse cuivrée. Consultez
+      la documentation technique.'
+  - question: Quelles sont les erreurs fréquentes à éviter ?
+    answer: Forcer une vis Torx/Allen grippée sans outil → tête foirée. Oublier de nettoyer l'empreinte → l'embout ripe.
+  - question: Comment faire un diagnostic rapide ?
+    answer: 'Vis déjà arrondie/rouillée → prévoir vis neuves + embout neuf + dégrippant. Si elle casse : extraction/perçage
+      (prévoir temps atelier).'
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/vis-de-disque.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Vis de disque a temps ?
-  symptoms:
-  - vis grippee impossible a devisser
-  - tete de vis arrondie ou endommagee
-  - vis rouillee visible a travers la jante
-  - disque qui bouge legerement vis desserree
-  - bruit claquement freinage cassee absente
-  - '**Bruit claquement freinage cassee absente**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 54
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -107,49 +178,41 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: vis-de-disque
-source_type: gamme
-subcategory: disques
-symptoms:
-- description: vis grippee impossible a devisser
-  evidence:
-  - 'Observation: vis grippee impossible a devisser'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Vis grippee impossible a devisser
-  risk_level: confort
-- description: tete de vis arrondie ou endommagee
-  evidence:
-  - 'Observation: tete de vis arrondie ou endommagee'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Tete de vis arrondie ou endommagee
-  risk_level: confort
-- description: vis rouillee visible a travers la jante
-  evidence:
-  - 'Observation: vis rouillee visible a travers la jante'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Vis rouillee visible a travers la jante
-  risk_level: confort
-- description: disque qui bouge legerement vis desserree
-  evidence:
-  - 'Observation: disque qui bouge legerement vis desserree'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Disque qui bouge legerement vis desserree
-  risk_level: confort
-- description: bruit claquement freinage cassee absente
-  evidence:
-  - 'Observation: bruit claquement freinage cassee absente'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Bruit claquement freinage cassee absente
-  risk_level: degats_volant_moteur
-title: Vis de disque
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: eb3cd898-8b88-5d10-9322-ba32273a3786
+content_hash: sha256:81bcfb7df7043650
+lang: fr
+variants:
+- name: Piece standard
+  aliases:
+  - standard
+  - OE equivalent
+  functional_differences:
+  - Qualite equivalente a la monte d origine
+  - Compatible avec la majorite des vehicules
+- name: Piece performance/sport
+  aliases:
+  - sport
+  - haute performance
+  functional_differences:
+  - Materiaux haute temperature
+  - Pour usage intensif ou sportif
+location_on_vehicle:
+  area: Au niveau des roues (avant et/ou arriere)
+  access: Demontage de la roue necessaire (cric + chandelle)
+  adjacent_parts:
+  - disque
+  - plaquette
+  - etrier
+  - flexible
+installation:
+  difficulty: moyen
+  time: 30min a 1h par essieu
+  tools:
+  - cle a douille
+  - cle Allen
+  - pied a coulisse
+  - cle dynamometrique
+  prerequisite: Vehicule sur chandelles, roue demontee
 ---
 
 # Vis de disque - Guide Diagnostic Complet
@@ -183,6 +246,12 @@ Pour diagnostiquer un problème de vis de disque:
 3. **Test au roulage** - Vérifier l'efficacité et les bruits
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -212,3 +281,39 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "freinage garanti"
+
+## FAQ
+
+**Les vis de disque sont-elles indispensables ?**
+Elles maintiennent le disque en place pendant le montage. Une fois la roue serrée, les écrous de roue assurent le maintien principal.
+
+**Comment retirer une vis grippée ?**
+Dégrippant, chaleur localisée, embout à frapper. En dernier recours : perçage et extraction. Prévoyez des vis neuves.
+
+**Faut-il graisser ou freiner les vis ?**
+Selon constructeur : certains préconisent du frein-filet (Loctite bleu), d'autres de la graisse cuivrée. Consultez la documentation technique.
+
+**Quelles sont les erreurs fréquentes à éviter ?**
+Forcer une vis Torx/Allen grippée sans outil → tête foirée. Oublier de nettoyer l'empreinte → l'embout ripe.
+
+**Comment faire un diagnostic rapide ?**
+Vis déjà arrondie/rouillée → prévoir vis neuves + embout neuf + dégrippant. Si elle casse : extraction/perçage (prévoir temps atelier).
+
+
+## References supplementaires
+
+<!-- materialized-from-db guides/freinage__quand-changer.md 2026-03-03 -->
+### Quand changer les plaquettes et disques
+
+## Signes d'usure
+
+- bruit metallique au freinage
+- vibration a la pedale
+- distance de freinage en hausse
+- epaisseur de garniture faible
+
+## Frequence de controle
+
+- controle visuel regulier
+- verification a chaque entretien periodique
+- remplacement selon usure reelle et recommandations constructeur

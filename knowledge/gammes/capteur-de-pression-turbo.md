@@ -1,21 +1,29 @@
 ---
 category: turbo
-diagnostic_tree:
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: capteur-de-pression-turbo
+title: Capteur de pression turbo
+pg_id: 3553
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Mesurer la pression de suralimentation et transmettre au calculateur
   must_be_true:
   - mesurer
   - detecter
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - climatisation
   - freinage
   - distribution
@@ -24,14 +32,114 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Mesurer la pression de suralimentation et transmettre au calculateur
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - bobine-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-electrique-voisine
+    difference: Les pieces electriques ont des connecteurs specifiques. Verifier le nombre de broches et le voltage.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "augmente la puissance"
+  cost_range:
+    min: 30
+    max: 120
+    currency: EUR
+    unit: capteur
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Constructeur (OE)
+    description: Capteur calibré en usine pour le calculateur d'origine. Garantit des mesures conformes aux cartographies
+      moteur.
+  - tier: Équivalent OE (OES)
+    description: 'Produits par des équipementiers reconnus dans ce segment : Bosch, Pierburg, Hella. Ces marques fournissent
+      les constructeurs et respectent les plages de mesure d''origine.'
+  - tier: Adaptable
+    description: Capteurs génériques dont la plage de mesure peut légèrement différer de l'OE. Risque de codes défaut résiduels
+      ou de mode dégradé persistant.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    - Denso
+    standard:
+    - Hella
+    - NGK
+    - Delphi
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Voyant moteur allume codes p0234-p0239
+    severity: confort
+  - id: S2
+    label: Mode degrade active puissance reduite
+    severity: confort
+  - id: S3
+    label: Perte de puissance a l acceleration
+    severity: confort
+  - id: S4
+    label: Suralimentation irreguliere ou absente
+    severity: securite
+  - id: S5
+    label: Fumee noire a l acceleration
+    severity: confort
+  - id: S6
+    label: Turbo qui ne monte pas en pression
+    severity: confort
+  causes:
+  - lecture codes defaut obd et diagnostic electronique
+  - 'voyant tableau bord allume : lecture codes defaut obd et diagnostic electronique'
+  - 'Usure ou defaillance causant : voyant moteur allume codes p0234-p0239'
+  quick_checks:
+  - Voyant moteur allume codes p0234-p0239 ?
+  - 'Observer : mode degrade active puissance reduite ?'
+  - 'Observer : perte de puissance a l acceleration ?'
+  - 'Observer : suralimentation irreguliere ou absente ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Voyant moteur allume codes p0234-p0239
+  - Mode degrade active puissance reduite
+  - Perte de puissance a l acceleration
+  - Suralimentation irreguliere ou absente
+  - Fumee noire a l acceleration
+  - Turbo qui ne monte pas en pression
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '3553'
+  intro_title: A quoi sert Capteur de pression turbo ?
+  risk_title: Pourquoi remplacer Capteur de pression turbo a temps ?
+  risk_explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  risk_consequences:
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,63 +154,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Capteur de pression turbo compatible avec mon vehicule
-      ?
-  - answer: En cas de voyant moteur allume codes p0234-p0239 ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Capteur de pression turbo ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Capteur de pression turbo sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Capteur de pression
-    turbo.
-  id: 3553
-  intro:
-    role: Mesurer la pression de suralimentation et transmettre au calculateur
-    syncParts:
-    - mesurer
-    - detecter
-    - transmettre
-    title: A quoi sert Capteur de pression turbo ?
-  pgId: '3553'
+  - question: Capteur de pression turbo OE ou adaptable ?
+    answer: Privilégiez l'OE ou OES (Bosch, Pierburg, Hella). Les capteurs adaptables peuvent avoir des valeurs légèrement
+      différentes et déclencher des défauts.
+  - question: Comment savoir si le capteur turbo est HS ?
+    answer: Voyant moteur allumé (codes P0234 à P0239), mode dégradé, perte de puissance, suralimentation irrégulière, fumée
+      noire.
+  - question: Tous les combien changer le capteur ?
+    answer: Pas de périodicité. Pièce électronique qui peut durer toute la vie du véhicule. À remplacer si code défaut spécifique
+      au capteur.
+  - question: Peut-on changer le capteur turbo soi-même ?
+    answer: Oui, opération simple. Localiser le capteur sur le collecteur d'admission, débrancher le connecteur, dévisser.
+      15-30 min.
+  - question: Quelle erreur éviter ?
+    answer: Toujours vérifier la durite de pression avant de changer le capteur. Effacer les codes défaut après remplacement.
+      Ne pas forcer sur le connecteur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/capteur-de-pression-turbo.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou
-      de composant électronique'
-    title: Pourquoi remplacer Capteur de pression turbo a temps ?
-  symptoms:
-  - voyant moteur allume codes p0234-p0239
-  - mode degrade active puissance reduite
-  - perte de puissance a l acceleration
-  - suralimentation irreguliere ou absente
-  - fumee noire a l acceleration
-  - turbo qui ne monte pas en pression
-  - '**Suralimentation irreguliere ou absente**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 3553
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -110,55 +180,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: capteur-de-pression-turbo
-source_type: gamme
-symptoms:
-- description: voyant moteur allume codes p0234-p0239
-  evidence:
-  - 'Observation: voyant moteur allume codes p0234-p0239'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Voyant moteur allume codes p0234-p0239
-  risk_level: confort
-- description: mode degrade active puissance reduite
-  evidence:
-  - 'Observation: mode degrade active puissance reduite'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Mode degrade active puissance reduite
-  risk_level: confort
-- description: perte de puissance a l acceleration
-  evidence:
-  - 'Observation: perte de puissance a l acceleration'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Perte de puissance a l acceleration
-  risk_level: confort
-- description: suralimentation irreguliere ou absente
-  evidence:
-  - 'Observation: suralimentation irreguliere ou absente'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Suralimentation irreguliere ou absente
-  risk_level: securite
-- description: fumee noire a l acceleration
-  evidence:
-  - 'Observation: fumee noire a l acceleration'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Fumee noire a l acceleration
-  risk_level: confort
-- description: turbo qui ne monte pas en pression
-  evidence:
-  - 'Observation: turbo qui ne monte pas en pression'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Turbo qui ne monte pas en pression
-  risk_level: confort
-title: Capteur de pression turbo
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 0310e260-4a57-5cac-a6f7-c8e38c3bd648
+content_hash: sha256:7bacd1acbc206987
+lang: fr
+variants:
+- name: Piece neuve OE/OES
+  aliases:
+  - neuf
+  - OE
+  - OES
+  functional_differences:
+  - Garantie constructeur ou equipementier
+  - Calibration d usine
+- name: Piece echange standard
+  aliases:
+  - echange standard
+  - reconditionne
+  functional_differences:
+  - Moins cher
+  - Piece d origine reconditionnee
+location_on_vehicle:
+  area: Compartiment moteur (alternateur, demarreur) ou peripherie
+  access: Par le dessus (capot) ou par le dessous selon modele
+  adjacent_parts:
+  - faisceau electrique
+  - batterie
+  - fusibles
+installation:
+  difficulty: facile a moyen
+  time: 15min a 1h
+  tools:
+  - cle a douille
+  - multimetre
+  - tournevis
+  prerequisite: Debrancher la batterie avant intervention
 ---
 
 # Capteur de pression turbo - Guide Diagnostic Complet
@@ -192,6 +247,12 @@ Pour diagnostiquer un problème de capteur de pression turbo:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique
@@ -222,3 +283,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "augmente la puissance"
+
+## FAQ
+
+**Capteur de pression turbo OE ou adaptable ?**
+Privilégiez l'OE ou OES (Bosch, Pierburg, Hella). Les capteurs adaptables peuvent avoir des valeurs légèrement différentes et déclencher des défauts.
+
+**Comment savoir si le capteur turbo est HS ?**
+Voyant moteur allumé (codes P0234 à P0239), mode dégradé, perte de puissance, suralimentation irrégulière, fumée noire.
+
+**Tous les combien changer le capteur ?**
+Pas de périodicité. Pièce électronique qui peut durer toute la vie du véhicule. À remplacer si code défaut spécifique au capteur.
+
+**Peut-on changer le capteur turbo soi-même ?**
+Oui, opération simple. Localiser le capteur sur le collecteur d'admission, débrancher le connecteur, dévisser. 15-30 min.
+
+**Quelle erreur éviter ?**
+Toujours vérifier la durite de pression avant de changer le capteur. Effacer les codes défaut après remplacement. Ne pas forcer sur le connecteur.

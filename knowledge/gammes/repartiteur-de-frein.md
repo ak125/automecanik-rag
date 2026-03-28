@@ -1,23 +1,29 @@
 ---
 category: freinage
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: repartiteur-de-frein
+title: Répartiteur de frein
+pg_id: 73
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Repartir la pression de freinage entre les essieux
   must_be_true:
   - repartir
   - distribuer
   - equilibrer
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - climatisation
   - embrayage
@@ -26,14 +32,111 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Repartir la pression de freinage entre les essieux
-page_contract:
-  antiMistakes:
+  related_parts:
+  - disque-de-frein
+  - plaquette-de-frein
+  - etrier-de-frein
+  - flexible-de-frein
+  - maitre-cylindre-de-frein
+  - liquide-de-frein
+  confusion_with:
+  - term: piece-de-freinage-voisine
+    difference: 'Verifier la reference exacte : les pieces de freinage se ressemblent mais ne sont pas interchangeables entre
+      essieux ou types de montage.'
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "freinage garanti"
+  cost_range:
+    min: 15
+    max: 200
+    currency: EUR
+    unit: l'unite
+    source: estimation categorie
+  brands:
+    premium:
+    - Bosch
+    - TRW/ZF
+    - ATE/Continental
+    standard:
+    - Ferodo
+    - LPR
+    - Bendix
+    budget:
+    - ABE
+    - NK
+    - sbs
+  quality_tiers:
+  - tier: Origine constructeur (OE/OES)
+    description: Repartiteur identique a la premiere monte. Calibration de pression conforme aux specifications du constructeur
+      pour l'equilibre avant/arriere.
+  - tier: Equivalent OE (qualite premiere monte)
+    description: Repartiteur de qualite equivalente, teste en pression. Calibration verifiee.
+  - tier: Adaptable (qualite atelier courant)
+    description: Repartiteur compatible. Verifier le type de raccords et la pression de coupure avant commande.
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Roues arriere qui bloquent trop tot au freinage
+    severity: immobilisation
+  - id: S2
+    label: Freinage desequilibre avant arriere
+    severity: securite
+  - id: S3
+    label: Fuite au niveau du repartiteur
+    severity: confort
+  - id: S4
+    label: Echec au controle technique desequilibre
+    severity: confort
+  - id: S5
+    label: Desequilibre freinage controle technique valeurs
+    severity: securite
+  causes:
+  - verification urgente piece et alimentation
+  - identifier origine fuite et verifier joints
+  - 'vehicule immobilise ou symptome critique : verification urgente piece et alimentation'
+  - 'fuite detectee ou niveau bas : identifier origine fuite et verifier joints'
+  quick_checks:
+  - 'Observer : roues arriere qui bloquent trop tot au freinage ?'
+  - 'Observer : freinage desequilibre avant arriere ?'
+  - Fuite au niveau du repartiteur ?
+  - 'Observer : echec au controle technique desequilibre ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Roues arriere qui bloquent trop tot au freinage
+  - Freinage desequilibre avant arriere
+  - Fuite au niveau du repartiteur
+  - Echec au controle technique desequilibre
+  - Desequilibre freinage controle technique valeurs
+  good_practices:
+  - Controle visuel a chaque revision ou tous les 15 000 km
+  - Remplacement par paire (essieu complet) pour equilibre de freinage
+  - Rodage des pieces neuves sur 200 km (freinages progressifs)
+  - Verifier le niveau de liquide de frein lors de chaque intervention
+rendering:
+  pgId: '73'
+  intro_title: A quoi sert Répartiteur de frein ?
+  risk_title: Pourquoi remplacer Répartiteur de frein a temps ?
+  risk_explanation: '**Pièce HS** - Le répartiteur de frein peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le répartiteur de frein peut être hors service et nécessiter un remplacement'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,62 +151,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Répartiteur de frein compatible avec mon vehicule ?
-  - answer: En cas de roues arriere qui bloquent trop tot au freinage ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Répartiteur de frein ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Répartiteur de frein sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de frein pour confirmer Répartiteur de frein.
-  id: 73
-  intro:
-    role: Repartir la pression de freinage entre les essieux
-    syncParts:
-    - repartir
-    - distribuer
-    - equilibrer
-    title: A quoi sert Répartiteur de frein ?
-  pgId: '73'
+  - question: À quoi sert le répartiteur de frein ?
+    answer: Il dose la pression envoyée aux freins arrière pour éviter le blocage. Sur les véhicules modernes avec ABS, cette
+      fonction est souvent électronique (EBD).
+  - question: Mon véhicule a-t-il un répartiteur mécanique ?
+    answer: Les véhicules sans ABS ont généralement un répartiteur mécanique ou compensateur de charge. Avec ABS/EBD, la répartition
+      est gérée électroniquement.
+  - question: Quels sont les symptômes d'un répartiteur défaillant ?
+    answer: Blocage prématuré des roues arrière au freinage, déséquilibre constaté au contrôle technique, ou fuite de liquide
+      au niveau du répartiteur.
+  - question: Quelles sont les erreurs fréquentes à éviter ?
+    answer: Diagnostiquer 'répartiteur HS' sur véhicule ABS alors que la répartition est électronique (EBD). Confondre blocage
+      arrière avec pneus/pression/amortisseurs fatigués.
+  - question: Comment faire un diagnostic rapide ?
+    answer: 'Véhicule sans ABS + arrière qui bloque → répartiteur/correcteur à suspecter. Fuite sous caisse près essieu AR
+      → répartiteur possible. Avec ABS : chercher d''abord défaut capteurs/diag.'
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/repartiteur-de-frein.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le répartiteur de frein peut être hors service et nécessiter
-      un remplacement'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le répartiteur de frein peut être hors service et
-      nécessiter un remplacement'
-    title: Pourquoi remplacer Répartiteur de frein a temps ?
-  symptoms:
-  - roues arriere qui bloquent trop tot au freinage
-  - freinage desequilibre avant arriere
-  - fuite au niveau du repartiteur
-  - echec au controle technique desequilibre
-  - desequilibre freinage controle technique valeurs
-  - '**Roues arriere qui bloquent trop tot au freinage**'
-  - '**Freinage desequilibre avant arriere**'
-  - '**Desequilibre freinage controle technique valeurs**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 73
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -111,48 +177,41 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: repartiteur-de-frein
-source_type: gamme
-symptoms:
-- description: roues arriere qui bloquent trop tot au freinage
-  evidence:
-  - 'Observation: roues arriere qui bloquent trop tot au freinage'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Roues arriere qui bloquent trop tot au freinage
-  risk_level: immobilisation
-- description: freinage desequilibre avant arriere
-  evidence:
-  - 'Observation: freinage desequilibre avant arriere'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Freinage desequilibre avant arriere
-  risk_level: securite
-- description: fuite au niveau du repartiteur
-  evidence:
-  - 'Observation: fuite au niveau du repartiteur'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Fuite au niveau du repartiteur
-  risk_level: confort
-- description: echec au controle technique desequilibre
-  evidence:
-  - 'Observation: echec au controle technique desequilibre'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Echec au controle technique desequilibre
-  risk_level: confort
-- description: desequilibre freinage controle technique valeurs
-  evidence:
-  - 'Observation: desequilibre freinage controle technique valeurs'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Desequilibre freinage controle technique valeurs
-  risk_level: securite
-title: Répartiteur de frein
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 97318f4a-4b75-5cf3-883d-9403c17cb032
+content_hash: sha256:cda5f07f377d2afe
+lang: fr
+variants:
+- name: Piece standard
+  aliases:
+  - standard
+  - OE equivalent
+  functional_differences:
+  - Qualite equivalente a la monte d origine
+  - Compatible avec la majorite des vehicules
+- name: Piece performance/sport
+  aliases:
+  - sport
+  - haute performance
+  functional_differences:
+  - Materiaux haute temperature
+  - Pour usage intensif ou sportif
+location_on_vehicle:
+  area: Au niveau des roues (avant et/ou arriere)
+  access: Demontage de la roue necessaire (cric + chandelle)
+  adjacent_parts:
+  - disque
+  - plaquette
+  - etrier
+  - flexible
+installation:
+  difficulty: moyen
+  time: 30min a 1h par essieu
+  tools:
+  - cle a douille
+  - cle Allen
+  - pied a coulisse
+  - cle dynamometrique
+  prerequisite: Vehicule sur chandelles, roue demontee
 ---
 
 # Répartiteur de frein - Guide Diagnostic Complet
@@ -190,6 +249,12 @@ Pour diagnostiquer un problème de répartiteur de frein:
 2. **Mesure d'usure** - Contrôler l'épaisseur et l'état de surface
 3. **Test au roulage** - Vérifier l'efficacité et les bruits
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Pièce HS** - Le répartiteur de frein peut être hors service et nécessiter un remplacement
@@ -220,3 +285,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "freinage garanti"
+
+## FAQ
+
+**À quoi sert le répartiteur de frein ?**
+Il dose la pression envoyée aux freins arrière pour éviter le blocage. Sur les véhicules modernes avec ABS, cette fonction est souvent électronique (EBD).
+
+**Mon véhicule a-t-il un répartiteur mécanique ?**
+Les véhicules sans ABS ont généralement un répartiteur mécanique ou compensateur de charge. Avec ABS/EBD, la répartition est gérée électroniquement.
+
+**Quels sont les symptômes d'un répartiteur défaillant ?**
+Blocage prématuré des roues arrière au freinage, déséquilibre constaté au contrôle technique, ou fuite de liquide au niveau du répartiteur.
+
+**Quelles sont les erreurs fréquentes à éviter ?**
+Diagnostiquer 'répartiteur HS' sur véhicule ABS alors que la répartition est électronique (EBD). Confondre blocage arrière avec pneus/pression/amortisseurs fatigués.
+
+**Comment faire un diagnostic rapide ?**
+Véhicule sans ABS + arrière qui bloque → répartiteur/correcteur à suspecter. Fuite sous caisse près essieu AR → répartiteur possible. Avec ABS : chercher d'abord défaut capteurs/diag.

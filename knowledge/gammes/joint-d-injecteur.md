@@ -1,37 +1,140 @@
 ---
 category: alimentation
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: joint-d-injecteur
+title: Joint d'injecteur
+pg_id: 3894
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Assurer l'etancheite autour de l'injecteur dans la chambre de combustion
   must_be_true:
   - assurer l'etancheite
   - empecher les fuites
   - separer les fluides
-  must_not_contain_concepts:
+  must_not_contain:
   - boite de vitesses
   - electronique
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Assurer l'etancheite autour de l'injecteur dans la chambre de combustion
-page_contract:
-  antiMistakes:
+  related_parts:
+  - injecteur
+  - pompe-a-injection
+  - pompe-a-haute-pression
+  - corps-papillon
+  - debitmetre-d-air
+  - regulateur-de-pression-carburant
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 5
+    max: 20
+    currency: EUR
+    unit: joint
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Equipement d'origine (OE)
+    description: Joint fourni ou agréé par le constructeur du véhicule. Reference et matériau identiques à la première monte.
+  - tier: Equivalent OE (OES)
+    description: Fabricants spécialisés en étanchéité moteur, reconnus par l'industrie automobile européenne.
+  - tier: Adaptable qualité
+    description: Joints compatibles multi-marques. Vérifier que le matériau correspond au type d'injecteur (diesel ou essence).
+  brands:
+    premium:
+    - Bosch
+    - Delphi
+    - Denso
+    standard:
+    - Siemens VDO
+    - Pierburg
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Fuite de carburant visible autour d un injecteur
+    severity: confort
+  - id: S2
+    label: Odeur de carburant dans le compartiment moteur
+    severity: confort
+  - id: S3
+    label: Sifflement d air au niveau de l injection
+    severity: confort
+  - id: S4
+    label: Rates d allumage qui empirent a chaud
+    severity: confort
+  - id: S5
+    label: Fumee au niveau de la culasse
+    severity: confort
+  - id: S6
+    label: Depose d injecteur prevue remplacement preventif
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - identifier origine fuite et verifier joints
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'fuite detectee ou niveau bas : identifier origine fuite et verifier joints'
+  quick_checks:
+  - Fuite de carburant visible autour d un injecteur ?
+  - Odeur de carburant dans le compartiment moteur ?
+  - 'Observer : sifflement d air au niveau de l injection ?'
+  - 'Observer : rates d allumage qui empirent a chaud ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Fuite de carburant visible autour d un injecteur
+  - Odeur de carburant dans le compartiment moteur
+  - Sifflement d air au niveau de l injection
+  - Rates d allumage qui empirent a chaud
+  - Fumee au niveau de la culasse
+  - Depose d injecteur prevue remplacement preventif
+  good_practices:
+  - Utiliser du carburant de qualite pour preserver les injecteurs
+  - Remplacement du filtre a carburant selon intervalle constructeur
+  - Diagnostic electronique (OBD) en cas de perte de puissance
+  - Ne pas rouler en reserve de carburant (pompe immergee non lubrifee)
+rendering:
+  pgId: '3894'
+  intro_title: A quoi sert Joint d'injecteur ?
+  risk_title: Pourquoi remplacer Joint d'injecteur a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,60 +149,22 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Joint d'injecteur compatible avec mon vehicule ?
-  - answer: En cas de fuite de carburant visible autour d un injecteur ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Joint d'injecteur ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Joint d'injecteur sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Joint d'injecteur.
-  id: 3894
-  intro:
-    role: Assurer l'etancheite autour de l'injecteur dans la chambre de combustion
-    syncParts:
-    - assurer l'etancheite
-    - empecher les fuites
-    - separer les fluides
-    title: A quoi sert Joint d'injecteur ?
-  pgId: '3894'
+  - question: Joint d'injecteur OE ou adaptable ?
+    answer: 'Les joints adaptables de qualité (Elring, Victor Reinz) sont fiables. Vérifiez le matériau : cuivre pour diesel,
+      caoutchouc ou téflon pour essence selon modèle.'
+  - question: Comment savoir si un joint d'injecteur fuit ?
+    answer: Fuite de carburant visible, odeur d'essence ou de gazole, sifflement d'air (prise d'air), fumée au niveau de la
+      culasse, ratés à chaud.
+  - question: Tous les combien changer les joints d'injecteur ?
+    answer: À chaque dépose d'injecteur, sans exception. Jamais de réutilisation même si le joint semble intact.
+  - question: Peut-on changer les joints d'injecteur soi-même ?
+    answer: Oui, mais nécessite de déposer les injecteurs. Sur diesel, prévoir extracteur d'injecteur et nettoyage du puits.
+  - question: Quelle erreur éviter avec les joints d'injecteur ?
+    answer: Ne jamais réutiliser un joint usagé. Ne pas oublier les rondelles d'étanchéité. Nettoyer le logement avant remontage.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/joint-d-injecteur.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Joint d'injecteur a temps ?
-  symptoms:
-  - fuite de carburant visible autour d un injecteur
-  - odeur de carburant dans le compartiment moteur
-  - sifflement d air au niveau de l injection
-  - rates d allumage qui empirent a chaud
-  - fumee au niveau de la culasse
-  - depose d injecteur prevue remplacement preventif
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 3894
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -107,55 +172,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: joint-d-injecteur
-source_type: gamme
-symptoms:
-- description: fuite de carburant visible autour d un injecteur
-  evidence:
-  - 'Observation: fuite de carburant visible autour d un injecteur'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Fuite de carburant visible autour d un injecteur
-  risk_level: confort
-- description: odeur de carburant dans le compartiment moteur
-  evidence:
-  - 'Observation: odeur de carburant dans le compartiment moteur'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Odeur de carburant dans le compartiment moteur
-  risk_level: confort
-- description: sifflement d air au niveau de l injection
-  evidence:
-  - 'Observation: sifflement d air au niveau de l injection'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Sifflement d air au niveau de l injection
-  risk_level: confort
-- description: rates d allumage qui empirent a chaud
-  evidence:
-  - 'Observation: rates d allumage qui empirent a chaud'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Rates d allumage qui empirent a chaud
-  risk_level: confort
-- description: fumee au niveau de la culasse
-  evidence:
-  - 'Observation: fumee au niveau de la culasse'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Fumee au niveau de la culasse
-  risk_level: confort
-- description: depose d injecteur prevue remplacement preventif
-  evidence:
-  - 'Observation: depose d injecteur prevue remplacement preventif'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Depose d injecteur prevue remplacement preventif
-  risk_level: confort
-title: Joint d'injecteur
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 23377e19-018e-5e0c-9026-86ab380d4ad6
+content_hash: sha256:ce94233e1b9b5769
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le moteur (rampe injection, admission)
+  access: Par le dessus (capot)
+  adjacent_parts:
+  - rampe
+  - injecteurs
+  - calculateur moteur
+  - papillon
+installation:
+  difficulty: moyen a difficile
+  time: 30min a 2h
+  tools:
+  - cle a douille
+  - cle dynamometrique
+  - diagnostic OBD
+  prerequisite: Depressuriser le circuit carburant avant depose
 ---
 
 # Joint d'injecteur - Guide Diagnostic Complet
@@ -185,6 +235,12 @@ Pour diagnostiquer un problème de joint d'injecteur:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -217,3 +273,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Joint d'injecteur OE ou adaptable ?**
+Les joints adaptables de qualité (Elring, Victor Reinz) sont fiables. Vérifiez le matériau : cuivre pour diesel, caoutchouc ou téflon pour essence selon modèle.
+
+**Comment savoir si un joint d'injecteur fuit ?**
+Fuite de carburant visible, odeur d'essence ou de gazole, sifflement d'air (prise d'air), fumée au niveau de la culasse, ratés à chaud.
+
+**Tous les combien changer les joints d'injecteur ?**
+À chaque dépose d'injecteur, sans exception. Jamais de réutilisation même si le joint semble intact.
+
+**Peut-on changer les joints d'injecteur soi-même ?**
+Oui, mais nécessite de déposer les injecteurs. Sur diesel, prévoir extracteur d'injecteur et nettoyage du puits.
+
+**Quelle erreur éviter avec les joints d'injecteur ?**
+Ne jamais réutiliser un joint usagé. Ne pas oublier les rondelles d'étanchéité. Nettoyer le logement avant remontage.

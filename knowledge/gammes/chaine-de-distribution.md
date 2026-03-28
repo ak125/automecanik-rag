@@ -1,42 +1,139 @@
 ---
 category: distribution
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: chaine-de-distribution
+title: Chaîne de distribution
+pg_id: 1123
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-25'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Synchroniser la rotation de l'arbre a cames avec le vilebrequin de maniere durable
   must_be_true:
   - synchroniser
   - entrainer
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - courroie
   - caoutchouc
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Synchroniser la rotation de l'arbre a cames avec le vilebrequin de
-    maniere durable
-page_contract:
-  antiMistakes:
+  related_parts:
+  - courroie-de-distribution
+  - kit-de-distribution
+  - galet-tendeur-de-courroie-de-distribution
+  - galet-enrouleur-de-courroie-de-distribution
+  - pompe-a-eau
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 150
+    max: 400
+    currency: EUR
+    unit: chaîne seule
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Equipement d origine (OE)
+  - tier: Equivalent OE / kit complet
+  - tier: Piece adaptable
+  brands:
+    premium:
+    - Gates
+    - Continental/Contitech
+    standard:
+    - Dayco
+    - SKF
+    - INA
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Bruit de cliquetis metallique au demarrage a froid
+    severity: confort
+  - id: S2
+    label: Claquement qui disparait apres quelques secondes
+    severity: confort
+  - id: S3
+    label: Voyant moteur allume codes calage
+    severity: immobilisation
+  - id: S4
+    label: Moteur qui manque de puissance
+    severity: confort
+  - id: S5
+    label: Bruit de ferraille permanent cote distribution
+    severity: confort
+  - id: S6
+    label: Difficultes de demarrage
+    severity: confort
+  - id: S7
+    label: Consommation huile anormale tendeur hydraulique
+    severity: confort
+  causes:
+  - verification urgente piece et alimentation
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  - identifier origine fuite et verifier joints
+  quick_checks:
+  - Bruit de cliquetis metallique au demarrage a froid ?
+  - 'Observer : claquement qui disparait apres quelques secondes ?'
+  - Voyant moteur allume codes calage ?
+  - 'Observer : moteur qui manque de puissance ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Bruit de cliquetis metallique au demarrage a froid
+  - Claquement qui disparait apres quelques secondes
+  - Voyant moteur allume codes calage
+  - Moteur qui manque de puissance
+  - Bruit de ferraille permanent cote distribution
+  - Difficultes de demarrage
+  good_practices:
+  - Respecter strictement l intervalle constructeur (rupture = casse moteur)
+  - Remplacer le kit complet (courroie + galets + pompe a eau si entrainee)
+  - Controler la pompe a eau et le thermostat lors du remplacement
+  - Ne jamais reutiliser les pieces de distribution demontees
+rendering:
+  pgId: '1123'
+  intro_title: A quoi sert Chaîne de distribution ?
+  risk_title: Pourquoi remplacer Chaîne de distribution a temps ?
+  risk_explanation: '**Pièce HS** - Le chaîne de distribution peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le chaîne de distribution peut être hors service et nécessiter un remplacement'
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -51,66 +148,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Chaîne de distribution compatible avec mon vehicule
-      ?
-  - answer: En cas de bruit de cliquetis metallique au demarrage a froid ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Chaîne de distribution ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Chaîne de distribution sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Chaîne de distribution.
-  id: 1123
-  intro:
-    role: Synchroniser la rotation de l'arbre a cames avec le vilebrequin de maniere
-      durable
-    syncParts:
-    - synchroniser
-    - entrainer
-    - transmettre
-    title: A quoi sert Chaîne de distribution ?
-  pgId: '1123'
+  - question: La chaîne de distribution doit-elle être changée ?
+    answer: Oui, contrairement aux idées reçues, la chaîne s'use et s'allonge. Sur certains moteurs (VAG TSI/TDI, BMW N47),
+      le remplacement préventif est recommandé.
+  - question: Quand remplacer la chaîne ?
+    answer: Pas de kilométrage fixe, mais contrôle recommandé vers 150 000-200 000 km. Si bruit métallique au démarrage ou
+      codes défaut calage, contrôle urgent.
+  - question: Peut-on rouler avec une chaîne usée ?
+    answer: Risqué. Une chaîne allongée décale le calage, ce qui peut endommager le moteur. En cas de rupture, les dégâts
+      sont les mêmes qu'une courroie cassée.
+  - question: Quelles sont les erreurs fréquentes à éviter ?
+    answer: Ignorer le bruit de cliquetis au démarrage (signe d'usure). Ne pas remplacer les tendeurs et guides avec la chaîne.
+      Utiliser de l'huile non conforme (tendeur hydraulique).
+  - question: Comment faire un diagnostic rapide ?
+    answer: Bruit métallique au démarrage à froid qui disparaît → chaîne allongée / tendeur faible. Bruit permanent → chaîne
+      ou guide très usé. Codes P0016/P0017 → calage décalé.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/chaine-de-distribution.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le chaîne de distribution peut être hors service et nécessiter
-      un remplacement'
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le chaîne de distribution peut être hors service
-      et nécessiter un remplacement'
-    title: Pourquoi remplacer Chaîne de distribution a temps ?
-  symptoms:
-  - bruit de cliquetis metallique au demarrage a froid
-  - claquement qui disparait apres quelques secondes
-  - voyant moteur allume codes calage
-  - moteur qui manque de puissance
-  - bruit de ferraille permanent cote distribution
-  - difficultes de demarrage
-  - consommation huile anormale tendeur hydraulique
-  - '**Voyant moteur allume codes calage**'
-  - '**Claquement qui disparait apres quelques secondes**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1123
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -118,62 +174,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: chaine-de-distribution
-source_type: gamme
-symptoms:
-- description: bruit de cliquetis metallique au demarrage a froid
-  evidence:
-  - 'Observation: bruit de cliquetis metallique au demarrage a froid'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Bruit de cliquetis metallique au demarrage a froid
-  risk_level: confort
-- description: claquement qui disparait apres quelques secondes
-  evidence:
-  - 'Observation: claquement qui disparait apres quelques secondes'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Claquement qui disparait apres quelques secondes
-  risk_level: degats_volant_moteur
-- description: voyant moteur allume codes calage
-  evidence:
-  - 'Observation: voyant moteur allume codes calage'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Voyant moteur allume codes calage
-  risk_level: immobilisation
-- description: moteur qui manque de puissance
-  evidence:
-  - 'Observation: moteur qui manque de puissance'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Moteur qui manque de puissance
-  risk_level: confort
-- description: bruit de ferraille permanent cote distribution
-  evidence:
-  - 'Observation: bruit de ferraille permanent cote distribution'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Bruit de ferraille permanent cote distribution
-  risk_level: confort
-- description: difficultes de demarrage
-  evidence:
-  - 'Observation: difficultes de demarrage'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Difficultes de demarrage
-  risk_level: confort
-- description: consommation huile anormale tendeur hydraulique
-  evidence:
-  - 'Observation: consommation huile anormale tendeur hydraulique'
-  - Vérification visuelle ou auditive
-  id: S7
-  label: Consommation huile anormale tendeur hydraulique
-  risk_level: confort
-title: Chaîne de distribution
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 96b56d73-0206-5e1f-94f9-d24b57ce9f60
+content_hash: sha256:0fa05a7974fa1f05
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Face laterale du moteur, derriere le carter de distribution
+  access: Depose courroie accessoire + carter distribution
+  adjacent_parts:
+  - courroie
+  - galets
+  - pompe a eau
+  - poulie
+installation:
+  difficulty: difficile (pro recommande)
+  time: 3h a 6h
+  tools:
+  - kit calage distribution
+  - cle dynamometrique
+  - extracteur poulie
+  prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 ---
 
 # Chaîne de distribution - Guide Diagnostic Complet
@@ -213,6 +247,12 @@ Pour diagnostiquer un problème de chaîne de distribution:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Pièce HS** - Le chaîne de distribution peut être hors service et nécessiter un remplacement
@@ -246,3 +286,91 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**La chaîne de distribution doit-elle être changée ?**
+Oui, contrairement aux idées reçues, la chaîne s'use et s'allonge. Sur certains moteurs (VAG TSI/TDI, BMW N47), le remplacement préventif est recommandé.
+
+**Quand remplacer la chaîne ?**
+Pas de kilométrage fixe, mais contrôle recommandé vers 150 000-200 000 km. Si bruit métallique au démarrage ou codes défaut calage, contrôle urgent.
+
+**Peut-on rouler avec une chaîne usée ?**
+Risqué. Une chaîne allongée décale le calage, ce qui peut endommager le moteur. En cas de rupture, les dégâts sont les mêmes qu'une courroie cassée.
+
+**Quelles sont les erreurs fréquentes à éviter ?**
+Ignorer le bruit de cliquetis au démarrage (signe d'usure). Ne pas remplacer les tendeurs et guides avec la chaîne. Utiliser de l'huile non conforme (tendeur hydraulique).
+
+**Comment faire un diagnostic rapide ?**
+Bruit métallique au démarrage à froid qui disparaît → chaîne allongée / tendeur faible. Bruit permanent → chaîne ou guide très usé. Codes P0016/P0017 → calage décalé.
+
+
+## Symptomes supplementaires
+
+<!-- materialized-from-db diagnostic/distribution-courroie.md 2026-01-08 -->
+### Diagnostic - Distribution et courroie
+
+# Distribution et courroie - Diagnostic complet
+
+## Symptomes courants
+
+### Bruit de claquement moteur
+- **Quand** : Au ralenti ou a l'acceleration
+- **Caracteristique** : Claquement rythmique, lie au regime moteur
+
+### Sifflement au demarrage
+- **Quand** : A froid, disparait a chaud
+- **Caracteristique** : Son aigu type courroie patinante
+
+### Perte de puissance
+- **Quand** : En acceleration
+- **Caracteristique** : Moteur qui "tire" moins
+
+### Temoin moteur allume
+- **Quand** : Aleatoire
+- **Caracteristique** : Voyant orange fixe
+
+## Causes possibles et solutions
+
+### 1. Courroie de distribution usee
+- **Probabilite** : 40%
+- **Verification** : Age/kilometrage, aspect visuel (fissures, effilochage)
+- **Solution** : Remplacement kit distribution complet
+- **Pieces** : Kit distribution (courroie, galets, pompe a eau)
+- **Urgence** : CRITIQUE - Risque casse moteur
+
+### 2. Galet tendeur defaillant
+- **Probabilite** : 25%
+- **Verification** : Jeu excessif, bruit de roulement
+- **Solution** : Remplacement galet(s)
+- **Pieces** : Galet tendeur, galet enrouleur
+- **Urgence** : Haute
+
+### 3. Pompe a eau HS
+- **Probabilite** : 20%
+- **Verification** : Fuite liquide de refroidissement, jeu axial
+- **Solution** : Remplacement pompe a eau
+- **Pieces** : Pompe a eau
+- **Urgence** : Haute
+
+### 4. Courroie accessoires usee
+- **Probabilite** : 15%
+- **Verification** : Fissures, patinage
+- **Solution** : Remplacement courroie accessoires
+- **Pieces** : Courroie poly-V, galet tendeur accessoires
+- **Urgence** : Moyenne
+
+## Intervalles de remplacement
+
+| Type moteur | Intervalle | Kilometrage |
+|-------------|------------|-------------|
+| Essence | 5 ans | 100 000 km |
+| Diesel | 5 ans | 120 000 km |
+| HDI/TDI | 4 ans | 160 000 km |
+
+## Recommandations
+
+- **Remplacement preventif** : Respecter les preconisations constructeur
+- **Kit complet** : Toujours remplacer courroie + galets + pompe a eau ensemble
+- **Marques** : Privilegier Gates, Continental, SKF
+- **Huile** : Verifier absence de fuites d'huile sur la courroie

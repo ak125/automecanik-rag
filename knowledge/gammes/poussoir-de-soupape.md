@@ -1,36 +1,131 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: kilometrage_eleve_ou_usure_visible
-  then: remplacement_preventif_recommande
+slug: poussoir-de-soupape
+title: Poussoir de soupape
+pg_id: 1216
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Transmettre le mouvement de l'arbre a cames aux soupapes
   must_be_true:
   - transmettre
   - actionner
   - amortir
-  must_not_contain_concepts:
+  must_not_contain:
   - culbuteur
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Transmettre le mouvement de l'arbre a cames aux soupapes
-page_contract:
-  antiMistakes:
+  related_parts:
+  - transmettre
+  - actionner
+  - amortir
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 10
+    max: 40
+    currency: EUR
+    unit: poussoir
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Origine constructeur (OE)
+  - tier: Equivalent OE — equipementiers moteur
+  - tier: Adaptable bas de gamme
+  brands:
+    premium:
+    - Elring
+    - Victor Reinz
+    standard:
+    - Febi
+    - Ajusa
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Claquement metallique au ralenti a froid
+    severity: confort
+  - id: S2
+    label: Bruit de tac-tac au niveau de la culasse
+    severity: confort
+  - id: S3
+    label: Claquement qui persiste meme a chaud
+    severity: confort
+  - id: S4
+    label: Bruit qui s amplifie avec le regime moteur
+    severity: confort
+  - id: S5
+    label: Perte de puissance legere jeu excessif
+    severity: confort
+  - id: S6
+    label: Plus de 150 000 km et claquement recurrent
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - remplacement preventif recommande
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'kilometrage eleve ou usure visible : remplacement preventif recommande'
+  quick_checks:
+  - 'Observer : claquement metallique au ralenti a froid ?'
+  - Bruit de tac-tac au niveau de la culasse ?
+  - 'Observer : claquement qui persiste meme a chaud ?'
+  - Bruit qui s amplifie avec le regime moteur ?
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Claquement metallique au ralenti a froid
+  - Bruit de tac-tac au niveau de la culasse
+  - Claquement qui persiste meme a chaud
+  - Bruit qui s amplifie avec le regime moteur
+  - Perte de puissance legere jeu excessif
+  - Plus de 150 000 km et claquement recurrent
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '1216'
+  intro_title: A quoi sert Poussoir de soupape ?
+  risk_title: Pourquoi remplacer Poussoir de soupape a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -45,64 +140,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Poussoir de soupape compatible avec mon vehicule ?
-  - answer: En cas de claquement metallique au ralenti a froid ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Poussoir de soupape ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Poussoir de soupape sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Poussoir de soupape.
-  id: 1216
-  intro:
-    role: Poussoir de soupape intervient directement sur moteur du vehicule. Un choix
-      conforme protege la combustion et limite les pannes secondaires.
-    syncParts:
-    - transmettre
-    - actionner
-    - amortir
-    title: A quoi sert Poussoir de soupape ?
-  pgId: '1216'
+  - question: Poussoir de soupape OE ou adaptable ?
+    answer: Les poussoirs OES (INA, Freccia, AE) sont recommandés. Un poussoir de mauvaise qualité peut s'affaisser et causer
+      des dégâts aux soupapes.
+  - question: Comment savoir si un poussoir est HS ?
+    answer: Claquement métallique au ralenti qui s'atténue à chaud, bruit de tac-tac caractéristique au niveau de la culasse.
+  - question: Tous les combien changer les poussoirs ?
+    answer: Pas de périodicité fixe. Durée de vie 150 000 à 250 000 km. À remplacer si claquement persistant même huile chaude.
+  - question: Peut-on changer les poussoirs soi-même ?
+    answer: Possible si expérience. Nécessite de déposer le cache culbuteurs et parfois l'arbre à cames. Respecter l'ordre
+      de remontage.
+  - question: Quelle erreur éviter avec les poussoirs ?
+    answer: Ne pas changer qu'un seul poussoir. Les laisser tremper dans l'huile avant montage. Vidanger l'huile moteur après
+      remplacement.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/poussoir-de-soupape.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
-      est recommandé'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Poussoir de soupape a temps ?
-  symptoms:
-  - claquement metallique au ralenti a froid
-  - bruit de tac-tac au niveau de la culasse
-  - claquement qui persiste meme a chaud
-  - bruit qui s amplifie avec le regime moteur
-  - perte de puissance legere jeu excessif
-  - plus de 150 000 km et claquement recurrent
-  - '**Claquement metallique au ralenti a froid**'
-  - '**Claquement qui persiste meme a chaud**'
-  - '**Plus de 150 000 km et claquement recurrent**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1216
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -110,55 +164,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: poussoir-de-soupape
-source_type: gamme
-symptoms:
-- description: claquement metallique au ralenti a froid
-  evidence:
-  - 'Observation: claquement metallique au ralenti a froid'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Claquement metallique au ralenti a froid
-  risk_level: degats_volant_moteur
-- description: bruit de tac-tac au niveau de la culasse
-  evidence:
-  - 'Observation: bruit de tac-tac au niveau de la culasse'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Bruit de tac-tac au niveau de la culasse
-  risk_level: confort
-- description: claquement qui persiste meme a chaud
-  evidence:
-  - 'Observation: claquement qui persiste meme a chaud'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Claquement qui persiste meme a chaud
-  risk_level: degats_volant_moteur
-- description: bruit qui s amplifie avec le regime moteur
-  evidence:
-  - 'Observation: bruit qui s amplifie avec le regime moteur'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Bruit qui s amplifie avec le regime moteur
-  risk_level: confort
-- description: perte de puissance legere jeu excessif
-  evidence:
-  - 'Observation: perte de puissance legere jeu excessif'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Perte de puissance legere jeu excessif
-  risk_level: confort
-- description: plus de 150 000 km et claquement recurrent
-  evidence:
-  - 'Observation: plus de 150 000 km et claquement recurrent'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Plus de 150 000 km et claquement recurrent
-  risk_level: degats_volant_moteur
-title: Poussoir de soupape
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 4e8dba8b-ae4a-576d-bc09-672448c2904b
+content_hash: sha256:5ddfed052488580d
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Poussoir de soupape - Guide Diagnostic Complet
@@ -195,6 +229,12 @@ Pour diagnostiquer un problème de poussoir de soupape:
 3. **Test fonctionnel** - Vérifier le comportement moteur
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -227,3 +267,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Poussoir de soupape OE ou adaptable ?**
+Les poussoirs OES (INA, Freccia, AE) sont recommandés. Un poussoir de mauvaise qualité peut s'affaisser et causer des dégâts aux soupapes.
+
+**Comment savoir si un poussoir est HS ?**
+Claquement métallique au ralenti qui s'atténue à chaud, bruit de tac-tac caractéristique au niveau de la culasse.
+
+**Tous les combien changer les poussoirs ?**
+Pas de périodicité fixe. Durée de vie 150 000 à 250 000 km. À remplacer si claquement persistant même huile chaude.
+
+**Peut-on changer les poussoirs soi-même ?**
+Possible si expérience. Nécessite de déposer le cache culbuteurs et parfois l'arbre à cames. Respecter l'ordre de remontage.
+
+**Quelle erreur éviter avec les poussoirs ?**
+Ne pas changer qu'un seul poussoir. Les laisser tremper dans l'huile avant montage. Vidanger l'huile moteur après remplacement.

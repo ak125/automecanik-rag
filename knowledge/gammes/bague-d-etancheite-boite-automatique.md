@@ -1,20 +1,28 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: bague-d-etancheite-boite-automatique
+title: Bague d'étanchéité boîte automatique
+pg_id: 626
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Assurer l'etancheite des arbres de la boite automatique
   must_be_true:
   - assurer l'etancheite
   - isoler
-  must_not_contain_concepts:
+  must_not_contain:
   - freinage
   - climatisation
   - direction
@@ -22,14 +30,97 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Assurer l'etancheite des arbres de la boite automatique
-page_contract:
-  antiMistakes:
+  related_parts:
+  - cardan
+  - soufflet-de-cardan
+  - roulement-de-roue
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Renseignez marque, modele, type puis comparez references et dimensions. Validez ensuite les contraintes de moteur pour
+    confirmer Bague d'étanchéité boîte automatique.
+  - Verifier la reference OE ou equivalence constructeur pour le vehicule exact
+  - Comparer les dimensions et le type de montage avec la piece d origine
+  - Choisir un equipementier reconnu pour garantir qualite et compatibilite
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 1000
+    max: 5000
+    currency: EUR
+    unit: l'unite
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Équipement d'origine (OE)
+    description: Joint spi fourni par l'équipementier d'origine de la boîte automatique. Dimensions et matière conformes aux
+      spécifications constructeur.
+  - tier: Équivalent OE — équipementiers spécialisés étanchéité
+    description: Fabricants reconnus en joints d'étanchéité automobile. Matériaux (FPM/NBR) adaptés aux huiles ATF haute température.
+  - tier: Adaptables — kits d'étanchéité
+    description: Kits multi-références couvrant plusieurs boîtes automatiques. Vérifier impérativement les cotes (diamètre
+      intérieur, extérieur, hauteur) avant montage.
+  brands:
+    premium:
+    - SKF
+    - GKN/Spidan
+    standard:
+    - Febi
+    - Meyle
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Fuites d huile sous la boite
+    severity: confort
+  - id: S2
+    label: Niveau d huile qui baisse
+    severity: confort
+  - id: S3
+    label: Taches au sol au niveau de la transmission
+    severity: confort
+  causes:
+  - identifier origine fuite et verifier joints
+  - 'Usure ou defaillance causant : fuites d huile sous la boite'
+  - 'Usure ou defaillance causant : niveau d huile qui baisse'
+  quick_checks:
+  - Fuites d huile sous la boite ?
+  - 'Observer : niveau d huile qui baisse ?'
+  - 'Observer : taches au sol au niveau de la transmission ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Fuites d huile sous la boite
+  - Niveau d huile qui baisse
+  - Taches au sol au niveau de la transmission
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '626'
+  intro_title: A quoi sert Bague d'étanchéité boîte automatique ?
+  risk_title: Pourquoi remplacer Bague d'étanchéité boîte automatique a temps ?
+  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_consequences:
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -44,58 +135,17 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Bague d'étanchéité boîte automatique compatible avec
-      mon vehicule ?
-  - answer: En cas de fuites d huile sous la boite ou de degradation mesurable, il
-      faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Bague d'étanchéité boîte automatique ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Bague d'étanchéité boîte automatique sans verification
-      atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Bague d'étanchéité boîte
-    automatique.
-  id: 626
-  intro:
-    role: Bague d'étanchéité boîte automatique intervient directement sur moteur du
-      vehicule. Un choix conforme protege la combustion et limite les pannes secondaires.
-    syncParts:
-    - assurer l'etancheite
-    - isoler
-    title: A quoi sert Bague d'étanchéité boîte automatique ?
-  pgId: '626'
+  - question: Comment choisir Bague d'étanchéité boîte automatique compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Bague d'étanchéité boîte automatique ?
+    answer: En cas de fuites d huile sous la boite ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+  - question: Puis-je monter Bague d'étanchéité boîte automatique sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/bague-d-etancheite-boite-automatique.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
-    title: Pourquoi remplacer Bague d'étanchéité boîte automatique a temps ?
-  symptoms:
-  - fuites d huile sous la boite
-  - niveau d huile qui baisse
-  - taches au sol au niveau de la transmission
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 626
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -103,34 +153,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: bague-d-etancheite-boite-automatique
-source_type: gamme
-symptoms:
-- description: fuites d huile sous la boite
-  evidence:
-  - 'Observation: fuites d huile sous la boite'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Fuites d huile sous la boite
-  risk_level: confort
-- description: niveau d huile qui baisse
-  evidence:
-  - 'Observation: niveau d huile qui baisse'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Niveau d huile qui baisse
-  risk_level: confort
-- description: taches au sol au niveau de la transmission
-  evidence:
-  - 'Observation: taches au sol au niveau de la transmission'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Taches au sol au niveau de la transmission
-  risk_level: confort
-title: Bague d'étanchéité boîte automatique
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 705ecff9-f37d-53c4-9a9e-064da5b3c5ad
+content_hash: sha256:09add9e18b90ec7d
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sous le vehicule, relie la boite aux roues
+  access: Par le dessous (pont elevateur)
+  adjacent_parts:
+  - cardan
+  - soufflet
+  - roulement de roue
+  - boite
+installation:
+  difficulty: difficile
+  time: 1h a 3h
+  tools:
+  - pont elevateur
+  - cle a douille
+  - arrache-cardan
+  prerequisite: Vidange huile de boite si cardan depose
 ---
 
 # Bague d'étanchéité boîte automatique - Guide Diagnostic Complet
@@ -156,6 +212,12 @@ Pour diagnostiquer un problème de bague d'étanchéité boîte automatique:
 1. **Inspection visuelle** - Examiner l'état du bague d'étanchéité boîte automatique
 2. **Contrôle des fuites** - Rechercher traces d'huile ou liquide
 3. **Test fonctionnel** - Vérifier le comportement moteur
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -186,3 +248,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Comment choisir Bague d'étanchéité boîte automatique compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Bague d'étanchéité boîte automatique ?**
+En cas de fuites d huile sous la boite ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Bague d'étanchéité boîte automatique sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.

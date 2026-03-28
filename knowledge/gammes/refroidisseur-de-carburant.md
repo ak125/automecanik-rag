@@ -1,20 +1,28 @@
 ---
 category: alimentation
-diagnostic_tree:
-- if: symptome_general_detecte
-  then: inspection_visuelle_et_test_fonctionnel
+slug: refroidisseur-de-carburant
+title: Refroidisseur de carburant
+pg_id: 3640
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Refroidir le carburant de retour pour optimiser l'injection
   must_be_true:
   - refroidir
   - abaisser la temperature
-  must_not_contain_concepts:
+  must_not_contain:
   - freinage
   - climatisation
   - distribution
@@ -23,14 +31,95 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Refroidir le carburant de retour pour optimiser l'injection
-page_contract:
-  antiMistakes:
+  related_parts:
+  - refroidir
+  - abaisser la temperature
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare l'injection"
+  cost_range:
+    min: 200
+    max: 800
+    currency: EUR
+    unit: l'unite
+    source: catalogue automecanik
+  brands:
+    premium:
+    - Behr/Mahle
+    - Denso
+    - Delphi
+    standard:
+    - NRF
+    - Nissens
+    - Valeo
+    budget:
+    - Thermotec
+    - Meat & Doria
+    - Frigair
+  quality_tiers:
+  - tier: Origine constructeur (OE/OES)
+    description: Refroidisseur identique a la premiere monte. Echange thermique calibre pour le systeme d'injection du vehicule.
+  - tier: Equivalent OE (qualite premiere monte)
+    description: Refroidisseur de qualite equivalente, teste en pression et temperature. Raccords conformes.
+  - tier: Adaptable (qualite atelier courant)
+    description: Refroidisseur compatible. Verifier les dimensions, les raccords et la compatibilite avec le circuit carburant.
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Surchauffe du carburant en ete
+    severity: confort
+  - id: S2
+    label: Perte de puissance par temps chaud
+    severity: confort
+  - id: S3
+    label: Codes defaut temperature carburant
+    severity: confort
+  causes:
+  - inspection visuelle et test fonctionnel
+  - 'symptome general detecte : inspection visuelle et test fonctionnel'
+  - 'Usure ou defaillance causant : surchauffe du carburant en ete'
+  quick_checks:
+  - 'Observer : surchauffe du carburant en ete ?'
+  - 'Observer : perte de puissance par temps chaud ?'
+  - 'Observer : codes defaut temperature carburant ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Surchauffe du carburant en ete
+  - Perte de puissance par temps chaud
+  - Codes defaut temperature carburant
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '3640'
+  intro_title: A quoi sert Refroidisseur de carburant ?
+  risk_title: Pourquoi remplacer Refroidisseur de carburant a temps ?
+  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_consequences:
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -45,56 +134,18 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Refroidisseur de carburant compatible avec mon vehicule
-      ?
-  - answer: En cas de surchauffe du carburant en ete ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Refroidisseur de carburant ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Refroidisseur de carburant sans verification atelier
-      ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Refroidisseur
-    de carburant.
-  id: 3640
-  intro:
-    role: Refroidir le carburant de retour pour optimiser l'injection
-    syncParts:
-    - refroidir
-    - abaisser la temperature
-    title: A quoi sert Refroidisseur de carburant ?
-  pgId: '3640'
+  - question: Comment choisir Refroidisseur de carburant compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Refroidisseur de carburant ?
+    answer: En cas de surchauffe du carburant en ete ou de degradation mesurable, il faut controler rapidement avant panne
+      secondaire.
+  - question: Puis-je monter Refroidisseur de carburant sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/refroidisseur-de-carburant.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
-    title: Pourquoi remplacer Refroidisseur de carburant a temps ?
-  symptoms:
-  - surchauffe du carburant en ete
-  - perte de puissance par temps chaud
-  - codes defaut temperature carburant
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 3640
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -102,34 +153,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: refroidisseur-de-carburant
-source_type: gamme
-symptoms:
-- description: surchauffe du carburant en ete
-  evidence:
-  - 'Observation: surchauffe du carburant en ete'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Surchauffe du carburant en ete
-  risk_level: confort
-- description: perte de puissance par temps chaud
-  evidence:
-  - 'Observation: perte de puissance par temps chaud'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Perte de puissance par temps chaud
-  risk_level: confort
-- description: codes defaut temperature carburant
-  evidence:
-  - 'Observation: codes defaut temperature carburant'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Codes defaut temperature carburant
-  risk_level: confort
-title: Refroidisseur de carburant
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: d2e40938-f9b7-598e-b317-744908a38b5c
+content_hash: sha256:ed5b9502817475c1
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Refroidisseur de carburant - Guide Diagnostic Complet
@@ -155,6 +207,12 @@ Pour diagnostiquer un problème de refroidisseur de carburant:
 1. **Inspection visuelle** - Examiner l'état du refroidisseur de carburant
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -185,3 +243,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare l'injection"
+
+## FAQ
+
+**Comment choisir Refroidisseur de carburant compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Refroidisseur de carburant ?**
+En cas de surchauffe du carburant en ete ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Refroidisseur de carburant sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.

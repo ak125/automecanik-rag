@@ -1,23 +1,29 @@
 ---
 category: transmission
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: vibrations_anormales
-  then: verifier_equilibrage_et_fixations
+slug: palier-d-arbre-de-transmission
+title: Palier d'arbre de transmission
+pg_id: 2109
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Supporter et guider l'arbre de transmission en rotation
   must_be_true:
   - supporter
   - guider
   - centrer
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - freinage
   - climatisation
@@ -26,14 +32,95 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Supporter et guider l'arbre de transmission en rotation
-page_contract:
-  antiMistakes:
+  related_parts:
+  - cardan
+  - soufflet-de-cardan
+  - roulement-de-roue
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "transmission parfaite"
+  cost_range:
+    min: 400
+    max: 1200
+    currency: EUR
+    unit: l'unite
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Équipement d'origine (OE)
+    price_range: Prix élevé — justifié par les certifications de transmission
+  - tier: Équivalent OE (OES)
+    price_range: Prix intermédiaire — recommandé dans la majorité des cas
+  - tier: Aftermarket standard
+    price_range: Prix bas — vérifier les dimensions avant commande
+  brands:
+    premium:
+    - SKF
+    - GKN/Spidan
+    standard:
+    - Febi
+    - Meyle
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Vibrations a vitesse constante
+    severity: confort
+  - id: S2
+    label: Bruit de roulement sous le vehicule
+    severity: confort
+  - id: S3
+    label: Jeu perceptible au palier
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - verifier equilibrage et fixations
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'vibrations anormales : verifier equilibrage et fixations'
+  quick_checks:
+  - Vibrations a vitesse constante ?
+  - Bruit de roulement sous le vehicule ?
+  - 'Observer : jeu perceptible au palier ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Vibrations a vitesse constante
+  - Bruit de roulement sous le vehicule
+  - Jeu perceptible au palier
+  good_practices:
+  - Verifier le niveau d huile de boite selon preconisation constructeur
+  - Controle des soufflets de protection (pas de fuite de graisse)
+  - Remplacement de la bague d etancheite en cas de fuite
+  - Inspection des cardans et croisillons a chaque revision
+rendering:
+  pgId: '2109'
+  intro_title: A quoi sert Palier d'arbre de transmission ?
+  risk_title: Pourquoi remplacer Palier d'arbre de transmission a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,61 +135,18 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Palier d'arbre de transmission compatible avec mon vehicule
-      ?
-  - answer: En cas de vibrations a vitesse constante ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Palier d'arbre de transmission ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Palier d'arbre de transmission sans verification atelier
-      ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de transmission pour confirmer Palier d'arbre
-    de transmission.
-  id: 2109
-  intro:
-    role: Supporter et guider l'arbre de transmission en rotation
-    syncParts:
-    - supporter
-    - guider
-    - centrer
-    title: A quoi sert Palier d'arbre de transmission ?
-  pgId: '2109'
+  - question: Comment choisir Palier d'arbre de transmission compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Palier d'arbre de transmission ?
+    answer: En cas de vibrations a vitesse constante ou de degradation mesurable, il faut controler rapidement avant panne
+      secondaire.
+  - question: Puis-je monter Palier d'arbre de transmission sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/palier-d-arbre-de-transmission.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Palier d'arbre de transmission a temps ?
-  symptoms:
-  - vibrations a vitesse constante
-  - bruit de roulement sous le vehicule
-  - jeu perceptible au palier
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 2109
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -110,34 +154,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: palier-d-arbre-de-transmission
-source_type: gamme
-symptoms:
-- description: vibrations a vitesse constante
-  evidence:
-  - 'Observation: vibrations a vitesse constante'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Vibrations a vitesse constante
-  risk_level: confort
-- description: bruit de roulement sous le vehicule
-  evidence:
-  - 'Observation: bruit de roulement sous le vehicule'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Bruit de roulement sous le vehicule
-  risk_level: confort
-- description: jeu perceptible au palier
-  evidence:
-  - 'Observation: jeu perceptible au palier'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Jeu perceptible au palier
-  risk_level: confort
-title: Palier d'arbre de transmission
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: a255b175-bc7d-52c9-8c96-20ef9ad0935d
+content_hash: sha256:d61a46c54f245137
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sous le vehicule, relie la boite aux roues
+  access: Par le dessous (pont elevateur)
+  adjacent_parts:
+  - cardan
+  - soufflet
+  - roulement de roue
+  - boite
+installation:
+  difficulty: difficile
+  time: 1h a 3h
+  tools:
+  - pont elevateur
+  - cle a douille
+  - arrache-cardan
+  prerequisite: Vidange huile de boite si cardan depose
 ---
 
 # Palier d'arbre de transmission - Guide Diagnostic Complet
@@ -164,6 +214,12 @@ Pour diagnostiquer un problème de palier d'arbre de transmission:
 2. **Test dynamique** - Vérifier les bruits en roulant
 3. **Contrôle du jeu** - Examiner l'usure des articulations
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -195,3 +251,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "transmission parfaite"
+
+## FAQ
+
+**Comment choisir Palier d'arbre de transmission compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Palier d'arbre de transmission ?**
+En cas de vibrations a vitesse constante ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Palier d'arbre de transmission sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.

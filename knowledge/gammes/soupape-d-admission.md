@@ -1,23 +1,29 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: soupape-d-admission
+title: Soupape d'admission
+pg_id: 1269
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Ouvrir et fermer le passage des gaz d'admission
   must_be_true:
   - ouvrir
   - fermer
   - admettre
-  must_not_contain_concepts:
+  must_not_contain:
   - echappement
   - carburant
   - injection
@@ -25,14 +31,112 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Ouvrir et fermer le passage des gaz d'admission
-page_contract:
-  antiMistakes:
+  related_parts:
+  - ouvrir
+  - fermer
+  - admettre
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "plus de puissance"
+  cost_range:
+    min: 15
+    max: 50
+    currency: EUR
+    unit: soupape
+    source: catalogue automecanik
+  brands:
+    premium:
+    - Mahle Original
+    - TRW Engine Component
+    - AE (Federal-Mogul)
+    standard:
+    - Freccia
+    - Intervalves
+    - SM (Societe Mecanique)
+    budget:
+    - Osvat
+    - BGA
+    - AMP
+  quality_tiers:
+  - tier: Origine constructeur
+    description: Soupapes identiques a celles montees en usine. Specifications exactes de longueur, diametre de tete et de
+      queue respectees.
+  - tier: Equipementier qualite OE
+    description: Fabricants fournissant les constructeurs en premiere monte. Memes tolerances dimensionnelles et metallurgiques.
+  - tier: Adaptable qualite reconnue
+    description: Soupapes conformes aux cotes constructeur, fabriquees par des equipementiers independants avec controle qualite.
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Perte de compression sur un ou plusieurs cylindres
+    severity: confort
+  - id: S2
+    label: Rates d allumage persistants
+    severity: confort
+  - id: S3
+    label: Claquement au niveau de la culasse
+    severity: confort
+  - id: S4
+    label: Consommation d huile anormale guides uses
+    severity: confort
+  - id: S5
+    label: Fumee bleue a l echappement
+    severity: confort
+  - id: S6
+    label: Casse de courroie de distribution controle
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - identifier origine fuite et verifier joints
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'fuite detectee ou niveau bas : identifier origine fuite et verifier joints'
+  quick_checks:
+  - 'Observer : perte de compression sur un ou plusieurs cylindres ?'
+  - 'Observer : rates d allumage persistants ?'
+  - 'Observer : claquement au niveau de la culasse ?'
+  - 'Observer : consommation d huile anormale guides uses ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Perte de compression sur un ou plusieurs cylindres
+  - Rates d allumage persistants
+  - Claquement au niveau de la culasse
+  - Consommation d huile anormale guides uses
+  - Fumee bleue a l echappement
+  - Casse de courroie de distribution controle
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '1269'
+  intro_title: A quoi sert Soupape d'admission ?
+  risk_title: Pourquoi remplacer Soupape d'admission a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -47,64 +151,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Soupape d'admission compatible avec mon vehicule ?
-  - answer: En cas de perte de compression sur un ou plusieurs cylindres ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Soupape d'admission ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Soupape d'admission sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Soupape d'admission.
-  id: 1269
-  intro:
-    role: Soupape d'admission intervient directement sur moteur du vehicule. Un choix
-      conforme protege la combustion et limite les pannes secondaires.
-    syncParts:
-    - ouvrir
-    - fermer
-    - admettre
-    title: A quoi sert Soupape d'admission ?
-  pgId: '1269'
+  - question: Soupape d'admission OE ou adaptable ?
+    answer: Les soupapes OES (AE, Freccia, TRW) sont fiables. Vérifiez les cotes exactes (longueur, diamètre tête et queue).
+      Ne pas mélanger les qualités.
+  - question: Comment savoir si une soupape d'admission est HS ?
+    answer: Perte de compression sur un cylindre, claquement, ratés d'allumage, consommation d'huile excessive (guide usé).
+  - question: Tous les combien changer les soupapes d'admission ?
+    answer: Pas de périodicité. Durée de vie 200 000+ km. Remplacement lors d'une réfection culasse ou après casse distribution.
+  - question: Peut-on changer une soupape soi-même ?
+    answer: Non recommandé. Nécessite un lève-soupapes, une rectification des sièges, et un contrôle d'étanchéité. Travail
+      de spécialiste.
+  - question: Quelle erreur éviter avec les soupapes ?
+    answer: Ne jamais rodé une soupape neuve sur un siège usé. Remplacer aussi les guides si jeu excessif. Contrôler la planéité
+      de la culasse.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/soupape-d-admission.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Soupape d'admission a temps ?
-  symptoms:
-  - perte de compression sur un ou plusieurs cylindres
-  - rates d allumage persistants
-  - claquement au niveau de la culasse
-  - consommation d huile anormale guides uses
-  - fumee bleue a l echappement
-  - casse de courroie de distribution controle
-  - '**Claquement au niveau de la culasse**'
-  - '**Casse de courroie de distribution controle**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1269
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -112,55 +175,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: soupape-d-admission
-source_type: gamme
-symptoms:
-- description: perte de compression sur un ou plusieurs cylindres
-  evidence:
-  - 'Observation: perte de compression sur un ou plusieurs cylindres'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Perte de compression sur un ou plusieurs cylindres
-  risk_level: confort
-- description: rates d allumage persistants
-  evidence:
-  - 'Observation: rates d allumage persistants'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Rates d allumage persistants
-  risk_level: confort
-- description: claquement au niveau de la culasse
-  evidence:
-  - 'Observation: claquement au niveau de la culasse'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Claquement au niveau de la culasse
-  risk_level: degats_volant_moteur
-- description: consommation d huile anormale guides uses
-  evidence:
-  - 'Observation: consommation d huile anormale guides uses'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Consommation d huile anormale guides uses
-  risk_level: confort
-- description: fumee bleue a l echappement
-  evidence:
-  - 'Observation: fumee bleue a l echappement'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Fumee bleue a l echappement
-  risk_level: confort
-- description: casse de courroie de distribution controle
-  evidence:
-  - 'Observation: casse de courroie de distribution controle'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Casse de courroie de distribution controle
-  risk_level: degats_volant_moteur
-title: Soupape d'admission
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 0c8f3298-e12a-5181-b7f6-7d345dd0673d
+content_hash: sha256:6b580f910bee5e46
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Soupape d'admission - Guide Diagnostic Complet
@@ -194,6 +237,12 @@ Pour diagnostiquer un problème de soupape d'admission:
 1. **Inspection visuelle** - Examiner l'état du soupape d'admission
 2. **Contrôle des fuites** - Rechercher traces d'huile ou liquide
 3. **Test fonctionnel** - Vérifier le comportement moteur
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -230,3 +279,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "plus de puissance"
+
+## FAQ
+
+**Soupape d'admission OE ou adaptable ?**
+Les soupapes OES (AE, Freccia, TRW) sont fiables. Vérifiez les cotes exactes (longueur, diamètre tête et queue). Ne pas mélanger les qualités.
+
+**Comment savoir si une soupape d'admission est HS ?**
+Perte de compression sur un cylindre, claquement, ratés d'allumage, consommation d'huile excessive (guide usé).
+
+**Tous les combien changer les soupapes d'admission ?**
+Pas de périodicité. Durée de vie 200 000+ km. Remplacement lors d'une réfection culasse ou après casse distribution.
+
+**Peut-on changer une soupape soi-même ?**
+Non recommandé. Nécessite un lève-soupapes, une rectification des sièges, et un contrôle d'étanchéité. Travail de spécialiste.
+
+**Quelle erreur éviter avec les soupapes ?**
+Ne jamais rodé une soupape neuve sur un siège usé. Remplacer aussi les guides si jeu excessif. Contrôler la planéité de la culasse.

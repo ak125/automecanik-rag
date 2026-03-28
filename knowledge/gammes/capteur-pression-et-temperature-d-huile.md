@@ -1,25 +1,29 @@
 ---
 category: capteurs
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: capteur-pression-et-temperature-d-huile
+title: Capteur pression et température d'huile
+pg_id: 4175
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-06'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Mesurer la pression et temperature de l'huile moteur
   must_be_true:
   - mesurer
   - detecter
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - reparation
   - regeneration
   - nettoyage
@@ -27,14 +31,113 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Mesurer la pression et temperature de l'huile moteur
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - bobine-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-electrique-voisine
+    difference: Les pieces electriques ont des connecteurs specifiques. Verifier le nombre de broches et le voltage.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "mesure parfaite"
+  cost_range:
+    min: 15
+    max: 200
+    currency: EUR
+    unit: l'unite
+    source: estimation categorie
+  quality_tiers:
+  - tier: Constructeur (OE)
+    description: Capteur calibré pour les seuils d'alerte huile du calculateur d'origine (pression en bar, température en
+      °C). Joint d'étanchéité conforme.
+  - tier: Équivalent OE (OES)
+    description: 'Équipementiers reconnus dans ce segment : Hella, Bosch, Vemo. Capteurs avec seuils d''alerte calibrés conformément
+      aux spécifications constructeur.'
+  - tier: Adaptable
+    description: Capteurs génériques aux seuils d'alerte parfois différents. Risque de faux positifs (alerte sans raison)
+      ou de non-détection d'une vraie sous-pression.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    - Denso
+    standard:
+    - Hella
+    - NGK
+    - Delphi
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Voyant pression huile allume sans raison
+    severity: confort
+  - id: S2
+    label: Temperature huile affichee incoherente
+    severity: confort
+  - id: S3
+    label: Alerte pression basse moteur chaud faux positif
+    severity: confort
+  - id: S4
+    label: Pas d alerte malgre niveau bas reel
+    severity: confort
+  - id: S5
+    label: Affichage temperature huile bloque
+    severity: immobilisation
+  - id: S6
+    label: Fuite d huile au niveau du capteur
+    severity: confort
+  causes:
+  - verification urgente piece et alimentation
+  - lecture codes defaut obd et diagnostic electronique
+  - identifier origine fuite et verifier joints
+  quick_checks:
+  - Voyant pression huile allume sans raison ?
+  - 'Observer : temperature huile affichee incoherente ?'
+  - 'Observer : alerte pression basse moteur chaud faux positif ?'
+  - 'Observer : pas d alerte malgre niveau bas reel ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Voyant pression huile allume sans raison
+  - Temperature huile affichee incoherente
+  - Alerte pression basse moteur chaud faux positif
+  - Pas d alerte malgre niveau bas reel
+  - Affichage temperature huile bloque
+  - Fuite d huile au niveau du capteur
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '4175'
+  intro_title: A quoi sert Capteur pression et température d'huile ?
+  risk_title: Pourquoi remplacer Capteur pression et température d'huile a temps ?
+  risk_explanation: '**Pièce HS** - Le capteur pression et température d''huile peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le capteur pression et température d''huile peut être hors service et nécessiter un remplacement'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -49,63 +152,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Capteur pression et température d'huile compatible avec
-      mon vehicule ?
-  - answer: En cas de voyant pression huile allume sans raison ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Capteur pression et température d'huile ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Capteur pression et température d'huile sans verification
-      atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Capteur pression
-    et température d'huile.
-  id: 4175
-  intro:
-    role: Mesurer la pression et temperature de l'huile moteur
-    syncParts:
-    - mesurer
-    - detecter
-    - transmettre
-    title: A quoi sert Capteur pression et température d'huile ?
-  pgId: '4175'
+  - question: Capteur combiné huile OE ou adaptable ?
+    answer: Privilégiez l'OE ou OES (Hella, Bosch). C'est une pièce de sécurité qui surveille la lubrification. Adaptables
+      possibles si marque reconnue.
+  - question: Comment savoir si mon capteur combiné huile est HS ?
+    answer: Voyant huile allumé à tort, température huile erronée au tableau, alerte pression basse moteur chaud alors que
+      tout est normal.
+  - question: Tous les combien changer le capteur combiné huile ?
+    answer: Pas de périodicité. Durée de vie 150 000+ km. À remplacer si valeurs incohérentes après vérification du circuit.
+  - question: Peut-on changer le capteur combiné huile soi-même ?
+    answer: Oui, mais accès parfois difficile. Nécessite souvent de vidanger partiellement. Joint neuf fourni à ne pas oublier.
+  - question: Quelle erreur éviter avec le capteur combiné huile ?
+    answer: Ne pas confondre avec le pressostat simple. Vérifier la pression réelle avec un manomètre avant de conclure à
+      une panne capteur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/capteur-pression-et-temperature-d-huile.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le capteur pression et température d''huile peut être hors service
-      et nécessiter un remplacement'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le capteur pression et température d''huile peut
-      être hors service et nécessiter un remplacement'
-    title: Pourquoi remplacer Capteur pression et température d'huile a temps ?
-  symptoms:
-  - voyant pression huile allume sans raison
-  - temperature huile affichee incoherente
-  - alerte pression basse moteur chaud faux positif
-  - pas d alerte malgre niveau bas reel
-  - affichage temperature huile bloque
-  - fuite d huile au niveau du capteur
-  - '**Affichage temperature huile bloque**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 4175
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -113,55 +176,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: capteur-pression-et-temperature-d-huile
-source_type: gamme
-symptoms:
-- description: voyant pression huile allume sans raison
-  evidence:
-  - 'Observation: voyant pression huile allume sans raison'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Voyant pression huile allume sans raison
-  risk_level: confort
-- description: temperature huile affichee incoherente
-  evidence:
-  - 'Observation: temperature huile affichee incoherente'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Temperature huile affichee incoherente
-  risk_level: confort
-- description: alerte pression basse moteur chaud faux positif
-  evidence:
-  - 'Observation: alerte pression basse moteur chaud faux positif'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Alerte pression basse moteur chaud faux positif
-  risk_level: confort
-- description: pas d alerte malgre niveau bas reel
-  evidence:
-  - 'Observation: pas d alerte malgre niveau bas reel'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Pas d alerte malgre niveau bas reel
-  risk_level: confort
-- description: affichage temperature huile bloque
-  evidence:
-  - 'Observation: affichage temperature huile bloque'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Affichage temperature huile bloque
-  risk_level: immobilisation
-- description: fuite d huile au niveau du capteur
-  evidence:
-  - 'Observation: fuite d huile au niveau du capteur'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Fuite d huile au niveau du capteur
-  risk_level: confort
-title: Capteur pression et température d'huile
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: eb8409ff-56ba-56f5-8dfc-97e27f1cf766
+content_hash: sha256:9ffda2f6729d586a
+lang: fr
+variants:
+- name: Piece neuve OE/OES
+  aliases:
+  - neuf
+  - OE
+  - OES
+  functional_differences:
+  - Garantie constructeur ou equipementier
+  - Calibration d usine
+- name: Piece echange standard
+  aliases:
+  - echange standard
+  - reconditionne
+  functional_differences:
+  - Moins cher
+  - Piece d origine reconditionnee
+location_on_vehicle:
+  area: Compartiment moteur (alternateur, demarreur) ou peripherie
+  access: Par le dessus (capot) ou par le dessous selon modele
+  adjacent_parts:
+  - faisceau electrique
+  - batterie
+  - fusibles
+installation:
+  difficulty: facile a moyen
+  time: 15min a 1h
+  tools:
+  - cle a douille
+  - multimetre
+  - tournevis
+  prerequisite: Debrancher la batterie avant intervention
 ---
 
 # Capteur pression et température d'huile - Guide Diagnostic Complet
@@ -194,6 +242,12 @@ Pour diagnostiquer un problème de capteur pression et température d'huile:
 1. **Inspection visuelle** - Examiner l'état du capteur pression et température d'huile
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -228,3 +282,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "mesure parfaite"
+
+## FAQ
+
+**Capteur combiné huile OE ou adaptable ?**
+Privilégiez l'OE ou OES (Hella, Bosch). C'est une pièce de sécurité qui surveille la lubrification. Adaptables possibles si marque reconnue.
+
+**Comment savoir si mon capteur combiné huile est HS ?**
+Voyant huile allumé à tort, température huile erronée au tableau, alerte pression basse moteur chaud alors que tout est normal.
+
+**Tous les combien changer le capteur combiné huile ?**
+Pas de périodicité. Durée de vie 150 000+ km. À remplacer si valeurs incohérentes après vérification du circuit.
+
+**Peut-on changer le capteur combiné huile soi-même ?**
+Oui, mais accès parfois difficile. Nécessite souvent de vidanger partiellement. Joint neuf fourni à ne pas oublier.
+
+**Quelle erreur éviter avec le capteur combiné huile ?**
+Ne pas confondre avec le pressostat simple. Vérifier la pression réelle avec un manomètre avant de conclure à une panne capteur.

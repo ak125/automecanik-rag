@@ -1,23 +1,29 @@
 ---
 category: turbo
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: gaine-de-turbo
+title: Gaine de turbo
+pg_id: 3314
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-26'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Acheminer l'air comprime du turbo vers l'intercooler
   must_be_true:
   - acheminer
   - canaliser
   - transporter
-  must_not_contain_concepts:
+  must_not_contain:
   - climatisation
   - freinage
   - distribution
@@ -26,14 +32,111 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Acheminer l'air comprime du turbo vers l'intercooler
-page_contract:
-  antiMistakes:
+  related_parts:
+  - acheminer
+  - canaliser
+  - transporter
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "augmente la puissance"
+  cost_range:
+    min: 20
+    max: 80
+    currency: EUR
+    unit: gaine
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Équipement d'origine (OE)
+    description: Gaine identique à l'origine. Recommandée pour un remplacement identique sans modification du comportement
+      moteur.
+  - tier: Équivalent OE (aftermarket caoutchouc)
+    description: Fabricants aftermarket proposent des gaines caoutchouc compatibles. Qualité variable selon les matériaux
+      utilisés. Convient pour un usage standard.
+  - tier: Silicone renforcé (aftermarket premium)
+    description: Gaines en silicone multicouche. Résistance supérieure à la chaleur, aux huiles et au vieillissement. Durée
+      de vie plus longue qu'une gaine caoutchouc OE.
+  brands:
+    premium:
+    - Bosch
+    - Delphi
+    - Denso
+    standard:
+    - Pierburg
+    - VDO
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Perte de puissance a l acceleration
+    severity: confort
+  - id: S2
+    label: Sifflement a l acceleration fuite d air
+    severity: confort
+  - id: S3
+    label: Gaine fissuree gonflee ou deformee
+    severity: confort
+  - id: S4
+    label: Gaine qui se deboite du raccord
+    severity: confort
+  - id: S5
+    label: Colliers de serrage desserres ou rouilles
+    severity: confort
+  - id: S6
+    label: Surconsommation de carburant
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - identifier origine fuite et verifier joints
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'fuite detectee ou niveau bas : identifier origine fuite et verifier joints'
+  quick_checks:
+  - 'Observer : perte de puissance a l acceleration ?'
+  - 'Observer : sifflement a l acceleration fuite d air ?'
+  - 'Observer : gaine fissuree gonflee ou deformee ?'
+  - 'Observer : gaine qui se deboite du raccord ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Perte de puissance a l acceleration
+  - Sifflement a l acceleration fuite d air
+  - Gaine fissuree gonflee ou deformee
+  - Gaine qui se deboite du raccord
+  - Colliers de serrage desserres ou rouilles
+  - Surconsommation de carburant
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '3314'
+  intro_title: A quoi sert Gaine de turbo ?
+  risk_title: Pourquoi remplacer Gaine de turbo a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,60 +151,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Gaine de turbo compatible avec mon vehicule ?
-  - answer: En cas de perte de puissance a l acceleration ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Gaine de turbo ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Gaine de turbo sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Gaine de turbo.
-  id: 3314
-  intro:
-    role: Acheminer l'air comprime du turbo vers l'intercooler
-    syncParts:
-    - acheminer
-    - canaliser
-    - transporter
-    title: A quoi sert Gaine de turbo ?
-  pgId: '3314'
+  - question: Gaine de turbo OE ou silicone ?
+    answer: Les gaines OE en caoutchouc conviennent pour un usage standard. Les gaines silicone (Samco, Mishimoto) sont plus
+      durables et résistent mieux à la chaleur et aux huiles.
+  - question: Comment savoir si ma gaine de turbo est HS ?
+    answer: Perte de puissance, sifflement à l'accélération (fuite d'air), gaine fissurée ou gonflée visible, colliers desserrés,
+      gaine qui se déboîte.
+  - question: Tous les combien changer la gaine ?
+    answer: Contrôle visuel tous les 2 ans ou 40 000 km. À remplacer si fissurée, gonflée ou durcie. Les gaines silicone durent
+      plus longtemps.
+  - question: Peut-on changer une gaine de turbo soi-même ?
+    answer: Oui, opération simple. Desserrer les colliers, retirer l'ancienne gaine, monter la nouvelle avec des colliers
+      neufs. 15-45 min selon accessibilité.
+  - question: Quelle erreur éviter ?
+    answer: Toujours utiliser des colliers neufs (les anciens ne serrent plus correctement). Vérifier que la gaine ne frotte
+      pas sur des pièces chaudes. Ne pas plier la gaine.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/gaine-de-turbo.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Gaine de turbo a temps ?
-  symptoms:
-  - perte de puissance a l acceleration
-  - sifflement a l acceleration fuite d air
-  - gaine fissuree gonflee ou deformee
-  - gaine qui se deboite du raccord
-  - colliers de serrage desserres ou rouilles
-  - surconsommation de carburant
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 3314
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -109,55 +177,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: gaine-de-turbo
-source_type: gamme
-symptoms:
-- description: perte de puissance a l acceleration
-  evidence:
-  - 'Observation: perte de puissance a l acceleration'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Perte de puissance a l acceleration
-  risk_level: confort
-- description: sifflement a l acceleration fuite d air
-  evidence:
-  - 'Observation: sifflement a l acceleration fuite d air'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Sifflement a l acceleration fuite d air
-  risk_level: confort
-- description: gaine fissuree gonflee ou deformee
-  evidence:
-  - 'Observation: gaine fissuree gonflee ou deformee'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Gaine fissuree gonflee ou deformee
-  risk_level: confort
-- description: gaine qui se deboite du raccord
-  evidence:
-  - 'Observation: gaine qui se deboite du raccord'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Gaine qui se deboite du raccord
-  risk_level: confort
-- description: colliers de serrage desserres ou rouilles
-  evidence:
-  - 'Observation: colliers de serrage desserres ou rouilles'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Colliers de serrage desserres ou rouilles
-  risk_level: confort
-- description: surconsommation de carburant
-  evidence:
-  - 'Observation: surconsommation de carburant'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Surconsommation de carburant
-  risk_level: confort
-title: Gaine de turbo
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: d419299c-20ce-53f6-9a75-50d491aef5b3
+content_hash: sha256:4731b0b8adeded08
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Gaine de turbo - Guide Diagnostic Complet
@@ -187,6 +235,12 @@ Pour diagnostiquer un problème de gaine de turbo:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -218,3 +272,92 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "augmente la puissance"
+
+## FAQ
+
+**Gaine de turbo OE ou silicone ?**
+Les gaines OE en caoutchouc conviennent pour un usage standard. Les gaines silicone (Samco, Mishimoto) sont plus durables et résistent mieux à la chaleur et aux huiles.
+
+**Comment savoir si ma gaine de turbo est HS ?**
+Perte de puissance, sifflement à l'accélération (fuite d'air), gaine fissurée ou gonflée visible, colliers desserrés, gaine qui se déboîte.
+
+**Tous les combien changer la gaine ?**
+Contrôle visuel tous les 2 ans ou 40 000 km. À remplacer si fissurée, gonflée ou durcie. Les gaines silicone durent plus longtemps.
+
+**Peut-on changer une gaine de turbo soi-même ?**
+Oui, opération simple. Desserrer les colliers, retirer l'ancienne gaine, monter la nouvelle avec des colliers neufs. 15-45 min selon accessibilité.
+
+**Quelle erreur éviter ?**
+Toujours utiliser des colliers neufs (les anciens ne serrent plus correctement). Vérifier que la gaine ne frotte pas sur des pièces chaudes. Ne pas plier la gaine.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/9c849fbc2d4d 2026-03-26 -->
+### Conduite d'air de suralimentation
+
+Conduite d'air de suralimentation
+
+Notre conduite transfère efficacement l'air pressurisé vers la chambre de combustion, assurant une alimentation constante pour des performances moteur optimales.
+
+Principaux bénéfices
+Conception acoustique réalisée en interne
+Injection plastique réalisée en interne
+Mélange de caoutchouc réalisé en interne
+Caractéristiques techniques
+Description
+
+Assemblage de tuyaux en caoutchouc et en plastique, avec dispositifs acoustiques et capteurs intégrés.
+
+Informations fonctionnelles
+Température de l'air jusqu'à 250 °C
+Pression de l'air jusqu'à 2,5 bars
+Bénéfices
+Réduction du bruit
+Conception robuste
+Fiabilité
+
+<!-- materialized-from-db manual/5567eb415ea6 2026-03-26 -->
+### Conduite d'admission du turbocompresseur
+
+Conduite d'admission du turbocompresseur
+
+Notre conduite relie le filtre à air au turbocompresseur, assurant un apport constant d'air frais au moteur pour une combustion efficace.
+
+Principaux bénéfices
+Étanchéité à l’air
+Intégration fonctionnelle
+Résistance aux vibrations et à la chaleur
+Caractéristiques techniques
+Description
+
+Combinaison des raccords d'air frais et d'air de recirculation, avec un soufflet intégré pour résister aux vibrations.
+
+Bénéfices
+Étanchéité renforcée
+Personnalisation et adaptabilité
+Résistance aux hautes températures
+Résistance aux vibrations
+Industries
+Automobile
+
+Voici aussi la version ultra épurée :
+
+Conduite d'admission du turbocompresseur
+
+Cette conduite relie le filtre à air au turbocompresseur afin d’assurer un apport constant d’air frais au moteur et une combustion efficace.
+
+Principaux bénéfices
+Étanchéité à l’air
+Intégration fonctionnelle
+Résistance aux vibrations et à la chaleur
+Caractéristiques techniques
+
+Description :
+Combinaison des raccords d’air frais et d’air de recirculation, avec un soufflet intégré pour absorber les vibrations.
+
+Bénéfices
+Étanchéité renforcée
+Personnalisation et adaptabilité
+Résistance aux hautes températures
+Résistance aux vibrations

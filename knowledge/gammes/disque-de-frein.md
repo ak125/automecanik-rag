@@ -1,440 +1,913 @@
 ---
 category: freinage
-doc_family: catalog
-source_type: gamme
-pg_id: 82
 slug: disque-de-frein
 title: Disque de frein
+pg_id: 82
+source_type: gamme
+doc_family: catalog
 truth_level: L2
-updated_at: 2026-02-17
+updated_at: '2026-03-25'
 verification_status: draft
 intent_targets:
-  - diagnostic
-  - achat
-  - reference
-  - entretien
-mechanical_rules:
+- diagnostic
+- achat
+- reference
+- entretien
+business_priority: high
+priority_signals:
+  avg_basket: 180
+  monthly_searches: 12000
+  margin_tier: high
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+_sources:
+  ece-r90:
+    type: norm
+    doc: null
+    note: Norme europeenne performances freinage remplacement
+  experience-atelier:
+    type: field-expertise
+    note: Retours atelier partenaire, donnees constructeurs
+domain:
+  role: Le disque de frein transforme l'energie cinetique du vehicule en chaleur par friction avec les plaquettes, afin de
+    ralentir le vehicule de maniere stable et repetable sur chaque essieu
   must_be_true:
-    - friction
-    - plaquettes
-    - chaleur
-    - essieu
-    - paire
-  must_not_contain_concepts:
-    - tambour de frein
-    - frein à main
+  - friction
+  - plaquettes
+  - chaleur
+  - essieu
+  - paire
+  must_not_contain:
+  - tambour de frein
+  - frein a main
   confusion_with:
-    - term: tambour de frein
-      difference: Le tambour utilise des mâchoires internes, le disque utilise des plaquettes externes pressées par un étrier
-    - term: plaquette de frein
-      difference: La plaquette est la garniture qui frotte contre le disque. Le disque est le plateau métallique fixé au moyeu
-page_contract:
-  pgId: '82'
-  intro:
-    title: À quoi sert le disque de frein ?
-    role: Le disque de frein transforme l'énergie cinétique en chaleur par friction avec les plaquettes afin de ralentir le véhicule de manière stable et répétable.
-    syncParts:
-      - Vérifier les plaquettes au démontage.
-      - Contrôler l'état de l'étrier et des guidages.
+  - term: tambour de frein
+    difference: Le tambour utilise des machoires internes, le disque utilise des plaquettes externes pressees par un etrier
+  - term: plaquette de frein
+    difference: La plaquette est la garniture qui frotte contre le disque. Le disque est le plateau metallique fixe au moyeu
+  related_parts:
+  - Plaquettes de frein (s'usent avec le disque, a controler systematiquement)
+  - Etrier de frein (presse les plaquettes contre le disque)
+  - Flexible de frein (transmet la pression hydraulique a l'etrier)
+  - Capteur ABS (mesure la vitesse de rotation via la cible ABS du disque)
+  - Liquide de frein (a purger si le circuit a ete ouvert)
+  norms:
+  - ECE R90 — performances de freinage proches de l'equipement d'origine
+  cross_gammes:
+  - slug: plaquette-de-frein
+    relation: always_together
+    context: Des plaquettes neuves sur des disques uses ne freinent pas correctement. Remplacer conjointement.
+  - slug: etrier-de-frein
+    relation: check_on_replace
+    context: Controler l'etat de l'etrier et des guidages au demontage du disque
+  - slug: flexible-de-frein
+    relation: check_on_replace
+    context: Verifier l'etat du flexible si le circuit hydraulique est ouvert
+  - slug: liquide-de-frein
+    relation: check_on_replace
+    context: Purger le liquide de frein si le circuit hydraulique a ete ouvert
+selection:
+  criteria:
+  - 'Essieu : avant (70% de l''effort de freinage, ventile standard) ou arriere (stabilite, plein ou ventile selon vehicule)'
+  - 'Type : plein, ventile, perfore (sport/circuit), rainure (sport/utilitaire charge)'
+  - Diametre et epaisseur (specifiques au vehicule)
+  - Bague ABS integree ou non (selon modele)
+  - 'Usage : standard (urbain/mixte 40-80 EUR/paire), haute capacite (montagne 80-150 EUR), sport (150-400 EUR)'
+  checklist:
+  - Verifier l'essieu concerne (avant ≠ arriere)
+  - Confirmer le type (plein ou ventile)
+  - Commander par paire (2 disques meme essieu)
+  - Verifier si bague ABS integree necessaire
+  - Choisir selon l'usage (standard, haute capacite, sport)
+  - Penser aux plaquettes (les changer en meme temps si usees)
+  - Privilegier une marque reconnue
+  - Si stationnement exterieur frequent, preferer un traitement anti-corrosion
+  anti_mistakes:
+  - Commander sans verifier l'essieu (avant ≠ arriere)
+  - Remplacer un seul disque au lieu des deux sur le meme essieu
+  - Choisir uniquement sur le prix sans verifier marque et qualite
+  - Oublier de verifier l'etat des plaquettes au changement de disques
+  - Commander des disques perces pour un usage urbain (inutile et plus cher)
+  - Confondre plein et ventile
+  - Ne pas verifier si le vehicule necessite une bague ABS integree
+  cost_range:
+    min: 31
+    max: 145
+    currency: EUR
+    unit: l'unite
+    source: historique commandes automecanik
+  compatibility_notes: 'Main d''oeuvre supplementaire : 100 a 200 EUR selon vehicule'
+  brands:
+    premium:
+    - Brembo
+    - ATE
+    - Bosch
+    - TRW
+    equivalent:
+    - Valeo
+    - Ferodo
+    - Textar
+    budget:
+    - NK
+    - Delphi
+  quality_tiers:
+  - tier: Equipementiers premium
+  - tier: Equipementiers reconnus
+  - tier: Economique certifie ECE R90
+diagnostic:
   symptoms:
-    - Vibrations au volant au freinage
-    - Pulsation dans la pédale de frein
-    - Bruit de grincement ou frottement métallique
-    - Distance de freinage allongée
-    - Traces bleutées ou rainures profondes sur la piste
-  timing:
-    title: Quand intervenir ?
-    km: Contrôle à chaque révision, remplacement entre 60 000 et 80 000 km en usage mixte
-    years: Contrôle annuel recommandé
-    note: Épaisseur sous minimum constructeur = remplacement immédiat
-  risk:
-    title: Pourquoi remplacer le disque de frein à temps ?
-    explanation: Un disque usé ou voilé réduit l'efficacité de freinage et peut endommager les plaquettes neuves.
-    consequences:
-      - Distance de freinage allongée (risque d'accident)
-      - Destruction prématurée des plaquettes neuves
-      - Vibrations transmises au volant et à la pédale
-      - Surchauffe pouvant fissurer le disque
-    costRange: 80 à 300 EUR par essieu (pièces), 100 à 200 EUR de main d'œuvre
-    conclusion: Un contrôle visuel régulier et un remplacement par paire évitent la majorité des problèmes.
+  - id: S1
+    label: Vibrations au volant au freinage (surtout a vitesse elevee)
+    severity: securite
+  - id: S2
+    label: Pulsation dans la pedale de frein
+    severity: securite
+  - id: S3
+    label: Grincement ou frottement metallique au freinage
+    severity: securite
+  - id: S4
+    label: Distance de freinage allongee
+    severity: securite
+  - id: S5
+    label: Traces bleutees ou rainures profondes sur la piste du disque
+    severity: securite
+  - id: S6
+    label: Rainures profondes creusees dans la piste de freinage
+    severity: securite
+  - id: S7
+    label: Vehicule qui tire d'un cote au freinage
+    severity: securite
+  causes:
+  - Usure normale (60%) — le disque s'amincit avec les kilometres, remplacement entre 60 000 et 80 000 km en usage mixte
+  - Disque voile (20%) — deformation due a un echauffement excessif (descente de col, freinage appuye repete)
+  - Montage non conforme (10%) — moyeu sale, couple de serrage incorrect, boulons serres a la visseuse sans couple
+  - Etrier grippe (5%) — l'etrier ne relache pas la plaquette, le disque chauffe en permanence d'un cote
+  - Mauvaise association disque/plaquette (5%) — garniture trop abrasive ou incompatible qui raye le disque
+  quick_checks:
+  - 'Inspection visuelle a travers les jantes : traces bleues, fissures, rainures profondes ?'
+  - 'Essai route : freiner progressivement a 80 km/h, vibrations dans le volant ? pulsation dans la pedale ?'
+  - 'Ecoute : bruit de frottement ou grincement metallique au freinage ?'
+  - 'Comparaison : la distance de freinage semble-t-elle plus longue qu''avant ?'
+  workshop_checks:
+  - Mesure d'epaisseur au pied a coulisse en plusieurs points (comparer a la cote mini gravee sur le disque)
+  - 'Mesure du voile au comparateur (tolerance : 0.05-0.07 mm)'
+  - Controle du faux-rond du moyeu avant montage du disque neuf
+  - 'Verification etat de surface : pas de fissures, pas de points chauds, pas de corrosion excessive sur la piste'
+  immediate_replace:
+  - Epaisseur sous le minimum constructeur (cote gravee sur le disque)
+  - Fissure visible sur la piste de freinage
+  - Deformation importante (voile > 0.1 mm)
+  - Traces de surchauffe severe (coloration bleu-violet sur toute la piste)
+  - Freinage instable ou perte d'efficacite ressentie
+  depose_steps: []
+maintenance:
+  interval:
+    value: 60000-80000
+    unit: km
+    note: Epaisseur sous minimum constructeur = remplacement immediat
+    source: experience-atelier
+  good_practices:
+  - Inspection visuelle a travers les jantes a chaque revision ou tous les 15 000 km
+  - Mesure d'epaisseur a chaque changement de plaquettes
+  - Controle du voile si vibrations au freinage
+  do_not:
+  - Ignorer les vibrations au freinage en esperant que ca passe
+  - Utiliser de la graisse en zone de friction (piste du disque)
+  wear_signs:
+  - Rainures profondes visibles sur la piste
+  - Bord du disque en relief (la piste s'est creusee)
+  - Traces de rouille sur la piste de freinage (stationnement prolonge)
+  - Vibrations au freinage qui apparaissent progressivement
+installation:
+  difficulty: moyen
+  time: 1-2h
+  tools:
+  - Cle dynamometrique
+  - Pied a coulisse
+  - Cric et chandelles
+  - Cle a douille (taille selon vehicule)
+  prerequisite: Vehicule sur chandelles, roue demontee
+  steps:
+  - Demonter la roue et securiser le vehicule sur chandelles
+  - Demonter l'etrier de frein et le suspendre (ne pas laisser pendre par le flexible)
+  - Retirer l'ancien disque du moyeu
+  - Nettoyer la surface du moyeu (eliminer rouille et debris)
+  - Monter le disque neuf sur le moyeu (verifier l'absence de jeu)
+  - Remonter l'etrier et les plaquettes (neuves si usees)
+  - Serrer les boulons de roue a la cle dynamometrique au couple prescrit
+  - Repeter de l'autre cote (toujours par paire sur le meme essieu)
+  - Pomper la pedale de frein plusieurs fois avant de demarrer (rattraper le jeu)
+  - 'Rodage : 200 km de conduite moderee, eviter les freinages brusques'
+  post_checks:
+  - Pedale de frein ferme apres pompage ?
+  - Pas de bruit anormal au freinage ?
+  - Pas de vibration au volant ?
+  - 'Verification apres 50 km : resserrer les boulons au couple si necessaire'
+  common_errors:
+  - Ne pas nettoyer le moyeu avant montage (provoque un faux-rond)
+  - Serrer les boulons a la visseuse sans cle dynamometrique
+  - Laisser l'etrier pendre par le flexible (risque de rupture)
+  - Oublier de pomper la pedale avant de demarrer
+  - Ne pas respecter la periode de rodage (200 km)
+  pro_only: false
+rendering:
+  pgId: '82'
+  intro_title: A quoi sert le disque de frein ?
+  risk_title: Pourquoi remplacer le disque de frein a temps ?
+  risk_explanation: Un disque use ou voile reduit l'efficacite de freinage et peut endommager les plaquettes neuves.
+  risk_consequences:
+  - Distance de freinage allongee (risque d'accident)
+  - Destruction prematuree des plaquettes neuves
+  - Vibrations transmises au volant et a la pedale
+  - Surchauffe pouvant fissurer le disque
+  risk_conclusion: Un controle visuel regulier et un remplacement par paire evitent la majorite des problemes.
   arguments:
-    - title: Compatibilité vérifiée
-      content: Sélection guidée par véhicule, motorisation et essieu.
-      icon: check-circle
-    - title: Priorité sécurité
-      content: Le freinage est le premier organe de sécurité du véhicule.
-      icon: shield-check
-    - title: Décision rapide
-      content: Le guide structure les contrôles avant commande.
-      icon: clock
-    - title: Montage maîtrisé
-      content: Toujours remplacer par paire avec vérification des plaquettes.
-      icon: list-check
-  howToChoose: Renseignez marque, modèle, motorisation et essieu (avant/arrière). Vérifiez le type (plein ou ventilé) et le diamètre. Notre sélecteur affiche uniquement les références compatibles.
-  antiMistakes:
-    - Ne remplacer qu'un seul disque au lieu des deux sur le même essieu
-    - Monter des plaquettes neuves sur des disques usés
-    - Ne pas respecter le couple de serrage des boulons de roue
-    - Utiliser de la graisse en zone de friction (piste du disque)
-    - Ignorer l'état des étriers et guidages au remontage
+  - title: Compatibilite verifiee
+    icon: check-circle
+    source_ref: null
+  - title: Priorite securite
+    icon: shield-check
+    source_ref: null
+  - title: Decision rapide
+    icon: clock
+    source_ref: null
+  - title: Montage maitrise
+    icon: list-check
+    source_ref: null
   faq:
-    - question: Faut-il changer les disques et les plaquettes ensemble ?
-      answer: Oui dans la plupart des cas. Des plaquettes neuves sur des disques usés ne freinent pas de manière optimale. Prévoyez le remplacement conjoint.
-    - question: Plein ou ventilé, lequel choisir ?
-      answer: Pour l'avant, ventilé (standard). Pour l'arrière, respectez le type d'origine. Notre sélecteur indique le bon type.
-    - question: Combien de temps durent les disques de frein ?
-      answer: En moyenne 60 000 à 80 000 km en usage mixte. En conduite urbaine intensive, l'usure peut être plus rapide.
-    - question: Quelle différence entre un disque à 20 EUR et un à 60 EUR ?
-      answer: Le prix reflète la qualité des matériaux et la précision de fabrication. Un disque de marque reconnue offre un freinage plus constant et une meilleure durée de vie.
-    - question: Peut-on changer ses disques soi-même ?
-      answer: Le remplacement est possible pour un bricoleur équipé, mais le freinage est un élément de sécurité critique. En cas de doute, confiez le montage à un professionnel. Prévoyez 200 km de rodage.
-    - question: Faut-il changer les 2 côtés en même temps ?
-      answer: Oui, toujours par paire sur le même essieu. Un disque neuf d'un côté et un disque usé de l'autre crée un déséquilibre de freinage dangereux.
+  - question: Faut-il changer les disques et les plaquettes ensemble ?
+    answer: Oui dans la plupart des cas. Des plaquettes neuves sur des disques uses ne freinent pas de maniere optimale. Prevoyez
+      le remplacement conjoint.
+  - question: Plein ou ventile, lequel choisir ?
+    answer: Pour l'avant, ventile (standard). Pour l'arriere, respectez le type d'origine. Notre selecteur indique le bon
+      type.
+  - question: Combien de temps durent les disques de frein ?
+    answer: En moyenne 60 000 a 80 000 km en usage mixte. En conduite urbaine intensive, l'usure peut etre plus rapide.
+  - question: Quelle difference entre un disque a 20 EUR et un a 60 EUR ?
+    answer: Le prix reflete la qualite des materiaux et la precision de fabrication. Un disque de marque reconnue offre un
+      freinage plus constant et une meilleure duree de vie.
+  - question: Peut-on changer ses disques soi-meme ?
+    answer: Le remplacement est possible pour un bricoleur equipe, mais le freinage est un element de securite critique. En
+      cas de doute, confiez le montage a un professionnel. Prevoyez 200 km de rodage.
+  - question: Faut-il changer les 2 cotes en meme temps ?
+    answer: Oui, toujours par paire sur le meme essieu. Un disque neuf d'un cote et un disque use de l'autre cree un desequilibre
+      de freinage dangereux.
+  schema_org:
+  - type: FAQPage
+    source_bloc: rendering
+  - type: HowTo
+    source_bloc: E
+  - type: Product
+    source_bloc: B
   quality:
     score: 92
-    source: manual:template-v3
-    version: GammeContentContract.v3
+    source: manual:template-v4
+    version: GammeContentContract.v4
 seo_cluster:
-  updated_at: 2026-02-17
+  source: keyword-dataset
+  updated_at: '2026-02-23'
+  schema_version: '1.0'
   primary_keyword:
-    text: "comment choisir ses disques de frein"
-    seo_difficulty: 41
-    traffic_range: "220-1400/mo"
+    text: disque de frein
+    volume: 50000
+    traffic_range: 25000-125000/mo
     intent: informationnelle
   keyword_variants:
-    - keyword: "guide achat disque de frein"
-      sd: 31
-      results: "11.7M"
-      intent: "informationnelle + transactionnelle"
-      competition: faible
-    - keyword: "achat disque de frein"
-      sd: 31
-      results: "8.4M"
-      intent: transactionnelle
-      competition: moyenne
-    - keyword: "comment choisir disque de frein"
-      sd: 42
-      results: "6.3M"
-      intent: informationnelle
-      competition: forte
-    - keyword: "quel disque de frein choisir"
-      sd: 36
-      results: "3.8M"
-      intent: informationnelle
-      competition: moyenne
-    - keyword: "meilleur disque de frein"
-      sd: 48
-      results: "3.6M"
-      intent: "informationnelle + comparatif"
-      competition: forte
-    - keyword: "comment choisir ses disques de frein voiture"
-      sd: 38
-      intent: informationnelle
-      competition: forte
-  paa_questions:
-    - "Comment savoir quel disque de frein acheter ?"
-    - "Comment savoir quels disques de frein il me faut ?"
-    - "Comment connaître la taille de ses disques de frein ?"
-    - "Comment savoir si on doit changer les disques de frein ?"
-    - "Quelle est la meilleure marque pour les disques de frein ?"
-    - "Quelle est la limite d'usure pour les disques de frein ?"
-    - "Comment savoir si mon disque est mort ?"
-  cluster_informationnelle:
-    - keyword: "comment choisir ses disques de frein"
-      sd: 41
-      potential: 5
-    - keyword: "comment choisir ses disques de frein voiture"
-      sd: 38
-      potential: 4
-    - keyword: "comment bien choisir ses disques de frein"
-      sd: 35
-      potential: 4
-    - keyword: "comment connaitre taille disque de frein voiture"
-      sd: 40
-      potential: 4
-    - keyword: "disque de frein ventilé ou plein"
-      sd: 48
-      potential: 3
-    - keyword: "comment trouver la référence de ses disques de frein"
-      sd: 30
-      potential: 3
-    - keyword: "quand changer disque de frein"
-      sd: 37
-      potential: 4
-    - keyword: "disque de frein usé symptôme"
-      sd: 35
-      potential: 3
-    - keyword: "quelle épaisseur de disque de frein choisir"
-      sd: 30
-      potential: 3
-  cluster_commerciale:
-    - keyword: "meilleure marque disque de frein voiture"
-      sd: 40
-      potential: 5
-    - keyword: "comparatif disque de frein"
-      sd: 42
-      potential: 5
-    - keyword: "classement marque disque de frein"
-      sd: 35
-      potential: 4
-    - keyword: "top 10 disque de frein"
-      sd: 30
-      potential: 4
-    - keyword: "quel disque de frein choisir"
-      sd: 36
-      potential: 5
-    - keyword: "quels disques de frein choisir"
-      sd: 38
-      potential: 4
-    - keyword: "disque de frein ATE ou Brembo"
-      sd: 25
-      potential: 3
-    - keyword: "disque de frein ATE avis"
-      sd: 25
-      potential: 3
-    - keyword: "quelle marque de disque et plaquettes de frein choisir"
-      sd: 35
-      potential: 4
-    - keyword: "quel type de disques de frein est le meilleur"
-      sd: 33
-      potential: 3
-    - keyword: "meilleur marque disque de frein BMW"
-      sd: 20
-      potential: 3
-  cluster_transactionnelle:
-    - keyword: "achat disque de frein"
-      sd: 31
-      potential: 4
-    - keyword: "disque de frein pas cher"
-      sd: 35
-      potential: 4
-    - keyword: "disques de freins prix"
-      sd: 38
-      potential: 4
-    - keyword: "plaquette et disque de frein prix"
-      sd: 33
-      potential: 4
-    - keyword: "disque de frein prix moyen"
-      sd: 28
-      potential: 3
-    - keyword: "disques de frein avant"
-      sd: 45
-      potential: 3
-    - keyword: "disques de frein arrière"
-      sd: 43
-      potential: 3
-    - keyword: "kit disque et plaquette de frein"
-      sd: 35
-      potential: 4
-    - keyword: "remplacement plaquettes de frein et disques avant"
-      sd: 30
-      potential: 3
-  cluster_pratique:
-    - keyword: "comment choisir ses plaquettes de frein"
-      potential: 4
-      note: "complémentaire cross-gamme"
-    - keyword: "comment choisir plaquette de frein voiture"
-      potential: 4
-      note: "complémentaire cross-gamme"
-    - keyword: "comment choisir disque de frein vélo"
-      potential: 3
-      note: "niche vélo - hors scope"
-    - keyword: "comment choisir ses disques de frein VTT"
-      potential: 3
-      note: "niche VTT - hors scope"
-  competitors:
-    - name: Oscaro
-      traffic: "1400/mo"
-      keywords_ranked: 304
-    - name: Mister-auto
-      traffic: "980/mo"
-      keywords_ranked: 283
-    - name: Garages AD
-      note: "DA modéré, forte présence"
-    - name: Autodoc
-      note: "concurrent transactionnel"
-    - name: Trodo
-      note: "concurrent transactionnel"
-  priority_top5:
-    - "comment choisir ses disques de frein"
-    - "quel disque de frein choisir"
-    - "meilleure marque disque de frein voiture"
-    - "comparatif disque de frein"
-    - "quand changer disque de frein"
-  target_reach: "300+ requêtes via guide complet"
+  - keyword: disque de frein arriere
+    volume: 5000
+    traffic_range: 2500-12500/mo
+    intent: informationnelle
+    competition: forte
+  - keyword: disque frein
+    volume: 5000
+    traffic_range: 2500-12500/mo
+    intent: informationnelle
+    competition: forte
+  - keyword: disque de frein brembo
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  - keyword: disque de frein ate
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  - keyword: prix disque et plaquette de frein peugeot 208
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: transactionnelle
+    competition: moyenne
+  - keyword: prix plaquette et disque de frein clio 4
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: transactionnelle
+    competition: moyenne
+  - keyword: disque de frein clio 2
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  - keyword: disque de frein bosch
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  - keyword: disque de frein 207
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  - keyword: bosch disque de frein
+    volume: 500
+    traffic_range: 250-1250/mo
+    intent: informationnelle
+    competition: moyenne
+  paa_questions: []
+  role_mapping:
+    R1: prix disque et plaquette de frein peugeot 208
+    R3_guide: disque de frein
+    R3_conseils: quand changer disque de frein
+    R4: disque de frein definition
+    R5: symptome disque de frein use
+doc_id: c2ffc7ca-9e43-5b1f-8a92-349e1da6abe6
+content_hash: sha256:53c1d39d80ff4aba
+lang: fr
+variants:
+- name: Piece standard
+  aliases:
+  - standard
+  - OE equivalent
+  functional_differences:
+  - Qualite equivalente a la monte d origine
+  - Compatible avec la majorite des vehicules
+- name: Piece performance/sport
+  aliases:
+  - sport
+  - haute performance
+  functional_differences:
+  - Materiaux haute temperature
+  - Pour usage intensif ou sportif
+location_on_vehicle:
+  area: Au niveau des roues (avant et/ou arriere)
+  access: Demontage de la roue necessaire (cric + chandelle)
+  adjacent_parts:
+  - disque
+  - plaquette
+  - etrier
+  - flexible
 ---
 
 # Disque de frein
 
-## Référence technique
+## Reference technique
 
-Le disque de frein est un composant de sécurité du système de freinage. Il transforme l'énergie cinétique du véhicule en chaleur par friction avec les plaquettes de frein.
+Le disque de frein est un composant de securite du systeme de freinage. Il transforme l'energie cinetique du vehicule en chaleur par friction avec les plaquettes de frein.
 
 ### Types de disques
 
-| Type | Usage | Caractéristiques |
+| Type | Usage | Caracteristiques |
 |------|-------|-----------------|
-| **Plein** | Arrière (véhicules légers) | Moins cher, suffisant pour faible sollicitation |
-| **Ventilé** | Avant (standard) | Deux pistes séparées par des ailettes, meilleure évacuation de la chaleur |
-| **Perforé** | Sport / circuit | Trous pour évacuer gaz et eau, mordant à chaud |
-| **Rainuré** | Sport / utilitaire chargé | Rainures pour évacuer poussières de garniture, mordant constant |
+| **Plein** | Arriere (vehicules legers) | Moins cher, suffisant pour faible sollicitation |
+| **Ventile** | Avant (standard) | Deux pistes separees par des ailettes, meilleure evacuation de la chaleur |
+| **Perfore** | Sport / circuit | Trous pour evacuer gaz et eau, mordant a chaud |
+| **Rainure** | Sport / utilitaire charge | Rainures pour evacuer poussieres de garniture, mordant constant |
 
-### Normes et spécifications
+### Normes et specifications
 
-- **ECE R90** : Norme européenne imposant des performances de freinage proches de l'équipement d'origine pour toute pièce de remplacement
-- **Cote minimale** : Épaisseur minimale gravée sur le disque (ex : MIN TH 22.0 mm). En dessous = remplacement obligatoire
-- **Voile maximal** : Tolérance de faux-rond, généralement 0.05 à 0.07 mm. Au-delà = vibrations au freinage
+- **ECE R90** : Norme europeenne imposant des performances de freinage proches de l'equipement d'origine pour toute piece de remplacement
+- **Cote minimale** : Epaisseur minimale gravee sur le disque (ex : MIN TH 22.0 mm). En dessous = remplacement obligatoire
+- **Voile maximal** : Tolerance de faux-rond, generalement 0.05 a 0.07 mm. Au-dela = vibrations au freinage
 
-### Pièces associées
+### Pieces associees
 
-- **Plaquettes de frein** : S'usent avec le disque, à contrôler systématiquement
-- **Étrier de frein** : Presse les plaquettes contre le disque
-- **Flexible de frein** : Transmet la pression hydraulique à l'étrier
+- **Plaquettes de frein** : S'usent avec le disque, a controler systematiquement
+- **Etrier de frein** : Presse les plaquettes contre le disque
+- **Flexible de frein** : Transmet la pression hydraulique a l'etrier
 - **Capteur ABS** : Mesure la vitesse de rotation de la roue via la cible ABS du disque
-- **Liquide de frein** : À purger si le circuit a été ouvert
+- **Liquide de frein** : A purger si le circuit a ete ouvert
 
 ## Diagnostic
 
-### Symptômes spécifiques au disque de frein
+### Symptomes specifiques au disque de frein
 
-| Symptôme | Description | Urgence |
+| Symptome | Description | Urgence |
 |----------|-------------|---------|
-| **Vibrations au volant au freinage** | Le volant tremble quand on freine, surtout à vitesse élevée | Moyenne - faire contrôler |
-| **Pulsation dans la pédale** | La pédale de frein pulse sous le pied au freinage | Moyenne |
-| **Grincement métallique** | Bruit de métal contre métal : les plaquettes sont usées jusqu'à l'âme | Haute - sécurité |
-| **Distance de freinage allongée** | Le véhicule met plus de distance à s'arrêter | Haute - sécurité |
-| **Traces bleutées sur la piste** | Surchauffe du disque, points chauds visibles | Haute - remplacement |
-| **Rainures profondes** | Sillons creusés dans la piste de freinage | Moyenne - mesurer épaisseur |
-| **Tire d'un côté au freinage** | Un étrier grippé ou un disque plus usé que l'autre | Haute - sécurité |
+| **Vibrations au volant au freinage** | Le volant tremble quand on freine, surtout a vitesse elevee | Moyenne - faire controler |
+| **Pulsation dans la pedale** | La pedale de frein pulse sous le pied au freinage | Moyenne |
+| **Grincement metallique** | Bruit de metal contre metal : les plaquettes sont usees jusqu'a l'ame | Haute - securite |
+| **Distance de freinage allongee** | Le vehicule met plus de distance a s'arreter | Haute - securite |
+| **Traces bleutees sur la piste** | Surchauffe du disque, points chauds visibles | Haute - remplacement |
+| **Rainures profondes** | Sillons creuses dans la piste de freinage | Moyenne - mesurer epaisseur |
+| **Tire d'un cote au freinage** | Un etrier grippe ou un disque plus use que l'autre | Haute - securite |
 
-### Causes probables (du plus fréquent au plus rare)
+### Causes probables (du plus frequent au plus rare)
 
-1. **Usure normale** (60%) : Le disque s'amincit avec les kilomètres. Remplacement entre 60 000 et 80 000 km en usage mixte.
-2. **Disque voilé** (20%) : Déformation due à un échauffement excessif (descente de col, freinage appuyé répété). Provoque vibrations au volant.
-3. **Montage non conforme** (10%) : Moyeu sale, couple de serrage incorrect, boulons de roue serrés à la visseuse sans couple.
-4. **Étrier grippé** (5%) : L'étrier ne relâche pas la plaquette, le disque chauffe en permanence d'un côté.
+1. **Usure normale** (60%) : Le disque s'amincit avec les kilometres. Remplacement entre 60 000 et 80 000 km en usage mixte.
+2. **Disque voile** (20%) : Deformation due a un echauffement excessif (descente de col, freinage appuye repete). Provoque vibrations au volant.
+3. **Montage non conforme** (10%) : Moyeu sale, couple de serrage incorrect, boulons de roue serres a la visseuse sans couple.
+4. **Etrier grippe** (5%) : L'etrier ne relache pas la plaquette, le disque chauffe en permanence d'un cote.
 5. **Mauvaise association disque/plaquette** (5%) : Garniture trop abrasive ou incompatible qui raye le disque.
 
 ### Tests simples (sans outil)
 
-- **Inspection visuelle** : Regarder le disque à travers les jantes. Traces bleues, fissures, rainures profondes ?
-- **Essai route** : Freiner progressivement à 80 km/h. Vibrations dans le volant ? Pulsation dans la pédale ?
-- **Écoute** : Bruit de frottement ou grincement métallique au freinage ?
+- **Inspection visuelle** : Regarder le disque a travers les jantes. Traces bleues, fissures, rainures profondes ?
+- **Essai route** : Freiner progressivement a 80 km/h. Vibrations dans le volant ? Pulsation dans la pedale ?
+- **Ecoute** : Bruit de frottement ou grincement metallique au freinage ?
 - **Comparaison** : La distance de freinage semble-t-elle plus longue qu'avant ?
 
 ### Tests atelier
 
-- **Mesure d'épaisseur** au pied à coulisse en plusieurs points (comparer à la cote mini gravée sur le disque)
-- **Mesure du voile** au comparateur (tolérance : 0.05-0.07 mm)
-- **Contrôle du faux-rond du moyeu** avant montage du disque neuf
-- **Vérification état de surface** : pas de fissures, pas de points chauds, pas de corrosion excessive sur la piste
+- **Mesure d'epaisseur** au pied a coulisse en plusieurs points (comparer a la cote mini gravee sur le disque)
+- **Mesure du voile** au comparateur (tolerance : 0.05-0.07 mm)
+- **Controle du faux-rond du moyeu** avant montage du disque neuf
+- **Verification etat de surface** : pas de fissures, pas de points chauds, pas de corrosion excessive sur la piste
 
-### Quand remplacer immédiatement
+### Quand remplacer immediatement
 
-- Épaisseur sous le minimum constructeur (cote gravée sur le disque)
+- Epaisseur sous le minimum constructeur (cote gravee sur le disque)
 - Fissure visible sur la piste de freinage
-- Déformation importante (voile > 0.1 mm)
-- Traces de surchauffe sévère (coloration bleu-violet sur toute la piste)
-- Freinage instable ou perte d'efficacité ressentie
+- Deformation importante (voile > 0.1 mm)
+- Traces de surchauffe severe (coloration bleu-violet sur toute la piste)
+- Freinage instable ou perte d'efficacite ressentie
 
 ## Guide d'achat
 
-### Critères de choix
+### Criteres de choix
 
-**1. Position : avant ou arrière**
+**1. Position : avant ou arriere**
 
-| Position | Rôle | Type standard |
+| Position | Role | Type standard |
 |----------|------|--------------|
-| **Avant** | 70% de l'effort de freinage | Ventilé |
-| **Arrière** | Stabilité au freinage | Plein ou ventilé selon véhicule |
+| **Avant** | 70% de l'effort de freinage | Ventile |
+| **Arriere** | Stabilite au freinage | Plein ou ventile selon vehicule |
 
-Toujours remplacer par essieu (les 2 côtés ensemble).
+Toujours remplacer par essieu (les 2 cotes ensemble).
 
 **2. Type selon l'usage**
 
-| Conduite | Disque recommandé | Budget par paire |
+| Conduite | Disque recommande | Budget par paire |
 |----------|-------------------|-----------------|
-| Urbaine / calme | Ventilé standard | 40-80 EUR |
-| Mixte route/ville | Ventilé standard | 40-80 EUR |
-| Montagne / véhicule chargé | Ventilé haute capacité | 80-150 EUR |
-| Sportive / circuit | Perforé ou rainuré | 150-400 EUR |
+| Urbaine / calme | Ventile standard | 40-80 EUR |
+| Mixte route/ville | Ventile standard | 40-80 EUR |
+| Montagne / vehicule charge | Ventile haute capacite | 80-150 EUR |
+| Sportive / circuit | Perfore ou rainure | 150-400 EUR |
 
-**3. Compatibilité**
+**3. Compatibilite**
 
-- Vérifier l'essieu (avant ≠ arrière)
-- Vérifier le type (plein ≠ ventilé)
-- Vérifier le diamètre et l'épaisseur
-- Vérifier si bague ABS intégrée au disque
-- Utiliser le sélecteur de véhicule pour éviter les erreurs
+- Verifier l'essieu (avant ≠ arriere)
+- Verifier le type (plein ≠ ventile)
+- Verifier le diametre et l'epaisseur
+- Verifier si bague ABS integree au disque
+- Utiliser le selecteur de vehicule pour eviter les erreurs
 
-### Marques recommandées
+### Marques recommandees
 
-**Premium (équipementiers d'origine)**
-- **Brembo** : Référence en performance et durabilité
-- **ATE** : Spécialiste freinage, qualité d'origine
-- **Bosch** : Excellent rapport qualité/prix
-- **TRW** : Équipementier majeur, large couverture
+**Premium (equipementiers d'origine)**
+- **Brembo** : Reference en performance et durabilite
+- **ATE** : Specialiste freinage, qualite d'origine
+- **Bosch** : Excellent rapport qualite/prix
+- **TRW** : Equipementier majeur, large couverture
 
-**Qualité équivalente**
-- **Valeo** : Bon rapport qualité/prix
-- **Ferodo** : Fiabilité éprouvée
-- **Textar** : Qualité d'origine
+**Qualite equivalente**
+- **Valeo** : Bon rapport qualite/prix
+- **Ferodo** : Fiabilite eprouvee
+- **Textar** : Qualite d'origine
 
-**Économique**
-- **NK** : Budget maîtrisé, qualité correcte
-- **Delphi** : Entrée de gamme fiable
+**Economique**
+- **NK** : Budget maitrise, qualite correcte
+- **Delphi** : Entree de gamme fiable
 
 ### Check-list avant commande
 
-1. Vérifier l'essieu concerné (avant ≠ arrière)
-2. Confirmer le type (plein ou ventilé)
-3. Commander par paire (2 disques même essieu)
-4. Vérifier si bague ABS intégrée nécessaire
-5. Choisir selon l'usage (standard, haute capacité, sport)
-6. Penser aux plaquettes (les changer en même temps si usées)
-7. Privilégier une marque reconnue
-8. Si stationnement extérieur fréquent, préférer un traitement anti-corrosion
+1. Verifier l'essieu concerne (avant ≠ arriere)
+2. Confirmer le type (plein ou ventile)
+3. Commander par paire (2 disques meme essieu)
+4. Verifier si bague ABS integree necessaire
+5. Choisir selon l'usage (standard, haute capacite, sport)
+6. Penser aux plaquettes (les changer en meme temps si usees)
+7. Privilegier une marque reconnue
+8. Si stationnement exterieur frequent, preferer un traitement anti-corrosion
 
-### Erreurs à éviter
+### Erreurs a eviter
 
-- Commander sans vérifier l'essieu (avant ≠ arrière)
-- Remplacer un seul disque au lieu des deux sur le même essieu
-- Choisir uniquement sur le prix sans vérifier marque et qualité
-- Oublier de vérifier l'état des plaquettes au changement de disques
-- Commander des disques percés pour un usage urbain (inutile et plus cher)
-- Ignorer les vibrations au freinage en espérant que ça passe
-- Confondre plein et ventilé
-- Ne pas vérifier si le véhicule nécessite une bague ABS intégrée
+- Commander sans verifier l'essieu (avant ≠ arriere)
+- Remplacer un seul disque au lieu des deux sur le meme essieu
+- Choisir uniquement sur le prix sans verifier marque et qualite
+- Oublier de verifier l'etat des plaquettes au changement de disques
+- Commander des disques perces pour un usage urbain (inutile et plus cher)
+- Ignorer les vibrations au freinage en esperant que ca passe
+- Confondre plein et ventile
+- Ne pas verifier si le vehicule necessite une bague ABS integree
 
 ## Entretien
 
-### Intervalles de contrôle
+### Intervalles de controle
 
-| Contrôle | Fréquence |
+| Controle | Frequence |
 |----------|-----------|
-| Inspection visuelle (à travers jantes) | À chaque révision ou tous les 15 000 km |
-| Mesure d'épaisseur | À chaque changement de plaquettes |
-| Contrôle du voile | Si vibrations au freinage |
+| Inspection visuelle (a travers jantes) | A chaque revision ou tous les 15 000 km |
+| Mesure d'epaisseur | A chaque changement de plaquettes |
+| Controle du voile | Si vibrations au freinage |
 
-### Durée de vie moyenne
+### Duree de vie moyenne
 
-| Type de conduite | Durée de vie estimée |
+| Type de conduite | Duree de vie estimee |
 |------------------|---------------------|
 | Urbaine intensive | 40 000 - 60 000 km |
 | Mixte | 60 000 - 80 000 km |
 | Autoroute | 80 000 - 100 000 km |
 
-### Signes d'usure à surveiller
+### Signes d'usure a surveiller
 
 - Rainures profondes visibles sur la piste
-- Bord du disque en relief (la piste s'est creusée)
-- Traces de rouille sur la piste de freinage (stationnement prolongé)
+- Bord du disque en relief (la piste s'est creusee)
+- Traces de rouille sur la piste de freinage (stationnement prolonge)
 - Vibrations au freinage qui apparaissent progressivement
 
-### Remplacement : les règles
+### Remplacement : les regles
 
-- **Toujours par paire** : Les 2 disques du même essieu en même temps
-- **Avec les plaquettes** : Des plaquettes neuves sur des disques usés ne freinent pas correctement
-- **Rodage** : 200 km de conduite modérée après montage (éviter les freinages brusques)
-- **Purge** : Si le circuit hydraulique a été ouvert, purger le liquide de frein
-- **Couples de serrage** : Respecter le couple des boulons de roue (clé dynamométrique obligatoire)
+- **Toujours par paire** : Les 2 disques du meme essieu en meme temps
+- **Avec les plaquettes** : Des plaquettes neuves sur des disques uses ne freinent pas correctement
+- **Rodage** : 200 km de conduite moderee apres montage (eviter les freinages brusques)
+- **Purge** : Si le circuit hydraulique a ete ouvert, purger le liquide de frein
+- **Couples de serrage** : Respecter le couple des boulons de roue (cle dynamometrique obligatoire)
+
+## Installation
+
+### Prerequis et outils
+
+- Vehicule sur chandelles, roue demontee
+- Cle dynamometrique, pied a coulisse, cric et chandelles
+
+### Procedure
+
+1. Demonter la roue et securiser le vehicule sur chandelles
+2. Demonter l'etrier de frein et le suspendre (ne pas laisser pendre par le flexible)
+3. Retirer l'ancien disque du moyeu
+4. Nettoyer la surface du moyeu (eliminer rouille et debris)
+5. Monter le disque neuf sur le moyeu (verifier l'absence de jeu)
+6. Remonter l'etrier et les plaquettes (neuves si usees)
+7. Serrer les boulons de roue a la cle dynamometrique au couple prescrit
+8. Repeter de l'autre cote (toujours par paire)
+9. Pomper la pedale de frein plusieurs fois avant de demarrer
+10. Rodage : 200 km de conduite moderee
+
+### Verifications post-montage
+
+- Pedale de frein ferme apres pompage
+- Pas de bruit anormal au freinage
+- Pas de vibration au volant
+- Resserrage boulons au couple apres 50 km
+
+### Erreurs de montage
+
+- Ne pas nettoyer le moyeu avant montage (provoque un faux-rond)
+- Serrer les boulons a la visseuse sans cle dynamometrique
+- Laisser l'etrier pendre par le flexible (risque de rupture)
+- Oublier de pomper la pedale avant de demarrer
+- Ne pas respecter la periode de rodage (200 km)
+
+## FAQ
+
+**Faut-il changer les disques et les plaquettes ensemble ?**
+Oui dans la plupart des cas. Des plaquettes neuves sur des disques uses ne freinent pas de maniere optimale. Prevoyez le remplacement conjoint.
+
+**Plein ou ventile, lequel choisir ?**
+Pour l'avant, ventile (standard). Pour l'arriere, respectez le type d'origine. Notre selecteur indique le bon type.
+
+**Combien de temps durent les disques de frein ?**
+En moyenne 60 000 a 80 000 km en usage mixte. En conduite urbaine intensive, l'usure peut etre plus rapide.
+
+**Quelle difference entre un disque a 20 EUR et un a 60 EUR ?**
+Le prix reflete la qualite des materiaux et la precision de fabrication. Un disque de marque reconnue offre un freinage plus constant et une meilleure duree de vie.
+
+**Peut-on changer ses disques soi-meme ?**
+Le remplacement est possible pour un bricoleur equipe, mais le freinage est un element de securite critique. En cas de doute, confiez le montage a un professionnel. Prevoyez 200 km de rodage.
+
+**Faut-il changer les 2 cotes en meme temps ?**
+Oui, toujours par paire sur le meme essieu. Un disque neuf d'un cote et un disque use de l'autre cree un desequilibre de freinage dangereux.
+
+
+## References supplementaires
+
+<!-- materialized-from-db reference/freinage__ece-r90.md 2026-03-03 -->
+### ECE R90 - definition
+
+## Definition
+
+La norme ECE R90 encadre la conformite des pieces de freinage de remplacement (ex: plaquettes, disques) avec des exigences de performance proches de l'equipement d'origine.
+
+## Pourquoi c'est important
+
+- meilleure coherence de freinage
+- reduction du risque de pieces non conformes
+- reference utile pour le choix de pieces sur vehicule de tourisme
+
+## Points a verifier
+
+- mention ECE R90 sur le produit/emballage
+- correspondance avec la reference vehicule
+- provenance et tracabilite
+
+<!-- materialized-from-db guides/choisir-disques-frein.md 2026-02-15 -->
+### Guide - Comment choisir ses disques de frein
+
+# Comment choisir ses disques de frein
+
+## Les criteres essentiels
+
+### 1. Compatibilite vehicule
+
+**Obligatoire** : Les disques doivent etre compatibles avec votre vehicule exact.
+
+Pour trouver les bons disques :
+1. Utilisez notre selecteur de vehicule
+2. Entrez votre plaque d'immatriculation
+3. Ou selectionnez marque/modele/motorisation
+
+Notre systeme affiche uniquement les disques compatibles avec votre vehicule.
+
+### 2. Position : Avant ou Arriere
+
+| Position | Role | Remarque |
+|----------|------|----------|
+| **Avant** | Freinage principal (70% de l'effort) | Toujours ventile |
+| **Arriere** | Stabilite au freinage | Plein ou ventile selon vehicule |
+
+**Conseil** : Remplacez toujours par essieu (les 2 cotes ensemble).
+
+### 3. Type de conduite
+
+| Conduite | Disque recommande | Budget |
+|----------|-------------------|--------|
+| Urbaine / Calme | Ventile standard | Economique |
+| Mixte route/ville | Ventile standard | Economique |
+| Montagne / Vehicule charge | Ventile haute capacite | Moyen |
+| Sportive / Circuit | Perce ou rainure | Eleve |
+
+## Check-list compatibilite
+
+- Verifiez l'essieu concerne : les disques avant et arriere sont differents, ne les confondez pas
+- Confirmez le type de disque : plein ou ventile (notre selecteur vous indique le bon type)
+- Commandez toujours par paire : 2 disques pour le meme essieu, jamais un seul
+- Verifiez si votre vehicule necessite une bague ABS integree au disque (le selecteur le precise)
+- Choisissez selon votre usage : standard pour la ville, haute capacite pour la montagne ou le remorquage
+- Pensez a vos plaquettes : si elles sont usees, changez-les en meme temps que les disques
+- Privilegiez une marque reconnue : Brembo, ATE, Bosch, TRW ou Valeo pour la fiabilite
+- En cas d'hesitation entre deux references, contactez notre service client pour confirmation
+- Si votre vehicule stationne souvent dehors, preferez un disque avec traitement anti-corrosion
+
+## Les marques recommandees
+
+### Premium (Equipementiers d'origine)
+- **Brembo** : Reference en performance et durabilite
+- **ATE** : Specialiste freinage, qualite d'origine
+- **Bosch** : Excellent rapport qualite/prix
+- **TRW** : Equipementier majeur, large couverture
+
+### Qualite equivalente
+- **Valeo** : Bon rapport qualite/prix
+- **Ferodo** : Fiabilite eprouvee
+- **Textar** : Qualite d'origine
+
+### Economique
+- **NK** : Budget maitrise, qualite correcte
+- **Delphi** : Entree de gamme fiable
+
+## Conduite urbaine
+
+Freinages frequents mais a basse vitesse. La montee en temperature reste moderee.
+
+### Avantages
+Disques ventiles standard suffisent amplement. Budget maitrise, duree de vie longue en usage calme.
+
+### Inconvenients
+Si le vehicule stationne souvent dehors, la surface des disques peut rouiller entre deux trajets. Privilegiez un traitement anti-corrosion.
+
+## Route et autoroute
+
+Freinages moins frequents mais a vitesse plus elevee.
+
+### Avantages
+Disques ventiles standard avec bonne capacite de refroidissement. Budget raisonnable, securite assuree sur longs trajets.
+
+### Inconvenients
+L'usure est moins visible car le kilometrage est eleve entre les controles. Pensez a verifier vos disques a chaque revision.
+
+## Montagne et charge
+
+Descentes prolongees, vehicule charge ou avec remorque. Forte sollicitation des freins.
+
+### Avantages
+Disques ventiles haute capacite pour une meilleure evacuation de la chaleur. Freinage stable meme en descente longue.
+
+### Inconvenients
+Prix plus eleve que les disques standard. Associez avec des plaquettes adaptees a l'usage intensif pour un resultat optimal.
+
+## Conduite sportive
+
+Freinages appuyes et repetes. Temperatures tres elevees.
+
+### Avantages
+Disques perces ou rainures pour un freinage mordant et constant a haute temperature.
+
+### Inconvenients
+Usure des plaquettes acceleree. Budget eleve. Bruit de freinage possible. A reserver a un usage reellement sportif.
+
+## Tests simples (sans outil)
+
+- Regardez vos disques a travers les jantes : traces bleues, rainures profondes ou fissures visibles
+- Roulez et freinez : vibrations dans le volant ou pulsations dans la pedale
+- Ecoutez au freinage : bruit metallique, grincement ou sifflement inhabituel
+- Comparez la distance de freinage : si elle vous semble plus longue qu'avant, faites controler
+
+## Tests atelier
+
+- Votre garagiste mesure l'epaisseur restante et la compare au minimum autorise
+- Il verifie l'etat de surface : rainures, fissures, traces de surchauffe
+
+## Erreurs a eviter
+
+- Commander des disques sans verifier l'essieu : les disques avant et arriere sont differents
+- Remplacer un seul disque au lieu des deux sur le meme essieu
+- Choisir uniquement sur le prix sans verifier la marque et la qualite
+- Oublier de verifier l'etat des plaquettes quand on change les disques
+- Commander des disques perces pour un usage urbain : c'est inutile et plus cher
+- Ignorer les vibrations au freinage en esperant que ca passe tout seul
+- Confondre plein et ventile en se disant que c'est pareil
+- Ne pas verifier si votre vehicule necessite une bague ABS integree au disque
+
+### Faut-il changer les disques et les plaquettes ensemble ?
+
+Oui dans la plupart des cas. Des plaquettes neuves sur des disques uses ne freinent pas de maniere optimale. Prevoyez le remplacement conjoint pour un resultat de freinage homogene.
+
+### Faut-il changer les 2 cotes en meme temps ?
+
+Oui, toujours par paire sur le meme essieu. Un disque neuf d'un cote et un disque use de l'autre cree un desequilibre de freinage dangereux.
+
+### Plein ou ventile : lequel choisir ?
+
+Pour l'avant, choisissez ventile (c'est le standard). Pour l'arriere, respectez le type d'origine de votre vehicule. Notre selecteur vous indique le bon type automatiquement.
+
+### Combien de temps durent les disques de frein ?
+
+En moyenne 60 000 a 80 000 km en usage mixte. En conduite urbaine intensive, l'usure peut etre plus rapide. Faites-les controler a chaque changement de plaquettes.
+
+### Quelle difference entre un disque a 20 EUR et un a 60 EUR ?
+
+Le prix reflete la qualite des materiaux et la precision de fabrication. Un disque de marque reconnue (Brembo, ATE, Bosch) offre un freinage plus constant, une meilleure duree de vie et moins de bruit.
+
+### Peut-on changer ses disques soi-meme ?
+
+Le remplacement est possible pour un bricoleur equipe, mais le freinage est un element de securite critique. En cas de doute, confiez le montage a un professionnel. Prevoyez 200 km de rodage apres le montage.
+
+## Symptomes supplementaires
+
+<!-- materialized-from-db diagnostic/freinage/vibration-au-freinage.md 2026-01-01 -->
+### Diagnostic - Vibrations véhicule
+
+# Vibrations véhicule - Diagnostic complet
+
+## Types de vibrations
+
+### Vibrations au volant
+- **À basse vitesse (< 50 km/h)** : Problème de pneus ou jantes
+- **À haute vitesse (> 80 km/h)** : Équilibrage ou géométrie
+- **Au freinage** : Disques voilés
+
+### Vibrations dans l'habitacle
+- **Moteur au ralenti** : Supports moteur
+- **En accélération** : Transmission, cardans
+- **À vitesse constante** : Pneus, roulements
+
+### Vibrations dans la pédale de frein
+- **Au freinage** : Disques voilés, plaquettes usées
+
+## Causes et solutions
+
+### 1. Pneus déséquilibrés
+- **Symptôme** : Vibration volant à partir de 80-100 km/h
+- **Vérification** : Visuel sur les masses d'équilibrage
+- **Solution** : Équilibrage des 4 pneus
+- **Coût** : 40-60€
+- **Urgence** : Moyenne
+
+### 2. Pneus usés irrégulièrement
+- **Symptôme** : Vibration + bruit de roulement
+- **Vérification** : Usure en "dents de scie"
+- **Solution** : Remplacement pneus + géométrie
+- **Urgence** : Haute
+
+### 3. Roulement de roue défaillant
+- **Symptôme** : Grondement augmentant avec la vitesse
+- **Vérification** : Jeu dans la roue, bruit en virage
+- **Solution** : Remplacement roulement
+- **Pièces** : Kit roulement de roue
+- **Urgence** : Haute - Sécurité
+
+### 4. Cardans usés
+- **Symptôme** : Claquement en braquant, vibration en accélération
+- **Vérification** : Soufflets déchirés, jeu
+- **Solution** : Remplacement cardan
+- **Pièces** : Cardan complet ou transmission
+- **Urgence** : Haute
+
+### 5. Disques de frein voilés
+- **Symptôme** : Vibration pédale au freinage
+- **Vérification** : Mesure au comparateur
+- **Solution** : Rectification ou remplacement
+- **Pièces** : Disques de frein
+- **Urgence** : Moyenne
+
+### 6. Supports moteur fatigués
+- **Symptôme** : Vibration au ralenti dans l'habitacle
+- **Vérification** : Visuel sur silent-blocs
+- **Solution** : Remplacement supports
+- **Pièces** : Support moteur, silent-bloc
+- **Urgence** : Basse
+
+## Arbre de décision
+
+```
+Vibration ?
+├── Au volant ?
+│   ├── À haute vitesse → Équilibrage / Géométrie
+│   ├── Au freinage → Disques voilés
+│   └── En virage → Roulement / Cardan
+├── Dans l'habitacle ?
+│   ├── Au ralenti → Supports moteur
+│   ├── En accélération → Cardan / Transmission
+│   └── Constant → Pneus / Roulements
+└── Pédale de frein ?
+    └── Au freinage → Disques voilés
+```
+
+<!-- materialized-from-db diagnostic/bruits-freinage.md 2026-01-01 -->
+### Diagnostic - Bruits de freinage
+
+# Bruits de freinage - Diagnostic complet
+
+## Symptômes courants
+
+### Grincement aigu au freinage
+- **Quand** : Au moment du freinage léger ou modéré
+- **Caractéristique** : Son métallique aigu, type "crissement"
+
+### Sifflement continu
+- **Quand** : Pendant tout le freinage
+- **Caractéristique** : Son aigu constant
+
+### Bruit sourd / grondement
+- **Quand** : Freinage appuyé
+- **Caractéristique** : Vibration ressentie dans la pédale
+
+### Claquement
+- **Quand** : Début ou fin de freinage
+- **Caractéristique** : Bruit sec, ponctuel
+
+## Causes possibles et solutions
+
+### 1. Plaquettes de frein usées
+- **Probabilité** : 70%
+- **Vérification** : Témoin usure allumé, épaisseur < 3mm
+- **Solution** : Remplacement des plaquettes
+- **Pièces** : Plaquettes de frein avant/arrière
+- **Urgence** : Haute - Sécurité
+
+### 2. Disques de frein voilés
+- **Probabilité** : 15%
+- **Vérification** : Vibration pédale, usure inégale visible
+- **Solution** : Rectification ou remplacement des disques
+- **Pièces** : Disques de frein
+- **Urgence** : Moyenne
+
+### 3. Étrier grippé
+- **Probabilité** : 10%
+- **Vérification** : Usure asymétrique des plaquettes
+- **Solution** : Nettoyage/graissage ou remplacement étrier
+- **Pièces** : Kit réparation étrier, étrier complet
+- **Urgence** : Haute
+
+### 4. Absence de graisse sur glissières
+- **Probabilité** : 5%
+- **Vérification** : Plaquettes difficiles à bouger
+- **Solution** : Nettoyage et graissage
+- **Pièces** : Graisse haute température
+- **Urgence** : Basse
+
+## Questions complémentaires pour affiner le diagnostic
+
+1. Le bruit apparaît-il à froid ou à chaud ?
+2. Le bruit est-il présent sur les 4 roues ou localisé ?
+3. Y a-t-il une vibration dans le volant ?
+4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
+5. Avez-vous un témoin d'usure allumé au tableau de bord ?
+
+## Recommandations
+
+- **Contrôle visuel** : Vérifier l'épaisseur des plaquettes (minimum 3mm)
+- **Kilométrage** : Remplacement préventif tous les 30 000 - 50 000 km
+- **Qualité** : Privilégier les marques équipementier (Bosch, Brembo, TRW)

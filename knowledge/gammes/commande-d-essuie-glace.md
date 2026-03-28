@@ -1,39 +1,146 @@
 ---
 category: accessoires
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: commande-d-essuie-glace
+title: Commande d'essuie-glace
+pg_id: 751
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Permet au conducteur de contrôler le fonctionnement des essuie-glaces
   must_be_true:
   - commander
   - activer
   - selectionner
-  must_not_contain_concepts:
+  must_not_contain:
   - balai
   - moteur
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Permet au conducteur de contrôler le fonctionnement des essuie-glaces
-page_contract:
-  antiMistakes:
+  related_parts:
+  - commander
+  - activer
+  - selectionner
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "visibilite parfaite"
+  cost_range:
+    min: 40
+    max: 150
+    currency: EUR
+    unit: commodo
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Constructeur (OE)
+    description: 'Commodo d''origine avec l''ensemble des fonctions : vitesses fixes, intermittent réglable, lave-glace, et
+      parfois régulateur de vitesse ou limiteur intégrés.'
+  - tier: Équivalent OE (OES)
+    description: 'Équipementiers reconnus dans ce segment : Valeo, Hella, ERA Benelux. Commodos avec correspondance de référence
+      et liste des fonctions vérifiée.'
+  - tier: Adaptable
+    description: Commodos génériques avec risque de fonctions manquantes (pas d'intermittent variable, lave-glace absent).
+      Compatibilité à vérifier minutieusement.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    standard:
+    - SWF
+    - Hella
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Essuie glace active plus depuis
+    severity: confort
+  - id: S2
+    label: Une ou plusieurs vitesses manquantes
+    severity: confort
+  - id: S3
+    label: Mode intermittent qui ne fonctionne plus
+    severity: confort
+  - id: S4
+    label: Lave-glace inoperant pompe ok
+    severity: confort
+  - id: S5
+    label: Commutateur bloque ou difficile a actionner
+    severity: immobilisation
+  - id: S6
+    label: Fusibles et relais ok mais essuie-glace hs
+    severity: immobilisation
+  - id: S7
+    label: Temoin lave glace allume permanence
+    severity: confort
+  - id: S8
+    label: Claquement craquement lors passage entre
+    severity: confort
+  - id: S9
+    label: Odeur plastique chaud provenant comodo
+    severity: confort
+  causes:
+  - verification urgente piece et alimentation
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  quick_checks:
+  - 'Observer : essuie glace active plus depuis ?'
+  - 'Observer : une ou plusieurs vitesses manquantes ?'
+  - 'Observer : mode intermittent qui ne fonctionne plus ?'
+  - 'Observer : lave-glace inoperant pompe ok ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Essuie glace active plus depuis
+  - Ou plusieurs vitesses manquantes
+  - Mode intermittent qui ne fonctionne plus
+  - Lave-glace inoperant pompe ok
+  - Commutateur bloque ou difficile a actionner
+  - Fusibles et relais ok mais essuie-glace hs
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '751'
+  intro_title: A quoi sert Commande d'essuie-glace ?
+  risk_title: Pourquoi remplacer Commande d'essuie-glace a temps ?
+  risk_explanation: '**Pièce HS** - Le commande d''essuie-glace peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le commande d''essuie-glace peut être hors service et nécessiter un remplacement'
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,66 +155,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Commande d'essuie-glace compatible avec mon vehicule
-      ?
-  - answer: En cas de essuie glace active plus depuis ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Commande d'essuie-glace ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Commande d'essuie-glace sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Commande d'essuie-glace.
-  id: 751
-  intro:
-    role: Permet au conducteur de contrôler le fonctionnement des essuie-glaces
-    syncParts:
-    - commander
-    - activer
-    - selectionner
-    title: A quoi sert Commande d'essuie-glace ?
-  pgId: '751'
+  - question: Commande d'essuie-glace OE ou adaptable ?
+    answer: Privilégiez l'OE ou OES (Valeo, Hella). Le commodo doit être compatible avec les fonctions de votre véhicule (régulateur
+      de vitesse, limiteur intégrés parfois).
+  - question: Comment savoir si ma commande est HS ?
+    answer: Essuie-glace qui ne fonctionne plus, une vitesse manquante, intermittent défaillant, lave-glace inopérant depuis
+      le commodo, commutateur bloqué.
+  - question: Tous les combien changer la commande ?
+    answer: Pas de périodicité. Pièce qui peut durer toute la vie du véhicule. À remplacer uniquement si défaillante après
+      vérification des autres composants.
+  - question: Peut-on changer la commande soi-même ?
+    answer: Oui, opération accessible. Débrancher la batterie, déposer le cache colonne, débrancher les connecteurs, dévisser
+      le commodo. 30 min à 1h.
+  - question: Quelle erreur éviter avec le commodo d'essuie-glace ?
+    answer: Changer le commodo sans diagnostiquer la vraie cause. Le problème vient souvent du moteur d'essuie-glace, du relais
+      ou de la tringlerie, pas du commodo lui-même.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/commande-d-essuie-glace.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le commande d''essuie-glace peut être hors service et nécessiter
-      un remplacement'
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le commande d''essuie-glace peut être hors service
-      et nécessiter un remplacement'
-    title: Pourquoi remplacer Commande d'essuie-glace a temps ?
-  symptoms:
-  - essuie glace active plus depuis
-  - une ou plusieurs vitesses manquantes
-  - mode intermittent qui ne fonctionne plus
-  - lave-glace inoperant pompe ok
-  - commutateur bloque ou difficile a actionner
-  - fusibles et relais ok mais essuie-glace hs
-  - temoin lave glace allume permanence
-  - claquement craquement lors passage entre
-  - odeur plastique chaud provenant comodo
-  - '**Commutateur bloque ou difficile a actionner**'
-  - '**Fusibles et relais ok mais essuie-glace hs**'
-  - '**Claquement craquement lors passage entre**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 751
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -115,76 +181,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: commande-d-essuie-glace
-source_type: gamme
-symptoms:
-- description: essuie glace active plus depuis
-  evidence:
-  - 'Observation: essuie glace active plus depuis'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Essuie glace active plus depuis
-  risk_level: confort
-- description: une ou plusieurs vitesses manquantes
-  evidence:
-  - 'Observation: une ou plusieurs vitesses manquantes'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Une ou plusieurs vitesses manquantes
-  risk_level: confort
-- description: mode intermittent qui ne fonctionne plus
-  evidence:
-  - 'Observation: mode intermittent qui ne fonctionne plus'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Mode intermittent qui ne fonctionne plus
-  risk_level: confort
-- description: lave-glace inoperant pompe ok
-  evidence:
-  - 'Observation: lave-glace inoperant pompe ok'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Lave-glace inoperant pompe ok
-  risk_level: confort
-- description: commutateur bloque ou difficile a actionner
-  evidence:
-  - 'Observation: commutateur bloque ou difficile a actionner'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Commutateur bloque ou difficile a actionner
-  risk_level: immobilisation
-- description: fusibles et relais ok mais essuie-glace hs
-  evidence:
-  - 'Observation: fusibles et relais ok mais essuie-glace hs'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Fusibles et relais ok mais essuie-glace hs
-  risk_level: immobilisation
-- description: temoin lave glace allume permanence
-  evidence:
-  - 'Observation: temoin lave glace allume permanence'
-  - Vérification visuelle ou auditive
-  id: S7
-  label: Temoin lave glace allume permanence
-  risk_level: confort
-- description: claquement craquement lors passage entre
-  evidence:
-  - 'Observation: claquement craquement lors passage entre'
-  - Vérification visuelle ou auditive
-  id: S8
-  label: Claquement craquement lors passage entre
-  risk_level: degats_volant_moteur
-- description: odeur plastique chaud provenant comodo
-  evidence:
-  - 'Observation: odeur plastique chaud provenant comodo'
-  - Vérification visuelle ou auditive
-  id: S9
-  label: Odeur plastique chaud provenant comodo
-  risk_level: confort
-title: Commande d'essuie-glace
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 22999d97-2372-5936-854c-17904ba39d7c
+content_hash: sha256:867ae050f5c932cc
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Commande d'essuie-glace - Guide Diagnostic Complet
@@ -226,6 +251,12 @@ Pour diagnostiquer un problème de commande d'essuie-glace:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Pièce HS** - Le commande d'essuie-glace peut être hors service et nécessiter un remplacement
@@ -258,3 +289,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "visibilite parfaite"
+
+## FAQ
+
+**Commande d'essuie-glace OE ou adaptable ?**
+Privilégiez l'OE ou OES (Valeo, Hella). Le commodo doit être compatible avec les fonctions de votre véhicule (régulateur de vitesse, limiteur intégrés parfois).
+
+**Comment savoir si ma commande est HS ?**
+Essuie-glace qui ne fonctionne plus, une vitesse manquante, intermittent défaillant, lave-glace inopérant depuis le commodo, commutateur bloqué.
+
+**Tous les combien changer la commande ?**
+Pas de périodicité. Pièce qui peut durer toute la vie du véhicule. À remplacer uniquement si défaillante après vérification des autres composants.
+
+**Peut-on changer la commande soi-même ?**
+Oui, opération accessible. Débrancher la batterie, déposer le cache colonne, débrancher les connecteurs, dévisser le commodo. 30 min à 1h.
+
+**Quelle erreur éviter avec le commodo d'essuie-glace ?**
+Changer le commodo sans diagnostiquer la vraie cause. Le problème vient souvent du moteur d'essuie-glace, du relais ou de la tringlerie, pas du commodo lui-même.

@@ -1,39 +1,135 @@
 ---
 category: distribution
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: poulie-d-arbre-a-came
+title: Poulie d'arbre à came
+pg_id: 1067
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Entrainer l'arbre a cames en synchronisation avec le vilebrequin
   must_be_true:
   - entrainer
   - synchroniser
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - vilebrequin
   - accessoire
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Entrainer l'arbre a cames en synchronisation avec le vilebrequin
-page_contract:
-  antiMistakes:
+  related_parts:
+  - courroie-de-distribution
+  - kit-de-distribution
+  - galet-tendeur-de-courroie-de-distribution
+  - galet-enrouleur-de-courroie-de-distribution
+  - pompe-a-eau
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 40
+    max: 150
+    currency: EUR
+    unit: poulie
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Origine constructeur (OE)
+  - tier: Equivalent OE — equipementiers distribution
+  - tier: Adaptable
+  brands:
+    premium:
+    - Gates
+    - Continental/Contitech
+    standard:
+    - Dayco
+    - SKF
+    - INA
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Bruit de claquement au niveau de la culasse
+    severity: confort
+  - id: S2
+    label: Perte de puissance progressive
+    severity: confort
+  - id: S3
+    label: Moteur qui cale au ralenti
+    severity: immobilisation
+  - id: S4
+    label: Fumee anormale a l echappement
+    severity: confort
+  - id: S5
+    label: Voyant moteur allume codes calage
+    severity: immobilisation
+  - id: S6
+    label: Distribution a remplacer selon carnet d entretien
+    severity: confort
+  causes:
+  - verification urgente piece et alimentation
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  quick_checks:
+  - Bruit de claquement au niveau de la culasse ?
+  - 'Observer : perte de puissance progressive ?'
+  - 'Observer : moteur qui cale au ralenti ?'
+  - 'Observer : fumee anormale a l echappement ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Bruit de claquement au niveau de la culasse
+  - Perte de puissance progressive
+  - Moteur qui cale au ralenti
+  - Fumee anormale a l echappement
+  - Voyant moteur allume codes calage
+  - Distribution a remplacer selon carnet d entretien
+  good_practices:
+  - Respecter strictement l intervalle constructeur (rupture = casse moteur)
+  - Remplacer le kit complet (courroie + galets + pompe a eau si entrainee)
+  - Controler la pompe a eau et le thermostat lors du remplacement
+  - Ne jamais reutiliser les pieces de distribution demontees
+rendering:
+  pgId: '1067'
+  intro_title: A quoi sert Poulie d'arbre à came ?
+  risk_title: Pourquoi remplacer Poulie d'arbre à came a temps ?
+  risk_explanation: '**Pièce HS** - Le poulie d''arbre à came peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le poulie d''arbre à came peut être hors service et nécessiter un remplacement'
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,65 +144,20 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Poulie d'arbre à came compatible avec mon vehicule ?
-  - answer: En cas de bruit de claquement au niveau de la culasse ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Poulie d'arbre à came ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Poulie d'arbre à came sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Poulie d'arbre
-    à came.
-  id: 1067
-  intro:
-    role: Entrainer l'arbre a cames en synchronisation avec le vilebrequin
-    syncParts:
-    - entrainer
-    - synchroniser
-    - transmettre
-    title: A quoi sert Poulie d'arbre à came ?
-  pgId: '1067'
+  - question: Poulie d'arbre à came OE ou adaptable ?
+    answer: Privilégiez l'OE ou le kit distribution complet. C'est une pièce critique pour le calage moteur.
+  - question: Comment savoir si ma poulie d'arbre à came est HS ?
+    answer: Bruit de claquement moteur, calage distribution décalé, perte de puissance, moteur qui cale.
+  - question: Tous les combien changer la poulie d'arbre à came ?
+    answer: À chaque remplacement du kit de distribution (80 000 à 120 000 km selon véhicule). Jamais seule.
+  - question: Peut-on changer la poulie d'arbre à came soi-même ?
+    answer: Déconseillé sans expérience. Nécessite de caler la distribution. Erreur = destruction moteur.
+  - question: Quelle erreur éviter avec la poulie d'arbre à came ?
+    answer: Ne jamais réutiliser une poulie usée. Respecter les repères de calage. Serrer au couple exact.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/poulie-d-arbre-a-came.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le poulie d''arbre à came peut être hors service et nécessiter
-      un remplacement'
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le poulie d''arbre à came peut être hors service
-      et nécessiter un remplacement'
-    title: Pourquoi remplacer Poulie d'arbre à came a temps ?
-  symptoms:
-  - bruit de claquement au niveau de la culasse
-  - perte de puissance progressive
-  - moteur qui cale au ralenti
-  - fumee anormale a l echappement
-  - voyant moteur allume codes calage
-  - distribution a remplacer selon carnet d entretien
-  - '**Moteur qui cale au ralenti**'
-  - '**Voyant moteur allume codes calage**'
-  - '**Bruit de claquement au niveau de la culasse**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1067
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -114,55 +165,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: poulie-d-arbre-a-came
-source_type: gamme
-symptoms:
-- description: bruit de claquement au niveau de la culasse
-  evidence:
-  - 'Observation: bruit de claquement au niveau de la culasse'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Bruit de claquement au niveau de la culasse
-  risk_level: degats_volant_moteur
-- description: perte de puissance progressive
-  evidence:
-  - 'Observation: perte de puissance progressive'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Perte de puissance progressive
-  risk_level: confort
-- description: moteur qui cale au ralenti
-  evidence:
-  - 'Observation: moteur qui cale au ralenti'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Moteur qui cale au ralenti
-  risk_level: immobilisation
-- description: fumee anormale a l echappement
-  evidence:
-  - 'Observation: fumee anormale a l echappement'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Fumee anormale a l echappement
-  risk_level: confort
-- description: voyant moteur allume codes calage
-  evidence:
-  - 'Observation: voyant moteur allume codes calage'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Voyant moteur allume codes calage
-  risk_level: immobilisation
-- description: distribution a remplacer selon carnet d entretien
-  evidence:
-  - 'Observation: distribution a remplacer selon carnet d entretien'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Distribution a remplacer selon carnet d entretien
-  risk_level: confort
-title: Poulie d'arbre à came
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 3d6efecb-2f0a-58ca-9791-bbdbd6561d53
+content_hash: sha256:9d6cc5f8a6607b99
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Face laterale du moteur, derriere le carter de distribution
+  access: Depose courroie accessoire + carter distribution
+  adjacent_parts:
+  - courroie
+  - galets
+  - pompe a eau
+  - poulie
+installation:
+  difficulty: difficile (pro recommande)
+  time: 3h a 6h
+  tools:
+  - kit calage distribution
+  - cle dynamometrique
+  - extracteur poulie
+  prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 ---
 
 # Poulie d'arbre à came - Guide Diagnostic Complet
@@ -202,6 +238,12 @@ Pour diagnostiquer un problème de poulie d'arbre à came:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Pièce HS** - Le poulie d'arbre à came peut être hors service et nécessiter un remplacement
@@ -236,3 +278,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Poulie d'arbre à came OE ou adaptable ?**
+Privilégiez l'OE ou le kit distribution complet. C'est une pièce critique pour le calage moteur.
+
+**Comment savoir si ma poulie d'arbre à came est HS ?**
+Bruit de claquement moteur, calage distribution décalé, perte de puissance, moteur qui cale.
+
+**Tous les combien changer la poulie d'arbre à came ?**
+À chaque remplacement du kit de distribution (80 000 à 120 000 km selon véhicule). Jamais seule.
+
+**Peut-on changer la poulie d'arbre à came soi-même ?**
+Déconseillé sans expérience. Nécessite de caler la distribution. Erreur = destruction moteur.
+
+**Quelle erreur éviter avec la poulie d'arbre à came ?**
+Ne jamais réutiliser une poulie usée. Respecter les repères de calage. Serrer au couple exact.

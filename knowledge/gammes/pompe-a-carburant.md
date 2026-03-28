@@ -1,25 +1,29 @@
 ---
 category: alimentation
-diagnostic_tree:
-- if: vehicule_immobilise_ou_symptome_critique
-  then: verification_urgente_piece_et_alimentation
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: kilometrage_eleve_ou_usure_visible
-  then: remplacement_preventif_recommande
+slug: pompe-a-carburant
+title: Pompe à carburant
+pg_id: 458
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-06'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Acheminer le carburant du reservoir vers le systeme d'injection a basse pression
   must_be_true:
   - alimenter
   - acheminer
   - pomper
-  must_not_contain_concepts:
+  must_not_contain:
   - haute pression
   - injection
   - injecteur
@@ -27,15 +31,106 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Acheminer le carburant du reservoir vers le systeme d'injection a
-    basse pression
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alimenter
+  - acheminer
+  - pomper
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "plus de puissance"
+  cost_range:
+    min: 29
+    max: 224
+    currency: EUR
+    unit: l'unite
+    source: historique commandes automecanik
+  quality_tiers:
+  - tier: Origine constructeur (OE)
+  - tier: Equivalent OE (OES)
+  - tier: Adaptable qualite
+  - tier: Reconditionne
+  - tier: Echange standard
+  brands:
+    premium:
+    - Bosch
+    - Delphi
+    - Denso
+    standard:
+    - Pierburg
+    - VDO
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Moteur qui refuse de demarrer pas d amorcage
+    severity: confort
+  - id: S2
+    label: Calages repetes a chaud ou en cote
+    severity: immobilisation
+  - id: S3
+    label: A-coups a l acceleration
+    severity: confort
+  - id: S4
+    label: Bruit de gemissement dans le reservoir
+    severity: confort
+  - id: S5
+    label: Perte de puissance en montee
+    severity: confort
+  - id: S6
+    label: Plus de 200 000 km ou reservoir souvent vide
+    severity: confort
+  causes:
+  - verification urgente piece et alimentation
+  - localiser source et verifier usure mecanique
+  - remplacement preventif recommande
+  quick_checks:
+  - 'Observer : moteur qui refuse de demarrer pas d amorcage ?'
+  - 'Observer : calages repetes a chaud ou en cote ?'
+  - 'Observer : a-coups a l acceleration ?'
+  - Bruit de gemissement dans le reservoir ?
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Moteur qui refuse de demarrer pas d amorcage
+  - Calages repetes a chaud ou en cote
+  - A-coups a l acceleration
+  - Bruit de gemissement dans le reservoir
+  - Perte de puissance en montee
+  - Plus de 200 000 km ou reservoir souvent vide
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '458'
+  intro_title: A quoi sert Pompe à carburant ?
+  risk_title: Pourquoi remplacer Pompe à carburant a temps ?
+  risk_explanation: '**Pièce HS** - Le pompe à carburant peut être hors service et nécessiter un remplacement'
+  risk_consequences:
+  - '**Pièce HS** - Le pompe à carburant peut être hors service et nécessiter un remplacement'
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -50,63 +145,24 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Pompe à carburant compatible avec mon vehicule ?
-  - answer: En cas de moteur qui refuse de demarrer pas d amorcage ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Pompe à carburant ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Pompe à carburant sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Pompe à carburant.
-  id: 458
-  intro:
-    role: Acheminer le carburant du reservoir vers le systeme d'injection a basse
-      pression
-    syncParts:
-    - alimenter
-    - acheminer
-    - pomper
-    title: A quoi sert Pompe à carburant ?
-  pgId: '458'
+  - question: Pompe à carburant OE ou adaptable ?
+    answer: Les pompes OES (Bosch, Delphi, VDO) sont fiables. Sur diesel haute pression, privilégiez l'OE. Les adaptables
+      essence de qualité (Pierburg) fonctionnent bien.
+  - question: Comment savoir si ma pompe à carburant est HS ?
+    answer: Moteur qui cale ou refuse de démarrer, à-coups à l'accélération, perte de puissance en côte, bruit de gémissement
+      dans le réservoir.
+  - question: Tous les combien changer la pompe à carburant ?
+    answer: Pas de périodicité. Durée de vie 150 000 à 250 000 km. Évitez de rouler réservoir quasi vide (la pompe chauffe).
+  - question: Peut-on changer la pompe à carburant soi-même ?
+    answer: 'Possible mais attention : accès souvent sous la banquette arrière ou par le dessous. Circuit sous pression, risque
+      d''incendie.'
+  - question: Quelle erreur éviter avec la pompe à carburant ?
+    answer: Ne pas rouler réservoir vide (la pompe s'use). Ne pas oublier le joint de module. Vérifier l'état du filtre dans
+      le réservoir.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/pompe-a-carburant.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Pièce HS** - Le pompe à carburant peut être hors service et nécessiter un
-      remplacement'
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
-      est recommandé'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Pièce HS** - Le pompe à carburant peut être hors service et nécessiter
-      un remplacement'
-    title: Pourquoi remplacer Pompe à carburant a temps ?
-  symptoms:
-  - moteur qui refuse de demarrer pas d amorcage
-  - calages repetes a chaud ou en cote
-  - a-coups a l acceleration
-  - bruit de gemissement dans le reservoir
-  - perte de puissance en montee
-  - plus de 200 000 km ou reservoir souvent vide
-  - '**Calages repetes a chaud ou en cote**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 458
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -114,55 +170,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: pompe-a-carburant
-source_type: gamme
-symptoms:
-- description: moteur qui refuse de demarrer pas d amorcage
-  evidence:
-  - 'Observation: moteur qui refuse de demarrer pas d amorcage'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Moteur qui refuse de demarrer pas d amorcage
-  risk_level: confort
-- description: calages repetes a chaud ou en cote
-  evidence:
-  - 'Observation: calages repetes a chaud ou en cote'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Calages repetes a chaud ou en cote
-  risk_level: immobilisation
-- description: a-coups a l acceleration
-  evidence:
-  - 'Observation: a-coups a l acceleration'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: A-coups a l acceleration
-  risk_level: confort
-- description: bruit de gemissement dans le reservoir
-  evidence:
-  - 'Observation: bruit de gemissement dans le reservoir'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Bruit de gemissement dans le reservoir
-  risk_level: confort
-- description: perte de puissance en montee
-  evidence:
-  - 'Observation: perte de puissance en montee'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Perte de puissance en montee
-  risk_level: confort
-- description: plus de 200 000 km ou reservoir souvent vide
-  evidence:
-  - 'Observation: plus de 200 000 km ou reservoir souvent vide'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Plus de 200 000 km ou reservoir souvent vide
-  risk_level: confort
-title: Pompe à carburant
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: df813cd6-9940-594e-87a9-a433f8efc709
+content_hash: sha256:092935f81d78e868
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Pompe à carburant - Guide Diagnostic Complet
@@ -197,6 +233,12 @@ Pour diagnostiquer un problème de pompe à carburant:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Pièce HS** - Le pompe à carburant peut être hors service et nécessiter un remplacement
@@ -228,3 +270,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "plus de puissance"
+
+## FAQ
+
+**Pompe à carburant OE ou adaptable ?**
+Les pompes OES (Bosch, Delphi, VDO) sont fiables. Sur diesel haute pression, privilégiez l'OE. Les adaptables essence de qualité (Pierburg) fonctionnent bien.
+
+**Comment savoir si ma pompe à carburant est HS ?**
+Moteur qui cale ou refuse de démarrer, à-coups à l'accélération, perte de puissance en côte, bruit de gémissement dans le réservoir.
+
+**Tous les combien changer la pompe à carburant ?**
+Pas de périodicité. Durée de vie 150 000 à 250 000 km. Évitez de rouler réservoir quasi vide (la pompe chauffe).
+
+**Peut-on changer la pompe à carburant soi-même ?**
+Possible mais attention : accès souvent sous la banquette arrière ou par le dessous. Circuit sous pression, risque d'incendie.
+
+**Quelle erreur éviter avec la pompe à carburant ?**
+Ne pas rouler réservoir vide (la pompe s'use). Ne pas oublier le joint de module. Vérifier l'état du filtre dans le réservoir.

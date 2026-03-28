@@ -1,20 +1,28 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: joint-tige-de-soupape
+title: Joint tige de soupape
+pg_id: 322
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Empecher l'huile de descendre dans la chambre de combustion
   must_be_true:
   - assurer l'etancheite
   - empecher
-  must_not_contain_concepts:
+  must_not_contain:
   - freinage
   - climatisation
   - direction
@@ -22,14 +30,94 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Empecher l'huile de descendre dans la chambre de combustion
-page_contract:
-  antiMistakes:
+  related_parts:
+  - assurer l'etancheite
+  - empecher
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 1000
+    max: 5000
+    currency: EUR
+    unit: l'unite
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Equipement d'origine (OE)
+    description: Joints fournis par le fabricant du moteur, avec le matériau élastomère exact (viton, téflon, silicone selon
+      les cycles thermiques du moteur).
+  - tier: Equivalent OE (OES)
+    description: Fabricants spécialisés en joints de moteur. Ces joints sont souvent vendus en kits complets (ensemble admission
+      + échappement). Le corpus RAG mentionne les fabricants de référence en étanchéité moteur
+  - tier: Kit générique multi-application
+    description: Kits proposant plusieurs tailles de joints pour couvrir différents moteurs. Convient si le diamètre de tige
+      exact est identifié.
+  brands:
+    premium:
+    - Elring
+    - Victor Reinz
+    standard:
+    - Febi
+    - Ajusa
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Fumee bleue au demarrage
+    severity: confort
+  - id: S2
+    label: Consommation d huile excessive
+    severity: confort
+  - id: S3
+    label: Depots sur les bougies
+    severity: confort
+  causes:
+  - identifier origine fuite et verifier joints
+  - 'fuite detectee ou niveau bas : identifier origine fuite et verifier joints'
+  - 'Usure ou defaillance causant : fumee bleue au demarrage'
+  quick_checks:
+  - 'Observer : fumee bleue au demarrage ?'
+  - 'Observer : consommation d huile excessive ?'
+  - 'Observer : depots sur les bougies ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Fumee bleue au demarrage
+  - Consommation d huile excessive
+  - Depots sur les bougies
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '322'
+  intro_title: A quoi sert Joint tige de soupape ?
+  risk_title: Pourquoi remplacer Joint tige de soupape a temps ?
+  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_consequences:
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -44,53 +132,17 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Joint tige de soupape compatible avec mon vehicule ?
-  - answer: En cas de fumee bleue au demarrage ou de degradation mesurable, il faut
-      controler rapidement avant panne secondaire.
-    question: Quand remplacer Joint tige de soupape ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Joint tige de soupape sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Joint tige de soupape.
-  id: 322
-  intro:
-    role: Empecher l'huile de descendre dans la chambre de combustion
-    syncParts:
-    - assurer l'etancheite
-    - empecher
-    title: A quoi sert Joint tige de soupape ?
-  pgId: '322'
+  - question: Comment choisir Joint tige de soupape compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Joint tige de soupape ?
+    answer: En cas de fumee bleue au demarrage ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+  - question: Puis-je monter Joint tige de soupape sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/joint-tige-de-soupape.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
-    title: Pourquoi remplacer Joint tige de soupape a temps ?
-  symptoms:
-  - fumee bleue au demarrage
-  - consommation d huile excessive
-  - depots sur les bougies
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 322
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -98,35 +150,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: joint-tige-de-soupape
-source_type: gamme
-subcategory: joints
-symptoms:
-- description: fumee bleue au demarrage
-  evidence:
-  - 'Observation: fumee bleue au demarrage'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Fumee bleue au demarrage
-  risk_level: confort
-- description: consommation d huile excessive
-  evidence:
-  - 'Observation: consommation d huile excessive'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Consommation d huile excessive
-  risk_level: confort
-- description: depots sur les bougies
-  evidence:
-  - 'Observation: depots sur les bougies'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Depots sur les bougies
-  risk_level: confort
-title: Joint tige de soupape
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: eae1172f-ae90-5fdb-8d4d-853a9d26c8de
+content_hash: sha256:2bc529397d2692a3
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Joint tige de soupape - Guide Diagnostic Complet
@@ -152,6 +204,12 @@ Pour diagnostiquer un problème de joint tige de soupape:
 1. **Inspection visuelle** - Examiner l'état du joint tige de soupape
 2. **Contrôle des fuites** - Rechercher traces d'huile ou liquide
 3. **Test fonctionnel** - Vérifier le comportement moteur
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -187,3 +245,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Comment choisir Joint tige de soupape compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Joint tige de soupape ?**
+En cas de fumee bleue au demarrage ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Joint tige de soupape sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.

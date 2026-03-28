@@ -1,21 +1,29 @@
 ---
 category: allumage
-diagnostic_tree:
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: bobine-d-allumage
+title: Bobine d'allumage
+pg_id: 689
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-25'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Transformer la basse tension batterie en haute tension (15-40kV) pour creer l'etincelle aux bougies
   must_be_true:
   - transformer la tension
   - amplifier
   - generer la haute tension
-  must_not_contain_concepts:
+  must_not_contain:
   - diesel
   - prechauffage
   - incandescence
@@ -23,15 +31,114 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Transformer la basse tension batterie en haute tension (15-40kV) pour
-    creer l'etincelle aux bougies
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-electrique-voisine
+    difference: Les pieces electriques ont des connecteurs specifiques. Verifier le nombre de broches et le voltage.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "plus de puissance"
+  cost_range:
+    min: 25
+    max: 245
+    currency: EUR
+    unit: l'unite
+    source: historique commandes automecanik
+  quality_tiers:
+  - tier: Piece d'origine (OE)
+    description: Bobine reference constructeur, generalement produite par un equipementier de rang 1. Recommandee sur vehicules
+      recents ou si une garantie constructeur est en jeu.
+  - tier: Equipementier rang 1 - electricite/allumage
+    description: Fabricants specialises en systemes d'allumage, fournissant les constructeurs en premiere monte. Equivalences
+      documentees par reference vehicule et motorisation.
+  - tier: Marque intermediaire
+    description: Bobines de remplacement conformes aux specifications electriques. Verifier la tension nominale, la resistance
+      primaire et secondaire avant achat.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    - Denso
+    standard:
+    - Hella
+    - NGK
+    - Delphi
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Rate moteur localise sur un cylindre precis
+    severity: confort
+  - id: S2
+    label: Voyant moteur allume code p030x
+    severity: confort
+  - id: S3
+    label: Perte de puissance brutale ou progressive
+    severity: confort
+  - id: S4
+    label: Surconsommation de carburant
+    severity: confort
+  - id: S5
+    label: Odeur d essence non brulee a l echappement
+    severity: confort
+  - id: S6
+    label: Demarrage difficile par temps humide
+    severity: confort
+  causes:
+  - lecture codes defaut obd et diagnostic electronique
+  - 'voyant tableau bord allume : lecture codes defaut obd et diagnostic electronique'
+  - 'Usure ou defaillance causant : rate moteur localise sur un cylindre precis'
+  depose_steps: []
+  quick_checks:
+  - 'Observer : rate moteur localise sur un cylindre precis ?'
+  - Voyant moteur allume code p030x ?
+  - 'Observer : perte de puissance brutale ou progressive ?'
+  - 'Comparer la consommation : surconsommation de carburant ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Rate moteur localise sur un cylindre precis
+  - Voyant moteur allume code p030x
+  - Perte de puissance brutale ou progressive
+  - Surconsommation de carburant
+  - Odeur d essence non brulee a l echappement
+  - Demarrage difficile par temps humide
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '689'
+  intro_title: A quoi sert Bobine d'allumage ?
+  risk_title: Pourquoi remplacer Bobine d'allumage a temps ?
+  risk_explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  risk_consequences:
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,61 +153,24 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Bobine d'allumage compatible avec mon vehicule ?
-  - answer: En cas de rate moteur localise sur un cylindre precis ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Bobine d'allumage ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Bobine d'allumage sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Bobine d'allumage.
-  id: 689
-  intro:
-    role: Transformer la basse tension batterie en haute tension (15-40kV) pour creer
-      l'etincelle aux bougies
-    syncParts:
-    - transformer la tension
-    - amplifier
-    - generer la haute tension
-    title: A quoi sert Bobine d'allumage ?
-  pgId: '689'
+  - question: Bobine d'allumage OE ou adaptable ?
+    answer: Privilégiez l'OE ou OES (Bosch, Denso, NGK). Les bobines bas de gamme ont une durée de vie réduite et peuvent
+      griller rapidement.
+  - question: Comment savoir si ma bobine d'allumage est HS ?
+    answer: Raté moteur localisé sur un cylindre, voyant moteur + code P030x, perte de puissance, test à l'ohmmètre hors tolérance.
+  - question: Tous les combien changer les bobines d'allumage ?
+    answer: Pas de périodicité fixe. Durée de vie 100 000 à 200 000 km. À remplacer uniquement en cas de défaut avéré (test
+      diagnostic).
+  - question: Peut-on changer une bobine d'allumage soi-même ?
+    answer: Oui, opération simple sur bobines crayon. Débrancher le connecteur, dévisser la vis de fixation, extraire la bobine.
+      10 à 20 minutes.
+  - question: Quelle erreur éviter avec les bobines d'allumage ?
+    answer: Ne pas changer toutes les bobines par précaution (inutile et coûteux). Vérifier l'état des bougies avant de remplacer
+      la bobine.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/bobine-d-allumage.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou
-      de composant électronique'
-    title: Pourquoi remplacer Bobine d'allumage a temps ?
-  symptoms:
-  - rate moteur localise sur un cylindre precis
-  - voyant moteur allume code p030x
-  - perte de puissance brutale ou progressive
-  - surconsommation de carburant
-  - odeur d essence non brulee a l echappement
-  - demarrage difficile par temps humide
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 689
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -108,55 +178,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: bobine-d-allumage
-source_type: gamme
-symptoms:
-- description: rate moteur localise sur un cylindre precis
-  evidence:
-  - 'Observation: rate moteur localise sur un cylindre precis'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Rate moteur localise sur un cylindre precis
-  risk_level: confort
-- description: voyant moteur allume code p030x
-  evidence:
-  - 'Observation: voyant moteur allume code p030x'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Voyant moteur allume code p030x
-  risk_level: confort
-- description: perte de puissance brutale ou progressive
-  evidence:
-  - 'Observation: perte de puissance brutale ou progressive'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Perte de puissance brutale ou progressive
-  risk_level: confort
-- description: surconsommation de carburant
-  evidence:
-  - 'Observation: surconsommation de carburant'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Surconsommation de carburant
-  risk_level: confort
-- description: odeur d essence non brulee a l echappement
-  evidence:
-  - 'Observation: odeur d essence non brulee a l echappement'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Odeur d essence non brulee a l echappement
-  risk_level: confort
-- description: demarrage difficile par temps humide
-  evidence:
-  - 'Observation: demarrage difficile par temps humide'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Demarrage difficile par temps humide
-  risk_level: confort
-title: Bobine d'allumage
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: bdcb2e3a-53f9-59b8-b5f3-46e27c0c9941
+content_hash: sha256:0479945fd18601e8
+lang: fr
+variants:
+- name: Piece neuve OE/OES
+  aliases:
+  - neuf
+  - OE
+  - OES
+  functional_differences:
+  - Garantie constructeur ou equipementier
+  - Calibration d usine
+- name: Piece echange standard
+  aliases:
+  - echange standard
+  - reconditionne
+  functional_differences:
+  - Moins cher
+  - Piece d origine reconditionnee
+location_on_vehicle:
+  area: Compartiment moteur (alternateur, demarreur) ou peripherie
+  access: Par le dessus (capot) ou par le dessous selon modele
+  adjacent_parts:
+  - faisceau electrique
+  - batterie
+  - fusibles
+installation:
+  difficulty: facile a moyen
+  time: 15min a 1h
+  tools:
+  - cle a douille
+  - multimetre
+  - tournevis
+  prerequisite: Debrancher la batterie avant intervention
 ---
 
 # Bobine d'allumage - Guide Diagnostic Complet
@@ -185,6 +240,12 @@ Pour diagnostiquer un problème de bobine d'allumage:
 1. **Inspection visuelle** - Examiner l'état du bobine d'allumage
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -217,3 +278,63 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "plus de puissance"
+
+## FAQ
+
+**Bobine d'allumage OE ou adaptable ?**
+Privilégiez l'OE ou OES (Bosch, Denso, NGK). Les bobines bas de gamme ont une durée de vie réduite et peuvent griller rapidement.
+
+**Comment savoir si ma bobine d'allumage est HS ?**
+Raté moteur localisé sur un cylindre, voyant moteur + code P030x, perte de puissance, test à l'ohmmètre hors tolérance.
+
+**Tous les combien changer les bobines d'allumage ?**
+Pas de périodicité fixe. Durée de vie 100 000 à 200 000 km. À remplacer uniquement en cas de défaut avéré (test diagnostic).
+
+**Peut-on changer une bobine d'allumage soi-même ?**
+Oui, opération simple sur bobines crayon. Débrancher le connecteur, dévisser la vis de fixation, extraire la bobine. 10 à 20 minutes.
+
+**Quelle erreur éviter avec les bobines d'allumage ?**
+Ne pas changer toutes les bobines par précaution (inutile et coûteux). Vérifier l'état des bougies avant de remplacer la bobine.
+
+
+## Symptomes supplementaires
+
+<!-- materialized-from-db diagnostic/demarrage-batterie.md 2026-02-15 -->
+### Diagnostic - Démarrage et circuit électrique
+
+# Démarrage et circuit électrique - Diagnostic complet
+
+## Le véhicule ne démarre pas
+
+### Rien ne se passe (pas de bruit)
+- **Batterie complètement déchargée** : Vérifier la tension aux bornes (< 11.5V = batterie HS ou déchargée). Tester avec un chargeur ou des câbles de démarrage.
+- **Bornes de batterie oxydées** : Dépôt blanc-verdâtre sur les cosses. Nettoyer avec une brosse métallique et de la graisse diélectrique.
+- **Fusible principal grillé** : Vérifier le fusible de démarreur dans la boîte à fusibles moteur.
+
+### Le démarreur claque sans tourner
+- **Solénoïde de démarreur usé** : Le contacteur magnétique fonctionne mais ne peut plus engager le pignon. Remplacement du démarreur nécessaire.
+- **Batterie faible** : Assez de courant pour le solénoïde mais pas pour le moteur électrique. Tension entre 11.5V et 12.2V.
+- **Mauvaise masse moteur** : Câble de masse entre batterie et bloc moteur corrodé ou desserré.
+
+### Le démarreur tourne mais le moteur ne part pas
+- **Problème d'alimentation carburant** : Pompe à carburant HS, filtre à carburant bouché, ou relais de pompe défaillant.
+- **Problème d'allumage (essence)** : Bougies encrassées, bobine d'allumage défaillante, capteur vilebrequin HS.
+- **Problème d'injection (diesel)** : Injecteurs grippés, préchauffage défaillant (surtout par temps froid), capteur PMH.
+
+## Voyant batterie allumé
+
+- **Alternateur défaillant** : L'alternateur ne charge plus. La batterie se vide progressivement. Vérifier la tension moteur tournant (doit être entre 13.5V et 14.5V).
+- **Courroie d'alternateur lâche ou cassée** : Sifflement au démarrage, voyant batterie intermittent.
+- **Régulateur de tension HS** : Surcharge ou sous-charge de la batterie.
+
+## Chute de tension intermittente
+
+- **Consommateur parasite** : Un équipement reste sous tension moteur coupé (autoradio, éclairage coffre, etc.). Mesurer le courant de repos (< 50mA normal).
+- **Batterie en fin de vie** : Plus de 4-5 ans, la batterie perd sa capacité. Tester avec un testeur de charge.
+
+## Quand consulter un professionnel
+
+- Démarreur qui tourne au ralenti (bruit anormal)
+- Fumée ou odeur de brûlé au niveau du démarreur
+- Batterie neuve qui se décharge en moins de 48h
+- Voyant batterie qui s'allume en roulant

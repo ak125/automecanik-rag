@@ -1,23 +1,29 @@
 ---
 category: freinage
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: pompe-a-vide-de-freinage
+title: Pompe à vide de freinage
+pg_id: 387
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-12'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Assister l'effort du conducteur sur la pedale de frein
   must_be_true:
   - assister le freinage
   - reduire l'effort
   - fournir une depression
-  must_not_contain_concepts:
+  must_not_contain:
   - friction
   - hydraulique directe
   - ABS
@@ -25,14 +31,101 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Assister l'effort du conducteur sur la pedale de frein
-page_contract:
-  antiMistakes:
+  related_parts:
+  - disque-de-frein
+  - plaquette-de-frein
+  - etrier-de-frein
+  - flexible-de-frein
+  - maitre-cylindre-de-frein
+  - liquide-de-frein
+  confusion_with:
+  - term: piece-de-freinage-voisine
+    difference: 'Verifier la reference exacte : les pieces de freinage se ressemblent mais ne sont pas interchangeables entre
+      essieux ou types de montage.'
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "freinage direct"
+  cost_range:
+    min: 15
+    max: 200
+    currency: EUR
+    unit: l'unite
+    source: estimation categorie
+  brands:
+    premium:
+    - Brembo
+    - ATE
+    - TRW
+    standard:
+    - Bosch
+    - Ferodo
+    - Textar
+    budget:
+    - Ridex
+    - Valeo
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Pedale de frein tres dure
+    severity: securite
+  - id: S2
+    label: Assistance au freinage defaillante
+    severity: securite
+  - id: S3
+    label: Sifflement au niveau du moteur
+    severity: confort
+  - id: S4
+    label: Voyant defaut frein allume
+    severity: securite
+  - id: S5
+    label: Pedale dure surtout freinage depression
+    severity: securite
+  causes:
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'voyant tableau bord allume : lecture codes defaut obd et diagnostic electronique'
+  quick_checks:
+  - 'Observer : pedale de frein tres dure ?'
+  - 'Observer : assistance au freinage defaillante ?'
+  - 'Observer : sifflement au niveau du moteur ?'
+  - Voyant defaut frein allume ?
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Pedale de frein tres dure
+  - Assistance au freinage defaillante
+  - Sifflement au niveau du moteur
+  - Voyant defaut frein allume
+  - Pedale dure surtout freinage depression
+  good_practices:
+  - Controle visuel a chaque revision ou tous les 15 000 km
+  - Remplacement par paire (essieu complet) pour equilibre de freinage
+  - Rodage des pieces neuves sur 200 km (freinages progressifs)
+  - Verifier le niveau de liquide de frein lors de chaque intervention
+rendering:
+  pgId: '387'
+  intro_title: A quoi sert Pompe à vide de freinage ?
+  risk_title: Pourquoi remplacer Pompe à vide de freinage a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -47,63 +140,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Pompe à vide de freinage compatible avec mon vehicule
-      ?
-  - answer: En cas de pedale de frein tres dure ou de degradation mesurable, il faut
-      controler rapidement avant panne secondaire.
-    question: Quand remplacer Pompe à vide de freinage ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Pompe à vide de freinage sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de frein pour confirmer Pompe à vide de freinage.
-  id: 387
-  intro:
-    role: Assister l'effort du conducteur sur la pedale de frein
-    syncParts:
-    - assister le freinage
-    - reduire l'effort
-    - fournir une depression
-    title: A quoi sert Pompe à vide de freinage ?
-  pgId: '387'
+  - question: Tous les véhicules ont-ils une pompe à vide ?
+    answer: Principalement les diesel et certains essence turbo. Les moteurs essence atmosphériques utilisent la dépression
+      du collecteur d'admission.
+  - question: Comment savoir si la pompe à vide est HS ?
+    answer: Pédale de frein très dure, surtout après 2-3 freinages successifs. Un sifflement peut indiquer une fuite. Mesure
+      au vacuomètre pour confirmer.
+  - question: La pompe à vide est-elle critique pour la sécurité ?
+    answer: Oui, sans elle le freinage nécessite beaucoup plus de force sur la pédale. Le freinage reste possible mais très
+      pénible, surtout en urgence.
+  - question: Quelles sont les erreurs fréquentes à éviter ?
+    answer: Accuser la pompe alors que c'est une durite de dépression fissurée ou un clapet anti-retour du servo-frein. Ignorer
+      la fuite d'huile qui contamine la dépression.
+  - question: Comment faire un diagnostic rapide ?
+    answer: Pédale dure + sifflement → fuite dépression/durite/clapet. Mesure vacuomètre < -0,6 bar au ralenti → pompe faible.
+      Fuite d'huile autour pompe → joint/pompe à traiter rapidement.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/pompe-a-vide-de-freinage.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Pompe à vide de freinage a temps ?
-  symptoms:
-  - pedale de frein tres dure
-  - assistance au freinage defaillante
-  - sifflement au niveau du moteur
-  - voyant defaut frein allume
-  - pedale dure surtout freinage depression
-  - '**Pedale de frein tres dure**'
-  - '**Assistance au freinage defaillante**'
-  - '**Voyant defaut frein allume**'
-  - '**Pedale dure surtout freinage depression**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 387
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -111,48 +166,41 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: pompe-a-vide-de-freinage
-source_type: gamme
-symptoms:
-- description: pedale de frein tres dure
-  evidence:
-  - 'Observation: pedale de frein tres dure'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Pedale de frein tres dure
-  risk_level: securite
-- description: assistance au freinage defaillante
-  evidence:
-  - 'Observation: assistance au freinage defaillante'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Assistance au freinage defaillante
-  risk_level: securite
-- description: sifflement au niveau du moteur
-  evidence:
-  - 'Observation: sifflement au niveau du moteur'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Sifflement au niveau du moteur
-  risk_level: confort
-- description: voyant defaut frein allume
-  evidence:
-  - 'Observation: voyant defaut frein allume'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Voyant defaut frein allume
-  risk_level: securite
-- description: pedale dure surtout freinage depression
-  evidence:
-  - 'Observation: pedale dure surtout freinage depression'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Pedale dure surtout freinage depression
-  risk_level: securite
-title: Pompe à vide de freinage
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 898a4c30-a6a5-5bb3-961b-2430c4d537f0
+content_hash: sha256:66875b662797be93
+lang: fr
+variants:
+- name: Piece standard
+  aliases:
+  - standard
+  - OE equivalent
+  functional_differences:
+  - Qualite equivalente a la monte d origine
+  - Compatible avec la majorite des vehicules
+- name: Piece performance/sport
+  aliases:
+  - sport
+  - haute performance
+  functional_differences:
+  - Materiaux haute temperature
+  - Pour usage intensif ou sportif
+location_on_vehicle:
+  area: Au niveau des roues (avant et/ou arriere)
+  access: Demontage de la roue necessaire (cric + chandelle)
+  adjacent_parts:
+  - disque
+  - plaquette
+  - etrier
+  - flexible
+installation:
+  difficulty: moyen
+  time: 30min a 1h par essieu
+  tools:
+  - cle a douille
+  - cle Allen
+  - pied a coulisse
+  - cle dynamometrique
+  prerequisite: Vehicule sur chandelles, roue demontee
 ---
 
 # Pompe à vide de freinage - Guide Diagnostic Complet
@@ -189,6 +237,12 @@ Pour diagnostiquer un problème de pompe à vide de freinage:
 3. **Test au roulage** - Vérifier l'efficacité et les bruits
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -218,3 +272,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "freinage direct"
+
+## FAQ
+
+**Tous les véhicules ont-ils une pompe à vide ?**
+Principalement les diesel et certains essence turbo. Les moteurs essence atmosphériques utilisent la dépression du collecteur d'admission.
+
+**Comment savoir si la pompe à vide est HS ?**
+Pédale de frein très dure, surtout après 2-3 freinages successifs. Un sifflement peut indiquer une fuite. Mesure au vacuomètre pour confirmer.
+
+**La pompe à vide est-elle critique pour la sécurité ?**
+Oui, sans elle le freinage nécessite beaucoup plus de force sur la pédale. Le freinage reste possible mais très pénible, surtout en urgence.
+
+**Quelles sont les erreurs fréquentes à éviter ?**
+Accuser la pompe alors que c'est une durite de dépression fissurée ou un clapet anti-retour du servo-frein. Ignorer la fuite d'huile qui contamine la dépression.
+
+**Comment faire un diagnostic rapide ?**
+Pédale dure + sifflement → fuite dépression/durite/clapet. Mesure vacuomètre < -0,6 bar au ralenti → pompe faible. Fuite d'huile autour pompe → joint/pompe à traiter rapidement.

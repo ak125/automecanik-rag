@@ -1,23 +1,29 @@
 ---
 category: direction
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: vibrations_anormales
-  then: verifier_equilibrage_et_fixations
+slug: roulement-de-roue
+title: Roulement de roue
+pg_id: 655
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Permettre la rotation libre de la roue sur son axe - Supporte les charges radiales et axiales
   must_be_true:
   - permettre la rotation
   - supporter
   - guider
-  must_not_contain_concepts:
+  must_not_contain:
   - direction
   - cremailliere
   - volant
@@ -25,15 +31,115 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Permettre la rotation libre de la roue sur son axe - Supporte les
-    charges radiales et axiales
-page_contract:
-  antiMistakes:
+  related_parts:
+  - cremailliere-de-direction
+  - rotule-de-direction
+  - pompe-de-direction-assistee
+  - barre-de-direction
+  - soufflet-de-direction
+  - colonne-de-direction
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "securite garantie"
+  cost_range:
+    min: 40
+    max: 150
+    currency: EUR
+    unit: pièce
+    source: catalogue automecanik
+  brands:
+    premium:
+    - SKF
+    - FAG (Schaeffler)
+    - NTN-SNR
+    standard:
+    - SNR
+    - INA (Schaeffler)
+    - Timken
+    budget:
+    - Febi Bilstein
+    - Optimal
+    - GSP
+  quality_tiers:
+  - tier: Origine (OE)
+    description: Roulements fabriques par l'equipementier d'origine. Tolerances micrometriques, etancheite et precharge identiques
+      a la piece usine.
+  - tier: Qualite equivalente OE (OES)
+    description: Grands roulementiers mondiaux qui equipent aussi les constructeurs. Qualite tres proche de l'OE.
+  - tier: Adaptable de qualite
+    description: Marques fiables en entree de gamme. Verifier si le kit inclut l'ecrou de moyeu (souvent a usage unique).
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Ronronnement grondement augmente vitesse
+    severity: confort
+  - id: S2
+    label: Bruit qui change d intensite dans les virages
+    severity: confort
+  - id: S3
+    label: Jeu perceptible en secouant la roue montee
+    severity: confort
+  - id: S4
+    label: Vibrations dans le volant a certaines vitesses
+    severity: confort
+  - id: S5
+    label: Roue anormalement chaude apres roulage
+    severity: confort
+  - id: S6
+    label: Bruit de frottement ou de craquement
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - verifier equilibrage et fixations
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'vibrations anormales : verifier equilibrage et fixations'
+  quick_checks:
+  - 'Observer : ronronnement grondement augmente vitesse ?'
+  - Bruit qui change d intensite dans les virages ?
+  - 'Observer : jeu perceptible en secouant la roue montee ?'
+  - Vibrations dans le volant a certaines vitesses ?
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Ronronnement grondement augmente vitesse
+  - Bruit qui change d intensite dans les virages
+  - Jeu perceptible en secouant la roue montee
+  - Vibrations dans le volant a certaines vitesses
+  - Roue anormalement chaude apres roulage
+  - Bruit de frottement ou de craquement
+  good_practices:
+  - Controle du jeu de direction a chaque revision
+  - Verifier les soufflets de protection (pas de fuite de graisse)
+  - Faire verifier la geometrie apres remplacement
+  - Inspecter les biellettes et rotules associees
+rendering:
+  pgId: '655'
+  intro_title: A quoi sert Roulement de roue ?
+  risk_title: Pourquoi remplacer Roulement de roue a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -48,61 +154,21 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Roulement de roue compatible avec mon vehicule ?
-  - answer: En cas de ronronnement grondement augmente vitesse ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Roulement de roue ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Roulement de roue sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Roulement de roue.
-  id: 655
-  intro:
-    role: Permettre la rotation libre de la roue sur son axe - Supporte les charges
-      radiales et axiales
-    syncParts:
-    - permettre la rotation
-    - supporter
-    - guider
-    title: A quoi sert Roulement de roue ?
-  pgId: '655'
+  - question: Roulement de roue OE ou adaptable ?
+    answer: 'OES (SKF, FAG, SNR) sont excellents. Vérifiez le type : roulement seul, avec moyeu intégré ou kit complet.'
+  - question: Comment savoir si mon roulement de roue est usé ?
+    answer: Ronronnement qui varie avec la vitesse, bruit qui change en virage, jeu en secouant la roue, vibrations au volant.
+  - question: Tous les combien changer le roulement de roue ?
+    answer: Entre 120 000 et 200 000 km. Durée de vie variable. Un roulement peut lâcher avant l'autre.
+  - question: Peut-on changer le roulement de roue soi-même ?
+    answer: 'Dépend du type. Roulement-moyeu intégré : facile. Roulement à presser : nécessite presse hydraulique.'
+  - question: Quelle erreur éviter avec le roulement de roue ?
+    answer: Ne pas serrer l'écrou de moyeu au couple exact (trop serré = destruction). Ne pas réutiliser l'écrou si à usage
+      unique.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/roulement-de-roue.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Roulement de roue a temps ?
-  symptoms:
-  - ronronnement grondement augmente vitesse
-  - bruit qui change d intensite dans les virages
-  - jeu perceptible en secouant la roue montee
-  - vibrations dans le volant a certaines vitesses
-  - roue anormalement chaude apres roulage
-  - bruit de frottement ou de craquement
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 655
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -110,55 +176,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: roulement-de-roue
-source_type: gamme
-symptoms:
-- description: ronronnement grondement augmente vitesse
-  evidence:
-  - 'Observation: ronronnement grondement augmente vitesse'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Ronronnement grondement augmente vitesse
-  risk_level: confort
-- description: bruit qui change d intensite dans les virages
-  evidence:
-  - 'Observation: bruit qui change d intensite dans les virages'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Bruit qui change d intensite dans les virages
-  risk_level: confort
-- description: jeu perceptible en secouant la roue montee
-  evidence:
-  - 'Observation: jeu perceptible en secouant la roue montee'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Jeu perceptible en secouant la roue montee
-  risk_level: confort
-- description: vibrations dans le volant a certaines vitesses
-  evidence:
-  - 'Observation: vibrations dans le volant a certaines vitesses'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Vibrations dans le volant a certaines vitesses
-  risk_level: confort
-- description: roue anormalement chaude apres roulage
-  evidence:
-  - 'Observation: roue anormalement chaude apres roulage'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Roue anormalement chaude apres roulage
-  risk_level: confort
-- description: bruit de frottement ou de craquement
-  evidence:
-  - 'Observation: bruit de frottement ou de craquement'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Bruit de frottement ou de craquement
-  risk_level: confort
-title: Roulement de roue
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 32acb057-3062-513a-984e-98ec764ffa5d
+content_hash: sha256:f1c9f4271fdb1786
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sous le vehicule, relie le volant aux roues
+  access: Par le dessous (pont elevateur recommande)
+  adjacent_parts:
+  - cremailliere
+  - biellette
+  - rotule
+  - soufflet
+installation:
+  difficulty: difficile
+  time: 1h a 3h
+  tools:
+  - cle a douille
+  - arrache-rotule
+  - cle dynamometrique
+  prerequisite: Pont elevateur, geometrie a refaire apres
 ---
 
 # Roulement de roue - Guide Diagnostic Complet
@@ -188,6 +239,12 @@ Pour diagnostiquer un problème de roulement de roue:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -220,3 +277,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "securite garantie"
+
+## FAQ
+
+**Roulement de roue OE ou adaptable ?**
+OES (SKF, FAG, SNR) sont excellents. Vérifiez le type : roulement seul, avec moyeu intégré ou kit complet.
+
+**Comment savoir si mon roulement de roue est usé ?**
+Ronronnement qui varie avec la vitesse, bruit qui change en virage, jeu en secouant la roue, vibrations au volant.
+
+**Tous les combien changer le roulement de roue ?**
+Entre 120 000 et 200 000 km. Durée de vie variable. Un roulement peut lâcher avant l'autre.
+
+**Peut-on changer le roulement de roue soi-même ?**
+Dépend du type. Roulement-moyeu intégré : facile. Roulement à presser : nécessite presse hydraulique.
+
+**Quelle erreur éviter avec le roulement de roue ?**
+Ne pas serrer l'écrou de moyeu au couple exact (trop serré = destruction). Ne pas réutiliser l'écrou si à usage unique.

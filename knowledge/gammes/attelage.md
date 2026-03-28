@@ -1,35 +1,147 @@
 ---
 category: accessoires
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
+slug: attelage
+title: Attelage
+pg_id: 39
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Permet de tracter une remorque ou une caravane
   must_be_true:
   - tracter
   - remorquer
   - accrocher
-  must_not_contain_concepts:
+  must_not_contain:
   - freinage
   - suspension
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Permet de tracter une remorque ou une caravane
-page_contract:
-  antiMistakes:
+  related_parts:
+  - tracter
+  - remorquer
+  - accrocher
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "securite garantie"
+  cost_range:
+    min: 150
+    max: 500
+    currency: EUR
+    unit: attelage complet
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Attelage origine constructeur
+    description: Fourni par le reseau constructeur, cote pour le vehicule exact. Garantit la compatibilite avec le faisceau
+      electrique d'origine et les points de fixation chassis.
+  - tier: Equipementier specialise homologue
+    description: Fabricants specialises dans l'attelage automobile, proposant des produits homologues par vehicule. Compatibilite
+      validee par reference vehicule (marque, modele, annee, carrosserie).
+  - tier: Attelage demontable ou escamotable
+    description: Variante permettant de masquer la boule quand elle n'est pas utilisee. Disponible chez plusieurs equipementiers
+      specialises. Verifier la compatibilite et l'homologation specifique a ce type.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    standard:
+    - Febi
+    - Meyle
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Boule attelage usee tete attelage
+    severity: confort
+  - id: S2
+    label: Corrosion importante sur la traverse ou la boule
+    severity: confort
+  - id: S3
+    label: Fissures visibles sur les soudures
+    severity: confort
+  - id: S4
+    label: Faisceau electrique defaillant feux remorque
+    severity: confort
+  - id: S5
+    label: Bruits de claquement lors du tractage
+    severity: confort
+  - id: S6
+    label: Attelage non homologue controle technique
+    severity: confort
+  - id: S7
+    label: Remorque oscille anormalement route signe
+    severity: confort
+  - id: S8
+    label: Odeur caoutchouc brule provenant pneus
+    severity: securite
+  - id: S9
+    label: Plus utilisation forte utilisation controle
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'Usure ou defaillance causant : boule attelage usee tete attelage'
+  quick_checks:
+  - 'Observer : boule attelage usee tete attelage ?'
+  - 'Observer : corrosion importante sur la traverse ou la boule ?'
+  - 'Observer : fissures visibles sur les soudures ?'
+  - 'Observer : faisceau electrique defaillant feux remorque ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Boule attelage usee tete attelage
+  - Corrosion importante sur la traverse ou la boule
+  - Fissures visibles sur les soudures
+  - Faisceau electrique defaillant feux remorque
+  - Bruits de claquement lors du tractage
+  - Attelage non homologue controle technique
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '39'
+  intro_title: A quoi sert Attelage ?
+  risk_title: Pourquoi remplacer Attelage a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -44,64 +156,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Attelage compatible avec mon vehicule ?
-  - answer: En cas de boule attelage usee tete attelage ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Attelage ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Attelage sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Attelage.
-  id: 39
-  intro:
-    role: Permet de tracter une remorque ou une caravane
-    syncParts:
-    - tracter
-    - remorquer
-    - accrocher
-    title: A quoi sert Attelage ?
-  pgId: '39'
+  - question: Attelage OE ou adaptable ?
+    answer: Les attelages OES (Westfalia, Brink, Bosal) sont homologués et de qualité équivalente à l'OE. Vérifiez la charge
+      tractable et la masse sur flèche compatibles avec votre véhicule.
+  - question: Comment savoir si mon attelage est usé ?
+    answer: Boule d'attelage usée (diamètre inférieur à 49mm), jeu dans la rotule, corrosion importante sur la traverse, fissures
+      visibles, faisceau électrique défaillant.
+  - question: Tous les combien contrôler l'attelage ?
+    answer: Contrôle visuel annuel recommandé. Vérifiez l'usure de la boule (calibre 49-50mm), l'état des soudures, la corrosion
+      et le fonctionnement du faisceau électrique.
+  - question: Peut-on monter un attelage soi-même ?
+    answer: Oui mais nécessite parfois de percer le pare-chocs ou déposer des éléments. Le faisceau électrique doit être correctement
+      branché. Prévoir 2 à 4h selon modèle.
+  - question: Quelle erreur éviter avec l'attelage ?
+    answer: Dépasser le PTAC ou le poids sur flèche maximal. Vérifiez toujours les capacités indiquées sur la plaque signalétique
+      de l'attelage avant de tracter.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/attelage.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Attelage a temps ?
-  symptoms:
-  - boule attelage usee tete attelage
-  - corrosion importante sur la traverse ou la boule
-  - fissures visibles sur les soudures
-  - faisceau electrique defaillant feux remorque
-  - bruits de claquement lors du tractage
-  - attelage non homologue controle technique
-  - remorque oscille anormalement route signe
-  - odeur caoutchouc brule provenant pneus
-  - plus utilisation forte utilisation controle
-  - '**Bruits de claquement lors du tractage**'
-  - '**Odeur caoutchouc brule provenant pneus**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 39
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -109,76 +182,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: attelage
-source_type: gamme
-symptoms:
-- description: boule attelage usee tete attelage
-  evidence:
-  - 'Observation: boule attelage usee tete attelage'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Boule attelage usee tete attelage
-  risk_level: confort
-- description: corrosion importante sur la traverse ou la boule
-  evidence:
-  - 'Observation: corrosion importante sur la traverse ou la boule'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Corrosion importante sur la traverse ou la boule
-  risk_level: confort
-- description: fissures visibles sur les soudures
-  evidence:
-  - 'Observation: fissures visibles sur les soudures'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Fissures visibles sur les soudures
-  risk_level: confort
-- description: faisceau electrique defaillant feux remorque
-  evidence:
-  - 'Observation: faisceau electrique defaillant feux remorque'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Faisceau electrique defaillant feux remorque
-  risk_level: confort
-- description: bruits de claquement lors du tractage
-  evidence:
-  - 'Observation: bruits de claquement lors du tractage'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Bruits de claquement lors du tractage
-  risk_level: degats_volant_moteur
-- description: attelage non homologue controle technique
-  evidence:
-  - 'Observation: attelage non homologue controle technique'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Attelage non homologue controle technique
-  risk_level: confort
-- description: remorque oscille anormalement route signe
-  evidence:
-  - 'Observation: remorque oscille anormalement route signe'
-  - Vérification visuelle ou auditive
-  id: S7
-  label: Remorque oscille anormalement route signe
-  risk_level: confort
-- description: odeur caoutchouc brule provenant pneus
-  evidence:
-  - 'Observation: odeur caoutchouc brule provenant pneus'
-  - Vérification visuelle ou auditive
-  id: S8
-  label: Odeur caoutchouc brule provenant pneus
-  risk_level: securite
-- description: plus utilisation forte utilisation controle
-  evidence:
-  - 'Observation: plus utilisation forte utilisation controle'
-  - Vérification visuelle ou auditive
-  id: S9
-  label: Plus utilisation forte utilisation controle
-  risk_level: confort
-title: Attelage
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 082d5626-cbb8-5aeb-ac0e-846fafe570b2
+content_hash: sha256:41af83a352c9cebb
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Attelage - Guide Diagnostic Complet
@@ -219,6 +251,12 @@ Pour diagnostiquer un problème de attelage:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -248,3 +286,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "securite garantie"
+
+## FAQ
+
+**Attelage OE ou adaptable ?**
+Les attelages OES (Westfalia, Brink, Bosal) sont homologués et de qualité équivalente à l'OE. Vérifiez la charge tractable et la masse sur flèche compatibles avec votre véhicule.
+
+**Comment savoir si mon attelage est usé ?**
+Boule d'attelage usée (diamètre inférieur à 49mm), jeu dans la rotule, corrosion importante sur la traverse, fissures visibles, faisceau électrique défaillant.
+
+**Tous les combien contrôler l'attelage ?**
+Contrôle visuel annuel recommandé. Vérifiez l'usure de la boule (calibre 49-50mm), l'état des soudures, la corrosion et le fonctionnement du faisceau électrique.
+
+**Peut-on monter un attelage soi-même ?**
+Oui mais nécessite parfois de percer le pare-chocs ou déposer des éléments. Le faisceau électrique doit être correctement branché. Prévoir 2 à 4h selon modèle.
+
+**Quelle erreur éviter avec l'attelage ?**
+Dépasser le PTAC ou le poids sur flèche maximal. Vérifiez toujours les capacités indiquées sur la plaque signalétique de l'attelage avant de tracter.

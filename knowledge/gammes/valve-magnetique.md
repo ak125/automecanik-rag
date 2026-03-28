@@ -1,21 +1,29 @@
 ---
 category: climatisation
-diagnostic_tree:
-- if: symptome_general_detecte
-  then: inspection_visuelle_et_test_fonctionnel
+slug: valve-magnetique
+title: Valve magnétique
+pg_id: 2073
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Reguler le debit de fluide frigorigene dans le circuit
   must_be_true:
   - ouvrir
   - fermer
   - reguler
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - freinage
   - allumage
@@ -24,14 +32,90 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Reguler le debit de fluide frigorigene dans le circuit
-page_contract:
-  antiMistakes:
+  related_parts:
+  - compresseur-de-climatisation
+  - condenseur-de-climatisation
+  - evaporateur-de-climatisation
+  - filtre-d-habitacle
+  - detendeur-de-climatisation
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Renseignez marque, modele, type puis comparez references et dimensions. Validez ensuite les contraintes de climatisation
+    pour confirmer Valve magnétique.
+  - Verifier la reference OE ou equivalence constructeur pour le vehicule exact
+  - Respecter le type de gaz refrigerant (R134a, R1234yf) pour la compatibilite
+  - Choisir un equipementier reconnu (Denso, Valeo, Delphi, NRF)
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "refroidit instantanement"
+  cost_range:
+    min: 30
+    max: 500
+    currency: EUR
+    unit: l'unite
+    source: estimation categorie
+  brands:
+    premium:
+    - Denso
+    - Valeo
+    standard:
+    - NRF
+    - Delphi
+    - Hella
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Climatisation qui souffle chaud
+    severity: confort
+  - id: S2
+    label: Temperature non regulee
+    severity: confort
+  - id: S3
+    label: Compresseur qui ne s enclenche pas
+    severity: confort
+  causes:
+  - inspection visuelle et test fonctionnel
+  - 'Usure ou defaillance causant : climatisation qui souffle chaud'
+  - 'Usure ou defaillance causant : temperature non regulee'
+  quick_checks:
+  - 'Observer : climatisation qui souffle chaud ?'
+  - 'Observer : temperature non regulee ?'
+  - 'Observer : compresseur qui ne s enclenche pas ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Climatisation qui souffle chaud
+  - Temperature non regulee
+  - Compresseur qui ne s enclenche pas
+  good_practices:
+  - Faire tourner la climatisation 10 min par semaine meme en hiver
+  - Remplacement du filtre d habitacle chaque annee
+  - Recharge de gaz par un professionnel equipe (circuit sous pression)
+  - Controle d etancheite si baisse de performance
+rendering:
+  pgId: '2073'
+  intro_title: A quoi sert Valve magnétique ?
+  risk_title: Pourquoi remplacer Valve magnétique a temps ?
+  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_consequences:
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,54 +130,18 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Valve magnétique compatible avec mon vehicule ?
-  - answer: En cas de climatisation qui souffle chaud ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Valve magnétique ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Valve magnétique sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de climatisation pour confirmer Valve magnétique.
-  id: 2073
-  intro:
-    role: Reguler le debit de fluide frigorigene dans le circuit
-    syncParts:
-    - ouvrir
-    - fermer
-    - reguler
-    title: A quoi sert Valve magnétique ?
-  pgId: '2073'
+  - question: Comment choisir Valve magnétique compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Valve magnétique ?
+    answer: En cas de climatisation qui souffle chaud ou de degradation mesurable, il faut controler rapidement avant panne
+      secondaire.
+  - question: Puis-je monter Valve magnétique sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/valve-magnetique.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
-    title: Pourquoi remplacer Valve magnétique a temps ?
-  symptoms:
-  - climatisation qui souffle chaud
-  - temperature non regulee
-  - compresseur qui ne s enclenche pas
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 2073
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -101,34 +149,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: valve-magnetique
-source_type: gamme
-symptoms:
-- description: climatisation qui souffle chaud
-  evidence:
-  - 'Observation: climatisation qui souffle chaud'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Climatisation qui souffle chaud
-  risk_level: confort
-- description: temperature non regulee
-  evidence:
-  - 'Observation: temperature non regulee'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Temperature non regulee
-  risk_level: confort
-- description: compresseur qui ne s enclenche pas
-  evidence:
-  - 'Observation: compresseur qui ne s enclenche pas'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Compresseur qui ne s enclenche pas
-  risk_level: confort
-title: Valve magnétique
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: fedb120d-e78c-5a21-bfdc-700a5c34fb42
+content_hash: sha256:a5968dbb2845e230
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Face avant (condenseur), habitacle (evaporateur), moteur (compresseur)
+  access: Variable selon composant (capot, tableau de bord, face avant)
+  adjacent_parts:
+  - compresseur
+  - condenseur
+  - detendeur
+  - evaporateur
+installation:
+  difficulty: difficile (pro obligatoire)
+  time: 1h a 4h
+  tools:
+  - station de recharge
+  - detecteur de fuites
+  - cle a douille
+  prerequisite: Recuperation du gaz obligatoire par professionnel agree
 ---
 
 # Valve magnétique - Guide Diagnostic Complet
@@ -154,6 +208,12 @@ Pour diagnostiquer un problème de valve magnétique:
 1. **Inspection visuelle** - Examiner l'état du valve magnétique
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -184,3 +244,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "refroidit instantanement"
+
+## FAQ
+
+**Comment choisir Valve magnétique compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Valve magnétique ?**
+En cas de climatisation qui souffle chaud ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Valve magnétique sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.

@@ -1,21 +1,29 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
+slug: soupape-d-echappement
+title: Soupape d'échappement
+pg_id: 1270
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Ouvrir et fermer le passage des gaz d'echappement
   must_be_true:
   - ouvrir
   - fermer
   - evacuer
-  must_not_contain_concepts:
+  must_not_contain:
   - admission
   - air frais
   - carburant
@@ -23,14 +31,112 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Ouvrir et fermer le passage des gaz d'echappement
-page_contract:
-  antiMistakes:
+  related_parts:
+  - ouvrir
+  - fermer
+  - evacuer
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "plus de puissance"
+  cost_range:
+    min: 20
+    max: 60
+    currency: EUR
+    unit: soupape
+    source: catalogue automecanik
+  brands:
+    premium:
+    - Mahle Original
+    - TRW Engine Component
+    - AE (Federal-Mogul)
+    standard:
+    - Freccia
+    - Intervalves
+    - SM (Societe Mecanique)
+    budget:
+    - Osvat
+    - BGA
+    - AMP
+  quality_tiers:
+  - tier: Origine constructeur
+    description: Soupapes d echappement OE en acier inoxydable haute temperature, calibrees pour la contrainte thermique specifique
+      du moteur.
+  - tier: Equipementier qualite OE
+    description: Soupapes fabriquees selon les specifications premiere monte avec alliages resistants aux hautes temperatures
+      (stellite, inconel).
+  - tier: Adaptable qualite reconnue
+    description: Soupapes conformes aux cotes constructeur. Verifier imperativement l alliage et la durete avant montage.
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Perte de compression sur un cylindre
+    severity: confort
+  - id: S2
+    label: Surchauffe localisee du moteur
+    severity: confort
+  - id: S3
+    label: Claquement ou rate d allumage
+    severity: confort
+  - id: S4
+    label: Soupape grillee ou deformee endoscopie
+    severity: confort
+  - id: S5
+    label: Perte de puissance notable
+    severity: confort
+  - id: S6
+    label: Refection culasse prevue remplacement preventif
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'Usure ou defaillance causant : perte de compression sur un cylindre'
+  quick_checks:
+  - 'Observer : perte de compression sur un cylindre ?'
+  - 'Observer : surchauffe localisee du moteur ?'
+  - 'Observer : claquement ou rate d allumage ?'
+  - 'Observer : soupape grillee ou deformee endoscopie ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Perte de compression sur un cylindre
+  - Surchauffe localisee du moteur
+  - Claquement ou rate d allumage
+  - Soupape grillee ou deformee endoscopie
+  - Perte de puissance notable
+  - Refection culasse prevue remplacement preventif
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '1270'
+  intro_title: A quoi sert Soupape d'échappement ?
+  risk_title: Pourquoi remplacer Soupape d'échappement a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -45,63 +151,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Soupape d'échappement compatible avec mon vehicule ?
-  - answer: En cas de perte de compression sur un cylindre ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Soupape d'échappement ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Soupape d'échappement sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Soupape d'échappement.
-  id: 1270
-  intro:
-    role: Soupape d'échappement intervient directement sur moteur du vehicule. Un
-      choix conforme protege la combustion et limite les pannes secondaires.
-    syncParts:
-    - ouvrir
-    - fermer
-    - evacuer
-    title: A quoi sert Soupape d'échappement ?
-  pgId: '1270'
+  - question: Soupape d'échappement OE ou adaptable ?
+    answer: Privilégiez l'OE ou OES (AE, Freccia). La soupape d'échappement subit des contraintes thermiques extrêmes. Une
+      mauvaise qualité grillera rapidement.
+  - question: Comment savoir si une soupape d'échappement est HS ?
+    answer: Perte de compression, claquement, surchauffe moteur, soupape grillée ou tordue visible à l'endoscopie.
+  - question: Tous les combien changer les soupapes d'échappement ?
+    answer: Pas de périodicité. Durée de vie 200 000+ km mais moins que l'admission. Vérifier lors de chaque réfection culasse.
+  - question: Peut-on changer une soupape d'échappement soi-même ?
+    answer: Non recommandé. Travail de rectification culasse. Les soupapes d'échappement exigent une attention particulière
+      aux sièges.
+  - question: Quelle erreur éviter avec les soupapes d'échappement ?
+    answer: Ne pas sous-estimer l'usure thermique. Vérifier l'étanchéité au bleu de Prusse. Remplacer par paire admission/échappement
+      si réfection.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/soupape-d-echappement.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Soupape d'échappement a temps ?
-  symptoms:
-  - perte de compression sur un cylindre
-  - surchauffe localisee du moteur
-  - claquement ou rate d allumage
-  - soupape grillee ou deformee endoscopie
-  - perte de puissance notable
-  - refection culasse prevue remplacement preventif
-  - '**Claquement ou rate d allumage**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1270
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -109,55 +175,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: soupape-d-echappement
-source_type: gamme
-symptoms:
-- description: perte de compression sur un cylindre
-  evidence:
-  - 'Observation: perte de compression sur un cylindre'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Perte de compression sur un cylindre
-  risk_level: confort
-- description: surchauffe localisee du moteur
-  evidence:
-  - 'Observation: surchauffe localisee du moteur'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Surchauffe localisee du moteur
-  risk_level: confort
-- description: claquement ou rate d allumage
-  evidence:
-  - 'Observation: claquement ou rate d allumage'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Claquement ou rate d allumage
-  risk_level: degats_volant_moteur
-- description: soupape grillee ou deformee endoscopie
-  evidence:
-  - 'Observation: soupape grillee ou deformee endoscopie'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Soupape grillee ou deformee endoscopie
-  risk_level: confort
-- description: perte de puissance notable
-  evidence:
-  - 'Observation: perte de puissance notable'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Perte de puissance notable
-  risk_level: confort
-- description: refection culasse prevue remplacement preventif
-  evidence:
-  - 'Observation: refection culasse prevue remplacement preventif'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Refection culasse prevue remplacement preventif
-  risk_level: confort
-title: Soupape d'échappement
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: eac16b0b-d7d0-56ae-8f34-33e21ab9d444
+content_hash: sha256:e0f6f046e90d9e7a
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Soupape d'échappement - Guide Diagnostic Complet
@@ -190,6 +236,12 @@ Pour diagnostiquer un problème de soupape d'échappement:
 1. **Inspection visuelle** - Examiner l'état du soupape d'échappement
 2. **Contrôle des fuites** - Rechercher traces d'huile ou liquide
 3. **Test fonctionnel** - Vérifier le comportement moteur
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -226,3 +278,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "plus de puissance"
+
+## FAQ
+
+**Soupape d'échappement OE ou adaptable ?**
+Privilégiez l'OE ou OES (AE, Freccia). La soupape d'échappement subit des contraintes thermiques extrêmes. Une mauvaise qualité grillera rapidement.
+
+**Comment savoir si une soupape d'échappement est HS ?**
+Perte de compression, claquement, surchauffe moteur, soupape grillée ou tordue visible à l'endoscopie.
+
+**Tous les combien changer les soupapes d'échappement ?**
+Pas de périodicité. Durée de vie 200 000+ km mais moins que l'admission. Vérifier lors de chaque réfection culasse.
+
+**Peut-on changer une soupape d'échappement soi-même ?**
+Non recommandé. Travail de rectification culasse. Les soupapes d'échappement exigent une attention particulière aux sièges.
+
+**Quelle erreur éviter avec les soupapes d'échappement ?**
+Ne pas sous-estimer l'usure thermique. Vérifier l'étanchéité au bleu de Prusse. Remplacer par paire admission/échappement si réfection.

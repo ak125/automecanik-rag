@@ -1,40 +1,132 @@
 ---
 category: capteurs
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
-- if: fuite_detectee_ou_niveau_bas
-  then: identifier_origine_fuite_et_verifier_joints
+slug: capteur-niveau-d-huile-moteur
+title: Capteur niveau d'huile moteur
+pg_id: 1289
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Mesurer le niveau d'huile dans le carter et informer le conducteur via le tableau de bord
   must_be_true:
   - mesurer
   - detecter
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - pression
   - pressostat
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Mesurer le niveau d'huile dans le carter et informer le conducteur
-    via le tableau de bord
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - bobine-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-electrique-voisine
+    difference: Les pieces electriques ont des connecteurs specifiques. Verifier le nombre de broches et le voltage.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "corrige la panne"
+  cost_range:
+    min: 20
+    max: 60
+    currency: EUR
+    unit: capteur
+    source: catalogue automecanik
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    - Denso
+    standard:
+    - Hella
+    - NGK
+    - Delphi
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Voyant niveau d huile allume en permanence
+    severity: confort
+  - id: S2
+    label: Message niveau huile errone au tableau de bord
+    severity: confort
+  - id: S3
+    label: Claquement moteur demarrage niveau detecte
+    severity: confort
+  - id: S4
+    label: Moteur qui chauffe anormalement
+    severity: confort
+  - id: S5
+    label: Odeur d huile brulee niveau trop bas
+    severity: confort
+  - id: S6
+    label: Niveau correct a la jauge mais alerte active
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  - identifier origine fuite et verifier joints
+  quick_checks:
+  - Voyant niveau d huile allume en permanence ?
+  - 'Observer : message niveau huile errone au tableau de bord ?'
+  - 'Observer : claquement moteur demarrage niveau detecte ?'
+  - 'Observer : moteur qui chauffe anormalement ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Voyant niveau d huile allume en permanence
+  - Message niveau huile errone au tableau de bord
+  - Claquement moteur demarrage niveau detecte
+  - Moteur qui chauffe anormalement
+  - Odeur d huile brulee niveau trop bas
+  - Niveau correct a la jauge mais alerte active
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '1289'
+  intro_title: A quoi sert Capteur niveau d'huile moteur ?
+  risk_title: Pourquoi remplacer Capteur niveau d'huile moteur a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -49,64 +141,24 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Capteur niveau d'huile moteur compatible avec mon vehicule
-      ?
-  - answer: En cas de voyant niveau d huile allume en permanence ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Capteur niveau d'huile moteur ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Capteur niveau d'huile moteur sans verification atelier
-      ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Capteur niveau
-    d'huile moteur.
-  id: 1289
-  intro:
-    role: Mesurer le niveau d'huile dans le carter et informer le conducteur via le
-      tableau de bord
-    syncParts:
-    - mesurer
-    - detecter
-    - transmettre
-    title: A quoi sert Capteur niveau d'huile moteur ?
-  pgId: '1289'
+  - question: Capteur de niveau d'huile OE ou adaptable ?
+    answer: Les adaptables de qualité (Hella, Febi) fonctionnent bien. Vérifiez la compatibilité exacte (longueur, connecteur,
+      type de mesure).
+  - question: Comment savoir si mon capteur de niveau d'huile est HS ?
+    answer: Voyant niveau d'huile allumé en permanence malgré niveau correct, ou jamais allumé même niveau bas. Message erroné
+      au tableau de bord.
+  - question: Tous les combien changer le capteur de niveau d'huile ?
+    answer: Pas de périodicité. Pièce qui dure généralement 200 000+ km. À remplacer uniquement si défaillant.
+  - question: Peut-on changer le capteur de niveau d'huile soi-même ?
+    answer: Oui, mais nécessite souvent de vidanger l'huile car le capteur est dans le carter. Accès parfois difficile selon
+      véhicule.
+  - question: Quelle erreur éviter avec le capteur de niveau d'huile ?
+    answer: Ne pas confondre avec le pressostat d'huile. Toujours vérifier le niveau à la jauge avant de conclure à une panne
+      capteur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/capteur-niveau-d-huile-moteur.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Capteur niveau d'huile moteur a temps ?
-  symptoms:
-  - voyant niveau d huile allume en permanence
-  - message niveau huile errone au tableau de bord
-  - claquement moteur demarrage niveau detecte
-  - moteur qui chauffe anormalement
-  - odeur d huile brulee niveau trop bas
-  - niveau correct a la jauge mais alerte active
-  - '**Claquement moteur demarrage niveau detecte**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 1289
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -114,55 +166,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: capteur-niveau-d-huile-moteur
-source_type: gamme
-symptoms:
-- description: voyant niveau d huile allume en permanence
-  evidence:
-  - 'Observation: voyant niveau d huile allume en permanence'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Voyant niveau d huile allume en permanence
-  risk_level: confort
-- description: message niveau huile errone au tableau de bord
-  evidence:
-  - 'Observation: message niveau huile errone au tableau de bord'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Message niveau huile errone au tableau de bord
-  risk_level: confort
-- description: claquement moteur demarrage niveau detecte
-  evidence:
-  - 'Observation: claquement moteur demarrage niveau detecte'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Claquement moteur demarrage niveau detecte
-  risk_level: degats_volant_moteur
-- description: moteur qui chauffe anormalement
-  evidence:
-  - 'Observation: moteur qui chauffe anormalement'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Moteur qui chauffe anormalement
-  risk_level: confort
-- description: odeur d huile brulee niveau trop bas
-  evidence:
-  - 'Observation: odeur d huile brulee niveau trop bas'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Odeur d huile brulee niveau trop bas
-  risk_level: confort
-- description: niveau correct a la jauge mais alerte active
-  evidence:
-  - 'Observation: niveau correct a la jauge mais alerte active'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Niveau correct a la jauge mais alerte active
-  risk_level: confort
-title: Capteur niveau d'huile moteur
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 3de5c5c6-ba11-5f31-b90f-b69f30c5f57b
+content_hash: sha256:3ab8564bded53f15
+lang: fr
+variants:
+- name: Piece neuve OE/OES
+  aliases:
+  - neuf
+  - OE
+  - OES
+  functional_differences:
+  - Garantie constructeur ou equipementier
+  - Calibration d usine
+- name: Piece echange standard
+  aliases:
+  - echange standard
+  - reconditionne
+  functional_differences:
+  - Moins cher
+  - Piece d origine reconditionnee
+location_on_vehicle:
+  area: Compartiment moteur (alternateur, demarreur) ou peripherie
+  access: Par le dessus (capot) ou par le dessous selon modele
+  adjacent_parts:
+  - faisceau electrique
+  - batterie
+  - fusibles
+installation:
+  difficulty: facile a moyen
+  time: 15min a 1h
+  tools:
+  - cle a douille
+  - multimetre
+  - tournevis
+  prerequisite: Debrancher la batterie avant intervention
 ---
 
 # Capteur niveau d'huile moteur - Guide Diagnostic Complet
@@ -196,6 +233,12 @@ Pour diagnostiquer un problème de capteur niveau d'huile moteur:
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -227,3 +270,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "corrige la panne"
+
+## FAQ
+
+**Capteur de niveau d'huile OE ou adaptable ?**
+Les adaptables de qualité (Hella, Febi) fonctionnent bien. Vérifiez la compatibilité exacte (longueur, connecteur, type de mesure).
+
+**Comment savoir si mon capteur de niveau d'huile est HS ?**
+Voyant niveau d'huile allumé en permanence malgré niveau correct, ou jamais allumé même niveau bas. Message erroné au tableau de bord.
+
+**Tous les combien changer le capteur de niveau d'huile ?**
+Pas de périodicité. Pièce qui dure généralement 200 000+ km. À remplacer uniquement si défaillant.
+
+**Peut-on changer le capteur de niveau d'huile soi-même ?**
+Oui, mais nécessite souvent de vidanger l'huile car le capteur est dans le carter. Accès parfois difficile selon véhicule.
+
+**Quelle erreur éviter avec le capteur de niveau d'huile ?**
+Ne pas confondre avec le pressostat d'huile. Toujours vérifier le niveau à la jauge avant de conclure à une panne capteur.

@@ -1,21 +1,29 @@
 ---
 category: climatisation
-diagnostic_tree:
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
+slug: capteur-temperature-de-climatisation
+title: Capteur température de climatisation
+pg_id: 2054
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Mesurer la temperature de l'air dans l'habitacle
   must_be_true:
   - mesurer
   - detecter
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - freinage
   - allumage
@@ -24,14 +32,111 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Mesurer la temperature de l'air dans l'habitacle
-page_contract:
-  antiMistakes:
+  related_parts:
+  - compresseur-de-climatisation
+  - condenseur-de-climatisation
+  - evaporateur-de-climatisation
+  - filtre-d-habitacle
+  - detendeur-de-climatisation
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "refroidit instantanement"
+  cost_range:
+    min: 20
+    max: 60
+    currency: EUR
+    unit: capteur
+    source: catalogue automecanik
+  brands:
+    premium:
+    - Denso
+    - Valeo
+    standard:
+    - NRF
+    - Delphi
+    - Hella
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Compresseur qui refuse de s enclencher
+    severity: confort
+  - id: S2
+    label: Climatisation qui givre l evaporateur
+    severity: confort
+  - id: S3
+    label: Regulation automatique de temperature defaillante
+    severity: confort
+  - id: S4
+    label: Voyant de climatisation qui clignote
+    severity: confort
+  - id: S5
+    label: Code defaut capteur au diagnostic
+    severity: confort
+  - id: S6
+    label: Temperature affichee incoherente
+    severity: confort
+  - id: S7
+    label: Compresseur climatisation enclenche coupe boucle
+    severity: confort
+  - id: S8
+    label: Temperature consigne jamais atteinte habitacle
+    severity: confort
+  - id: S9
+    label: Givrage excessif evaporateur provoquant odeur
+    severity: confort
+  causes:
+  - lecture codes defaut obd et diagnostic electronique
+  - 'voyant tableau bord allume : lecture codes defaut obd et diagnostic electronique'
+  - 'Usure ou defaillance causant : compresseur qui refuse de s enclencher'
+  quick_checks:
+  - 'Observer : compresseur qui refuse de s enclencher ?'
+  - 'Observer : climatisation qui givre l evaporateur ?'
+  - 'Observer : regulation automatique de temperature defaillante ?'
+  - Voyant de climatisation qui clignote ?
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Compresseur qui refuse de s enclencher
+  - Climatisation qui givre l evaporateur
+  - Regulation automatique de temperature defaillante
+  - Voyant de climatisation qui clignote
+  - Code defaut capteur au diagnostic
+  - Temperature affichee incoherente
+  good_practices:
+  - Faire tourner la climatisation 10 min par semaine meme en hiver
+  - Remplacement du filtre d habitacle chaque annee
+  - Recharge de gaz par un professionnel equipe (circuit sous pression)
+  - Controle d etancheite si baisse de performance
+rendering:
+  pgId: '2054'
+  intro_title: A quoi sert Capteur température de climatisation ?
+  risk_title: Pourquoi remplacer Capteur température de climatisation a temps ?
+  risk_explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  risk_consequences:
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -46,66 +151,22 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Capteur température de climatisation compatible avec
-      mon vehicule ?
-  - answer: En cas de compresseur qui refuse de s enclencher ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Capteur température de climatisation ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Capteur température de climatisation sans verification
-      atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de climatisation pour confirmer Capteur température
-    de climatisation.
-  id: 2054
-  intro:
-    role: Mesurer la temperature de l'air dans l'habitacle
-    syncParts:
-    - mesurer
-    - detecter
-    - transmettre
-    title: A quoi sert Capteur température de climatisation ?
-  pgId: '2054'
+  - question: Capteur clim OE ou adaptable ?
+    answer: Les capteurs OES (Valeo, Hella) sont recommandés pour une mesure précise. Les adaptables peuvent avoir une tolérance
+      plus large.
+  - question: Comment savoir si le capteur clim est HS ?
+    answer: Compresseur qui ne s'enclenche pas, clim qui givre, régulation automatique défaillante, code défaut au diagnostic.
+  - question: Tous les combien changer le capteur clim ?
+    answer: Pas de périodicité. Pièce électronique fiable. À remplacer sur diagnostic de panne confirmé.
+  - question: Peut-on changer le capteur clim soi-même ?
+    answer: Oui souvent. Le capteur d'évaporateur est dans le boîtier de ventilation, celui d'habitacle dans le tableau de
+      bord.
+  - question: Quelle erreur éviter avec le capteur clim ?
+    answer: Ne pas confondre capteur d'évaporateur et capteur d'habitacle. Vérifier le code défaut exact avant remplacement.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/capteur-temperature-de-climatisation.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Défaillance électrique** - Problème de connexion, de câblage ou
-      de composant électronique'
-    title: Pourquoi remplacer Capteur température de climatisation a temps ?
-  symptoms:
-  - compresseur qui refuse de s enclencher
-  - climatisation qui givre l evaporateur
-  - regulation automatique de temperature defaillante
-  - voyant de climatisation qui clignote
-  - code defaut capteur au diagnostic
-  - temperature affichee incoherente
-  - compresseur climatisation enclenche coupe boucle
-  - temperature consigne jamais atteinte habitacle
-  - givrage excessif evaporateur provoquant odeur
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 2054
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -113,76 +174,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: capteur-temperature-de-climatisation
-source_type: gamme
-symptoms:
-- description: compresseur qui refuse de s enclencher
-  evidence:
-  - 'Observation: compresseur qui refuse de s enclencher'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Compresseur qui refuse de s enclencher
-  risk_level: confort
-- description: climatisation qui givre l evaporateur
-  evidence:
-  - 'Observation: climatisation qui givre l evaporateur'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Climatisation qui givre l evaporateur
-  risk_level: confort
-- description: regulation automatique de temperature defaillante
-  evidence:
-  - 'Observation: regulation automatique de temperature defaillante'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Regulation automatique de temperature defaillante
-  risk_level: confort
-- description: voyant de climatisation qui clignote
-  evidence:
-  - 'Observation: voyant de climatisation qui clignote'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Voyant de climatisation qui clignote
-  risk_level: confort
-- description: code defaut capteur au diagnostic
-  evidence:
-  - 'Observation: code defaut capteur au diagnostic'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Code defaut capteur au diagnostic
-  risk_level: confort
-- description: temperature affichee incoherente
-  evidence:
-  - 'Observation: temperature affichee incoherente'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Temperature affichee incoherente
-  risk_level: confort
-- description: compresseur climatisation enclenche coupe boucle
-  evidence:
-  - 'Observation: compresseur climatisation enclenche coupe boucle'
-  - Vérification visuelle ou auditive
-  id: S7
-  label: Compresseur climatisation enclenche coupe boucle
-  risk_level: confort
-- description: temperature consigne jamais atteinte habitacle
-  evidence:
-  - 'Observation: temperature consigne jamais atteinte habitacle'
-  - Vérification visuelle ou auditive
-  id: S8
-  label: Temperature consigne jamais atteinte habitacle
-  risk_level: confort
-- description: givrage excessif evaporateur provoquant odeur
-  evidence:
-  - 'Observation: givrage excessif evaporateur provoquant odeur'
-  - Vérification visuelle ou auditive
-  id: S9
-  label: Givrage excessif evaporateur provoquant odeur
-  risk_level: confort
-title: Capteur température de climatisation
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: f4030453-1c04-55e6-b879-ac386bfaae2f
+content_hash: sha256:2d076ebfcb1b1ff3
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Face avant (condenseur), habitacle (evaporateur), moteur (compresseur)
+  access: Variable selon composant (capot, tableau de bord, face avant)
+  adjacent_parts:
+  - compresseur
+  - condenseur
+  - detendeur
+  - evaporateur
+installation:
+  difficulty: difficile (pro obligatoire)
+  time: 1h a 4h
+  tools:
+  - station de recharge
+  - detecteur de fuites
+  - cle a douille
+  prerequisite: Recuperation du gaz obligatoire par professionnel agree
 ---
 
 # Capteur température de climatisation - Guide Diagnostic Complet
@@ -211,6 +236,12 @@ Pour diagnostiquer un problème de capteur température de climatisation:
 1. **Inspection visuelle** - Examiner l'état du capteur température de climatisation
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -242,3 +273,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "refroidit instantanement"
+
+## FAQ
+
+**Capteur clim OE ou adaptable ?**
+Les capteurs OES (Valeo, Hella) sont recommandés pour une mesure précise. Les adaptables peuvent avoir une tolérance plus large.
+
+**Comment savoir si le capteur clim est HS ?**
+Compresseur qui ne s'enclenche pas, clim qui givre, régulation automatique défaillante, code défaut au diagnostic.
+
+**Tous les combien changer le capteur clim ?**
+Pas de périodicité. Pièce électronique fiable. À remplacer sur diagnostic de panne confirmé.
+
+**Peut-on changer le capteur clim soi-même ?**
+Oui souvent. Le capteur d'évaporateur est dans le boîtier de ventilation, celui d'habitacle dans le tableau de bord.
+
+**Quelle erreur éviter avec le capteur clim ?**
+Ne pas confondre capteur d'évaporateur et capteur d'habitacle. Vérifier le code défaut exact avant remplacement.

@@ -1,25 +1,29 @@
 ---
 category: capteurs
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
-- if: kilometrage_eleve_ou_usure_visible
-  then: remplacement_preventif_recommande
+slug: capteur-abs
+title: Capteur ABS
+pg_id: 412
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-25'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Mesurer la vitesse de rotation de chaque roue et transmettre l'information au calculateur ABS
   must_be_true:
   - mesurer
   - detecter
   - transmettre
-  must_not_contain_concepts:
+  must_not_contain:
   - electrovanne
   - modulateur
   - pompe abs
@@ -27,15 +31,119 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Mesurer la vitesse de rotation de chaque roue et transmettre l'information
-    au calculateur ABS
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - bobine-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-electrique-voisine
+    difference: Les pieces electriques ont des connecteurs specifiques. Verifier le nombre de broches et le voltage.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "corrige la panne"
+  cost_range:
+    min: 28
+    max: 115
+    currency: EUR
+    unit: l'unite
+    source: historique commandes automecanik
+  quality_tiers:
+  - tier: Constructeur (OE)
+    description: 'Capteur d''origine : connecteur, longueur de câble et sensibilité calibrés pour le calculateur d''origine.'
+  - tier: Équivalent OE (OES)
+    description: 'Capteurs produits par des équipementiers reconnus dans ce segment : Bosch, Hella, NTK, Delphi. Qualité et
+      sensibilité conformes aux spécifications constructeur.'
+  - tier: Adaptable
+    description: Capteurs compatibles d'entrée de gamme. Vérifier impérativement le nombre de broches, la longueur de câble
+      et le type de fixation.
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    - Denso
+    standard:
+    - Hella
+    - NGK
+    - Delphi
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Voyant abs allume au tableau de bord
+    severity: securite
+  - id: S2
+    label: Code defaut specifique a une roue
+    severity: confort
+  - id: S3
+    label: Capteur visible endommage ou couvert de crasse
+    severity: confort
+  - id: S4
+    label: Cable du capteur coupe ou denude
+    severity: confort
+  - id: S5
+    label: Abs qui se declenche a basse vitesse sans raison
+    severity: securite
+  - id: S6
+    label: Bruit anormal lors du fonctionnement abs
+    severity: securite
+  - id: S7
+    label: Freinage desequilibre avec abs actif
+    severity: securite
+  - id: S8
+    label: Plus de 150 000 km sans verification capteurs
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - lecture codes defaut obd et diagnostic electronique
+  - remplacement preventif recommande
+  quick_checks:
+  - Voyant abs allume au tableau de bord ?
+  - 'Observer : code defaut specifique a une roue ?'
+  - 'Observer : capteur visible endommage ou couvert de crasse ?'
+  - 'Observer : cable du capteur coupe ou denude ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Voyant abs allume au tableau de bord
+  - Code defaut specifique a une roue
+  - Capteur visible endommage ou couvert de crasse
+  - Cable du capteur coupe ou denude
+  - Abs qui se declenche a basse vitesse sans raison
+  - Bruit anormal lors du fonctionnement abs
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '412'
+  intro_title: A quoi sert Capteur ABS ?
+  risk_title: Pourquoi remplacer Capteur ABS a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -50,68 +158,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Capteur ABS compatible avec mon vehicule ?
-  - answer: En cas de voyant abs allume au tableau de bord ou de degradation mesurable,
-      il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Capteur ABS ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Capteur ABS sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Capteur ABS.
-  id: 412
-  intro:
-    role: Mesurer la vitesse de rotation de chaque roue et transmettre l'information
-      au calculateur ABS
-    syncParts:
-    - mesurer
-    - detecter
-    - transmettre
-    title: A quoi sert Capteur ABS ?
-  pgId: '412'
+  - question: Capteur ABS OE ou adaptable ?
+    answer: Les capteurs adaptables de qualité fonctionnent très bien. Vérifiez la longueur du câble et le type de connecteur
+      (2 ou 3 broches).
+  - question: Comment savoir si mon capteur ABS est HS ?
+    answer: Voyant ABS allumé, code défaut capteur spécifique à une roue, capteur visible endommagé ou câble coupé.
+  - question: Tous les combien changer les capteurs ABS ?
+    answer: Pas de périodicité. C'est une pièce durable. Remplacez uniquement en cas de défaillance confirmée par diagnostic.
+  - question: Peut-on changer un capteur ABS soi-même ?
+    answer: Oui, opération simple. Débrancher le connecteur, dévisser le capteur, nettoyer le logement, monter le neuf. Effacer
+      le défaut après.
+  - question: Quelle erreur éviter avec les capteurs ABS ?
+    answer: Ne pas forcer si le capteur est grippé (risque de casse). Nettoyer la cible (roue dentée). Respecter l'entrefer
+      si réglable.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/capteur-abs.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
-      est recommandé'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Capteur ABS a temps ?
-  symptoms:
-  - voyant abs allume au tableau de bord
-  - code defaut specifique a une roue
-  - capteur visible endommage ou couvert de crasse
-  - cable du capteur coupe ou denude
-  - abs qui se declenche a basse vitesse sans raison
-  - bruit anormal lors du fonctionnement abs
-  - freinage desequilibre avec abs actif
-  - plus de 150 000 km sans verification capteurs
-  - '**Voyant abs allume au tableau de bord**'
-  - '**Abs qui se declenche a basse vitesse sans raison**'
-  - '**Bruit anormal lors du fonctionnement abs**'
-  - '**Freinage desequilibre avec abs actif**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 412
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -119,69 +182,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: capteur-abs
-source_type: gamme
-symptoms:
-- description: voyant abs allume au tableau de bord
-  evidence:
-  - 'Observation: voyant abs allume au tableau de bord'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Voyant abs allume au tableau de bord
-  risk_level: securite
-- description: code defaut specifique a une roue
-  evidence:
-  - 'Observation: code defaut specifique a une roue'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Code defaut specifique a une roue
-  risk_level: confort
-- description: capteur visible endommage ou couvert de crasse
-  evidence:
-  - 'Observation: capteur visible endommage ou couvert de crasse'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Capteur visible endommage ou couvert de crasse
-  risk_level: confort
-- description: cable du capteur coupe ou denude
-  evidence:
-  - 'Observation: cable du capteur coupe ou denude'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Cable du capteur coupe ou denude
-  risk_level: confort
-- description: abs qui se declenche a basse vitesse sans raison
-  evidence:
-  - 'Observation: abs qui se declenche a basse vitesse sans raison'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Abs qui se declenche a basse vitesse sans raison
-  risk_level: securite
-- description: bruit anormal lors du fonctionnement abs
-  evidence:
-  - 'Observation: bruit anormal lors du fonctionnement abs'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Bruit anormal lors du fonctionnement abs
-  risk_level: securite
-- description: freinage desequilibre avec abs actif
-  evidence:
-  - 'Observation: freinage desequilibre avec abs actif'
-  - Vérification visuelle ou auditive
-  id: S7
-  label: Freinage desequilibre avec abs actif
-  risk_level: securite
-- description: plus de 150 000 km sans verification capteurs
-  evidence:
-  - 'Observation: plus de 150 000 km sans verification capteurs'
-  - Vérification visuelle ou auditive
-  id: S8
-  label: Plus de 150 000 km sans verification capteurs
-  risk_level: confort
-title: Capteur ABS
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 21095e0f-9c43-57af-807b-0e85822fd63e
+content_hash: sha256:ae70918984b4f522
+lang: fr
+variants:
+- name: Piece neuve OE/OES
+  aliases:
+  - neuf
+  - OE
+  - OES
+  functional_differences:
+  - Garantie constructeur ou equipementier
+  - Calibration d usine
+- name: Piece echange standard
+  aliases:
+  - echange standard
+  - reconditionne
+  functional_differences:
+  - Moins cher
+  - Piece d origine reconditionnee
+location_on_vehicle:
+  area: Compartiment moteur (alternateur, demarreur) ou peripherie
+  access: Par le dessus (capot) ou par le dessous selon modele
+  adjacent_parts:
+  - faisceau electrique
+  - batterie
+  - fusibles
+installation:
+  difficulty: facile a moyen
+  time: 15min a 1h
+  tools:
+  - cle a douille
+  - multimetre
+  - tournevis
+  prerequisite: Debrancher la batterie avant intervention
 ---
 
 # Capteur ABS - Guide Diagnostic Complet
@@ -221,6 +255,12 @@ Pour diagnostiquer un problème de capteur abs:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -257,3 +297,120 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "corrige la panne"
+
+## FAQ
+
+**Capteur ABS OE ou adaptable ?**
+Les capteurs adaptables de qualité fonctionnent très bien. Vérifiez la longueur du câble et le type de connecteur (2 ou 3 broches).
+
+**Comment savoir si mon capteur ABS est HS ?**
+Voyant ABS allumé, code défaut capteur spécifique à une roue, capteur visible endommagé ou câble coupé.
+
+**Tous les combien changer les capteurs ABS ?**
+Pas de périodicité. C'est une pièce durable. Remplacez uniquement en cas de défaillance confirmée par diagnostic.
+
+**Peut-on changer un capteur ABS soi-même ?**
+Oui, opération simple. Débrancher le connecteur, dévisser le capteur, nettoyer le logement, monter le neuf. Effacer le défaut après.
+
+**Quelle erreur éviter avec les capteurs ABS ?**
+Ne pas forcer si le capteur est grippé (risque de casse). Nettoyer la cible (roue dentée). Respecter l'entrefer si réglable.
+
+
+## Symptomes supplementaires
+
+<!-- materialized-from-db diagnostic/temoins-tableau-bord.md 2026-01-01 -->
+### Diagnostic - Témoins tableau de bord
+
+# Témoins tableau de bord - Guide complet
+
+## Témoins critiques (ARRÊT IMMÉDIAT)
+
+### Témoin huile moteur (rouge)
+- **Signification** : Pression d'huile insuffisante
+- **Action** : ARRÊT IMMÉDIAT du véhicule
+- **Causes** : Niveau bas, pompe à huile, fuite
+- **Risque** : Casse moteur
+- **Vérification** : Niveau d'huile à la jauge
+
+### Témoin température moteur (rouge)
+- **Signification** : Surchauffe moteur
+- **Action** : ARRÊT IMMÉDIAT, laisser refroidir
+- **Causes** : Liquide refroidissement, thermostat, ventilateur
+- **Risque** : Joint de culasse, casse moteur
+
+### Témoin frein (rouge)
+- **Signification** : Niveau liquide frein bas ou frein à main
+- **Action** : Vérifier frein à main, puis niveau liquide
+- **Causes** : Fuite, usure plaquettes extrême
+- **Risque** : Perte de freinage
+
+### Témoin batterie (rouge)
+- **Signification** : Charge batterie insuffisante
+- **Action** : Rejoindre un garage rapidement
+- **Causes** : Alternateur, courroie, batterie HS
+- **Risque** : Panne complète
+
+## Témoins importants (attention requise)
+
+### Témoin ABS (orange)
+- **Signification** : Système ABS désactivé
+- **Action** : Contrôle recommandé
+- **Causes** : Capteur ABS, bloc hydraulique
+- **Impact** : Freinage normal mais sans assistance ABS
+- **Pièces** : Capteur ABS, bloc ABS
+
+### Témoin ESP/ASR (orange)
+- **Signification** : Antipatinage/stabilité désactivé
+- **Action** : Conduire prudemment
+- **Causes** : Capteur, calculateur
+
+### Témoin airbag (orange)
+- **Signification** : Système airbag défaillant
+- **Action** : Contrôle obligatoire
+- **Risque** : Non-déclenchement en cas d'accident
+- **Pièces** : Contacteur tournant, capteur airbag
+
+### Témoin moteur (orange - check engine)
+- **Signification** : Anomalie gestion moteur
+- **Action** : Diagnostic OBD recommandé
+- **Causes multiples** : Capteur O2, catalyseur, allumage
+- **Impact** : Surconsommation, pollution
+
+### Témoin FAP/DPF (orange - diesel)
+- **Signification** : Filtre à particules saturé
+- **Action** : Rouler 20min sur autoroute (régénération)
+- **Causes** : Trajets courts répétés
+- **Pièces** : FAP, nettoyage, additif
+
+## Témoins d'information
+
+### Témoin préchauffage (diesel)
+- **Signification** : Préchauffage des bougies en cours
+- **Action** : Attendre extinction avant démarrage
+- **Normal** : S'éteint après quelques secondes
+
+### Témoin clignotant
+- **Signification** : Clignotant actif
+- **Anomalie si** : Clignote rapidement = ampoule grillée
+
+### Témoin feux de route
+- **Signification** : Pleins phares activés
+
+### Témoin antibrouillard
+- **Signification** : Feux de brouillard actifs
+
+## Codes couleur
+
+| Couleur | Signification | Action |
+|---------|---------------|--------|
+| **Rouge** | Danger immédiat | Arrêt véhicule |
+| **Orange** | Attention | Contrôle rapide |
+| **Vert/Bleu** | Information | Aucune |
+
+## Diagnostic OBD-II
+
+Pour les témoins moteur, un diagnostic OBD permet de lire les codes défaut :
+- **P0xxx** : Groupe motopropulseur
+- **B0xxx** : Carrosserie
+- **C0xxx** : Châssis
+- **U0xxx** : Réseau/Communication

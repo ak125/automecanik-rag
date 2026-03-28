@@ -1,23 +1,29 @@
 ---
 category: allumage
-diagnostic_tree:
-- if: voyant_tableau_bord_allume
-  then: lecture_codes_defaut_obd_et_diagnostic_electronique
-- if: kilometrage_eleve_ou_usure_visible
-  then: remplacement_preventif_recommande
+slug: bougie-de-prechauffage
+title: Bougie de préchauffage
+pg_id: 243
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Chauffer la chambre de combustion a froid pour faciliter le demarrage diesel - N'agit qu'au demarrage
   must_be_true:
   - chauffer
   - prechauffer
   - rechauffer
-  must_not_contain_concepts:
+  must_not_contain:
   - essence
   - etincelle
   - allumage
@@ -27,15 +33,110 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Chauffer la chambre de combustion a froid pour faciliter le demarrage
-    diesel - N'agit qu'au demarrage
-page_contract:
-  antiMistakes:
+  related_parts:
+  - alternateur
+  - batterie
+  - demarreur
+  - bougie-d-allumage
+  - bobine-d-allumage
+  - poulie-d-alternateur
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "plus de puissance"
+  cost_range:
+    min: 15
+    max: 23
+    currency: EUR
+    unit: l'unite
+    source: historique commandes automecanik
+  quality_tiers:
+  - tier: Bougie d'origine (OE)
+    description: Reference constructeur, adaptee aux parametres du boitier de prechauffage du vehicule. Recommandee sur vehicules
+      recents ou si le moteur a ete sensible aux pannes de demarrage.
+  - tier: Equipementier specialise prechauffage diesel
+    description: Fabricants specialises en systemes de prechauffage, proposant des equivalences documentees par motorisation
+      diesel. Verifier la tension nominale (11V, 4.4V selon les technologies) et la longueur de ti
+  brands:
+    premium:
+    - Bosch
+    - Valeo
+    standard:
+    - Febi
+    - Meyle
+    budget:
+    - Ridex
+    - Topran
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Demarrage long ou difficile par temps froid
+    severity: confort
+  - id: S2
+    label: Voyant prechauffage allume plus reste
+    severity: confort
+  - id: S3
+    label: Fumee blanche au demarrage qui persiste
+    severity: confort
+  - id: S4
+    label: Rates moteur a froid les premieres secondes
+    severity: confort
+  - id: S5
+    label: Odeur de gazole non brule au demarrage
+    severity: confort
+  - id: S6
+    label: Plus de 100 000 km sans remplacement diesel
+    severity: confort
+  causes:
+  - lecture codes defaut obd et diagnostic electronique
+  - remplacement preventif recommande
+  - 'voyant tableau bord allume : lecture codes defaut obd et diagnostic electronique'
+  - 'kilometrage eleve ou usure visible : remplacement preventif recommande'
+  quick_checks:
+  - 'Observer : demarrage long ou difficile par temps froid ?'
+  - Voyant prechauffage allume plus reste ?
+  - 'Observer : fumee blanche au demarrage qui persiste ?'
+  - 'Observer : rates moteur a froid les premieres secondes ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Demarrage long ou difficile par temps froid
+  - Voyant prechauffage allume plus reste
+  - Fumee blanche au demarrage qui persiste
+  - Rates moteur a froid les premieres secondes
+  - Odeur de gazole non brule au demarrage
+  - Plus de 100 000 km sans remplacement diesel
+  good_practices:
+  - Controle de la tension et du courant avec un multimetre
+  - Verifier les connexions electriques (oxydation, jeu)
+  - Remplacement preventif si signes de faiblesse avant l hiver
+  - Ne pas laisser le vehicule immobilise longtemps sans protection
+rendering:
+  pgId: '243'
+  intro_title: A quoi sert Bougie de préchauffage ?
+  risk_title: Pourquoi remplacer Bougie de préchauffage a temps ?
+  risk_explanation: '**Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé'
+  risk_consequences:
+  - '**Usure normale** - Après un certain kilométrage, le remplacement préventif est recommandé'
+  - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant électronique'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -50,61 +151,25 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Bougie de préchauffage compatible avec mon vehicule
-      ?
-  - answer: En cas de demarrage long ou difficile par temps froid ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Bougie de préchauffage ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Bougie de préchauffage sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Bougie de préchauffage.
-  id: 243
-  intro:
-    role: Chauffer la chambre de combustion a froid pour faciliter le demarrage diesel
-      - N'agit qu'au demarrage
-    syncParts:
-    - chauffer
-    - prechauffer
-    - rechauffer
-    title: A quoi sert Bougie de préchauffage ?
-  pgId: '243'
+  - question: Bougie de préchauffage OE ou adaptable ?
+    answer: 'Les bougies OES (Beru, Bosch, NGK) sont de qualité équivalente à l''OE. Vérifiez le type : crayon standard, céramique
+      ou autorégulée selon votre moteur.'
+  - question: Comment savoir si mes bougies de préchauffage sont HS ?
+    answer: Démarrage difficile à froid, voyant préchauffage anormal, test à l'ohmmètre (résistance infinie = bougie HS),
+      fumée blanche persistante.
+  - question: Tous les combien changer les bougies de préchauffage ?
+    answer: Entre 80 000 et 120 000 km selon type. Les bougies céramique durent plus longtemps. À vérifier tous les 60 000
+      km sur diesel.
+  - question: Peut-on changer les bougies de préchauffage soi-même ?
+    answer: Oui mais attention au grippage. Démonter moteur chaud, utiliser un dégrippant, ne pas forcer. Risque de casse
+      dans la culasse si grippée.
+  - question: Quelle erreur éviter avec les bougies de préchauffage ?
+    answer: Ne jamais forcer une bougie grippée. Utiliser le bon couple de serrage. Changer les 4 même si une seule est HS.
+      Laisser refroidir avant test.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/bougie-de-prechauffage.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure normale** - Après un certain kilométrage, le remplacement préventif
-      est recommandé'
-    - '**Défaillance électrique** - Problème de connexion, de câblage ou de composant
-      électronique'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure normale** - Après un certain kilométrage, le remplacement
-      préventif est recommandé'
-    title: Pourquoi remplacer Bougie de préchauffage a temps ?
-  symptoms:
-  - demarrage long ou difficile par temps froid
-  - voyant prechauffage allume plus reste
-  - fumee blanche au demarrage qui persiste
-  - rates moteur a froid les premieres secondes
-  - odeur de gazole non brule au demarrage
-  - plus de 100 000 km sans remplacement diesel
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 243
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -112,55 +177,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: bougie-de-prechauffage
-source_type: gamme
-symptoms:
-- description: demarrage long ou difficile par temps froid
-  evidence:
-  - 'Observation: demarrage long ou difficile par temps froid'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Demarrage long ou difficile par temps froid
-  risk_level: confort
-- description: voyant prechauffage allume plus reste
-  evidence:
-  - 'Observation: voyant prechauffage allume plus reste'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Voyant prechauffage allume plus reste
-  risk_level: confort
-- description: fumee blanche au demarrage qui persiste
-  evidence:
-  - 'Observation: fumee blanche au demarrage qui persiste'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Fumee blanche au demarrage qui persiste
-  risk_level: confort
-- description: rates moteur a froid les premieres secondes
-  evidence:
-  - 'Observation: rates moteur a froid les premieres secondes'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Rates moteur a froid les premieres secondes
-  risk_level: confort
-- description: odeur de gazole non brule au demarrage
-  evidence:
-  - 'Observation: odeur de gazole non brule au demarrage'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Odeur de gazole non brule au demarrage
-  risk_level: confort
-- description: plus de 100 000 km sans remplacement diesel
-  evidence:
-  - 'Observation: plus de 100 000 km sans remplacement diesel'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Plus de 100 000 km sans remplacement diesel
-  risk_level: confort
-title: Bougie de préchauffage
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 54fb51fb-5676-57b4-9355-8b8866e561e2
+content_hash: sha256:a29b4ee751d0b776
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Bougie de préchauffage - Guide Diagnostic Complet
@@ -189,6 +234,12 @@ Pour diagnostiquer un problème de bougie de préchauffage:
 1. **Inspection visuelle** - Examiner l'état du bougie de préchauffage
 2. **Test fonctionnel** - Vérifier le bon fonctionnement
 3. **Contrôle des fixations** - Examiner les supports et raccords
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -221,3 +272,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "plus de puissance"
+
+## FAQ
+
+**Bougie de préchauffage OE ou adaptable ?**
+Les bougies OES (Beru, Bosch, NGK) sont de qualité équivalente à l'OE. Vérifiez le type : crayon standard, céramique ou autorégulée selon votre moteur.
+
+**Comment savoir si mes bougies de préchauffage sont HS ?**
+Démarrage difficile à froid, voyant préchauffage anormal, test à l'ohmmètre (résistance infinie = bougie HS), fumée blanche persistante.
+
+**Tous les combien changer les bougies de préchauffage ?**
+Entre 80 000 et 120 000 km selon type. Les bougies céramique durent plus longtemps. À vérifier tous les 60 000 km sur diesel.
+
+**Peut-on changer les bougies de préchauffage soi-même ?**
+Oui mais attention au grippage. Démonter moteur chaud, utiliser un dégrippant, ne pas forcer. Risque de casse dans la culasse si grippée.
+
+**Quelle erreur éviter avec les bougies de préchauffage ?**
+Ne jamais forcer une bougie grippée. Utiliser le bon couple de serrage. Changer les 4 même si une seule est HS. Laisser refroidir avant test.

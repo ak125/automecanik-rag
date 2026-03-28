@@ -1,23 +1,29 @@
 ---
 category: echappement
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
-- if: vibrations_anormales
-  then: verifier_equilibrage_et_fixations
+slug: joint-d-echappement
+title: Joint d'échappement
+pg_id: 138
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_at: '2026-03-26'
+domain:
+  role: Assure l'étanchéité entre les éléments de la ligne d'échappement
   must_be_true:
   - assurer l'etancheite
   - isoler
   - garantir
-  must_not_contain_concepts:
+  must_not_contain:
   - injection
   - freinage
   - climatisation
@@ -25,14 +31,114 @@ mechanical_rules:
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Assure l'étanchéité entre les éléments de la ligne d'échappement
-page_contract:
-  antiMistakes:
+  related_parts:
+  - catalyseur
+  - fap
+  - silencieux
+  - sonde-lambda
+  - vanne-egr
+  - tube-d-echappement
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Renseignez marque, modele, type puis comparez references et dimensions. Validez ensuite les contraintes de compatibilite
+    pour confirmer Joint d'échappement.
+  - Verifier la reference OE ou equivalence constructeur pour le vehicule exact
+  - Respecter la norme antipollution du vehicule (Euro 4, 5, 6)
+  - Controler la compatibilite des fixations et joints avec le vehicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "passe le controle technique"
+  cost_range:
+    min: 5
+    max: 30
+    currency: EUR
+    unit: joint
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Équipement d'origine (OE)
+    description: Joint identique à l'origine. Matériaux certifiés pour les températures d'utilisation constructeur. Recommandé
+      pour le joint de collecteur.
+  - tier: Équivalent OE (OES)
+    description: Bosal, Walker et Klarius sont des équipementiers spécialisés échappement reconnus. Ils proposent des joints
+      pour la plupart des applications avec des matériaux haute température.
+  - tier: Aftermarket générique
+    description: Joints moins chers disponibles en ligne ou en magasin. Qualité très variable. Le matériau doit être adapté
+      à la position (collecteur = haute température, ligne = moins critique).
+  brands:
+    premium:
+    - Walker
+    - Bosal
+    standard:
+    - Valeo
+    - Febi
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Bruit echappement anormal souffle sifflement
+    severity: confort
+  - id: S2
+    label: Odeur echappement sous vehicule habitacle
+    severity: confort
+  - id: S3
+    label: Traces suie noire autour brides
+    severity: confort
+  - id: S4
+    label: Consommation carburant hausse inexpliquee comportement
+    severity: confort
+  - id: S5
+    label: Echec controle technique emissions preventif
+    severity: confort
+  - id: S6
+    label: Vibrations pedale accelerateur plancher comportement
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - verifier equilibrage et fixations
+  - 'Usure ou defaillance causant : bruit echappement anormal souffle sifflement'
+  quick_checks:
+  - Bruit echappement anormal souffle sifflement ?
+  - Odeur echappement sous vehicule habitacle ?
+  - 'Observer : traces suie noire autour brides ?'
+  - 'Observer : consommation carburant hausse inexpliquee comportement ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Bruit echappement anormal souffle sifflement
+  - Odeur echappement sous vehicule habitacle
+  - Traces suie noire autour brides
+  - Consommation carburant hausse inexpliquee comportement
+  - Echec controle technique emissions preventif
+  - Vibrations pedale accelerateur plancher comportement
+  good_practices:
+  - Controle visuel sous le vehicule a chaque revision
+  - Verifier les fixations et silent-blocs de suspension d echappement
+  - Remplacement si perforation, rouille traversante ou bruit anormal
+  - Ne pas conduire avec un echappement defectueux (gaz toxiques)
+rendering:
+  pgId: '138'
+  intro_title: A quoi sert Joint d'échappement ?
+  risk_title: Pourquoi remplacer Joint d'échappement a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -47,60 +153,23 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Joint d'échappement compatible avec mon vehicule ?
-  - answer: En cas de bruit echappement anormal souffle sifflement ou de degradation
-      mesurable, il faut controler rapidement avant panne secondaire.
-    question: Quand remplacer Joint d'échappement ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Joint d'échappement sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de compatibilite pour confirmer Joint d'échappement.
-  id: 138
-  intro:
-    role: Assure l'étanchéité entre les éléments de la ligne d'échappement
-    syncParts:
-    - assurer l'etancheite
-    - isoler
-    - garantir
-    title: A quoi sert Joint d'échappement ?
-  pgId: '138'
+  - question: Joint d'échappement OE ou adaptable ?
+    answer: Les joints OES (Bosal, Walker, Klarius) sont de qualité équivalente à l'OE. Pour le collecteur, préférez les joints
+      métalliques multicouches.
+  - question: Comment savoir si un joint d'échappement fuit ?
+    answer: Bruit d'échappement amplifié (souffle, sifflement), traces de suie noire autour du joint, odeur d'échappement
+      sous le véhicule.
+  - question: Peut-on rouler avec un joint qui fuit ?
+    answer: Oui temporairement, mais déconseillé. Risque d'intoxication au CO si la fuite est proche de l'habitacle, et contrôle
+      technique refusé.
+  - question: Peut-on changer un joint d'échappement soi-même ?
+    answer: Oui si la boulonnerie n'est pas grippée. Sinon, prévoyez du dégrippant, une meuleuse et de la patience.
+  - question: Quelle erreur éviter avec les joints ?
+    answer: Réutiliser un ancien joint. Même s'il semble en bon état, un joint qui a travaillé ne garantit plus l'étanchéité.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - TOO_SHORT
     score: 76
-    source: reindex:gammes/joint-d-echappement.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Joint d'échappement a temps ?
-  symptoms:
-  - bruit echappement anormal souffle sifflement
-  - odeur echappement sous vehicule habitacle
-  - traces suie noire autour brides
-  - consommation carburant hausse inexpliquee comportement
-  - echec controle technique emissions preventif
-  - vibrations pedale accelerateur plancher comportement
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 138
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -108,55 +177,40 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: joint-d-echappement
-source_type: gamme
-symptoms:
-- description: bruit echappement anormal souffle sifflement
-  evidence:
-  - 'Observation: bruit echappement anormal souffle sifflement'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Bruit echappement anormal souffle sifflement
-  risk_level: confort
-- description: odeur echappement sous vehicule habitacle
-  evidence:
-  - 'Observation: odeur echappement sous vehicule habitacle'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Odeur echappement sous vehicule habitacle
-  risk_level: confort
-- description: traces suie noire autour brides
-  evidence:
-  - 'Observation: traces suie noire autour brides'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Traces suie noire autour brides
-  risk_level: confort
-- description: consommation carburant hausse inexpliquee comportement
-  evidence:
-  - 'Observation: consommation carburant hausse inexpliquee comportement'
-  - Vérification visuelle ou auditive
-  id: S4
-  label: Consommation carburant hausse inexpliquee comportement
-  risk_level: confort
-- description: echec controle technique emissions preventif
-  evidence:
-  - 'Observation: echec controle technique emissions preventif'
-  - Vérification visuelle ou auditive
-  id: S5
-  label: Echec controle technique emissions preventif
-  risk_level: confort
-- description: vibrations pedale accelerateur plancher comportement
-  evidence:
-  - 'Observation: vibrations pedale accelerateur plancher comportement'
-  - Vérification visuelle ou auditive
-  id: S6
-  label: Vibrations pedale accelerateur plancher comportement
-  risk_level: confort
-title: Joint d'échappement
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 48c6813c-e4c5-5778-8e74-f10f4f13670a
+content_hash: sha256:9f4b2bb05e4bfadc
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sous le vehicule, du collecteur moteur au silencieux arriere
+  access: Par le dessous (pont elevateur)
+  adjacent_parts:
+  - collecteur
+  - catalyseur
+  - tubes
+  - silencieux
+installation:
+  difficulty: moyen
+  time: 1h a 2h
+  tools:
+  - cle a douille
+  - degripant
+  - chandelles
+  prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 ---
 
 # Joint d'échappement - Guide Diagnostic Complet
@@ -187,6 +241,12 @@ Pour diagnostiquer un problème de joint d'échappement:
 3. **Contrôle des fixations** - Examiner les supports et raccords
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
 
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
+
 ## Causes Probables
 
 - **Usure mécanique** - Les bruits indiquent souvent une usure des composants internes
@@ -216,3 +276,20 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "passe le controle technique"
+
+## FAQ
+
+**Joint d'échappement OE ou adaptable ?**
+Les joints OES (Bosal, Walker, Klarius) sont de qualité équivalente à l'OE. Pour le collecteur, préférez les joints métalliques multicouches.
+
+**Comment savoir si un joint d'échappement fuit ?**
+Bruit d'échappement amplifié (souffle, sifflement), traces de suie noire autour du joint, odeur d'échappement sous le véhicule.
+
+**Peut-on rouler avec un joint qui fuit ?**
+Oui temporairement, mais déconseillé. Risque d'intoxication au CO si la fuite est proche de l'habitacle, et contrôle technique refusé.
+
+**Peut-on changer un joint d'échappement soi-même ?**
+Oui si la boulonnerie n'est pas grippée. Sinon, prévoyez du dégrippant, une meuleuse et de la patience.
+
+**Quelle erreur éviter avec les joints ?**
+Réutiliser un ancien joint. Même s'il semble en bon état, un joint qui a travaillé ne garantit plus l'étanchéité.

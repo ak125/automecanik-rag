@@ -1,34 +1,118 @@
 ---
 category: moteur
-diagnostic_tree:
-- if: bruit_anormal_detecte
-  then: localiser_source_et_verifier_usure_mecanique
+slug: culbuteur
+title: Culbuteur
+pg_id: 432
+source_type: gamme
 doc_family: catalog
-entity_type: gamme
+truth_level: L2
+updated_at: '2026-03-01'
+verification_status: draft
 intent_targets:
 - diagnostic
 - achat
 - compatibilite
-mechanical_rules:
-  confusion_with: {}
+business_priority: medium
+lifecycle:
+  stage: v4_converted
+  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_at: '2026-03-28'
+domain:
+  role: Transmettre le mouvement de l'arbre a cames aux soupapes
   must_be_true:
   - transmettre
   - basculer
   - actionner
-  must_not_contain_concepts:
+  must_not_contain:
   - boite de vitesses
   - universel
   - tous modèles
   - compatible tout véhicule
   - adaptable
-  role_summary: Transmettre le mouvement de l'arbre a cames aux soupapes
-page_contract:
-  antiMistakes:
+  related_parts:
+  - transmettre
+  - basculer
+  - actionner
+  confusion_with:
+  - term: piece-voisine-meme-systeme
+    difference: Verifier la reference exacte et la position de montage. Les pieces du meme systeme se ressemblent mais ne
+      sont pas interchangeables.
+selection:
+  criteria:
+  - Marque de votre véhicule
+  - Modele de votre véhicule
+  - Annee de votre véhicule
+  anti_mistakes:
   - ❌ "homologué CT"
   - ❌ "sécurité garantie"
   - ❌ "zéro panne"
   - ❌ "garanti à vie"
   - ❌ "repare le moteur"
+  cost_range:
+    min: 1000
+    max: 5000
+    currency: EUR
+    unit: l'unite
+    source: catalogue automecanik
+  quality_tiers:
+  - tier: Equipement d origine (OE)
+  - tier: Equivalent OE
+  - tier: Piece adaptable
+  brands:
+    premium:
+    - Elring
+    - Victor Reinz
+    standard:
+    - Febi
+    - Ajusa
+    budget:
+    - Ridex
+diagnostic:
+  symptoms:
+  - id: S1
+    label: Claquement moteur regulier
+    severity: confort
+  - id: S2
+    label: Bruit de tic-tic au ralenti
+    severity: confort
+  - id: S3
+    label: Perte de puissance sur un cylindre
+    severity: confort
+  causes:
+  - localiser source et verifier usure mecanique
+  - 'bruit anormal detecte : localiser source et verifier usure mecanique'
+  - 'Usure ou defaillance causant : claquement moteur regulier'
+  quick_checks:
+  - 'Observer : claquement moteur regulier ?'
+  - Bruit de tic-tic au ralenti ?
+  - 'Observer : perte de puissance sur un cylindre ?'
+maintenance:
+  interval:
+    value: selon constructeur
+    unit: condition
+    note: Ne pas attendre la panne complete pour intervenir.
+    source: null
+  wear_signs:
+  - Claquement moteur regulier
+  - Bruit de tic-tic au ralenti
+  - Perte de puissance sur un cylindre
+  good_practices:
+  - Controle visuel a chaque revision ou entretien periodique
+  - Remplacement preventif si signes d usure detectes
+  - Utiliser des pieces de qualite equivalente a l origine
+  - Respecter les preconisations constructeur pour les intervalles
+rendering:
+  pgId: '432'
+  intro_title: A quoi sert Culbuteur ?
+  risk_title: Pourquoi remplacer Culbuteur a temps ?
+  risk_explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  risk_consequences:
+  - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants internes'
+  - '**Défaillance progressive** - Usure normale due à l''utilisation'
+  - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
+  - ❌ "homologué CT"
+  - ❌ "sécurité garantie"
+  risk_conclusion: Un diagnostic precoce reduit le risque technique et financier.
   arguments:
   - content: Selection guidee par vehicule et references techniques.
     icon: check-circle
@@ -43,60 +127,17 @@ page_contract:
     icon: list-check
     title: Montage maitrise
   faq:
-  - answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference
-      exacte avant montage.
-    question: Comment choisir Culbuteur compatible avec mon vehicule ?
-  - answer: En cas de claquement moteur regulier ou de degradation mesurable, il faut
-      controler rapidement avant panne secondaire.
-    question: Quand remplacer Culbuteur ?
-  - answer: Le montage peut exiger controles de couple, alignement et references.
-      En cas de doute, appliquez la procedure constructeur.
-    question: Puis-je monter Culbuteur sans verification atelier ?
-  howToChoose: Renseignez marque, modele, type puis comparez references et dimensions.
-    Validez ensuite les contraintes de moteur pour confirmer Culbuteur.
-  id: 432
-  intro:
-    role: Culbuteur intervient directement sur moteur du vehicule. Un choix conforme
-      protege la combustion et limite les pannes secondaires.
-    syncParts:
-    - transmettre
-    - basculer
-    - actionner
-    title: A quoi sert Culbuteur ?
-  pgId: '432'
+  - question: Comment choisir Culbuteur compatible avec mon vehicule ?
+    answer: Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+  - question: Quand remplacer Culbuteur ?
+    answer: En cas de claquement moteur regulier ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+  - question: Puis-je monter Culbuteur sans verification atelier ?
+    answer: Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure
+      constructeur.
   quality:
-    flags:
-    - FAQ_TOO_SMALL
-    - MISSING_REQUIRED_TERMS
-    - TOO_SHORT
     score: 60
-    source: reindex:gammes/culbuteur.md
-    version: GammeContentContract.v1
-  risk:
-    conclusion: Un diagnostic precoce reduit le risque technique et financier.
-    consequences:
-    - '**Usure mécanique** - Les bruits indiquent souvent une usure des composants
-      internes'
-    - '**Défaillance progressive** - Usure normale due à l''utilisation'
-    - '**Conditions d''utilisation** - Sollicitations excessives ou environnement
-      défavorable'
-    - ❌ "homologué CT"
-    - ❌ "sécurité garantie"
-    costRange: 120 a 1200 EUR selon vehicule et niveau de panne.
-    explanation: '**Usure mécanique** - Les bruits indiquent souvent une usure des
-      composants internes'
-    title: Pourquoi remplacer Culbuteur a temps ?
-  symptoms:
-  - claquement moteur regulier
-  - bruit de tic-tic au ralenti
-  - perte de puissance sur un cylindre
-  - '**Claquement moteur regulier**'
-  timing:
-    km: Controle a chaque revision constructeur
-    note: Ne pas attendre la panne complete pour intervenir.
-    title: Quand intervenir ?
-    years: Controle annuel recommande
-pg_id: 432
+    source: script:rag-upgrade-v4
+    version: GammeContentContract.v4
 purchase_guardrails:
   forbidden_terms:
   - universel
@@ -104,34 +145,35 @@ purchase_guardrails:
   - compatible tout véhicule
   - adaptable
   requires_vehicle: true
-slug: culbuteur
-source_type: gamme
-symptoms:
-- description: claquement moteur regulier
-  evidence:
-  - 'Observation: claquement moteur regulier'
-  - Vérification visuelle ou auditive
-  id: S1
-  label: Claquement moteur regulier
-  risk_level: degats_volant_moteur
-- description: bruit de tic-tic au ralenti
-  evidence:
-  - 'Observation: bruit de tic-tic au ralenti'
-  - Vérification visuelle ou auditive
-  id: S2
-  label: Bruit de tic-tic au ralenti
-  risk_level: confort
-- description: perte de puissance sur un cylindre
-  evidence:
-  - 'Observation: perte de puissance sur un cylindre'
-  - Vérification visuelle ou auditive
-  id: S3
-  label: Perte de puissance sur un cylindre
-  risk_level: confort
-title: Culbuteur
-truth_level: L2
-updated_at: '2026-01-14'
-verification_status: draft
+doc_id: 8787a4aa-4c8e-578f-b611-4bd73b31d412
+content_hash: sha256:b35ca1a7a4ec9ec6
+lang: fr
+variants:
+- name: Version OE (origine)
+  aliases:
+  - OE
+  - constructeur
+  functional_differences:
+  - Reference constructeur exacte
+  - Garantie et compatibilite maximales
+- name: Version equivalente OES
+  aliases:
+  - OES
+  - equipementier
+  functional_differences:
+  - Qualite equivalente, prix aftermarket
+  - Equipementier de premier monte
+location_on_vehicle:
+  area: Sur le vehicule (position variable selon modele)
+  access: Consulter la revue technique du vehicule
+  adjacent_parts:
+  - pieces adjacentes du meme systeme
+installation:
+  difficulty: variable
+  time: consulter revue technique
+  tools:
+  - outillage standard
+  prerequisite: Consulter la procedure constructeur
 ---
 
 # Culbuteur - Guide Diagnostic Complet
@@ -162,6 +204,12 @@ Pour diagnostiquer un problème de culbuteur:
 2. **Contrôle des fuites** - Rechercher traces d'huile ou liquide
 3. **Test fonctionnel** - Vérifier le comportement moteur
 4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+
+
+## Entretien et Intervalles
+
+- **Intervalle** : selon constructeur
+- Ne pas attendre la panne complete pour intervenir.
 
 ## Causes Probables
 
@@ -196,3 +244,14 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "repare le moteur"
+
+## FAQ
+
+**Comment choisir Culbuteur compatible avec mon vehicule ?**
+Renseignez marque, modele, type moteur et annee, puis verifiez la reference exacte avant montage.
+
+**Quand remplacer Culbuteur ?**
+En cas de claquement moteur regulier ou de degradation mesurable, il faut controler rapidement avant panne secondaire.
+
+**Puis-je monter Culbuteur sans verification atelier ?**
+Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
