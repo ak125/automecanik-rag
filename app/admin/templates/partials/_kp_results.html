@@ -1,0 +1,70 @@
+<!-- HTMX partial: keyword planner prompt results -->
+{% if results %}
+<div class="space-y-4">
+    {% for r in results %}
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-4 py-3 bg-gray-50 border-b">
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold
+                    {% if r.role == 'R1' %}bg-blue-100 text-blue-800
+                    {% elif r.role == 'R2' %}bg-purple-100 text-purple-800
+                    {% elif r.role == 'R3' %}bg-green-100 text-green-800
+                    {% elif r.role == 'R4' %}bg-gray-100 text-gray-800
+                    {% elif r.role == 'R5' %}bg-red-100 text-red-800
+                    {% elif r.role == 'R6' %}bg-amber-100 text-amber-800
+                    {% elif r.role == 'R7' %}bg-indigo-100 text-indigo-800
+                    {% elif r.role == 'R8' %}bg-teal-100 text-teal-800
+                    {% endif %}">{{ r.role }}</span>
+                <span class="text-sm font-medium text-gray-700">{{ r.label }}</span>
+                {% if r.mode == 'refresh' %}
+                <span class="text-xs bg-yellow-100 text-yellow-700 rounded px-2 py-0.5">refresh</span>
+                {% else %}
+                <span class="text-xs bg-green-100 text-green-700 rounded px-2 py-0.5">creation</span>
+                {% endif %}
+            </div>
+            <div class="flex items-center gap-3 text-xs text-gray-400">
+                {% if r.sources %}
+                <span>Sources: {{ r.sources|join(', ') }}</span>
+                {% endif %}
+                {% if r.char_count %}
+                <span>{{ r.char_count }} chars</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Error or prompt -->
+        {% if r.error %}
+        <div class="px-4 py-3 bg-red-50 text-red-700 text-sm">{{ r.error }}</div>
+        {% elif r.prompt %}
+        <div class="relative">
+            <button onclick="copyPrompt(this)"
+                    class="absolute top-2 right-2 px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 z-10">
+                Copier
+            </button>
+            <pre class="px-4 py-3 text-xs font-mono text-gray-700 bg-gray-50 overflow-x-auto max-h-96 overflow-y-auto whitespace-pre-wrap">{{ r.prompt }}</pre>
+        </div>
+        {% if r.file %}
+        <div class="px-4 py-2 bg-gray-50 border-t text-xs text-gray-400">
+            Sauvegarde : {{ r.file }}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function copyPrompt(btn) {
+    const pre = btn.parentElement.querySelector('pre');
+    navigator.clipboard.writeText(pre.textContent).then(() => {
+        btn.textContent = 'Copie !';
+        btn.classList.replace('bg-blue-600', 'bg-green-600');
+        setTimeout(() => {
+            btn.textContent = 'Copier';
+            btn.classList.replace('bg-green-600', 'bg-blue-600');
+        }, 2000);
+    });
+}
+</script>
+{% endif %}

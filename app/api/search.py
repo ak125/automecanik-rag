@@ -16,6 +16,7 @@ class SearchRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=500, description="Search query")
     limit: int = Field(10, ge=1, le=50, description="Maximum number of results")
     filters: Optional[dict] = Field(None, description="Optional filters")
+    routing: Optional[dict] = Field(None, description="Routing hints: target_role, userIntent")
 
 
 class SearchResult(BaseModel):
@@ -39,6 +40,16 @@ class SearchResult(BaseModel):
     canonical_weight: float = Field(0.0, description="Canonical weighting factor")
     created_at: str = Field("", description="Chunk creation timestamp")
     updated_at: str = Field("", description="Chunk update timestamp")
+    # v2.5 role classification fields
+    section_key: str = Field("", description="Section key for role routing")
+    primary_role: str = Field("", description="Primary page role: R1_ROUTER, R3_GUIDE, R4_REFERENCE, R5_DIAGNOSTIC")
+    allowed_roles: list[str] = Field(default_factory=list, description="Roles this chunk is allowed in")
+    purity_score: float = Field(0.0, description="Role purity score 0-100")
+    contamination_flags: list[str] = Field(default_factory=list, description="Cross-role contamination flags")
+    chunk_kind: str = Field("other", description="Chunk kind: definition, selection_checks, faq, table_rows, trust, procedure, other")
+    # Phase 3: page contract + media hints
+    page_contract_id: str = Field("", description="Page contract ID: PageContractR3@1.0, PageContractR4@1.0, etc.")
+    media_slots_hint: str = Field("", description="Media slots hint JSON string")
 
 
 class TruthComposition(BaseModel):
@@ -101,6 +112,7 @@ async def search(request: SearchRequest):
             query=request.query,
             limit=request.limit,
             filters=request.filters,
+            routing=request.routing,
         )
 
         # Convert truth metadata to response format
@@ -139,6 +151,15 @@ async def search(request: SearchRequest):
                     canonical_weight=float(r.get("canonical_weight") if r.get("canonical_weight") is not None else 0.0),
                     created_at=r.get("created_at") or "",
                     updated_at=r.get("updated_at") or "",
+                    # v2.5 role classification
+                    section_key=r.get("section_key") or "",
+                    primary_role=r.get("primary_role") or "",
+                    allowed_roles=r.get("allowed_roles") or [],
+                    purity_score=float(r.get("purity_score") or 0),
+                    contamination_flags=r.get("contamination_flags") or [],
+                    chunk_kind=r.get("chunk_kind") or "other",
+                    page_contract_id=r.get("page_contract_id") or "",
+                    media_slots_hint=r.get("media_slots_hint") or "",
                 )
                 for r in result.results
             ],

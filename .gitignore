@@ -65,3 +65,6 @@ knowledge_pdf_batch/
 
 # Raw ingestion data
 knowledge/_raw/
+
+# Backup dirs from enrichment scripts
+knowledge/gammes/.backup-*/

@@ -1,0 +1,42 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R5 (diagnostic/symptomes).
+
+R5 = l'utilisateur a un PROBLEME : bruit, vibration, voyant, et cherche la cause.
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- Symptomes connus : {{ symptoms }}
+- Causes racines : {{ rag_diagnostic_causes }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes symptomes (~35%) : bruit [piece], vibration [piece], [piece] qui grince/siffle/claque
+2. Requetes voyant (~15%) : voyant [systeme] allume, temoin [systeme]
+3. Requetes cause (~20%) : pourquoi [piece] [symptome], cause [symptome] [systeme]
+4. Requetes gravite (~10%) : [piece] HS dangereux, peut-on rouler avec [piece] defaillante
+5. Requetes "est-ce que" (~10%) : comment savoir si [piece] est mort, [piece] a changer signes
+6. Questions PAA diagnostic (~10%) : uniquement PAA lies aux symptomes et causes
+
+# TERMES INTERDITS
+- R1 (achat) : acheter, prix, commander, en stock, livraison
+- R3 (how-to) : comment changer, tutoriel, etapes montage, couple de serrage
+- R6 (guide achat) : quel choisir, comparatif, meilleur, guide d'achat
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure : Oscaro, Norauto, Leclerc, Carter Cash, Mister Auto, Feu Vert,
+Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount, Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent. UNE forme canonique par mot-cle.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 20 et 60 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "bruit {{ gamme_name }}", "intent": "diagnostic", "vol": "HIGH", "role": "R5"},
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} HS symptome", "intent": "diagnostic", "vol": "MED", "role": "R5"},
+  ...
+]

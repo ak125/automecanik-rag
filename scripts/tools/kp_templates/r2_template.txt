@@ -1,0 +1,43 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R2 (page produit/listing vehicule).
+
+R2 = l'utilisateur a DEJA choisi sa gamme, il cherche les produits compatibles avec SON vehicule precis.
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- {{ products_total }} produits, {{ vehicle_coverage }} couverture vehicules
+- Marques principales : {{ top_brands }}
+- Fourchette prix : {{ cost_range }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes vehicule-specifiques (~40%) : [piece] [marque] [modele] [annee], [piece] [motorisation]
+2. Requetes reference/OEM (~20%) : [piece] ref [numero], [piece] OEM [code], reference [piece]
+3. Requetes marque equipementier (~20%) : [piece] Bosch, [piece] TRW, [piece] Valeo
+4. Requetes prix vehicule (~10%) : prix [piece] [vehicule], [piece] pas cher [vehicule]
+5. Questions PAA produit (~10%) : [piece] compatible [vehicule], equivalence [piece]
+
+# TERMES INTERDITS
+- R3 : comment changer, tutoriel, etapes montage, couple de serrage
+- R5 : symptome, diagnostic, panne, code defaut
+- R4 : definition, qu'est-ce que, encyclopedie
+- R6 : meilleur, comparatif, quel choisir
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure : Oscaro, Norauto, Leclerc, Carter Cash, Mister Auto, Feu Vert,
+Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount, Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent. UNE forme canonique par mot-cle.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 30 et 60 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} Renault Clio 3", "intent": "navigational", "vol": "HIGH", "role": "R2"},
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} Peugeot 308 1.6 HDI", "intent": "navigational", "vol": "MED", "role": "R2"},
+  ...
+]

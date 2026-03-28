@@ -1,0 +1,42 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R8 (hub vehicule).
+
+R8 = l'utilisateur a UN vehicule et cherche toutes les pieces/entretien pour ce vehicule.
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- Couverture vehicules : {{ vehicle_coverage }}
+- {{ products_total }} produits
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes vehicule + piece (~40%) : [piece] [marque] [modele], [piece] [marque] [modele] [annee]
+2. Requetes entretien vehicule (~25%) : entretien [vehicule], revision [vehicule] [km]
+3. Requetes plan entretien (~15%) : carnet entretien [vehicule], pieces revision [vehicule]
+4. Requetes motorisation (~10%) : [piece] [vehicule] [motorisation], [piece] essence/diesel
+5. Questions PAA vehicule (~10%) : quelles pieces pour revision, plan entretien [vehicule]
+
+# TERMES INTERDITS
+- R3 : tutoriel detaille, comment changer
+- R5 : diagnostic approfondi, code OBD
+- R4 : definition encyclopedique
+- R6 : guide d'achat, comparatif, meilleur
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure : Oscaro, Norauto, Leclerc, Carter Cash, Mister Auto, Feu Vert,
+Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount, Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent. UNE forme canonique par mot-cle.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 15 et 40 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} Renault Clio 3", "intent": "vehicle_search", "vol": "HIGH", "role": "R8"},
+  {"pg_id": {{ pg_id }}, "kw": "pieces entretien Peugeot 308", "intent": "vehicle_maintenance", "vol": "MED", "role": "R8"},
+  ...
+]

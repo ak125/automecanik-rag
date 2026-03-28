@@ -1,0 +1,40 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R7 (hub marque equipementier).
+
+R7 = l'utilisateur cherche des pieces d'une MARQUE specifique (Bosch, TRW, Valeo, etc.).
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- Marques principales : {{ top_brands }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes marque + piece (~40%) : [piece] Bosch, [piece] TRW, [piece] Valeo
+2. Requetes avis marque (~25%) : [marque] [piece] avis, [marque] [piece] qualite
+3. Requetes fiabilite (~15%) : [marque] fiable, [marque] bonne marque [piece]
+4. Requetes gamme (~10%) : gamme [marque] [piece], catalogue [marque]
+5. Requetes OE (~10%) : [marque] premiere monte, [marque] OEM [piece]
+
+# TERMES INTERDITS
+- R3 : tutoriel, comment changer, etapes
+- R5 : diagnostic, symptome, panne
+- R1 : acheter, commander, en stock
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure : Oscaro, Norauto, Leclerc, Carter Cash, Mister Auto, Feu Vert,
+Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount, Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent. UNE forme canonique par mot-cle.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 15 et 40 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} Bosch", "intent": "brand_search", "vol": "HIGH", "role": "R7"},
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} TRW avis", "intent": "brand_trust", "vol": "MED", "role": "R7"},
+  ...
+]

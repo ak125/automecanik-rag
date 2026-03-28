@@ -68,6 +68,9 @@ def build_gold_properties() -> list[Property]:
         Property(name="contamination_flags", data_type=DataType.TEXT_ARRAY),
         # Chunk kind classification (Phase 2)
         Property(name="chunk_kind", data_type=DataType.TEXT),
+        # Page contract + media hints (Phase 3)
+        Property(name="page_contract_id", data_type=DataType.TEXT),
+        Property(name="media_slots_hint", data_type=DataType.TEXT),
     ]
 
 
@@ -79,6 +82,32 @@ ROLE_PROPERTIES = [
     Property(name="contamination_flags", data_type=DataType.TEXT_ARRAY),
     Property(name="chunk_kind", data_type=DataType.TEXT),
 ]
+
+
+CONTRACT_PROPERTIES = [
+    Property(name="page_contract_id", data_type=DataType.TEXT),
+    Property(name="media_slots_hint", data_type=DataType.TEXT),
+]
+
+
+def migrate_add_contract_properties(client):
+    """Add Phase 3 contract properties to existing collections (non-destructive)."""
+    all_collections = TARGET_COLLECTIONS + ["Dev_Full"]
+    for collection_name in all_collections:
+        if not client.collections.exists(collection_name):
+            continue
+        collection = client.collections.get(collection_name)
+        config = collection.config.get()
+        existing_names = {p.name for p in config.properties}
+        added = 0
+        for prop in CONTRACT_PROPERTIES:
+            if prop.name not in existing_names:
+                collection.config.add_property(prop)
+                added += 1
+        if added:
+            print(f"  Added {added} contract properties to '{collection_name}'")
+        else:
+            print(f"  '{collection_name}' already has all contract properties")
 
 
 def migrate_add_role_properties(client):
@@ -144,6 +173,10 @@ def init_schema():
         # Migrate existing collections: add Phase 1 role properties
         print("\nMigrating existing collections (add role properties)...")
         migrate_add_role_properties(client)
+
+        # Migrate existing collections: add Phase 3 contract properties
+        print("\nMigrating existing collections (add contract properties)...")
+        migrate_add_contract_properties(client)
 
     finally:
         client.close()

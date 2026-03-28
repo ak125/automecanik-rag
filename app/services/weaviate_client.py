@@ -97,6 +97,9 @@ class WeaviateClient:
             "contamination_flags": props.get("contamination_flags", []) or [],
             # Chunk kind (Phase 2)
             "chunk_kind": props.get("chunk_kind") or "other",
+            # Page contract + media hints (Phase 3)
+            "page_contract_id": props.get("page_contract_id") or "",
+            "media_slots_hint": props.get("media_slots_hint") or "",
         }
 
     async def hybrid_search(
@@ -113,6 +116,8 @@ class WeaviateClient:
         doc_family: Optional[str] = None,
         truth_levels: Optional[list[str]] = None,
         target_role: Optional[str] = None,
+        min_purity: Optional[int] = None,
+        forbidden_kinds: Optional[list[str]] = None,
     ) -> list[dict]:
         if alpha is None:
             alpha = self.settings.retrieval_alpha
@@ -149,6 +154,14 @@ class WeaviateClient:
             if target_role and self.settings.role_filtering_enabled:
                 f = Filter.by_property("allowed_roles").contains_any([target_role])
                 prop_filter = (prop_filter & f) if prop_filter else f
+                # Phase 3: parametric recipe filters (min_purity + forbidden_kinds)
+                if min_purity is not None:
+                    f = Filter.by_property("purity_score").greater_or_equal(min_purity)
+                    prop_filter = (prop_filter & f) if prop_filter else f
+                if forbidden_kinds:
+                    for kind in forbidden_kinds:
+                        f = Filter.by_property("chunk_kind").not_equal(kind)
+                        prop_filter = (prop_filter & f) if prop_filter else f
 
             canonical_filters = Filter.by_property("is_canonical").equal(True)
             if prop_filter is not None:

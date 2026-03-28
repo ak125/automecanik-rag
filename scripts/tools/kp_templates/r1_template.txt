@@ -1,0 +1,53 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R1 (achat/selection de piece).
+
+R1 = l'utilisateur veut ACHETER ou TROUVER la bonne piece pour son vehicule.
+PAS de comparatif, PAS de "meilleur", PAS de guide d'achat (ca c'est R6).
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- {{ products_total }} produits en catalogue
+- Marques principales : {{ top_brands }}
+- Demande : {{ demand_level }} | Concurrence : {{ difficulty_level }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes transactionnelles (~40%) : achat, prix, commander, pas cher, promo, en stock, livraison, neuf, garantie
+2. Requetes navigationnelles (~30%) : [piece] pour [vehicule], [piece] [marque voiture] — MAXIMUM 5 vehicules les plus populaires FR (pas de declinaison Clio 1/2/3/4)
+3. Questions PAA achat (~15%) : combien coute, quel prix, ou acheter, livraison combien de temps — PAS de PAA comparatif/choix (ca c'est R6)
+4. Longue traine (~15%) : [piece] + motorisation (1.6 HDI, 1.5 dCi), [piece] + type (cartouche, visse), [piece] + fautes orthographe courantes
+
+# TERMES INTERDITS (appartiennent a d'autres roles, PAS R1)
+- R3 (conseils) : comment changer, tutoriel, etapes, couple de serrage, demontage
+- R5 (diagnostic) : symptome, panne, bruit, vibration, voyant, code OBD
+- R6 (guide achat) : meilleur, comparatif, quel choisir, quelle marque choisir, [marque] vs [marque], guide d'achat
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure de requetes contenant : Oscaro, Norauto, Leclerc, Carter Cash,
+Mister Auto, Feu Vert, Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount,
+Euromaster, Speedy, Midas, Point S.
+Ces requetes sont inutiles pour le SEO on-page.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent de la meme requete.
+Garder UNE seule forme canonique par mot-cle (avec accents).
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+Retourne UNIQUEMENT un JSON array. Chaque entree :
+- "pg_id" : {{ pg_id }}
+- "kw" : le mot-cle exact tel que tape sur Google (forme canonique avec accents)
+- "intent" : transactional | navigational | paa | long_tail
+- "vol" : HIGH | MED | LOW (estimation relative)
+- "role" : "R1"
+
+Genere entre 30 et 60 mots-cles. Respecte la repartition ~40/30/15/15.
+
+[
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} prix", "intent": "transactional", "vol": "HIGH", "role": "R1"},
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} en stock", "intent": "transactional", "vol": "MED", "role": "R1"},
+  ...
+]

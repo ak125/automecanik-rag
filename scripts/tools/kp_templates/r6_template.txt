@@ -1,0 +1,43 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R6 (guide d'achat).
+
+R6 = l'utilisateur veut CHOISIR : quelle qualite, quelle marque, quel budget, comparatifs.
+C'est ICI que vont les "meilleur", les "comparatif", les "[marque] vs [marque]".
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- Fourchette prix : {{ cost_range }}
+- Marques principales : {{ top_brands }}
+- Guide marques : {{ brands_guide }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes choix/comparatif (~35%) : meilleur [piece], quel [piece] choisir, comment choisir [piece], [marque] vs [marque], comparatif [piece]
+2. Requetes qualite/fiabilite (~25%) : [piece] fiable, [piece] qualite, [piece] a eviter, avis [piece] [marque], meilleure marque [piece]
+3. Requetes budget (~20%) : [piece] rapport qualite prix, [piece] pas cher bon, budget [piece], prix moyen [piece]
+4. Questions PAA guide (~20%) : quelle marque choisir, difference OE et adaptable, [piece] premium vs standard, comment reconnaitre un bon [piece]
+
+# TERMES INTERDITS
+- R1 (achat direct) : ajouter au panier, commander maintenant, en stock, livraison
+- R3 (how-to) : comment changer, tutoriel, couple de serrage, etapes montage, demontage
+- R5 (diagnostic) : symptome, panne, bruit, code OBD, voyant
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure de requetes contenant : Oscaro, Norauto, Leclerc, Carter Cash,
+Mister Auto, Feu Vert, Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount,
+Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent de la meme requete.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 25 et 60 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "meilleur {{ gamme_name }}", "intent": "comparison", "vol": "HIGH", "role": "R6"},
+  {"pg_id": {{ pg_id }}, "kw": "quel {{ gamme_name }} choisir", "intent": "buying_decision", "vol": "MED", "role": "R6"},
+  ...
+]

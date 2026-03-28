@@ -51,9 +51,9 @@ def sha256_file(path: Path) -> str:
 
 
 def archive_raw_image(image_path: Path, rel_name: Path, knowledge_root: Path) -> tuple[Path, str]:
-    """Store immutable raw image under knowledge/_raw/images/<sha256>.<ext>."""
+    """Store immutable raw image under knowledge/_raw/web-images/<sha256>.<ext> with .prompt.md sidecar."""
     digest = sha256_file(image_path)
-    raw_dir = knowledge_root / "_raw" / "images"
+    raw_dir = knowledge_root / "_raw" / "web-images"
     raw_dir.mkdir(parents=True, exist_ok=True)
 
     ext = image_path.suffix.lower() or ".bin"
@@ -61,16 +61,24 @@ def archive_raw_image(image_path: Path, rel_name: Path, knowledge_root: Path) ->
     if not raw_image.exists():
         shutil.copy2(image_path, raw_image)
 
-    sidecar = raw_dir / f"{digest}.json"
+    sidecar = raw_dir / f"{digest}.prompt.md"
     if not sidecar.exists():
-        metadata = {
-            "sha256": digest,
-            "original_name": rel_name.as_posix(),
-            "ingested_at": datetime.now(timezone.utc).isoformat(),
-            "size_bytes": image_path.stat().st_size,
-            "mime_hint": f"image/{ext.lstrip('.')}",
-        }
-        sidecar.write_text(json.dumps(metadata, ensure_ascii=True, indent=2), encoding="utf-8")
+        ingested_at = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        prompt_content = f'''---
+hash: "{digest[:16]}"
+source: "pdf-extraction"
+original_name: "{rel_name.as_posix()}"
+ingested_at: "{ingested_at}"
+gamme: "non-classe"
+type: "schema-technique"
+usage: "documentation"
+style: "schema-technique"
+priority: 3
+---
+
+(description a generer via describe-images)
+'''
+        sidecar.write_text(prompt_content, encoding="utf-8")
 
     return raw_image, digest
 

@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import logging
+import os
 import re
 import shutil
 import subprocess
@@ -291,6 +292,35 @@ def chunk_and_index(
     return {"chunks_total": len(raw_chunks), "chunks_indexed": indexed, "collection": target_collection}
 
 
+def _send_webhook(
+    webhook_url: str,
+    webhook_key: str | None,
+    source: str,
+    created_files: list[str],
+) -> None:
+    """POST ingestion completion webhook to NestJS (best-effort, non-blocking)."""
+    import time
+    import urllib.request
+
+    job_id = f"{source}-{int(time.time() * 1000)}"
+    payload = json.dumps({
+        "job_id": job_id,
+        "source": source,
+        "status": "done",
+        "files_created": created_files,
+    }).encode("utf-8")
+    headers = {"Content-Type": "application/json"}
+    if webhook_key:
+        headers["X-Internal-Key"] = webhook_key
+    try:
+        req = urllib.request.Request(webhook_url, data=payload, headers=headers, method="POST")
+        with urllib.request.urlopen(req, timeout=10) as resp:  # noqa: S310
+            body = resp.read().decode("utf-8", errors="replace")
+            logger.info(f"Webhook OK ({resp.status}): {body[:200]}")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(f"Webhook failed (non-blocking): {exc}")
+
+
 def run(args: argparse.Namespace) -> int:
     settings = get_settings()
     if not settings.can_write() and not args.dry_run:
@@ -313,6 +343,7 @@ def run(args: argparse.Namespace) -> int:
     total_chunks = 0
     total_indexed = 0
     index_enabled = not args.no_index
+    created_files: list[str] = []  # relative paths for webhook
 
     logger.info(f"Found {len(pdf_files)} PDF file(s) (index={index_enabled})")
     for pdf_path in pdf_files:
@@ -361,6 +392,7 @@ def run(args: argparse.Namespace) -> int:
                 continue
 
             created += 1
+            created_files.append(doc.source_path)
             logger.info(
                 f"FILE_CREATED path={doc.source_path} "
                 f"source=pdf pdf_name={rel_name} "
@@ -394,6 +426,13 @@ def run(args: argparse.Namespace) -> int:
     if index_enabled:
         summary += f", chunks={total_chunks}, indexed={total_indexed}"
     logger.info(summary)
+
+    # Notify NestJS via webhook if configured (CLI args or env vars)
+    webhook_url = getattr(args, "webhook_url", None) or os.environ.get("NESTJS_WEBHOOK_URL")
+    webhook_key = getattr(args, "webhook_key", None) or os.environ.get("NESTJS_WEBHOOK_KEY")
+    if webhook_url and created_files and not args.dry_run:
+        _send_webhook(webhook_url, webhook_key, "pdf", created_files)
+
     return 0 if failed == 0 else 2
 
 
@@ -408,6 +447,8 @@ def main() -> int:
     )
     parser.add_argument("--dry-run", action="store_true", help="Preview classification and chunking only")
     parser.add_argument("--no-index", action="store_true", help="Save to knowledge/ only, skip Weaviate indexing")
+    parser.add_argument("--webhook-url", help="NestJS webhook URL to call after ingestion")
+    parser.add_argument("--webhook-key", help="X-Internal-Key for webhook auth")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose logs")
     args = parser.parse_args()
 

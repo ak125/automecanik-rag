@@ -1,0 +1,174 @@
+{
+  "run_id": "bench-a-20260325-181209",
+  "tag": "bench-a",
+  "collection_name": "Bench_A",
+  "corpus_version": "post-clean-p0p1",
+  "corpus_root": "/opt/automecanik/rag/knowledge",
+  "git_sha": "4b867352",
+  "started_at": "2026-03-25T17:12:06.154872+00:00",
+  "finished_at": "2026-03-25T17:12:09.064997+00:00",
+  "duration_seconds": 2.9,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "model_key": "current",
+  "embedding_dims": 0,
+  "chunker_version": "1.0",
+  "chunk_size": 500,
+  "chunk_overlap": 50,
+  "faq_atomic": true,
+  "procedure_atomic": true,
+  "frontmatter_projection": "strip (body only)",
+  "doc_count_seen": 1729,
+  "doc_count_indexed": 955,
+  "doc_count_skipped_l4": 685,
+  "doc_count_failed": 89,
+  "chunk_count_total": 2009,
+  "indexed_count": 0,
+  "truth_levels_included": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "directories_indexed": [
+    "gammes",
+    "diagnostic",
+    "constructeurs",
+    "guides",
+    "faq",
+    "policies",
+    "vehicles",
+    "web",
+    "web-catalog",
+    "reference",
+    "canonical"
+  ],
+  "files_by_dir": {
+    "gammes": 232,
+    "web": 604,
+    "web-catalog": 119
+  },
+  "chunks_by_type": {
+    "text": 2009
+  },
+  "failed_files": [
+    {
+      "file": "diagnostic/alternateur-diagnostic-mahle.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/amortisseurs.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/bosch-freinage-brochure-reparation-fad-2020-fr.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/bruits-freinage.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/climatisation.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/demarrage-batterie.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/direction-cremaillere.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/disque-de-frein.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/distribution-courroie.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/echappement-catalyseur.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/eclairage-voyants.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/embrayage.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/filtre-a-huile.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/injecteurs-pompe.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/refroidissement.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/temoins-tableau-bord.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "diagnostic/transmission-boite.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "constructeurs/alfa-romeo.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "constructeurs/audi.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    },
+    {
+      "file": "constructeurs/bmw.md",
+      "reasons": [
+        "doc_id_missing"
+      ]
+    }
+  ]
+}

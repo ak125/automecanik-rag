@@ -29,6 +29,8 @@ services:
       - ./scripts:/app/scripts:ro
       - ./app:/app/app:ro
       - ./orchestrator:/app/orchestrator:ro
+      - ./config:/app/config:ro
+      - ./content:/app/content:ro
     depends_on:
       weaviate:
         condition: service_healthy
@@ -36,12 +38,13 @@ services:
         condition: service_started
     networks:
       - rag-internal
+      - automecanik-prod  # Access NestJS for webhook + RAG API calls
     restart: always
     deploy:
       resources:
         limits:
           cpus: '2'
-          memory: 12G
+          memory: 1G
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 30s
@@ -64,6 +67,10 @@ services:
     networks:
       - rag-internal
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512M
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/v1/.well-known/ready"]
       interval: 10s
@@ -91,3 +98,5 @@ volumes:
 networks:
   rag-internal:
     driver: bridge
+  automecanik-prod:
+    external: true

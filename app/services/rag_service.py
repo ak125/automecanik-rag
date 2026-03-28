@@ -3,6 +3,7 @@
 import logging
 import re
 import json
+from pathlib import Path
 from typing import Optional
 from dataclasses import dataclass, field
 
@@ -10,6 +11,20 @@ from app.services.weaviate_client import get_weaviate_client
 from app.config import get_settings
 
 logger = logging.getLogger(__name__)
+
+# Load role_map_defaults.json at module level (same pattern as role_classifier.py)
+_CONFIG_DIR = Path(__file__).resolve().parent.parent.parent / "config"
+_ROLE_MAP_PATH = _CONFIG_DIR / "role_map_defaults.json"
+_ROLE_MAP: dict = {}
+try:
+    with open(_ROLE_MAP_PATH, "r", encoding="utf-8") as f:
+        _ROLE_MAP = json.load(f)
+    logger.info("Loaded role_map_defaults.json for retrieval recipes (%d recipes)",
+                len(_ROLE_MAP.get("retrieval_recipes", {})))
+except FileNotFoundError:
+    logger.warning("role_map_defaults.json not found at %s — using hardcoded quotas", _ROLE_MAP_PATH)
+except Exception as exc:
+    logger.error("Failed to load role_map_defaults.json: %s", exc)
 
 TRUTH_LEVELS = {
     "L1": {"name": "Faits vérifiés", "emoji": "✅", "weight": 1.0, "certainty": "affirme avec certitude"},
@@ -104,12 +119,14 @@ class RAGService:
         routing: Optional[dict] = None,
     ) -> SearchResponse:
         plan = self._build_router_plan(query=query, routing=routing, namespace=namespace)
+        target_role = plan.get("target_role")
 
         logger.info(
-            "Ultra query plan: intent=%s domain=%s source_plan=%s",
+            "Ultra query plan: intent=%s domain=%s source_plan=%s target_role=%s",
             plan["primary_intent"],
             plan["domain"],
             plan["source_plan"],
+            target_role,
         )
 
         # When explicit filters target gamme source_type, ensure KB_Catalog is searched
@@ -125,10 +142,11 @@ class RAGService:
             primary_intent=plan["primary_intent"],
             limit=limit,
             filters=filters,
+            target_role=target_role,
         )
 
         required_evidence = self._required_evidence_count(query=query, router_plan=plan)
-        evidence = self._build_evidence(raw_results, min_chunks=required_evidence, limit=limit)
+        evidence = self._build_evidence(raw_results, min_chunks=required_evidence, limit=limit, target_role=target_role)
 
         diversified_evidence = self._count_diversified_evidence(evidence)
         needs_clarification = diversified_evidence < required_evidence
@@ -257,6 +275,7 @@ class RAGService:
             "domain": domain,
             "entities": entities,
             "clarify": clarify,
+            "target_role": routing.get("target_role") if routing else None,
         }
 
     def _infer_domain(self, text: str) -> str:
@@ -290,6 +309,7 @@ class RAGService:
         primary_intent: str,
         limit: int,
         filters: Optional[dict] = None,
+        target_role: Optional[str] = None,
     ) -> tuple[list[dict], dict]:
         min_score = self.settings.min_score_threshold
         min_required = max(3, self.settings.min_results_required)
@@ -312,6 +332,11 @@ class RAGService:
                     return q
             return base_query
 
+        # Phase 3: extract recipe params for Weaviate-level filtering
+        recipe = self._get_retrieval_recipe(target_role)
+        recipe_min_purity = recipe.get("min_purity") if recipe else None
+        recipe_forbidden_kinds = recipe.get("forbidden_kinds") if recipe else None
+
         async def run_pass(
             collection: str,
             strict: bool,
@@ -332,6 +357,9 @@ class RAGService:
                 source_type=filters.get("source_type") if filters else None,
                 doc_family=filters.get("doc_family") if filters else None,
                 truth_levels=filters.get("truth_levels") if filters else None,
+                target_role=target_role,
+                min_purity=recipe_min_purity,
+                forbidden_kinds=recipe_forbidden_kinds,
             )
             pass_info["passes"].append(
                 {
@@ -391,13 +419,20 @@ class RAGService:
         return deduped[: limit * 3], pass_info
 
 
-    # Phase 2: chunk_kind quotas per role
+    # Phase 2: chunk_kind quotas per role (hardcoded fallback if role_map_defaults.json missing)
     _CHUNK_KIND_QUOTAS: dict[str, dict[str, int]] = {
-        "R1_ROUTER": {"definition": 2, "selection_checks": 2, "faq": 1, "table_rows": 1, "trust": 1, "support": 0, "procedure": 0, "other": 2},
-        "R3_GUIDE": {"definition": 1, "selection_checks": 3, "faq": 2, "table_rows": 2, "trust": 1, "support": 0, "procedure": 1, "other": 2},
-        "R4_REFERENCE": {"definition": 3, "selection_checks": 1, "faq": 1, "table_rows": 3, "trust": 0, "support": 0, "procedure": 0, "other": 2},
-        "R5_DIAGNOSTIC": {"definition": 1, "selection_checks": 1, "faq": 1, "table_rows": 2, "trust": 0, "support": 0, "procedure": 2, "other": 2},
+        "R1_ROUTER": {"definition": 2, "selection_checks": 2, "faq": 1, "table_rows": 2, "trust": 1, "support": 0, "procedure": 0, "other": 2},
+        "R3_GUIDE": {"definition": 2, "selection_checks": 3, "faq": 2, "table_rows": 2, "trust": 1, "support": 0, "procedure": 1, "other": 2},
+        "R4_REFERENCE": {"definition": 4, "selection_checks": 1, "faq": 1, "table_rows": 2, "trust": 1, "support": 0, "procedure": 0, "other": 2},
+        "R5_DIAGNOSTIC": {"definition": 1, "selection_checks": 1, "faq": 1, "table_rows": 1, "trust": 0, "support": 0, "procedure": 3, "other": 2},
     }
+
+    def _get_retrieval_recipe(self, target_role: str | None) -> dict:
+        """Get retrieval recipe for a role from role_map_defaults.json."""
+        if not target_role:
+            return {}
+        recipes = _ROLE_MAP.get("retrieval_recipes", {})
+        return recipes.get(target_role, {})
 
     def _build_evidence(self, results: list[dict], min_chunks: int, limit: int, target_role: str | None = None) -> list[dict]:
         diversified: list[dict] = []
@@ -428,18 +463,22 @@ class RAGService:
 
         diversified = diversified[:limit]
 
-        # Phase 2: apply chunk_kind quotas
-        diversified = self._apply_chunk_kind_quotas(diversified, target_role)
+        # Phase 2+3: apply retrieval recipe (quotas + forbidden kinds + forbid flags)
+        diversified = self._apply_retrieval_recipe(diversified, target_role)
 
         return diversified
 
-    def _apply_chunk_kind_quotas(self, results: list[dict], target_role: str | None) -> list[dict]:
-        """Apply per-chunk_kind quotas to limit retrieval homogeneity (Phase 2)."""
+    def _apply_retrieval_recipe(self, results: list[dict], target_role: str | None) -> list[dict]:
+        """Apply per-role retrieval recipe: quotas, forbidden_kinds, forbid_flags (Phase 3)."""
         if not self.settings.chunk_kind_quotas_enabled or not target_role:
             return results
 
-        quotas = self._CHUNK_KIND_QUOTAS.get(target_role)
-        if not quotas:
+        recipe = self._get_retrieval_recipe(target_role)
+        quotas = recipe.get("quotas") or self._CHUNK_KIND_QUOTAS.get(target_role)
+        forbid_flags = set(recipe.get("forbid_flags", []))
+        forbidden_kinds = set(recipe.get("forbidden_kinds", []))
+
+        if not quotas and not forbid_flags and not forbidden_kinds:
             return results
 
         filtered: list[dict] = []
@@ -448,17 +487,28 @@ class RAGService:
 
         for r in results:
             kind = r.get("chunk_kind") or "other"
-            max_allowed = quotas.get(kind, 99)
-            current = kind_counts.get(kind, 0)
-            if current >= max_allowed:
+            # Drop forbidden kinds
+            if kind in forbidden_kinds:
                 dropped += 1
                 continue
-            kind_counts[kind] = current + 1
+            # Drop chunks with forbidden contamination flags
+            chunk_flags = set(r.get("contamination_flags") or [])
+            if chunk_flags & forbid_flags:
+                dropped += 1
+                continue
+            # Apply quotas
+            if quotas:
+                max_allowed = quotas.get(kind, 99)
+                current = kind_counts.get(kind, 0)
+                if current >= max_allowed:
+                    dropped += 1
+                    continue
+                kind_counts[kind] = current + 1
             filtered.append(r)
 
         if dropped:
             logger.info(
-                "chunk_kind quotas for %s: dropped %d chunks (counts: %s)",
+                "retrieval recipe for %s: dropped %d chunks (counts: %s)",
                 target_role, dropped, kind_counts,
             )
 

@@ -1,0 +1,44 @@
+# MISSION
+Tu es un expert SEO automobile francais.
+Trouve les mots-cles et intentions de recherche Google pour la gamme "{{ gamme_name }}" dans le contexte R4 (reference encyclopedique).
+
+R4 = l'utilisateur veut COMPRENDRE : definition, role, fonctionnement, variantes de cette piece.
+PAS de variantes par vehicule (R4 = contenu universel/encyclopedique).
+
+# CONTEXTE GAMME
+- Piece : {{ gamme_name }} (slug: {{ pg_alias }})
+- Role : {{ intro_role }}
+- Confusions courantes : {{ rag_confusion_with }}
+- Normes : {{ rag_norms }}
+
+# CE QUE TU DOIS CHERCHER
+1. Requetes definitionnelles (~30%) : qu'est-ce que [piece], definition [piece], a quoi sert [piece]
+2. Requetes fonctionnement (~25%) : comment fonctionne [piece], role [piece], principe [piece]
+3. Requetes variantes (~20%) : types de [piece], difference [variante A] vs [variante B]
+4. Requetes techniques (~10%) : composition [piece], materiaux [piece], norme [piece]
+5. Requetes confusion (~10%) : difference entre [piece] et [piece similaire]
+6. Questions PAA encyclopediques (~5%) : a quoi sert, pourquoi, comment ca marche
+
+# TERMES INTERDITS
+- R1 (achat) : acheter, prix, commander, pas cher, en stock
+- R3 (how-to) : comment changer, tutoriel, etapes, couple de serrage
+- R5 (diagnostic) : symptome, panne, diagnostic, code OBD
+- R6 (guide achat) : quel choisir, meilleur, comparatif
+
+# NOMS DE CONCURRENTS INTERDITS
+NE JAMAIS inclure : Oscaro, Norauto, Leclerc, Carter Cash, Mister Auto, Feu Vert,
+Amazon, eBay, Yakarouler, Autodoc, RockAuto, Cdiscount, Euromaster, Speedy, Midas, Point S.
+
+# DEDUPLICATION
+NE PAS generer de variantes avec/sans accent. UNE forme canonique par mot-cle.
+
+# QUALITE DES DONNEES
+{{ data_quality }}
+
+# FORMAT DE SORTIE
+JSON array. Entre 20 et 50 mots-cles.
+[
+  {"pg_id": {{ pg_id }}, "kw": "qu'est-ce qu'un {{ gamme_name }}", "intent": "definitional", "vol": "MED", "role": "R4"},
+  {"pg_id": {{ pg_id }}, "kw": "{{ gamme_name }} role", "intent": "definitional", "vol": "MED", "role": "R4"},
+  ...
+]

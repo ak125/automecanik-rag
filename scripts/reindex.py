@@ -43,7 +43,7 @@ ALLOWED_INTENTS = {
 }
 ALLOWED_TRUTH_LEVELS = {"L1", "L2", "L3", "L4"}
 ALLOWED_VERIFICATION_STATUS = {"verified", "unverified", "disputed"}
-ALLOWED_DOMAINS = {"general", "freinage", "moteur", "climatisation", "suspension", "transmission", "electrique"}
+ALLOWED_DOMAINS = {"general", "freinage", "moteur", "climatisation", "suspension", "transmission", "electrique", "eclairage", "refroidissement", "filtration", "embrayage", "distribution", "echappement", "direction", "carrosserie", "demarrage", "essuyage", "allumage", "vehicule", "catalog"}
 
 COLLECTION_BY_FAMILY = {
     "catalog": "KB_Catalog",
@@ -215,9 +215,25 @@ def infer_domain_rules(text: str) -> str:
 
 
 def normalize_domain(metadata: Dict[str, Any], content: str) -> str:
-    raw = str(metadata.get("domain", "")).strip().lower()
-    if raw:
-        return raw
+    raw = metadata.get("domain", "")
+    if isinstance(raw, dict):
+        # v4 frontmatter: domain is an object with role/must_be_true/etc.
+        # The technical domain is in 'category', not 'domain.role' (which is the mechanical description)
+        domain = ""
+    else:
+        domain = str(raw).strip().lower()
+    # Fallback to category field (canonical domain for gamme files)
+    if not domain or domain not in ALLOWED_DOMAINS:
+        cat = str(metadata.get("category", "")).strip().lower()
+        if cat in ALLOWED_DOMAINS:
+            domain = cat
+        # Try extracting from category like "catalog/gamme" -> use parent domain
+        elif "/" in cat:
+            parent = cat.split("/")[0]
+            if parent in ALLOWED_DOMAINS:
+                domain = parent
+    if domain and domain in ALLOWED_DOMAINS:
+        return domain
     return infer_domain_rules(content)
 
 
@@ -366,6 +382,11 @@ def iter_documents(knowledge_path: str, max_files: int = 0) -> Generator[Dict[st
             domain = normalize_domain(metadata, content)
             entities = normalize_entities(metadata, content)
 
+            # Extract gamme_slug for per-gamme role_map config (v2.5)
+            gamme_slug = None
+            if source_type.lower() == "gamme":
+                gamme_slug = str(metadata.get("slug", "")).strip() or md_file.stem
+
             gamme_page_contract = None
             gamme_contract_errors: List[str] = []
             gamme_contract_warnings: List[str] = []
@@ -411,6 +432,7 @@ def iter_documents(knowledge_path: str, max_files: int = 0) -> Generator[Dict[st
                 "gamme_contract_warnings": gamme_contract_warnings,
                 "gamme_contract_score": int(((gamme_page_contract or {}).get("quality", {}) or {}).get("score", 0)),
                 "gamme_contract_flags": list((((gamme_page_contract or {}).get("quality", {}) or {}).get("flags", []) or [])),
+                "gamme_slug": gamme_slug,
             }
             yielded += 1
             if max_files > 0 and yielded >= max_files:
@@ -573,6 +595,27 @@ def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, p
     evidence_grade = compute_evidence_grade(truth_level, verification_status, doc_weight)
     canonical_weight = float(doc.get("canonical_weight", 1.0) or 1.0) if canonical else 0.0
 
+    # Role classification (v2.5: config-driven, per-gamme aware)
+    role_data = classify_chunk(heading=heading, chunk_type=chunk_type, content=clean_chunk, source_type=doc["source_type"], gamme_slug=doc.get("gamme_slug"))
+
+    # Phase 3: derive page_contract_id from primary_role
+    _ROLE_TO_CONTRACT = {
+        "R1_ROUTER": "PageContractR1@1.0",
+        "R3_GUIDE": "PageContractR3@1.0",
+        "R3_CONSEILS": "PageContractR3@1.0",
+        "R4_REFERENCE": "PageContractR4@1.0",
+        "R5_DIAGNOSTIC": "PageContractR5@1.0",
+    }
+    page_contract_id = _ROLE_TO_CONTRACT.get(role_data.get("primary_role", ""), "")
+
+    # Phase 3: media_slots_hint — MVP: only for table_rows and faq
+    _chunk_kind = role_data.get("chunk_kind", "other")
+    media_slots_hint = ""
+    if _chunk_kind == "table_rows":
+        media_slots_hint = '{"type":"table","variant":"specs_table"}'
+    elif _chunk_kind == "faq":
+        media_slots_hint = '{"type":"faq","variant":"faq_block"}'
+
     return {
         "uuid": chunk_id,
         "chunk_id": chunk_id,
@@ -604,8 +647,9 @@ def build_chunk_record(doc: Dict[str, Any], chunk_text: str, chunk_index: int, p
         "confidence_score": doc["confidence_score"],
         "last_verified_date": doc["last_verified_date"],
         "verified_by": doc["verified_by"],
-        # Role classification (Phase 1)
-        **classify_chunk(heading=heading, chunk_type=chunk_type, content=clean_chunk, source_type=doc["source_type"]),
+        **role_data,
+        "page_contract_id": page_contract_id,
+        "media_slots_hint": media_slots_hint,
     }
 
 
@@ -792,7 +836,8 @@ def validate_doc(doc: Dict[str, Any], strict_routing: bool) -> List[str]:
     if intent not in ALLOWED_INTENTS:
         errors.append(f"invalid intent={intent}")
 
-    domain = str(doc.get("domain", "")).strip().lower()
+    domain_raw = doc.get("domain", "")
+    domain = str(domain_raw.get("role", "")).strip().lower() if isinstance(domain_raw, dict) else str(domain_raw).strip().lower()
     if domain not in ALLOWED_DOMAINS:
         errors.append(f"invalid domain={domain}")
 
@@ -853,8 +898,10 @@ def validate_chunk(chunk: Dict[str, Any]) -> List[str]:
             errors.append(f"missing {field}")
     if str(chunk.get("intent", "")).strip().lower() not in ALLOWED_INTENTS:
         errors.append(f"invalid intent={chunk.get('intent')}")
-    if str(chunk.get("domain", "")).strip().lower() not in ALLOWED_DOMAINS:
-        errors.append(f"invalid domain={chunk.get('domain')}")
+    chunk_domain_raw = chunk.get("domain", "")
+    chunk_domain = str(chunk_domain_raw.get("role", "")).strip().lower() if isinstance(chunk_domain_raw, dict) else str(chunk_domain_raw).strip().lower()
+    if chunk_domain not in ALLOWED_DOMAINS:
+        errors.append(f"invalid domain={chunk_domain}")
     if str(chunk.get("truth_level", "")).strip().upper() not in ALLOWED_TRUTH_LEVELS:
         errors.append(f"invalid truth_level={chunk.get('truth_level')}")
     if str(chunk.get("verification_status", "")).strip().lower() not in ALLOWED_VERIFICATION_STATUS:

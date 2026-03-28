@@ -1,0 +1,50 @@
+{
+  "run_id": "bench-a-20260325-151310",
+  "tag": "bench-a",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "model_key": "current",
+  "chunking_strategy": "heading-aware-500t-50o",
+  "corpus_version": "post-clean-p0p1",
+  "collection_name": "Bench_A",
+  "file_count": 1044,
+  "chunk_count": 2456,
+  "indexed_count": 0,
+  "started_at": "2026-03-25T14:13:06.279751+00:00",
+  "finished_at": "2026-03-25T14:13:10.458218+00:00",
+  "duration_seconds": 4.2,
+  "git_sha": "d41055ee",
+  "truth_levels_included": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "directories_indexed": [
+    "gammes",
+    "diagnostic",
+    "constructeurs",
+    "guides",
+    "faq",
+    "policies",
+    "vehicles",
+    "web",
+    "web-catalog",
+    "reference",
+    "canonical"
+  ],
+  "files_by_dir": {
+    "gammes": 232,
+    "diagnostic": 17,
+    "constructeurs": 36,
+    "guides": 16,
+    "faq": 7,
+    "policies": 3,
+    "vehicles": 8,
+    "web": 604,
+    "web-catalog": 119,
+    "reference": 1,
+    "canonical": 1
+  },
+  "chunks_by_type": {
+    "text": 2456
+  }
+}
