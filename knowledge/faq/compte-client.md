@@ -6,7 +6,11 @@ title: FAQ - Compte client
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: f9b5bb6e-a3b5-5fc6-bc8a-6464e8e4e831
+content_hash: sha256:807296cce36136e8
+lang: fr
 ---
+
 
 # Questions frequentes - Compte client
 

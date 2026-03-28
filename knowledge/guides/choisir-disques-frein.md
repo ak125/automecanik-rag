@@ -7,7 +7,11 @@ title: Guide - Comment choisir ses disques de frein
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: verified
+doc_id: c6760e43-c330-5dbd-9303-5691dfad6d1d
+content_hash: sha256:656aabbddf6a1d39
+lang: fr
 ---
+
 
 # Comment choisir ses disques de frein
 

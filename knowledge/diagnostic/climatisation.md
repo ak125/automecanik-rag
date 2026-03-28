@@ -7,7 +7,11 @@ title: Diagnostic - Climatisation et chauffage
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: d84277d6-900b-5541-8a54-c36683545088
+content_hash: sha256:f5669dc548e4a36d
+lang: fr
 ---
+
 
 # Climatisation et chauffage - Diagnostic complet
 

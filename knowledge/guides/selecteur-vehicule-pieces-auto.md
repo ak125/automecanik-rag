@@ -3,11 +3,15 @@ category: identification-vehicule
 doc_family: knowledge
 site_section: guide-achat
 source_type: guide
-title: "Guide - Sélecteur de véhicule pièces auto : 4 méthodes"
+title: 'Guide - Sélecteur de véhicule pièces auto : 4 méthodes'
 truth_level: L2
 updated_at: 2026-02-17
 verification_status: verified
+doc_id: 31d6bbe1-9648-5cf8-b107-91538c458deb
+content_hash: sha256:913dcc8c51e91c9d
+lang: fr
 ---
+
 
 # Sélecteur de véhicule pièces auto : 4 méthodes pour trouver la bonne pièce
 

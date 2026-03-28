@@ -7,7 +7,11 @@ title: Diagnostic - Échappement et catalyseur
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: e89421b4-4df9-514b-b6b7-58e6af5928c3
+content_hash: sha256:e45074af215e369d
+lang: fr
 ---
+
 
 # Échappement et catalyseur - Diagnostic complet
 

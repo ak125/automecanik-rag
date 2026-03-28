@@ -6,7 +6,11 @@ title: Fiche vehicule - Volkswagen Golf 6
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 2bea35d6-1045-5f8b-bce0-5bef8fad17c7
+content_hash: sha256:51323f3d75f42d7c
+lang: fr
 ---
+
 
 # Volkswagen Golf 6 (2008-2012)
 

@@ -7,7 +7,11 @@ title: Guide - Choisir son kit distribution
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 1bc7dc21-c4ed-5cf2-83af-da87a4d8b0d1
+content_hash: sha256:c93527337d1eaa05
+lang: fr
 ---
+
 
 # Comment choisir son kit de distribution
 

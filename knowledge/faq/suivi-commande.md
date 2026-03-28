@@ -6,7 +6,11 @@ title: FAQ - Suivi de commande
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: bf44389e-0662-5ac6-9a52-4735877b4bf5
+content_hash: sha256:51604fe7fabd3ad1
+lang: fr
 ---
+
 
 # Questions fréquentes - Suivi de commande
 

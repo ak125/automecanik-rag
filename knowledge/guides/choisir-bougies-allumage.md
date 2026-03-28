@@ -7,7 +7,11 @@ title: Guide - Comment choisir ses bougies d'allumage
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: dba46dd0-34ec-5eda-8e03-ec1d5903fa41
+content_hash: sha256:31ef74f9c591f18c
+lang: fr
 ---
+
 
 # Comment choisir ses bougies d'allumage
 

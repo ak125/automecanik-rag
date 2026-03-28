@@ -10,7 +10,11 @@ source_type: canonical
 title: Freinage - diagnostic rapide
 truth_level: L4
 verification_status: verified
+doc_id: 7f541708-df81-5016-94ca-c124f580f4e8
+content_hash: sha256:ddc7062a2d7c51e8
+lang: fr
 ---
+
 
 ## Diagnostic rapide
 

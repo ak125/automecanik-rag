@@ -6,7 +6,11 @@ title: Fiche vehicule - Citroen C3
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: ea06b706-a37a-5988-845f-0e0d394ee2cc
+content_hash: sha256:80fdf0eccfaf02bd
+lang: fr
 ---
+
 
 # Citroen C3 (2002-2024)
 

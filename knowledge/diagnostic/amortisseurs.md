@@ -7,7 +7,11 @@ title: Diagnostic - Amortisseurs et suspension
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: a8dd3743-4cbf-560b-8d28-76e7b168aa73
+content_hash: sha256:0e3a14e14794cf2f
+lang: fr
 ---
+
 
 # Amortisseurs et suspension - Diagnostic complet
 

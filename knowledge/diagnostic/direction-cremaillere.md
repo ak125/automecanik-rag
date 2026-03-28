@@ -7,7 +7,11 @@ title: Diagnostic - Direction et crémaillère
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: abc68b65-75f1-5e2f-ad57-bdecfd89d0c3
+content_hash: sha256:f63e329fe639bfc5
+lang: fr
 ---
+
 
 # Direction et crémaillère - Diagnostic complet
 

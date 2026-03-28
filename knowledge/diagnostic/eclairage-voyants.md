@@ -7,7 +7,11 @@ title: Diagnostic - Éclairage et signalisation
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 314e24ce-016b-55ca-a69f-874f4bb835a5
+content_hash: sha256:13aeca059b8c8c49
+lang: fr
 ---
+
 
 # Éclairage et signalisation - Diagnostic complet
 

@@ -6,7 +6,11 @@ title: FAQ - Retours et échanges
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: d91b0499-b19c-52e4-b0bc-2f73304bc7d1
+content_hash: sha256:8778c69b3dc55f4a
+lang: fr
 ---
+
 
 # Questions fréquentes - Retours et échanges
 

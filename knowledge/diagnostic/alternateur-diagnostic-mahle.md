@@ -8,7 +8,11 @@ title: schadensbroschuere generatoren 2020 fr final low
 truth_level: L2
 updated_at: '2026-02-19T22:24:57.986774'
 verification_status: unverified
+doc_id: dee58669-db52-55b2-982a-9ecf6f6692f4
+content_hash: sha256:11cf88d39bb51d5a
+lang: fr
 ---
+
 
 [[PDF_PAGE:1]]
 Alternateurs

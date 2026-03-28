@@ -6,7 +6,11 @@ title: Politique de garantie
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: ca18a052-b57a-5b35-a978-5a86f057243c
+content_hash: sha256:1114589063934e22
+lang: fr
 ---
+
 
 # Politique de Garantie AutoMecanik
 

@@ -8,7 +8,11 @@ source_type: vehicle
 truth_level: L1
 updated_at: '2026-01-15'
 verification_status: verified
+doc_id: 84934838-d899-579a-9679-acd62cb6cdc2
+content_hash: sha256:98ebb01f2234a684
+lang: fr
 ---
+
 
 # Renault
 

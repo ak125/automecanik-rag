@@ -7,7 +7,11 @@ title: Diagnostic - Systeme de refroidissement
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 0fb4e649-944b-5228-9c1e-9d4ec7af3bc7
+content_hash: sha256:016e98b327702bae
+lang: fr
 ---
+
 
 # Systeme de refroidissement - Diagnostic complet
 

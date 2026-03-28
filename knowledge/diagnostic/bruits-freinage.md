@@ -7,7 +7,11 @@ title: Diagnostic - Bruits de freinage
 truth_level: L2
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: b3121ca7-02ff-546c-beb4-c6824fd00999
+content_hash: sha256:189feb3ec13ea684
+lang: fr
 ---
+
 
 # Bruits de freinage - Diagnostic complet
 

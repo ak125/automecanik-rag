@@ -6,7 +6,11 @@ title: FAQ - Paiement
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: bf5ecf43-09c7-5061-9e8f-663c3be9867c
+content_hash: sha256:04aa498fe70ccf77
+lang: fr
 ---
+
 
 # Questions fréquentes - Paiement
 

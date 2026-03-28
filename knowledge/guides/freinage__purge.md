@@ -11,7 +11,11 @@ source_type: knowledge
 title: Purge du circuit de freinage - procedure
 truth_level: L2
 verification_status: verified
+doc_id: 3cc96c37-331b-581b-8e6e-005370ed462c
+content_hash: sha256:d2e92492f03b16b9
+lang: fr
 ---
+
 
 ## Procedure
 

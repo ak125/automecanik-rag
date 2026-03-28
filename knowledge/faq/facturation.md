@@ -6,7 +6,11 @@ title: FAQ - Facturation
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 79adf9af-e7a0-589a-8f95-bc4fdeeb900b
+content_hash: sha256:c89e32523cb3dd4c
+lang: fr
 ---
+
 
 # Questions frequentes - Facturation
 

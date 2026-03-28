@@ -6,7 +6,11 @@ title: Fiche vehicule - Renault Megane 3
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: a8ff4031-bf76-5404-9608-0f9ffc2069da
+content_hash: sha256:308853dd069647f9
+lang: fr
 ---
+
 
 # Renault Megane 3 (2008-2016)
 

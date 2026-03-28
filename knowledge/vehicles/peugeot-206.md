@@ -6,7 +6,11 @@ title: Fiche véhicule - Peugeot 206
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: 2f20385f-a62b-5162-ad08-facfa43d6c08
+content_hash: sha256:07eec10b989f8f29
+lang: fr
 ---
+
 
 # Peugeot 206 (1998-2012)
 

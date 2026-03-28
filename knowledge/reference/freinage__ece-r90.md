@@ -11,7 +11,11 @@ source_type: knowledge
 title: ECE R90 - definition
 truth_level: L2
 verification_status: verified
+doc_id: 8208c4f8-7e25-5947-b395-4a59c21e64d9
+content_hash: sha256:5233dbfd3f3504c1
+lang: fr
 ---
+
 
 ## Definition
 

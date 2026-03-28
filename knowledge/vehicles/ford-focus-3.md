@@ -6,7 +6,11 @@ title: Fiche vehicule - Ford Focus 3
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: e3af31a8-036f-5249-8890-2309e7110a20
+content_hash: sha256:cb0dcb3a7252e861
+lang: fr
 ---
+
 
 # Ford Focus 3 (2011-2018)
 

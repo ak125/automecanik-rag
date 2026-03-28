@@ -7,7 +7,11 @@ title: Guide - Comment choisir ses plaquettes de frein
 truth_level: L2
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: c11a4607-a7b8-5929-9104-90870bf92a87
+content_hash: sha256:c74ebbc862de0cc8
+lang: fr
 ---
+
 
 # Comment choisir ses plaquettes de frein
 

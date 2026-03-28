@@ -6,7 +6,11 @@ title: FAQ - Compatibilite des pieces
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 04cdfe22-5b5c-5385-8c79-acbaef4d0f76
+content_hash: sha256:ee039dcadfc624f0
+lang: fr
 ---
+
 
 # Questions frequentes - Compatibilite des pieces
 

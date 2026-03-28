@@ -6,7 +6,11 @@ title: Conditions de livraison
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: 3ba8e269-70ee-51dc-bcd4-475da6a1569a
+content_hash: sha256:6956379949d4de23
+lang: fr
 ---
+
 
 # Conditions de Livraison AutoMecanik
 

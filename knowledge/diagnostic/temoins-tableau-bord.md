@@ -7,7 +7,11 @@ title: Diagnostic - Témoins tableau de bord
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: 2cccaddb-eaad-56b8-a7c3-2176c3005648
+content_hash: sha256:485db8c7d69494c2
+lang: fr
 ---
+
 
 # Témoins tableau de bord - Guide complet
 

@@ -7,7 +7,11 @@ title: Guide - Comment choisir son filtre à huile
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 4adee95c-72e4-5a73-9368-a34d3da90625
+content_hash: sha256:9579b13b219264b2
+lang: fr
 ---
+
 
 # Comment choisir son filtre à huile
 

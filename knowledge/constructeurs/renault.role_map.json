@@ -1,0 +1,48 @@
+{
+  "doc_type": "CONSTRUCTEUR",
+  "doc_id": "renault-140",
+  "sections": [
+    {
+      "section_key": "S2_MICRO_SEO_ROUTER",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 90,
+      "chunk_kind": ["definition", "trust_proofs"]
+    },
+    {
+      "section_key": "S3_SHORTCUTS_INTERNAL_LINKS",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 95,
+      "chunk_kind": ["anchor_list"]
+    },
+    {
+      "section_key": "S7_COMPATIBILITY_QUICK_GUIDE",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 90,
+      "chunk_kind": ["selection_checks", "anti_mistakes"]
+    },
+    {
+      "section_key": "S8_SAFE_TABLE",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 90,
+      "chunk_kind": ["table_row"]
+    },
+    {
+      "section_key": "S9_FAQ_ROUTER",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 90,
+      "chunk_kind": ["faq"]
+    },
+    {
+      "section_key": "S10_ABOUT_BRAND",
+      "primary_role": "R7_ROUTER",
+      "allowed_roles": ["R7_ROUTER"],
+      "purity_min": 85,
+      "chunk_kind": ["definition"]
+    }
+  ]
+}

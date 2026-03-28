@@ -9,7 +9,11 @@ title: bosch freinage brochure reparation fad 2020 fr
 truth_level: L2
 updated_at: '2026-02-14T23:02:56.808435'
 verification_status: unverified
+doc_id: a818e4ef-6824-5b9e-aaba-e06d5488b75e
+content_hash: sha256:9e8771b2f2cf1ef2
+lang: fr
 ---
+
 
 [[PDF_PAGE:1]]
 Frein à disque :

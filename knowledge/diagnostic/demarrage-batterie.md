@@ -7,7 +7,11 @@ title: Diagnostic - Démarrage et circuit électrique
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 4a2a669c-9e38-5778-b23c-472ecd12754d
+content_hash: sha256:8cf4d35b9407f556
+lang: fr
 ---
+
 
 # Démarrage et circuit électrique - Diagnostic complet
 

@@ -7,7 +7,11 @@ title: Diagnostic - Injecteurs et systeme injection
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 4836c379-d912-5568-9da6-3164ba47034e
+content_hash: sha256:fe7e65616c6bb9ca
+lang: fr
 ---
+
 
 # Injecteurs et systeme injection - Diagnostic complet
 

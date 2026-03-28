@@ -7,7 +7,11 @@ title: Guide - Comprendre les références OEM
 truth_level: L2
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: df3a731f-3f0f-5846-818f-2c38e9ba4e0c
+content_hash: sha256:c9ca317c5d3795b8
+lang: fr
 ---
+
 
 # Comprendre les références OEM (Origine Équipementier)
 

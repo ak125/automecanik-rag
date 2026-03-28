@@ -11,7 +11,11 @@ source_type: knowledge
 title: Quand changer les plaquettes et disques
 truth_level: L2
 verification_status: verified
+doc_id: 9154216a-dba4-5949-a0e1-daed86c30fd1
+content_hash: sha256:bd919eb867fdbedc
+lang: fr
 ---
+
 
 ## Signes d'usure
 

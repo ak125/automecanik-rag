@@ -1,0 +1,12 @@
+{
+  "brand": "jeep",
+  "brand_id": 86,
+  "roles": {
+    "R7_BRAND": {
+      "primary": true,
+      "sections": ["S1_HERO", "S2_MICRO_SEO", "S3_SHORTCUTS", "S4_GAMMES", "S5_PARTS", "S6_VEHICLES", "S7_COMPATIBILITY", "S8_SAFE_TABLE", "S9_FAQ", "S10_RELATED", "S11_ABOUT"]
+    }
+  },
+  "generated_at": "2026-03-21",
+  "generator": "r7-brand-rag-generator"
+}

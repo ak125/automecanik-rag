@@ -6,7 +6,11 @@ title: FAQ - Delais expedition
 truth_level: L1
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: b0114e14-c036-506b-8b17-891495b47828
+content_hash: sha256:0117cb122c0f0bbf
+lang: fr
 ---
+
 
 # Questions frequentes - Delais d'expedition
 

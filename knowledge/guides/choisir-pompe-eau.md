@@ -7,7 +7,11 @@ title: Guide - Comment choisir sa pompe à eau
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 72e74ab3-9515-5d11-af1c-76648ed8cf27
+content_hash: sha256:6152172ac66373e9
+lang: fr
 ---
+
 
 # Comment choisir sa pompe à eau
 

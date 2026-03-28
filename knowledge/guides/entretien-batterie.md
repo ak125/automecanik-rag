@@ -7,7 +7,11 @@ title: Guide - Entretien et choix batterie
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 6642f1a0-8b5d-567a-80e3-84325960ed06
+content_hash: sha256:124969ca1ac43be5
+lang: fr
 ---
+
 
 # Entretien et choix de batterie
 

@@ -7,7 +7,11 @@ title: Guide - Comment choisir son kit d'embrayage
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 518758bb-2236-5a8d-b0b0-d223e53b709e
+content_hash: sha256:b24dd6a1955c9948
+lang: fr
 ---
+
 
 # Comment choisir son kit d'embrayage
 

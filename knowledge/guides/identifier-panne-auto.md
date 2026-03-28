@@ -1,5 +1,5 @@
 ---
-title: "Guide - Comment identifier une panne auto : methodes, signes et urgences"
+title: 'Guide - Comment identifier une panne auto : methodes, signes et urgences'
 source_type: guide
 doc_family: guide
 category: diagnostic-general
@@ -8,165 +8,169 @@ truth_level: L2
 updated_at: 2026-02-21
 verification_status: verified
 intent_targets:
-  - diagnostic
-  - informationnelle
-  - urgence
+- diagnostic
+- informationnelle
+- urgence
 seo_cluster:
   primary_keyword:
-    text: "identifier panne auto"
+    text: identifier panne auto
     seo_difficulty: 38
-    traffic_range: "1000-5000/mo"
+    traffic_range: 1000-5000/mo
     intent: informationnelle
   keyword_variants:
-    - keyword: "identifier panne voiture"
-      sd: 35
-      intent: informationnelle
-      competition: moyenne
-    - keyword: "identifier la panne"
-      sd: 30
-      intent: informationnelle
-      competition: faible
-    - keyword: "comment identifier une panne"
-      sd: 32
-      intent: informationnelle
-      competition: faible
-    - keyword: "identification panne"
-      sd: 28
-      intent: informationnelle
-      competition: faible
-    - keyword: "diagnostic panne voiture"
-      sd: 42
-      intent: "informationnelle + transactionnelle"
-      competition: forte
-    - keyword: "code panne auto"
-      sd: 40
-      intent: informationnelle
-      competition: forte
-    - keyword: "detecter signes panne mecanique"
-      sd: 28
-      intent: informationnelle
-      competition: faible
+  - keyword: identifier panne voiture
+    sd: 35
+    intent: informationnelle
+    competition: moyenne
+  - keyword: identifier la panne
+    sd: 30
+    intent: informationnelle
+    competition: faible
+  - keyword: comment identifier une panne
+    sd: 32
+    intent: informationnelle
+    competition: faible
+  - keyword: identification panne
+    sd: 28
+    intent: informationnelle
+    competition: faible
+  - keyword: diagnostic panne voiture
+    sd: 42
+    intent: informationnelle + transactionnelle
+    competition: forte
+  - keyword: code panne auto
+    sd: 40
+    intent: informationnelle
+    competition: forte
+  - keyword: detecter signes panne mecanique
+    sd: 28
+    intent: informationnelle
+    competition: faible
   cluster_diagnostic_detection:
-    - keyword: "diagnostic panne voiture gratuit"
-      sd: 38
-      intent: transactionnelle
-    - keyword: "diagnostic panne voiture en ligne"
-      sd: 35
-      intent: transactionnelle
-    - keyword: "diagnostic panne voiture a domicile"
-      sd: 30
-      intent: transactionnelle
-    - keyword: "diagnostic panne electrique voiture"
-      sd: 32
-      intent: informationnelle
-    - keyword: "diagnostic panne batterie voiture"
-      sd: 30
-      intent: informationnelle
-    - keyword: "diagnostic panne climatisation voiture"
-      sd: 28
-      intent: informationnelle
-    - keyword: "code panne automobile"
-      sd: 38
-      intent: informationnelle
-    - keyword: "code de panne automobile"
-      sd: 36
-      intent: informationnelle
-    - keyword: "comment detecter panne batterie voiture"
-      sd: 25
-      intent: informationnelle
-    - keyword: "diagnostiquer panne clim auto"
-      sd: 22
-      intent: informationnelle
+  - keyword: diagnostic panne voiture gratuit
+    sd: 38
+    intent: transactionnelle
+  - keyword: diagnostic panne voiture en ligne
+    sd: 35
+    intent: transactionnelle
+  - keyword: diagnostic panne voiture a domicile
+    sd: 30
+    intent: transactionnelle
+  - keyword: diagnostic panne electrique voiture
+    sd: 32
+    intent: informationnelle
+  - keyword: diagnostic panne batterie voiture
+    sd: 30
+    intent: informationnelle
+  - keyword: diagnostic panne climatisation voiture
+    sd: 28
+    intent: informationnelle
+  - keyword: code panne automobile
+    sd: 38
+    intent: informationnelle
+  - keyword: code de panne automobile
+    sd: 36
+    intent: informationnelle
+  - keyword: comment detecter panne batterie voiture
+    sd: 25
+    intent: informationnelle
+  - keyword: diagnostiquer panne clim auto
+    sd: 22
+    intent: informationnelle
   cluster_informationnelle:
-    - keyword: "comment identifier une panne voiture"
-      sd: 30
-      intent: informationnelle
-    - keyword: "quelles sont les pannes d'une voiture"
-      sd: 28
-      intent: informationnelle
-    - keyword: "quelle panne de voiture"
-      sd: 25
-      intent: informationnelle
-    - keyword: "comment savoir quel est le probleme de ma voiture"
-      sd: 30
-      intent: informationnelle
-    - keyword: "comment savoir si ma panne est mecanique ou electrique"
-      sd: 22
-      intent: informationnelle
-    - keyword: "quelles sont les etapes pour detecter une panne"
-      sd: 20
-      intent: informationnelle
+  - keyword: comment identifier une panne voiture
+    sd: 30
+    intent: informationnelle
+  - keyword: quelles sont les pannes d'une voiture
+    sd: 28
+    intent: informationnelle
+  - keyword: quelle panne de voiture
+    sd: 25
+    intent: informationnelle
+  - keyword: comment savoir quel est le probleme de ma voiture
+    sd: 30
+    intent: informationnelle
+  - keyword: comment savoir si ma panne est mecanique ou electrique
+    sd: 22
+    intent: informationnelle
+  - keyword: quelles sont les etapes pour detecter une panne
+    sd: 20
+    intent: informationnelle
   cluster_pannes_specifiques:
-    - keyword: "identifier panne demarreur"
-      sd: 25
-      intent: informationnelle
-    - keyword: "identifier panne electrique"
-      sd: 28
-      intent: informationnelle
-    - keyword: "diagnostic panne fumee blanche voiture"
-      sd: 22
-      intent: informationnelle
-    - keyword: "panne voyant moteur"
-      sd: 38
-      intent: informationnelle
-    - keyword: "panne voyant ABS"
-      sd: 35
-      intent: informationnelle
-    - keyword: "panne electronique"
-      sd: 30
-      intent: informationnelle
-    - keyword: "aucune panne detectee"
-      sd: 20
-      intent: informationnelle
-    - keyword: "panne generique"
-      sd: 18
-      intent: informationnelle
+  - keyword: identifier panne demarreur
+    sd: 25
+    intent: informationnelle
+  - keyword: identifier panne electrique
+    sd: 28
+    intent: informationnelle
+  - keyword: diagnostic panne fumee blanche voiture
+    sd: 22
+    intent: informationnelle
+  - keyword: panne voyant moteur
+    sd: 38
+    intent: informationnelle
+  - keyword: panne voyant ABS
+    sd: 35
+    intent: informationnelle
+  - keyword: panne electronique
+    sd: 30
+    intent: informationnelle
+  - keyword: aucune panne detectee
+    sd: 20
+    intent: informationnelle
+  - keyword: panne generique
+    sd: 18
+    intent: informationnelle
   cluster_urgence:
-    - keyword: "voiture en panne sur autoroute"
-      sd: 30
-      intent: informationnelle
-    - keyword: "panne auto qui appeler"
-      sd: 25
-      intent: informationnelle
-    - keyword: "en panne autoroute qui appeler"
-      sd: 28
-      intent: informationnelle
-    - keyword: "quoi faire panne autoroute"
-      sd: 25
-      intent: informationnelle
-    - keyword: "voiture en panne en roulant"
-      sd: 28
-      intent: informationnelle
-    - keyword: "voiture en panne qui ne demarre pas"
-      sd: 35
-      intent: informationnelle
+  - keyword: voiture en panne sur autoroute
+    sd: 30
+    intent: informationnelle
+  - keyword: panne auto qui appeler
+    sd: 25
+    intent: informationnelle
+  - keyword: en panne autoroute qui appeler
+    sd: 28
+    intent: informationnelle
+  - keyword: quoi faire panne autoroute
+    sd: 25
+    intent: informationnelle
+  - keyword: voiture en panne en roulant
+    sd: 28
+    intent: informationnelle
+  - keyword: voiture en panne qui ne demarre pas
+    sd: 35
+    intent: informationnelle
   paa_questions:
-    - "Comment savoir quel est le probleme de ma voiture ?"
-    - "Comment identifier une panne de demarreur ?"
-    - "Quels sont les signes d'une panne imminente ?"
-    - "Que faire si ma voiture tombe en panne sur l'autoroute ?"
-    - "Comment lire un code panne OBD ?"
-    - "Panne mecanique ou electrique : comment les distinguer ?"
+  - Comment savoir quel est le probleme de ma voiture ?
+  - Comment identifier une panne de demarreur ?
+  - Quels sont les signes d'une panne imminente ?
+  - Que faire si ma voiture tombe en panne sur l'autoroute ?
+  - Comment lire un code panne OBD ?
+  - 'Panne mecanique ou electrique : comment les distinguer ?'
   priority_top5:
-    - "identifier panne auto"
-    - "comment identifier une panne"
-    - "diagnostic panne voiture"
-    - "voiture en panne sur autoroute"
-    - "signes avant-coureurs panne voiture"
+  - identifier panne auto
+  - comment identifier une panne
+  - diagnostic panne voiture
+  - voiture en panne sur autoroute
+  - signes avant-coureurs panne voiture
   analyse_intentions:
     informationnelle:
       part: 65%
-      profil: "Conducteur non-expert face a un probleme sur son vehicule"
-      contenu_adapte: "Articles comment, guides illustres, listes signes alerte"
+      profil: Conducteur non-expert face a un probleme sur son vehicule
+      contenu_adapte: Articles comment, guides illustres, listes signes alerte
     transactionnelle:
       part: 25%
-      profil: "Conducteur qui veut faire realiser un diagnostic"
-      contenu_adapte: "Pages services, formulaires RDV, comparatifs prix"
+      profil: Conducteur qui veut faire realiser un diagnostic
+      contenu_adapte: Pages services, formulaires RDV, comparatifs prix
     navigationnelle:
       part: 10%
-      profil: "Conducteur fidele a une enseigne ou un outil"
-      contenu_adapte: "Pages marques, garages specifiques"
+      profil: Conducteur fidele a une enseigne ou un outil
+      contenu_adapte: Pages marques, garages specifiques
+doc_id: d28c3ef0-f11c-5817-99e7-8293e651a56b
+content_hash: sha256:d94f18398d397c69
+lang: fr
 ---
+
 
 # Comment identifier une panne auto : guide complet
 

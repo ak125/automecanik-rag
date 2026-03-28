@@ -7,7 +7,11 @@ title: Guide - Comment choisir son filtre à air
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 2481e853-0b61-5fef-8fc8-a7e7a9401760
+content_hash: sha256:ea62ff80dee67b71
+lang: fr
 ---
+
 
 # Comment choisir son filtre à air
 

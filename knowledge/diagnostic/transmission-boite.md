@@ -7,7 +7,11 @@ title: Diagnostic - Transmission et boîte de vitesses
 truth_level: L2
 updated_at: 2026-02-15
 verification_status: draft
+doc_id: 2bccc3cf-299c-53f2-8718-e4992aa3ad35
+content_hash: sha256:df8181f9f6ff06b0
+lang: fr
 ---
+
 
 # Transmission et boîte de vitesses - Diagnostic complet
 

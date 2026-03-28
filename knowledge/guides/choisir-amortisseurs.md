@@ -7,7 +7,11 @@ title: Guide - Choisir ses amortisseurs
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 0026bf70-650e-5a59-a3e0-3d4e0b6caa6b
+content_hash: sha256:73f0019f67c73db7
+lang: fr
 ---
+
 
 # Comment choisir ses amortisseurs
 

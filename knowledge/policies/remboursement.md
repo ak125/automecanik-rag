@@ -6,7 +6,11 @@ title: Politique de remboursement
 truth_level: L1
 updated_at: 2026-01-01
 verification_status: verified
+doc_id: b8a45e0b-fbf4-5548-b503-09dcf3d66435
+content_hash: sha256:6c6f49929659fbc6
+lang: fr
 ---
+
 
 # Politique de Remboursement AutoMecanik
 

@@ -10,7 +10,11 @@ source_type: canonical
 title: Freinage - choisir ses plaquettes
 truth_level: L4
 verification_status: verified
+doc_id: 7f628b89-1d5d-5893-b427-e42a9e2113da
+content_hash: sha256:54009feaddef7a3b
+lang: fr
 ---
+
 
 ## Choix rapide
 

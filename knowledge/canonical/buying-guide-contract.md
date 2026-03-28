@@ -7,11 +7,14 @@ entity_scope: system
 id: buying_guide__contract__v1
 lang: fr
 source_type: canonical
-title: "BuyingGuideContract v1 — Framework editorial guides d'achat"
+title: BuyingGuideContract v1 — Framework editorial guides d'achat
 truth_level: L1
 updated_at: 2026-02-15
 verification_status: verified
+doc_id: c14dd2ce-2c4d-584f-a7fa-b389a8da5a0f
+content_hash: sha256:a3bd665667a242a4
 ---
+
 
 # BuyingGuideContract v1
 

@@ -7,7 +7,11 @@ title: Diagnostic - Embrayage
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: b69cd07f-0adc-5ee9-832b-be08f1486e7a
+content_hash: sha256:e0eeb5fbf5bef905
+lang: fr
 ---
+
 
 # Embrayage - Diagnostic complet
 

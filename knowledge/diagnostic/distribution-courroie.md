@@ -7,7 +7,11 @@ title: Diagnostic - Distribution et courroie
 truth_level: L2
 updated_at: 2026-01-08
 verification_status: verified
+doc_id: 6d3da924-f5b4-526b-a713-9f7f661d6753
+content_hash: sha256:06d0fa9c78ebc472
+lang: fr
 ---
+
 
 # Distribution et courroie - Diagnostic complet
 
