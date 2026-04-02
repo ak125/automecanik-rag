@@ -6,7 +6,8 @@ pg_id: 183
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Détend le fluide frigorigène avant l'évaporateur
   must_be_true:
@@ -208,6 +210,200 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: HELLA TechWorld
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  technical_notes:
+    types: 'valve thermostatique (Europe) ou orifice fixe (US/Asie)'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le détendeur de climatisation est sous la forme d'un petitboîtier, il est
+    situé sur l'évaporateur de climatisation. Le détendeur de climatisation va
+    contrôlerl'entrée et la sortie du fluide frigorifique. Il va permettre de
+    chuter lapression et la température du fluide frigorigène.Il permet aussi de
+    réguler le débit de fluide qui entre dansl'évaporateur de climatisation. La
+    régulation s'effectue à laide de la température du fluiderevenant de
+    l'évaporateur de climatisation. Cette température va faire varier la
+    pression dufluide se trouvant dans la tête thermostatique et ainsi ouvrir ou
+    fermerlégèrement le détendeur de climatisation. Ce fonctionnement permet
+    d'éviter d'envoyer trop defluide dans l'évaporateur de climatisation, ce qui
+    aurait pour conséquence de voir arriver aucompresseur le fluide frigorigène
+    sous mélange liquide/gaz et ainsi d'endommagervoire de gripper le
+    compresseur de climatisation . En savoir plus : détendeur de climatisation —
+    définition et rôle mécanique 🚨 Bruit Détendeur de climatisation : causes et
+    diagnostic
+  S2: >-
+    Un détendeur de climatisation défectueuxprésente plusieurs symptômes : - Le
+    compresseur de climatisation s'éteint périodiquement. - Instabilité dans le
+    fonctionnement du système de refroidissement. - La pression de tête et celle
+    d'aspiration sont inférieures à la norme. - La présence d'une importante
+    quantité de réfrigérant qui rentre dansl'évaporateur de climatisation. -
+    Lors d'un contrôle visuel vous remarquez que les conduites de
+    climatisationet l'évaporateur de climatisation sont couverts de glace. -
+    L'air froid souffle régulièrement dans l'habitacle. Diagnostic complet :
+    identifier une panne de détendeur de climatisation
+  S3: >-
+    Le détendeur de climatisation régule le débit de fluide frigorigène entre la
+    haute et la basse pression en aval du condenseur, juste avant l'évaporateur.
+    Sa défaillance — blocage en position fermée ou ouverte — provoque soit un
+    givrage de l'évaporateur (détendeur trop ouvert), soit une absence de froid
+    total (détendeur bloqué fermé). Il existe deux technologies principales : le
+    détendeur à tube orifice (calibré fixe) et le détendeur thermostatique (à
+    aiguille réglable par thermostat intégré). Ces deux types ne sont pas
+    interchangeables. Voici les critères à maîtriser avant commande. - Type de
+    détendeur : tube orifice fixe ou détendeur thermostatique (TXV) — Le tube
+    orifice est un calibre fixe sans pièce mobile, identifiable par son marquage
+    coloré (couleur = débit calibré). Le détendeur thermostatique possède une
+    aiguille pilotée par la température de sortie de l'évaporateur. Identifier
+    le type présent sur le véhicule avant commande : les deux sont montés sur
+    des circuits de conception différente. - Compatibilité fluide R134a ou
+    R1234yf — Les détendeurs contiennent des joints et des éléments calibrés
+    pour des plages de pression spécifiques à chaque fluide. Un détendeur R134a
+    monté sur circuit R1234yf présente des risques de fuite et une calibration
+    de débit incorrecte (pressions de service différentes de 15 à 25 %). - Débit
+    nominal et calibre (pour tube orifice) — Le débit calibré est indiqué par la
+    couleur du tube orifice (code couleur universel : beige, jaune, vert, orange
+    selon débit croissant). Un tube de débit supérieur entraîne un sous-
+    refroidissement de l'évaporateur et une surcharge du compresseur ; un débit
+    insuffisant prive l'habitacle de froid. - Pression d'ouverture et surchauffe
+    cible (pour détendeur TXV) — Le détendeur thermostatique est calibré pour
+    une surchauffe (superheat) de sortie d'évaporateur, typiquement 5 à 10 °C.
+    Cette valeur est gravée ou marquée sur le corps du détendeur. Un TXV avec
+    une surchauffe mal calibrée provoque un givrage intermittent ou une
+    compétition entre le détendeur et le pressostat. - Raccords et orientation
+    de montage — Le détendeur s'interpose entre la ligne liquide et l'entrée de
+    l'évaporateur. La position de la sonde de température (pour les TXV) doit
+    être en contact direct avec la tubulure de sortie de l'évaporateur. Une
+    mauvaise orientation empêche le régulateur de lire la bonne température. -
+    Pièces à remplacer simultanément — Lors de l'ouverture du circuit pour
+    remplacer le détendeur, la bouteille déshydratante doit être changée.
+    Contrôler également l'évaporateur pour détecter d'éventuelles traces de
+    corrosion ou de micro-fuites. Remettre sous vide le circuit pendant au
+    minimum 45 minutes avant recharge en gaz. Pour aller plus loin : consultez
+    notre guide d'achat détendeur de climatisation — comparatif marques,
+    critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Détendeur de climatisation
+    pour connaître les spécifications. Note : pour leremplacement de
+    l'évaporateur de climatisation il doit être fait par un professionnel si non
+    ilfaut se référé à la revue technique de vote voiture. - Débranchez la
+    batterie. - Vidangez le liquide de climatisation. - Démontez le collecteur
+    d'admission. - Démontez la vis de fixation de la platine de maintien des
+    canalisations declimatisation. - Démontez les écrous de fixation des
+    canalisations sur le détendeur declimatisation. - Démontez les canalisations
+    du détendeur de climatisation et faire attention de ne pas lesdéformer. -
+    Obturez les canalisations du liquide de climatisation. - Démontez la platine
+    du détendeur de climatisation. - Démontez les joints des canalisations de
+    climatisation sur le détendeur de climatisation. - Démontez la vis de
+    fixation du détendeur de climatisation. - Mettre en place une tige filetée
+    sur le détendeur de climatisation. - Démontez la deuxième vis de fixation du
+    détendeur de climatisation. - Mettre en place une deuxième tige sur le
+    détendeur de climatisation. - Démontez le détendeur de climatisation à
+    l'aide des tiges de démontage. - Démontez le joint du détendeur de
+    climatisation. Note : dans certain véhicule il faut démontezl'évaporateur de
+    climatisation pour avoir accès au détendeur de climatisation.
+  S4_REPOSE: >-
+    Le remontage du détendeur de climatisation nécessite impérativement de
+    remplacer tous les joints toriques et d'utiliser de l'huile PAG compatible
+    avec le fluide frigorigène de votre circuit. Toute fuite sur les raccords
+    impose une recharge complète du circuit, une opération réglementée qui ne
+    peut être réalisée que par un technicien habilité avec un groupe de charge.
+    - Vérifiez que le détendeur neuf est identique à celui déposé : mêmes cotes
+    de raccordement, même type (tube d'orifice ou à pointeau thermostatique
+    selon le véhicule). - Contrôlez l'état de l'évaporateur de climatisation et
+    du compresseur avant de refermer le circuit : un évaporateur perforé ou un
+    compresseur défaillant annulerait le travail de remplacement. - Enduisez les
+    joints toriques neufs d'huile PAG adaptée au type de réfrigérant (R134a ou
+    R1234yf selon le véhicule). Ne réutilisez jamais les anciens joints
+    toriques. - Remontez le détendeur dans son logement. Orientez la sonde de
+    température correctement si le détendeur est à capsule thermostatique
+    (respectez le marquage constructeur). - Remontez la platine de maintien du
+    détendeur et serrez ses vis de fixation sans excès pour ne pas écraser les
+    joints. - Reconnectez les canalisations du circuit de climatisation sur le
+    détendeur. Serrez les écrous de raccord au couple préconisé (généralement 15
+    à 20 N·m selon le diamètre). - Remontez la vis de fixation de la platine de
+    maintien des canalisations, puis les pièces de compartiment moteur déposées
+    lors de l'accès. - Rebranchez la batterie (borne positive en premier). -
+    Faites recharger le circuit de climatisation par un professionnel habilité
+    avec le fluide frigorigène et l'huile préconisés pour votre véhicule.
+    Contrôlez les pressions HP et BP pour vérifier le bon calibrage du
+    détendeur. - Vérifiez l'absence de fuite réfrigérante avec un détecteur
+    électronique et contrôlez l'efficacité de refroidissement de la
+    climatisation en roulant. ✅ Après remontage, vérifiez les spécifications
+    dans la fiche technique Détendeur de climatisation.
+  S5: >-
+    Erreurs frequentes avec le detendeur de climatisation : - Ne pas faire le
+    vide du circuit avant recharge apres remplacement — l'air et l'humidite
+    residuels provoquent des surpressions et degradent le compresseur- Oublier
+    de remplacer les joints toriques du detendeur — les anciens joints durcis
+    fuient immediatement avec le refrigerant sous pression- Ne pas verifier
+    l'etat de l'evaporateur lors du remplacement du detendeur — un evaporateur
+    bouche ou perce rend le nouveau detendeur inefficace- Confondre detendeur a
+    orifice fixe et detendeur thermostatique — les deux types ne sont pas
+    interchangeables et les references different selon le vehicule- Ignorer un
+    compresseur qui s'enclenche et se decouple en boucle — signe classique de
+    detendeur bloque ou de charge de refrigerant incorrecte- Ne pas respecter la
+    quantite exacte de refrigerant specifiee par le constructeur — une surcharge
+    endommage le compresseur, une sous-charge reduit le refroidissement
+  S6: >-
+    Le détendeur régule la pression du fluide frigorigène entre la haute
+    pression (côté condenseur) et la basse pression (côté évaporateur). Après
+    son remplacement, le circuit doit être mis sous vide et rechargé. Les
+    contrôles suivants valident le bon fonctionnement de la détente dans les
+    conditions réelles de conduite. - Vérifier l'étanchéité après recharge du
+    circuit : utiliser un détecteur de fuite électronique ou un traceur
+    fluorescent UV pour inspecter les raccords du détendeur, situés entre la
+    sortie du condenseur (côté liquide) et l'entrée de l'évaporateur. Les joints
+    toriques neufs doivent être légèrement enduits d'huile PAG avant montage. -
+    Contrôler les pressions basse et haute en régime stabilisé : après 10
+    minutes de fonctionnement à régime stabilisé, la pression basse côté
+    évaporateur doit être comprise entre 1,5 et 2,5 bar, et la haute pression
+    entre 14 et 20 bar à 20-25 °C ambiants. Une basse pression inférieure à 1
+    bar indique un détendeur trop fermé (givrage évaporateur probable). -
+    Contrôler l'absence de givrage sur l'évaporateur : un détendeur mal calibré
+    ou coincé en position fermée provoque un givrage rapide de l'évaporateur. Si
+    la soufflerie perd en débit d'air froid après 5 à 10 minutes de
+    fonctionnement, inspecter l'évaporateur depuis l'habitacle : un bloc de
+    glace signale un problème de détente. - Tester la stabilité de la pression
+    basse pendant un cycle complet : la pression basse ne doit pas osciller de
+    plus de ±0,5 bar en régime stabilisé. Des oscillations rapides (plus d'un
+    cycle par seconde) indiquent un détendeur qui chasse et signalent un
+    problème de calibration ou une pièce défectueuse. - Vérifier l'absence de
+    sifflement audible : un léger bruit de détente à l'entrée de l'évaporateur
+    est normal. Un sifflement aigu et persistant, notamment à l'enclenchement de
+    la climatisation, signale un débit de fluide excessif dû à un détendeur trop
+    ouvert. - Contrôler l'efficacité de refroidissement en cabine : fenêtres
+    fermées avec le ventilateur à puissance maximale, la température de
+    soufflage doit descendre sous 10 °C en 5 minutes à 20-25 °C ambiants. Un
+    détendeur correctement posé restaure les performances d'origine du circuit.
+  S7: >-
+    Quel est le prix d'un détendeur de climatisation ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le détendeur de
+    climatisation compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon détendeur de climatisation
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un détendeur de climatisation
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- detendre - reguler - abaisser la
+    pression
+  S8: >-
+    Comment choisir Détendeur de climatisation compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Détendeur de climatisation ?En cas de evaporateur
+    qui givre anormalement ou de degradation mesurable, Puis-je monter Détendeur
+    de climatisation sans verification atelierLe montage peut exiger controles
+    de couple, alignement et references.
+  META: >-
+    {"meta_title":"Détendeur clim : givrage, quand changer |
+    AutoMecanik","meta_description":"Évaporateur qui givre, refroidissement
+    irrégulier ou compresseur qui cycle en permanence ? Apprenez à diagnostiquer
+    un détendeur de climatisation défaillant et choisir la bonne
+    pièce.","robots":"index,follow","og_type":"article","schema_type":"HowTo"}
 ---
 
 # Détendeur de climatisation - Guide Diagnostic Complet

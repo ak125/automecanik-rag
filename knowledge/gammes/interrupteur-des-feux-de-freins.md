@@ -6,7 +6,8 @@ pg_id: 806
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Detecte l'appui sur la pedale de frein pour activer les feux stop
   must_be_true:
@@ -220,6 +222,193 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    reglage: 'course du contacteur critique — mal positionne = feux allumes en permanence ou jamais'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    L'interrupteur des feux de frein est placé derrière la pédale de freinqui
+    appuie directement sur son bouton poussoir. Il s'agit la plupart du temps
+    d'un bouton-poussoir, équipéd'un ressort de rappel en contact avec la pédale
+    de frein. L'interrupteur des feux de frein est nommé aussi contacteur de feu
+    destop parce qu'il ouvre ou ferme un circuit électrique. Dés que le
+    conducteur appuiesur la pédale de frein, l'interrupteur des feux de frein va
+    actionner le boutonpoussoir qui établit un contact entre deux voies
+    électriques, pour alimenter lecircuit des feux stop. Le bouton poussoir du
+    contacteur des feux de stop estamené par un ressort en position repos et
+    coupe le circuit des feux stop désque le conducteur relâche la pédale de
+    frein. Il existe trois typesd'interrupteur des feux de frein selon le type
+    de commande du contacteur : - Interrupteur des feux de frein mécaniques. -
+    Interrupteur des feux de frein hydrauliques. - Interrupteur des feux de
+    frein pneumatiques. En savoir plus : interrupteur des feux de freins —
+    définition et rôle mécanique 🚨 Bruit Interrupteur des feux de freins :
+    causes et diagnostic
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    feux stop qui restent allumes moteur eteint - feux stop qui ne s allument
+    plus du tout - regulateur de vitesse qui ne fonctionne plus - message d
+    erreur systeme esp au tableau de bord - batterie decharge feux stop restes -
+    clic audible absent quand on appuie sur la pedale - odeur de plastique brule
+    court-circuit - plus de 150 000 km sans verification - **Message d erreur
+    systeme esp au tableau de bord** - **Clic audible absent quand on appuie sur
+    la pedale**
+  S3: >-
+    L'interrupteur des feux de freins est une pièce électrique dont la
+    compatibilité dépend à la fois du connecteur, de la plage de tension de
+    commutation et de la géométrie de fixation sur la pédale. Un interrupteur
+    inadapté peut laisser les feux stop allumés en permanence ou les rendre
+    totalement inactifs, deux situations qui génèrent un risque routier immédiat
+    et peuvent déclencher des codes défaut sur les systèmes ESP et régulateur de
+    vitesse.- Référence constructeur ou équivalence OEM vérifiée —
+    L'interrupteur est souvent vendu sous plusieurs références croisées.
+    Identifiez la référence d'origine (ex. : 6Q0945511 sur Volkswagen, 4545.G9
+    sur Peugeot) et vérifiez la liste des équivalences de l'équipementier
+    (Hella, Bosch, Febi) pour confirmer la compatibilité.- Type de connecteur et
+    nombre de broches — Les interrupteurs se déclinent en version 2, 3 ou 4
+    broches selon que le circuit commande uniquement les feux stop ou pilote
+    également le régulateur de vitesse et le système ESP. Comptez les broches
+    sur l'ancien interrupteur avant de commander.- Tension de commutation : 12 V
+    DC — La quasi-totalité des véhicules de tourisme fonctionnent en 12 V, mais
+    vérifiez que l'interrupteur supporte une intensité suffisante pour le
+    circuit concerné (généralement 10 A minimum). Les interrupteurs sous-
+    dimensionnés brûlent rapidement leurs contacts internes.- Mécanisme
+    d'activation : pression ou dépression — Certains interrupteurs s'activent à
+    l'enfoncement de la pédale (contact normalement ouvert, NO), d'autres
+    s'activent au relâchement (contact normalement fermé, NC). L'inversion de
+    ces deux types rend les feux stop systématiquement allumés au repos.-
+    Réglage de la longueur d'activation (plongeur) — De nombreux interrupteurs
+    modernes disposent d'un plongeur réglable permettant d'ajuster la course
+    d'activation après montage. Vérifiez que la pièce choisie offre ce réglage
+    si le véhicule requiert une calibration après pose (nécessite souvent un
+    déplacement de 2 à 5 mm).- Compatibilité avec les systèmes électroniques
+    associés — Sur les véhicules récents, l'interrupteur des feux de freins est
+    intégré dans la stratégie du BSI / UCH. Une pièce sans la bonne résistance
+    interne peut déclencher des alertes résiduelles même après montage. Vérifiez
+    la compatibilité avec le calculateur via la documentation technique du
+    véhicule.- Au-delà de 150 000 km — L'interrupteur effectue plusieurs
+    milliers d'actionnements par an. Au-delà de 150 000 km sans contrôle, un
+    remplacement préventif est cohérent même sans symptôme déclaré, notamment
+    lors d'une révision complète du circuit de freinage.Pour aller plus loin :
+    consultez notre guide d'achat interrupteur des feux de freins — comparatif
+    marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Interrupteur des feux de
+    freins pour connaître les spécifications. - Débranchez la batterie. -
+    Localisez l'emplacement de l'interrupteur des feux de frein. - Débranchez le
+    connecteur électrique de l'interrupteur des feux de frein. - Tournez
+    l'interrupteur des feux de frein vers la gauche (à peut prêt 45degrés). -
+    Retirez l'interrupteur des feux de frein.
+  S4_REPOSE: >-
+    La repose de l'interrupteur des feux de frein est une opération courte mais
+    qui conditionne la sécurité de plusieurs systèmes en cascade : feux stop,
+    régulateur de vitesse, ESP et même le déverrouillage de la sélectrice
+    automatique sur certains modèles. Un réglage précis de la garde de pédale
+    est obligatoire après montage. - Vérifiez que le nouvel interrupteur des
+    feux de frein correspond à la référence constructeur du véhicule. Sur les
+    véhicules modernes, l'interrupteur pilote simultanément les feux stop, le
+    régulateur de vitesse et le calculateur ESP : une référence inadaptée peut
+    désactiver ces fonctions sans déclencher de voyant explicite. - Assurez-vous
+    que la pédale de frein est en position repos (non enfoncée) avant d'insérer
+    l'interrupteur. La plupart des interrupteurs se règlent automatiquement lors
+    du premier appui sur la pédale : introduire l'interrupteur pédale enfoncée
+    fausse ce réglage. - Engagez le corps de l'interrupteur dans son support de
+    pédalier en poussant le tire-poussoir contre la butée de la pédale de frein,
+    puis tournez l'interrupteur de 45 degrés dans le sens horaire pour le
+    verrouiller dans son logement. - Tirez doucement l'interrupteur vers
+    l'arrière pour vérifier qu'il est correctement verrouillé dans son support.
+    Un interrupteur mal encliqueté peut se déloger lors d'un freinage brusque et
+    rendre les feux stop inopérants. - Rebranchez le connecteur électrique
+    jusqu'au clic de verrouillage. Sur les modèles à deux connecteurs (signal
+    stop + signal ESP/régulateur), branchez les deux connecteurs sans les
+    inverser — un repérage couleur ou une forme différente vous guide. -
+    Rebranchez la batterie (borne + en premier), puis mettez le contact sans
+    démarrer le moteur. - Demandez à un assistant de surveiller les feux stop
+    arrière depuis l'extérieur du véhicule pendant que vous appuyez
+    progressivement sur la pédale de frein. Les feux doivent s'allumer dès le
+    début de la course de pédale, sans délai. - Vérifiez que les feux stop
+    s'éteignent immédiatement au relâchement de la pédale, sans rester allumés.
+    Un interrupteur trop avancé dans son logement maintient les feux allumés en
+    permanence et décharge la batterie à l'arrêt. - Si le véhicule est équipé
+    d'un régulateur de vitesse, testez-le sur route pour confirmer son
+    fonctionnement correct. Contrôlez également l'absence de message d'erreur
+    ESP ou ABS dans l'instrumentation de bord. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Interrupteur des feux de freins.
+  S5: >-
+    Erreurs frequentes avec l'interrupteur des feux de freins : - Ne pas
+    verifier le reglage de la course du contacteur apres montage — un contacteur
+    mal positionne laisse les feux de stop allumes en permanence ou ne les
+    allume plus du tout- Oublier de debrancher la batterie avant intervention —
+    le circuit des feux est sous tension permanente- Confondre un probleme
+    d'ampoule avec un defaut de contacteur — tester d'abord les ampoules et
+    fusibles avant de remplacer le contacteur- Ne pas verifier l'etat du
+    connecteur electrique — l'oxydation des cosses est la premiere cause de faux
+    contact sur ce composant- Ignorer des feux de stop qui restent allumes
+    moteur arrete — decharge la batterie et signale un contacteur colle ou mal
+    regle
+  S6: >-
+    L'interrupteur des feux de freins commande à la fois les feux stop, le
+    régulateur de vitesse, le système ESP et parfois la gestion de la boîte
+    automatique. Après le remplacement, les vérifications suivantes garantissent
+    que tous ces systèmes fonctionnent correctement avant de reprendre la route.
+    - Réglage de la position de l'interrupteur : l'interrupteur doit être
+    positionné de façon à s'activer dès le premier millimètre d'enfoncement de
+    la pédale de frein. Trop éloigné, les feux stop ne s'allument pas ; trop
+    proche, les feux restent allumés en permanence. Ajuster jusqu'à entendre le
+    clic caractéristique à chaque appui. - Test des feux stop à deux personnes :
+    demander à quelqu'un d'observer les feux arrière pendant que vous appuyez
+    sur la pédale de frein. Les deux feux stop doivent s'allumer simultanément
+    dès le premier contact sur la pédale, et s'éteindre immédiatement à son
+    relâchement. - Vérification avec le moteur coupé : contact mis (sans
+    démarrer), appuyer et relâcher la pédale plusieurs fois. Les feux doivent
+    s'allumer et s'éteindre sans délai. S'assurer qu'ils ne restent pas allumés
+    moteur coupé — risque de décharge de batterie (confirmé symptôme RAG). -
+    Test du régulateur de vitesse : sur route, activer le régulateur de vitesse
+    et vérifier qu'il se désactive immédiatement lors de l'appui sur la pédale
+    de frein. Si le régulateur reste actif lors du freinage, l'interrupteur est
+    mal réglé ou défectueux. - Contrôle du tableau de bord : vérifier l'absence
+    de message d'erreur ESP ou d'ABS au tableau de bord après démarrage. Ces
+    systèmes interrogent l'interrupteur de frein et un défaut de signal peut
+    déclencher un voyant (symptôme RAG confirmé). - Vérification du connecteur
+    électrique : inspecter que le connecteur est correctement verrouillé sur
+    l'interrupteur. Un connecteur mal clipsé provoque des contacts intermittents
+    et des dysfonctionnements aléatoires — particulièrement sensible aux
+    vibrations moteur. - Test sur 50 km de conduite variée : effectuer un trajet
+    incluant freinages doux, freinages d'urgence et arrêts complets. Vérifier
+    l'absence de comportement erratique du régulateur de vitesse et l'absence de
+    voyant ESP qui s'allumerait de façon intempestive.
+  S7: >-
+    Quel est le prix d'un interrupteur des feux de freins ?Le prix varie selon
+    le véhicule et la marque. Utilisez notre sélecteur pour trouver
+    l'interrupteur des feux de freins compatible avec votre véhicule et comparer
+    les tarifs des différents équipementiers.Comment savoir si l'interrupteur
+    des feux de freins est à changer ?Les signes d'usure les plus courants sont
+    détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
+    contrôler la pièce par un professionnel.Peut-on rouler avec un interrupteur
+    des feux de freins défaillant ?Cela dépend de la gravité du
+    dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule.
+    Consultez la section symptômes pour évaluer l'urgence du remplacement.-
+    detecter - signaler - activer
+  S8: >-
+    Comment choisir Interrupteur des feux de freins compatible avec
+    monRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Interrupteur des feux de freins ?En cas de feux
+    stop qui restent allumes moteur eteint ou de degradation Puis-je monter
+    Interrupteur des feux de freins sans verification atelierLe montage peut
+    exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Interrupteur feux de frein : stop bloqués ou HS ? |
+    AutoMecanik","meta_description":"Feux stop restés allumés ou qui ne
+    s'allument plus ? Ce guide explique quand changer l'interrupteur des feux de
+    freins et comment tester et remplacer la pièce soi-même en 10 min.","meta_ti
+    tle_length":58,"meta_description_length":157,"primary_intent":"diagnostic","
+    target_symptoms":["feux stop qui restent allumes moteur eteint","feux stop
+    qui ne s allument plus du tout","message d erreur systeme esp au tableau de
+    bord"],"category":"capteurs","severity_note":"symptome_securite_present"}
 ---
 
 # Interrupteur des feux de freins - Guide Diagnostic Complet

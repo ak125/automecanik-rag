@@ -6,7 +6,8 @@ pg_id: 1289
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer le niveau d'huile dans le carter et informer le conducteur via le tableau de bord
   must_be_true:
@@ -200,6 +202,145 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    type: 'flotteur magnetique ou thermique (mesure par conductivite de l''huile)'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le capteurde niveau d'huile est monté sur le carter d'huile du moteur, son
+    rôle est de mesurer encontinu le niveau d'huile moteur et d'informer le
+    conducteur lorsque le niveaud'huile passe au niveau bas de la quantité
+    prescrite. Le capteur de niveaud'huile envoie un signal au calculateur
+    moteur et ce dernier affiche les données surl'écran dans l'habitacle soit
+    par l'allumage d'un voyant souvent rouge ou par l'affichagedune phrase
+    niveau dhuile incorrecte. Un capteur de niveau d'huile doit être en bonne
+    état pour une lubrification optimale dumoteur. En savoir plus : capteur
+    niveau d'huile moteur — définition et rôle mécanique 🚨 Bruit Capteur niveau
+    d'huile moteur : causes et diagnostic
+  S2: >-
+    Le signe de défaillance d'un capteur de niveau d'huile est l'allumage du
+    témoin de niveau d'huile sur le tableau bord. Un capteur de niveau d'huile
+    usé doit être changé à temps pour assurer une lubrification optimale du
+    moteur. Diagnostic complet : identifier une panne de capteur niveau d'huile
+    moteur
+  S3: >-
+    Le capteur de niveau d'huile moteur surveille en continu la quantité d'huile
+    dans le carter et déclenche l'alerte tableau de bord avant que le moteur ne
+    tourne en sous-lubrification. Ce n'est pas un pressostat (qui mesure la
+    pression) — confondre les deux au moment de la commande aboutit à un montage
+    non fonctionnel et à une alerte permanente ou, au contraire, silencieuse en
+    cas de vraie pénurie d'huile. - Ne pas confondre avec le pressostat d'huile
+    : le capteur de niveau est positionné latéralement sur le carter bas et
+    détecte la présence ou l'absence d'huile via un flotteur ou une résistance
+    thermique. Le pressostat mesure la pression en sortie de pompe, en haut de
+    bloc. Vérifier l'emplacement de montage sur votre véhicule avant toute
+    commande. - Technologie du capteur : flotteur magnétique ou résistance
+    thermique : les capteurs à flotteur magnétique (type reed switch) ouvrent ou
+    ferment un contact selon la hauteur d'huile. Les capteurs à résistance
+    thermique détectent l'huile par différence de refroidissement. Les deux
+    envoient un signal binaire (niveau ok / niveau bas) mais sur des plages de
+    résistance différentes — ils ne sont pas interchangeables. - Référence par
+    marque, modèle, motorisation et année : le positionnement du capteur sur le
+    carter (filetage M14x1,5 ou M16x1,5 typiquement) et la longueur de la sonde
+    varient selon la capacité d'huile du moteur. Un capteur trop court dans un
+    carter plus profond ne détectera pas la vraie valeur minimale. -
+    Compatibilité avec le tableau de bord et l'ECU : certains véhicules
+    post-2005 utilisent des capteurs analogiques multi-niveaux qui envoient un
+    signal de résistance variable (ex. : 0 Ω à 180 Ω) permettant un affichage
+    progressif sur la jauge électronique. Un capteur binaire en remplacement
+    n'affichera que plein ou vide, sans intermédiaire. - Joint d'étanchéité
+    inclus ou à commander séparément : le joint torique de montage doit être
+    remplacé en même temps que le capteur pour éviter toute fuite d'huile au
+    niveau du filetage. Certains capteurs livrent le joint ; vérifier la notice
+    avant montage. - Inspection du carter d'huile associé : si le capteur est
+    tombé en panne suite à un choc sous caisse ou une contamination, vérifier
+    l'état du carter lui-même (bosselage, fissure). Un carter endommagé empêche
+    le bon positionnement du capteur et doit être remplacé simultanément. Pour
+    aller plus loin : consultez notre guide d'achat capteur niveau d'huile
+    moteur — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Capteur niveau d'huile
+    moteur pour connaître les spécifications. - Débranchez la batterie. - Levez
+    et calez le véhicule. - Vidangez l'huile moteur. - Localisez le capteur de
+    niveau d'huile. - Débranchez le connecteur du capteur de niveau d'huile. -
+    Desserrez les fixations du capteur de niveau d'huile. - Retirez le capteur
+    de niveau d'huile du carter d'huile moteur.
+  S4_REPOSE: >-
+    Avant de remettre en place le capteur de niveau d'huile, vérifiez l'état du
+    carter moteur et des joints adjacents. Un capteur neuf mal installé ou sans
+    vidange préalable peut provoquer une fausse alerte dès le premier démarrage.
+    Suivez les étapes dans l'ordre pour garantir une mesure fiable. - Vérifiez
+    que le capteur de niveau d'huile neuf est identique à celui démonté :
+    longueur de sonde, type de connecteur, filetage. Une référence incorrecte
+    donnera des lectures erronées. - Procédez à une vidange complète de l'huile
+    moteur usagée et remplacez le filtre à huile en profitant de l'accès au
+    carter. Ne remontez jamais le capteur sur de l'huile dégradée. - Nettoyez
+    soigneusement le logement fileté du capteur dans le carter d'huile. Éliminez
+    tout résidu d'huile ancienne et de dépôts autour du filetage pour assurer
+    l'étanchéité. - Introduisez le capteur de niveau d'huile neuf à la main dans
+    son logement. Ne forcez pas : un filetage croisé sur un carter aluminium
+    entraîne un remplacement du carter. - Serrez les fixations du capteur de
+    niveau d'huile au couple prescrit par le constructeur — typiquement entre 8
+    et 12 N·m selon le véhicule. Ne serrez pas à l'excès. - Branchez fermement
+    le connecteur électrique du capteur de niveau d'huile. Le clip de
+    verrouillage doit s'enclencher distinctement. Un connecteur mal clipsé
+    génère le même voyant qu'un capteur HS. - Remplissez le moteur avec l'huile
+    neuve conforme aux préconisations constructeur (grade et norme). Vérifiez le
+    niveau à la jauge manuelle — il doit se situer entre MIN et MAX. -
+    Rebranchez la batterie et démarrez le moteur. Laissez tourner 2 minutes au
+    ralenti, puis coupez le moteur et attendez 5 minutes avant de revérifier le
+    niveau à la jauge. - Effectuez un effacement des codes défaut avec une
+    valise de diagnostic OBD pour confirmer que le voyant niveau d'huile ne se
+    rallume pas. Vérifiez l'absence de fuite autour du capteur et du carter.
+  S5: >-
+    - ❌ "homologué CT - ❌ "sécurité garantie - ❌ "zéro panne - ❌ "garanti à vie
+    - ❌ "corrige la panne
+  S6: >-
+    Après le remplacement de votre capteur de niveau d'huile moteur, effectuez
+    ces vérifications dans l'ordre. - Vérifiez le niveau d'huile à la jauge
+    manuelle avant de remettre le contact : il doit se situer entre les repères
+    MIN et MAX, idéalement aux deux tiers supérieurs. - Mettez le contact sans
+    démarrer et attendez l'allumage complet du tableau de bord : le voyant
+    niveau d'huile doit s'éteindre normalement en moins de 3 secondes. -
+    Démarrez le moteur et laissez-le tourner 2 minutes au ralenti : confirmez
+    que l'alerte niveau huile ne s'affiche pas alors que la jauge indique un
+    niveau correct. - Contrôlez l'étanchéité autour du bossage de montage du
+    capteur dans le carter : aucune trace de suintement d'huile autour du joint
+    ou du filetage. - Vérifiez le connecteur électrique du capteur :
+    verrouillage en place, câblage sans contrainte mécanique. - Effectuez un
+    trajet de 10 minutes et relisez les données en temps réel via OBD pour
+    confirmer la cohérence entre le signal capteur et le niveau réel à la jauge.
+    Consultez également la page références capteur niveau d'huile moteur pour
+    identifier la pièce compatible avec votre véhicule.
+  S7: >-
+    Quel est le prix d'un capteur niveau d'huile moteur ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le capteur
+    niveau d'huile moteur compatible avec votre véhicule et comparer les tarifs
+    des différents équipementiers.Comment savoir si mon capteur niveau d'huile
+    moteur est à changer ?Les signes d'usure les plus courants sont détaillés
+    dans la section diagnostic ci-dessus. En cas de doute, faites contrôler la
+    pièce par un professionnel.Peut-on rouler avec un capteur niveau d'huile
+    moteur défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle
+    de la pièce dans la sécurité du véhicule. Consultez la section symptômes
+    pour évaluer l'urgence du remplacement.- capteur pression et temperature d
+    huile - carter d huile - pompe a huile - pressostat d huile
+  S8: >-
+    Comment choisir Capteur niveau d'huile moteur compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Capteur niveau d'huile moteur ?En cas de voyant
+    niveau d huile allume en permanence ou de degradation Puis-je monter Capteur
+    niveau d'huile moteur sans verification atelierLe montage peut exiger
+    controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Capteur niveau d'huile moteur : voyant et
+    remplacement","meta_description":"Voyant niveau d'huile allumé malgré un
+    niveau correct à la jauge ? Diagnostiquez le capteur de niveau d'huile et
+    remplacez-le avant un risque moteur."}
 ---
 
 # Capteur niveau d'huile moteur - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 2669
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Souffler l'air dans l'habitacle pour le chauffage ou la climatisation. NE REFROIDIT PAS LE MOTEUR!
   must_be_true:
@@ -214,6 +216,91 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Pulseur a cage d'ecureuil
+    description: Moteur electrique + turbine centrifuge, souffle l'air dans l'habitacle
+    era: standard
+  technical_notes:
+    test_avant_remplacement: 'tester fusible + resistance de pulseur (5-15 EUR) avant de remplacer le moteur (50-200 EUR)'
+    nettoyage_boitier: 'retirer feuilles et debris du boitier de ventilation avant montage du neuf'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le pulseur d''air d''habitacle (ou ventilateur d''habitacle) est le moteur
+    électrique qui souffle l''air dans l''habitacle pour le chauffage, la
+    ventilation et la climatisation. Il NE refroidit PAS le moteur — c''est le
+    ventilateur de refroidissement qui remplit ce rôle. Le pulseur aspire l''air
+    extérieur (ou recirculé) à travers le filtre d''habitacle, puis le propulse
+    à travers le radiateur de chauffage ou l''évaporateur de climatisation.
+    Niveau de difficulté : Facile à intermédiaire — le pulseur est généralement
+    accessible derrière la boîte à gants ou sous le tableau de bord côté
+    passager. Comptez 30 min à 1h30. Outils : tournevis, douilles (fixation),
+    outil de démontage clips plastique. Pièces liées : résistance de pulseur
+    (régule les vitesses de ventilation), filtre d''habitacle, commande de
+    ventilation.
+  S2: >-
+    Pas de périodicité fixe. Durée de vie variable — dépend de l''utilisation de
+    la ventilation et de l''état du filtre d''habitacle. Symptômes de
+    défaillance : - Aucune ventilation quelle que soit la vitesse sélectionnée —
+    pulseur HS (moteur grillé ou connecteur coupé)- Seulement certaines vitesses
+    de ventilation fonctionnent — résistance de pulseur grillée (pas le pulseur
+    lui-même)- Bruit de grincement ou frottement à la mise en marche — roulement
+    du moteur usé ou débris dans la turbine- Ventilation qui démarre puis
+    s''arrête de façon aléatoire — moteur thermiquement fatigué, il coupe en
+    surchauffe et reprend en refroidissant- Odeur de brûlé à l''enclenchement du
+    chauffage — moteur électrique en court-circuit interne- Fusible pulseur qui
+    grille — le moteur consomme trop de courant (roulement grippé)
+  S3: >-
+    Pour choisir le bon pulseur d''air : - Avec ou sans cage d''écureuil :
+    certains pulseurs sont vendus avec la turbine intégrée, d''autres sans —
+    vérifier si votre véhicule nécessite l''ensemble ou le moteur seul- Tension
+    et puissance : 12V sur la majorité des véhicules, vérifier l''ampérage (5 à
+    30A selon le modèle)- Sens de rotation : horaire ou anti-horaire selon le
+    montage dans le boîtier de ventilation — un pulseur inversé souffle vers
+    l''extérieur au lieu de vers l''habitacle- Marques : Valeo, Behr/Mahle,
+    Denso (premium OES), NRF, Nissens, Hella (standard) — les adaptables bas de
+    gamme ont des roulements moins durables- Budget : 50 à 200 EUR — tester la
+    résistance de pulseur (5-15 EUR) avant de remplacer le pulseur complet
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Déposer la boîte à gants ou le cache sous le
+    tableau de bord côté passager (clips + vis). 3. Localiser le pulseur dans le
+    boîtier de ventilation (cylindre noir avec connecteur électrique). 4.
+    Débrancher le connecteur électrique du pulseur. 5. Dévisser les vis de
+    fixation du pulseur sur le boîtier (2 à 3 vis ou clips quart de tour). 6.
+    Extraire le pulseur en le faisant pivoter — la turbine (cage d''écureuil)
+    est plus large que l''ouverture, il faut trouver l''angle de sortie. 7.
+    Nettoyer le logement dans le boîtier de ventilation (feuilles, débris) avant
+    montage du neuf.
+  S5: >-
+    Erreurs fréquentes avec le pulseur d''air : - Remplacer le pulseur alors que
+    seule la résistance de pulseur est en cause — si certaines vitesses
+    fonctionnent et d''autres non, c''est la résistance (5-15 EUR) pas le moteur
+    (50-200 EUR). Tester d''abord- Ne pas vérifier le fusible et le relais avant
+    de tout démonter — un fusible grillé est la cause la plus fréquente et la
+    moins coûteuse- Oublier de remplacer le filtre d''habitacle en même temps —
+    un filtre colmaté fait forcer le pulseur neuf et réduit sa durée de vie-
+    Forcer l''extraction du pulseur sans trouver l''angle de sortie — la turbine
+    (cage d''écureuil) est fragile, les pales cassent si on force- Ne pas
+    nettoyer le boîtier de ventilation des feuilles et débris — les débris
+    aspirés par le pulseur neuf bloquent la turbine et grillent le moteur-
+    Confondre pulseur d''air d''habitacle et ventilateur de refroidissement
+    moteur — les deux sont des moteurs avec hélice mais n''ont rien en commun
+  S6: >-
+    Après le remplacement du pulseur : - Test toutes vitesses : vérifier que
+    toutes les vitesses de ventilation fonctionnent (1 à 4 ou auto) — si la
+    vitesse max fonctionne mais pas les intermédiaires, la résistance est à
+    remplacer aussi- Débit d''air : en vitesse max, le flux d''air doit être
+    puissant et régulier aux bouches de ventilation- Bruit : aucun grincement ni
+    vibration — un bruit au premier démarrage indique un mauvais positionnement
+    de la turbine dans le boîtier- Filtre d''habitacle : profiter de l''accès
+    pour installer un filtre neuf- Étanchéité boîtier : vérifier que le joint
+    d''étanchéité du pulseur est correctement positionné — un joint mal placé
+    laisse passer de l''air non filtré
 ---
 
 # Pulseur d'air d'habitacle - Guide Diagnostic Complet

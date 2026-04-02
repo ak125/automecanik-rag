@@ -6,7 +6,8 @@ pg_id: 243
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Chauffer la chambre de combustion a froid pour faciliter le demarrage diesel - N'agit qu'au demarrage
   must_be_true:
@@ -206,6 +208,176 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Bougie a tige metallique
+    description: Chauffage par resistance metallique, temps d'atteinte 800-1000 degC en 4-10s
+    era: diesel standard
+  - type: Bougie ceramique (NHTC)
+    description: Chauffage ultra-rapide <2s, temperature >1000 degC, post-chauffage possible
+    era: diesel Euro 5+
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La bougie de préchauffage fonctionne comme une résistance,
+    l'énergieélectrique est conduite par un filament qui s'échauffe et devient
+    incandescentpuisqu'il peut dépasser les 1000° C. La fonction principale des
+    bougies de préchauffage est dedélivrer une énergie supplémentaire pour le
+    démarrage. Avant le démarrage du moteur, la bougie de préchauffage estmise
+    sous tension et le crayon à incandescence de la bougie est porté à
+    unetempérature supérieure à 800° C. Cette chaleur améliore de manière
+    considérablela capacité de démarrage à froid du moteur. Le dégagement de
+    chaleur de labougie de préchauffage optimise par ailleurs la combustion,
+    réduisant lesfumées et autres émissions polluantes. En savoir plus : bougie
+    de préchauffage — définition et rôle mécanique 🚨 Bruit Bougie de
+    préchauffage : causes et diagnostic
+  S2: >-
+    - Démarrages difficiles dumoteur surtout à froid. - Le moteur tourne mais
+    nedémarre pas. - Après le démarrage, fortdégagement de fumée. -
+    Surconsommation decarburant. Diagnostic complet : identifier une panne de
+    bougie de préchauffage
+  S3: >-
+    La bougie de préchauffage chauffe la chambre de combustion du moteur diesel
+    avant le démarrage à froid, permettant l'auto-inflammation du gazole sans
+    apport d'étincelle. Sur les moteurs diesel modernes à injection directe, la
+    température de préchauffage atteint 850 à 1 000°C en moins de 2 secondes
+    (bougies à régulation rapide). Un choix incorrect de bougie génère soit un
+    démarrage difficile à froid, soit une casse de bougie dans la culasse —
+    réparation particulièrement coûteuse. - Type de bougie : céramique (SiN) ou
+    métal (acier inox) — Les bougies céramique modernes (ex : Bosch Dura-Speed,
+    NGK Y-Type) atteignent 1 000°C en 2 secondes contre 6 à 8 secondes pour les
+    bougies métal. Elles sont indispensables sur les moteurs Euro 5 et Euro 6 à
+    démarrage quasi-instantané. Ne pas substituer une bougie céramique par une
+    bougie métal : le temps de chauffe du boîtier est configuré pour le type
+    d'origine. - Tension nominale de fonctionnement : 11 V ou 5 V (bougies à
+    basse tension) — Certains constructeurs récents (PSA, Renault 1.5 dCi)
+    utilisent des bougies 5 V pour limiter la consommation électrique au
+    démarrage. Ces bougies ne sont pas interchangeables avec les bougies 11 V
+    standards : une bougie 11 V alimentée en 5 V ne chauffe pas suffisamment ;
+    une bougie 5 V alimentée en 11 V se détruit immédiatement. - Diamètre et pas
+    de filetage : M8 x 1 ou M10 x 1 — Le filetage M8x1 équipe la majorité des
+    moteurs diesel modernes compacts (1.3 à 2.0 L). Le M10x1 se retrouve sur les
+    anciens moteurs et sur certains utilitaires. Un mauvais filetage abîme la
+    culasse ; sur un moteur diesel, le retaraudage d'un puits de bougie est une
+    opération délicate et coûteuse. - Longueur hors-tout et longueur de filetage
+    (reach) — La longueur de filetage varie de 8 à 26 mm selon la profondeur du
+    préchambre. Une bougie trop courte ne précauffe pas la zone d'injection ;
+    une bougie trop longue heurte le piston. Ces deux erreurs provoquent une
+    casse de bougie ou une destruction du piston. - Résistance à froid (Ω) —
+    vérification avant achat sur moteur à préchambre — Sur un moteur à chambre
+    de précombustion, la résistance d'une bougie neuve est mesurable : entre 0,5
+    et 1,5 Ω selon le type. Une mesure supérieure à 3 Ω indique une bougie
+    ouverte (filament grillé). Cette vérification permet de s'assurer qu'une
+    bougie de remplacement issue d'un lot est conforme. - Intervalle de
+    remplacement : tous les 60 000 à 100 000 km en préventif — La durée de vie
+    recommandée est de 60 000 km pour les bougies métal standard, jusqu'à 100
+    000 km pour les bougies céramique de qualité. Au-delà, le filament s'oxyde
+    et la montée en température ralentit, ce qui soumet le boîtier de
+    préchauffage à des cycles de chauffe prolongés qui l'usent prématurément. -
+    Marque et homologation constructeur — vérifier la liste d'applications —
+    NGK, Bosch, Denso et BERU sont les fabricants de référence avec des listes
+    d'applications validées par les constructeurs automobiles. Les bougies
+    génériques sans liste d'application constructeur présentent des risques de
+    mauvais positionnement du filament dans la chambre. Pour aller plus loin :
+    consultez notre guide d'achat bougie de préchauffage — comparatif marques,
+    critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Bougie de préchauffage
+    pour connaître les spécifications. - Débranchez la batterie. - Débranchez
+    les connecteurs des bougies depréchauffage. - Mettre un anti-dégrippant si
+    les bougiessont grippées (faire attention que le liquide ne coule pas dans
+    la culasseaprès l'extraction des bougies). - Dévissez les bougies de
+    préchauffage.
+  S4_REPOSE: >-
+    Le remontage des bougies de préchauffage sur un moteur diesel exige du soin
+    : le filetage dans la culasse, souvent fragilisé par la chaleur et la
+    corrosion, supporte mal les erreurs de serrage. Si le moteur était chaud
+    lors du démontage, attendez qu'il soit redescendu à température ambiante —
+    le métal dilaté rend le serrage imprecis. - Vérifiez que les bougies de
+    préchauffage neuves sont identiques aux bougies déposées : type (crayon
+    standard, céramique ou autorégulée), diamètre du filetage et longueur. Ne
+    mélangez pas des types différents sur le même moteur. - Contrôlez l'état du
+    boîtier de préchauffage et des fils d'alimentation électrique des bougies.
+    Un boîtier défaillant grillera les nouvelles bougies rapidement. - Appliquez
+    un léger film de graisse anti-grippage à haute température sur le filetage
+    des bougies neuves (sans en mettre sur la tige chauffante ni sur la zone de
+    contact électrique). - Vissez chaque bougie de préchauffage à la main
+    jusqu'à la butée, sans forcer. Si vous sentez une résistance avant la butée,
+    arrêtez — le filetage dans la culasse est peut-être endommagé. - Serrez les
+    bougies au couple prescrit à l'aide d'une clé dynamométrique : en général
+    entre 8 et 15 Nm selon le type de bougie et le constructeur (valeur exacte
+    dans la fiche technique). Un sur-serrage fissure la céramique ou endommage
+    le filetage culasse ; un sous-serrage provoque des fuites de compression. -
+    Rebranchez les connecteurs électriques de chaque bougie en vous assurant du
+    bon verrouillage. Vérifiez que les fils ne sont pas sous tension mécanique.
+    - Rebranchez la batterie. - Mettez le contact sans démarrer et observez le
+    comportement du voyant de préchauffage : il doit s'allumer brièvement puis
+    s'éteindre. S'il reste allumé ou clignote, vérifiez le connecteur ou le
+    boîtier de préchauffage. - Démarrez le moteur et contrôlez l'absence de raté
+    à froid, de fumée blanche persistante et d'odeur de gazole non brûlé. -
+    Effacez les codes défaut OBD mémorisés avant l'intervention à l'aide d'un
+    outil de diagnostic.
+  S5: >-
+    Erreurs frequentes avec les bougies de prechauffage : - Forcer le devissage
+    d'une bougie grippee — la bougie casse dans la culasse et l'extraction
+    necessite un outillage specifique couteux. Utiliser du debloquant et un
+    couple progressif- Ne pas remplacer les bougies par jeu complet — si une
+    bougie est defaillante, les autres ont le meme age et vont lacher
+    rapidement- Oublier de debrancher la batterie avant intervention — les
+    bougies sont alimentees en 12V, risque de court-circuit- Confondre bougie de
+    prechauffage et bougie d'allumage — les bougies de prechauffage sont
+    exclusivement pour les moteurs diesel- Ignorer un demarrage difficile a
+    froid avec fumee blanche — symptome classique de bougies de prechauffage
+    usees, ne pas accuser le demarreur- Ne pas respecter le couple de serrage au
+    remontage (10 a 15 Nm selon constructeur) — une bougie trop serree se
+    deforme et casse
+  S6: >-
+    Après le remplacement de vos bougies de préchauffage, effectuez ces
+    vérifications dans l'ordre. - Vérifier le couple de serrage de chaque bougie
+    selon la fiche technique constructeur : un serrage insuffisant provoque une
+    fuite de compression, un serrage excessif casse le filetage dans la culasse
+    - Contrôler que le voyant de préchauffage s'allume au démarrage puis
+    s'éteint en moins de 15 secondes à température ambiante - Tester le
+    démarrage à froid dès que la température descend sous 5°C : aucune fumée
+    blanche persistant au-delà de 2 minutes n'est acceptable - S'assurer de
+    l'absence d'odeur de gazole non brûlé à l'échappement moteur en température
+    - Effectuer une lecture de codes à la valise OBD après 50 km : vérifier
+    l'absence de tout code lié au préchauffage (P0380, P0381, P0670 à P0679) -
+    Pour un remplacement à plus de 100 000 km, contrôler simultanément le
+    boîtier de préchauffage et les connecteurs des bougies Retrouvez les
+    spécifications techniques sur la fiche référence bougie de préchauffage.
+  S7: >-
+    Quel est le prix d'un bougie de préchauffage ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le bougie de
+    préchauffage compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon bougie de préchauffage est à
+    changer ?Les signes d'usure les plus courants sont détaillés dans la section
+    diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un bougie de préchauffage défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- chauffer - prechauffer - rechauffer
+  S8: >-
+    Comment choisir Bougie de préchauffage compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Bougie de préchauffage ?En cas de demarrage long
+    ou difficile par temps froid ou de degradation Puis-je monter Bougie de
+    préchauffage sans verification atelier ?Le montage peut exiger controles de
+    couple, alignement et references.
+  META: >-
+    {"meta_title":"Bougie de préchauffage : quand changer ? |
+    AutoMecanik","meta_description":"Démarrage long à froid, fumée blanche,
+    voyant allumé : identifiez une bougie de préchauffage HS et remplacez-la au
+    bon moment sur votre diesel.","og_title":"Bougie de préchauffage diesel :
+    symptômes et remplacement","og_description":"Démarrage difficile par temps
+    froid ? 6 signes d'une bougie HS : voyant, fumée blanche, ratés à froid.
+    Guide pour choisir la bonne
+    pièce.","sources":[{"type":"rag","ref":"gammes/bougie-de-
+    prechauffage.md","field":"diagnostic.symptoms,domain.role,rendering.faq"}]}
 ---
 
 # Bougie de préchauffage - Guide Diagnostic Complet

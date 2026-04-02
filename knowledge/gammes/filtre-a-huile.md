@@ -6,7 +6,7 @@ pg_id: 7
 source_type: gamme
 doc_family: catalog
 truth_level: L3
-updated_at: '2026-03-25'
+updated_at: '2026-03-29'
 verification_status: verified
 intent_targets:
 - diagnostic
@@ -15,9 +15,10 @@ intent_targets:
 business_priority: medium
 completeness_profile: filtration
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Filtre l'huile moteur pour retenir les impuretés métalliques et résidus de combustion, protégeant pistons, bielles
     et arbre à cames
@@ -347,6 +348,166 @@ installation:
   - cle a filtre (huile)
   - chiffon
   prerequisite: Moteur froid pour filtre a huile
+phase5_enrichment:
+  _source: fram.com + gpa26.com + mann-filter.com + wixfilters.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 20
+  types_variants:
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_20_micron: '20 micron'
+    val_31_a: '31 a'
+    val_4_a: '4 a'
+    val_51_a: '51 a'
+    val_59_a: '59 a'
+    val_70_a: '70 a'
+    val_87_a: '87 a'
+    val_99__: '99 %'
+  materials:
+  - materiau: 'silicone'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Filtre l'huile moteur pour retenir les impuretés métalliques et résidus de
+    combustion, protégeant pistons, bielles et arbre à cames. ## Trouvez le type
+    de filtre à huile adéquat Les véhicules, les conditions de conduite et les
+    applications spécifiques nécessitent des solutions sur... Pièces liées :
+    huile moteur, joint de vidange carter, filtre a air, filtre a carburant,
+    filtre d habitacle, bouchon de vidange . Le filtre retient les particules
+    metalliques issues de l usure des pistons et des bielles Sans filtration
+    efficace, les impuretes abrasives circulent dans le circuit et accelerent l
+    usure du moteur Fonctionne en serie avec la pompe a huile pour maintenir une
+    pression constante dans les galeries
+  S2: >-
+    Les filtre a huile sont à remplacer tous les 10 000 à 30 000 km environ.
+    Essence classique 10 000-15 000 km (ou 1 an). Diesel moderne 15 000-20 000
+    km. Longlife (VW/BMW) jusqu'à 30 000 km. Se change à chaque vidange.
+    Symptômes d'usure : - Voyant huile qui s allume ou clignote - Bruit de
+    claquement ou de cliquetis au ralenti - Huile tres noire avant echeance
+    vidange - Baisse du niveau d huile plus rapide - Odeur d huile brulee dans l
+    habitacle
+  S2_DIAG: >-
+    SymptômeCause probableActionVoyant huile qui s allume ou clignoteFiltre
+    colmate par accumulation d impuretes metalliques et residus de
+    combustionVoyant huile qui s allume ou clignote ?Bruit de claquement ou de
+    cliquetis au ralentiIntervalle de vidange depasse ou huile de mauvaise
+    viscositeBruit de claquement ou de cliquetis au ralenti ?Huile tres noire
+    avant echeance vidangeJoint torique defaillant ou ancien joint reste colle
+    causant une fuiteObserver : huile tres noire avant echeance vidange ?Baisse
+    du niveau d huile plus rapideClapet by-pass bloque en position ouverte
+    laissant passer l huile non filtreeObserver : baisse du niveau d huile plus
+    rapide ?Odeur d huile brulee dans l habitacleFiltre colmate par accumulation
+    d impuretes metalliques et residus de combustionVoyant huile qui s allume ou
+    clignote ?
+  S3: >-
+    Pour choisir les bons filtre a huile pour votre véhicule : - Marque de votre
+    vehicule - Modele de votre vehicule - Motorisation de votre vehicule - Type
+    de filtre monte (vissant spin-on ou cartouche element filtrant) - Reference
+    constructeur OEM (si disponible) - Diametre du filetage et joint torique -
+    Pression differentielle supportee (bar) - Presence clapet anti-retour
+    (obligatoire moteurs modernes) - Presence clapet by-pass (protection moteur
+    si colmatage) - Compatibilite huile longlife (VW 502.00, BMW LL-01)
+  S4_DEPOSE: >-
+    1. # Filtres à huile pour voitures et cartouches de filtre à huile –
+    Automobile – WIX Filters - FILTRES À HUILE The engine’s combustion chamber
+    must remain clean, and therefore it also must be protected by a filter which
+    prevents pollutants reaching the oil. The oil filter reduces the wear of
+    close... 2. ### Gaskets and Seals The primary function of a gasket is to
+    create a tight seal between the filter and the engine block. This prevents
+    engine oil from leaking out, which could starve the engine of lubrication
+    and cause damage. While gaskets are designed to last for the life of the oil
+    filter, they... 3. ## Différentes opérations Ces deux structures différentes
+    entraînent également des méthodes d’installation différentes. Pour installer
+    le filtre à immersion, il faut d’abord appliquer de l’huile neuve sur le
+    joint d’étanchéité. Ensuite, le filtre est vissé dans la base, en veillant à
+    le serrer de... 4. ## Intervalles corrigés Pour garantir son efficacité, le
+    filtre à huile du moteur doit être remplacé régulièrement, aux intervalles
+    spécifiés par les constructeurs automobiles. La plupart d’entre eux
+    recommandent cette intervention tous les 15 000 kilomètres pour les moteurs
+    à essence et tous les...
+  S4_REPOSE: >-
+    - Vérifiez que le filtre à huile neuf est identique à celui démonté. -
+    Remplacez les joints d'étanchéité du filtre à huile. - Lubrifiez les joints
+    neufs avec de l'huile avant de les remontés. - Lubrifiez le filtre à huile.
+    - Mettre en place le filtre à huile. - Dans le cas d'un filtre à huile
+    vissé, serrez ce dernier au coupleprescrit. - Dans le cas d'un élément
+    filtrant, mettre le filtre à huile dans sonboîtier et serrez le couvercle au
+    couple prescrit. - Ouvrir le bouchon du remplissage d'huile moteur. -
+    Remplissez l'huile avec la quantité préconisée par le constructeur. -
+    Contrôlez le niveau d'huile avec la jauge d'huile. - Rajoutez de l'huile si
+    nécessaire. - Recontrôler le niveau d'huile. - Démarrez le moteur et le
+    laissez tourner un peu au ralentie. - Arrêtez le moteur et le laissez
+    refroidir. - Contrôlez de nouveau le niveau d'huile. ✅ Après remontage,
+    vérifiez les spécifications dans la fiche technique Filtre à huile.
+  S5: >-
+    Erreurs frequentes avec le filtre a huile : - Ne pas remplacer le filtre a
+    chaque vidange — un filtre sature laisse passer les impuretes dans le moteur
+    et accelere l'usure des pieces internes- Trop serrer le filtre au montage —
+    le joint ecrase ne se demontera plus a la prochaine vidange, et risque de
+    fuir- Oublier de huiler le joint torique du filtre neuf avant montage — le
+    joint seche colle au bloc moteur et fuit- Installer un filtre de mauvaise
+    reference — un filtre trop petit ou avec un clapet anti-retour inadequat
+    provoque un manque de pression d'huile au demarrage- Ne pas verifier que
+    l'ancien joint est bien parti avec le vieux filtre — un double joint
+    provoque une fuite massive d'huile- Faire tourner le moteur sans huile apres
+    vidange pour "evacuer l'ancienne" — destruction immediate des paliers et
+    coussinets
+  S6: >-
+    - Niveau d huile à la jauge : vérifier le niveau 5 minutes après le premier
+    démarrage — l huile a rempli le filtre neuf et le niveau a baissé. Compléter
+    si nécessaire entre les repères MIN et MAX. - Étanchéité du filtre :
+    inspecter sous le filtre et sous la vis de vidange après 2 minutes de
+    ralenti — aucune goutte ne doit apparaître. Si suintement, resserrer d un
+    quart de tour maximum. - Étanchéité du joint torique : vérifier qu aucune
+    trace d huile ne coule le long du bloc moteur au niveau du plan de joint.
+    Cause fréquente : ancien joint resté collé sous le filtre neuf. - Voyant
+    huile éteint : après démarrage moteur, le voyant huile doit s éteindre en
+    moins de 5 secondes. S il reste allumé, couper le moteur immédiatement et
+    vérifier le serrage du filtre et le niveau. - Essai moteur au ralenti :
+    laisser tourner 2-3 minutes au ralenti et écouter — aucun cliquetis ni bruit
+    anormal ne doit apparaître. Un cliquetis indiquerait un problème de pression
+    d huile. - Remise à zéro indicateur maintenance : sur véhicules équipés,
+    réinitialiser le compteur de vidange selon la procédure constructeur — sinon
+    le voyant reste allumé jusqu à la prochaine intervention. - Essai route
+    progressif : effectuer un trajet de 5-10 km en montant progressivement en
+    régime. Revérifier le niveau d huile à froid et inspecter le filtre une
+    dernière fois.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    - huile moteur - joint de vidange carter - filtre a air - filtre a carburant
+    - filtre d habitacle - bouchon de vidange
+  S8: >-
+    Filtre à huile OE ou adaptable : que choisir ?Les filtres OES (Bosch) ou
+    adaptables (Mann, Mahle) offrent une qualité équivalente à l'OE pour moins
+    cher. Vérifiez le filetage et le diamètre du joint. Comment savoir si mon
+    filtre à huile est bouché ?Voyant huile allumé, bruit de cliquetis moteur,
+    huile noire et épaisse à la jauge, consommation d'huile excessive. Tous les
+    combien changer le filtre à huile ?À chaque vidange, soit entre 15 000 et 30
+    000 km ou 1 an. Ne jamais réutiliser un ancien filtre même récent. Peut-on
+    changer le filtre à huile soi-même ?Oui, opération simple lors de la
+    vidange. Clé à filtre nécessaire. Graisser le joint neuf avec de l'huile.
+    Serrage à la main + 3/4 de tour. Quelle erreur éviter avec le filtre à huile
+    ?Ne pas trop serrer (écrase le joint). Ne pas oublier de retirer l'ancien
+    joint collé sur le bloc. Toujours pré-remplir le filtre si possible. Peut-on
+    changer le filtre à huile sans faire la vidange ?Techniquement possible mais
+    déconseillé. Retirer le filtre entraîne une perte d'huile. Le filtre neuf
+    dans de l'huile usagée ne remplit pas pleinement son rôle. Le joint torique
+    se change-t-il en même temps que le filtre ?Oui, systématiquement. Sur
+    filtre cartouche, le joint torique est souvent fourni. Erreur fréquente —
+    toujours vérifier que l'ancien joint n'est pas resté collé sur le bloc.
+  META: >-
+    {"meta_title":"Filtre à huile moteur : guide de
+    remplacement","meta_description":"Voyant huile allumé, cliquetis au ralenti
+    : quand changer le filtre à huile ? Spin-on ou cartouche, compatibilité VW
+    502.00 / BMW LL-01 et étapes de vidange."}
 ---
 
 # Filtre à huile - Guide Diagnostic Complet

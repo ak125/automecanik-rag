@@ -6,7 +6,8 @@ pg_id: 316
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Reguler le flux de liquide de refroidissement selon la temperature moteur
   must_be_true:
@@ -212,6 +214,181 @@ installation:
   - pince de serrage
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
+phase5_enrichment:
+  _source: denso-am.eu
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 3
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_3_a: '3 a'
+    val_4_a: '4 a'
+    val_868_a: '868 a'
+    val_9_a: '9 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le thermostat est une vanne thermostatique, il s'actionne(ouverture et
+    fermeture) en fonction de la température du liquide derefroidissement pour
+    permettre la régulation de la température dans le circuit.Le thermostat ne
+    laisse pas passer le liquide de refroidissement lorsque lemoteur est froid
+    jusqu'à il atteint sa température optimale de fonctionnement.Le thermostat
+    s'ouvre et fait circuler le liquide de refroidissement chaud auradiateur de
+    refroidissement pour le refroidir dés que le moteur atteint latempérature de
+    fonctionnement.Les nouveaux thermostats sont actionnésautomatiquement par le
+    calculateur de gestion moteur. En savoir plus : thermostat — définition et
+    rôle mécanique 🚨 Bruit Thermostat : causes et diagnostic
+  S2: >-
+    Un thermostat usé présente plusieurs symptômes : - Le moteur atteint
+    lentement la température defonctionnement. - Après un contrôle visuel vous
+    remarquez que lethermostat est grippé (reste fermé ou reste ouvert). Un
+    thermostat défaillant et qu'il n'est pas remplacé à temps peut entraînerla
+    surchauffe du moteur et qui amène à un joint de culasse . Diagnostic complet
+    : identifier une panne de thermostat
+  S3: >-
+    Le thermostat régule le flux de liquide de refroidissement en maintenant le
+    moteur dans sa plage de température optimale, généralement entre 85 °C et
+    105 °C selon la conception constructeur. Un thermostat bloqué en position
+    fermée provoque la surchauffe en quelques kilomètres ; bloqué en position
+    ouverte, il fait tourner le moteur trop froid, augmentant la consommation et
+    l'usure des segments. La sélection doit être précise sur trois paramètres
+    clés. - Température d'ouverture gravée sur la cloche — Chaque thermostat
+    porte une valeur en °C (ex. 82 °C, 87 °C, 92 °C). Cette valeur doit
+    correspondre exactement à la préconisation constructeur ; un thermostat à 82
+    °C sur un moteur préconisant 92 °C maintient le moteur trop froid en
+    permanence. - Référence moteur et code motorisation — Renseignez le code
+    moteur complet (ex. N47D20, K9K, DV6) et non seulement la cylindrée : deux
+    moteurs de 1,6 L de la même marque peuvent utiliser des thermostats de
+    diamètres différents. - Diamètre de la cloche et type de joint — Le logement
+    du thermostat dans la culasse ou le boîtier de sortie d'eau a un diamètre
+    précis (57 mm, 61 mm, 68 mm sont les plus répandus). Vérifiez si le joint
+    torique est fourni avec la pièce ou s'il doit être commandé séparément. -
+    Version avec ou sans sonde de température intégrée — Certains thermostats
+    modernes intègrent une sonde NTC directement dans la cloche. Remplacer cette
+    version par un thermostat sans sonde laisse un emplacement vide dans le
+    circuit électronique et déclenche un code défaut P0118 ou P0128. -
+    Thermostat à commande électrique (e-thermostat) — Sur les motorisations
+    récentes (post-2010, particulièrement BMW, Volkswagen, PSA), le thermostat
+    est commandé par le calculateur moteur. Ces versions ne sont pas
+    interchangeables avec les thermostats mécaniques traditionnels. - Matériau
+    du boîtier et résistance chimique — Les boîtiers en aluminium sont plus
+    durables mais plus chers ; les versions plastique (polyamide) suffisent pour
+    la plupart des applications. Vérifiez la compatibilité avec le liquide de
+    refroidissement utilisé (G11, G12, G13) car certains antigels attaquent les
+    joints d'origine. Pour aller plus loin : consultez notre guide d'achat
+    thermostat — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Thermostat pour connaître
+    les spécifications. - Arrêtez le moteur et le laisser refroidir. -
+    Débranchez la batterie. - Repérez l'emplacement du thermostat survotre
+    moteur. - Ouvrir le bouchon du vase d'expansion . - Levez et calez le
+    véhicule. - Désaccouplez la durite inférieure duradiateur de refroidissement
+    . - Vidangez le liquide de refroidissement. - Accouplez la durite inférieure
+    duradiateur de refroidissement. - Désaccouplez la canalisation duthermostat.
+    - Démontez les fixations du thermostat. - Démontez le thermostat.
+  S4_REPOSE: >-
+    Le remontage du thermostat impose le respect de deux contraintes techniques
+    absolues : le sens d'orientation du pointeau (vers le moteur, jamais vers le
+    radiateur) et l'utilisation d'un joint de boîtier neuf. Un thermostat monté
+    à l'envers reste bloqué en position ouverte et produit exactement les mêmes
+    symptômes qu'un thermostat défaillant. La purge complète du circuit clôt
+    systématiquement l'intervention. - Vérifiez que le thermostat neuf est
+    identique à celui démonté : température d'ouverture (gravée sur le pointeau,
+    typiquement 82 °C, 87 °C ou 92 °C selon le moteur), diamètre du boîtier,
+    présence d'un by-pass. - Remplacez le joint de boîtier systématiquement — ne
+    jamais réutiliser l'ancien joint même en apparence intact : un joint
+    thermostat coûte moins d'un euro et une fuite sous pression peut noyer le
+    compartiment moteur. - Nettoyez les surfaces d'appui du boîtier et du bloc
+    moteur à la lame de rasoir ou au papier abrasif fin pour éliminer tout
+    résidu du joint ancien, puis essuyez avec un chiffon propre et sec. -
+    Positionnez le nouveau thermostat avec le pointeau thermosensible orienté
+    vers le moteur (côté chaud) — vérifiez la direction indiquée sur le boîtier
+    ou dans la documentation constructeur si le sens n'est pas évident. - Posez
+    le joint neuf sur le boîtier thermostat ou dans la gorge du bloc, en
+    vérifiant qu'il est bien centré sans être tordu ni plié. - Remontez le
+    boîtier thermostat et serrez les vis de fixation progressivement en croix au
+    couple prescrit (typiquement 8 à 12 N·m) pour ne pas déformer le boîtier
+    plastique ou aluminium. - Reconnectez le connecteur électrique du capteur de
+    température ou de l'éventuel thermostat électronique, jusqu'au déclic de
+    verrouillage. - Remplissez le circuit de refroidissement avec un mélange
+    liquide de refroidissement et eau déminéralisée conforme aux préconisations
+    constructeur, par le vase d'expansion. - Purgez le circuit en faisant
+    tourner le moteur à froid avec le bouchon du vase d'expansion entrebâillé —
+    attendez l'ouverture du thermostat (aiguille au milieu de cadran, environ 5
+    à 8 minutes de chauffe) et maintenez le niveau jusqu'à stabilisation sans
+    bulles. - Effectuez un contrôle de fonctionnement sur route courte :
+    l'aiguille de température doit se stabiliser en position médiane en moins de
+    5 minutes, le chauffage doit délivrer de l'air chaud, et aucune fuite ne
+    doit apparaître au boîtier thermostat après refroidissement complet.
+  S5: >-
+    Erreurs frequentes avec le thermostat : - Confondre thermostat bloque ouvert
+    et bloque ferme — ouvert = le moteur ne monte jamais en temperature
+    (surconsommation, chauffage faible). Ferme = surchauffe rapide, destruction
+    du joint de culasse- Ne pas remplacer le joint du thermostat — un joint
+    reutilise fuit systematiquement, meme si le boitier semble etanche au
+    montage- Oublier de purger le circuit de refroidissement apres remplacement
+    — une bulle d'air bloque la circulation et le moteur surchauffe malgre le
+    thermostat neuf- Monter un thermostat avec une temperature d'ouverture
+    differente de l'origine — un thermostat a 82°C sur un moteur prevu pour 89°C
+    provoque un fonctionnement a froid permanent- Ignorer un chauffage habitacle
+    faible par temps froid — premier symptome d'un thermostat bloque ouvert,
+    avant la surconsommation
+  S6: >-
+    Le remplacement du thermostat implique une ouverture du circuit de
+    refroidissement. Les vérifications post-montage sont donc doubles :
+    s'assurer de l'étanchéité du circuit et confirmer que le thermostat neuf
+    s'ouvre et se ferme correctement aux bonnes températures. - Purge complète
+    du circuit de refroidissement : après le remontage, ouvrir le ou les vis de
+    purge présents sur le circuit (généralement sur le radiateur ou la durite
+    haute) et faire tourner le moteur jusqu'à ce que le liquide s'écoule sans
+    bulles d'air. Une poche d'air résiduelle provoque une surchauffe localisée
+    même avec un thermostat neuf. - Vérification du niveau de liquide de
+    refroidissement : contrôler que le niveau dans le vase d'expansion se situe
+    entre les repères MIN et MAX à froid, puis vérifier à nouveau après la
+    première montée en température. Le volume peut baisser légèrement lors du
+    premier cycle thermique. - Surveillance de l'aiguille de température : au
+    premier démarrage après remplacement, observer la montée en température du
+    moteur. L'aiguille doit atteindre la zone normale (entre 80°C et 95°C selon
+    le moteur) en 5 à 10 minutes de ralenti, puis se stabiliser. Une aiguille
+    qui reste en dessous de 60°C indique un thermostat bloqué ouvert. - Test
+    d'ouverture du thermostat : lorsque l'aiguille atteint la température
+    d'ouverture du thermostat (généralement 87°C à 92°C), vérifier que la durite
+    radiateur haute commence à chauffer rapidement au toucher — signe que le
+    liquide circule dans le radiateur principal. - Contrôle de l'absence de
+    fuite : moteur chaud et circuit en pression, inspecter visuellement le
+    boîtier du thermostat, les colliers de serrage des durites raccordées et le
+    joint de boîtier pour détecter toute trace de liquide de refroidissement
+    suintant. - Vérification de la chauffe habitacle : mettre le chauffage au
+    maximum — l'air chaud doit arriver dans l'habitacle dans un délai normal (2
+    à 4 minutes), confirmant que la circulation dans l'échangeur de chauffage
+    est rétablie. - Test sous charge modérée : effectuer un trajet de 15 à 20 km
+    incluant de la route et de la ville. L'aiguille de température ne doit pas
+    dépasser la zone rouge ni présenter d'oscillations, ce qui signalerait une
+    purge incomplète ou un thermostat défectueux.
+  S7: >-
+    Quel est le prix d'un thermostat ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver le thermostat compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon thermostat est à changer ?Les signes d'usure les plus courants
+    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
+    contrôler la pièce par un professionnel.Peut-on rouler avec un thermostat
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- reguler - ouvrir - fermer
+  S8: >-
+    Comment choisir Thermostat compatible avec mon vehicule ?Renseignez marque,
+    modele, type moteur et annee, puis verifiez la reference Quand remplacer
+    Thermostat ?En cas de aiguille de temperature dans le rouge rapidement ou de
+    degradation Puis-je monter Thermostat sans verification atelier ?Le montage
+    peut exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Thermostat moteur : symptômes et
+    remplacement","meta_description":"Moteur qui surchauffe ou qui ne monte pas
+    en température ? Quand changer le thermostat, le choisir selon votre
+    véhicule et éviter les erreurs."}
 ---
 
 # Thermostat - Guide Diagnostic Complet

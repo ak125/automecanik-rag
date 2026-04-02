@@ -6,7 +6,8 @@ pg_id: 805
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Surveiller la pression d'huile moteur et activer le voyant en cas de chute de pression
   must_be_true:
@@ -207,6 +209,144 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    seuil: '0,3-0,5 bar — en dessous, le contact se ferme et allume le voyant'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Lepressostat d'huile est équipé de mano-contact et il est connecté au témoin
+    depression d'huile situé sur le tableau de bord. Le pressostat d'huile est
+    untype de système d'alerte, son rôle est de contrôler la pression de l'huile
+    fourniepar la pompe huile qu'est située dans le carter d'huile du moteur si
+    lapression est faible le témoin de pression d'huile sur le tableau de bord
+    vas'allumer pour alerter le conducteur. Un pressostat d'huile doit être en
+    bonneétat pour alerter l'utilisateur du véhicule s'il y a un problème de
+    pressiond'huile si non vous risquez une casse du moteur à cause du manque de
+    lubrification. En savoir plus : pressostat d'huile — définition et rôle
+    mécanique 🚨 Bruit Pressostat d'huile : causes et diagnostic
+  S2: >-
+    Un pressostat d'huiledéfaillant présente plusieurs symptômes : - Fuite
+    d'huile au niveau du pressostat d'huile. - Manque de niveau d'huile moteur.
+    - Le témoin d'huile qui s'allume sur le tableau de bord ou l'indication sur
+    l'ordinateur de bord. Un pressostat d'huiledéfectueux et qu'il n'est pas
+    remplacé à temps peut causer plusieursproblèmes : - Usure de la pompe à
+    huile . - Casse du moteur. Diagnostic complet : identifier une panne de
+    pressostat d'huile
+  S3: >-
+    Le pressostat d'huile est un capteur de sécurité moteur dont le seuil de
+    déclenchement varie selon le constructeur : un pressostat calibré à 0,2 bar
+    ne peut pas remplacer un modèle calibré à 0,5 bar sans risquer une fausse
+    alerte ou, pire, une absence d'alerte en cas de chute de pression réelle. La
+    sélection doit se faire par référence exacte, pas par aspect visuel. -
+    Pression de déclenchement (bar) — La valeur de coupure est gravée sur le
+    corps du pressostat ou disponible dans la documentation technique. Les
+    valeurs courantes vont de 0,15 bar à 0,8 bar selon le constructeur. Monter
+    un pressostat à seuil trop bas génère des alertes intempestives ; un seuil
+    trop élevé masque une pression insuffisante dangereuse pour les coussinets.
+    - Type de contact : normalement ouvert (NO) ou normalement fermé (NF) — La
+    grande majorité des pressostats d'huile sont à contact normalement fermé :
+    le circuit s'ouvre quand la pression est atteinte, ce qui éteint le voyant.
+    Vérifier le type avant commande, car l'inversion NO/NF allume le voyant en
+    permanence à froid. - Filetage et pas de vis — Les filetages les plus
+    courants sont M10x1, M12x1,5 et 1/8 NPT. Un filetage incompatible entraîne
+    une fuite d'huile immédiate au démarrage. Mesurer le filetage de la rampe ou
+    consulter la référence de l'ancienne pièce. - Raccord électrique : nombre de
+    broches et connecteur — Les pressostats monofils (masse par le corps fileté)
+    sont les plus répandus. Certains modèles intègrent un double contact
+    (pression basse + pression haute) avec connecteur 2 ou 3 broches pour
+    alimenter à la fois le voyant et la jauge de pression. Vérifier le
+    connecteur existant sur le véhicule. - Résistance interne et circuit
+    d'instrumentation — Sur les véhicules équipés d'une jauge de pression
+    analogique au tableau de bord (et non d'un simple voyant), le pressostat est
+    remplacé par un capteur de pression résistif (rhéostat). Ces deux pièces ne
+    sont pas interchangeables. - Matériau du corps et compatibilité chimique —
+    Privilégier les corps en acier inoxydable ou en laiton nickelé pour les
+    moteurs utilisant des huiles synthétiques hautes performances, qui peuvent
+    attaquer les alliages zinc/zamak de mauvaise qualité. - Pièces à contrôler
+    simultanément — Avant de conclure à un pressostat défaillant, vérifier le
+    niveau d'huile, l'état du filtre à huile et l'absence de fuite sur le joint
+    de carter. Un pressostat neuf sur un moteur consommant de l'huile ne résout
+    pas le problème de fond. Pour aller plus loin : consultez notre guide
+    d'achat pressostat d'huile — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Pressostat d'huile pour
+    connaître les spécifications. - Débranchez la batterie. - Levez et calez le
+    véhicule. - Localisez l'emplacement du pressostat d'huile. - Débranchez le
+    connecteur du pressostat d'huile. - Desserrez le pressostat d'huile du
+    carter d'huile moteur. - Retirez le pressostat d'huile.
+  S4_REPOSE: >-
+    - Vérifiez que le pressostat d'huile neuf est identique à celui démonté. -
+    Contrôlez le bon fonctionnement de la pompe à huile . - Vidangez l'huile du
+    moteur et remplacez le filtre à huile . - Mettre en place le pressostat
+    d'huile. - Branchez le connecteur du pressostat d'huile. - Rebranchez la
+    batterie. - Branchez l'outil diagnostic et faire un test diagnostic. ✅ Après
+    remontage, vérifiez les spécifications dans la fiche technique Pressostat
+    d'huile.
+  S5: >-
+    - ❌ "homologué CT - ❌ "sécurité garantie - ❌ "zéro panne - ❌ "garanti à vie
+    - ❌ "corrige la panne
+  S6: >-
+    Le remplacement d'un pressostat d'huile est une intervention brève mais à
+    risque élevé si les vérifications post-montage sont négligées. Le pressostat
+    est positionné directement sur le circuit huile sous pression — toute fuite
+    au niveau du raccordement ou tout défaut de calibration peut provoquer un
+    arrêt moteur ou une sous-pression non détectée. - Étanchéité du raccord
+    fileté : dès le démarrage moteur, vérifier immédiatement l'absence de
+    suintement d'huile au pied du pressostat. Le couple de serrage constructeur
+    doit être respecté — généralement entre 15 et 25 Nm selon le diamètre du
+    filetage (M10×1 ou M14×1,5 les plus courants). Un serrage excessif risque
+    d'endommager le filetage dans le bloc, un serrage insuffisant provoque une
+    fuite immédiate. - Extinction du voyant huile : mettre le contact, puis
+    démarrer. Le voyant huile (pictogramme huilier rouge) doit s'éteindre en
+    moins de 3 secondes après le démarrage à froid. S'il reste allumé à 1000
+    tr/min ou plus, la pression d'huile est insuffisante ou le pressostat ne
+    commute pas au bon seuil — seuil typique entre 0,3 et 0,7 bar selon
+    motorisation. - Absence de clignotement au ralenti chaud : après 10 à 15
+    minutes de chauffe, maintenir le ralenti à 750 tr/min. Aucun clignotement du
+    voyant huile ne doit apparaître. Un clignotement au ralenti moteur chaud sur
+    un pressostat neuf indique une pression d'huile réellement basse — vérifier
+    le niveau d'huile, l'état du filtre à huile et la pompe à huile. -
+    Vérification de l'absence de code défaut : utiliser un outil de diagnostic
+    OBD pour s'assurer qu'aucun code P0520 (circuit pressostat huile) ou
+    P0522/P0523 (signal hors plage) n'est mémorisé. Ces codes peuvent être
+    présents même si le voyant ne s'allume pas en continu. - Contrôle visuel
+    après 500 km : inspecter de nouveau le filetage et le joint d'étanchéité (si
+    joint torique livré avec la pièce) après un premier cycle thermique complet.
+    L'échauffement peut légèrement desserrer le pressostat sur certains
+    matériaux de joint. - Vérification du niveau d'huile : le remplacement du
+    pressostat entraîne une légère perte d'huile. Contrôler le niveau sur jauge
+    après le premier démarrage et compléter si nécessaire jusqu'au repère MAX.
+  S7: >-
+    Quel est le prix d'un pressostat d'huile ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le pressostat d'huile
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon pressostat d'huile est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un pressostat d'huile défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- capteur niveau d huile moteur - capteur pression et
+    temperature d huile - carter d huile - filtre a huile - pompe a huile -
+    pressostat d huile
+  S8: >-
+    Comment choisir Pressostat d'huile compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Pressostat d'huile ?En cas de voyant huile allume en permanence ou
+    de degradation mesurable, Puis-je monter Pressostat d'huile sans
+    verification atelier ?Le montage peut exiger controles de couple, alignement
+    et references.
+  META: >-
+    {"meta_title":"Pressostat d'huile : voyant et remplacement |
+    AutoMecanik","meta_description":"Voyant huile allumé en permanence ou
+    clignotant au ralenti ? Découvrez comment tester votre pressostat d'huile,
+    vérifier la pression réelle et changer la pièce en toute sécurité.","robots"
+    :"index,follow","og_type":"article","schema_type":"HowTo"}
 ---
 
 # Pressostat d'huile - Guide Diagnostic Complet

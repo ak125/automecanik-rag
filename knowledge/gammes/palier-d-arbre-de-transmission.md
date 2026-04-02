@@ -6,7 +6,8 @@ pg_id: 2109
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-gates-skf-trw
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Supporter et guider l'arbre de transmission en rotation
   must_be_true:
@@ -188,6 +190,55 @@ installation:
   - cle a douille
   - arrache-cardan
   prerequisite: Vidange huile de boite si cardan depose
+phase5_enrichment:
+  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Palier intermediaire a roulement
+    description: Roulement a billes dans support caoutchouc, fixe au chassis, supporte l'arbre de transmission
+    era: standard propulsion/4x4
+  technical_notes:
+    silent_bloc: 'caoutchouc du support se deteriore en premier (vibrations, durcissement)'
+    equilibrage: 'reperer la position angulaire avant depose — desalignement = vibrations'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Supporter et guider l'arbre de transmission en rotation. Pièces liées :
+    vérifier les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Vibrations a
+    vitesse constante- Bruit de roulement sous le vehicule- Jeu perceptible au
+    palier
+  S3: >-
+    Pour choisir le bon palier d'arbre de transmission pour votre véhicule : -
+    Marque de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
+    Marques : SKF, GKN/Spidan (premium), Febi, Meyle (standard), Ridex, Topran
+    (budget)- Budget : 400 à 1200 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le palier d'arbre de transmission : - Ne pas
+    vérifier la référence exacte avant commande — une pièce de mauvaise
+    référence ne fonctionne pas correctement même si elle se monte physiquement-
+    Oublier de débrancher la batterie avant intervention — risque de court-
+    circuit sur les composants électroniques- Ne pas respecter le couple de
+    serrage constructeur au remontage- Ignorer les symptômes d'usure en espérant
+    que ça passe — une défaillance progressive s'aggrave toujours- Ne pas
+    effacer les codes défaut après remplacement — le calculateur peut rester en
+    mode dégradé
+  S6: >-
+    Après le remplacement du palier d'arbre de transmission : - Verifier le
+    niveau d huile de boite selon preconisation constructeur- Controle des
+    soufflets de protection (pas de fuite de graisse)- Remplacement de la bague
+    d etancheite en cas de fuite- Inspection des cardans et croisillons a chaque
+    revision- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer un
+    essai route pour confirmer la disparition des symptômes
 ---
 
 # Palier d'arbre de transmission - Guide Diagnostic Complet

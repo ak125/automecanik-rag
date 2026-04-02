@@ -6,7 +6,8 @@ pg_id: 3927
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer le debit d'air entrant dans le moteur et transmettre l'information au calculateur
   must_be_true:
@@ -205,6 +207,80 @@ installation:
   - cle dynamometrique
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
+phase5_enrichment:
+  _source: mann-filter.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  technical_notes:
+    val_41_a: '41 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le débitmètre d''air (capteur MAF — Mass Air Flow) mesure le débit massique
+    d''air entrant dans le moteur et transmet l''information au calculateur.
+    Cette mesure est indispensable pour calculer la quantité exacte de carburant
+    à injecter. Un débitmètre défaillant fausse le dosage air/carburant et
+    dégrade immédiatement les performances moteur. Niveau de difficulté : Facile
+    — le débitmètre est situé entre le boîtier de filtre à air et le corps
+    papillon, accessible sans outils spécifiques. Comptez 15 à 30 minutes.
+    Outils : tournevis Torx (fixation), spray nettoyant spécifique débitmètre
+    (optionnel). Pièces liées : filtre à air (un filtre colmaté endommage le
+    débitmètre), corps papillon, durite d''admission, calculateur moteur.
+  S2: >-
+    Pas de périodicité fixe. Durée de vie : 150 000+ km. Un nettoyage avec spray
+    spécifique tous les 50 000 km prolonge sa durée de vie. Symptômes de
+    défaillance : - Perte de puissance à l''accélération — le calculateur ne
+    reçoit pas la bonne mesure de débit d''air- Surconsommation de carburant
+    importante — le mélange est trop riche par défaut- Fumée noire à
+    l''échappement — combustion incomplète par excès de carburant- Sifflement ou
+    bruit d''aspiration anormal au niveau du conduit d''admission- Voyant moteur
+    allumé avec codes P0100 à P0104 — défaut circuit débitmètre- Difficultés au
+    démarrage à chaud — mesure de débit erronée à température élevée
+  S3: >-
+    Pour choisir le bon débitmètre d''air : - Technologie : fil chaud (le plus
+    répandu), film chaud (plus récent, plus précis) ou à volet (anciens
+    véhicules) — ils ne sont pas interchangeables- Référence OE : vérifier la
+    référence exacte — un débitmètre de mauvais calibrage fausse le dosage même
+    s''il se monte physiquement- Marques OES : Bosch, Denso, VDO/Siemens — la
+    précision de mesure est critique, les adaptables bas de gamme causent
+    souvent des problèmes récurrents- Capteur intégré : certains débitmètres
+    intègrent le capteur de température d''air — vérifier si votre véhicule a un
+    capteur combiné ou séparé- Budget : 80 à 250 EUR — un débitmètre Bosch OES
+    coûte 30-40% de moins que l''OE pour la même qualité de mesure
+  S4_DEPOSE: >-
+    1. Débrancher la batterie (intervention sur capteur électronique). 2.
+    Localiser le débitmètre entre le boîtier de filtre à air et le conduit
+    d''admission. 3. Débrancher le connecteur électrique du débitmètre (clip à
+    languette). 4. Desserrer les colliers ou vis de fixation du débitmètre sur
+    le conduit d''admission. 5. Retirer le débitmètre délicatement — ne pas
+    toucher le fil chaud ou le film de mesure à l''intérieur. 6. Vérifier
+    l''étanchéité du conduit d''admission (pas de fissure, joints corrects)
+    avant de monter le neuf.
+  S5: >-
+    Erreurs fréquentes avec le débitmètre d''air : - Utiliser du nettoyant frein
+    ou carburateur pour nettoyer le débitmètre — ces produits détruisent le fil
+    chaud ou le film de mesure. Utiliser UNIQUEMENT un spray spécifique
+    débitmètre- Toucher le fil chaud ou le film de mesure avec les doigts — la
+    graisse cutanée fausse la mesure de manière permanente- Ne pas vérifier
+    l''état du filtre à air et du conduit d''admission — un filtre déchiré
+    laisse passer des poussières qui endommagent le fil chaud, un conduit
+    fissuré crée une fuite d''air non mesuré- Remplacer le débitmètre sans
+    effacer les codes défaut — le calculateur reste en mode dégradé tant que les
+    codes P0100-P0104 sont mémorisés- Monter un débitmètre adaptable bas de
+    gamme — la précision de mesure est critique pour le dosage, un écart de 5%
+    suffit à provoquer des ratés ou une surconsommation
+  S6: >-
+    Après le remplacement du débitmètre : - Étanchéité : vérifier que le conduit
+    d''admission est correctement raccordé et que les colliers sont serrés — une
+    fuite d''air non mesuré fausse la correction du calculateur- Effacer les
+    codes : supprimer les codes P0100-P0104 avec l''outil OBD- Test moteur : au
+    ralenti, le régime doit être stable (pas d''oscillation). À l''accélération,
+    la réponse doit être franche sans à-coups- Adaptation : sur certains
+    véhicules, un réapprentissage des valeurs de base du débitmètre est
+    nécessaire via l''outil diagnostic (VAG, BMW)- Consommation : la
+    surconsommation doit disparaître dans les 100 premiers km
 ---
 
 # Débitmètre d'air - Guide Diagnostic Complet

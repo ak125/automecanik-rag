@@ -6,7 +6,8 @@ pg_id: 1256
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-26'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague5
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Filtre et retient les particules fines des gaz d'échappement diesel
   must_be_true:
@@ -212,6 +214,218 @@ installation:
   - degripant
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: FAP sans additif
+    description: Regeneration par post-injection carburant (hausse temperature echappement)
+    era: standard VAG, BMW, etc.
+  - type: FAP avec additif cerine
+    description: Additif injecte dans le gasoil pour abaisser la temperature de combustion des suies (PSA)
+    era: PSA 2000-2015
+  technical_notes:
+    temperature_regeneration: '550-650°C (sans additif), 450°C (avec cerine)'
+    contre-pression_max: 'diagnostic pression differentielle avant/apres FAP'
+    reserve_cerine: 'a recharger tous les 120 000 km environ (PSA)'
+    huile_compatible: 'low SAPS obligatoire (ACEA C2/C3) — huiles standard colmatent le FAP'
+  materials:
+  - composant: substrat
+    materiau: carbure de silicium SiC en nid d'abeille (canaux bouches en alternance)
+  - composant: enveloppe
+    materiau: acier inox + isolant ceramique
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    L'accumulation de cendres dans le FAP, associée à lamultiplication de
+    parcours urbains, vont conduire à la saturation du FAP. Lorsquele FAP est
+    plein, le calculateur va déclencher une action de combustion quipermet de
+    régénérer le filtre. Un FAP fonctionne selon 2 cycles, le premier consiste
+    en lacollecte de particules et le second est leur élimination. - 1er cycle
+    (Filtration) : Le filtre capture lesparticules en suspension dans les gaz
+    d'échappement. Cela conduit à laformation d'une couche de suie sur les
+    parois du filtre. A terme, cette coucheprovoque une diminution des
+    performances du moteur. Il est donc nécessaire denettoyer régulièrement le
+    FAP. C'est à ce moment qu'intervient le cycle derégénération. - 2eme cycle
+    (régénération) : Le nettoyage du FAPs'effectue sous la forme de cycles
+    automatiques durant lesquels la températuredes gaz d'échappements va être
+    fortement augmentée afin de brûler le dépôt desuie. Pour augmenter la
+    température, du gasoil non brûlé est injectée dans uncatalyseur intégré au
+    FAP. Ce carburant va s'enflammer et ainsi faire augmenterla température dans
+    la pièce, provoquant la combustion des suies piégées dansle filtre. En
+    savoir plus : fap — définition et rôle mécanique 🚨 Bruit FAP : causes et
+    diagnostic
+  S2: >-
+    Un FAP défectueux présente plusieurs symptômes : - Manque de puissance dans
+    levéhicule. - Témoin du filtre àparticule s'allume si équipé. - Témoin de
+    gestion moteurs'allume mais il faut faire un test diagnostic. Le
+    dysfonctionnement du FAP peut avoir desconséquences irrémédiables sur
+    certains organes périphériques comme le turbo,le catalyseur, la ligne
+    d'échappement... Diagnostic complet : identifier une panne de fap
+  S3: >-
+    Le filtre à particules (FAP ou DPF — Diesel Particulate Filter) est un
+    composant exclusif aux moteurs diesel qui retient les suies et particules
+    fines (PM2.5 et PM10) avant leur rejet à l'atmosphère. Un FAP colmaté
+    déclenche le mode dégradé (puissance réduite à 60-70 %), puis une
+    régénération forcée qui, si elle échoue, conduit au remplacement. Compte
+    tenu du coût élevé du composant (600 à 2 500 EUR selon le véhicule), la
+    sélection doit être rigoureuse. Voici les critères à vérifier. - Référence
+    constructeur et code moteur diesel obligatoires — Le FAP est homologué pour
+    une motorisation spécifique : cylindrée, norme Euro (Euro 4, Euro 5, Euro
+    6), et parfois version de calibration calculateur. Un FAP Euro 5 monté sur
+    un véhicule Euro 6 peut générer des codes défaut de contre-pression et
+    empêcher les régénérations. Renseignez le code moteur précis (ex. : 2.0 TDI
+    CUNA, 1.6 BlueHDi BHZ) avant toute commande. - Présence ou absence d'additif
+    de régénération (Eolys/FAP+) — Certains systèmes FAP (Peugeot, Citroën,
+    Volvo avec système SiC) utilisent un additif cérine (Eolys) injecté dans le
+    carburant pour abaisser la température de régénération. Ces FAP (en carbure
+    de silicium SiC) ne sont pas interchangeables avec les FAP sans additif (en
+    cordiérite). Vérifiez si votre véhicule dispose d'un réservoir d'additif
+    Eolys distinct avant de choisir le type de substrat. - Substrat : cordiérite
+    ou carbure de silicium (SiC) — Le substrat cordiérite (moins cher,
+    légèrement moins performant thermiquement) convient aux véhicules sans
+    additif dont la régénération est assurée uniquement par montée en
+    température. Le substrat SiC résiste à des températures de régénération de
+    600 à 650°C et s'impose sur les véhicules à forte sollicitation (longues
+    distances, motorisations puissantes). - Cellules par pouce carré (cpsi) :
+    densité de filtration — La densité de cellules (généralement 200 à 300 cpsi
+    pour les FAP automobiles) détermine la surface filtrante et la contre-
+    pression en fonctionnement. Un FAP de densité inférieure à l'origine génère
+    moins de contre-pression mais filtre moins efficacement, ce qui peut
+    entraîner un refus au contrôle technique sur les mesures d'opacité. -
+    Capteurs associés : sonde de pression différentielle et sondes de
+    température — Le calculateur moteur mesure le colmatage du FAP par la
+    différence de pression entre l'entrée et la sortie du filtre (capteur de
+    pression différentielle). Lors du remplacement, vérifiez que les orifices de
+    connexion de ce capteur sont positionnés aux mêmes emplacements sur la pièce
+    de remplacement, sous peine de mesures erronées et de régénérations
+    anarchiques. - Régénération active ou passive : impact sur le choix — Un FAP
+    de remplacement doit être compatible avec le mode de régénération de votre
+    véhicule. La régénération passive se produit naturellement en roulage
+    autoroutier au-dessus de 60-70 km/h. La régénération active est déclenchée
+    par le calculateur via une post-injection de gazole. Si votre usage est
+    principalement urbain (courts trajets), choisissez un FAP adapté à ce profil
+    d'usage ou envisagez une consultation pour réinitialisation du compteur de
+    suies après remplacement. - Durée de vie et garantie constructeur — Un FAP
+    neuf de qualité OEM ou équivalent doit présenter une durée de vie de 150 000
+    à 200 000 km en conduite mixte. Évitez les offres sans mention de durée de
+    vie garantie. La mention "passe le contrôle technique" n'est pas une
+    garantie technique : elle ne dit rien sur la durée de vie du substrat ni sur
+    la compatibilité avec votre système de régénération. Pour aller plus loin :
+    consultez notre guide d'achat fap — comparatif marques, critères de choix et
+    prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique FAP pour connaître les
+    spécifications. - Débranchez la batterie. - Démontez les vis de fixation
+    supérieure etcentrale de l'écran thermique. - Démonter le tuyau de prise de
+    pressionavant. - Levez et calez le véhicule. - Démontez la protection sous
+    moteur. - Démontez les vis de fixation inférieuresde l'écran thermique. -
+    Démontez le tuyau de prise de pressionarrière. - Démontez le collier
+    d'échappement. - Démontez l'écran thermique. - Démontez le collier de
+    serrage del'ensemble catalyseur/FAP. - Démontez le FAP.
+  S4_REPOSE: >-
+    Le remontage du FAP exige de soigner les joints de bride et l'écran
+    thermique : un joint de FAP qui fuit laisse passer des gaz chauds, ce qui
+    peut déclencher un incendie dans l'habitacle du soubassement. Changez
+    systématiquement les joints et les colliers de serrage, même si les anciens
+    semblent en bon état. - Vérifiez que le FAP neuf est identique à celui
+    déposé : référence constructeur, position des capteurs de pression
+    différentielle, orientation du corps sur la ligne d'échappement. - Contrôlez
+    l'état du tube d'échappement amont et aval : vérifiez l'absence de corrosion
+    perforante sur les tronçons adjacents. Contrôlez aussi le capteur de
+    pression différentielle (sonde amont/aval) et ses tubes de prise de
+    pression. - Posez des joints de bride neufs sur les emboîtements amont et
+    aval. N'utilisez jamais de pâte d'étanchéité haute température en
+    remplacement d'un joint métallique ou fibré prévu d'origine. - Mettez en
+    place le FAP sur la ligne d'échappement en engageant d'abord le côté amont,
+    puis en alignant le flanc aval. - Remontez et serrez le collier de serrage
+    catalyseur/FAP au couple préconisé. Serrez en alternant les vis opposées
+    pour répartir la pression uniformément sur le joint. - Remontez l'écran
+    thermique et serrez ses vis de fixation supérieure et centrale, puis
+    inférieures. L'écran protège les composants voisins des températures de
+    régénération (600 à 900 °C). - Reconnectez le tube de prise de pression
+    avant sur le capteur de pression différentielle, puis le tube arrière.
+    Vérifiez que les clips de fixation des tubes sont clipsés. - Remontez la
+    protection sous moteur, puis descendez le véhicule. Rebranchez la batterie
+    (borne positive en premier). - Démarrez le moteur et effectuez une lecture
+    avec un outil de diagnostic OBD pour effacer les codes défaut résiduels
+    (P2002, P2463) et vérifier l'absence de nouveaux codes d'échappement. -
+    Effectuez un trajet routier d'au moins 20 km à allure soutenue (voie rapide
+    ou nationale) pour permettre une première régénération passive et confirmer
+    le bon fonctionnement du FAP. ✅ Après remontage, vérifiez les spécifications
+    dans la fiche technique FAP.
+  S5: >-
+    Erreurs frequentes avec le filtre a particules (FAP) : - Rouler
+    exclusivement en ville sur de courts trajets — le FAP a besoin de phases de
+    regeneration a haute temperature (autoroute) pour bruler les suies
+    accumulees- Ignorer le voyant FAP allume — la regeneration active est en
+    cours ou le FAP est sature. Rouler 20 min a 3000 tr/min sur voie rapide peut
+    suffire, sinon intervention garage- Supprimer ou debrider le FAP — c'est
+    illegal et provoque un echec au controle technique (sonde de particules
+    depuis 2019)- Utiliser une huile moteur non compatible FAP — les huiles non
+    "low SAPS" contiennent des cendres metalliques qui colmatent definitivement
+    le FAP- Confondre FAP bouche et FAP casse — un diagnostic pression
+    differentielle est necessaire avant remplacement pour confirmer le
+    colmatage- Ne pas verifier l'etat de l'additif cerine (si equipe) — sur les
+    vehicules PSA avec additif, le reservoir de cerine vide empeche la
+    regeneration
+  S6: >-
+    Le remplacement d'un filtre à particules diesel (FAP) exige des
+    vérifications précises après la pose : le calculateur moteur doit
+    reconnaître le nouveau filtre et la première régénération doit pouvoir
+    s'effectuer dans les conditions thermiques correctes.- Effacement des codes
+    défaut OBD — Connectez un outil de diagnostic et effacez les codes P2002,
+    P2003 ou P244x liés au FAP. Sans effacement, le voyant reste allumé même
+    avec un filtre neuf et le moteur peut rester bloqué en mode dégradé.-
+    Extinction définitive du voyant FAP au tableau de bord — Après effacement et
+    redémarrage, le voyant filtre à particules doit s'éteindre. S'il se rallume
+    dans les premiers kilomètres, contrôlez l'étanchéité des joints et des
+    brides de raccordement.- Pression différentielle FAP proche de 0 mbar à
+    froid — Le capteur de pression différentielle amont/aval doit afficher une
+    valeur proche de 0 mbar sur un filtre propre et froid. Une valeur déjà
+    élevée à la pose indique une mauvaise étanchéité ou un problème de montage.-
+    Premier trajet de régénération passive — Effectuez un trajet d'au moins 20
+    km à vitesse soutenue (80-110 km/h) pour initier la première régénération
+    passive. La température des gaz en aval du FAP doit atteindre 550 à 600°C
+    lors de cette phase.- Disparition des fumées noires à l'accélération — Les
+    fumées noires caractéristiques du FAP saturé doivent disparaître
+    immédiatement après le remplacement. Des fumées persistantes après 50 km
+    signalent un problème résiduel : injecteurs encrassés ou vanne EGR
+    défaillante.- Contrôle de l'état de la vanne EGR — Un FAP neuf monté avec
+    une EGR encrassée se colmatera de nouveau en 20 000 à 30 000 km. Contrôlez
+    visuellement la vanne et nettoyez-la si nécessaire avant de refermer le
+    circuit d'échappement.- Retour à une consommation normale — La
+    surconsommation liée au FAP colmaté disparaît progressivement sur les 500
+    premiers km. Une consommation toujours anormalement élevée après cette
+    distance justifie un contrôle des injecteurs et de la sonde lambda amont.
+  S7: >-
+    Quel est le prix d'un fap ?Le prix varie selon le véhicule et la marque.
+    Utilisez notre sélecteur pour trouver le fap compatible avec votre véhicule
+    et comparer les tarifs des différents équipementiers.Comment savoir si mon
+    fap est à changer ?Les signes d'usure les plus courants sont détaillés dans
+    la section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce
+    par un professionnel.Peut-on rouler avec un fap défaillant ?Cela dépend de
+    la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du
+    véhicule. Consultez la section symptômes pour évaluer l'urgence du
+    remplacement.- filtrer - retenir - regenerer
+  S8: >-
+    Comment choisir FAP compatible avec mon vehicule ?Renseignez marque, modele,
+    type moteur et annee, puis verifiez la reference Quand remplacer FAP ?En cas
+    de voyant filtre particules allume tableau ou de degradation mesurable,
+    Puis-je monter FAP sans verification atelier ?Le montage peut exiger
+    controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"FAP diesel : voyant allumé, que faire ? |
+    AutoMecanik","meta_description":"Voyant FAP allumé, mode dégradé ou fumée
+    noire à l'accélération ? Diagnostiquez votre filtre à particules diesel et
+    trouvez le bon FAP pour votre véhicule.","og_title":"FAP : diagnostic et
+    remplacement filtre à particules","og_description":"Perte de puissance,
+    régénérations fréquentes, surconsommation : les signes d'un FAP colmaté.
+    Guide complet diesel, compatibilité par immatriculation.","canonical_intent"
+    :"diagnostic","schema_type":"HowTo","sources":[{"type":"rag","ref":"gammes/f
+    ap.md","field":"domain.role + diagnostic.symptoms + rendering.faq"}]}
 ---
 
 # FAP - Guide Diagnostic Complet

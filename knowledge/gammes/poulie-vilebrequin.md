@@ -6,7 +6,8 @@ pg_id: 3213
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmet le mouvement du vilebrequin aux accessoires
   must_be_true:
@@ -202,6 +204,100 @@ installation:
   - cle dynamometrique
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Poulie simple
+    description: Entraînement seul, pas d'amortissement
+    era: petits moteurs
+  - type: Poulie damper caoutchouc
+    description: Amortisseur vibrations torsionnelles integre (caoutchouc entre moyeu et bague)
+    era: standard actuel
+  - type: Poulie damper viscoelastique
+    description: Fluide silicone interne, amortissement superieur
+    era: diesel recents
+  technical_notes:
+    couple_vis_centrale: '200-400 Nm + angle selon constructeur'
+    clavette: 'verifier l'etat au demontage — clavette cisaillee = calage faux'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La poulie vilebrequin (poulie damper ou poulie d''amortissement) transmet le
+    mouvement de rotation du vilebrequin aux accessoires moteur via la courroie
+    d''accessoire : alternateur, pompe de direction, compresseur de clim, pompe
+    à eau. Elle intègre un amortisseur de vibrations torsionnelles (en
+    caoutchouc ou hydraulique) qui absorbe les à-coups de combustion de chaque
+    cylindre. Niveau de difficulté : Avancé — la vis centrale de la poulie est
+    très serrée (200-400 Nm) et nécessite de bloquer le volant moteur. Comptez 1
+    à 3 heures. Outils : clé à chocs ou rallonge longue, contre-appui volant
+    moteur, extracteur de poulie (si nécessaire). Pièces liées : courroie
+    d''accessoire, galet tendeur, galet enrouleur, courroie de distribution (le
+    calage passe souvent par la poulie).
+  S2: >-
+    Pas de périodicité fixe. Durée de vie : 150 000+ km. À vérifier lors du
+    changement de la distribution ou de la courroie d''accessoire. Symptômes de
+    défaillance : - Vibrations moteur importantes au ralenti — l''amortisseur en
+    caoutchouc est décollé ou fissuré, il ne filtre plus les vibrations
+    torsionnelles- Caoutchouc de la poulie fissuré ou décollé — visible à
+    l''oeil nu en soulevant le capot- Courroie d''accessoire qui déraille — la
+    poulie désaxée ou voilée déporte la courroie- Bruit sourd au niveau du bas
+    moteur — la partie extérieure de la poulie tourne désynchronisée du moyeu
+    central- Repères de calage impossibles à aligner — la bague extérieure a
+    tourné par rapport au moyeu, le calage de distribution est faussé- Voyant
+    moteur avec codes vibrations vilebrequin — le capteur PMH lit des signaux
+    parasites
+  S3: >-
+    Pour choisir la bonne poulie vilebrequin : - Type : poulie simple
+    (entraînement seul), poulie damper caoutchouc (amortissement vibrations, la
+    plus courante), poulie damper viscoélastique (véhicules diesel récents, plus
+    sophistiquée) — ne pas interchanger- Nombre de gorges : doit correspondre
+    exactement au profil de la courroie d''accessoire (poly-V 4, 5, 6 ou 7
+    nervures)- Diamètre : le diamètre détermine le rapport de transmission vers
+    les accessoires — une poulie de mauvais diamètre fait tourner l''alternateur
+    trop vite ou trop lentement- Marques : Gates, Continental/Contitech
+    (premium), Dayco, SKF, INA (standard) — c''est une pièce critique pour
+    l''équilibrage moteur, éviter les copies- Budget : 50 à 200 EUR — une poulie
+    OES coûte 30-40% de moins que l''OE
+  S4_DEPOSE: >-
+    1. Déposer la courroie d''accessoire en détendant le galet tendeur. 2.
+    Bloquer le volant moteur (outil de maintien dans la couronne de démarreur ou
+    bloquer en vitesse sur les manuelles). 3. Dévisser la vis/boulon central de
+    la poulie (sens horaire = desserrage standard, mais certains moteurs ont un
+    filetage inversé — vérifier). 4. Si la poulie ne vient pas à la main,
+    utiliser un extracteur à griffes adapté au diamètre — ne JAMAIS faire levier
+    avec un tournevis contre le bloc (risque de casse du carter). 5. Vérifier
+    l''état de la clavette ou du clavetage sur le vilebrequin — une clavette
+    cisaillée fausse le calage. 6. Nettoyer la portée du vilebrequin avant
+    montage de la poulie neuve.
+  S5: >-
+    Erreurs fréquentes avec la poulie vilebrequin : - Utiliser une poulie simple
+    à la place d''une poulie damper — le moteur vibre excessivement et la
+    courroie de distribution peut sauter par à-coups- Ne pas bloquer le volant
+    moteur avant de desserrer la vis centrale — la vis est serrée à 200-400 Nm,
+    le vilebrequin tourne si non bloqué- Faire levier avec un tournevis contre
+    le bloc moteur pour extraire la poulie — risque de casser le carter d''huile
+    ou le couvre-distribution- Ne pas vérifier la clavette de positionnement —
+    une clavette cisaillée ou absente permet à la poulie de tourner sur le
+    vilebrequin, faussant le calage de distribution et de l''allumage- Ignorer
+    un caoutchouc fissuré en se disant que la poulie tourne encore — le
+    découplage soudain entre la bague extérieure et le moyeu provoque la chute
+    de la courroie d''accessoire en roulant- Serrer la vis centrale au couple
+    insuffisant — la poulie se desserre en fonctionnement
+  S6: >-
+    Après le remplacement de la poulie vilebrequin : - Couple de serrage : vis
+    centrale = 200-400 Nm + angle selon constructeur (souvent 90°
+    supplémentaires). Utiliser impérativement une clé dynamométrique- Calage :
+    vérifier que les repères de calage de la distribution sont alignés après
+    remontage — la poulie porte souvent le repère PMH- Courroie : reposer la
+    courroie d''accessoire et vérifier la tension via le galet tendeur- Test
+    moteur : au ralenti, les vibrations doivent avoir significativement diminué
+    par rapport à l''ancienne poulie. Si les vibrations persistent, vérifier les
+    supports moteur- Bruit : aucun bruit de frottement ou de cognement au niveau
+    du bas moteur — un bruit indique un mauvais alignement ou une clavette mal
+    positionnée
 ---
 
 # Poulie vilebrequin - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 458
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-06'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Acheminer le carburant du reservoir vers le systeme d'injection a basse pression
   must_be_true:
@@ -199,6 +201,189 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  technical_notes:
+    pression_basse_normale: '~4,0 bars'
+    pression_demarrage_froid: '~7,0 bars'
+    pression_residuelle_10min: '>= 3,0 bars'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La pompe à carburant est immergé dans le réservoir àcarburant du véhicule,
+    est composée d'un corps, d'un capteur de niveau àcarburant qui donne
+    l'indication du niveau sur le tableau de bord et d'unmoteur électrique, qui
+    pompe le carburant du réservoir et l'envoie à un débitconstant vers le
+    système d'alimentation ce qui accélère la circulationdu carburant à travers
+    le filtre à carburant . Elle est autorégulatriceet génère un débit et non
+    une pression. L'excès du carburantretourne au réservoir via le régulateur de
+    pression. En savoir plus : pompe à carburant — définition et rôle mécanique
+    🚨 Bruit Pompe à carburant : causes et diagnostic
+  S2: >-
+    - Des ratés de combustion : des trous d'accélération. - Des démarrages
+    difficiles. - Des coupures de moteur. Une pompe à carburant défaillante peut
+    créer plusieursproblèmes : - Injecteurs peuventtomber en panne puisqu'il n'y
+    a pas suffisamment de carburant. - La pompe injection :débit faible.
+    Diagnostic complet : identifier une panne de pompe à carburant
+  S3: >-
+    La pompe à carburant transfère le carburant du réservoir vers le système
+    d'injection à une pression et un débit précis (typiquement 3 à 7 bar pour
+    une pompe basse pression essence, jusqu'à 10 bar pour certains systèmes).
+    Une pompe sous-dimensionnée ou incompatible provoque des calages à chaud,
+    des ratés d'allumage sous charge et une incapacité à atteindre le régime
+    plein gaz. La sélection doit se baser sur des critères techniques stricts,
+    pas uniquement sur la compatibilité véhicule de base. - Type de montage :
+    immergée dans le réservoir ou externe — La majorité des véhicules post-1990
+    utilisent une pompe immergée dans le réservoir (groupe de jaugeage),
+    lubrifiée et refroidie par le carburant. Les moteurs plus anciens peuvent
+    avoir une pompe mécanique entraînée par l'arbre à cames. Ces deux types ne
+    sont pas interchangeables. - Pression et débit de la pompe — La pression
+    nominale de la pompe doit correspondre exactement aux valeurs prescrites par
+    le constructeur (consultables dans la documentation technique). Un écart de
+    ±0,5 bar peut provoquer une richesse inadaptée et déclencher un code défaut
+    sur l'injection. Le débit minimum (en L/h à pression nominale) est également
+    à respecter. - Tension d'alimentation et connectique — Les pompes à
+    carburant sont alimentées en 12 V continu. Vérifier que le connecteur
+    électrique du nouveau groupe est identique à l'original (type de
+    verrouillage, nombre de broches, position). Une adaptation par épissure est
+    déconseillée dans le réservoir. - Groupe de jaugeage complet vs pompe seule
+    — Sur les véhicules récents, la pompe est montée sur un ensemble avec le
+    capteur de niveau (flotteur). Selon l'état du flotteur et de la crépine de
+    la pompe existante, il peut être plus judicieux de remplacer le groupe
+    complet pour éviter un démontage double. - Compatibilité carburant :
+    essence, diesel, E10/E85, GNV — La composition du carburant détermine les
+    matériaux internes de la pompe (joints, turbine). Une pompe conçue pour
+    l'essence conventionnelle peut se dégrader rapidement avec du SP95-E10 ou du
+    superéthanol E85. Vérifier explicitement la compatibilité carburant dans la
+    fiche technique du fabricant. - Marque de qualité et homologation — Préférer
+    les fabricants OEM ou OE-quality (Bosch, Denso, Pierburg, Delphi, Walbro)
+    qui garantissent les pressions et débits mesurés sur banc. Une pompe
+    générique sans certification de débit peut sembler fonctionner mais créer
+    des problèmes intermittents à chaud ou sous charge. - Marque, modèle, année
+    et type de carburant — Ces quatre données sont impératives pour filtrer le
+    catalogue et accéder aux références exactes. Indiquer également la cylindrée
+    et la puissance moteur : un même véhicule peut avoir reçu des groupes de
+    jaugeage différents selon l'équipement (version économique vs sportive).
+    Pour aller plus loin : consultez notre guide d'achat pompe à carburant —
+    comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Pompe à carburant pour
+    connaître les spécifications. - Débranchez la batterie. - Déposez la
+    banquette de siège arrière. - Détachez les connecteurs du couvercle
+    deréservoir. - Déposez le couvercle de réservoir. - Débranchez le connecteur
+    de la jauge deniveau de carburant. - Déposez la pompe à carburant.
+  S4_REPOSE: >-
+    Le remontage d'une pompe à carburant nécessite des précautions liées à la
+    présence de vapeurs d'essence : travailler dans un espace ventilé, à l'écart
+    de toute flamme ou étincelle, batterie déconnectée. La pompe est immergée
+    dans le réservoir ; un joint de module mal positionné ou un câblage
+    incorrectement connecté suffisent à provoquer une fuite ou une panne
+    immédiate. - Contrôler la conformité de la pompe neuve — Comparer la pompe à
+    carburant neuve avec celle déposée : hauteur totale du module, sens de la
+    tête de pompe, position des connexions électriques et du retour de
+    carburant. Une pompe de hauteur incorrecte ne jauge pas correctement le
+    niveau de carburant. - Remplacer le filtre à carburant intégré — Si le
+    module est fourni sans filtre de crépine, monter le filtre à carburant neuf
+    sur l'entrée de la pompe avant d'insérer le module dans le réservoir. Un
+    filtre encrassé dégrade la durée de vie de la nouvelle pompe. - Vérifier le
+    capteur de niveau de carburant — Contrôler le bon fonctionnement du capteur
+    de niveau (flotteur et rhéostat) intégré au module. Une jauge défaillante
+    doit être remplacée en même temps que la pompe, car l'accès nécessite de
+    rouvrir le réservoir. - Positionner le joint de module neuf — Installer le
+    joint d'étanchéité neuf du couvercle de réservoir dans sa gorge, proprement
+    graissé avec un peu de carburant ou de vaseline. Un joint pincé ou mal
+    engagé provoque une fuite de carburant et de vapeurs dans l'habitacle. -
+    Introduire la pompe dans le réservoir — Insérer délicatement la pompe à
+    carburant dans le réservoir en alignant les repères de positionnement
+    angulaire de la tête de module sur le repère de la trappe du réservoir. Ne
+    pas forcer : un détrompeur empêche une mauvaise orientation. - Remettre le
+    couvercle et verrouiller le bouchon — Remettre en place le couvercle du
+    réservoir et visser (ou faire tourner jusqu'au déclic) le bouchon de
+    verrouillage dans le sens prescrit (généralement dans le sens des aiguilles
+    d'une montre). Vérifier que toutes les encoches sont correctement engagées.
+    - Reconnecter les raccords électriques et carburant — Brancher le connecteur
+    électrique de la jauge et de la pompe (connecteur unique sur la plupart des
+    modules modernes). Reconnecter les conduites d'alimentation et de retour de
+    carburant en vérifiant le bon clipsage des raccords rapides. - Reposer la
+    banquette arrière et rebrancher la batterie — Remettre en place la banquette
+    ou le plancher de coffre. Rebrancher la batterie. Mettre le contact sans
+    démarrer plusieurs fois pour amorcer la pompe et monter en pression dans le
+    circuit carburant. - Contrôler le démarrage et vérifier l'absence de fuite —
+    Démarrer le moteur et laisser tourner au ralenti 2 à 3 minutes. Vérifier
+    l'absence d'odeur de carburant dans l'habitacle et l'absence de fuite autour
+    du couvercle de réservoir. Contrôler l'affichage correct de la jauge de
+    carburant au tableau de bord.
+  S5: >-
+    Erreurs frequentes avec la pompe a carburant : - Ne pas depressuriser le
+    circuit avant intervention — le carburant sous pression gicle a l'ouverture
+    des raccords, risque d'incendie- Rouler regulierement en reserve — la pompe
+    immergee dans le reservoir utilise le carburant comme refroidissement, en
+    reserve elle surchauffe et s'use prematurement- Confondre pompe de gavage et
+    pompe haute pression (diesel) — ce sont deux pieces distinctes avec des
+    emplacements et des prix differents- Ne pas remplacer le filtre a carburant
+    en meme temps — un filtre colmate fait forcer la pompe neuve et reduit sa
+    duree de vie- Ignorer des a-coups a l'acceleration ou un demarrage difficile
+    a chaud — symptomes classiques d'une pompe a carburant fatiguee- Ne pas
+    verifier la tension d'alimentation electrique de la pompe avant remplacement
+    — un relais ou un fusible defaillant mime une panne de pompe
+  S6: >-
+    Après le remplacement d'une pompe à carburant (immergée dans le réservoir ou
+    mécanique sur moteur), des contrôles d'amorçage, de pression et d'étanchéité
+    doivent être effectués avant toute mise en route prolongée. La pompe
+    achemine le carburant du réservoir vers le système d'injection à basse
+    pression — une fuite ou un défaut d'amorçage peut provoquer une panne sèche
+    immédiate. - Amorçage de la pompe avant démarrage : activer le contact
+    plusieurs fois sans démarrer (position "contact" pendant 3 à 5 secondes,
+    puis coupure, répéter 3 fois) pour permettre à la pompe de remplir la rampe
+    d'injection. Écouter un léger bourdonnement depuis le réservoir à chaque
+    activation — son absence indique une pompe non alimentée électriquement ou
+    un fusible grillé. - Contrôle de la pression carburant : brancher un
+    manomètre sur la rampe d'injection (valeur attendue : 2,5 à 4 bar selon
+    moteur essence, vérifier spécification constructeur). Une pression
+    inférieure de 20 % à la valeur nominale pointe vers une pompe sous-
+    performante ou un régulateur de pression défaillant. - Absence de fuite au
+    niveau du bouchon et des raccords : après démarrage, inspecter soigneusement
+    le pourtour du bouchon de jauge (bride de fermeture du réservoir), les
+    raccords de durites d'entrée et de sortie ainsi que la durite de retour.
+    L'odeur de carburant à l'intérieur de l'habitacle ou sous le véhicule impose
+    un arrêt immédiat. - Comportement moteur à l'accélération : effectuer
+    plusieurs accélérations franches de 0 à 80 km/h. L'absence d'à-coups, de
+    ratés ou de chute de régime confirme que la pompe délivre un débit suffisant
+    en forte demande. Tout à-coup persistant indique un débit insuffisant en
+    charge. - Absence de bruit de gémissement dans le réservoir : à bas régime
+    et fenêtres ouvertes, écouter le réservoir. Un bourdonnement fort et continu
+    signale une pompe qui aspire à sec (niveau carburant trop bas lors du test)
+    ou une crépine d'aspiration partiellement obstruée. - Vérification du filtre
+    à carburant : si le filtre n'a pas été remplacé simultanément, contrôler
+    qu'il ne présente pas un colmatage excessif susceptible de limiter le débit
+    de la pompe neuve. Un filtre encrassé réduit la durée de vie de la pompe de
+    façon significative.
+  S7: >-
+    Quel est le prix d'un pompe à carburant ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le pompe à carburant
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon pompe à carburant est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un pompe à carburant défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- alimenter - acheminer - pomper
+  S8: >-
+    Comment choisir Pompe à carburant compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Pompe à carburant ?En cas de moteur qui refuse de demarrer pas d
+    amorcage ou de degradation Puis-je monter Pompe à carburant sans
+    verification atelier ?Le montage peut exiger controles de couple, alignement
+    et references.
+  META: >-
+    {"meta_title":"Pompe à carburant : Conseils diagnostic et remplacement |
+    AutoMecanik","meta_description":"Moteur qui cale, gémissement réservoir ou
+    perte de puissance ? Découvrez quand changer la pompe à carburant et comment
+    choisir entre OE et adaptable."}
 ---
 
 # Pompe à carburant - Guide Diagnostic Complet

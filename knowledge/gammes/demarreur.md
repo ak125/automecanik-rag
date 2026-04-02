@@ -6,7 +6,8 @@ pg_id: 2
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Appliquer une rotation initiale au moteur pour declencher le demarrage
   must_be_true:
@@ -203,6 +205,141 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: delphiautoparts.com + mann-filter.com + textar.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 8
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_2_a: '2 a'
+    val_31_a: '31 a'
+    val_59_a: '59 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    - Niveau de difficulté : facile à intermédiaire (accessibilité variable
+    selon véhicule). - Temps estimé : 30 min à 2 h. - Outils : clés à
+    œil/douilles 10-13 mm, rallonge + cliquet, lampe. - Précaution : débranchez
+    impérativement la borne négative de la batterie — le câble B+ du démarreur
+    est sous tension permanente. - Accès : par le dessus (véhicules compacts) ou
+    par le dessous (cric + chandelles nécessaires).
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Claquement contact demarrage solenoide - Demarreur tourne mais moteur lance
+    - Aucune reaction au contact moteur electrique hs - Grincement ou bruit
+    anormal au demarrage - Odeur de brule electrique au demarrage - Plus
+    demarrages difficiles recurrents
+  S2_DIAG: >-
+    SymptômeCause probableActionClaquement contact demarrage
+    solenoideverification urgente piece et alimentationObserver : claquement
+    contact demarrage solenoide ?Demarreur tourne mais moteur lancelocaliser
+    source et verifier usure mecaniqueObserver : demarreur tourne mais moteur
+    lance ?Aucune reaction au contact moteur electrique hsvehicule immobilise ou
+    symptome critique : verification urgente piece et alimentationObserver :
+    aucune reaction au contact moteur electrique hs ?Grincement ou bruit anormal
+    au demarragebruit anormal detecte : localiser source et verifier usure
+    mecaniqueObserver : grincement ou bruit anormal au demarrage ?Odeur de brule
+    electrique au demarrageverification urgente piece et alimentationObserver :
+    claquement contact demarrage solenoide ?Plus demarrages difficiles
+    recurrentsverification urgente piece et alimentationObserver : claquement
+    contact demarrage solenoide ?
+  S3: >-
+    Pour choisir le bon demarreur pour votre vehicule : - Puissance (kW) : doit
+    correspondre a la cylindree et au type de moteur — un demarreur sous-
+    puissant ne lancera pas le moteur, surtout a froid- Nombre de dents du
+    pignon lanceur : doit correspondre exactement a la couronne du volant moteur
+    (9, 10, 11 ou 13 dents selon vehicule)- Sens de rotation : horaire ou anti-
+    horaire selon le moteur — un demarreur inversé tourne dans le vide- Fixation
+    : verifier le nombre de vis (2 ou 3), le diametre et l'entraxe —
+    l'accessibilite varie fortement d'un vehicule a l'autre- Connectique : borne
+    B+ (gros cable batterie) et connecteur du solenoide doivent correspondre au
+    faisceau existant
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Démarreur pour connaître
+    les spécifications. - Démonterun démarreur. - Débranchez la batterie. -
+    Levez et calez le véhiculesi nécessaire. - Identifiez la position du
+    démarreur. - Repérez les branchements etles positions des connexions du
+    démarreur. - Débranchez les connexionsdu démarreur. - Analyser les points de
+    fixation. - Identifier les différentesfixations du démarreur. Note : le
+    démarreur peut être fixé soit à : - la boîte de vitesse. - la boîte de
+    vitesse et l'arrièredu démarreur au moteur. - la boîte de vitesse par
+    desdifférentes vis, et ces derniers servent à maintenir en place le
+    groupemotopropulseur par exemple Volkswagen,Audi, Seat et Skoda. Dans ce
+    type de fixations il faut placer un cric sous le moteur afinpour le
+    soutenir. - la boîte de vitesse, dansde nombreux autres cas ces mêmes vis
+    sont reliées à des organes (supportde filtre à air, support de canalisation
+    etc.). - Déposer votre démarreur. - Après la dépose du démarreur,Il faut
+    récupérer le guide qui sert pour le centrer sur la boite de vitessepuisqu'il
+    peut rester accroché sur la tête du démarreur. - Récupérez le support
+    defixation à l'arrière du démarreur car il ne sera pas livré sur lanouvelle
+    pièce.
+  S4_REPOSE: >-
+    - Comparer le nouveau démarreur avec celui monté sur le véhicule avant de le
+    remonté, s'assurez que les pointsde fixations et le nombre de dents soient
+    identiques. - Mettre en place le supportde fixation arrière du démarreur. -
+    Remontez le démarreuret vérifiez qu'il soit bien positionné sur son guide. -
+    Serrer les différentesfixations du démarreur. - Nettoyez à l'aide
+    d'unebrosse métallique les cosses qui pourraient être oxydées. - Rebranchez
+    les connexionsdu démarreur. - Rebranchez la bornenégative de la batterie. -
+    Vérifiez le bonfonctionnement du démarreur. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Démarreur.
+  S5: >-
+    Erreurs frequentes lors du remplacement d'un demarreur : - Oublier de
+    debrancher la batterie — le cable B+ du demarreur est sous tension
+    permanente, risque de court-circuit et d'etincelle- Ne pas verifier la
+    couronne du volant moteur — des dents cassees empechent le lanceur
+    d'engrener correctement et usent le demarreur neuf prematurement- Inverser
+    les connexions electriques — le cable B+ (gros cable batterie) et le fil de
+    commande du solenoide ne sont pas interchangeables- Forcer les vis de
+    fixation si le demarreur ne s'aligne pas — signe que la reference est
+    incorrecte ou qu'un element gene le positionnement- Ne pas tester le circuit
+    electrique avant de remplacer le demarreur — une batterie faible, un cable
+    oxyde ou un contacteur defaillant peuvent mimer une panne de demarreur-
+    Oublier de verifier le serrage de la borne B+ apres montage — un mauvais
+    contact provoque des chutes de tension et un demarrage lent
+  S6: >-
+    Verifications apres remplacement du demarreur : - Test de demarrage : le
+    moteur doit demarrer sans bruit anormal — un claquement metallique indique
+    un mauvais engrainement du lanceur sur la couronne- Tension batterie :
+    mesurer avec un multimetre (12,6 V moteur arret, 13,5-14,5 V moteur
+    tournant) — une tension basse apres demarrage signale un probleme
+    d'alternateur, pas du demarreur- Connexions electriques : verifier que la
+    borne B+ est bien serree et sans oxydation — un mauvais contact provoque un
+    demarrage lent qui mime un demarreur defaillant- Couple de serrage :
+    verifier les vis de fixation du demarreur sur la cloche de boite — un
+    demarreur mal fixe vibre et use le pignon lanceur- Absence de fumee ou
+    d'odeur : une odeur de brule apres demarrage indique un probleme de cablage
+    ou un demarreur bloque en position engrenee
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    - neiman - contacteur demarreur
+  S8: >-
+    Démarreur OE, OES ou échange standard ?Les démarreurs OES (Bosch, Valeo,
+    Denso) sont de qualité première monte. L'échange standard est économique et
+    fiable : pièce reconditionnée avec garantie. Comment savoir si mon démarreur
+    est HS ?Claquement sans démarrage (solénoïde), démarreur qui tourne dans le
+    vide (lanceur usé), pas de réaction au contact (moteur électrique grillé).
+    Tous les combien changer le démarreur ?Pas de périodicité fixe. Durée de vie
+    150 000 à 250 000 km selon utilisation. Les démarrages fréquents (ville)
+    usent plus vite. Peut-on changer le démarreur soi-même ?Oui, opération
+    accessible. Débrancher la batterie, dévisser les 2-3 vis de fixation,
+    débrancher les fils. Compter 1h à 2h selon l'accès. Quelle erreur éviter
+    avec le démarreur ?Ne pas insister si le démarreur ne répond pas (risque de
+    griller le solénoïde). Vérifier la batterie et les câbles avant de changer
+    le démarreur.
+  META: >-
+    {"meta_title":"Démarreur : Guide Remplacement et Diagnostic |
+    AutoMecanik","meta_description":"Claquement au démarrage, moteur qui ne se
+    lance pas ? Découvrez quand changer le démarreur, comment le remplacer et
+    choisir la pièce compatible sur AutoMecanik."}
 ---
 
 # Démarreur - Guide Diagnostic Complet

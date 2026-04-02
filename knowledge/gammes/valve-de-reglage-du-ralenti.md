@@ -6,7 +6,8 @@ pg_id: 1298
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Reguler le debit d'air au ralenti pour maintenir un regime stable moteur chaud ou froid
   must_be_true:
@@ -202,6 +204,178 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    reapprentissage: 'obligatoire apres remplacement — le calculateur doit reapprendre la position de repos'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La valve de réglage du ralentie peut être soit une électrovanne ou soit un
+    moteur pas àpas, elle est située sur le corps papillon ou en parallèle sur
+    la tubulure d'admission. Commeson nom l'indique elle permet de réguler
+    l'admission d'air dans le moteur lorsquece dernier est au ralenti, pour
+    qu'il ne s'étouffe ou ne cale pas. Généralementle régulateur de ralenti
+    équipe les moteurs essences. Le régulateur deralenti est commandé par le
+    calculateur moteur, qui va permettre l'ajustage dudébit d'air au ralenti.
+    Lerégulateur de ralenti fait passer un flux d'air variable selon que le
+    ralentis'écarte ou s'approche de sa valeur de référence et il gère aussi le
+    débitd'air complémentaire lors des démarrages à froid ou de décélération. En
+    savoir plus : valve de réglage du ralenti — définition et rôle mécanique 🚨
+    Bruit Valve de réglage du ralenti : causes et diagnostic
+  S2: >-
+    Une valve de réglage de ralenti défaillante présente plusieurs symptômes : -
+    Ralenti moteur instable surtout si le véhicule en arrêtavec un calage du
+    moteur. - Le régime ralenti monte dans les tours sans que l'appui sur la
+    pédale d'accélérateur. - Le moteur broute lors de la décélération. - Une
+    surconsommation decarburant. - Fumée d'échappement. Nous vous conseillons de
+    faite un diagnostic approfondisi vous constatez un de ces symptômes par ce
+    que d'autres composants peuventêtre à la source d'un régime de ralenti
+    instable par exemple l'usure du capteur de position du papillon, une sonde
+    lambda usée, un injecteur grippé, un des capteurs d'impulsionest défaillant
+    . Un régulateur de ralenti défectueux peut causer plusieurs autres pannes
+    dans lemoteur : - Usure du corps papillon. - Usure des injecteurs.
+    Diagnostic complet : identifier une panne de valve de réglage du ralenti
+  S3: >-
+    La valve de réglage du ralenti (aussi appelée vanne IAC ou by-pass d'air)
+    dose le débit d'air contournant le papillon fermé pour maintenir un régime
+    stable à chaud et à froid, entre 650 et 900 tr/min selon le constructeur.
+    Sur les motorisations injection monopoint ou multipoint pré-2005, c'est un
+    composant mécatronique critique : une pièce incompatible provoque un calage
+    immédiat au feu rouge ou un régime erratique impossible à corriger par
+    apprentissage calculateur. - Code moteur et type d'injection — La valve IAC
+    est spécifique au type d'injection (monopoint, multipoint, injection
+    directe) et au code motorisation (ex. XU10J4RS, N13B16, F4R). Deux moteurs
+    de 1,4 L de marques différentes utilisent des valves incompatibles. - Nombre
+    de fils du connecteur électrique — Les valves rotatives (type stepper motor)
+    utilisent 4 fils ; les valves à obturateur solénoïde utilisent 2 fils. Un
+    mauvais nombre de fils rend le remplacement impossible sans modification du
+    câblage. - Diamètre du by-pass d'air — L'orifice de by-pass a un diamètre de
+    4 à 8 mm selon les applications. Ce diamètre conditionne le débit maximal
+    autorisé et ne peut pas être compensé par le calibrage du calculateur. -
+    Type de fixation sur le corps papillon — Certaines valves se vissent
+    directement sur le corps papillon (2 ou 3 vis) ; d'autres se connectent via
+    un tuyau en caoutchouc. Vérifiez l'emplacement exact sur votre boîtier
+    papillon avant de commander. - Version nettoyée ou neuve — Les valves IAC
+    s'encrassent progressivement en dépôts de calamine et de gomme d'essence.
+    Sur les véhicules de plus de 100 000 km, préférez une pièce neuve plutôt
+    qu'une pièce reconditionnée dont l'historique de nettoyage est inconnu. -
+    Procédure d'apprentissage après montage — La plupart des calculateurs
+    nécessitent une procédure d'initialisation du ralenti après remplacement
+    (déconnexion batterie 15 min ou procédure OBD). Vérifiez que cette étape est
+    réalisable avant de fermer le capot. Pour aller plus loin : consultez notre
+    guide d'achat valve de réglage du ralenti — comparatif marques, critères de
+    choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Valve de réglage du
+    ralenti pour connaître les spécifications. - Débranchez la batterie. -
+    Démontez le filtre à air . - Démontez le boîtier dufiltre à air. - Démontez
+    la canalisation d'airdu corps papillon. - Déconnectez les connecteursdu
+    capteur position papillon et de la valve de réglage du ralenti. - Démontez
+    le corps papillons'il le faut pour faciliter l'accès au vis de fixation de
+    la valve de réglage du ralenti. Note : si vous n'allez pas déposez le corps
+    papillondans ce cas desserrez ces vis de fixation et le tourné légèrement
+    jusqu'à avoiraccès aux fixations de la valve de réglage du ralenti. -
+    Desserrez les fixations de la valve de réglage du ralenti. - Démontez la
+    valve de réglage du ralenti.
+  S4_REPOSE: >-
+    La repose de la valve de réglage du ralenti nécessite de vérifier
+    simultanément l'état du boîtier papillon et du capteur de position papillon,
+    car ces trois composants travaillent en synergie directe. Monter une valve
+    neuve sur un boîtier encrassé ou un capteur défaillant ne résoudra pas le
+    problème de ralenti. - Vérifiez que la valve de réglage du ralenti neuve est
+    strictement identique à celle démontée : nombre de voies, diamètre
+    d'alésage, type de connecteur électrique (2 ou 3 fils selon le modèle). -
+    Profitez de l'accès au boîtier papillon pour le nettoyer intérieurement avec
+    un nettoyant papillon en aérosol. Un boîtier encrassé perturbe le débit
+    d'air de base et rend le ralenti instable même avec une valve neuve. -
+    Inspectez l'état du capteur de position papillon : un capteur usé (codes
+    P0120 à P0124) cause des symptômes identiques à une valve défaillante.
+    Remplacez-le si des hésitations sont présentes. - Vérifiez l'état du filtre
+    à air : un filtre colmaté réduit le débit d'air d'admission et sollicite
+    excessivement la valve de ralenti. Remplacez-le si nécessaire. - Nettoyez le
+    logement de la valve sur le boîtier papillon avec un chiffon non pelucheux.
+    Assurez-vous que le joint torique ou le plan de joint est exempt de résidus
+    de l'ancien joint. - Mettez en place la valve de réglage du ralenti neuve en
+    orientant correctement le connecteur. N'exercez aucune contrainte de torsion
+    sur le corps de la valve lors de la mise en position. - Serrez les vis de
+    fixation de la valve uniformément, en étoile si elles sont au nombre de 3 ou
+    4, pour éviter de déformer le plan de joint. Le couple de serrage est
+    typiquement faible (2 à 4 Nm) : ne pas serrer au choc. - Si le boîtier
+    papillon a été déposé, remontez-le en remplaçant son joint d'étanchéité et
+    en serrant les fixations au couple préconisé. - Reconnectez les connecteurs
+    électriques du corps papillon et de la valve de réglage du ralenti jusqu'au
+    déclic caractéristique d'encliquetage. - Remontez la canalisation d'air, le
+    boîtier du filtre à air et le filtre à air. Vérifiez l'étanchéité de la
+    gaine entre le boîtier filtre et le papillon : une aspiration d'air parasite
+    génère un code P0507 (régime ralenti trop élevé). - Rebranchez la batterie.
+    Démarrez le moteur à froid et laissez-le atteindre la température de
+    fonctionnement normale. Observez la stabilité du ralenti : il doit se
+    stabiliser entre 700 et 900 tr/min selon le moteur. Un régime oscillant en
+    phase de chauffe peut nécessiter une réinitialisation de l'apprentissage
+    papillon via outil de diagnostic.
+  S5: >-
+    - ❌ "homologué CT - ❌ "sécurité garantie - ❌ "zéro panne - ❌ "garanti à vie
+    - ❌ "corrige la panne
+  S6: >-
+    Après le remplacement ou le nettoyage d'une valve de réglage du ralenti
+    (également appelée IAC — Idle Air Control), les vérifications portent sur la
+    stabilité du régime moteur dans différentes conditions thermiques et de
+    charge. Le calculateur moteur doit aussi être mis en conditions de
+    réapprentissage. - Réinitialisation de la mémoire adaptative du calculateur
+    : débrancher la borne négative de la batterie pendant 10 minutes après le
+    remplacement. Cette opération efface les valeurs d'adaptation apprises avec
+    l'ancienne valve et force le calculateur à recalculer les paramètres de
+    ralenti avec la pièce neuve. - Vérification du régime au ralenti à froid :
+    au premier démarrage après remplacement, le régime moteur froid doit se
+    situer entre 900 et 1 200 tr/min selon le moteur (régime de fast-idle pour
+    la montée en température). Un régime inférieur à 700 tr/min à froid indique
+    que la valve ne s'ouvre pas suffisamment. - Stabilisation du ralenti à chaud
+    : moteur à température normale (aiguille stabilisée), le régime de ralenti
+    doit se tenir entre 700 et 850 tr/min sans oscillations. Des fluctuations de
+    ±150 tr/min ou plus signalent une pollution résiduelle du boîtier papillon à
+    nettoyer ou une fuite d'air parasite. - Test de reprise au ralenti après
+    coupure charge électrique : allumer climatisation, feux de route et
+    chauffage simultanément puis les éteindre. Le régime doit se stabiliser dans
+    un délai inférieur à 2 secondes sans chute sous 600 tr/min, qui provoquerait
+    un calage. - Contrôle de l'absence de codes défaut : connecter un outil OBD
+    et vérifier l'absence de codes P0505 (circuit de commande ralenti) ou
+    P0506/P0507 (régime ralenti hors plage). Ces codes persistent parfois dans
+    la mémoire de l'ancienne valve et doivent être effacés manuellement. -
+    Inspection de l'étanchéité du boîtier papillon : vérifier que le joint
+    d'interface entre la valve et le boîtier papillon est correctement
+    positionné et qu'aucun sifflement d'air n'est audible au niveau du
+    raccordement à chaud, signe d'une fuite d'admission perturbant le mélange
+    air/carburant. - Test de coupure moteur et redémarrage : couper et
+    redémarrer le moteur 3 fois de suite — le démarrage doit être immédiat à
+    chaque fois sans nécessiter d'accélération forcée, confirmant que la valve
+    est pleinement opérationnelle.
+  S7: >-
+    Quel est le prix d'un valve de réglage du ralenti ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le valve de
+    réglage du ralenti compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon valve de réglage du ralenti
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un valve de réglage du ralenti
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- corps papillon - filtre a air
+  S8: >-
+    Comment choisir Valve de réglage du ralenti compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Valve de réglage du ralenti ?En cas de ralenti
+    instable ou irregulier ou de degradation mesurable, Puis-je monter Valve de
+    réglage du ralenti sans verification atelierLe montage peut exiger controles
+    de couple, alignement et references.
+  META: >-
+    {"meta_title":"Valve de réglage du ralenti : symptômes et
+    remplacement","meta_description":"Ralenti instable, moteur qui cale au feu
+    rouge ou régime erratique ? Apprenez à diagnostiquer et remplacer la valve
+    de réglage du ralenti avant une panne secondaire."}
 ---
 
 # Valve de réglage du ralenti - Guide Diagnostic Complet

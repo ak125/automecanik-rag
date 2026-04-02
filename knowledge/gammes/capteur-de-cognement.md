@@ -6,7 +6,8 @@ pg_id: 3921
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Detecter les vibrations anormales du moteur liees au cliquetis et informer le calculateur pour ajuster l'avance
   must_be_true:
@@ -211,6 +213,61 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Capteur piezoelectrique resonant
+    description: Transforme les vibrations du bloc en tension electrique, frequence de resonance ciblee
+    era: standard
+  technical_notes:
+    continuite_cablage: '< 1 ohm'
+    isolement_masse: '>= 30 Mohms'
+    diagnostic_oscilloscope: 'amplitude significative a l'acceleration brusque'
+    couple_serrage: 'critique — selon spec constructeur, pas de rondelle frein'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Detecter les vibrations anormales du moteur liees au cliquetis et informer
+    le calculateur pour ajuster l'avance. Pièces liées : vérifier les composants
+    adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Voyant moteur
+    allume avec code p0325 ou p0327- Cliquetis metallique a l acceleration
+    detonation- Perte de puissance notable allumage retarde- Surconsommation de
+    carburant anormale- Fumee noire a l echappement- Moteur qui chauffe plus que
+    d habitude
+  S3: >-
+    Pour choisir le bon capteur de cognement pour votre véhicule : - Marque de
+    votre véhicule- Modele de votre véhicule- Annee de votre véhicule- Marques :
+    Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard), Ridex, Topran
+    (budget)- Budget : 30 à 100 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le capteur de cognement : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Ne pas serrer trop fort (fausse les mesures). Ne
+    pas utiliser de joint non prévu. Vérifier l'absence de fissure sur le bloc
+    moteur.- Ne pas respecter le couple de serrage constructeur au remontage-
+    Ignorer les symptômes d'usure en espérant que ça passe — une défaillance
+    progressive s'aggrave toujours- Ne pas effacer les codes défaut après
+    remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du capteur de cognement : - Controle de la tension et
+    du courant avec un multimetre- Verifier les connexions electriques
+    (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l
+    hiver- Ne pas laisser le vehicule immobilise longtemps sans protection-
+    Effacer les codes défaut éventuels avec l'outil OBD- Effectuer un essai
+    route pour confirmer la disparition des symptômes
 ---
 
 # Capteur de cognement - Guide Diagnostic Complet

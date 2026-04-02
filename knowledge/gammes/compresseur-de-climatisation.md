@@ -6,7 +6,8 @@ pg_id: 447
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Comprime le fluide frigorigene pour le cycle de climatisation - Ne refroidit PAS le moteur
   must_be_true:
@@ -219,6 +221,194 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: automotive.hutchinson.com + denso-am.eu
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    norme_iso_9981: 'ISO 9981'
+    val_000_km: '000 km'
+    val_134_a: '134 a'
+    val_135__c: '135 °C'
+    val_2_a: '2 a'
+    val_36_a: '36 a'
+    val_42_a: '42 a'
+    val_7_a: '7 a'
+    val_858_a: '858 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le système de climatisation se met enroute dés que vous actionnez la
+    commande de climatisation située dans l'habitacle.La poulie du compresseur
+    entraînée par lacourroie d'accessoires est munie d'un embrayage magnétique
+    qui va mettre en action lecompresseur de climatisation pour envoyé le
+    liquide frigorigène à hautepression dans le condenseur de climatisation pour
+    le refroidir, le gaz vasortir du condenseur sous forme de liquide vers la
+    bouteille déshydratante qui va filtrerle gaz liquéfié et qui va se détendre
+    dans le détendeur de climatisation pourfaire chuter la pression et générer
+    du froid. Le gaz refroidit passe dansl'évaporateur de climatisation pour
+    l'évacuer de l'humidité sous forme liquide (eau qui coulesous le véhicule),
+    l'air froid arrive dans l'habitacle. Le rôle du compresseur de
+    climatisationest de compresser le gaz basse pression de manière à
+    l'échauffer et de letransformer en gaz haute pression. Le fonctionnement de
+    la climatisation consomme une grande quantité d'énergie surtout quand le
+    moteur tourne au ralentie. En savoir plus : compresseur de climatisation —
+    définition et rôle mécanique 🚨 Bruit Compresseur de climatisation : causes
+    et diagnostic
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Climatisation qui ne produit plus d air froid - Bruit de claquement a l
+    enclenchement de la clim - Sifflement ou grincement cote compresseur -
+    Embrayage compresseur patine enclenche - Traces d huile autour du
+    compresseur - Plus de 150 000 km sans controle du circuit - Fuite huile
+    visible compresseur raccords - Climatisation refroidit puis arrete
+    brutalement - Odeur brule caoutchouc chaud cote
+  S3: >-
+    Pour choisir les bons compresseur de climatisation pour votre véhicule : -
+    Marque de votre véhicule - Modele de votre véhicule - Annee de votre
+    véhicule - Vérifier : climatisation qui ne produit plus d air froid -
+    Vérifier : bruit de claquement a l enclenchement de la clim - Vérifier :
+    sifflement ou grincement cote compresseur - Vérifier : embrayage compresseur
+    patine enclenche - Vérifier : traces d huile autour du compresseur -
+    Vérifier : plus de 150 000 km sans controle du circuit - Vérifier : fuite
+    huile visible compresseur raccords - Vérifier : climatisation refroidit puis
+    arrete brutalement - Vérifier : odeur brule caoutchouc chaud cote - Vérifier
+    : Bruit de claquement a l enclenchement de la clim - Vérifier : Sifflement
+    ou grincement cote compresseur - ### Caractéristiques La formulation unique
+    de l’huile de base de , signifie qu’ils offrent les propriétés physiques
+    exactes dont notre compresseur AC, a besoin pour continuer à fonctionner
+    sans heurts et efficacement. (Source: web-catalog/12908517def6-s001.md, web-
+    catalog/12908517def6-s002.md, web-catalog/12908517def6-s003.md, web-
+    catalog/12908517def6-s004.md) - ## Safety Data Sheets If you work with air
+    conditioning oils, please follow the safety instructions. - ND Oil 8 Version
+    3.1 Safety Datasheet Austria ND-oil-8 - ND Oil 11 Version 1.2 Safety
+    Datasheet... (Source: web-catalog/12908517def6-s001.md, web-
+    catalog/12908517def6-s002.md, web-catalog/12908517def6-s003.md, web-
+    catalog/12908517def6-s004.md)Pour aller plus loin : consultez notre guide
+    d'achat compresseur de climatisation — comparatif marques, critères de choix
+    et prix.
+  S4_DEPOSE: >-
+    1. Comment changer un compresseur de climatisation de voiture : guide étape
+    par étape 2. ## Les fabricants choisissent Détenant 40 % du marché mondial
+    des compresseurs A/C d’origine, est le leader mondial sur ce marché. Les
+    pièces sont sélectionnées par les principaux constructeurs automobiles tels
+    que Audi, BMW, Fiat, Mercedes, Porsche, Toyota et VW. Design compact et
+    léger de haute...
+  S4_REPOSE: >-
+    Le remontage d'un compresseur de climatisation nécessite un équipement de
+    station de recharge professionnelle (obligatoire légalement pour la
+    manipulation du fluide frigorigène R134a ou R1234yf). Ne remontez jamais un
+    compresseur dans un circuit non purgé : l'air et l'humidité résiduels
+    forment des acides qui détruisent le compresseur neuf en quelques heures. -
+    Vérifiez que le compresseur de climatisation neuf est rigoureusement
+    identique à celui démonté : numéro d'identification, capacité en huile, type
+    de poulie (diamètre, nombre de gorges), type d'embrayage et position de la
+    valve. Un compresseur avec une capacité en huile différente nécessite une
+    vidange du circuit entier. - Contrôlez l'état de la courroie d'accessoires :
+    si elle présente des craquelures, des effilochures ou une usure latérale,
+    remplacez-la simultanément. Une courroie défaillante peut casser le
+    compresseur neuf par patinage ou blocage. - Contrôlez l'état des conduites
+    de climatisation : flexibilité des flexibles, absence de corrosion sur les
+    raccords rigides, état des joints toriques. Remplacez tous les joints
+    toriques d'interface compresseur — ils ne peuvent pas être réutilisés. -
+    Remplissez le compresseur neuf avec la quantité d'huile réfrigérante
+    prescrite par le constructeur (PAG ou POE selon le fluide frigorigène). Un
+    compresseur trop peu huilé gripe dès la première mise en route. - Remontez
+    le compresseur de climatisation sur ses supports. Démarrez le serrage à la
+    main sur tous les points de fixation avant d'utiliser la clé. Serrez les vis
+    de fixation au couple prescrit (généralement 20 à 35 N·m). - Remontez les
+    conduites de climatisation avec des joints toriques neufs légèrement enduits
+    d'huile réfrigérante. Serrez les raccords au couple prescrit — un raccord
+    trop serré coupe le joint, trop lâche il fuit. - Rebranchez le connecteur
+    électrique du compresseur. Remontez la courroie d'accessoires en respectant
+    le cheminement constructeur et la tension correcte. Rebranchez la batterie.
+    - Ouvrez les valves de service basse et haute pression. Faites réaliser par
+    un professionnel agréé la mise sous vide du circuit (minimum 30 minutes à –1
+    bar) pour éliminer l'air et l'humidité résiduels, puis la charge en fluide
+    frigorigène à la quantité et au type prescrits (R134a ou R1234yf). -
+    Contrôlez la pression du circuit en basse et haute pression avec les
+    manomètres de station (valeurs constructeur à température ambiante stable).
+    Vérifiez l'absence de fuite aux raccords avec un détecteur ou du spray
+    traceur UV. - Enclenchez la climatisation et contrôlez la montée en froid :
+    la température en sortie d'aérateur doit descendre en dessous de 10 °C en 5
+    minutes par temps chaud. Vérifiez l'absence de bruit de sifflement ou de
+    claquement à l'embrayage du compresseur.
+  S5: >-
+    - ❌ "homologué CT" - ❌ "sécurité garantie" - ❌ "zéro panne" - ❌ "garanti à
+    vie" - ❌ "refroidit le moteur" - - Climatisation et système thermique moteur
+    - Huile de compresseur A/C Huile de compresseur A/C Il est essentiel de
+    lubrifier le compresseur A/C avec de l’huile de haute qualité, pour garantir
+    son...
+  S6: >-
+    Après la pose d'un compresseur de climatisation neuf, plusieurs contrôles
+    sont nécessaires avant de considérer l'intervention terminée. Le circuit
+    frigorigène est sous pression et toute anomalie doit être détectée
+    immédiatement. - Vérifier l'absence de fuite aux raccords : utiliser un
+    détecteur de gaz réfrigérant électronique ou des lunettes UV avec traceur
+    fluorescent. Contrôler chaque raccord du compresseur — entrée basse
+    pression, sortie haute pression, et zone d'embrayage. - Contrôler les
+    pressions du circuit après recharge : côté basse pression entre 1,5 et 2,5
+    bar au ralenti, côté haute pression entre 14 et 20 bar selon la température
+    extérieure. Se référer aux préconisations constructeur pour les valeurs
+    précises du véhicule. - Tester l'embrayage compresseur : enclencher la
+    climatisation et observer le plateau d'entraînement. L'embrayage doit
+    s'accrocher sans claquement sec ni patinage visible. Un clic franc unique à
+    l'enclenchement est normal. - Vérifier la quantité d'huile frigorigène : le
+    compresseur neuf contient une dose d'huile prédéfinie (généralement 80 à 140
+    ml de PAG selon le modèle). En cas de remplacement de plusieurs composants,
+    ajuster la quantité totale d'huile dans le circuit pour éviter une surdose.
+    - Contrôler la tension et l'état de la courroie d'accessoire : une courroie
+    détendue ou usée provoque des sifflements et accélère l'usure de
+    l'embrayage. Vérifier également le galet tendeur et la poulie de
+    compresseur. - Tester l'efficacité de refroidissement sur 10 minutes :
+    fenêtres fermées, ventilateur à fond, la température de soufflage des
+    bouches doit descendre sous 10 °C en 5 minutes à 20-25 °C ambiants. Au-
+    dessus de cette valeur, suspecter une charge de fluide insuffisante. -
+    Contrôler l'absence de vibrations anormales : au ralenti avec la
+    climatisation enclenchée, les supports du compresseur ne doivent transmettre
+    aucune vibration excessive. Des vibrations persistantes signalent un balourd
+    de plateau ou un mauvais alignement de courroie.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (3 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    Quel est le prix d'un compresseur de climatisation ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le compresseur
+    de climatisation compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon compresseur de climatisation
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un compresseur de climatisation
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- bouteille deshydratante - condenseur de
+    climatisation - courroie d accessoire - detendeur de climatisation -
+    evaporateur de climatisation - filtre d habitacle
+  S8: >-
+    Compresseur clim OE ou adaptable ?Privilégiez l'OE ou OES (Denso, Sanden,
+    Valeo). Un compresseur de mauvaise qualité peut endommager tout le circuit
+    par projection de limaille. Comment savoir si mon compresseur est HS ?Clim
+    qui ne refroidit plus, bruit de claquement ou sifflement, embrayage qui ne
+    s'enclenche pas, traces d'huile sur le compresseur. Tous les combien changer
+    le compresseur ?Pas de périodicité. Durée de vie 100 000 à 200 000 km. Faire
+    une recharge tous les 2 ans préserve le compresseur. Peut-on changer le
+    compresseur soi-même ?Déconseillé. Nécessite un équipement de récupération
+    de gaz (obligatoire légalement) et une station de recharge professionnelle.
+    Quelle erreur éviter avec le compresseur ?Ne jamais ajouter de gaz dans un
+    circuit vide (air + humidité = dégâts). Toujours remplacer le déshydrateur
+    avec le compresseur.
+  META: >-
+    {"meta_title":"Compresseur de clim : Conseils remplacement |
+    AutoMecanik","meta_description":"Compresseur de climatisation en panne ?
+    Découvrez quand changer cette pièce, les symptômes à surveiller (bruit, plus
+    d'air froid) et comment choisir le bon modèle."}
 ---
 
 # Compresseur de climatisation - Guide Diagnostic Complet

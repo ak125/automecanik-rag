@@ -6,7 +6,8 @@ pg_id: 74
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Amplifier l'effort de freinage grace a la depression moteur
   must_be_true:
@@ -211,6 +213,113 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: ate-freinage.fr
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    - Niveau de difficulté : avancé — intervention sur le circuit de freinage. -
+    Temps estimé : 2 à 4 h selon l'accessibilité. - Outils : cric + chandelles,
+    clés à œil 10-17 mm, clés à tuyauter, pince à durites, kit de purge. -
+    Consommables : liquide de frein DOT 4 neuf (1 L minimum), clapet anti-retour
+    neuf. - Sécurité : pièce safety-critical. Ne jamais démarrer sans purge
+    complète du circuit. En cas de doute, confiez l'intervention à un
+    professionnel. 🚨 Bruit Servo frein : causes et diagnostic
+  S2: >-
+    Unservofrein n'a pas de période de remplacement fixe, l'état de la pédale
+    defrein c'est elle qu'informe sur l'état d'usure du servofrein. Diagnostic
+    complet : identifier une panne de servo frein
+  S3: >-
+    - Diamètre du maître-cylindre : le servo doit correspondre au diamètre du MC
+    monté sur le véhicule. - Type d'assistance : dépression moteur (majorité) ou
+    pompe à vide (diesel récents, électriques). Le servo à dépression ne
+    fonctionne pas sur un véhicule équipé d'une pompe à vide sans adaptation. -
+    Entraxe de fixation : 4 goujons au tablier — vérifiez l'entraxe et le
+    diamètre des goujons. - Longueur de tige de poussée : elle détermine la
+    garde de pédale. Certains servos neufs sont livrés avec une tige réglable. -
+    Raccord de dépression : diamètre et orientation du raccord doivent
+    correspondre à la durite d'origine. Pour aller plus loin : consultez notre
+    guide d'achat servo frein — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Servo frein pour connaître
+    les spécifications. - Vidangez leliquide de frein. - Démontez lemaître-
+    cylindre de la voiture. - Désaccouplez lescanalisations d'air. - Démontez le
+    cachederrière la pédale de frein. - Appuyez et gardezl'appui sur la pédale
+    de frein. - Démontez lapédale de frein de la tige de poussée en utilisant un
+    outil de démontageapproprié. - Retirez l'outilde démontage de la tige sans
+    bouger la pédale de frein. - Démontez la tigede poussée. - Desserrez les
+    fixationsdu servofrein. - Démontez leservofrein.
+  S4_REPOSE: >-
+    - Vérifiez que le servofrein neuf est identiqueà celui démonté. - Contrôlez
+    le fonctionnement du maître-cylindreet le remplacé si nécessaire. - Mettreen
+    place le servofrein. - Serrez les fixations du servofrein. - Mettre en place
+    la tige de poussée sur lapédale de frein. - Remontez le cache derrière la
+    pédale de frein. - Accouplez les canalisations d'air. - Remontez le maître-
+    cylindre. - Remplir le circuit de frein avec l'huilepréconisé. - Appuyez
+    plusieurs fois sur la pédale de frein. - Faire un essai routier pour
+    contrôlez le bonfonctionnement du système de freinage. ✅ Après remontage,
+    vérifiez les spécifications dans la fiche technique Servo frein.
+  S5: >-
+    - Oublier la purge des freins — le démontage du maître-cylindre introduit de
+    l'air. Sans purge complète 4 roues, le freinage est dangereux. - Ne pas
+    remplacer le clapet anti-retour — un clapet fatigué laisse entrer l'air et
+    annule l'assistance du servo neuf. - Forcer la tige de poussée — une tige
+    trop longue maintient le maître-cylindre sous pression et provoque un
+    freinage résiduel permanent. - Serrage inégal des écrous du tablier — serrez
+    en étoile pour éviter de déformer la collerette du servo. - Négliger le
+    joint de tablier — le joint entre le servo et la cloison empêche
+    infiltrations d'eau et de bruit. Remplacez-le s'il est écrasé. - Déconnecter
+    les conduites de frein sans nécessité — le maître-cylindre peut souvent être
+    écarté sans débrancher les conduites, ce qui limite la purge. 📖 Fiche
+    technique Servo frein — spécifications à vérifier avant montage.
+  S6: >-
+    - Test de dépression : moteur éteint, appuyez 5 fois sur la pédale,
+    maintenez, démarrez → la pédale doit s'enfoncer légèrement = servo
+    fonctionnel. - Étanchéité : aucun sifflement au freinage, aucune fuite de
+    liquide au maître-cylindre après 10 min moteur tournant. - Garde de pédale :
+    la course libre avant résistance doit correspondre à la préconisation
+    constructeur (3-8 mm). - Essai routier progressif : freinez doucement puis
+    augmentez l'effort. Vérifiez que le véhicule freine droit et que l'ABS
+    intervient normalement. - Passage au banc recommandé : un essai de freinage
+    sur banc valide la conformité de l'effort de freinage avant de reprendre la
+    route. 🚨 Bruit Servo frein : causes et diagnostic
+  S7: >-
+    Quel est le prix d'un servo frein ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver le servo frein compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon servo frein est à changer ?Les signes d'usure les plus
+    courants sont détaillés dans la section diagnostic ci-dessus. En cas de
+    doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un
+    servo frein défaillant ?Cela dépend de la gravité du dysfonctionnement et du
+    rôle de la pièce dans la sécurité du véhicule. Consultez la section
+    symptômes pour évaluer l'urgence du remplacement. - Clapet anti-retour de
+    dépression — à remplacer systématiquement (usure invisible, pièce
+    économique). - Durite de dépression — remplacez si craquelée ou ramollie. -
+    Maître-cylindre de frein — inspectez les joints internes si le véhicule
+    dépasse 200 000 km. - Liquide de frein DOT 4 — 1 L minimum pour la purge 4
+    roues. - Joint de tablier — joint d'étanchéité entre le servo et la cloison
+    pare-feu. 📖 Fiche technique Servo frein — intervalles et spécifications
+    d’entretien.
+  S8: >-
+    - Peut-on rouler sans servo-frein ? Le freinage reste possible mais exige
+    une force considérable. C'est dangereux en situation d'urgence et non
+    conforme au contrôle technique. - Servo-frein neuf ou échange standard ?
+    L'échange standard est courant et fiable. Vérifiez que le reconditionneur
+    remplace la membrane et le clapet interne. - Le servo fonctionne-t-il sans
+    moteur ? Il stocke une réserve de 2-3 freinages après l'arrêt moteur. Au-
+    delà, la pédale devient dure. - Servo ou maître-cylindre : comment
+    distinguer la panne ? Le servo rend la pédale dure (pas d'assistance). Le
+    maître-cylindre rend la pédale molle (fuite interne). Les deux peuvent
+    coexister. - Faut-il un passage au contrôle technique après remplacement ?
+    Non, mais un essai sur banc de freinage est recommandé pour valider la
+    conformité. 📖 Pour plus de détails techniques : fiche Servo frein
 ---
 
 # Servo frein - Guide Diagnostic Complet

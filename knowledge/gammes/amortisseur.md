@@ -6,7 +6,8 @@ pg_id: 854
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Controler les oscillations du ressort et stabiliser la roue. Dissipe l'energie des chocs. NE SUPPORTE PAS LE POIDS
     DU VEHICULE!
@@ -213,6 +215,182 @@ installation:
   - cle dynamometrique
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
+phase5_enrichment:
+  _source: ate-freinage.fr + bremboparts.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  types_variants:
+  - type: 'bi-matière'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    L'amortisseurest une jambe de suspension à système de compression qui
+    fonctionne à l'huile ou au gaz. L'huile ou le gaz est comprimée dans le
+    cylindre de l'amortisseurgrâce à un piston qui ne cesse de monter et
+    descendre à chaque déformation dela route parcouru par le véhicule. Ce
+    mouvement permanent a pour fonctiond'amortir les chocs.
+    L'amortisseurfonctionne en duo avec le ressortde suspension. La combinaison
+    entre eux assure le confort à bord du véhicule etla bonne tenue de route. En
+    savoir plus : amortisseur — définition et rôle mécanique 🚨 Bruit de
+    amortisseur : que faire ?
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Vehicule qui rebondit excessivement sur les bosses - Fuite huile visible
+    corps amortisseur - Usure asymetrique ou irreguliere des pneus - Bruit de
+    cognement sur routes degradees - Sensation d instabilite en virage ou au
+    freinage - Plus de 80 000 km sans remplacement
+  S2_DIAG: >-
+    SymptômeCause probableActionUn bruit anormal au niveau du amortisseur peut
+    se manifester lors de la phase "acceleration"Pour identifier ce probleme de
+    bruit du amortisseur:Verification visuelle du amortisseurDes vibrations
+    provenant du amortisseur sont souvent perceptibles a haute vitessePour
+    identifier ce probleme de vibration du amortisseur:Verification visuelle du
+    amortisseur
+  S3: >-
+    L'amortisseur contrôle les oscillations du ressort de suspension. Un modèle
+    incompatible modifie dangereusement le comportement routier du
+    véhicule.Vérifications indispensables- Essieu : avant ou arrière — les
+    amortisseurs avant et arrière ont des caractéristiques très différentes-
+    Type de fixation : œillet/œillet, tige/œillet, ou tige/coupelle — doit
+    correspondre exactement aux points d'ancrage du véhicule- Longueur comprimé
+    et déployé : mesurer l'amortisseur déposé dans les deux positions (tolérance
+    ± 5 mm)- Technologie : hydraulique, à gaz monotube ou à gaz bitube — le type
+    d'origine est recommandé pour un remplacement standard- Diamètre de tige :
+    12, 14 ou 16 mm selon le modèle — conditionne la coupelle et l'écrou
+    supérieurMéthode de vérificationRelever la référence OE sur l'amortisseur
+    déposé ou via le VIN. Comparer les cotes et le type de fixation haute et
+    basse.Pour aller plus loin : consultez notre guide d'achat amortisseur —
+    comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Amortisseur pour connaître
+    les spécifications. - Levez le véhicule. - Démontez le tapis du coffre (si
+    nécessaire pour accéder àla fixation supérieure de l'amortisseur). -
+    Démontez les fixations supérieures de l'amortisseur. - Démontez la roue. -
+    Démontez la fixation inférieure de l'amortisseur. - Démontez l'amortisseur.
+  S4_REPOSE: >-
+    - Vérifier que l'amortisseur neuf est identique à celuidémonté. - Contrôlez
+    la butée élastique d?amortisseur et remplacéessi nécessaire. - Remontez
+    l'amortisseur. - Serrez les fixations inférieure et supérieure de
+    l'amortisseur. - Reposez la roue. - Redescendre le véhicule. - Resserrez la
+    roue. - Faire un essai routier. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Amortisseur.
+  S5: >-
+    - Ne changer qu'un seul amortisseur sur un essieu — Un amortisseur neuf d'un
+    côté et un amortisseur usé de l'autre créent une dissymétrie de comportement
+    : le côté neuf rebondit moins que le côté usé, le véhicule se déporte au
+    freinage et la tenue de route devient imprévisible. Remplacer toujours les
+    amortisseurs par paire sur le même essieu, les deux avant ou les deux
+    arrière. - Oublier coupelle, butée et soufflet lors du remplacement — La
+    coupelle supérieure (palier de pivot avant), la butée de suspension et le
+    soufflet de protection de la tige s'usent au même rythme que l'amortisseur.
+    Remonter un amortisseur neuf avec une butée fissurée ou une coupelle à
+    roulement grippé recréera des bruits de claquement à froid dans les 6 mois.
+    Ces pièces sont vendues en kit et représentent un faible surcoût pour une
+    intervention durable. - Utiliser un compresseur de ressorts non homologué ou
+    mal engagé — Le ressort de suspension comprimé stocke une énergie
+    équivalente à plusieurs centaines de joules. Un compresseur endommagé, des
+    crochets mal engagés sur les spires ou une compression asymétrique
+    provoquent une libération violente du ressort pouvant causer des fractures.
+    Utiliser des compresseurs homologués dont les crochets couvrent entièrement
+    les spires. - Serrer l'écrou de tige sans maintenir la tige en rotation —
+    Sur la plupart des amortisseurs, la tige de piston tourne librement sans une
+    clé de maintien. Vissez l'écrou sans immobiliser la tige revient à ne rien
+    serrer : l'écrou tourne dans le vide. Engager une clé Allen (hexagonale
+    femelle) ou un plat de maintien dans l'extrémité de la tige pendant le
+    serrage de l'écrou. - Monter l'amortisseur tête en bas — La tige chromée
+    doit toujours pointer vers le haut. Un amortisseur monotube inversé provoque
+    une fuite d'huile immédiate (la chambre à gaz se retrouve en bas). Vérifier
+    l'orientation avant montage : la tige polie (chromée ou dorée) = partie
+    haute, le corps plus large = partie basse. - Négliger l'amorçage de
+    l'amortisseur neuf — Un amortisseur livré en position comprimée (piston à
+    mi-course) peut contenir une poche d'air résiduelle. Avant montage,
+    comprimer et étendre la tige 5 à 10 fois tige vers le haut (position
+    verticale). Ce geste chasse l'air piégé et garantit une amortissement
+    optimal dès la première sollicitation. - Serrer les silentblocs inférieurs
+    véhicule suspendu — Les silentblocs de la fixation basse de l'amortisseur
+    doivent être serrés au couple en position de charge normale (véhicule posé
+    sur ses roues). Serrer en position levée précontraint le caoutchouc du
+    silentbloc, ce qui provoque des bruits de claquement à froid et réduit la
+    durée de vie du silentbloc à quelques mois. - Omettre le contrôle de
+    géométrie après remplacement avant — Le remplacement des amortisseurs avant
+    modifie parfois légèrement le carrossage et le parallélisme selon le type de
+    suspension. Un train avant mal géométré use les pneus de façon asymétrique
+    (usure latérale d'un flanc) et dévie la trajectoire au freinage. Faire
+    contrôler la géométrie dans les 500 km suivant le remplacement des
+    amortisseurs avant. 📖 Fiche technique Amortisseur — couples de serrage et
+    spécifications constructeur.
+  S6: >-
+    Contrôles statiques (véhicule au sol)- Vérifier que le véhicule est à la
+    même hauteur des deux côtés (mesurer l'écart aile/sol)- Contrôler le serrage
+    de l'écrou de tige supérieur et des fixations inférieures au couple
+    constructeur- Inspecter que le soufflet de protection est en place et non
+    pincé- Appuyer fermement sur chaque coin du véhicule et relâcher : la caisse
+    doit revenir en position et se stabiliser en 1-2 oscillations maximumTest
+    routier progressif- Rouler à 30 km/h sur route plane : pas de bruit de
+    cognement ni de grincement- Passer sur un ralentisseur à 30 km/h : la caisse
+    absorbe le choc sans rebond excessif- Rouler à 90 km/h : stabilité en ligne
+    droite, pas de flottement ni de louvoiement- Freiner d'urgence : le véhicule
+    doit rester stable et en ligne, sans plongée excessive de l'avant⚠️
+    Important : Si le véhicule penche d'un côté après remplacement, vérifiez que
+    les ressorts de suspension sont identiques des deux côtés. Un ressort cassé
+    ou affaissé annule l'efficacité de l'amortisseur neuf.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (3 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    Quel est le prix d'un amortisseur ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver l'amortisseur compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si l'amortisseur est à changer ?Les signes d'usure les plus courants
+    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
+    contrôler la pièce par un professionnel.Peut-on rouler avec un amortisseur
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.Lors du remplacement des amortisseurs,
+    inspectez systématiquement ces pièces connexes :- Coupelle d'amortisseur —
+    le roulement de coupelle s'use et provoque des craquements en braquant,
+    remplacer avec l'amortisseur- Butée de suspension — absorbe les fins de
+    course, se désagrège avec le temps, remplacer systématiquement- Soufflet de
+    protection — protège la tige chromée de la corrosion, inclus dans les kits
+    de protection- Ressort de suspension — vérifier l'absence de spire cassée et
+    la hauteur (comparer les deux côtés)- Biellette de barre stabilisatrice —
+    souvent accessible lors de la dépose, vérifier le jeu des rotules- Silent-
+    blocs de bras — un silent-bloc usé transmet les chocs malgré un amortisseur
+    neuf- Roulement de roue — un jeu de roulement peut être confondu avec un
+    bruit d'amortisseur
+  S8: >-
+    Comment savoir si mes amortisseurs sont usés ?Les signes principaux : le
+    véhicule rebondit excessivement sur les bosses, la tenue de route se dégrade
+    en virage, les distances de freinage augmentent, et les pneus s'usent de
+    manière irrégulière. Le test simple : appuyez fermement sur un coin du
+    véhicule et relâchez — s'il rebondit plus d'une fois, l'amortisseur est
+    fatigué. Une fuite d'huile visible sur le corps est un signe évident.Tous
+    les combien faut-il changer les amortisseurs ?La recommandation générale est
+    entre 60 000 et 100 000 km, mais cela dépend fortement des conditions
+    d'utilisation. Sur routes dégradées ou avec un véhicule lourdement chargé,
+    l'usure est plus rapide. Après 80 000 km, faites contrôler leur efficacité
+    même sans symptôme apparent.Amortisseurs à gaz ou hydrauliques, que choisir
+    ?Les amortisseurs à gaz (monotube ou bitube pressurisé) offrent une
+    meilleure tenue de route et résistent mieux à l'échauffement. Les
+    hydrauliques sont plus confortables mais moins performants en usage sportif.
+    Pour un remplacement standard, choisissez le même type que l'origine. Pour
+    améliorer le comportement, passez au gaz monotube.Pourquoi faut-il les
+    changer par paire ?Un amortisseur neuf et un usé créent un déséquilibre
+    dangereux : le côté usé rebondit davantage, réduisant l'adhérence de cette
+    roue au sol. En freinage d'urgence ou en évitement, le véhicule peut devenir
+    instable. Toujours remplacer les deux amortisseurs du même essieu.Les
+    amortisseurs influencent-ils le freinage ?Oui, significativement. Des
+    amortisseurs usés augmentent les distances de freinage de 10 à 20 % car les
+    roues perdent le contact avec le sol lors des rebonds. L'ABS fonctionne
+    moins efficacement quand les roues décollent entre les oscillations.
+  META: >-
+    Guide remplacement amortisseurs : compatibilité, erreurs courantes, pièces
+    liées et vérifications après montage. Toujours changer par paire.
 ---
 
 # Amortisseur - Guide Diagnostic Complet

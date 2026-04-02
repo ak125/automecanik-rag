@@ -6,7 +6,8 @@ pg_id: 191
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Proteger la cremailliere des impuretes et retenir la graisse - Piece d'usure a verifier regulierement
   must_be_true:
@@ -210,6 +212,145 @@ installation:
   - arrache-rotule
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    remplacement: 'des les premieres fissures — protection de la cremaillere contre eau/poussiere'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le soufflet de direction joue le rôle de joint et derécipient à graisse pour
+    la barre de direction .Sans la graisse, la duréede vie de la barre de
+    direction sera limitée. Le soufflet de direction permetde conserver la
+    graisse à l'abri afin que la barre de direction accompli sonrôle. Dans ce
+    cas le soufflet de direction doit être en bonne état en casd'endommagement
+    de ce dernier, cela peut causer une perte de graisse au niveaude
+    l'articulation.Le soufflet de directionest en caoutchouc souple pour qu'il
+    puisse s'adapter à toute forme dedistorsion et lui permettre de rester
+    étanche dans toutes les situations. En savoir plus : soufflet de direction —
+    définition et rôle mécanique 🚨 Bruit Soufflet de direction : causes et
+    diagnostic
+  S2: >-
+    Le seul moyen poursavoir l'état d'usure du soufflet direction est de faire
+    un contrôle visuel enlevant le véhicule dans ce cas vous allez remarquer
+    plusieurs symptômes : - Fissure ou craquelure au niveau du soufflet de
+    direction. - Des traces de graisse côté roue dans ce cas le soufflet de
+    direction estpercé. Si un soufflet de directionest HS, dans ce cas la barre
+    de direction ne sera plus graissé qui peut amenerà lusure dautre pièces :
+    - Barre de direction. - Crémaillère de direction. - Rotule de direction .
+    Diagnostic complet : identifier une panne de soufflet de direction
+  S3: >-
+    Le soufflet de direction protège la crémaillère de direction contre les
+    infiltrations d'eau, de sable et de poussière. Un soufflet mal dimensionné
+    ne tiendra pas en place et entraînera la corrosion rapide de la
+    crémaillère.Vérifications indispensables- Diamètre intérieur côté
+    crémaillère : correspond au carter de crémaillère (30-50 mm selon modèle)-
+    Diamètre intérieur côté biellette : correspond à la tige de biellette (12-18
+    mm)- Longueur du soufflet : mesurer le soufflet déposé à l'état détendu
+    (150-250 mm selon véhicule)- Type de fixation : colliers plastique
+    d'origine, colliers métalliques à sertir, ou clips spécifiquesMéthode de
+    vérificationComparer la référence OE inscrite dans la documentation
+    constructeur. Mesurer les trois cotes (petit diamètre, grand diamètre,
+    longueur) sur le soufflet déposé.Pour aller plus loin : consultez notre
+    guide d'achat soufflet de direction — comparatif marques, critères de choix
+    et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Soufflet de direction pour
+    connaître les spécifications. - Levez et calez le véhicule. - Démontez les
+    roues. - Desserrez l'écrou de lajonction de la barre de direction . -
+    Démontez l'écrou defixation de la rotule de direction sur le porte-fusée. -
+    A l'aide d'un extracteur derotule et d'un marteau démonter la rotule de
+    direction du porte-fusée. - Desserrez les colliers deserrage du soufflet de
+    direction. - Démontez le soufflet dedirection.
+  S4_REPOSE: >-
+    - Vérifiez que le nouveau soufflet de direction est identique à
+    celledémontée. - Contrôlez l'état d'usure des rotules de direction et les
+    remplacées sinécessaire. - Contrôlez l'état d'usure de la barre de direction
+    et les remplacées sinécessaire. - Graissez les extrémités de la barre de
+    direction. - Mettre en place les soufflets de direction. - Serrez les
+    colliers de serrage des soufflets de direction. - Serrez l'écrou de la
+    jonction de la barre de direction. - Remontez la rotule de direction et
+    serrez sa fixation. - Remontez les roues. - Faire le réglage de la géométrie
+    du train avant chez un spécialiste. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Soufflet de direction.
+  S5: >-
+    - Confondre soufflet de direction et soufflet de cardan — les deux se
+    ressemblent mais les dimensions et la graisse sont totalement différentes →
+    vérifier la référence spécifique au système de direction- Ne pas vérifier
+    l'état de la crémaillère — monter un soufflet neuf sur une crémaillère
+    corrodée ne résoudra pas le problème → inspecter la tige et le carter pour
+    détecter traces de rouille ou piqûres- Oublier de remettre de la graisse
+    dans la crémaillère — la crémaillère fonctionne avec un film de graisse qui
+    assure la douceur de direction → ajouter la quantité préconisée de graisse
+    spéciale crémaillère- Mal positionner les colliers de fixation — un collier
+    décalé crée une fuite et le soufflet se déboîte en braquant → positionner
+    les colliers dans les gorges prévues avant sertissage- Tordre le soufflet au
+    montage — un soufflet vrillé se perce en frottant contre lui-même à chaque
+    braquage → vérifier l'absence de vrille en tournant le volant de butée à
+    butée- Réutiliser les colliers d'origine — les colliers plastique d'origine
+    perdent leur élasticité et ne garantissent plus l'étanchéité → monter des
+    colliers neufs, de préférence métalliques à sertir- Négliger le parallélisme
+    — si la biellette a été déposée pour accéder au soufflet, le parallélisme
+    est décalé → faire régler le parallélisme si la biellette a été démontée-
+    Ignorer une fuite de direction assistée — du liquide hydraulique sur le
+    soufflet indique un joint spy de crémaillère défaillant → diagnostiquer et
+    réparer la fuite avant de monter un soufflet neuf
+  S6: >-
+    Contrôles statiques (véhicule au sol)- Tourner le volant de butée à butée :
+    le soufflet doit se comprimer et se détendre sans se déboîter ni se plier
+    anormalement- Vérifier le sertissage des deux colliers (aucun jeu, pas de
+    graisse visible autour)- Contrôler l'absence de contact entre le soufflet et
+    les éléments environnants (berceau, durites)- Inspecter le niveau de liquide
+    de direction assistée si le circuit a été ouvertTest routier progressif-
+    Manœuvrer à basse vitesse : la direction doit être douce et sans point dur-
+    Rouler à 50 km/h en ligne droite : volant centré, pas de tirage- Effectuer
+    des créneaux : pas de bruit de frottement ni de grincement en braquant à
+    fond- Après 100 km, inspecter visuellement : aucune fuite de graisse ni de
+    liquide hydraulique⚠️ Important : Si le volant devient dur ou si vous
+    constatez une fuite de liquide après remplacement, la crémaillère elle-même
+    est probablement en cause. Consultez un professionnel avant de continuer à
+    rouler.
+  S7: >-
+    Quel est le prix d'un soufflet de direction ?Le prix varie selon le véhicule
+    et la marque. Utilisez notre sélecteur pour trouver le soufflet de direction
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon soufflet de direction est à changer
+    ?Les signes d'usure les plus courants sont détaillés dans la section
+    diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un soufflet de direction défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- Barre de direction . - Rotule de direction . 📖 Fiche
+    technique Soufflet de direction — intervalles et spécifications d’entretien.
+  S8: >-
+    Comment savoir si mon soufflet de direction est abîmé ?Inspectez
+    visuellement sous le véhicule, côté crémaillère. Un soufflet fendu ou
+    déboîté laisse échapper de la graisse noire. En cas de direction assistée,
+    du liquide hydraulique rouge ou vert peut aussi être visible. Au contrôle
+    technique, un soufflet déchiré est un motif de contre-visite.Peut-on rouler
+    avec un soufflet de direction déchiré ?C'est fortement déconseillé. Sans
+    protection, l'eau et les saletés corrodent rapidement la crémaillère. Le
+    coût de remplacement d'une crémaillère complète (500-1500 €) est bien
+    supérieur à celui d'un soufflet (15-40 €). Remplacez-le dès que la déchirure
+    est constatée.Faut-il changer les deux soufflets en même temps ?Ce n'est pas
+    obligatoire si un seul est endommagé, mais c'est recommandé. Les deux
+    soufflets ont le même âge et kilométrage. Si l'un a cédé, l'autre est
+    probablement en fin de vie. Le surcoût est faible par rapport à une seconde
+    intervention.Quelle est la différence entre soufflet de direction et
+    soufflet de crémaillère ?C'est la même pièce. Le soufflet de direction (ou
+    soufflet de crémaillère) protège la crémaillère de direction. Il ne faut pas
+    le confondre avec le soufflet de cardan qui protège le joint homocinétique
+    de la transmission.Le remplacement du soufflet nécessite-t-il de vidanger la
+    direction assistée ?Non, dans la majorité des cas le circuit hydraulique
+    n'est pas ouvert pour remplacer un soufflet. Cependant, si le soufflet est
+    déchiré depuis longtemps et que du liquide a fui, un appoint ou une vidange
+    du circuit sera nécessaire.
+  META: >-
+    Comment remplacer un soufflet de direction : dimensions, erreurs de montage,
+    vérifications post-remplacement et FAQ. Protégez votre crémaillère.
 ---
 
 # Soufflet de direction - Guide Diagnostic Complet

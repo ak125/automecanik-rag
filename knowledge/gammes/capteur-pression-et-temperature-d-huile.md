@@ -6,7 +6,8 @@ pg_id: 4175
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-06'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer la pression et temperature de l'huile moteur
   must_be_true:
@@ -210,6 +212,53 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    capteur_combine: 'pression + temperature en un seul capteur (economies de cablage)'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Mesurer la pression et temperature de l'huile moteur. Pièces liées :
+    vérifier les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Voyant
+    pression huile allume sans raison- Temperature huile affichee incoherente-
+    Alerte pression basse moteur chaud faux positif- Pas d alerte malgre niveau
+    bas reel- Affichage temperature huile bloque- Fuite d huile au niveau du
+    capteur
+  S3: >-
+    Pour choisir le bon capteur pression et température d'huile pour votre
+    véhicule : - Marque de votre véhicule- Modele de votre véhicule- Annee de
+    votre véhicule- Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi
+    (standard), Ridex, Topran (budget)- Budget : 15 à 200 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le capteur pression et température d'huile : - Ne
+    pas vérifier la référence exacte avant commande — une pièce de mauvaise
+    référence ne fonctionne pas correctement même si elle se monte physiquement-
+    Oublier de débrancher la batterie avant intervention — risque de court-
+    circuit sur les composants électroniques- Ne pas confondre avec le
+    pressostat simple. Vérifier la pression réelle avec un manomètre avant de
+    conclure à une panne capteur.- Ne pas respecter le couple de serrage
+    constructeur au remontage- Ignorer les symptômes d'usure en espérant que ça
+    passe — une défaillance progressive s'aggrave toujours- Ne pas effacer les
+    codes défaut après remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du capteur pression et température d'huile : -
+    Controle de la tension et du courant avec un multimetre- Verifier les
+    connexions electriques (oxydation, jeu)- Remplacement preventif si signes de
+    faiblesse avant l hiver- Ne pas laisser le vehicule immobilise longtemps
+    sans protection- Effacer les codes défaut éventuels avec l'outil OBD-
+    Effectuer un essai route pour confirmer la disparition des symptômes
 ---
 
 # Capteur pression et température d'huile - Guide Diagnostic Complet

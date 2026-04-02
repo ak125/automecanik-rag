@@ -6,7 +6,8 @@ pg_id: 851
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Filtre et assèche le fluide frigorigène
   must_be_true:
@@ -210,6 +212,168 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: HELLA TechWorld
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  technical_notes:
+    remplacement: 'obligatoire a chaque ouverture du circuit (materiau hygroscopique)'
+    entretien_biennal: 'remplacement tous les 2 ans avec echange refrigerant'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La bouteille déshydratante a pour rôle d'éliminerl'humidité contenue dans le
+    système de climatisation protégeant ainsi lesautres pièces du système. Les
+    bouteilles déshydratantes fonctionnent comme unfiltre, elles retiennent
+    l'humidité et les impuretés situées dans le circuit declimatisation. La
+    bouteille déshydratante est sous forme d'un réservoirqui renferme un produit
+    ou un filtre dessicant qui va capturer l'humidité et lesimpuretés dans le
+    fluide frigorigène. La bouteille déshydratante est située sur la ligne de
+    hautepression, entre le condenseur et le détendeur. Sur certains
+    modèlesrécents, la bouteille est rattachée au condenseur. Sans la bouteille
+    déshydratante, l'eau contenue dans lecircuit en se mêlant au froid devient
+    glace, et bloque le détendeur et casse lecompresseur. En savoir plus :
+    bouteille déshydratante — définition et rôle mécanique 🚨 Bruit Bouteille
+    déshydratante : causes et diagnostic
+  S2: >-
+    Une bouteille déshydratante défaillante présente plusieurssymptômes : -
+    L'air frais dans l'habitaclen'est pas sec. - Manque d'air froid dans
+    l'habitacle. - Vous sentez l'odeur d'humiditédans le véhicule. Une bouteille
+    déshydratante défectueuse doit être remplacéeà temps si non vous risquez
+    l'usure du compresseur de climatisation puisqu'elle va être saturée
+    d'impuretés qui empêchent le bon écoulement du liquide. Diagnostic complet :
+    identifier une panne de bouteille déshydratante
+  S3: >-
+    La bouteille déshydratante (ou filtre déshydrateur) filtre le fluide
+    frigorigène en circulation dans le circuit de climatisation et absorbe
+    l'humidité résiduelle. Si l'humidité n'est pas capturée, elle forme de
+    l'acide dans le circuit qui corrode le compresseur et les parois de
+    l'évaporateur, et peut cristalliser dans le détendeur et le bloquer. Ce
+    composant doit être remplacé systématiquement à chaque ouverture du circuit,
+    sans exception. - Compatibilité avec le type de fluide frigorigène : R134a
+    ou R1234yf — Les bouteilles déshydratantes pour R134a et pour R1234yf ne
+    sont pas interchangeables. Le R1234yf (fluide des véhicules post-2017)
+    nécessite un déshydrateur avec tamis moléculaire de type XH-9 ou XH-11,
+    résistant à l'humidité plus hygroscopique de ce fluide. Vérifier la
+    compatibilité fluide avant commande. - Capacité d'absorption en grammes —
+    dimensionnée pour le volume du circuit — La capacité du tamis moléculaire
+    est mesurée en grammes d'humidité absorbable. Un circuit de climatisation
+    standard de berline contient 500 à 800 g de fluide ; un circuit de véhicule
+    utilitaire ou SUV peut dépasser 1 kg. Une bouteille sous-dimensionnée sature
+    rapidement, laissant de l'humidité circuler librement. - Raccords et
+    dimensions : diamètre des orifices d'entrée et de sortie — Les raccords du
+    déshydrateur (généralement des raccords à vis ou à sertir, en métriques ou
+    en pouces selon le constructeur) doivent correspondre exactement aux durites
+    en place. Un adaptateur de raccord introduit un risque de microfuite sur
+    circuit haute pression. - Présence d'un voyant de contrôle (sight glass) —
+    information sur l'état du circuit — Certaines bouteilles intègrent un hublot
+    transparent permettant d'observer l'état du fluide en circulation : fluide
+    clair et sans bulles = circuit sain ; présence de bulles = manque de charge
+    ; liquide trouble = contamination. Privilégier ce modèle si le circuit
+    d'origine en était équipé. - Remplacement systématique lors d'une
+    intervention sur compresseur — Le remplacement de compresseur génère
+    systématiquement des particules métalliques (lamelles d'aluminium) qui
+    circulent dans le circuit. La bouteille déshydratante doit être remplacée en
+    même temps pour capturer ces particules et éviter qu'elles ne migrent vers
+    le détendeur ou l'évaporateur. - Délai entre achat et montage — ne pas
+    stocker ouvert — Le tamis moléculaire absorbe l'humidité de l'air ambiant
+    dès que le bouchon d'obturation est retiré. Une bouteille déshydratante doit
+    être montée dans les 30 minutes suivant l'ouverture de son emballage
+    étanche, sous peine de saturation partielle avant même le chargement en
+    fluide. - Compatibilité avec le lubrifiant du compresseur : huile PAG ou POE
+    — Le type d'huile en circulation (PAG 46, PAG 100 pour R134a ; POE pour
+    R1234yf) influence la durabilité du tamis moléculaire. Une contamination
+    croisée (mauvaise huile dans le circuit) dégrade le déshydrateur et le
+    compresseur simultanément. Pour aller plus loin : consultez notre guide
+    d'achat bouteille déshydratante — comparatif marques, critères de choix et
+    prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Bouteille déshydratante
+    pour connaître les spécifications. - Ouvrir le capot moteur. - Localisez
+    l'emplacement dela bouteille déshydratante. - Levez et calez le véhicule. -
+    Démontez le pare-choc avantsi nécessaire. - Desserrez les canalisationsde
+    climatisation de la bouteille déshydratante. - Vidange le circuit
+    declimatisation. - Démontez la fixation de labouteille déshydratante. -
+    Retirer la bouteille déshydratante de sonsupport.
+  S4_REPOSE: >-
+    - Vérifiez que la bouteilledéshydratante neuve est identique à celle
+    démontée. - Contrôlez l'état defonctionnement du compresseur de
+    climatisation . - Contrôlez l'état d'usure ducondenseur de climatisation. -
+    Contrôlez l'état d'usure dufiltre d'habitacle. - Mettre en place labouteille
+    déshydratante. - Serrez la fixation de la bouteilledéshydratante. - Remontez
+    les canalisations de climatisationsur la bouteille déshydratante. - Remontez
+    le pare-choc avantsi démonté. - Remplir le circuit declimatisation par le
+    liquide préconisé. - Contrôlez le bonfonctionnement du système de
+    climatisation. ✅ Après remontage, vérifiez les spécifications dans la fiche
+    technique Bouteille déshydratante.
+  S5: >-
+    - ❌ "homologué CT - ❌ "sécurité garantie - ❌ "zéro panne - ❌ "garanti à vie
+    - ❌ "refroidit le moteur
+  S6: >-
+    La bouteille déshydratante est une pièce du circuit de climatisation qui ne
+    peut pas être vérifiée isolément : son remplacement implique obligatoirement
+    l'ouverture du circuit frigorifique, une mise sous vide, et une recharge en
+    fluide. Chaque étape exige des contrôles spécifiques. - Mise sous vide
+    obligatoire (minimum 30 minutes) : avant toute recharge, le circuit doit
+    être mis sous vide à l'aide d'une station de climatisation agréée. Ce vide
+    élimine l'air résiduel et l'humidité introduits lors du remplacement. Un
+    vide insuffisant (inférieur à 500 microns) indique une fuite dans le
+    circuit. - Contrôle de l'étanchéité du circuit : après la mise sous vide,
+    maintenir le vide pendant 15 minutes supplémentaires sans pompe. Si la
+    pression remonte, une fuite est présente aux raccords ou sur le déshydrateur
+    lui-même (joint torique neuf à vérifier). Repérer et corriger avant
+    recharge. - Recharge par un technicien habilité : la manipulation des
+    fluides frigorigènes (R134a, R1234yf) est réglementée. La recharge doit être
+    effectuée avec la quantité exacte indiquée sur l'étiquette moteur ou dans la
+    documentation constructeur. Une surcharge provoque des dommages au
+    compresseur. - Vérification des pressions haute et basse pression : après
+    démarrage du moteur et activation du climatiseur, contrôler les pressions
+    aux valves de service. Valeurs typiques à 25°C ambiant : côté basse pression
+    1,5 à 2,5 bars, côté haute pression 12 à 18 bars. Des écarts importants
+    révèlent une mauvaise charge ou un déshydrateur saturé résiduel. - Contrôle
+    de la température de soufflage : mesurer la température de l'air en sortie
+    de grille avec un thermomètre. Après 5 minutes de fonctionnement, la
+    température doit atteindre 8°C ou moins par temps chaud. Un résultat
+    supérieur à 12°C indique une charge insuffisante ou un problème persistant.
+    - Inspection du voyant du déshydrateur (si présent) : sur les déshydrateurs
+    équipés d'un voyant, vérifier après recharge que le liquide frigorigène
+    circule sans bulles visibles. Des bulles persistantes signalent une sous-
+    charge du circuit. - Ne jamais réutiliser le déshydrateur exposé à l'air :
+    si le déshydrateur neuf a été ouvert de son emballage hermétique depuis plus
+    de 15 minutes sans être monté, il doit être remplacé : le gel de silice a
+    absorbé l'humidité ambiante et ne protégera plus le circuit.
+  S7: >-
+    Quel est le prix d'un bouteille déshydratante ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le bouteille
+    déshydratante compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon bouteille déshydratante est
+    à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un bouteille déshydratante défaillant
+    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
+    la sécurité du véhicule. Consultez la section symptômes pour évaluer
+    l'urgence du remplacement.- commande de ventilation - compresseur de
+    climatisation - condenseur de climatisation - detendeur de climatisation -
+    evaporateur de climatisation - filtre d habitacle - pulseur d air d
+    habitacle
+  S8: >-
+    Comment choisir Bouteille déshydratante compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Bouteille déshydratante ?En cas de circuit de clim
+    ouvert recemment intervention ou de degradation Puis-je monter Bouteille
+    déshydratante sans verification atelier ?Le montage peut exiger controles de
+    couple, alignement et references.
+  META: >-
+    {"meta_title":"Bouteille déshydratante clim : quand changer ? |
+    AutoMecanik","meta_description":"Circuit de clim ouvert, clim moins
+    performante, compresseur bruyant : savoir quand remplacer le déshydrateur
+    pour protéger le compresseur de climatisation.","og_title":"Déshydrateur
+    climatisation : changer après chaque intervention","og_description":"Circuit
+    de climatisation ouvert ? Le déshydrateur doit être remplacé à chaque
+    intervention. Découvrez pourquoi et comment choisir la bonne bouteille pour
+    votre véhicule.","sources":[{"type":"rag","ref":"gammes/bouteille-
+    deshydratante.md","field":"diagnostic.symptoms,domain.role,rendering.faq"}]}
 ---
 
 # Bouteille déshydratante - Guide Diagnostic Complet

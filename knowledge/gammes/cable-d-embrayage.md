@@ -6,7 +6,8 @@ pg_id: 478
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague5
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmettre l'effort mécanique de la pédale vers la fourchette
   must_be_true:
@@ -202,6 +204,217 @@ installation:
   - centreur d embrayage
   - cle dynamometrique
   prerequisite: Depose complete de la boite de vitesses
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Cable a reglage manuel
+    description: Reglage par ecrou sur la fourchette, a ajuster periodiquement
+    era: vehicules anciens
+  - type: Cable a rattrapage automatique
+    description: Mecanisme auto-ajustable integre, compense l'usure du disque
+    era: 1995+
+  technical_notes:
+    course_garde: '5-10 mm de jeu en haut de pedale (reglage manuel)'
+    symptome_cable_use: 'pedale dure + point de patinage tres haut'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le câble d'embrayage relie la pédale d'embrayage à la fourchette. Il est
+    composé d'un câble métallique àl'intérieur d'une gaine. Lorsqu'on appui sur
+    lapédale d'embrayage le câble qui est fixé à la fourchette actionne (appuie
+    outire) la butée d'embrayage qui va à son tour permettre le passage du
+    rapport devitesses en appuyant sur le diaphragme du mécanisme d'embrayage
+    pour le séparerdu disque d'embrayage . Il y a deux types de câbles
+    d'embrayage : - Câble d'embrayage à réglage automatique. - Câble d'embrayage
+    à réglage manuel. En savoir plus : câble d'embrayage — définition et rôle
+    mécanique 🚨 Bruit Câble d'embrayage : causes et diagnostic
+  S2: >-
+    Un câble d'embrayage usé présente plusieurs symptômes : - Passage de
+    vitesses difficile. - Pédale d'embrayage dur à cause du grippage du câble.
+    Un câble d'embrayage défaillant et qu'il n'est remplacé à temps
+    peutentraîner plusieurs pannes : - Usure de la butée d'embrayage et de la
+    fourchetted'embrayage. - Usure du kit d'embrayage . Diagnostic complet :
+    identifier une panne de câble d'embrayage Symptômes détaillés et
+    vérifications Un câble d'embrayage cassé ou en fin de vie envoie des signaux
+    de plus en plus nets avant de lâcher complètement. Voici les symptômes
+    caractéristiques à ne pas négliger : - Pédale d'embrayage dure ou difficile
+    à enfoncer : signe typique d'un câble qui se grippe dans sa gaine, souvent
+    dû à la corrosion ou à l'usure des fils internes. - Point de patinage très
+    haut ou très bas : un câble détendu ou partiellement cassé modifie le point
+    d'engagement, rendant les départs hésitants. - Craquement ou grincement à la
+    pédale : peut indiquer un câble effiloché en frottement dans la gaine, ou
+    une gaine elle-même détériorée. - Câble visible effiloché ou rouillé : une
+    inspection sous capot ou sous véhicule permet parfois de constater
+    directement l'usure des fils. - Embrayage qui ne débraye pas complètement :
+    le câble ne tire plus suffisamment la fourchette, entraînant des difficultés
+    à passer les vitesses. - Pédale qui reste enfoncée au plancher : signe d'une
+    rupture franche du câble — le véhicule est immobilisé. Hypothèses à explorer
+    Ces symptômes peuvent indiquer : un câble effiloché progressivement, une
+    gaine fendue laissant entrer l'humidité, un réglage de tension inadapté, ou
+    une rupture complète. Un câble usé peut également accélérer l'usure de la
+    butée d'embrayage et de la fourchette. Vérifications non-invasives (à faire
+    soi-même) - Évaluer la résistance à la pédale : une résistance irrégulière
+    ou une pédale qui accroche en cours de course signale un câble à inspecter.
+    - Inspecter le câble visible (côté pédale et côté boîte) à la recherche de
+    fils dénudés, de rouille ou d'effilochage. - Vérifier le réglage de la
+    tension du câble : un jeu excessif ou une tension trop forte peut être
+    rectifié avant remplacement si le câble est encore sain. - Contrôler l'état
+    de la gaine : une gaine fendue ou écrasée compromet la lubrification du
+    câble et accélère son usure. Pour un diagnostic personnalisé adapté à votre
+    véhicule, utilisez notre outil de diagnostic gratuit.
+  S3: >-
+    Le câble d'embrayage transmet mécaniquement l'effort de la pédale vers la
+    fourchette d'embrayage sur les véhicules à commande mécanique (par
+    opposition aux systèmes hydrauliques). Ce composant est soumis à des
+    milliers de cycles de traction par an, et son usure se manifeste
+    progressivement avant la rupture. Un câble mal dimensionné en longueur ou en
+    diamètre fausse le réglage du jeu de pédale et peut rendre le débrayage
+    incomplet. - Longueur totale du câble (gaine + toron) — mesure sur
+    l'original — La longueur du câble est spécifique au véhicule et au
+    positionnement du point de fixation sur le mécanisme. Un câble trop court
+    impose une tension permanente sur la fourchette et use prématurément la
+    butée d'embrayage ; un câble trop long dépasse les possibilités de réglage
+    de la patte de tension. - Diamètre du toron acier et charge de rupture
+    minimale — Le toron est l'âme métallique tressée qui supporte la charge. Les
+    câbles d'embrayage courants ont un toron de 3 à 5 mm de diamètre avec une
+    charge de rupture entre 8 et 15 kN. Utiliser un câble de diamètre inférieur
+    à l'origine réduit la marge de sécurité avant rupture, particulièrement sur
+    les véhicules à moteur puissant ou avec embrayage renforcé. - Type de
+    terminal (olive) aux deux extrémités : rotule, tige filetée ou embout
+    cylindrique — L'extrémité côté pédale et l'extrémité côté fourchette
+    utilisent des terminaux différents selon le constructeur. Un mauvais type
+    d'embout côté fourchette empêche l'encliquetage ou crée un jeu axial qui
+    génère un retour d'effort sous le pied et une course de pédale instable. -
+    Matériau de la gaine et revêtement intérieur — La gaine externe protège le
+    toron et guide sa course. Les gaines modernes sont tressées acier avec
+    revêtement intérieur PTFE (polytétrafluoroéthylène) qui supprime la
+    nécessité de lubrification. Les gaines sans PTFE (câbles d'origine ancienne
+    génération) nécessitent un graissage au montage avec une graisse câble
+    spécifique. - Compatibilité avec le système de réglage : réglage automatique
+    ou manuel — Certains véhicules équipent un réglage automatique du câble
+    (tendeur à cliquet intégré à la gaine). Ce système absorbe l'allongement
+    progressif du câble neuf au rodage. Ces câbles ont un embout de gaine
+    spécifique et ne peuvent pas être remplacés par un câble à réglage manuel
+    sans modifier la fixation côté carrosserie. - État de la gaine de guidage au
+    passage de carrosserie — vérifier avant montage — Le câble passe dans un
+    passe-cloison en caoutchouc qui le protège de l'humidité et de la chaleur.
+    Si ce passe-cloison est craquelé ou absent, l'humidité pénètre dans la
+    gaine, corrode le toron depuis l'intérieur et provoque une rupture sur le
+    câble neuf dans les 12 à 24 mois. - Câble avec ou sans gaine pré-montée —
+    vérifier ce qui est fourni — Certains câbles sont vendus toron seul (pour
+    réutiliser la gaine d'origine en bon état) ; d'autres sont livrés avec gaine
+    complète. Si la gaine d'origine est froissée, coudée ou corrodée, il faut
+    impérativement commander un câble avec gaine neuve intégrée.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Câble d'embrayage pour
+    connaître les spécifications. - Débranchez la batterie. - Dégagez l'accès à
+    la boîte de vitesses si nécessairepour faciliter le travail et pour avoir un
+    accès facile au câble d'embrayagecôté moteur. - Démontez le boîtier du
+    filtre à air , si nécessaire. - Démontez la batterie. - Démontez le bac de
+    batterie. - Libérez le câble d'embrayage de la biellette de lafourchette. -
+    Déboîtez l'arrêt de gaine du câble d'embrayage. - Sortez le câble
+    d'embrayage par l'encoche. - Dans l'habitacle au niveau du pédalier, poussez
+    lagaine du câble d'embrayage vers le compartiment moteur. - Retirez le câble
+    d'embrayage.
+  S4_REPOSE: >-
+    - Vérifiez que le câble d'embrayage neuf est de la mêmelongueur que celui
+    démonté. - Contrôlez l'état d'usure de la butée d'embrayage et laremplacée
+    si nécessaire. - Contrôlez l'état d'usure du kit d'embrayage et le
+    remplacési nécessaire. - Faire passer le câble d'embrayage dans
+    l'orificeallant côté pédalier. - Accrochez le câble à la pédale d'embrayage.
+    - Mettre en place l'arrêt de gaine de câble dansl'orifice. - Remontez
+    l'arrêt de gaine côté boîte de vitesses. - Mettre en place le câble
+    d'embrayage sur la biellettede la fourchette d'embrayage . - Contrôlez que
+    le câble d'embrayage est bien mis enplace. - Remontez le bac de la batterie.
+    - Remontez la batterie. - Remontez le filtre à air . - Rebranchez la
+    batterie. - Contrôlez le bon fonction du système d'embrayage. ✅ Après
+    remontage, vérifiez les spécifications dans la fiche technique Câble
+    d'embrayage.
+  S5: >-
+    Erreurs fréquentes avec le câble d'embrayage : - ❌ Ne pas graisser la gaine
+    — un câble neuf dans une gaine sèche durcira rapidement. Graisser les deux
+    extrémités au montage. - ❌ Mal régler le jeu de garde — trop de jeu =
+    embrayage qui patine. Pas assez = embrayage qui ne débraye pas complètement.
+    Le jeu typique à la pédale est de 10 à 20 mm. - ❌ Plier le câble lors du
+    passage — un rayon de courbure trop serré provoque un effort excessif et une
+    usure prématurée. - ❌ Oublier de vérifier la fourchette d'embrayage — si la
+    fourchette est usée ou fissurée, le câble neuf cassera rapidement. Vérifier
+    aussi la rotule d'appui. - ❌ Monter un câble de longueur incorrecte —
+    vérifier la longueur totale et le type d'embouts (rotule, chape, clip). Les
+    câbles OES Cofle ou TRW sont les plus fiables.
+  S6: >-
+    Après le remplacement de votre câble d'embrayage, effectuez ces
+    vérifications dans l'ordre. - Contrôler la tension du câble à froid : la
+    pédale ne doit pas être dure ni présenter de jeu excessif supérieur à 20 mm
+    en début de course - Vérifier le point de patinage : il doit se trouver à
+    mi-course de la pédale, ni en tout début ni en fin de course - Lubrifier les
+    extrémités du câble et la gaine selon les préconisations constructeur pour
+    éviter le grippage prématuré - Effectuer 10 manœuvres complètes pédale
+    enfoncée/relâchée pour confirmer l'absence de craquement ou grincement -
+    Inspecter visuellement le cheminement du câble : aucun coude brutal, aucun
+    frottement sur une pièce mobile - Contrôler la fixation aux deux extrémités
+    (côté pédale et côté fourchette) : les goupilles ou clips doivent être
+    correctement engagés Retrouvez les spécifications techniques sur la fiche
+    référence câble d'embrayage.
+  S7: >-
+    Comment régler un câble d'embrayage ? Le réglage se fait via l'écrou de
+    réglage situé sur la fourchette d'embrayage (côté boîte de vitesses) ou au
+    niveau de la pédale. Tournez l'écrou pour obtenir un jeu de 1 à 2 cm en haut
+    de course de pédale. Sur les câbles à rattrapage automatique, appuyez à fond
+    sur la pédale 10 fois puis vérifiez le point de patinage — il doit être au
+    tiers inférieur de la course. Câble ou commande hydraulique : quelle
+    différence ? Le câble est mécanique (gaine + câble acier) — simple, léger,
+    pas de purge. La commande hydraulique utilise un émetteur + récepteur +
+    liquide de frein — plus douce mais nécessite une purge en cas
+    d'intervention. Les véhicules récents (post-2005) utilisent majoritairement
+    l'hydraulique. Le câble reste courant sur les utilitaires et les citadines
+    d'entrée de gamme. Quel est le prix d'un câble d'embrayage ? Un câble
+    d'embrayage coûte entre 15 € et 60 € selon le véhicule. La main-d'œuvre est
+    de 30 minutes à 1h30 selon l'accessibilité. Au total, comptez 50 à 150 €
+    tout compris. C'est l'une des réparations d'embrayage les moins chères.
+    Quels sont les signes d'un câble d'embrayage à remplacer ? Les signes
+    typiques : pédale dure ou qui accroche, point de patinage très haut, pédale
+    qui ne revient pas seule, bruits de frottement. Un câble effiloché peut
+    lâcher sans prévenir — si vous sentez des à-coups à la pédale ou des brins
+    visibles sur la gaine, remplacez sans attendre. Pièces à contrôler lors du
+    remplacement du câble d'embrayage : - Butée d'embrayage — si le câble était
+    dur, la butée a pu être sollicitée en excès. Vérifier l'état et le jeu
+    axial. - Kit d'embrayage — si le câble a cassé en roulant, le disque et le
+    mécanisme ont subi un choc. Inspecter l'usure. - Volant moteur — sur les
+    véhicules à volant bi-masse, un à-coup d'embrayage peut révéler un volant
+    fatigué. - Fourchette d'embrayage — vérifier l'usure de la rotule d'appui et
+    l'absence de fissure. Pièce souvent oubliée. - Pédalier et axe — vérifier
+    que l'axe de pédale n'est pas grippé (cause fréquente de pédale dure
+    attribuée à tort au câble).
+  S8: >-
+    Câble d'embrayage OE ou adaptable ?Les câbles OES (Cofle, TRW) sont fiables.
+    Vérifiez la longueur exacte et le type d'embouts (rotule, chape). Un câble
+    mal adapté cassera rapidement ou donnera une course de pédale incorrecte.
+    Comment savoir si mon câble d'embrayage est usé ?Pédale dure ou point de
+    patinage très haut, craquement en appuyant sur la pédale, câble effiloché
+    visible sous le capot, embrayage qui accroche ou ne débraye pas
+    complètement. Tous les combien régler le câble d'embrayage ?Contrôle du jeu
+    de garde tous les 30 000 km. Le câble s'étire naturellement avec l'usage.
+    Quand le réglage est en butée (plus de marge), il faut le remplacer. Peut-on
+    changer le câble d'embrayage soi-même ?Oui, opération accessible.
+    Déconnecter côté pédale et côté fourchette, passer le nouveau câble dans la
+    gaine, graisser, régler le jeu. Compter 30 min à 1h selon l'accès. Quel est
+    le prix d'un câble d'embrayage ?Entre 15 € et 80 € pour la pièce.
+    Main-d'œuvre : 30 min à 1h en atelier. Vérifier aussi l'état de la
+    fourchette et de la butée pour éviter de démonter deux fois.
+  META: >-
+    {"og_title": "Câble d'embrayage : diagnostic et réglage du jeu",
+    "meta_title": "Câble d'embrayage dur : réglage, changement et prix |
+    AutoMecanik", "gate_report": "PASS", "schema_type": "Article",
+    "og_description": "Pédale dure, patinage haut ou câble effiloché ?
+    Diagnostic, réglage et remplacement du câble d'embrayage.",
+    "primary_intent": "diagnostic", "char_count_desc": 143, "char_count_title":
+    53, "meta_description": "Pédale d'embrayage dure ou point de patinage trop
+    haut ? Diagnostiquez le câble d'embrayage : réglage du jeu, signes d'usure
+    et remplacement."}
 ---
 
 # Câble d'embrayage - Guide Diagnostic Complet

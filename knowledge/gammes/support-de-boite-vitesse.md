@@ -6,7 +6,8 @@ pg_id: 249
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Supporter et fixer la boite de vitesses au chassis
   must_be_true:
@@ -211,6 +213,235 @@ installation:
   - cle dynamometrique
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    symptome: 'a-coups au passage des rapports = silent-bloc dechire'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le support de boîte vitesse est une pièce de liaison mécanique chargée de
+    fixer la boîte de vitesses au châssis ou au berceau du véhicule tout en
+    amortissant les vibrations générées par la transmission. Il se compose
+    généralement d'une armature métallique encapsulant un bloc en caoutchouc ou
+    en élastomère vulcanisé, qui fait office d'absorbeur de vibrations. Son rôle
+    est triple : supporter le poids de la boîte de vitesses et de la
+    transmission dans le compartiment moteur, fixer ces organes de manière
+    rigide au châssis pour éviter tout déplacement intempestif lors des
+    changements de rapports ou des à-coups moteur, et amortir les vibrations et
+    les chocs issus du mouvement de rotation de la transmission avant qu'ils ne
+    se propagent dans l'habitacle. Le support de boîte travaille en permanence
+    sous des contraintes mécaniques importantes : couple de réaction lors du
+    passage des vitesses, vibrations à haute fréquence, contraintes thermiques
+    dues à la proximité du moteur. L'élément caoutchouc se détériore
+    progressivement sous l'effet de l'huile, de la chaleur et des cycles de
+    compression/détente répétés. Il est souvent remplacé en même temps que les
+    supports moteur lors d'une révision de la chaîne cinématique.
+  S2: >-
+    Le vieillissement du support de boîte vitesse est progressif et les
+    symptômes s'accentuent au fil des kilomètres. Après 100 000 km ou en cas de
+    contamination par l'huile moteur, les signaux suivants doivent alerter : -
+    Vibrations ressenties sur le levier de vitesses : le caoutchouc durci ou
+    fissuré ne filtre plus les vibrations de la transmission. Ces vibrations se
+    transmettent directement jusqu'au levier de vitesses, perceptibles en
+    conduite à vitesse stabilisée. - Caoutchouc du support visiblement détérioré
+    : à l'inspection visuelle sous le véhicule, le bloc caoutchouc présente des
+    fissures, des déchirures ou un écrasement permanent. Signe d'usure avancée
+    nécessitant un remplacement immédiat. - Claquement ou bruit sourd au passage
+    des rapports : quand la boîte de vitesses se déplace légèrement à chaque
+    changement de rapport faute de maintien rigide, un bruit de choc sourd se
+    produit — symptôme de sévérité intermédiaire. - Boîte de vitesses qui semble
+    bouger anormalement : observable en regardant sous le capot lors d'une
+    accélération brusque. Le bloc boîte doit rester quasi immobile. Un mouvement
+    perceptible indique un support défaillant. - Sensation d'à-coups à
+    l'embrayage ou au débrayage : les mouvements parasites de la boîte
+    perturbent l'engagement de l'embrayage et créent des à-coups lors des
+    démarrages ou des manœuvres. - Plus de 100 000 km ou supports moteur déjà
+    changés : le remplacement préventif du support de boîte lors d'une révision
+    des supports moteur est conseillé pour éviter une récidive rapide.
+  S3: >-
+    Le support de boîte vitesse est une pièce spécifique au couple
+    véhicule/boîte de vitesses. La géométrie, la rigidité et les points de
+    fixation varient selon que la boîte est manuelle, robotisée ou automatique.
+    Voici les critères à valider avant commande : - Marque, modèle et année du
+    véhicule : les références varient même sur un même modèle selon les
+    millésimes de production. Toujours indiquer ces trois informations. - Type
+    de boîte de vitesses : manuelle, automatique ou robotisée. Le point de
+    fixation et la rigidité du support diffèrent selon le type de boîte, qui a
+    une masse et un centre de gravité différents. - Motorisation et puissance :
+    une version sportive ou à forte puissance peut nécessiter un support de
+    boîte avec une rigidité accrue par rapport à la version de base. - Qualité
+    OES ou OEM : les fabricants comme Lemförder, Corteco, Febi ou Meyle
+    produisent des supports de boîte conformes aux spécifications constructeur.
+    Vérifier systématiquement la compatibilité boîte manuelle ou automatique
+    dans la description article. - Présence d'une biellette de réaction : sur
+    certains véhicules, un support avant et une biellette de réaction
+    travaillent en tandem. Si la biellette est usée, la remplacer simultanément
+    au support. - État du support actuel avant commande : inspecter visuellement
+    le caoutchouc et vérifier les fixations pour confirmer que le support est
+    bien la pièce défaillante et non la biellette ou une vis de fixation
+    desserrée. - Référence constructeur ou OEM à croiser : comparer la référence
+    de la pièce proposée avec la référence constructeur du véhicule ou la
+    référence de la pièce d'origine déposée. Pour aller plus loin : consultez
+    notre guide d'achat support de boîte vitesse — comparatif marques, critères
+    de choix et prix.
+  S4_DEPOSE: >-
+    Le remplacement du support de boîte vitesse est une intervention
+    généralement plus accessible que le remplacement des supports moteur, car la
+    boîte de vitesses est souvent moins encombrée. Prévoir environ 1 heure de
+    travail avec un équipement de levage adapté. Voici la procédure générale : -
+    Lever le véhicule et le placer sur chandelles rigides aux points de levage
+    constructeur. Ne jamais travailler sous un véhicule soutenu uniquement par
+    un cric hydraulique. - Repérer le support de boîte sur le berceau ou le
+    châssis. Il est situé sous la boîte de vitesses, souvent visible en
+    regardant sous le véhicule depuis l'avant ou le côté. - Positionner un cric
+    avec une planche de bois sous le carter de la boîte de vitesses pour
+    soutenir son poids avant de démonter le support. Ne pas placer le cric sous
+    un point de drainage ou une prise d'huile. - Dévisser les vis de fixation du
+    support sur le berceau/châssis d'une part, et les vis de fixation sur la
+    boîte de vitesses d'autre part. Utiliser les douilles adaptées et noter le
+    couple de serrage constructeur. - Abaisser légèrement la boîte avec le cric
+    pour dégager le support, puis extraire le support usé. - Inspecter les
+    filetages du berceau et de la boîte — si les filetages sont endommagés, les
+    retravailler avec un taraud avant montage. - Positionner le nouveau support
+    en alignant les trous de fixation, puis serrer les vis au couple
+    constructeur (généralement 40 à 80 Nm selon le véhicule). - Remonter le
+    cric, repositionner la boîte à sa hauteur initiale et vérifier que toutes
+    les fixations sont serrées uniformément. - Effectuer un test de roulage en
+    réalisant des passages de vitesses et des accélérations pour confirmer la
+    disparition des bruits et vibrations.
+  S4_REPOSE: >-
+    La repose du support de boîte vitesse est l'étape décisive pour retrouver un
+    fonctionnement silencieux et des passages de vitesses fluides. Une fixation
+    insuffisante ou un support mal aligné transmettra des vibrations résiduelles
+    malgré la pièce neuve. - Préparer le support neuf : comparer visuellement le
+    support neuf avec l'ancien avant montage — vérifier que les points de
+    fixation et la géométrie de l'inserts caoutchouc correspondent exactement.
+    Un support légèrement différent peut provoquer des contraintes sur la boîte.
+    - Positionner le support sous la boîte : avec le cric maintenant la boîte en
+    position, glisser le support neuf sur les goujons ou les trous de fixation
+    du berceau. Ne pas forcer si l'alignement n'est pas naturel. - Visser les
+    fixations côté berceau/châssis en premier : engager toutes les vis à la main
+    sans les serrer. Vérifier que toutes les vis sont bien engagées dans leurs
+    filetages avant de commencer le serrage. - Descendre le cric progressivement
+    pour que la boîte de vitesses repose naturellement sur le support. Le poids
+    de la boîte aide à centrer le support sur ses points d'appui. - Serrer
+    toutes les fixations au couple constructeur avec la clé dynamométrique
+    (généralement 40 à 80 Nm selon le véhicule). Commencer par les vis côté
+    boîte, puis les vis côté berceau. Ne jamais estimer le couple au ressenti
+    sur des fixations antivibratoires. - Contrôler le jeu de la biellette de
+    réaction si votre véhicule en est équipé : la biellette (aussi appelée bras
+    de reprise de couple) limite les mouvements de la boîte sous accélération.
+    Vérifier ses silentblocs et l'état de ses fixations. - Remonter les caches
+    et protections déposés lors de l'accès et retirer les chandelles avec
+    précaution. - Effectuer un test de roulage complet : réaliser des
+    accélérations progressives, des passages de vitesses et des décélérations
+    pour confirmer la disparition des claquements, vibrations sur le levier et
+    à-coups à l'embrayage. Un léger bruit de rodage peut être présent pendant
+    les 50 premiers kilomètres.
+  S5: >-
+    Le remplacement du support de boîte vitesse concentre quelques erreurs
+    récurrentes qui peuvent compromettre la durabilité de l'intervention ou
+    endommager des composants adjacents. Voici les principales à éviter : -
+    Oublier de soutenir la boîte avant démontage : retirer les vis de fixation
+    sans soutenir le poids de la boîte provoque une chute brusque qui peut
+    endommager les durites, le câblage ou la pédale d'embrayage. Conséquence :
+    dégâts collatéraux sur d'autres composants. - Ne pas serrer au couple
+    constructeur : un serrage insuffisant laisse le support se désolidariser
+    progressivement, recréant les vibrations et risquant un arrachement. Un
+    surserrage détériore les filetages ou crée des contraintes excessives dans
+    le caoutchouc. Conséquence : retour en atelier dans les 10 000 km. - Ignorer
+    l'état de la biellette de réaction : sur les véhicules équipés d'une
+    biellette de réaction avant, négliger son remplacement simultané conduit à
+    une récidive des à-coups malgré un support neuf. Conséquence : deuxième
+    intervention rapide à prévoir. - Choisir un support sans vérifier le type de
+    boîte : un support prévu pour une boîte manuelle n'a pas la rigidité ni la
+    géométrie d'un support pour boîte automatique. Conséquence : mauvaise tenue
+    de la boîte et transmission de vibrations différentes. - Travailler sans
+    levage sécurisé : utiliser un cric seul sans chandelles rigides pour
+    travailler sous le véhicule est dangereux. Conséquence : risque d'accident
+    grave en cas de chute du véhicule.
+  S6: >-
+    Après montage du nouveau support de boîte vitesse, les contrôles suivants
+    permettent de valider la qualité de l'intervention avant de rendre le
+    véhicule à la route : - Contrôle du serrage de toutes les vis : passer
+    systématiquement sur chaque point de fixation avec une clé dynamométrique
+    pour confirmer que les couples constructeur sont atteints et uniformes. -
+    Inspection visuelle du positionnement : le support doit être parfaitement
+    centré et le bloc caoutchouc ne doit présenter aucune contrainte angulaire —
+    un appui oblique réduirait prématurément la durée de vie du caoutchouc. -
+    Test moteur à l'arrêt : démarrer le moteur et observer la boîte de vitesses
+    depuis le dessous du véhicule (avec le véhicule en sécurité sur chandelles)
+    — aucun mouvement anormal ne doit être visible. - Test de passage des
+    vitesses : passer tous les rapports successivement à l'arrêt, puis vérifier
+    l'absence de bruit sourd ou de claquement lors du passage en marche arrière.
+    - Test routier avec accélérations et décélérations : confirmer la
+    disparition des vibrations sur le levier de vitesses et des à-coups à
+    l'embrayage sur un trajet de 5 à 10 km.
+  S7: >-
+    Quel est le prix d'un support de boîte vitesse ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le support de
+    boîte vitesse compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon support de boîte vitesse est
+    à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un support de boîte vitesse défaillant
+    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
+    la sécurité du véhicule. Consultez la section symptômes pour évaluer
+    l'urgence du remplacement.Le support de boîte vitesse travaille en synergie
+    avec les autres silentblocs et supports du groupe motopropulseur. Un
+    remplacement isolé peut s'avérer insuffisant si les pièces adjacentes sont
+    également usées. - Support moteur — Les supports moteur et le support de
+    boîte s'usent souvent simultanément, car ils partagent les mêmes
+    sollicitations vibratoires. Si le support de boîte est à changer, inspecter
+    systématiquement les supports moteur : si leur caoutchouc est fendu ou
+    déformé, les remplacer en même temps pour éviter une double intervention. -
+    Boîte de vitesses — Si le support de boîte était très dégradé depuis
+    longtemps, vérifier l'état des joints de boîte et du carter : un support HS
+    peut provoquer des micro-déplacements qui accélèrent l'usure des joints
+    latéraux.
+  S8: >-
+    Quelle est la durée de vie d'un support de boîte vitesse ? Il n'existe pas
+    de périodicité de remplacement fixe définie par les constructeurs. En
+    pratique, la durée de vie se situe entre 100 000 et 180 000 km selon la
+    qualité de la pièce d'origine, le type de boîte (automatique plus lourde =
+    contraintes plus élevées) et les conditions d'utilisation (conduite sportive
+    ou urbaine intensive accélère l'usure). Un support contaminé par de l'huile
+    moteur peut se dégrader beaucoup plus rapidement. Comment distinguer un
+    support de boîte HS d'un support moteur défaillant ? Les symptômes sont
+    similaires. La localisation du bruit est le premier indicateur : un bruit
+    qui varie uniquement lors du passage des vitesses pointe vers le support de
+    boîte, tandis qu'un bruit présent à toutes les sollicitations moteur suggère
+    un support moteur. L'inspection visuelle sous le véhicule, moteur tournant,
+    reste le moyen le plus fiable : faire tractionner légèrement le véhicule
+    (roues calées, embrayage relâché progressivement) et observer quel support
+    se déforme. Peut-on changer le support de boîte soi-même ? Oui, à condition
+    de disposer d'un pont de levage ou d'un jeu de chandelles rigides et d'un
+    cric hydraulique de plancher. L'opération reste accessible à un mécanicien
+    amateur expérimenté car la boîte de vitesses est souvent moins encombrée que
+    le moteur. Compter environ 1 heure sur une voiture de milieu de gamme. Le
+    point critique est de soutenir la boîte correctement avant de démonter les
+    vis. Faut-il remplacer le support de boîte et le support moteur ensemble ?
+    C'est fortement conseillé si les deux ont le même kilométrage et des
+    symptômes similaires. L'élastomère vieillit de la même façon sur les deux
+    supports. Remplacer uniquement le support le plus dégradé sans traiter
+    l'autre conduit souvent à revenir en atelier 20 000 à 30 000 km plus tard
+    pour le second. Le surcoût est marginal par rapport à la main-d'œuvre
+    double.
+  META: >-
+    {"meta_title":"Support de boîte vitesse : vibrations, causes |
+    AutoMecanik","meta_description":"Vibrations sur le levier, claquement au
+    passage des rapports ou boîte qui bouge ? Le support de boîte est peut-être
+    HS. Guide diagnostic et compatibilité.","og_title":"Support de boîte vitesse
+    : diagnostic vibrations","og_description":"Caoutchouc détérioré, à-coups à
+    l'embrayage ou claquement sourd : les signes d'un support de boîte de
+    vitesses usé. Durée de vie, remplacement et pièces liées.","canonical_intent
+    ":"diagnostic","schema_type":"HowTo","sources":[{"type":"rag","ref":"gammes/
+    support-de-boite-vitesse.md","field":"domain.role + diagnostic.symptoms +
+    rendering.faq"}]}
 ---
 
 # Support de boîte vitesse - Guide Diagnostic Complet

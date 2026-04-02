@@ -6,7 +6,8 @@ pg_id: 471
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Absorbe la chaleur de l'air habitacle pour produire du froid - Circuit habitacle uniquement
   must_be_true:
@@ -207,6 +209,202 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: HELLA TechWorld
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  technical_notes:
+    position_circuit: 'cote basse pression (entre detendeur et compresseur)'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    L'évaporateur de climatisation est un échangeur de chaleur fabriqué en
+    aluminium qui absorbe l'énergie provenant du médium à refroidir par le biais
+    d'unliquide s'évaporant après avoir été détendu. Il est le dernier
+    composantdans le système de climatisation, il se situe dans le bloc de
+    chauffage. Il estcomposé d'ailettes (multitude d'ailettesdestinées à
+    augmenter la surface d'échange thermique) qui permettentd'enlever toute
+    l'humidité de l'air pulsée dans l'habitacle. Au cours du passage dans
+    l'évaporateur de climatisation, le fluidefrigorigène passe de l'état liquide
+    à l'état gazeux (évaporation).L'eau déposée sur lesailettes, est évacuée
+    sous le véhicule. En savoir plus : evaporateur de climatisation — définition
+    et rôle mécanique 🚨 Bruit Evaporateur de climatisation : causes et
+    diagnostic
+  S2: >-
+    Un évaporateur de climatisation défectueuxprésente plusieurs symptômes : -
+    Humidité élevée dansl'habitacle. - Embuage important lorsquele véhicule est
+    en mouvement. - Vous sentez de la mauvaiseodeur lors du fonctionnement de
+    climatisation. - Manque de contrôle sur latempérature de l'air en
+    circulation. Diagnostic complet : identifier une panne de evaporateur de
+    climatisation
+  S3: >-
+    L'évaporateur de climatisation absorbe la chaleur de l'air de l'habitacle
+    pour produire du froid : le fluide frigorigène se vaporise à l'intérieur de
+    ses tubes, captant l'énergie thermique de l'air soufflé par le pulseur. Il
+    est intégré dans le boîtier de ventilation, derrière le tableau de bord —
+    son accès implique souvent un démontage partiel ou complet de la planche de
+    bord. Un évaporateur mal sélectionné ou de cotes différentes ne se loge pas
+    dans le boîtier et impose une reprise d'intervention coûteuse. Voici les
+    critères à maîtriser avant commande. - Référence véhicule et cotes hors-tout
+    précises — L'évaporateur est dimensionné pour s'insérer dans un emplacement
+    fixe du boîtier de ventilation. Une différence de 3 mm en hauteur ou en
+    largeur empêche physiquement le montage ou génère des vibrations et des
+    bruits de frottement. Vérifier les cotes sur la documentation technique ou
+    mesurer la pièce d'origine avant démontage. - Compatibilité fluide R134a ou
+    R1234yf — Comme pour les autres composants du circuit frigorifique,
+    l'évaporateur est formulé pour un fluide donné. Les alliages d'aluminium,
+    les joints de raccord et les pressions de service sont différents entre
+    R134a et R1234yf. Un évaporateur R134a monté sur circuit R1234yf présente un
+    risque de corrosion galvanique accélérée. - Nombre de rangées de tubes et
+    surface d'échange — La surface d'échange de l'évaporateur (exprimée
+    indirectement par le nombre de rangées et l'espacement des ailettes)
+    conditionne l'efficacité frigorifique. Un évaporateur de remplacement avec
+    moins de rangées que l'original délivrera moins de froid et fera cycler le
+    compresseur plus fréquemment. - Position et type de raccords frigorifiques —
+    Les raccords d'entrée (liquide haute pression après détendeur) et de sortie
+    (vapeur basse pression vers compresseur) doivent être positionnés à
+    l'identique. Certains évaporateurs utilisent des raccords à emboîtement
+    rapide (push-lock), d'autres des raccords à filetage. Vérifier le type avant
+    commande pour s'assurer de la compatibilité avec les durites en place. -
+    Traitement anti-corrosion des ailettes — L'évaporateur est en contact avec
+    de l'eau condensée et l'air extérieur humide. Un évaporateur avec des
+    ailettes en aluminium traité (revêtement époxyde ou céramique) résiste mieux
+    à la corrosion et aux moisissures responsables des mauvaises odeurs. Ce
+    critère est important sur les véhicules utilisés en environnement côtier ou
+    humide. - Pièces à remplacer lors de l'ouverture du circuit — L'ouverture du
+    circuit pour remplacer l'évaporateur impose le changement systématique de la
+    bouteille déshydratante et la vérification du détendeur. Toujours remettre
+    le circuit sous vide pendant au moins 45 minutes avec une pompe à vide à
+    deux étages avant recharge : une présence d'humidité résiduelle dans le
+    circuit provoque une corrosion interne accélérée des aluminium. Pour aller
+    plus loin : consultez notre guide d'achat evaporateur de climatisation —
+    comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Evaporateur de
+    climatisation pour connaître les spécifications. Note : pour leremplacement
+    de l'évaporateur de climatisation il doit être fait par un professionnel si
+    non ilfaut se référé à la revue technique de vote voiture. - Videz le
+    circuit de climatisation. - Débranchez la batterie. - Libérez l'accès pour
+    le démontage du détendeur de climatisation . - Démontez le détendeur de
+    climatisation. - Dépressuriser le circuit derefroidissement. - Pincer les
+    durites de liquide de refroidissement à l'aide des pinces à durites. -
+    Démontez les clips deverrouillage des durites de liquide de refroidissement.
+    - Désaccoupler les durites de liquide de refroidissement. Note : Évacuer un
+    maximum de liquide de refroidissement del'aérotherme à l'aide d'une
+    soufflette placée en entrée, placer un récipientpour récupérer le liquide de
+    refroidissement. - Desserrez la vis defixation de la plaque de maintien des
+    durites de liquide de refroidissement. - Démontez la plaque demaintien des
+    durites de liquide de refroidissement et le joint d'étanchéité. - Démontez
+    tous le tableau de bord. - Désaccouplez les conduits d'airdes places
+    arrière. - Déconnectez les connecteursdu groupe de chauffage. - Démontez le
+    groupe dechauffage. - Démontez l'évaporateur declimatisation.
+  S4_REPOSE: >-
+    Le remontage d'un évaporateur de climatisation est une intervention lourde
+    qui mobilise le tableau de bord en quasi-totalité. Une fois l'évaporateur en
+    place, ne bâclez pas les étapes de vérification : un raccord frigorigène mal
+    serré ou une durite de chauffage mal clipsée génèrent des avaries coûteuses
+    dès la première mise en route. - Vérifiez que l'évaporateur neuf est
+    identique à celui déposé : forme, dimensions, positions des raccords
+    frigorigènes et des durites de chauffage. Un modèle non conforme ne peut pas
+    être raccordé sans forcer. - Contrôlez simultanément l'état du détendeur de
+    climatisation : si le circuit a été ouvert pour remplacer l'évaporateur,
+    c'est le moment de remplacer aussi le détendeur si son état est douteux. -
+    Positionnez l'évaporateur dans le boîtier de chauffage-ventilation. Assurez-
+    vous que les joints de boîtier sont correctement en place avant de refermer
+    le boîtier. - Remontez le groupe de chauffage complet dans le boîtier et
+    rebranchez les connecteurs électriques du moto-ventilateur et des volets de
+    distribution d'air. - Raccordez les durites de liquide de refroidissement du
+    radiateur de chauffage sur leurs raccords. Posez les clips de verrouillage
+    jusqu'au déclic. Vérifiez l'absence de pliure. - Accouplez les conduits
+    d'air des places arrière si votre véhicule en est équipé. Remontez
+    l'ensemble du tableau de bord en inversant l'ordre de dépose. - Reconnectez
+    tous les connecteurs électriques du tableau de bord (climatisation,
+    chauffage, éclairage, airbag). Vérifiez le verrouillage de chaque
+    connecteur. - Remontez les pièces déposées dans le compartiment moteur pour
+    accéder aux raccords frigorigènes. Rebranchez la batterie (borne positive en
+    premier). - Faites recharger le circuit de climatisation par un technicien
+    habilité : récupération des éventuels résidus, mise sous vide 30 minutes
+    minimum, puis charge en réfrigérant et huile PAG aux quantités constructeur.
+    - Contrôlez le niveau de liquide de refroidissement et purgez le circuit de
+    chauffage si nécessaire. Vérifiez le bon fonctionnement de la climatisation
+    et du chauffage en mode automatique. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Evaporateur de climatisation.
+  S5: >-
+    Erreurs frequentes avec l'evaporateur de climatisation : - Ne pas faire le
+    vide du circuit avant recharge — l'air et l'humidite residuels degradent le
+    compresseur et provoquent des surpressions- Oublier de remplacer le
+    detendeur et la bouteille deshydratante en meme temps — un detendeur
+    encrasse ou une bouteille saturee reduisent l'efficacite de l'evaporateur
+    neuf- Ne pas nettoyer le boitier de ventilation lors du remplacement — les
+    moisissures et debris accumules contaminent l'evaporateur neuf et provoquent
+    des odeurs- Ignorer une odeur de moisi persistante a la mise en route de la
+    ventilation — signe d'evaporateur colonise par des bacteries, un traitement
+    antibacterien est necessaire- Ne pas verifier l'etancheite du circuit apres
+    remontage — une micro-fuite vide le circuit en quelques semaines
+  S6: >-
+    L'évaporateur de climatisation absorbe la chaleur de l'air habitacle en
+    faisant circuler le fluide frigorigène à basse pression. Son remplacement
+    est une intervention majeure qui nécessite le démontage du tableau de bord
+    sur la plupart des véhicules. Les vérifications post-remplacement couvrent à
+    la fois l'étanchéité du circuit frigorigène et la propreté du boîtier de
+    ventilation. - Vérifier l'étanchéité du circuit frigorigène après recharge :
+    utiliser un détecteur de fuite électronique pour contrôler les raccords de
+    l'évaporateur dans le boîtier de ventilation. Ces raccords sont difficiles
+    d'accès — inspecter avec une sonde flexible ou un traceur fluorescent UV
+    visible à la lampe. - Contrôler la pression basse en régime stabilisé :
+    après 10 minutes de fonctionnement à régime moteur stabilisé, la pression
+    côté basse pression doit être entre 1,5 et 2,5 bar. Une pression inférieure
+    à 1 bar indique un givrage de l'évaporateur — vérifier le détendeur associé
+    et la quantité de fluide. - Vérifier l'absence de fuites d'eau sous le
+    tableau de bord : l'évaporateur produit des condensats qui s'évacuent par un
+    tuyau de drainage. Contrôler que ce tuyau est correctement reconnecté et non
+    obstrué. Une flaque d'eau sous le tableau de bord après 10 minutes de
+    climatisation indique un drainage bouché ou mal raccordé. - Contrôler le
+    débit d'air par les bouches de ventilation : après le remontage du tableau
+    de bord, tester chaque vitesse de ventilateur. Un débit insuffisant sur une
+    ou plusieurs vitesses peut indiquer un boîtier de ventilation mal remonté ou
+    un joint de boîtier absent qui crée une fuite d'air interne. - Tester
+    l'absence de mauvaises odeurs après le premier démarrage de la clim : un
+    évaporateur neuf peut émettre une légère odeur de plastique lors des
+    premières utilisations. En revanche, une odeur de moisi persistante dès les
+    premières minutes signale que la canalisation de drainage est obstruée ou
+    que de l'humidité résiduelle reste dans le boîtier. - Vérifier l'efficacité
+    de refroidissement sur 10 minutes : fenêtres fermées, ventilateur à
+    puissance maximale, la température aux bouches doit descendre sous 10 °C en
+    5 minutes à 20-25 °C ambiants. Un évaporateur neuf correctement installé
+    restaure les performances d'origine du système de climatisation. - Contrôler
+    l'absence de bruits de gargouillement dans le boîtier : des bruits de
+    gargouillement pendant les 5 premières minutes sont normaux (fluide
+    frigorigène qui circule à nouveau). Des bruits persistants après 10 minutes
+    de fonctionnement signalent un problème de niveau de fluide ou de drainage
+    des condensats.
+  S7: >-
+    Quel est le prix d'un evaporateur de climatisation ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver l'evaporateur
+    de climatisation compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si l'evaporateur de climatisation
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un evaporateur de climatisation
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- compresseur de climatisation -
+    condenseur de climatisation - detendeur de climatisation - filtre d
+    habitacle - pulseur d air d habitacle
+  S8: >-
+    Comment choisir Evaporateur de climatisation compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Evaporateur de climatisation ?En cas de
+    climatisation inefficace malgre recharge recente ou de degradation Puis-je
+    monter Evaporateur de climatisation sans verification atelierLe montage peut
+    exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Évaporateur clim : odeurs et remplacement |
+    AutoMecanik","meta_description":"Odeur de moisi, buée persistante sur le
+    pare-brise ou clim inefficace malgré recharge ? Découvrez comment
+    diagnostiquer un évaporateur de climatisation défaillant et choisir la bonne
+    pièce.","robots":"index,follow","og_type":"article","schema_type":"HowTo"}
 ---
 
 # Evaporateur de climatisation - Guide Diagnostic Complet

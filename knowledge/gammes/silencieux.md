@@ -6,7 +6,8 @@ pg_id: 26
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Atténue le bruit des gaz d'échappement avant évacuation
   must_be_true:
@@ -193,6 +195,249 @@ installation:
   - degripant
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
+phase5_enrichment:
+  _source: ate-freinage.fr + delphiautoparts.com + denso-am.eu + textar.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 17
+  types_variants:
+  - type: 'composite'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_0_5__: '0,5 %'
+    val_100_a: '100 a'
+    val_20__: '20 %'
+    val_3_mm: '3 mm'
+    val_350_mm: '350 mm'
+    val_5_a: '5 a'
+    val_65_a: '65 a'
+    val_700_mm: '700 mm'
+  materials:
+  - materiau: 'ALUMINIUM'
+    source_ref: corpus RAG web OEM
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'graphite'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le silencieux, également appelé pot d'échappement ou muffler, est un
+    composant clé du système d'évacuation des gaz brûlés. Sa mission première
+    est d'atténuer le bruit produit par les gaz d'échappement en sortie du
+    moteur, avant leur rejet dans l'atmosphère, afin de ramener le niveau sonore
+    du véhicule dans les limites réglementaires. Physiquement, le silencieux est
+    constitué d'une enveloppe métallique (acier ordinaire, acier inoxydable ou
+    acier aluminisé selon les gammes) contenant un labyrinthe de cloisons
+    perforées, de chambres d'expansion et de matériaux absorbants (laine de
+    verre ou acier filé). Lorsque les gaz chauds et sous pression traversent ces
+    chambres, leur énergie sonore est dissipée par réflexion, absorption et
+    expansion, réduisant le niveau de bruit de plusieurs dizaines de décibels.
+    Le silencieux est positionné en fin de ligne d'échappement, après le
+    catalyseur et le tube intermédiaire, et se termine par une ou plusieurs
+    sorties visibles à l'arrière du véhicule. Sur les véhicules sportifs, il
+    existe souvent un silencieux avant (pré-silencieux) et un arrière,
+    travaillant en tandem pour optimiser la contre-pression et le niveau sonore.
+    En dehors de son rôle acoustique, le silencieux contribue à réguler la
+    contre-pression dans la ligne d'échappement, paramètre qui influence
+    directement les performances moteur et la consommation de carburant. Un
+    silencieux perforé ou corrodé perturbe cet équilibre et dégrade les
+    performances globales du moteur.
+  S2: >-
+    Le silencieux est exposé en permanence aux températures extrêmes (600 à
+    900°C en sortie moteur), à l'humidité condensée à l'intérieur et aux
+    projections de cailloux et de sel de déneigement. Son usure est progressive
+    mais inévitable. Voici les signes caractéristiques d'un silencieux qui
+    approche de sa fin de vie : - Bruit d'échappement excessif ou grondement
+    anormal : un sifflement, un crachement ou un grondement prononcé à
+    l'accélération indique une perforation ou une fissure dans la paroi du
+    silencieux, laissant les gaz s'échapper avant les chambres d'atténuation. -
+    Vibrations ressenties dans l'habitacle ou sous le véhicule : une vibration
+    basse fréquence à bas régime moteur peut signaler une rupture interne des
+    cloisons ou un déséquilibre de la sortie d'échappement. - Corrosion visible
+    sur la paroi extérieure du silencieux : points de rouille perforante, taches
+    brunes ou zones d'oxydation avancée sur les soudures — la corrosion
+    s'accélère si le véhicule effectue principalement des trajets courts
+    (condensation interne non évacuée). - Sortie d'échappement qui tremble ou
+    penche : les colliers de fixation ou les supports caoutchouc sont cassés,
+    laissant le silencieux pendre et frotter contre la carrosserie ou la jupe
+    arrière. - Odeur de gaz brûlés dans l'habitacle : une perforation du
+    silencieux dans un endroit peu visible peut laisser remonter des gaz vers
+    l'habitacle par les passages de câbles ou la trappe de coffre. -
+    Consommation de carburant en légère hausse : un silencieux très dégradé
+    perturbe la contre-pression dans la ligne et affecte l'efficacité du moteur
+    sur le long terme. - Refus au contrôle technique pour dépassement du niveau
+    sonore réglementaire ou fuite visible détectée dans la ligne d'échappement
+    lors de l'inspection.
+  S3: >-
+    Le choix d'un silencieux de remplacement demande une identification précise
+    du véhicule et de la configuration de la ligne d'échappement existante. Une
+    pièce mal dimensionnée peut provoquer des fuites, des vibrations ou un
+    niveau sonore non conforme. Voici les critères à vérifier systématiquement :
+    - Marque, modèle, type de motorisation et année : un silencieux est
+    dimensionné selon le débit de gaz du moteur (cylindrée, puissance) et la
+    configuration de la ligne — un diesel 2.0 n'a pas le même silencieux qu'un
+    essence 1.2 du même modèle. - Diamètre des tubes d'entrée et de sortie :
+    vérifier le diamètre interne du tube d'entrée du silencieux pour garantir un
+    raccordement sans manchon intermédiaire ni fuite aux jonctions. - Nombre et
+    position des sorties d'échappement : simple sortie, double sortie, sortie
+    centrale ou sortie latérale — la géométrie doit correspondre exactement à
+    l'emplacement prévu sur la jupe arrière du véhicule. - Matériau de
+    construction : l'acier inoxydable offre une durée de vie nettement
+    supérieure à l'acier aluminisé ou à l'acier ordinaire, particulièrement pour
+    les utilisateurs en zone côtière ou effectuant des trajets courts avec
+    condensation fréquente. - Position du silencieux dans la ligne : silencieux
+    arrière (le plus courant), intermédiaire ou avant — chaque position a une
+    référence différente même pour le même véhicule et la même motorisation. -
+    Référence constructeur ou équipementier : croiser la référence OEM ou la
+    référence d'un équipementier reconnu (Walker, Bosal, Klarius) avec les
+    données du véhicule pour confirmer la compatibilité dimensionnelle. - Éviter
+    les silencieux sport sans homologation sur un véhicule soumis au contrôle
+    technique — un niveau sonore hors norme entraîne un refus immédiat de la
+    visite technique. Pour aller plus loin : consultez notre guide d'achat
+    silencieux — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    Le remplacement d'un silencieux nécessite l'accès sous le véhicule,
+    idéalement sur un pont élévateur ou des chandelles solides. Les fixations
+    corrodées peuvent rendre l'opération difficile — prévoir un lubrifiant
+    dégrippant appliqué à l'avance. Voici la procédure standard : - Laisser
+    refroidir complètement le moteur avant toute intervention — les températures
+    en sortie d'échappement peuvent dépasser 600°C, causant des brûlures graves
+    sur un véhicule ayant récemment roulé. - Lever le véhicule et le sécuriser
+    sur chandelles ou pont élévateur — ne jamais travailler sous un véhicule
+    maintenu uniquement par un cric hydraulique sans sécurisation
+    supplémentaire. - Identifier et traiter les fixations corrodées : appliquer
+    un dégrippant (type WD-40 ou liquide débloquant) sur les colliers de
+    serrage, les boulons de bride et les écrous de fixation, 15 à 30 minutes
+    avant la dépose. - Déposer les supports caoutchouc (silent-blocs
+    d'échappement) reliant le silencieux à la carrosserie — utiliser un outil de
+    dépose de silent-bloc ou un tournevis à manche épais pour ne pas les
+    déchirer. - Desserrer et retirer les colliers ou brides de jonction avec le
+    tube intermédiaire en amont — si les colliers sont oxydés au point d'être
+    inutilisables, les couper à la scie et prévoir des colliers neufs lors de la
+    repose. - Extraire le silencieux en le faisant glisser vers l'arrière du
+    véhicule pour dégager le tube de jonction sans déformer les tuyaux voisins.
+    - Nettoyer l'extrémité du tube intermédiaire : éliminer les résidus de
+    corrosion et de pâte d'étanchéité sur la zone de jonction pour garantir
+    l'étanchéité du nouveau raccordement. - Installer le nouveau silencieux avec
+    des colliers neufs, repositionner les silent-blocs de suspension et
+    s'assurer qu'il ne touche ni la carrosserie ni les pièces de train roulant
+    sur toute la longueur.
+  S4_REPOSE: >-
+    Après avoir positionné le silencieux neuf sous le véhicule, le remontage
+    doit garantir l'étanchéité des raccords et la bonne tenue des supports
+    caoutchouc. Les gaz d'échappement chauds mettront en évidence immédiatement
+    toute fuite de joint non détectée lors de la repose. - Vérifier l'état des
+    colliers de jonction avant remontage : remplacer systématiquement les
+    colliers déformés ou corrodés. Un collier réutilisé sur un raccord neuf est
+    la première cause de fuite précoce. - Nettoyer soigneusement les brides de
+    raccordement côté tube intermédiaire : éliminer les résidus de joint brûlé à
+    la brosse métallique. Les portées d'étanchéité doivent être planes et
+    propres. - Installer le joint de bride neuf (fourni ou à commander
+    séparément selon le kit) centré sur les trous de passage des vis. Ne jamais
+    réutiliser un joint de bride en graphite carbonisé. - Engager le silencieux
+    neuf sur le tube d'entrée et sur le tube de sortie simultanément. Maintenir
+    l'alignement axial pour éviter de contraindre les raccords à l'assemblage. -
+    Passer les supports caoutchouc sur les crochets de carrosserie. Ces supports
+    doivent supporter le poids du silencieux sans être étirés à l'extrême —
+    vérifier qu'ils ne sont pas fissurés. - Serrer les colliers de jonction
+    progressivement et en alternance pour répartir l'effort d'écrasement du
+    joint. Respecter le couple préconisé (généralement 25 à 40 N·m selon le
+    diamètre). - Visser les écrous de bride en diagonale pour un serrage
+    uniforme. Serrage final après un premier chauffage du silencieux suivi d'un
+    refroidissement complet. - Démarrer le véhicule et contrôler l'étanchéité à
+    froid puis à chaud avec la main ou un détecteur de fumée : passer sous le
+    véhicule (moteur arrêté et refroidi) pour inspecter tous les raccords.
+  S5: >-
+    La dépose et la repose d'un silencieux concentrent plusieurs pièges
+    mécaniques récurrents qui peuvent prolonger inutilement l'intervention ou
+    compromettre l'étanchéité de la ligne. Voici les cinq erreurs les plus
+    fréquentes : - Travailler sur un silencieux encore chaud : les gaz
+    d'échappement portent les pièces à des températures qui causent des brûlures
+    graves au contact — attendre au minimum 2 heures après l'arrêt moteur, voire
+    davantage après un long trajet autoroute. - Forcer sur des boulons de bride
+    rouillés sans dégrippant : les fixations soumises à des cycles thermiques
+    extrêmes subissent une soudure par oxydation — un boulon forcé sans
+    préparation se cisaille instantanément et la réparation devient nettement
+    plus complexe et coûteuse. - Réutiliser les anciens colliers de serrage : un
+    collier usagé ou légèrement déformé ne garantit plus l'étanchéité de la
+    jonction — toujours remplacer les colliers lors de chaque démontage, le coût
+    de ces pièces est négligeable. - Ne pas vérifier l'alignement du silencieux
+    après montage : un silencieux mal positionné peut frotter contre la jupe
+    arrière ou le train arrière, provoquant un bruit métallique et une usure
+    accélérée des supports caoutchouc. - Commander un silencieux sport non
+    homologué : un niveau sonore hors norme conduit à un refus au contrôle
+    technique et peut exposer le conducteur à des amendes pour pollution sonore
+    selon le code de la route.
+  S6: >-
+    Après l'installation du nouveau silencieux, plusieurs contrôles doivent être
+    effectués à froid puis après remise en chauffe du moteur pour valider
+    l'étanchéité et la bonne tenue mécanique de la ligne : - Contrôler
+    visuellement l'absence de fuite à froid : passer la main (prudemment) le
+    long des jonctions et des colliers pour détecter tout courant d'air froid
+    caractéristique d'une fuite de gaz non brûlés. - Démarrer le moteur et
+    laisser chauffer à température normale : inspecter toutes les jonctions avec
+    un chiffon propre ou une source de fumée légère pour détecter d'éventuelles
+    fuites de gaz chauds sous pression. - Vérifier l'absence de contact entre le
+    silencieux et la carrosserie : passer la main sous le véhicule le long du
+    silencieux pour contrôler les jeux de garde avec la jupe, le train arrière
+    et les passages de roue. - Contrôler le niveau sonore : le bruit
+    d'échappement doit être similaire à l'état d'origine — tout sifflement ou
+    grondement résiduel indique une fuite aux jonctions à corriger
+    immédiatement. - Vérifier la tenue des silent-blocs de suspension après 50
+    km de roulage : contrôler que les supports caoutchouc ne sont pas déformés
+    et que le silencieux ne présente pas de jeu excessif sous vibrations moteur.
+  S7: >-
+    Le silencieux s'inscrit dans une ligne d'échappement complète dont plusieurs
+    composants s'usent de façon simultanée. Profiter de son remplacement pour
+    inspecter les pièces en amont et en aval évite une intervention
+    supplémentaire à court terme. - Tube intermédiaire d'échappement — segment
+    de liaison entre le catalyseur et le silencieux. Si ce tube présente des
+    perforations dues à la corrosion ou des fissures aux soudures, il doit être
+    remplacé en même temps pour garantir l'étanchéité de la ligne. - Support
+    d'échappement caoutchouc — maintient la ligne en suspension sous le châssis.
+    Un support fissuré ou rompu provoque des vibrations et des contacts
+    métalliques entre la ligne et la carrosserie, accélérant la corrosion du
+    silencieux neuf. - Joint de bride et colliers de jonction — assurent
+    l'étanchéité aux raccords. Ils doivent être systématiquement remplacés lors
+    d'un démontage pour éviter les fuites de gaz à chaud. - Tube arrière
+    d'échappement — portion visible dépassant sous le pare-chocs arrière. La
+    corrosion progresse souvent de l'extrémité vers l'avant : vérifier l'état
+    avant de valider que seul le silencieux est à changer. - Catalyseur — en cas
+    de bruit sourd et de perte de puissance associés aux symptômes d'usure du
+    silencieux, contrôler l'intégrité du substrat céramique interne par
+    endoscopie ou mesure de contre-pression.
+  S8: >-
+    Pourquoi mon silencieux fait-il du bruit uniquement au démarrage à froid ?
+    Un bruit d'échappement qui disparaît après quelques minutes de chauffe est
+    souvent dû à une micro-fissure ou une petite perforation sur la paroi du
+    silencieux. À froid, le métal est contracté et la fissure est ouverte — les
+    gaz s'y échappent avec un sifflement caractéristique. À chaud, la dilatation
+    thermique referme partiellement la fissure. Ce phénomène indique que le
+    silencieux est en fin de vie et doit être remplacé prochainement. Combien de
+    temps dure un silencieux en acier inoxydable par rapport à l'acier ordinaire
+    ? Un silencieux en acier ordinaire ou aluminisé dure généralement 3 à 6 ans
+    selon les conditions d'utilisation (trajets courts, sel de déneigement,
+    humidité). Un silencieux en acier inoxydable double ou triple cette durée de
+    vie, atteignant 8 à 15 ans. Le surcoût initial d'un inox est largement
+    amorti sur la durée de vie, particulièrement pour les véhicules utilisés en
+    zone côtière ou dans les régions à hivers rigoureux avec sel de route. Peut-
+    on conduire avec un silencieux percé en attendant le remplacement ? Sur
+    quelques jours, le moteur continue de fonctionner. Mais plusieurs risques
+    existent : le niveau sonore peut dépasser les seuils réglementaires
+    (infraction au code de la route et motif de refus au contrôle technique),
+    des gaz nocifs peuvent remonter vers l'habitacle si la perforation est
+    positionnée sous le plancher, et la fissure s'agrandit progressivement avec
+    les cycles thermiques. L'intervention doit être planifiée dans les jours qui
+    suivent la détection. Comment localiser la source d'un bruit d'échappement :
+    silencieux ou tube intermédiaire ? Localiser la fuite en faisant tourner le
+    moteur au ralenti et en passant votre main protégée le long de toute la
+    ligne d'échappement à distance. Une zone de gaz chauds ou de souffle indique
+    la localisation précise de la fuite. Les jonctions entre le silencieux et le
+    tube intermédiaire sont des points de faiblesse fréquents, tout comme les
+    soudures de renforcement sur le corps du silencieux. Un test à la fumée ou à
+    la bougie d'encens peut faciliter le repérage.
 ---
 
 # Silencieux - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 307
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-gates-skf-trw
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Kit complet pour la distribution a chaine avec tous les composants (tendeur, patins, glissieres)
   must_be_true:
@@ -214,6 +216,216 @@ installation:
   - cle dynamometrique
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
+phase5_enrichment:
+  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    contenu_kit_standard: 'courroie + galet tendeur + galet(s) enrouleur(s)'
+    contenu_kit_complet: 'kit standard + pompe a eau (si entrainee par la courroie de distribution)'
+    marques_premiere_monte: 'Gates PowerGrip, Continental/Contitech, Dayco, INA/FAG'
+    couple_galet_tendeur: '20-25 Nm selon constructeur'
+    regle_or: 'ne JAMAIS reutiliser une courroie demontee — elle a pris un pli permanent'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La distribution estle système mécanique qui synchronise par la courroie de
+    distribution le cyclede combustion du moteur. Chaquepièce du kit de
+    distribution à un rôle bien précis : - La courroie dedistribution : c'est
+    une courroie crantée entraînée par la roue dentée de vilebrequin, qui àson
+    tour entraîne la roue dentée d'arbre à came , la roue dentée de pompe
+    àinjection (pour les moteurs diesel) et la pompe à eau (si elle est
+    entraînéepar la courroie de distribution). - Le galettendeur (manuel ou
+    automatique) de la courroie de distribution à pour rôled'assurer la tension
+    de la courroie. - Le galet enrouleur à pour rôle d'orienteret de guider la
+    courroie de distribution pour faire fonctionner les autresorganes du moteur
+    (arbre à cames, pompe injection).- Pompe à eau fait circuler le liquide de
+    refroidissement dans le moteur. En savoir plus : kit de distribution —
+    définition et rôle mécanique 🚨 Bruit Kit de distribution : causes et
+    diagnostic
+  S2: >-
+    Pour savoir si le kit de distribution est àremplacer : -
+    Contrôlervisuellement l'état de la courroie de distribution . - Des
+    dentscreusées ou usée. - Descraquelures au dos de la courroie. - Une
+    usureexcessive entre les dents. - Undécollement des dents. - Unecourroie
+    huilée. - Unsifflement au niveau de la courroie de distribution. - Un
+    bruitde roulement au niveau des galets. Si le kit dedistribution n'est pas
+    remplacé à temps et que la courroie crantée se rompe ilrisque d'avoir une
+    casse moteur avec des effets irréversible avec de grave détériorationdes
+    arbres à cames et du vilebrequin avec des frais de réparation élevée. C'est
+    pour cela que nous vous conseillons qu'il seraplus convenable de ne pas
+    dépassé les 120 000 km pour remplacer le kit dedistribution. Diagnostic
+    complet : identifier une panne de kit de distribution
+  S3: >-
+    Le kit de distribution regroupe courroie crantée, galets tendeurs, galets
+    enrouleurs et, selon les motorisations, la pompe à eau entraînée par la
+    courroie. La défaillance d'un seul élément du kit peut provoquer une casse
+    moteur par contact pistons-soupapes. Un choix rigoureux en amont réduit ce
+    risque à zéro. - Code moteur comme référence primaire : la fiche technique
+    constructeur indique le pas de courroie (pas en millimètres entre deux
+    dents), la largeur et le nombre de dents. Ces trois paramètres sont liés au
+    code moteur, pas uniquement au modèle du véhicule. Deux versions du même
+    modèle peuvent avoir des kits incompatibles si les codes moteur diffèrent. -
+    Kit avec ou sans pompe à eau : sur les motorisations où la pompe à eau est
+    entraînée par la courroie de distribution (Renault, Peugeot, Volkswagen,
+    Toyota — selon versions), elle doit être remplacée lors de chaque
+    intervention distribution. Un kit sans pompe oblige à déposer à nouveau
+    l'ensemble de la distribution pour remplacer la pompe séparément —
+    doublement du coût main-d'œuvre. - Matière de la courroie — EPDM vs néoprène
+    : les courroies en EPDM (éthylène propylène diène monomère) résistent mieux
+    aux températures extrêmes (moteurs turbo : jusqu'à 120 °C en zone
+    distribution) et aux projections d'huile. Le néoprène convient aux
+    motorisations atmosphériques en usage normal. Vérifier la préconisation
+    constructeur : certains moteurs exigent explicitement une courroie EPDM. -
+    Galets : roulement intégré vs externe : les galets modernes intègrent un
+    roulement scellé à vie, graissé à la fabrication. Vérifier que les galets du
+    kit ne nécessitent pas de lubrification à l'installation (certains kits
+    génériques fournissent des galets à graissage manuel, source d'erreur de
+    montage). La présence d'un joint d'étanchéité côté courroie est un critère
+    de qualité supplémentaire. - Respecter l'intervalle constructeur — km ET
+    années : la courroie de distribution se dégrade par hydrolyse indépendamment
+    du kilométrage. Un véhicule peu roulant mais âgé de 5 à 8 ans (selon
+    constructeur) doit impérativement remplacer son kit même si l'intervalle
+    kilométrique n'est pas atteint. Les échéances typiques s'échelonnent entre
+    60 000 et 150 000 km ou 4 à 8 ans. - Contrôle du joint de vilebrequin et du
+    joint de l'arbre à cames : profiter de la dépose de la distribution pour
+    vérifier l'état des joints d'étanchéité d'arbre. Une fuite d'huile sur ces
+    joints contamine la courroie et réduit sa durée de vie de 30 à 50 %. Les
+    remplacer préventivement coûte moins que de refaire une distribution en
+    urgence. - Traçabilité du kit : date de fabrication et conditionnement : les
+    courroies vieillissent disponible. Vérifier la date de fabrication inscrite
+    sur le conditionnement ou le flanc de courroie. Un kit stocké plus de 3 ans
+    dans des conditions inadaptées (humidité, chaleur, lumière UV) peut être
+    fragile même neuf à l'ouverture. Pour aller plus loin : consultez notre
+    guide d'achat kit de distribution — comparatif marques, critères de choix et
+    prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Kit de distribution pour
+    connaître les spécifications. - Débranchez la batterie. - Levez et calez le
+    véhicule. - Démontez la roue avant droite. - Démontez l'écran pare-boue
+    avant droit. - Démontez les vis de fixation de la protection sousmoteur. -
+    Démontez la protection sous moteur. - Repérez le cheminement de la courroie
+    d'accessoires. - Démontez la courroie d'accessoires. - Démontez la poulie de
+    vilebrequin. - Soutenez le moteur à l'aide d'un cric et une cale debois. -
+    Démontez le support moteur et la >biellette desuspension moteur-boîte (si
+    nécessaire). - Démontez les carters de la courroie de distribution . -
+    Repérez le cheminement de la courroie de distribution. - Tournez le moteur à
+    la main dans le sens horaire (côtédistribution), pour positionner le trou de
+    l'arbre à cames quasiment en face dutrou de la culasse. - Déposez le bouchon
+    de la pige du point mort haut. - Vissez la pige à fond dans le trou du point
+    mort haut. - Tournez le moteur à la main dans le sens horaire
+    (côtédistribution), jusqu'au blocage du moteur sur la pige. - Immobilisez la
+    roue dentée d'arbre à cames avec unepige appropriée. - Vérifiez la position
+    de calage du moteur. - Desserrez la fixation du galet tendeur de
+    distribution. - Démontez la courroie de distribution. - Démontez le galet
+    tendeur de distribution. - Démontez le galet enrouleur de distribution. -
+    Démontez les fixations de la pompe à eau , suivant le niveau d'équipement. -
+    Démontez la pompe à eau.
+  S4_REPOSE: >-
+    - Vérifier que lacourroie de distribution neuve au même nombre de dents que
+    la courroie démonté. - Contrôler que lesgalets neufs sont identiques aux
+    galets démontés. - Contrôler que lapompe à eau est identique à la pompe
+    démontée. - Remontez lesgalets tendeurs et enrouleurs. - Remontez la pompeà
+    eau. - Serrez lesfixations de la pompe à eau. - Contrôlez la position
+    desrepères du galet tendeur de distribution par rapport à la culasse. -
+    Contrôlez laposition des repères de la roue dentée de l'arbre à cames et de
+    la roue dentéede vilebrequin. - Remettre en placela courroie de distribution
+    en tenant compte de son cheminement. - Réglez la tension de la courroiede
+    distribution avec le galet tendeur. - Si le galet tendeur de distribution
+    estautomatique : il peut être équipé d'une bride de maintient qui facilite
+    la posede la courroie. Dans le cas d'un galet tendeur automatique sans bride
+    de maintient,il faut détendre le système de poussé du galet en même temps
+    qu'on repositionnela courroie. - Si le galettendeur de distribution est
+    manuel : en général une courroie correctement tendue doit pouvoirfaire un
+    quart de tour dans son épaisseur en la prenant par le bout des doigts(entre
+    l'index et le pouce). Faire le test au milieu de la portion la pluslongue
+    entre deux équipements (arbre à cames ou vilebrequin ou tendeurs). -
+    Tournezle galet tendeur de distribution dans le sens inverse des aiguilles
+    d'une montre. - Amenez lerepère mobile à côté du repère fixe du galet
+    tendeur de distribution. - Serrezl'écrou du galet tendeur de distribution. -
+    Tournezsix fois le vilebrequin. - Immobilisezle volant moteur . -
+    Contrôlezla position des repères de vilebrequin et de l'arbre à cames. -
+    Démontez lesoutils de blocage de la roue dentée d'arbre à cames et du
+    vilebrequin. - Remontez lescarters de la courroie de distribution. -
+    Remontez lesupport moteur et la biellette de suspension moteur-boîte. -
+    Remontez la pouliede vilebrequin. - Remontez lacourroie d'accessoires. -
+    Remontez laprotection sous moteur. - Remontez lepare-boue. - Remontez la
+    roue. - Descendre le véhicule. - Resserrez la roue. - Contrôler le
+    bonfonctionnement de la distribution. - Vérifiez que lacourroie de
+    distribution présente une tension correcte en accélérant par à coups : - Si
+    la courroien'est pas assez tendue, elle n'accroche pas suffisamment aux
+    poulies lors del'accélération et donc patine, créant ainsi un sifflement. -
+    Si la courroie esttrop tendue, elle exerce une tension trop importante sur
+    les roulements qui sefont entendre (sorte de ronflement) à la décélération.
+    ✅ Après remontage, vérifiez les spécifications dans la fiche technique Kit
+    de distribution.
+  S5: >-
+    Erreurs frequentes avec le kit de distribution : - Depasser les 120 000 km
+    sans remplacement — risque de casse moteur par rupture de la courroie de
+    distribution- Remplacer uniquement la courroie sans changer les galets
+    tendeurs et la pompe a eau — un galet gripe ou une pompe qui fuit entraine
+    la rupture de la courroie neuve- Ne pas verifier le calage de la
+    distribution au remontage — un decalage meme d'une dent provoque des ratés
+    moteur, perte de puissance ou casse des soupapes- Reutiliser les vis de
+    fixation des galets sans verifier leur couple — risque de desserrage en
+    fonctionnement- Ignorer un bruit de claquement ou de sifflement cote
+    distribution — signe de galet use ou de courroie detendue- Ne pas bloquer le
+    vilebrequin et l'arbre a cames avant depose — le moteur perd son calage et
+    le remontage devient impossible sans outils specifiques
+  S6: >-
+    Le kit de distribution regroupe courroie, tendeur, galets et pompe à eau sur
+    de nombreux moteurs. Après pose, une série de contrôles précis garantit que
+    la distribution est correctement synchronisée et que le moteur peut être
+    remis en service sans risque. - Calage de la distribution aux repères
+    constructeur : vérifier l'alignement des marques sur la poulie de
+    vilebrequin, le pignon d'arbre à cames et le galet tendeur. Faire tourner le
+    moteur à la main de deux tours complets (720 °) et reconfirmer les repères —
+    aucune déviation acceptable. - Tension de courroie mesurée : contrôler la
+    tension à l'aide d'un tensiomètre si disponible ou selon la méthode
+    constructeur (pression au doigt, deflexion de 10 à 15 mm au milieu du brin
+    tendu). Un galet tendeur neuf doit être positionné selon le couple de
+    serrage prescrit (valeur courante : 20 à 25 N·m selon moteur). - Galets et
+    tendeurs tournant librement : avant pose de la courroie, vérifier à la main
+    que les galets neufs tournent sans jeu axial ni résistance. Un galet dur ou
+    rugueux en neuf indique un défaut de fabrication à traiter sous garantie. -
+    Absence de fuite pompe à eau (si remplacée) : après démarrage et montée en
+    température à 90 °C, inspecter visuellement la pompe sous tous les angles.
+    Toute trace de liquide de refroidissement autour de la bride ou du joint
+    d'étanchéité impose un démontage immédiat. - Sifflement ou grincement au
+    démarrage à froid absent : au premier démarrage, écouter spécifiquement la
+    zone distribution pendant 60 secondes. Un grincement persistant signale une
+    courroie mal tendue ou un galet en contact frottant avec le carter. - Niveau
+    de liquide de refroidissement vérifié : si la pompe à eau fait partie du
+    kit, purger le circuit de refroidissement après remplissage et attendre que
+    la température se stabilise avant de valider l'absence de bulle d'air
+    (voyant température stable, chauffage fonctionnel). - Scan OBD sans code de
+    calage : vérifier l'absence de codes P0016, P0017, P0340, P0345 après le
+    premier cycle de chauffe. Ces codes confirment un problème de
+    synchronisation nécessitant une repose immédiate.
+  S7: >-
+    Quel est le prix d'un kit de distribution ?Le prix varie selon le véhicule
+    et la marque. Utilisez notre sélecteur pour trouver le kit de distribution
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon kit de distribution est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un kit de distribution défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- synchroniser - entrainer - guider
+  S8: >-
+    Comment choisir Kit de distribution compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Kit de distribution ?En cas de echeance kilometrique ou temps
+    atteinte ou de degradation mesurable, Puis-je monter Kit de distribution
+    sans verification atelier ?Le montage peut exiger controles de couple,
+    alignement et references.
+  META: >-
+    {"meta_title":"Kit de distribution : guide entretien
+    complet","meta_description":"Quand changer le kit de distribution ?
+    Symptômes (bruit, grincement au démarrage), intervalle préventif, critères
+    de choix et erreurs à éviter."}
 ---
 
 # Kit de distribution - Guide Diagnostic Complet

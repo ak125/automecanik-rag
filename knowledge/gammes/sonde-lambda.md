@@ -6,7 +6,8 @@ pg_id: 3922
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer le taux d'oxygene dans les gaz d'echappement pour optimiser la combustion et le fonctionnement du catalyseur
   must_be_true:
@@ -218,6 +220,114 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Sonde a zircone (jump voltage)
+    description: Corps ceramique dioxyde de zirconium + electrodes platine, signal binaire 0,1-0,9V
+    era: standard depuis 1990
+  - type: Sonde a titane (resistance)
+    description: Dioxyde de titane couche epaisse, modifie sa resistance selon O2, pas de tension generee
+    era: 1990-2005
+  - type: Sonde large bande (wideband)
+    description: 2 cellules electrochimiques (mesure + pompage), mesure continue lambda riche ET pauvre
+    era: 2005+, standard moteurs recents
+  technical_notes:
+    tension_melange_pauvre: '~0,1V (lambda > 1)'
+    tension_melange_riche: '~0,9V (lambda < 1)'
+    tension_reference_demarrage: '0,4-0,6V'
+    resistance_chauffage: '2-14 ohms'
+    tension_alimentation_chauffage: '> 10,5V'
+    frequence_reponse: '0,5-4 Hz'
+  materials:
+  - composant: element sensible zircone
+    materiau: dioxyde de zirconium (ZrO2)
+  - composant: electrodes
+    materiau: platine
+  - composant: element sensible titane
+    materiau: dioxyde de titane (TiO2) couche epaisse
+  glossary:
+  - terme: lambda stoechiometrique
+    definition: Rapport air/carburant ideal (lambda=1), ~14,7:1 pour essence
+  - terme: boucle fermee
+    definition: Mode de regulation ou le calculateur ajuste le melange en temps reel via la sonde
+  - terme: sonde amont/aval
+    definition: Amont = avant catalyseur (regulation), aval = apres catalyseur (surveillance efficacite)
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La sonde lambda mesure le taux d''oxygène dans les gaz d''échappement et
+    transmet l''information au calculateur moteur. Celui-ci ajuste en temps réel
+    le dosage air/carburant pour maintenir un mélange stoechiométrique (lambda =
+    1), indispensable au bon fonctionnement du catalyseur. Il existe deux types
+    : la sonde amont (avant le catalyseur, régulation du mélange) et la sonde
+    aval (après le catalyseur, contrôle d''efficacité catalytique). Les deux ne
+    sont pas interchangeables. Niveau de difficulté : Facile à intermédiaire —
+    la sonde est accessible sur le collecteur ou la ligne d''échappement.
+    Comptez 30 min à 1h. Outils : clé spéciale sonde lambda (22 mm fendue),
+    dégrippant, multimètre pour test optionnel. Pièces liées : catalyseur,
+    collecteur d''échappement, calculateur moteur.
+  S2: >-
+    Durée de vie : 100 000 à 160 000 km. Les sondes chauffées durent plus
+    longtemps. À vérifier tous les 80 000 km sur véhicules anciens. Symptômes de
+    défaillance : - Voyant moteur allumé avec codes P0130 à P0167 — codes
+    spécifiques à chaque sonde (amont/aval, banc 1/banc 2)- Surconsommation de
+    carburant inexpliquée — le calculateur passe en mode boucle ouverte (mélange
+    par défaut trop riche)- Perte de puissance et ralenti instable — dosage
+    air/carburant erroné- Fumée noire excessive à l''échappement — mélange trop
+    riche permanent- Contrôle technique refusé pour pollution — la sonde aval ne
+    détecte plus l''activité du catalyseur- Odeur d''essence non brûlée à
+    l''échappement — combustion incomplète
+  S3: >-
+    Pour choisir la bonne sonde lambda : - Position : amont (avant catalyseur,
+    régulation) ou aval (après catalyseur, surveillance) — les deux ont des
+    caractéristiques électriques différentes- Nombre de fils : 1 fil (non
+    chauffée, anciens véhicules), 3 fils (chauffée), 4 fils (chauffée avec masse
+    séparée) — vérifier sur l''ancienne sonde- Type de connecteur : connecteur
+    spécifique au véhicule ou sonde universelle à raccorder — les sondes OES
+    (Bosch, NGK/NTK, Denso) avec connecteur d''origine sont préférables- Type de
+    sonde : sonde à zircone (binaire, riche/pauvre) ou sonde large bande
+    (linéaire, mesure continue) — les deux ne sont pas interchangeables- Budget
+    : 30 à 150 EUR selon le type — les sondes large bande (moteurs récents) sont
+    plus chères
+  S4_DEPOSE: >-
+    1. Laisser refroidir le moteur (collecteur d''échappement brûlant). 2.
+    Débrancher la batterie. 3. Localiser la sonde sur le collecteur
+    d''échappement (amont) ou après le catalyseur (aval). 4. Débrancher le
+    connecteur électrique de la sonde. 5. Appliquer du dégrippant sur le
+    filetage (la sonde est souvent grippée par la chaleur et la corrosion). 6.
+    Dévisser avec une clé spéciale sonde lambda (22 mm fendue) — ne pas utiliser
+    de clé plate qui arrondit l''écrou. 7. Si la sonde refuse de tourner,
+    chauffer légèrement le collecteur autour du filetage au chalumeau (pas la
+    sonde elle-même).
+  S5: >-
+    Erreurs fréquentes avec la sonde lambda : - Confondre sonde amont et sonde
+    aval — elles n''ont pas les mêmes caractéristiques électriques et ne sont
+    pas interchangeables- Utiliser de la pâte d''étanchéité sur le filetage — le
+    joint d''étanchéité est intégré à la sonde, toute pâte supplémentaire
+    perturbe la mesure d''oxygène- Toucher l''élément sensible (céramique) avec
+    les doigts ou un outil — la contamination fausse définitivement la mesure-
+    Remplacer la sonde sans vérifier que le code défaut correspond bien à la
+    sonde — un problème de câblage, de calculateur ou de fuite d''échappement en
+    amont mime un défaut de sonde- Ne pas effacer les codes défaut après
+    remplacement — le calculateur reste en mode dégradé (boucle ouverte) tant
+    que les anciens codes sont mémorisés- Installer une sonde universelle sans
+    raccord adapté — un mauvais raccordement provoque des infiltrations d''air
+    qui faussent la mesure
+  S6: >-
+    Après le remplacement de la sonde lambda : - Couple de serrage : 40-50 Nm
+    selon constructeur — trop serré, le filetage du collecteur se déforme; pas
+    assez, la sonde fuit des gaz d''échappement- Effacer les codes : supprimer
+    les codes P0130-P0167 avec l''outil OBD pour que le calculateur repasse en
+    boucle fermée- Test moteur : au ralenti, la tension de la sonde amont doit
+    osciller entre 0,1 V et 0,9 V (sonde zircone) — une tension fixe indique un
+    problème de raccordement- Consommation : la surconsommation doit disparaître
+    dans les 50 à 100 km suivant le remplacement- Contrôle technique : si le
+    remplacement visait un refus pollution, refaire un test de pollution après
+    200 km de roulage pour confirmer
 ---
 
 # Sonde lambda - Guide Diagnostic Complet

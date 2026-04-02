@@ -6,7 +6,8 @@ pg_id: 3230
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Relier la barre stabilisatrice a la suspension
   must_be_true:
@@ -218,6 +220,62 @@ installation:
   - arrache-rotule
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
+phase5_enrichment:
+  _source: delphiautoparts.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  technical_notes:
+    val_000_nm: '000 Nm'
+    val_10_a: '10 a'
+    val_100_a: '100 a'
+    val_30_a: '30 a'
+    val_7_a: '7 a'
+    val_800_nm: '800 Nm'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Relier la barre stabilisatrice a la suspension. Pièces liées : vérifier les
+    composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Claquements
+    sourds sur dos d ane ou nids de poule- Bruits de cognement dans les virages
+    serres- Sensation flottement roulis excessif virage- Jeu visible en secouant
+    la biellette a la main- Craquements au passage de ralentisseurs- Plus de 100
+    000 km sans remplacement
+  S3: >-
+    Pour choisir le bon biellette de barre stabilisatrice pour votre véhicule :
+    - Marque de votre véhicule- Modele de votre véhicule- Annee de votre
+    véhicule- Marques : Lemforder, TRW (premium), Febi, Meyle, MOOG (standard),
+    Ridex, Topran (budget)- Budget : 15 à 60 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le biellette de barre stabilisatrice : - Ne pas
+    vérifier la référence exacte avant commande — une pièce de mauvaise
+    référence ne fonctionne pas correctement même si elle se monte physiquement-
+    Oublier de débrancher la batterie avant intervention — risque de court-
+    circuit sur les composants électroniques- Ne pas serrer avec le véhicule sur
+    chandelles (roues pendantes). Attendre que le véhicule soit au sol pour le
+    serrage final.- Ne pas respecter le couple de serrage constructeur au
+    remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
+    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
+    après remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du biellette de barre stabilisatrice : - Controle du
+    jeu de direction a chaque revision- Verifier les soufflets de protection
+    (pas de fuite de graisse)- Faire verifier la geometrie apres remplacement-
+    Inspecter les biellettes et rotules associees- Effacer les codes défaut
+    éventuels avec l'outil OBD- Effectuer un essai route pour confirmer la
+    disparition des symptômes
 ---
 
 # Biellette de barre stabilisatrice - Guide Diagnostic Complet

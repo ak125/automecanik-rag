@@ -6,7 +6,8 @@ pg_id: 124
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmet la commande du frein de stationnement
   must_be_true:
@@ -213,6 +215,216 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: ate-freinage.fr + bremboparts.com + delphiautoparts.com + gpa26.com + textar.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 11
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_0_10_mm: '0,10 mm'
+    val_0_12_mm: '0,12 mm'
+    val_1__v: '1. V'
+    val_10_nm: '10 Nm'
+    val_10__v: '10. V'
+    val_100_a: '100 a'
+    val_115_nm: '115 Nm'
+    val_125_nm: '125 Nm'
+    val_16_nm: '16 Nm'
+    val_16_a: '16 a'
+    val_18_a: '18 a'
+    val_180_nm: '180 Nm'
+    val_19_a: '19 a'
+    val_2_a: '2 a'
+    val_2_mm: '2 mm'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le rôle du câble de frein à main estd'activer ou désactiver le frein de
+    stationnement pour immobiliser le véhiculelorsqu'elle est en stationnement.
+    Il bloque une ou plusieurs roues sur un mêmeessieu. Le système du frein
+    destationnement (frein à main) à commande mécanique a la fonction d'agir
+    surles mécanismes de frein des roues arrière. Il comprend le levier de
+    commande,les câbles de commande, la tringle de commande, le palonnier de
+    frein, lesleviers de commande des segments de frein, et aussi le mécanisme
+    de réglageautomatique de l'écartement entre le tambour de frein gauche et
+    droite et le jeu de mâchoires de frein. Le frein à main utilise les pièces
+    habituellement utilisées pour lefreinage, disques de frein de la voiture ou
+    tambour de frein de la voiture. C'est un simple câble qui permet d'actionner
+    ledispositif situé dans les roues arrière. La commande est généralement
+    activéepar une poignée située entre les sièges avant. Il existe aujourd'hui
+    denouvelles générations de frein à main à commande au pied ou automatiques.
+    Quelque doit le type de freinage utilisé à frein à disque ou frein à
+    tambour, un dispositif automatique est monté sur les roues arrière
+    pourpermettre de maintenir une course constante du levier ou de la pédale de
+    freinde stationnement quelque soit l'usure du câble de frein à main. En
+    savoir plus : câble de frein à main — définition et rôle mécanique 🚨 Bruit
+    Câble de frein à main : causes et diagnostic
+  S2: >-
+    Uncâble de frein à main défectueux présente plusieurs symptômes : - Le
+    levier de frein à main doit être tiré très fort sinon la voiturebouge. - Le
+    levier de frein à main monte tellement qu'il gène lors de ladescente du
+    véhicule. - Une seule roue ne bloque pas. Tous les câbles de frein à main
+    sont homologuées par les constructeurs automobile et par les équipementiers
+    des pièces détachées automobile. Diagnostic complet : identifier une panne
+    de câble de frein à main
+  S3: >-
+    Avant de commander, vérifiez ces caractéristiques : - Côté concerné : câble
+    gauche, droit ou central (câble principal reliant le levier aux deux câbles
+    secondaires) - Longueur totale : varie selon l'empattement du véhicule et le
+    type de frein arrière (tambour ou disque) - Type d'embout : embout à
+    clipser, à visser ou à crochet selon le mécanisme de rattrapage - Frein de
+    parking intégré à l'étrier : sur les véhicules avec freins arrière à disque,
+    le câble actionne un mécanisme dans l'étrier (pas un tambour) Méthode :
+    comparer la longueur et les embouts avec l'ancien câble, ou utiliser le
+    sélecteur véhicule pour la référence exacte. ➡️ Trouver les câbles
+    compatibles avec votre véhicule Pour aller plus loin : consultez notre guide
+    d'achat câble de frein à main — comparatif marques, critères de choix et
+    prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Câble de frein à main pour
+    connaître les spécifications. - Dans l'habitacle : démontez le cache du
+    levier de frein à main,Desserrez l'écrou de fixation du câble de frein à
+    main et le retirez dusupport. - Levez et calez le véhicule. - Démontez la
+    roue arrière. - Démontez l'étrier de frein gauche ou droit ou les mâchoires
+    de frein gauche ou droite suivant l'équipement de votre véhicule. - Retirez
+    le câble de frein à main de l'étrier de frein arrière ou des mâchoires de
+    frein arrière. - Démontez toutes les fixations du câble de frein à main en
+    dessous duvéhicule. - Retirez le câble de frein à main.
+  S4_REPOSE: >-
+    Remontage du câble de frein à main — procédure complète Avant toute repose,
+    vérifiez que le câble neuf présente les mêmes dimensions (longueur, embouts,
+    type de gaine) que le câble déposé. Un câble de longueur incorrecte ne peut
+    pas se régler correctement. - Contrôle des pièces associées — Profitez de
+    l'accès pour inspecter l'état des mâchoires de frein : une épaisseur de
+    garniture inférieure à 2 mm impose leur remplacement avant le remontage du
+    câble. Vérifiez également l'état du tambour de frein (absence de rayures
+    profondes) et de l'étrier de frein arrière (piston non grippé). -
+    Lubrification des points de passage — Appliquez une légère couche de graisse
+    silicone (non grasse sur les garnitures) sur chaque guide de câble et chaque
+    œillet de passage sous le plancher. Ne jamais graisser la gaine plastique —
+    le câble intérieur doit coulisser librement sans lubrifiant sur les
+    garnitures. - Passage du câble sous le véhicule — Engagez le câble dans ses
+    guides plastiques et ses colliers de maintien de l'arrière vers l'avant, en
+    vous assurant que chaque clip s'enclenche avec un clic franc. Un câble mal
+    guidé frotte contre l'échappement ou le plancher et s'use en quelques
+    semaines. - Connexion côté roue — Clipser l'embout du câble dans la came de
+    rattrapage du mécanisme de frein (tambour) ou dans le levier de l'étrier
+    (disque avec frein à main mécanique). L'embout doit être parfaitement logé
+    dans son logement ; forcer provoque une déformation de la came. - Remontage
+    des mâchoires — Si les mâchoires ont été déposées, les remonter en
+    respectant l'orientation primaire/secondaire (la mâchoire primaire, plus
+    courte, est côté avant du tambour). Accrocher les ressorts de rappel en
+    s'aidant d'un tournevis à ressort de frein pour éviter toute déformation. -
+    Remontage du tambour — Remettre le tambour en place. S'il bloque, vérifier
+    que le réglage du mécanisme de rattrapage est au minimum (mâchoires
+    rapprochées). Serrer les vis de retenue du tambour au couple (environ 8 Nm
+    selon véhicule). - Connexion côté habitacle — Passer le câble dans son
+    passage étanche sous le plancher, engager l'extrémité dans la chape du
+    levier de frein à main et serrer l'écrou de tension à la main dans un
+    premier temps. - Réglage de la tension — Serrer l'écrou de réglage
+    progressivement. Le frein à main doit bloquer la roue en tirant le levier
+    entre 3 et 5 clics. Plus de 7 clics indique un câble trop détendu ou des
+    mâchoires trop usées. Moins de 2 clics indique un câble surtensionné, risque
+    de freinage résiduel. - Test de fonctionnement final — Reposer la roue,
+    descendre le véhicule, serrer les écrous de roue au couple constructeur.
+    Tirer le levier à fond, vérifier que la roue est bloquée. Relâcher, vérifier
+    que la roue tourne librement sans frottement résiduel. Effectuer un essai
+    routier avec test d'arrêt en côte. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Câble de frein à main.
+  S5: >-
+    - Confondre câble gauche et câble droit — Sur la plupart des véhicules, le
+    câble de frein à main comprend deux câbles secondaires (un par roue)
+    différents en longueur et en courbure selon le côté. Repérer le côté avant
+    démontage (marquage gauche/droit ou photo de référence) et commander la
+    bonne référence constructeur. - Ne pas détendre le câble avant dépose —
+    Desserrer à fond l'écrou de réglage du levier ou du compensateur avant de
+    déconnecter quoi que ce soit. Un câble sous tension libéré brusquement peut
+    endommager la came de rattrapage du mécanisme de tambour ou tordre le
+    levier. Déposer d'abord le cache du levier, puis détendre. - Forcer le câble
+    dans les guides de passage — Un câble trop tendu dans son guide se
+    déformera, craquera la gaine plastique et grippera après quelques semaines.
+    Lubrifier chaque point de passage à la graisse silicone et guider le câble
+    sans forcer, en spiralant légèrement si nécessaire. - Oublier de régler la
+    tension après montage — Un câble non réglé peut être trop lâche (frein à
+    main inefficace en côte, levier à plus de 7 clics) ou trop tendu (freinage
+    résiduel permanent, surchauffe des tambours, usure prématurée des
+    garnitures). La tension cible est un blocage de roue entre 3 et 5 clics. -
+    Réutiliser des clips de maintien de câble cassés — Si les clips plastiques
+    retenant le câble sous le plancher sont fissurés ou manquants, le câble
+    vibrera contre la caisse ou frôlera l'échappement, s'usant en quelques mois.
+    Remplacer tous les clips de maintien endommagés lors de chaque intervention.
+    - Ne pas contrôler le mécanisme de rattrapage dans le tambour — Un
+    rattrapage automatique grippé ou corrodé annule l'efficacité du câble neuf.
+    Avant remontage, actionner le mécanisme à la main et vérifier qu'il se
+    déplace sans accroc ; le nettoyer à l'aérosol dégrippant si nécessaire. - Ne
+    pas tester le frein à main sur pente réelle — Un réglage sur terrain plat ne
+    garantit pas l'efficacité sur une côte à 15-20 %. Effectuer systématiquement
+    un test en côte après montage, moteur coupé, et vérifier que le véhicule ne
+    bouge pas. - Ignorer l'état du câble opposé — Les deux câbles travaillent
+    dans les mêmes conditions thermiques et mécaniques. Si l'un est usé ou
+    effiloché, l'autre est souvent proche de la rupture. Inspecter les deux
+    câbles et remplacer par paire lorsque l'un est défaillant. - Ne pas
+    respecter le couple de serrage de l'écrou de réglage — Un écrou
+    insuffisamment serré se desserre par vibrations et fait perdre le réglage.
+    Un écrou sur-serré plastifie le filetage et rend le prochain réglage
+    difficile. Serrer au couple constructeur (généralement 8-12 Nm) avec frein-
+    filet si nécessaire. 📖 Fiche technique Câble de frein à main —
+    spécifications de réglage constructeur.
+  S6: >-
+    Contrôles statiques - Vérifier la course du levier de frein à main : blocage
+    des roues arrière en 3 à 5 clics - Contrôler que le câble ne frotte contre
+    aucun élément mobile (échappement, cardan, bras de suspension) - Vérifier le
+    bon encliquetage des embouts aux deux extrémités (levier et mécanisme de
+    frein) - Avec le frein desserré, vérifier que les roues arrière tournent
+    librement (aucun freinage résiduel) Essai routier - Rouler à 30 km/h et
+    tirer légèrement le frein à main : le véhicule doit ralentir progressivement
+    et droit - Stationner sur une pente montante puis descendante : le véhicule
+    doit rester parfaitement immobile - Contrôler après 50 km que les réglages
+    n'ont pas bougé (câble neuf qui s'allonge légèrement) ⚠️ Arrêter
+    immédiatement si : le frein à main ne bloque pas les roues, freinage
+    résiduel permanent (roue chaude frein desserré), bruit de frottement
+    métallique, câble qui se détend d'un coup. 🚨 Bruit Câble de frein à main :
+    causes et diagnostic
+  S7: >-
+    Quel est le prix d'un câble de frein à main ?Le prix varie selon le véhicule
+    et la marque. Utilisez notre sélecteur pour trouver le câble de frein à main
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon câble de frein à main est à changer
+    ?Les signes d'usure les plus courants sont détaillés dans la section
+    diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un câble de frein à main défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- Étrier de frein. - Kit de freins arrière. 📖 Fiche
+    technique Câble de frein à main — intervalles et spécifications d’entretien.
+  S8: >-
+    Mon frein à main ne tient plus en côte, est-ce le câble ? Pas
+    nécessairement. Vérifier d'abord le réglage (tension du câble). Si le
+    réglage est en butée et que le frein ne tient toujours pas, le câble est
+    probablement étiré ou grippé dans sa gaine. Les garnitures de frein usées
+    peuvent aussi être en cause. Faut-il remplacer les deux câbles en même temps
+    ? Ce n'est pas obligatoire, mais recommandé. Si un câble a cédé ou est
+    fortement grippé, l'autre a le même âge et la même usure. Remplacer les deux
+    garantit un freinage de parking équilibré. Le câble central et les câbles
+    latéraux, quelle différence ? Le câble central relie le levier à un
+    répartiteur sous le véhicule. Les câbles latéraux (gauche et droit) relient
+    le répartiteur à chaque roue arrière. Certains véhicules n'ont qu'un câble
+    par côté sans répartiteur central. Mon frein à main grince quand je le
+    serre, est-ce normal ? Un léger bruit du mécanisme à cliquet est normal. Un
+    grincement métallique fort indique un câble grippé dans sa gaine ou un
+    mécanisme de rattrapage corrodé. Lubrifier la gaine ou remplacer le câble.
+    Puis-je rouler avec un câble de frein à main cassé ? Techniquement oui, car
+    le frein à main est indépendant du circuit hydraulique principal. Mais c'est
+    une infraction au contrôle technique et un danger en stationnement. Le
+    remplacement est impératif. 📖 Pour plus de détails techniques : fiche Câble
+    de frein à main
+  META: >-
+    Guide complet pour remplacer votre câble de frein à main : compatibilité,
+    erreurs fréquentes, réglage de la tension et FAQ pour un stationnement sûr.
 ---
 
 # Câble de frein à main - Guide Diagnostic Complet

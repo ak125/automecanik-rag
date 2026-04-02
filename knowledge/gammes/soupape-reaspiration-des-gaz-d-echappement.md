@@ -6,7 +6,8 @@ pg_id: 1137
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-06'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Readmettre une partie des gaz d'echappement dans l'admission
   must_be_true:
@@ -216,6 +218,211 @@ installation:
   - cle dynamometrique
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    role: 'synonyme vanne EGR — recirculation des gaz d''echappement vers l''admission'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La soupape de réaspiration des gaz d'échappement, communément appelée vanne
+    EGR (Exhaust Gas Recirculation), est un composant du système de dépollution
+    du moteur. Sa fonction principale est de réadmettre une fraction des gaz
+    d'échappement dans le collecteur d'admission, afin de les mélanger à l'air
+    frais entrant avant la combustion. Ce recyclage remplit deux objectifs
+    distincts. D'abord, les gaz d'échappement recirculés, pauvres en oxygène,
+    abaissent la température de combustion dans les cylindres. Or, la formation
+    des oxydes d'azote (NOx) — polluants réglementés par les normes Euro — est
+    directement proportionnelle à la température de flamme. Ensuite, ce
+    mécanisme permet de doser précisément la proportion de gaz recyclés en
+    fonction du régime moteur et de la charge, grâce à une commande électronique
+    pilotée par le calculateur moteur. La vanne EGR peut être de type
+    pneumatique (commandée par dépression) ou électronique (motoréducteur
+    intégré). Les versions modernes combinent une vanne EGR et un refroidisseur
+    EGR qui refroidit les gaz avant leur réintroduction, améliorant encore
+    l'efficacité de la réduction des NOx. Elle travaille en lien direct avec le
+    collecteur d'admission et peut être associée à une vanne papillon
+    d'admission sur certains moteurs diesel.
+  S2: >-
+    Une vanne EGR défaillante ou encrassée génère des symptômes variés selon
+    qu'elle reste coincée en position ouverte ou fermée. L'encrassement
+    progressif par les suies est la cause la plus fréquente, surtout après 100
+    000 km. Voici les signaux à surveiller : - Voyant moteur allumé avec codes
+    défaut P040x : les codes P0400 à P0409 indiquent une anomalie dans le
+    circuit EGR, détectée par le calculateur moteur via le capteur de débit
+    d'air massique (MAF). - Perte de puissance à l'accélération : une vanne EGR
+    bloquée en position ouverte introduit trop de gaz brûlés dans l'admission,
+    appauvrissant le mélange en oxygène et réduisant la puissance disponible. -
+    Fumée noire excessive à l'accélération : signe d'un mélange air/carburant
+    déséquilibré, souvent lié à un flux EGR non contrôlé. - Ralenti instable et
+    calages fréquents : quand la vanne reste ouverte au ralenti, les gaz
+    d'échappement perturbent le mélange à bas régime et peuvent provoquer des
+    calages — symptôme de sévérité élevée nécessitant une intervention rapide. -
+    Odeur d'échappement plus prononcée dans l'habitacle : signe de gaz mal
+    réacheminés, parfois perceptible à l'arrêt ou en conduite lente. - Plus de
+    100 000 km sans décalaminage préventif : au-delà de ce kilométrage, la vanne
+    EGR et le collecteur d'admission accumulent des dépôts de suies qui
+    réduisent le débit et la précision de régulation.
+  S3: >-
+    Le choix d'une vanne EGR de remplacement exige de la rigueur. La qualité du
+    motoréducteur intégré varie considérablement selon l'origine de la pièce, et
+    un choix inadapté se traduit par une récidive rapide ou un mauvais
+    fonctionnement. Voici les critères essentiels : - Marque et modèle exacts du
+    véhicule : la référence EGR est spécifique à la motorisation, à la cylindrée
+    et à la norme d'émissions applicable (Euro 4, 5 ou 6). Saisir marque,
+    modèle, type de motorisation et année de mise en circulation. - Code moteur
+    : sur un même modèle, les différentes puissances ou variantes de
+    motorisation peuvent utiliser des vannes EGR avec des débits et des plages
+    de régulation différents. - Qualité OES plutôt que générique : les
+    fabricants OES (Pierburg, Valeo, Delphi, Wahler) fabriquent les vannes EGR
+    pour les constructeurs. La qualité du motoréducteur et des joints
+    d'étanchéité est nettement supérieure aux adaptables génériques de bas de
+    gamme. - Type de vanne : pneumatique ou électrique : ne pas substituer un
+    type par l'autre. La compatibilité mécanique et électronique doit être
+    vérifiée. - Présence ou non d'un refroidisseur EGR intégré : certaines
+    configurations combinent la vanne et le refroidisseur en un seul bloc.
+    Vérifier si le kit comprend les joints de raccordement nécessaires. -
+    Vérifier l'état du collecteur d'admission avant montage : un collecteur
+    encrassé réduira immédiatement l'efficacité de la nouvelle vanne. Le
+    décalaminage préventif du collecteur est fortement conseillé lors du
+    remplacement. Pour aller plus loin : consultez notre guide d'achat soupape
+    réaspiration des gaz d'échappement — comparatif marques, critères de choix
+    et prix.
+  S4_DEPOSE: >-
+    Le remplacement d'une vanne EGR varie en complexité selon sa localisation
+    (en haut de moteur ou sous la tubulure d'échappement) et le type de moteur.
+    Prévoir en moyenne 1 à 3 heures selon l'accessibilité. Voici la procédure
+    générale : - Déconnecter la batterie avant toute intervention électrique
+    pour éviter un démarrage accidentel du motoréducteur. - Laisser refroidir le
+    moteur complètement (minimum 2 heures après le dernier fonctionnement) : la
+    vanne EGR est raccordée au circuit d'échappement qui peut atteindre plus de
+    500 °C. - Débrancher le connecteur électrique de la vanne EGR (clip de
+    verrouillage à presser avant d'extraire). - Dévisser les vis ou écrous de
+    fixation de la vanne sur le collecteur d'admission ou le corps EGR. Sur
+    moteurs diesel, les vis sont souvent oxydées — utiliser un dégrippant et
+    laisser agir 15 minutes. - Déconnecter les durites de refroidissement si la
+    vanne intègre un refroidisseur (vider préalablement le liquide de
+    refroidissement pour éviter les projections). - Nettoyer soigneusement le
+    logement de la vanne et le conduit d'admission avec un spray de décalaminage
+    avant de monter la pièce neuve. - Positionner les joints neufs (fournis avec
+    la vanne ou à commander séparément) et fixer la nouvelle vanne au couple
+    constructeur. - Reconnecter le connecteur, la batterie et remplir le liquide
+    de refroidissement si nécessaire. - Démarrer et effacer les codes défaut
+    avec la valise OBD pour permettre au calculateur de réinitialiser les
+    valeurs d'adaptation EGR.
+  S4_REPOSE: >-
+    La repose de la vanne EGR est une étape critique : un joint mal positionné
+    ou un connecteur mal rebranché peut provoquer une fuite de gaz chauds ou
+    générer immédiatement un nouveau code défaut. Suivre cette procédure dans
+    l'ordre strict. - Préparer les joints neufs : ne jamais réutiliser les
+    joints d'origine après dépose. Les joints EGR sont soumis à des températures
+    dépassant 500 °C et à des cycles thermiques répétés. Utiliser exclusivement
+    les joints fournis avec la vanne ou ceux préconisés par le constructeur. -
+    Nettoyer le logement de la vanne : avant pose, éliminer les résidus de
+    calamine et d'anciens joints sur le collecteur d'admission avec un spray
+    décalaminant et une spatule plastique. Ne pas rayer les surfaces d'appui
+    métalliques. - Positionner la vanne et les joints : aligner la vanne sur les
+    guides ou les fixations sans forcer. Si la vanne est munie d'un
+    refroidisseur intégré, s'assurer que les raccords de liquide sont
+    correctement orientés vers les durites de refroidissement. - Serrer les vis
+    de fixation au couple constructeur : utiliser une clé dynamométrique — le
+    couple est généralement de 10 à 25 Nm selon le moteur. Serrer en croix pour
+    une répartition homogène de la charge sur le joint. Un sur-serrage écrase le
+    joint et provoque une fuite. - Reconnecter les durites de refroidissement
+    (si présentes) avec des colliers neufs ou en vérifiant l'état des colliers
+    d'origine. Remplir le liquide de refroidissement si la vidange avait été
+    nécessaire à la dépose. - Rebrancher le connecteur électrique : insérer
+    fermement jusqu'au clic du clip de verrouillage. Un connecteur partiellement
+    engagé génère un faux contact et un code défaut intermittent difficile à
+    diagnostiquer. - Reconnecter la batterie et démarrer le moteur. Maintenir le
+    ralenti 5 minutes pour permettre la montée en température et vérifier
+    l'absence de fuite de gaz chauds autour de la vanne. - Effacer les codes
+    défaut OBD avec la valise et réaliser un cycle d'adaptation : rouler en
+    incluant des phases de décélération pied levé (phase active du recyclage
+    EGR). Vérifier l'absence de retour des codes P040x après 20 à 30 km.
+  S5: >-
+    Le remplacement ou la désactivation de la vanne EGR concentre plusieurs
+    erreurs fréquentes qui peuvent entraîner des problèmes techniques,
+    réglementaires ou financiers. Voici les principales à éviter : - Supprimer
+    ou faire reprogrammer la vanne EGR : la suppression électronique de l'EGR
+    (via reprogrammation du calculateur ou kit de suppression) est illégale en
+    France depuis la directive 2014/45/EU. Elle est détectable au contrôle
+    technique OBD depuis 2019 et entraîne un refus de visite. Conséquence :
+    contravention et contre-visite obligatoire. - Monter une vanne EGR générique
+    de mauvaise qualité : le motoréducteur interne d'une vanne low-cost peut
+    tomber en panne dans les 20 000 à 30 000 km. Conséquence : retour atelier
+    rapide et coût total supérieur à l'option OES. - Négliger le décalaminage du
+    collecteur d'admission : une nouvelle vanne montée sur un collecteur
+    encrassé voit ses performances dégradées immédiatement. Conséquence :
+    persistance des symptômes malgré le remplacement. - Oublier d'effacer les
+    codes défaut après montage : le calculateur garde en mémoire les valeurs
+    d'adaptation antérieures. Sans effacement, il peut rester en mode dégradé.
+    Conséquence : voyant moteur qui reste allumé et performances réduites. - Ne
+    pas vérifier l'état du capteur MAF (débitmètre d'air) : un débitmètre
+    encrassé peut simuler un dysfonctionnement EGR. Remplacer la vanne sans
+    diagnostiquer le MAF conduit à une mauvaise identification de la panne.
+    Conséquence : dépense inutile.
+  S6: >-
+    Après installation de la nouvelle vanne EGR, une série de contrôles est
+    nécessaire pour confirmer le retour à un fonctionnement normal du moteur : -
+    Effacement des codes défaut à la valise OBD : indispensable pour
+    réinitialiser les valeurs d'adaptation EGR du calculateur. Sans cette étape,
+    le moteur peut rester en mode dégradé. - Vérification de l'étanchéité des
+    raccordements : inspecter visuellement les joints et les durites de
+    refroidissement (si applicable) moteur chaud — aucune trace de fuite liquide
+    ou gazeuse ne doit être présente. - Test du ralenti : le ralenti doit être
+    stable à la valeur constructeur (généralement 700 à 850 tr/min sur diesel).
+    Un ralenti qui chasse ou qui s'effondre indique un problème persistant. -
+    Lecture des données en temps réel (live data) : surveiller la position de la
+    vanne EGR via la valise OBD en accélération progressive. La vanne doit
+    s'ouvrir et se fermer de façon progressive et régulière. - Test routier de
+    20 km minimum : réaliser un parcours mixte (ville + route) pour permettre au
+    calculateur de recalibrer les adaptations EGR et confirmer l'absence de
+    retour des codes défaut.
+  S7: >-
+    Le remplacement de la vanne EGR s'accompagne souvent d'interventions
+    complémentaires sur les composants du circuit d'admission et d'échappement,
+    particulièrement encrassés par la réaspiration de gaz chauds chargés de
+    suies. - Vanne EGR complète — Sur certaines architectures, la soupape de
+    réaspiration est intégrée à la vanne EGR et ne peut être remplacée
+    séparément. Vérifier si votre moteur dispose d'une soupape indépendante ou
+    d'une vanne EGR avec soupape intégrée avant commande. - Collecteur
+    d'admission — Le collecteur est systématiquement encrassé quand la vanne EGR
+    dysfonctionne. Un nettoyage ou un remplacement du collecteur est recommandé
+    simultanément pour restaurer les sections de passage d'air nominales. -
+    Refroidisseur de gaz EGR — Présent sur les moteurs diesel modernes, il
+    refroidit les gaz avant réinjection. Un refroidisseur percé contaminerait le
+    liquide de refroidissement avec des suies ou des hydrocarbures.
+  S8: >-
+    Vanne EGR d'origine (OES) ou adaptable : quelle différence concrète ? Les
+    vannes EGR OES (Pierburg, Valeo, Delphi) sont fabriquées sur les mêmes
+    lignes que les pièces montées en première monte. La qualité du motoréducteur
+    interne, des joints et du câblage est significativement supérieure aux
+    adaptables génériques. Les vannes génériques présentent un risque accru de
+    défaillance prématurée du motoréducteur, souvent entre 20 000 et 40 000 km.
+    L'écart de prix initial est généralement récupéré en termes de durabilité.
+    Peut-on nettoyer la vanne EGR soi-même plutôt que la remplacer ? Oui, si la
+    vanne est accessible et que l'encrassement est la seule cause. Démonter la
+    vanne, la tremper dans un solvant de décalaminage adapté, brosser les dépôts
+    de suie avec une brosse à poils métalliques fins. Vérifier que le papillon
+    interne se déplace librement sur toute sa course avant remontage. Cette
+    opération est efficace sur les vannes pneumatiques simples, moins sur les
+    vannes électroniques dont le motoréducteur peut être dégradé par les
+    solvants. Peut-on rouler avec une vanne EGR défectueuse sans risque immédiat
+    ? Techniquement, le moteur continue de fonctionner, souvent en mode dégradé
+    (puissance réduite, régime plafonné). Mais il est illégal de circuler avec
+    un véhicule en mode dégradé émettant des taux de NOx excessifs. Le contrôle
+    technique refusera le véhicule si la vanne EGR est désactivée ou HS. À moyen
+    terme, une vanne bloquée ouverte peut encnrasser le collecteur d'admission
+    au point de nécessiter un décalaminage complet. Quelle est la durée de vie
+    moyenne d'une vanne EGR ? En usage normal avec du carburant de qualité, une
+    vanne EGR OES a une durée de vie de 150 000 à 200 000 km. Le kilométrage de
+    remplacement courant se situe autour de 120 000 à 150 000 km sur véhicules à
+    usage urbain intensif, où les cycles de fonctionnement à basse température
+    favorisent l'encrassement par condensation des suies.
 ---
 
 # Soupape réaspiration des gaz d'échappement - Guide Diagnostic Complet

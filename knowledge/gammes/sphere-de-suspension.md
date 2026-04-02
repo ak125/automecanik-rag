@@ -6,7 +6,8 @@ pg_id: 1718
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Assurer la suspension via pression hydraulique et gaz (systeme Citroen). Remplace amortisseur ET ressort. NE FONCTIONNE
     PAS COMME UN RESSORT CLASSIQUE!
@@ -192,6 +194,56 @@ installation:
   - cle dynamometrique
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Sphere hydropneumatique (Citroën)
+    description: Azote + LHM, amortissement + suspension en 1 piece
+    era: Citroen BX/XM/C5/C6
+  technical_notes:
+    pression_azote: 'varie selon position (AV, AR, accumulateur) — recharger ou remplacer si suspension molle'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Assurer la suspension via pression hydraulique et gaz (systeme Citroen).
+    Remplace amortisseur ET ressort. NE FONCTIONNE PAS COMME UN RESSORT
+    CLASSIQUE!. Pièces liées : vérifier les composants adjacents lors du
+    remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Suspension
+    tres dure- Vehicule qui ne monte plus en hauteur- Confort de roulement
+    degrade
+  S3: >-
+    Pour choisir le bon sphère de suspension pour votre véhicule : - Marque de
+    votre véhicule- Modele de votre véhicule- Annee de votre véhicule- Marques :
+    Citroen Genuine Parts, DS Automobiles (premium), Monroe (Tenneco), Lizarte,
+    Dunlop (standard), Febi Bilstein, Optimal, NK (budget)- Budget : 300 à 800
+    EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le sphère de suspension : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
+    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
+    après remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du sphère de suspension : - Controle visuel des fuites
+    et deformations a chaque revision- Remplacement par paire (meme essieu) pour
+    equilibre du vehicule- Faire verifier la geometrie apres remplacement-
+    Inspection des silent-blocs et des rotules associees- Effacer les codes
+    défaut éventuels avec l'outil OBD- Effectuer un essai route pour confirmer
+    la disparition des symptômes
 ---
 
 # Sphère de suspension - Guide Diagnostic Complet

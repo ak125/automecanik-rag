@@ -6,7 +6,8 @@ pg_id: 1543
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Collecte les gaz d'échappement sortant des cylindres et les achemine vers le catalyseur
   must_be_true:
@@ -211,6 +213,60 @@ installation:
   - degripant
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  materials:
+  - composant: collecteur
+    materiau: fonte GS (graphite spheroidal) ou acier inox (performance/longue duree)
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Collecte les gaz d'échappement sortant des cylindres et les achemine vers le
+    catalyseur. Pièces liées : vérifier les composants adjacents lors du
+    remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Bruit
+    metallique demarrage diminue chaud- Odeur echappement habitacle sous capot-
+    Traces de suie noire autour du collecteur visuel- Perte puissance mauvais
+    rendement moteur- Voyant moteur allume - codes sonde lambda visuel- Controle
+    technique refuse pollution excessive
+  S3: >-
+    Pour choisir le bon collecteur d'échappement pour votre véhicule : -
+    Renseignez marque, modele, type puis comparez references et dimensions.
+    Validez ensuite les contraintes de compatibilite pour confirmer Collecteur
+    d'échappement.- Verifier la reference OE ou equivalence constructeur pour le
+    vehicule exact- Respecter la norme antipollution du vehicule (Euro 4, 5, 6)-
+    Controler la compatibilite des fixations et joints avec le vehicule- Marques
+    : Walker, Bosal (premium), Valeo, Febi (standard), Ridex (budget)- Budget :
+    150 à 500 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le collecteur d'échappement : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Forcer sur les goujons grippés. Utilisez du
+    dégrippant, chauffez si nécessaire, et dévissez doucement. Un goujon cassé
+    dans la culasse coûte très cher à extraire.- Ne pas respecter le couple de
+    serrage constructeur au remontage- Ignorer les symptômes d'usure en espérant
+    que ça passe — une défaillance progressive s'aggrave toujours- Ne pas
+    effacer les codes défaut après remplacement — le calculateur peut rester en
+    mode dégradé
+  S6: >-
+    Après le remplacement du collecteur d'échappement : - Controle visuel sous
+    le vehicule a chaque revision- Verifier les fixations et silent-blocs de
+    suspension d echappement- Remplacement si perforation, rouille traversante
+    ou bruit anormal- Ne pas conduire avec un echappement defectueux (gaz
+    toxiques)- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer un
+    essai route pour confirmer la disparition des symptômes
 ---
 
 # Collecteur d'échappement - Guide Diagnostic Complet

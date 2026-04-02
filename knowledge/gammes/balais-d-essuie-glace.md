@@ -6,7 +6,8 @@ pg_id: 298
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-06'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - achat
@@ -17,9 +18,10 @@ priority_signals:
   avg_basket: 25
   monthly_searches: 4800
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 _sources:
   bosch-2024:
     type: manufacturer
@@ -296,6 +298,191 @@ location_on_vehicle:
   access: Consulter la revue technique du vehicule
   adjacent_parts:
   - pieces adjacentes du meme systeme
+phase5_enrichment:
+  _source: boschwiperblades.com + denso-am.eu
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 27
+  types_variants:
+  - type: 'hall'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_25_a: '25 a'
+    val_250_mm: '250 mm'
+    val_350_mm: '350 mm'
+    val_400_mm: '400 mm'
+    val_436_a: '436 a'
+    val_541_litres: '541 litres'
+    val_58_a: '58 a'
+    val_631_a: '631 a'
+    val_639_a: '639 a'
+    val_700_mm: '700 mm'
+    val_721_a: '721 a'
+    val_8_a: '8 a'
+    val_808_a: '808 a'
+    val_83_a: '83 a'
+  materials:
+  - materiau: 'graphite'
+    source_ref: corpus RAG web OEM
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Evacue l'eau de pluie et les impuretes du pare-brise par un mouvement de
+    balayage mecanique, maintenant la visibilite du conducteur dans toutes les
+    conditions meteorologiques Pièces liées : Bras d'essuie glace (verifier
+    deformation si balai sautille), Liquide lave glace (utiliser liquide
+    special, pas d'eau seule), Commande d'essuie glace (verifier si essuie glace
+    ne fonctionne plus du tout).
+  S2: >-
+    Durée de vie : 6 à 12 ans. Remplacer immediatement si fissures visibles sur
+    le caoutchouc ou essuyage insuffisant Symptômes d'usure : - Traces ou stries
+    visibles sur le pare-brise apres essuyage - Zones non essuyees, voile d'eau
+    persistant - Bruit de crissement ou frottement anormal - Balai qui sautille
+    sur le pare-brise (chattering) - Caoutchouc fissure, durci ou decolle de
+    l'armature - Essuyage irregulier a haute vitesse
+  S2_DIAG: >-
+    SymptômeCause probableActionTraces ou stries visibles sur le pare-brise
+    apres essuyageUsure du caoutchouc par UV et gel (70%) — la raclette se
+    fissure et perd son elasticitePasser le doigt sur le caoutchouc : fissures,
+    durcissement, decollement ?Zones non essuyees, voile d'eau
+    persistantEncrassement pollen, resine, fientes (15%) — depot sur la lame qui
+    empeche le contact uniformeEssuyage sur pare-brise mouille : traces, zones
+    manquees, voile d'eau ?Bruit de crissement ou frottement anormalDeformation
+    du bras d'essuie-glace (10%) — pression inegale du balai sur le pare-
+    briseLever le balai et le relacher : revient-il bien en position contre le
+    pare-brise ?Balai qui sautille sur le pare-brise (chattering)Pare-brise
+    contamine par cire, gras ou traitement hydrophobe mal applique (5%)Verifier
+    visuellement l'etat de la raclette sur toute sa longueurCaoutchouc fissure,
+    durci ou decolle de l'armatureUsure du caoutchouc par UV et gel (70%) — la
+    raclette se fissure et perd son elasticitePasser le doigt sur le caoutchouc
+    : fissures, durcissement, decollement ?Essuyage irregulier a haute
+    vitesseUsure du caoutchouc par UV et gel (70%) — la raclette se fissure et
+    perd son elasticitePasser le doigt sur le caoutchouc : fissures,
+    durcissement, decollement ?
+  S3: >-
+    Pour choisir les bons balais d essuie glace pour votre véhicule : - Longueur
+    en mm (conducteur souvent plus long que passager, arriere different) - Type
+    de balai : flat/aero (moderne, profil plat) ou classique (armature
+    metallique) - Type d'adaptateur : crochet U (hook), bayonnette, pince
+    laterale, side pin, top lock - Position : avant conducteur, avant passager,
+    arriere (longueurs et adaptateurs differents) - La longueur du balai
+    conducteur est souvent differente de celle du passager — verifiez les deux
+    avant de commander. - Un balai flat offre un contact uniforme et moins de
+    bruit a haute vitesse qu&#39;un balai a armature. - Identifiez le type
+    d&#39;adaptateur sur votre bras existant avant toute commande : crochet U,
+    bayonnette ou pince laterale.
+  S4_DEPOSE: >-
+    1. - Balais d’essuie-glace - Balais Hybrides Balais Hybrides Notre
+    conception de lame d’essuie-glace la plus avancée, et la plus durable
+    fonctionne de manière fiable, pour préserver la sécurité du conducteur et
+    une vision claire. Comment installer Caractéristiques Hybrides Comment ils
+    fonctionnent En... 2. ### Installation - Tout d’abord lisez attentivement le
+    guide d’installation. - Nettoyer le pare-brise manuellement (pas avec les
+    anciennes lames d’essuie-glace). - S’assurer que les nouvelles lames
+    d’essuie-glace sont les bonnes. Il est essentiel de le faire avant – une
+    fois que les anciens sont... 3. - Balais d’essuie-glace - Balais Plats
+    Balais Plats Nos essuie-glaces plats s’adaptent parfaitement au pare-brise
+    d’un véhicule, afin que les conducteurs et les passagers bénéficient d’une
+    sécurité et d’une efficacité optimales. Comment installer Comment ils
+    fonctionnent Plats Comment ils... 4. ### Installation - Tout d’abord, lisez
+    attentivement le guide d’installation. - Nettoyer le pare-brise manuellement
+    (pas avec les anciennes lames d’essuie-glace). - S’assurer que les nouvelles
+    lames d’essuie-glace sont les bonnes. Il est essentiel de le faire avant –
+    une fois que les anciens sont... 5. - Balais d’essuie-glace - Balais pour
+    lunette arrière Balais pour lunette arrière Tout comme nos balais pour
+    lunette arrière avant, nos lames arrière sont faites pour correspondre à la
+    qualité OE dans toutes les applications. Comment installer Comment ils
+    fonctionnent pour lunette arrière Comment... 6. - Balais d’essuie-glace -
+    Balais Standards Balais Standards Les balais standards , sont conçus pour
+    être durables et faciles à installer, permettant une conduite sûre par tous
+    les temps. Comment installer Comment ils fonctionnent Les balais d’essuie-
+    glace sont un élément clé du système de sécurité...
+  S4_REPOSE: >-
+    - Vérifiez que les balais d'essuie-glace neufs sont identiques à ceux
+    démontés. - Contrôlez le bon fonctionnement du moteur d'essuie-glace et le
+    remplacer si nécessaire. - Mettre en place les balais d'essuie-glace. -
+    Rabattre le bras de l'essuie-glace sur le pare-brise. - Vérifiez le bon
+    fonctionnement des balais d'essuie-glace. ✅ Après remontage, vérifiez les
+    spécifications dans la fiche technique Balais d'essuie-glace.
+  S5: >-
+    - Commander sans verifier la longueur exacte conducteur vs passager -
+    Confondre le type d'adaptateur (crochet U ≠ bayonnette ≠ pince laterale) -
+    Acheter un seul balai au lieu de la paire avant - Choisir un balai generique
+    'universel' non adapte a la courbure du pare-brise - Oublier le balai
+    arriere si le vehicule en est equipe
+  S6: >-
+    Le remplacement des balais d'essuie-glace est rapide, mais quelques
+    vérifications post-montage permettent de confirmer que le résultat est
+    conforme et d'éviter un retour en atelier. Contrairement à d'autres pièces
+    mécaniques, les balais s'évaluent en fonctionnement réel sur le pare-brise
+    humide — pas à l'œil. - Test d'essuyage sur pare-brise humide : Mouiller le
+    pare-brise avec le lave-glace et activer les essuie-glaces en vitesse
+    normale. Observer si la surface essuyée est nette et uniforme, sans traces
+    ni voile d'eau résiduel. Une zone non essuyée systématiquement au même
+    endroit signale un balai mal positionné sur l'adaptateur, un bras d'essuie-
+    glace déformé, ou une longueur de balai incorrecte. - Contrôle du
+    verrouillage de l'adaptateur : Vérifier manuellement que chaque balai est
+    correctement clipsé sur le bras (tirer légèrement le balai — il ne doit pas
+    se détacher). Un balai qui se décroche pendant l'utilisation peut rayer le
+    pare-brise ou tomber sur la route. Le clic de verrouillage doit avoir été
+    ressenti pendant le montage. - Absence de bruits anormaux : À l'activation,
+    aucun crissement, aucun sautillement (chattering) et aucun bruit de
+    frottement métallique ne doivent se produire. Un sautillement sur un balai
+    neuf indique généralement que le bras d'essuie-glace est tordu ou que la
+    pression d'appui du bras est insuffisante. Un crissement persistant peut
+    venir d'un pare-brise contaminé par de la cire ou un traitement hydrophobe
+    incompatible. - Vérification que les balais atteignent bien les bords du
+    champ de balayage : Activer les essuie-glaces et observer si la course
+    complète est respectée (pas de zone courte côté conducteur ou côté
+    passager). Une course incomplète pointe un problème de mécanisme de
+    tringlerie ou de position de repos incorrect, pas un problème de balai. -
+    Test à haute vitesse (si possible) : À 80-100 km/h, les balais doivent
+    rester plaqués contre le pare-brise sans se soulever. Un balai qui se
+    décolle du pare-brise à haute vitesse (upswing) indique un balai sous-
+    dimensionné pour le vent de face de ce véhicule, ou une mauvaise fixation de
+    l'adaptateur. Les balais flat/aero sont spécifiquement conçus pour résister
+    à l'effet aérodynamique. - Contrôle de l'orientation des buses de lave-glace
+    : Après toute intervention sur les bras ou les balais, vérifier que les
+    buses de lave-glace projettent bien le liquide sur le champ de balayage des
+    balais. Une buse désorientée arrose le capot plutôt que le pare-brise, ce
+    qui rend les balais inefficaces et génère des à-coups de nettoyage.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel - Erreurs fréquentes en atelier amateur : Lacher le
+    bras d'essuie-glace sans balai (risque de fissurer le pare-brise) ; Forcer
+    l'adaptateur au lieu de trouver le bon angle de clipsage ; Inverser le balai
+    conducteur et passager (longueurs differentes) Un garagiste qualifié dispose
+    de l'outillage et de l'expérience nécessaires pour effectuer cette opération
+    en toute sécurité.
+  S7: >-
+    - Bras d'essuie glace (vérifier deformation si balai sautille) - Liquide
+    lave glace (utiliser liquide special, pas d'eau seule) - Commande d'essuie
+    glace (vérifier si essuie glace ne fonctionne plus du tout) Un bras deforme
+    cause des sautillements meme avec un balai neuf — verifiez son etat lors du
+    remplacement.
+  S8: >-
+    Combien de temps durent les balais d'essuie-glace ?Entre 6 et 12 mois en
+    usage normal. Un stationnement exterieur prolonge ou une region a forte
+    pluviometrie accelerent l'usure du caoutchouc par UV et gel. Quelle
+    difference entre un balai flat/aero et un balai classique ?Les balais flat
+    (profil plat) offrent une meilleure raclette, moins de bruit a haute vitesse
+    et un contact uniforme sur le pare-brise. Les balais classiques a armature
+    metallique sont moins chers mais moins performants. Comment savoir quel
+    adaptateur choisir ?Verifiez le type de fixation sur votre bras existant
+    (crochet en U, bayonnette, pince laterale). Chaque vehicule a une norme
+    specifique. Privilegiez un balai avec adaptateur multi-fixations inclus.
+    Peut-on utiliser de l'eau seule au lieu du liquide lave-glace ?Non. Le
+    liquide lave-glace contient un degraissant et un antigel qui facilitent le
+    nettoyage et protegent le caoutchouc. L'eau seule laisse des residus et gele
+    en hiver.
+  META: >-
+    {"meta_title":"Balais d'essuie-glace : quand changer ? |
+    AutoMecanik","meta_description":"Traces sur le pare-brise, sautillement,
+    caoutchouc fissuré ? Découvrez quand changer vos balais d'essuie-glace,
+    comment choisir la bonne longueur et le bon adaptateur pour votre
+    véhicule.","source":"rag://gammes/balais-d-essuie-glace.md"}
 ---
 
 # Balais d'essuie-glace

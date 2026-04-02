@@ -6,7 +6,8 @@ pg_id: 1632
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Ensemble de fixation supérieure de l'amortisseur
   must_be_true:
@@ -210,6 +212,54 @@ installation:
   - cle dynamometrique
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    contenu: 'coupelle superieure + roulement de butee + soufflet de protection'
+    remplacement: 'systematique avec l''amortisseur'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Ensemble de fixation supérieure de l'amortisseur. Pièces liées : vérifier
+    les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Craquement en
+    tournant le volant a l arret- Coupelle amortisseur visiblement fissuree
+    deformee- Perceptible secouant haut jambe force- Tenue de route degradee sur
+    chaussee deformee- Odeur de caoutchouc si roulement grippe- Amortisseurs
+    remplacer changer meme temps
+  S3: >-
+    Pour choisir le bon kit de butée de suspension pour votre véhicule : -
+    Marque de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
+    Marques : Bilstein, Sachs, KYB (premium), Monroe, Meyle, Febi (standard),
+    Ridex, Topran (budget)- Budget : 30 à 100 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le kit de butée de suspension : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Ne pas oublier le roulement de butée. Respecter le
+    couple de serrage de l'écrou central. Vérifier l'état du soufflet.- Ne pas
+    respecter le couple de serrage constructeur au remontage- Ignorer les
+    symptômes d'usure en espérant que ça passe — une défaillance progressive
+    s'aggrave toujours- Ne pas effacer les codes défaut après remplacement — le
+    calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du kit de butée de suspension : - Controle visuel des
+    fuites et deformations a chaque revision- Remplacement par paire (meme
+    essieu) pour equilibre du vehicule- Faire verifier la geometrie apres
+    remplacement- Inspection des silent-blocs et des rotules associees- Effacer
+    les codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes
 ---
 
 # Kit de butée de suspension - Guide Diagnostic Complet

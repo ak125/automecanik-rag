@@ -6,7 +6,8 @@ pg_id: 3893
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Assurer l'etancheite entre la pompe d'injection et le moteur
   must_be_true:
@@ -180,6 +182,49 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    etancheite: 'critique — fuite = gasoil sur le moteur, risque incendie'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Assurer l'etancheite entre la pompe d'injection et le moteur. Pièces liées :
+    vérifier les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Fuite de
+    gasoil sur la pompe- Odeur de carburant au capot- Baisse de pression d
+    injection
+  S3: >-
+    Pour choisir le bon joint de pompe d'injection pour votre véhicule : -
+    Marque de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
+    Marques : Elring, Victor Reinz (premium), Febi, Ajusa (standard), Ridex
+    (budget)- Budget : 200 à 800 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le joint de pompe d'injection : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
+    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
+    après remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du joint de pompe d'injection : - Controle visuel a
+    chaque revision ou entretien periodique- Remplacement preventif si signes d
+    usure detectes- Utiliser des pieces de qualite equivalente a l origine-
+    Respecter les preconisations constructeur pour les intervalles- Effacer les
+    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes
 ---
 
 # Joint de pompe d'injection - Guide Diagnostic Complet

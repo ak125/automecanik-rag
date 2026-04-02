@@ -6,7 +6,8 @@ pg_id: 3859
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-gates-skf-trw
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Ensemble complet de freinage arrière
   must_be_true:
@@ -213,6 +215,94 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    diametre_tambour: '180, 200, 203, 228 mm selon vehicule — mesurer avant commande'
+    garnitures_machoires: 'organique (standard) ou semi-metallique (utilitaire charge)'
+    ressorts: 'raideur calibree constructeur — NE PAS reutiliser les anciens'
+    rodage: '200 km freinages progressifs, ne pas freiner fort'
+  materials:
+  - composant: machoires
+    materiau: support acier + garniture organique collee ou rivetee
+  - composant: cylindre de roue
+    materiau: corps fonte d'aluminium + pistons acier + joints EPDM
+  - composant: ressorts
+    materiau: acier ressort traite thermiquement
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le kit de freins arrière regroupe l''ensemble des pièces nécessaires au
+    remplacement complet du système de freinage arrière à tambour : mâchoires de
+    frein, cylindres de roue, ressorts de rappel, accessoires de fixation et
+    parfois les tambours. Le kit garantit la compatibilité entre toutes les
+    pièces. Niveau de difficulté : Intermédiaire — plus complexe que les freins
+    à disque car le mécanisme à tambour comporte de nombreux ressorts et clips.
+    Comptez 1h30 à 2h30 par côté. Outils : jeu de pinces à ressorts de frein,
+    repousse-piston de cylindre, clé à tuyauter (raccord hydraulique), clé
+    dynamométrique. Pièces liées : tambour de frein, câble de frein à main,
+    liquide de frein (purge obligatoire).
+  S2: >-
+    Intervalle : environ 80 000 km ou selon usure. Les freins arrière s''usent
+    moins vite que les freins avant (30% de l''effort de freinage seulement).
+    Symptômes de défaillance : - Frein à main qui ne tient plus correctement —
+    garnitures usées ou câble détendu- Freinage arrière bruyant ou qui grince —
+    garniture au métal, contact métal/métal sur le tambour- Fuite de liquide au
+    niveau des roues arrière — cylindre de roue percé, joints internes HS-
+    Ressorts de rappel cassés ou détendus — les mâchoires ne reviennent plus en
+    position, frottement permanent- Freinage arrière déséquilibré — le véhicule
+    dévie au freinage, un côté freine plus que l''autre- Odeur de brûlé après
+    freinages répétés — surchauffe par frottement permanent (ressort cassé ou
+    cylindre grippé)
+  S3: >-
+    Pour choisir le bon kit de freins arrière : - Kit complet vs pièces séparées
+    : le kit complet est souvent 15-20% moins cher que les pièces séparées et
+    garantit la compatibilité mâchoires + cylindres + ressorts- Diamètre du
+    tambour : vérifier le diamètre exact (180, 200, 203, 228 mm selon véhicule)
+    — un kit de mauvais diamètre ne se monte pas- Avec ou sans cylindres :
+    certains kits incluent les cylindres de roue, d''autres non — si les
+    cylindres fuient, prendre le kit avec cylindres- Marques : Brembo, ATE, TRW
+    (premium), Bosch, Ferodo, Textar (standard) — les pièces de freinage sont
+    des organes de sécurité, privilégier la qualité- Budget : 40 à 150 EUR le
+    kit — le surcoût d''un kit premium est marginal face au coût de main
+    d''oeuvre
+  S4_DEPOSE: >-
+    1. Lever le véhicule, déposer les roues arrière, sécuriser sur chandelles.
+    2. Desserrer le frein à main. 3. Retirer le tambour de frein (frapper
+    légèrement si collé par la corrosion). 4. Photographier le montage des
+    ressorts et clips AVANT démontage — le remontage est complexe sans repère.
+    5. Déposer les ressorts de rappel et de maintien avec la pince spécifique.
+    6. Décrocher le câble de frein à main de la mâchoire. 7. Débrancher le
+    raccord hydraulique du cylindre de roue (clé à tuyauter, obturer pour
+    limiter la perte de liquide). 8. Déposer les mâchoires et le cylindre de
+    roue.
+  S5: >-
+    Erreurs fréquentes avec le kit de freins arrière : - Ne pas photographier le
+    montage des ressorts avant démontage — le remontage d''un mécanisme à
+    tambour est un puzzle sans repère visuel- Oublier de purger le circuit de
+    frein après remplacement des cylindres — l''air dans le circuit rend la
+    pédale molle et le freinage arrière inefficace- Ne pas remplacer les
+    ressorts et clips avec les mâchoires — des ressorts fatigués sur des
+    mâchoires neuves provoquent un frottement permanent et une surchauffe-
+    Monter le kit sans régler le frein à main — le rattrapage de jeu
+    mâchoires/tambour est indispensable pour que le frein de parking tienne-
+    Remplacer un seul côté — toujours remplacer les deux côtés (gauche + droite)
+    pour un freinage équilibré- Ne pas vérifier l''état du tambour — un tambour
+    ovalisé ou rainuré use les mâchoires neuves prématurément. Mesurer au pied à
+    coulisse
+  S6: >-
+    Après le remplacement du kit de freins arrière : - Purge : purger le circuit
+    hydraulique arrière (commencer par la roue la plus éloignée du maître-
+    cylindre)- Frein à main : régler le câble et vérifier que le frein de
+    parking tient le véhicule en pente (3 à 5 clics)- Rodage : 200 km de
+    freinages progressifs — ne pas freiner brusquement pendant le rodage des
+    garnitures- Test freinage : à 30 km/h, freiner progressivement — le véhicule
+    ne doit pas dévier. Si déviation = purge incomplète ou montage asymétrique-
+    Vérification étanchéité : après 50 km, vérifier l''absence de fuite au
+    niveau des raccords hydrauliques et des cylindres
 ---
 
 # Kit de freins arrière - Guide Diagnostic Complet

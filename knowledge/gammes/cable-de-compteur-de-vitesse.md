@@ -6,7 +6,8 @@ pg_id: 1150
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-21'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: low
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmettre mecaniquement la rotation des roues au compteur de vitesse du tableau de bord via un cable flexible (courant
     de Foucault)
@@ -207,6 +209,199 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    role: 'transmet la rotation de la BV au compteur (vehicules anciens — remplace par capteur electronique)'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le c&acirc;ble de compteur de vitesses ou kilométrique est une pièce très
+    importante pour le véhicule. Il permet d'indiquer au conducteur par
+    l'intermédiaire du compteur à quelle vitesse on est en train de rouler. Le
+    c&acirc;ble fonctionne avec le courant de Foucault. Le c&acirc;ble relie la
+    roue ou la transmission du véhicule à un plateau aimanté.La rotation des
+    roues entra&icirc;ne le plateau aimanté et la vitesse de rotation est
+    reflétée sur le tachymètre qui s'affiche sur le compteur. En permettant
+    l'affichage de la vitesse, le c&acirc;ble permet au conducteur de mieux
+    ma&icirc;triser le véhicule, de savoir quand engager un nouveau rapport et
+    de respecter les limitations de vitesse.
+  S2: >-
+    Le c&acirc;ble de compteur de vitesse n'a pas une période de remplacement.
+    Le c&acirc;ble est une pièce qui s'use avec le temps suivant plusieurs
+    facteurs par exemple le style de conduite et des conditions dans lesquelles
+    le véhicule roule habituellement. Si on constate une panne de compteur, il
+    faut diagnostiquer pour savoir si le c&acirc;ble est l'origine du problème
+    et le remplacer si nécessaire. Un c&acirc;ble défectueux ne va pas afficher
+    la bonne vitesse dans ce cas on risque à faire des accidents puisqu'on va
+    rouler à des grandes vitesses, problème au niveau de la bo&icirc;te de
+    vitesses puisqu'on ne va pas savoir quand on change les vitesses.
+  S3: >-
+    - Longueur totale exacte : Le câble de compteur est dimensionné pour
+    correspondre au parcours depuis la boîte de vitesses jusqu'au tableau de
+    bord. Un câble trop court crée une tension permanente qui génère des
+    vibrations et accélère l'usure. Trop long, il forme des boucles qui frottent
+    sur les pièces chaudes. Mesurez l'original ou relevez la référence
+    constructeur. - Type et dimension des embouts : L'embout côté boîte de
+    vitesses (carré, hexagonal ou à baïonnette selon le constructeur) et
+    l'embout côté compteur doivent correspondre exactement à l'original. Les
+    carrés les plus courants sont de 5 mm et 6,35 mm (1/4 de pouce) — confondre
+    les deux rend le câble inutilisable. - Diamètre de la gaine extérieure : La
+    gaine conditionne le passage dans les grommets et supports de carrosserie.
+    Un diamètre incorrect ne rentre pas dans les guides et force sur les œillets
+    de passage, créant des angles qui brisent le câble interne. - Compatibilité
+    avec la boîte de vitesses : Le câble prend son mouvement rotatif sur la
+    boîte de vitesses ou le pont arrière (traction ou propulsion). Les boîtes
+    manuelles, automatiques et les ponts arrière ont des sorties de câble
+    différentes — spécifiez le type de transmission lors de la commande. -
+    Présence ou absence de butée de gaine intermédiaire : Certains modèles
+    utilisent un câble en deux sections avec un raccord intermédiaire (pour
+    faciliter le passage autour du moteur). Vérifiez si le vôtre est en une ou
+    deux sections avant de commander. - Marque, modèle, année et type de boîte :
+    Ces quatre informations sont indispensables. Un même véhicule peut recevoir
+    des câbles différents selon la motorisation et le type de boîte (manuelle 5
+    rapports vs automatique 4 rapports).
+  S4_DEPOSE: >-
+    - Préparer le véhicule : Coupez le contact, appliquez le frein à main et
+    callez les roues. Le câble de compteur passe généralement sous le véhicule
+    et dans le compartiment moteur — travaillez si possible sur une fosse ou
+    avec le véhicule surélevé sur chandelles. - Photographier le tracé du câble
+    : Avant tout démontage, photographiez le parcours complet du câble depuis la
+    boîte de vitesses jusqu'à l'entrée du tableau de bord. Notez chaque collier,
+    agrafe et guide de carrosserie — la repose doit reproduire exactement ce
+    tracé. - Déconnexion côté tableau de bord : Depuis l'habitacle, accédez à
+    l'arrière du compteur (généralement accessible sous la planche de bord ou
+    après démontage du panneau de compteur). Dévissez le raccord fileté (sens
+    antihoraire) qui fixe le câble dans le compteur. Si le compteur doit être
+    déposé, consultez la procédure spécifique au modèle. - Dégager le câble au
+    passage de cloison : Le câble traverse la cloison pare-feu via un grommets
+    en caoutchouc. Dégagez doucement ce grommets pour libérer le passage sans le
+    déchirer — un grommets abîmé laisse entrer l'eau et les gaz d'échappement
+    dans l'habitacle. - Déconnexion côté boîte de vitesses : Sous le véhicule,
+    localisez la sortie de câble sur la boîte (généralement sur le côté de la
+    cloche d'embrayage ou sur le pont). Dévissez le raccord de fixation et
+    retirez l'embout du pignon de compteur. - Retirer les colliers sur le
+    parcours : Dégagez le câble de tous ses points de fixation intermédiaires
+    (colliers en plastique ou agrafes métalliques) en notant chaque emplacement.
+    - Extraire le câble usagé : Tirez progressivement le câble depuis la boîte
+    de vitesses vers le tableau de bord (ou inversement). Si la gaine est rigide
+    par temps froid, réchauffez-la légèrement avec un sèche-cheveux pour
+    faciliter le passage dans les courbes. - Installer le nouveau câble : Guidez
+    le nouveau câble en suivant exactement le tracé photographié. Engagez
+    d'abord l'embout côté boîte de vitesses, puis progressez vers le tableau de
+    bord en reposant chaque collier. Repassez le grommets de cloison en le
+    regraisssant légèrement. - Connecter côté tableau de bord et vérifier :
+    Vissez le raccord du câble dans le compteur (serrage à la main puis un quart
+    de tour à la clé). Ne pas serrer excessivement — le raccord en laiton se
+    détériore rapidement si sur-serré.
+  S5: >-
+    - Forcer l'extraction du câble intérieur sans retirer la gaine complète :
+    Certains tentent de tirer uniquement le câble intérieur en laissant la gaine
+    en place. Si la gaine est cintrée ou corrodée intérieurement, le câble neuf
+    s'usera en quelques semaines contre les aspérités. Remplacez toujours gaine
+    et câble ensemble comme un ensemble monobloc. - Négliger le grommets de
+    cloison pare-feu : Un grommets craquelé ou mal reposé après le passage du
+    câble laisse entrer l'eau de pluie directement dans l'habitacle et les gaz
+    d'échappement en cas d'aspiration moteur. Inspectez-le systématiquement et
+    remplacez-le si la gomme est durcie ou fissurée. - Tordre le câble en angle
+    vif lors du passage : Le câble de compteur transmet un mouvement rotatif —
+    tout coude inférieur à 150° crée un point de friction intense qui fait
+    vibrer l'aiguille du compteur et brise les fils internes en 3 à 6 mois.
+    Respectez les rayons de courbure minimum indiqués par le constructeur
+    (généralement 100 mm minimum). - Monter un câble sans lubrifier l'embout
+    intérieur : L'extrémité carrée ou hexagonale du câble doit être légèrement
+    graissée à la graisse graphitée avant insertion dans le pignon de boîte. Un
+    embout monté à sec grince, s'oxyde et devient impossible à démonter lors du
+    prochain entretien. - Commander sans vérifier si le véhicule a un compteur
+    analogique câblé : Les véhicules fabriqués après 2000 utilisent quasi-
+    universellement un capteur de vitesse électronique sur la boîte, sans câble
+    mécanique. Si votre véhicule a un compteur numérique ou digital, il n'y a
+    pas de câble — cherchez plutôt un capteur de vitesse sur boîte (VSS).
+  S6: >-
+    - Test de l'affichage au démarrage : Démarrez le moteur et engagez une
+    vitesse en maintenant l'embrayage. Observez l'aiguille du compteur : elle
+    doit rester à zéro stable. Une aiguille qui oscille sans avancer signale un
+    câble mal connecté côté boîte ou un pignon de compteur endommagé. - Test de
+    progression à faible vitesse : Roulez à 30 km/h sur une route droite et
+    observez l'aiguille — elle doit monter progressivement et tenir stable. Des
+    saccades ou une aiguille qui "danse" indiquent un coude trop serré sur le
+    parcours du câble ou un câble intérieur non graissé. - Vérification de
+    cohérence à 90 km/h : Comparez la vitesse affichée avec un GPS ou
+    l'affichage d'un téléphone (application compteur GPS). L'écart acceptable
+    est de ±5 % selon la norme européenne. Un compteur qui sous-évalue la
+    vitesse signale un câble de mauvais rapport de démultiplication. - Contrôle
+    de l'étanchéité du grommets de pare-feu : Par temps de pluie ou après un
+    lavage à haute pression, vérifiez l'absence d'humidité sous la planche de
+    bord au niveau du passage de câble. - Inspection à 1 000 km : Après rodage,
+    vérifiez que les colliers de fixation du câble sont toujours en place et que
+    la gaine ne présente pas de traces de frottement contre des pièces mobiles
+    ou chaudes.
+  S7: >-
+    - Capteur d'impulsion (capteur de vitesse) — Sur les véhicules qui ont migré
+    vers un comptage électronique, le câble de compteur mécanique est remplacé
+    par un capteur d'impulsion monté sur la boîte de vitesses ou le moyeu de
+    roue. Si le compteur reste à zéro sur un véhicule hybride
+    câble/électronique, le capteur d'impulsion peut avoir pris le relais et être
+    défaillant alors que le câble est intact. Vérifier si le système est câble
+    seul, électronique seul, ou hybride avant de commander. - Boîtier compteur /
+    tableau de bord — Si le câble est intact (tourne librement, pas de casse
+    visible) mais que l'aiguille du compteur reste à zéro ou tremble, le boîtier
+    d'instruments lui-même peut être en cause : pignon de compteur usé dans le
+    tableau de bord, ou liaison électrique défaillante (sur tableaux
+    numériques). Tester le câble en le connectant à un boîtier de remplacement
+    avant de déposer le tableau de bord. - Joint d'étanchéité de boîte de
+    vitesses (côté prise de mouvement) — Le câble de compteur se branche sur la
+    boîte de vitesses à travers un passe-câble étanche. Si une fuite d'huile de
+    boîte est constatée au niveau du raccord du câble, le joint d'étanchéité du
+    passe-câble est percé. Remplacer ce joint lors du changement du câble pour
+    éviter une vidange involontaire de la boîte. - Pignons de prise de mouvement
+    compteur (galet de boîte) — Le câble entraîne un petit pignon plastique dans
+    la boîte de vitesses (le « galet compteur »). Ce pignon s'use indépendamment
+    du câble. Si le câble est neuf mais ne tourne pas, le galet dans la boîte
+    peut être cassé ou manquant. Vérifier la rotation de l'extrémité du câble
+    côté boîte avant de conclure à un câble défaillant. - Gaine de câble de
+    compteur — Certains câbles de compteur sont vendus avec ou sans gaine de
+    protection. Si la gaine est craquelée, le câble frotte à l'intérieur et
+    produit des bruits de grattement ou de ronronnement en proportion de la
+    vitesse. Vérifier l'état de la gaine avant de remplacer uniquement le câble
+    intérieur.
+  S8: >-
+    Mon compteur de vitesse est bloqué à zéro : câble ou capteur électronique ?
+    Avant de commander un câble, vérifiez si votre véhicule est équipé d'un
+    compteur analogique câblé ou d'un capteur de vitesse électronique (VSS). Les
+    véhicules avec compteur à câble ont généralement été produits avant
+    1995-2000 selon le constructeur. Si votre compteur est numérique ou si votre
+    véhicule a une ABS, il est presque certain qu'il utilise un capteur VSS
+    électronique — il n'y a pas de câble à remplacer dans ce cas, c'est le
+    capteur de vitesse sur boîte qu'il faut diagnostiquer. Pourquoi mon compteur
+    oscille-t-il ou saccade-t-il après remplacement du câble ? L'oscillation de
+    l'aiguille après remplacement provient de trois causes principales : un
+    coude trop serré sur le tracé du câble (angle inférieur à 150°), un manque
+    de graisse sur l'embout intérieur du pignon, ou un câble intérieur de
+    mauvaise qualité dont les torons ne sont pas uniformes. Commencez par
+    vérifier le tracé sous le capot et vous assurer qu'aucune section ne forme
+    un coude brutal. Si le problème persiste, le compteur lui-même peut être usé
+    (engrenages internes). Peut-on graisser soi-même le câble de compteur sans
+    le démonter ? Oui, si le câble est accessible côté tableau de bord. Dévissez
+    le raccord du câble sur le compteur et tirez légèrement le câble intérieur
+    de sa gaine sur 20-30 cm. Appliquez de la graisse graphitée ou de la graisse
+    de câble spéciale sur toute la partie sortie, puis faites rentrer et sortir
+    le câble plusieurs fois pour répartir la graisse vers le bas. Cette
+    opération prolonge la durée de vie du câble de 1 à 2 ans, surtout sur les
+    véhicules qui roulent par temps froid. Le kilométrage du compteur est-il
+    affecté par le remplacement du câble ? Non. Le câble de compteur transmet la
+    rotation du pignon de boîte de vitesses mais le totalisation du kilométrage
+    est effectuée par le mécanisme interne du compteur (totalisateur mécanique
+    sur les anciens compteurs, mémoire électronique sur les plus récents). Le
+    remplacement du câble n'affecte ni ne réinitialise l'odomètre.
+  META: >-
+    {"meta_title":"Câble de compteur de vitesse : diagnostic et
+    remplacement","meta_description":"Compteur bloqué, aiguille qui saute ou
+    lecture erronée ? Identifiez les symptômes d'un câble de compteur de vitesse
+    défaillant et sachez quand le remplacer sur votre voiture."}
 ---
 
 # Câble de compteur de vitesse - Guide Diagnostic et Achat

@@ -6,7 +6,8 @@ pg_id: 689
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transformer la basse tension batterie en haute tension (15-40kV) pour creer l'etincelle aux bougies
   must_be_true:
@@ -212,6 +214,123 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: delphiautoparts.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 9
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_000_v: '000 v'
+    val_100_a: '100 a'
+    val_12_v: '12 v'
+    val_7_a: '7 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La bobine d'allumage transmet du courant haute tension auxbougies d'allumage
+    à travers le faisceau d'allumage pour produire l'étincellenécessaire à la
+    combustion du moteur essence. Lorsqu'on démarre le moteur le courant passe
+    directementdans la bobine d'allumage. Le courant haute tension produit une
+    étincelle quipasse de l'électrode centrale à l'électrode de masse de la
+    bougie d'allumagepour enflammer le mélange air-carburant. La bobine
+    d'allumage est un quadripôle mettant à profit lephénomène d'induction
+    électromagnétique pour engendrer une impulsion sous unetrès haute tension.
+    Types de bobines : - Bobine classique. - Bobine double indépendante. -
+    Bobine rampe à distributeurhaute tension?.. En savoir plus : bobine
+    d'allumage — définition et rôle mécanique 🚨 Bruit Bobine d'allumage : causes
+    et diagnostic
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Rate moteur localise sur un cylindre precis - Voyant moteur allume code
+    p030x - Perte de puissance brutale ou progressive - Surconsommation de
+    carburant - Odeur d essence non brulee a l echappement - Demarrage difficile
+    par temps humide - # Bobine d'allumage - Accueil Pièces Allumage Allumage
+    Bobine d'allumage Bobine d'allumage Bien que les principes fondamentaux
+    d'une bobine d'allumage n'aient pas changé, les exigences qui leur sont... -
+    ## INSCRIVEZ-VOUS POUR EN SAVOIR PLUS Renseignez vos coordonnées pour
+    écouter nos experts et recevoir les dernières actualités de . Diagnostic
+    Découvrez notre vaste gamme d'équipements de diagnostic... - ### Dois-je
+    utiliser un outil de diagnostic ? Après avoir installé la nouvelle bobine
+    d'allumage, vous devez supprimer tous les codes d'erreurs et vérifier
+    qu'elle fonctionne correctement à l'aide...
+  S3: >-
+    Pour choisir les bons bobine d allumage pour votre véhicule : - Marque de
+    votre véhicule - Modele de votre véhicule - Annee de votre véhicule -
+    Vérifier : rate moteur localise sur un cylindre precis - Vérifier : voyant
+    moteur allume code p030x - Vérifier : perte de puissance brutale ou
+    progressive - Vérifier : surconsommation de carburant - Vérifier : odeur d
+    essence non brulee a l echappement - Vérifier : demarrage difficile par
+    temps humidePour aller plus loin : consultez notre guide d'achat bobine
+    d'allumage — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    1. Débranchez la batterie (borne négative). 2. Retirez le cache moteur et la
+    cloison d'accès pour atteindre la bobine d'allumage. 3. Débranchez le
+    connecteur électrique de la bobine (desserrez le clip de verrouillage). 4.
+    Dévissez la bobine de son logement et retirez-la. 5. Vérifiez l'état de la
+    bougie d'allumage en dessous (remplacer si usée). 6. Installez la bobine
+    neuve en vérifiant qu'elle est bien centrée au-dessus de la bougie. 7.
+    Appuyez fermement pour assurer l'étanchéité, rebranchez le connecteur
+    électrique.
+  S4_REPOSE: >-
+    - Vérifier que la bobine d'allumage neuveest identique à celle démonté. -
+    Remplacez les bougies d'allumage. - Contrôlez le faisceau d'allumage et
+    leremplacé si nécessaire. - Reposez la bobine d'allumage. - Serrez les vis
+    de fixation de la bobined'allumage. - Rebrancher le connecteur et le
+    faisceauhaut tension de la bobine d'allumage. - Rebranchez les fils des
+    bougies d'allumage. - Remettez le boîtierfiltre à air . - Rebranchez la
+    batterie. - Contrôlez le fonctionnement du moteur. ✅ Après remontage,
+    vérifiez les spécifications dans la fiche technique Bobine d'allumage.
+  S5: >-
+    Erreurs frequentes avec la bobine d'allumage : - Ne pas remplacer les
+    bougies d'allumage en meme temps — des bougies usees sursollicitent la
+    bobine neuve et reduisent sa duree de vie- Confondre un probleme de faisceau
+    avec un defaut de bobine — tester d'abord la resistance du faisceau
+    d'allumage et l'etat des capuchons- Remplacer une seule bobine sur un moteur
+    a bobines crayon individuelles — si une bobine a lache, les autres du meme
+    age sont proches de la fin de vie- Ignorer des rates moteur intermittents
+    par temps humide — signe de micro-fissure dans l'isolant de la bobine qui
+    cree des arcs parasites- Ne pas verifier le connecteur electrique de la
+    bobine — l'oxydation ou un clip casse provoquent un faux contact
+    intermittent- Oublier d'effacer les codes defaut apres remplacement — le
+    calculateur peut maintenir le mode degrade tant que l'ancien defaut est
+    memorise
+  S6: >-
+    - Démarrer le moteur et vérifier l'absence de raté d'allumage (ralenti
+    stable) - Vérifier le voyant moteur : doit s'éteindre après quelques cycles
+    de démarrage - Effacer les codes défaut OBD (P030x) et vérifier qu'ils ne
+    reviennent pas - Contrôler l'absence d'arc électrique autour du connecteur
+    de la bobine - Faire un essai routier (accélération franche) pour confirmer
+    la disparition des à-coups
+  S7: >-
+    Quel est le prix d'un bobine d'allumage ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le bobine d'allumage
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon bobine d'allumage est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un bobine d'allumage défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- alternateur - bougie d allumage - faisceau d allumage
+  S8: >-
+    Bobine d'allumage OE ou adaptable ?Privilégiez l'OE ou OES (Bosch, Denso,
+    NGK). Les bobines bas de gamme ont une durée de vie réduite et peuvent
+    griller rapidement. Comment savoir si ma bobine d'allumage est HS ?Raté
+    moteur localisé sur un cylindre, voyant moteur + code P030x, perte de
+    puissance, test à l'ohmmètre hors tolérance. Tous les combien changer les
+    bobines d'allumage ?Pas de périodicité fixe. Durée de vie 100 000 à 200 000
+    km. À remplacer uniquement en cas de défaut avéré (test diagnostic). Peut-on
+    changer une bobine d'allumage soi-même ?Oui, opération simple sur bobines
+    crayon. Débrancher le connecteur, dévisser la vis de fixation, extraire la
+    bobine. 10 à 20 minutes. Quelle erreur éviter avec les bobines d'allumage
+    ?Ne pas changer toutes les bobines par précaution (inutile et coûteux).
+    Vérifier l'état des bougies avant de remplacer la bobine.
+  META: >-
+    Remplacer une bobine d'allumage HS sur la Twingo II 1.2 16v.
 ---
 
 # Bobine d'allumage - Guide Diagnostic Complet

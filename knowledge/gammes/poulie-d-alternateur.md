@@ -6,7 +6,8 @@ pg_id: 1108
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmet le mouvement à l'alternateur
   must_be_true:
@@ -209,6 +211,134 @@ installation:
   - cle dynamometrique
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Poulie fixe
+    description: Solidaire de l'arbre alternateur, tourne a la meme vitesse
+    era: ancien
+  - type: Poulie debrayable (OAP)
+    description: Roue libre integree — absorbe les a-coups du vilebrequin, reduit bruit et usure courroie
+    era: 2005+, standard actuel
+  technical_notes:
+    test_OAP: 'bloquer l''alternateur et tourner la poulie — doit tourner librement dans un sens et bloquer dans l''autre'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Dés la mise en marche dumoteur la courroie d'accessoires du véhicule va
+    faire tourner la poulie d'alternateur quiva-t-elle même faire fonctionner
+    l'alternateur. L'alternateur de l'automobile va fournir lecourant nécessaire
+    au réseau électrique du véhicule à travers la batterie de la voiture. Il
+    existe plusieurs types depoulie d'alternateur selon le type de la courroie
+    d'accessoires : - Poulie à profil poly-V : ce type est le plus utilisé à
+    cause de lasurface de contact importante avec la courroie et il a remplacé
+    la poulie àprofil trapézoïdale. - Poulie à profil trapézoïdale. - Poulie à
+    roue libre nommé aussi pouliedébrayable : elle lisseles à-coups de
+    transmission entre le vilebrequin et l'alternateur. En savoir plus : poulie
+    d'alternateur — définition et rôle mécanique 🚨 Bruit Poulie d'alternateur :
+    causes et diagnostic
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Sifflement aigu au demarrage a froid - Courroie d accessoire qui saute ou
+    patine - Vibrations moteur au ralenti - Bruit de roulement au niveau de l
+    alternateur - Alternateur qui charge mal par intermittence - Plus de 120 000
+    km sans remplacement
+  S3: >-
+    Pour choisir les bons poulie d alternateur pour votre véhicule : - Marque de
+    votre véhicule - Modele de votre véhicule - Annee de votre véhicule -
+    Vérifier : sifflement aigu au demarrage a froid - Vérifier : courroie d
+    accessoire qui saute ou patine - Vérifier : vibrations moteur au ralenti -
+    Vérifier : bruit de roulement au niveau de l alternateur - Vérifier :
+    alternateur qui charge mal par intermittence - Vérifier : plus de 120 000 km
+    sans remplacement
+  S4_DEPOSE: >-
+    1. Detendre la courroie d'accessoire via le galet tendeur automatique ou la
+    vis de reglage 2. Retirer la courroie d'accessoire de la poulie
+    d'alternateur 3. Bloquer l'alternateur et devisser la vis centrale de la
+    poulie (souvent pas inverse, cle de 24) 4. Extraire l'ancienne poulie (un
+    outil extracteur peut etre necessaire si poulie debrayable) 5. Monter la
+    nouvelle poulie en respectant le sens, serrer au couple (50-80 Nm) 6.
+    Remettre la courroie et verifier la tension et l'alignement
+  S4_REPOSE: >-
+    - Vérifiez que la poulie d'alternateur neuve est identique à celle démontée.
+    - Changez la courroie d'accessoires et le galet tendeur d'accessoires si
+    nécessaire. - Remontez la poulie d'alternateur. - Serrez la fixation de la
+    poulie d'alternateur. - Remontez la courroie d'accessoires. - Rebranchez la
+    batterie. - Contrôlez le bon fonctionnement de l'alternateur. ✅ Après
+    remontage, vérifiez les spécifications dans la fiche technique Poulie
+    d'alternateur.
+  S5: >-
+    - ❌ "homologué CT" - ❌ "sécurité garantie" - ❌ "zéro panne" - ❌ "garanti à
+    vie" - ❌ "meilleure charge"
+  S6: >-
+    La poulie d'alternateur (poulie à roue libre ou poulie débrayante) transmet
+    le mouvement de la courroie d'accessoire à l'alternateur tout en absorbant
+    les irrégularités de rotation du moteur. Après remplacement, les contrôles
+    portent sur le silence de fonctionnement, la tension de courroie et la
+    charge de l'alternateur. - Absence de sifflement au démarrage à froid : au
+    premier démarrage, écouter spécifiquement la zone courroie d'accessoire
+    pendant les 2 à 3 premières minutes. Un sifflement aigu qui disparaît avec
+    la chauffe peut indiquer une courroie ancienne et détendue — la remplacer si
+    elle a plus de 60 000 km. Un sifflement permanent signale une tension de
+    courroie incorrecte ou un mauvais montage de la poulie. - Sens de rotation
+    du mécanisme libre vérifié : avant remontage de la courroie, faire tourner
+    la poulie à la main dans le sens de rotation du moteur — elle doit tourner
+    librement. Dans le sens inverse, elle doit se bloquer (comportement de la
+    roue libre). Si la poulie tourne librement dans les deux sens ou ne tourne
+    pas du tout, la pièce est défectueuse ou mal montée. - Couple de serrage de
+    l'écrou central respecté : la poulie d'alternateur s'assemble avec un outil
+    spécial (douille à ergots) et un contre-appui. Le couple de serrage est
+    généralement compris entre 50 et 80 N·m selon le modèle d'alternateur. Un
+    serrage insuffisant provoque un desserrage en usage et une destruction
+    rapide de l'alternateur. - Tension de la courroie d'accessoire après pose :
+    si la courroie a été déposée lors de l'intervention, contrôler sa tension à
+    l'aide d'un tensiomètre vibratoire (fréquence cible : 100 à 150 Hz selon
+    véhicule) ou par la méthode de la déflexion au doigt (5 à 8 mm de jeu au
+    milieu du brin libre). Une courroie trop tendue détruit le roulement de
+    l'alternateur. - Charge de l'alternateur vérifiée au multimètre : avec le
+    moteur en marche à 2 000 tr/min et les consommateurs allumés (feux,
+    chauffage, lunette thermique), mesurer la tension aux bornes de la batterie.
+    Une valeur entre 13,8 V et 14,4 V confirme que l'alternateur charge
+    correctement via la nouvelle poulie. En dessous de 13,5 V, la poulie ne
+    transmet pas correctement le couple. - Absence de vibrations au ralenti : au
+    ralenti stable (750 à 850 tr/min selon moteur), ne pas percevoir de
+    vibration anormale du moteur liée à un déséquilibre de la poulie. Des
+    vibrations rythmiques au ralenti qui disparaissent à 1 500 tr/min signalent
+    un déséquilibre de la poulie neuve ou un montage légèrement excentré.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (3 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    - alternateur - courroie d accessoire - galet enrouleur de courroie d
+    accessoire - galet tendeur de courroie d accessoire - poulie vilebrequin
+  S8: >-
+    Poulie d'alternateur OE ou adaptable ?Les poulies OES (INA, SKF, Gates) sont
+    fiables. Vérifiez le type : fixe, débrayable ou roue libre selon votre
+    véhicule. Comment savoir si ma poulie d'alternateur est HS ?Sifflement aigu
+    au démarrage, courroie qui saute, vibrations moteur au ralenti, bruit de
+    roulement usé. Tous les combien changer la poulie d'alternateur ?Entre 100
+    000 et 150 000 km. Les poulies débrayables s'usent plus vite. À vérifier à
+    chaque changement de courroie. Peut-on changer la poulie d'alternateur soi-
+    même ?Oui mais nécessite souvent un outil spécial pour bloquer la poulie.
+    Attention au sens de vissage (parfois inversé). Quelle erreur éviter avec la
+    poulie d'alternateur ?Ne pas serrer au couple. Vérifier le type exact (fixe
+    vs débrayable). Remplacer la courroie en même temps si usée.
+  META: >-
+    {"meta_title":"Poulie d'alternateur : sifflement, usure et remplacement |
+    AutoMecanik","meta_description":"Sifflement aigu au démarrage à froid ou
+    courroie qui patine ? La poulie d'alternateur est peut-être usée. Guide pour
+    identifier le bon type (fixe ou débrayable) et le
+    remplacer.","og_title":"Poulie d'alternateur : guide diagnostic et
+    choix","og_description":"Sifflement aigu au démarrage à froid ou courroie
+    qui patine ? La poulie d'alternateur est peut-être usée. Guide pour
+    identifier le bon type (fixe ou débrayable) et le remplacer.","schema_type":
+    "Article","primary_intent":"diagnostic","gate_report":"PASS","char_count_tit
+    le":56,"char_count_desc":196}
 ---
 
 # Poulie d'alternateur - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 1182
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Limiter la course de l'amortisseur en fin de detente
   must_be_true:
@@ -212,6 +214,257 @@ installation:
   - cle dynamometrique
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    remplacement: 'systematique avec l''amortisseur — la butee absorbe les fin de course'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La butée élastique d'amortisseur est un tampon en caoutchouc cellulaire
+    dense, monté sur la tige de piston à l'intérieur du soufflet de protection
+    de l'amortisseur. Sa fonction est de limiter la course maximale de
+    l'amortisseur en extension (détente) et d'absorber les chocs mécaniques en
+    fin de course lorsque la suspension travaille sur des défauts de chaussée
+    importants.Lors d'un passage sur un gros dos-d'âne, une ornière profonde ou
+    un nid-de-poule, la roue descend brutalement et l'amortisseur s'allonge au
+    maximum de sa course. Sans la butée élastique, la tige de piston viendrait
+    heurter mécaniquement le corps de l'amortisseur, transmettant un choc
+    violent dans la caisse du véhicule et endommageant l'amortisseur lui-même.
+    La butée élastique comprime progressivement pour amortir ce pic de charge,
+    protégeant l'amortisseur, les silentblocs de train et la
+    carrosserie.Fabriquée en mousse de polyuréthane ou en caoutchouc
+    microcellulaire, la butée présente une courbe de raideur progressive : elle
+    est souple au début de la compression et devient très rigide en fin de
+    course. Sa géométrie (diamètre, longueur, profil à dents ou cylindrique) est
+    calculée précisément par le constructeur pour chaque véhicule. Elle est
+    glissée librement sur la tige de piston et doit coulisser sans
+    frottement.Les pièces associées à contrôler ou à remplacer simultanément
+    sont l'amortisseur lui-même, le kit de butée de suspension (comprenant
+    souvent la coupelle supérieure) et le ressort de suspension.
+  S2: >-
+    La butée élastique d'amortisseur se dégrade progressivement sous l'effet des
+    cycles de compression, des variations thermiques et du vieillissement du
+    caoutchouc. Les signes d'usure sont sonores, sensoriels et parfois visuels.
+    La pièce est à surveiller dès 80 000 km, systématiquement au remplacement
+    des amortisseurs.- Bruit sourd de talonnement sur gros nids-de-poule : le
+    choc sourd ressenti dans le châssis et la caisse lors d'un franchissement
+    rapide d'un dos-d'âne ou d'un nid-de-poule profond signale que la butée
+    écrasée ou absente ne remplit plus son rôle d'amortissement de fin de
+    course.- Amortisseur qui tape en fin de course : claquement métallique sec
+    en roulage sur mauvaise chaussée. La tige de piston bute directement sur le
+    corps de l'amortisseur faute de tampon fonctionnel. Endommage l'amortisseur
+    à moyen terme.- Butée visible fissurée ou écrasée : lors d'une inspection
+    visuelle à travers la roue ou après dépose du soufflet, la butée présente
+    des fissures longitudinales, un aplatissement permanent ou une déformation
+    irréversible. Elle doit être remplacée même si les symptômes sonores sont
+    encore absents.- Sensation de rebonds mal amortis sur grosses bosses : le
+    véhicule rebondit de manière excessive sur une série de ralentisseurs ou de
+    bosses — signe que la gestion de fin de course de l'amortisseur est
+    défaillante.- Odeur de caoutchouc chaud : si la butée dégradée frotte sur la
+    tige ou le corps de l'amortisseur à chaque cycle, elle peut chauffer et
+    dégager une légère odeur de caoutchouc brûlé détectable en ouvrant le capot
+    après roulage.- Kilométrage supérieur à 80 000 km avec changement
+    d'amortisseurs planifié : remplacement préventif systématique recommandé. La
+    butée élastique ne se réutilise jamais sur un amortisseur neuf.
+  S3: >-
+    La butée élastique est une pièce dont les dimensions et la raideur sont
+    calculées précisément pour chaque véhicule. Un mauvais choix se traduit par
+    un comportement routier dégradé ou des bruits persistants après
+    remplacement.- Renseigner marque, modèle, année et motorisation : même sur
+    un même modèle de véhicule, la suspension avant et arrière peuvent avoir des
+    butées de diamètres et longueurs différents. La motorisation (diesel plus
+    lourd que l'essence) peut également influencer la cote de butée.- Identifier
+    le côté et la position (avant / arrière) : les butées d'amortisseur avant et
+    arrière sont rarement interchangeables. Toujours préciser l'essieu
+    concerné.- Vérifier la longueur et le diamètre intérieur : la butée doit
+    coulisser librement sur la tige de piston sans jeu excessif. Un diamètre
+    intérieur trop petit crée des frottements, trop grand laisse la butée migrer
+    et ne remplit plus sa fonction en bout de course.- Choisir la même dureté
+    que l'origine : les fabricants spécialisés (Lemförder, SKF, Febi Bilstein,
+    Monroe) proposent des butées aux spécifications identiques à l'OEM. Éviter
+    les butées non référencées dont la dureté est inconnue.- Commander la butée
+    avec le soufflet de protection si ce dernier est endommagé : soufflet et
+    butée sont souvent vendus en kit et fonctionnent ensemble. Un soufflet
+    déchiré expose la tige de piston à la boue et à la corrosion.- Ne jamais
+    réutiliser une ancienne butée : une butée retirée ne retrouve jamais ses
+    dimensions d'origine après déformation plastique. Systématiquement la
+    remplacer avec l'amortisseur.Pour aller plus loin : consultez notre guide
+    d'achat butée élastique d'amortisseur — comparatif marques, critères de
+    choix et prix.
+  S4_DEPOSE: >-
+    Le remplacement de la butée élastique nécessite la dépose de l'amortisseur,
+    ce qui implique d'utiliser un compresseur de ressort de suspension pour les
+    trains MacPherson. Cette intervention requiert l'outillage adapté et des
+    précautions de sécurité strictes.- Lever et sécuriser le véhicule : placer
+    le véhicule sur chandelles aux points de levage carrosserie. Ne jamais
+    travailler uniquement sur un cric rouleur. Déposer la roue du côté à
+    traiter.- Déposer l'amortisseur : déconnecter la fixation inférieure de
+    l'amortisseur sur le triangle ou le moyeu (selon le type de suspension),
+    puis desserrer les vis ou l'écrou supérieur dans le bac de roue. Sortir
+    l'ensemble amortisseur-ressort.- Comprimer le ressort avec un compresseur
+    homologué : monter les crochets du compresseur de ressort sur des spires
+    opposées (au moins 3 spires de prise de chaque côté). Comprimer
+    progressivement jusqu'à ce que le ressort soit libéré de la coupelle
+    supérieure. Attention : un ressort de suspension stocke une énergie
+    mécanique considérable — ne jamais comprimer avec des outils non
+    homologués.- Déposer l'écrou de tige de piston : maintenir la tige en
+    rotation (outil spécifique ou pince plate sur le méplat de tige) et dévisser
+    l'écrou central. Récupérer les pièces dans l'ordre : écrou, rondelle,
+    coupelle de ressort supérieure, palier de direction (si présent), ressort
+    comprimé, et enfin soufflet et butée élastique.- Remplacer la butée et le
+    soufflet : glisser la nouvelle butée sur la tige de piston, puis le nouveau
+    soufflet. Vérifier que la butée coulisse librement sans frottement.-
+    Remonter en ordre inverse : positionner le ressort comprimé, replacer la
+    coupelle supérieure en respectant l'orientation (repère ou détrompeur).
+    Serrer l'écrou de tige au couple constructeur (généralement 50 à 80 Nm).
+    Décomprimer le ressort progressivement en contrôlant l'alignement.- Reposer
+    l'amortisseur et la roue : serrer les fixations au couple. Reposer la roue,
+    descendre le véhicule et serrer les roues au couple (généralement 110 Nm).-
+    Faire un contrôle géométrique : toute intervention sur les trains de
+    suspension peut modifier le carrossage et la pincement. Un réglage
+    géométrique (parallélisme) est recommandé.
+  S4_REPOSE: >-
+    La repose de la butée élastique est l'étape la plus délicate de
+    l'intervention : la décompression incorrecte du ressort est source
+    d'accidents graves. Le respect de l'ordre d'assemblage et du couple de
+    serrage de l'écrou de tige est impératif.- Vérifier l'ordre d'empilement
+    avant de remonter : en partant de la tige de piston vers le haut — soufflet
+    de protection, butée élastique neuve, coupelle de ressort supérieure,
+    éventuellement le palier de direction (roulement de coupelle), puis l'écrou
+    de tige. Consulter les photos prises lors de la dépose pour confirmer
+    l'ordre exact sur votre modèle.- Glisser la nouvelle butée sur la tige de
+    piston : la butée doit coulisser librement sans effort. Si elle résiste,
+    vérifier qu'elle est dans le bon sens (elle est généralement asymétrique —
+    un côté plus large que l'autre). Ne jamais forcer ou marteler.- Mettre en
+    place le soufflet de protection : engager le soufflet sur la tige et
+    l'enrouler proprement autour du corps d'amortisseur. Un soufflet mal
+    positionné se pince entre la butée et l'amortisseur et se dégrade en
+    quelques semaines.- Repositionner le ressort comprimé sur la coupelle
+    inférieure : vérifier que l'extrémité du ressort est bien calée dans le
+    logement de la coupelle (parfois une encoche ou un repère). Un ressort mal
+    positionné peut échapper lors de la décompression.- Remonter la coupelle
+    supérieure en respectant l'orientation : beaucoup de coupelles sont
+    détrompées (encoche, méplat ou flèche indiquant la direction avant du
+    véhicule). Mal orientée, la coupelle compromet le comportement en virage
+    (tête d'amortisseur qui tord la tige sous sollicitation).- Serrer l'écrou de
+    tige au couple constructeur : maintenir la tige de piston immobile avec
+    l'outil prévu (prise hexagonale ou Torx en tête de tige). Serrer l'écrou au
+    couple prescrit (généralement 50 à 80 Nm). Un écrou insuffisamment serré
+    provoque des bruits de craquement en conduite et peut entraîner la perte de
+    la coupelle supérieure.- Décomprimer le ressort progressivement et en
+    contrôlant l'alignement : relâcher le compresseur de ressort très lentement,
+    en alternant les deux côtés. Surveiller que le ressort s'enroule
+    correctement entre les coupelles et que la coupelle supérieure ne tourne pas
+    pendant la détente. Si un mouvement anormal est détecté, re-comprimer et
+    vérifier le positionnement.- Reposer l'amortisseur dans son berceau et
+    serrer les fixations : remettre en place les vis et écrous de fixation
+    supérieure et inférieure au couple constructeur. Reposer la roue et
+    descendre le véhicule.- Faire réaliser un contrôle géométrique : toute
+    intervention sur la suspension avant, même limitée au remplacement de la
+    butée, peut modifier légèrement le carrossage. Un contrôle et réglage
+    géométrique (parallélisme et carrossage) est recommandé avant tout trajet
+    autoroutier.
+  S5: >-
+    Les erreurs suivantes sont fréquemment commises lors de ce type
+    d'intervention et peuvent compromettre la sécurité ou la durabilité de la
+    réparation.- Comprimer le ressort avec des outils non homologués : utiliser
+    des compresseurs de ressort de qualité douteuse ou non adaptés au diamètre
+    du ressort est extrêmement dangereux. Un ressort qui échappe lors de la
+    compression peut causer des blessures graves ou mortelles. Conséquence :
+    risque d'accident corporel grave.- Réutiliser l'ancienne butée avec un
+    amortisseur neuf : une butée compressée et vieillie ne retrouve pas ses
+    caractéristiques mécaniques. Elle se dégrade beaucoup plus rapidement sur un
+    amortisseur neuf, générant des bruits à court terme. Conséquence : retour en
+    atelier prématuré.- Confondre la butée élastique avec le soufflet de
+    protection : le soufflet est l'enveloppe extérieure accordéon qui protège la
+    tige. La butée est le tampon intérieur. Les deux peuvent être usés
+    simultanément mais ont des rôles différents. Conséquence : mauvais
+    diagnostic, mauvaise pièce commandée.- Monter la butée à l'envers ou dans le
+    mauvais sens : certaines butées ont un profil à gradient de dureté
+    directionnel. Les inverser annule leur effet progressif. Toujours contrôler
+    le sens de montage dans la documentation technique. Conséquence : butée
+    inefficace, bruit persistant.- Omettre le contrôle géométrique après
+    l'intervention : toute dépose d'élément de suspension modifie
+    potentiellement la géométrie du train. Rouler sans vérification du
+    parallélisme usure les pneumatiques de façon irrégulière et dégrade la tenue
+    de route. Conséquence : usure prématurée des pneus, tenue de route dégradée.
+  S6: >-
+    Une fois l'amortisseur remonté avec sa nouvelle butée élastique, effectuer
+    ces contrôles pour valider la qualité de l'intervention et la sécurité du
+    train de suspension.- Vérification visuelle des fixations : inspecter le
+    couple de serrage de l'écrou de tige de piston, des fixations supérieure et
+    inférieure de l'amortisseur, et des boulons de roue. Un couple insuffisant
+    peut entraîner une désolidarisation en roulage.- Test de la suspension à
+    l'arrêt : appuyer fortement sur l'aile du véhicule côté traité et relâcher
+    brusquement. La suspension doit revenir à sa position en 1 à 1,5 oscillation
+    maximum sans bruit. Un claquement ou un grattement indique un problème de
+    montage.- Test sur revêtement dégradé : rouler sur des pavés ou un chemin
+    défoncé à faible vitesse (20-30 km/h) et écouter attentivement. Aucun choc
+    métallique ni claquement ne doit se faire entendre. En cas de bruit, stopper
+    et vérifier les fixations.- Contrôle géométrique (parallélisme) : faire
+    vérifier le parallélisme en atelier spécialisé après toute intervention sur
+    un train de suspension. Un désaxage de quelques dixièmes de degrés suffit à
+    causer une usure irrégulière des pneus et une dérive du véhicule.-
+    Inspection après 500 km : vérifier à nouveau les couples de serrage des
+    fixations, notamment l'écrou de tige de piston qui peut se détasser
+    légèrement lors des premiers cycles de compression.
+  S7: >-
+    La butée élastique est systématiquement remplacée lors du changement
+    d'amortisseur. Profitez du démontage du train de suspension pour contrôler
+    ces pièces voisines qui partagent les mêmes accès :- Amortisseur — si la
+    butée est fissurée ou écrasée après moins de 80 000 km, l'amortisseur sous-
+    jacent est probablement en fin de vie ; remplacer les deux simultanément
+    pour éviter une seconde intervention immédiate- Ressort de suspension —
+    inspecter le ressort pendant qu'il est déposé : corrosion, fissure, pli
+    anormal ou hauteur insuffisante ; un ressort affaissé compromet la tenue de
+    route même avec des amortisseurs neufs- Coupelle supérieure d'amortisseur —
+    vérifier le roulement de coupelle (palier de direction) : grattement ou jeu
+    dans le roulement signalent une pièce à remplacer ; une coupelle dégradée
+    provoque des bruits de craquement en braquage- Soufflet de protection
+    d'amortisseur — remplacer le soufflet systématiquement avec la butée ; un
+    soufflet fissuré laisse entrer l'eau et les particules sur la tige de
+    piston, accélérant l'usure de l'amortisseur
+  S8: >-
+    Comment savoir si ma butée élastique d'amortisseur est hors service ?Les
+    signes caractéristiques sont : un bruit sourd de talonnement sur les gros
+    chocs (nids-de-poule, dos-d'âne rapides), un claquement métallique sec en
+    fin de course d'amortisseur, et une butée visible fissurée ou écrasée lors
+    d'une inspection derrière la roue. Sur les train MacPherson, déposer le
+    cache plastique du bac de roue suffit souvent à voir l'état du soufflet et,
+    partiellement, de la butée.Faut-il changer la butée élastique à chaque
+    remplacement d'amortisseur ?Oui, systématiquement. C'est une règle absolue
+    dans les ateliers professionnels. La butée est compressée et déformée de
+    façon permanente après des milliers de cycles. Elle ne retrouve pas ses
+    cotes d'origine après démontage. Monter une vieille butée sur un amortisseur
+    neuf provoque des bruits à très court terme et une usure prématurée de la
+    butée. Le coût d'une butée neuve est négligeable par rapport au temps de
+    dépose de l'amortisseur.Peut-on changer la butée élastique seule, sans
+    toucher à l'amortisseur ?Sur un train MacPherson, non — il faut déposer
+    l'amortisseur et comprimer le ressort pour accéder à la butée. Sur certains
+    trains à double triangles où l'amortisseur est séparé du ressort, il peut
+    être possible d'accéder à la butée en déposant uniquement le soufflet, mais
+    c'est rare. Dans la pratique, l'intervention est systématiquement réalisée
+    amortisseur sorti du véhicule.Quelle est la différence entre la butée
+    élastique et le soufflet de protection ?Le soufflet est l'enveloppe
+    accordéon extérieure qui protège la tige de piston de la boue, du sel et des
+    projections. La butée élastique est le tampon intérieur en mousse dense
+    glissé sur la tige de piston, qui amortit les fins de course d'extension.
+    Les deux sont souvent vendus en kit et se remplacent simultanément, mais ont
+    des fonctions distinctes.Les butées adaptables sont-elles fiables ?Les
+    butées des équipementiers de rang 1 (Lemförder, SKF, Febi Bilstein, Monroe,
+    KYB) sont fiables et souvent identiques à l'OEM. Vérifier que la référence
+    correspond exactement au véhicule et que les dimensions (longueur, diamètre
+    intérieur et extérieur) sont conformes à la pièce d'origine. Éviter les
+    références sans équipementier identifié.
+  META: >-
+    {"meta_title":"Butée élastique amortisseur : quand changer ? |
+    AutoMecanik","meta_description":"Bruit sourd sur nids-de-poule, amortisseur
+    qui tape ou butée fissurée ? À remplacer à chaque changement d'amortisseur.
+    Guide et compatibilité véhicule."}
 ---
 
 # Butée élastique d'amortisseur - Guide Diagnostic Complet

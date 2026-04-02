@@ -6,7 +6,8 @@ pg_id: 2408
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Detendre le fluide frigorigene avant l'evaporateur
   must_be_true:
@@ -214,6 +216,63 @@ installation:
   - detecteur de fuites
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Orifice fixe (orifice tube)
+    description: Tube calibre + filtre integre, simple, vehicules US/asiatiques
+    era: standard US
+  - type: Detendeur thermostatique
+    description: Valve mecanique ajuste le debit selon le besoin de refroidissement
+    era: standard europeen
+  technical_notes:
+    role: 'detend le refrigerant haute pression en basse pression avant l'evaporateur — c'est le changement d'etat qui produit le froid'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Detendre le fluide frigorigene avant l'evaporateur. Pièces liées : vérifier
+    les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Clim qui
+    refroidit mal- Givre visible sur les conduites- Clim qui fonctionne par
+    a-coups- Compresseur qui s emballe- Bruits de glouglou dans le circuit- Clim
+    qui marche puis s arrete
+  S3: >-
+    Pour choisir le bon gicleur détendeur pour votre véhicule : - Renseignez
+    marque, modele, type puis comparez references et dimensions. Validez ensuite
+    les contraintes de climatisation pour confirmer Gicleur détendeur.- Verifier
+    la reference OE ou equivalence constructeur pour le vehicule exact-
+    Respecter le type de gaz refrigerant (R134a, R1234yf) pour la compatibilite-
+    Choisir un equipementier reconnu (Denso, Valeo, Delphi, NRF)- Marques :
+    Denso, Valeo (premium), NRF, Delphi, Hella (standard), Ridex (budget)-
+    Budget : 10 à 40 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le gicleur détendeur : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Confondre gicleur et détendeur (incompatibles). Ne
+    pas changer l'accumulateur avec le gicleur. Oublier le tirage au vide.- Ne
+    pas respecter le couple de serrage constructeur au remontage- Ignorer les
+    symptômes d'usure en espérant que ça passe — une défaillance progressive
+    s'aggrave toujours- Ne pas effacer les codes défaut après remplacement — le
+    calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du gicleur détendeur : - Faire tourner la
+    climatisation 10 min par semaine meme en hiver- Remplacement du filtre d
+    habitacle chaque annee- Recharge de gaz par un professionnel equipe (circuit
+    sous pression)- Controle d etancheite si baisse de performance- Effacer les
+    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes
 ---
 
 # Gicleur détendeur - Guide Diagnostic Complet

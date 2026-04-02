@@ -6,7 +6,8 @@ pg_id: 686
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Produire l'etincelle qui enflamme le melange air-essence - Fonctionne en continu moteur tournant
   must_be_true:
@@ -213,6 +215,188 @@ installation:
   - multimetre
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
+phase5_enrichment:
+  _source: delphiautoparts.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_000_v: '000 v'
+    val_100_a: '100 a'
+    val_7_a: '7 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La bougie d'allumage estimplantée au cœur de chaque cylindre et délivre
+    l'étincelle qui déclenche la combustion du mélange air/essence.Dans les
+    moteurs essence,l'air et le carburant sont aspirés dans le cylindre à
+    travers l'injecteur ou lecarburateur. Le mélange forme un combustible qui va
+    s'enflammer grâce àl'étincelle crée par la bougie d'allumage. La bougie
+    d'allumage comprend deux parties : - La partie supérieure est connectée par
+    un faisceau d'allumage haute-tensionà la bobine d'allumage. - La partie
+    inférieure est vissée dans la culasse, elle comporte l'électrode quiva
+    générer l'étincelle. La qualité de l'étincelle fournie par la bougie
+    d'allumage détermine laforce de la combustion et donc la puissance et la
+    souplesse de votre moteur. Généralement, il y a unebougie d'allumage par
+    cylindre mais afin d'optimiser la combustion, certainsmoteurs sont pourvus
+    de deux bougies par cylindre En savoir plus : bougie d'allumage — définition
+    et rôle mécanique 🚨 Bruit Bougie d'allumage : causes et diagnostic
+  S2: >-
+    Une bougie d'allumage défectueuse présente plusieurs symptômes : - Manque de
+    puissance du moteur. - Surconsommation de carburant. - Moteur qui pollue,
+    dans ce cas il fautfaire attention au catalyseur. Diagnostic complet :
+    identifier une panne de bougie d'allumage
+  S3: >-
+    La bougie d'allumage déclenche l'étincelle qui enflamme le mélange air-
+    essence dans chaque cylindre, en continu et à chaque cycle moteur. La durée
+    de vie et la fréquence de remplacement varient du simple au quadruple selon
+    le type de bougie : 40 000 km pour une bougie standard nickel, jusqu'à 160
+    000 km pour une bougie iridium. Un mauvais choix de résistance thermique ou
+    de diamètre crée des ratés immédiats ou un pré-allumage qui détruit les
+    pistons. - Indice thermique (chaleur) — critique pour éviter le pré-allumage
+    — L'indice thermique (noté de 2 à 12 selon les fabricants : NGK, Bosch,
+    Denso) définit la capacité de la bougie à évacuer la chaleur vers la
+    culasse. Une bougie trop froide s'encrasse ; une bougie trop chaude provoque
+    un pré-allumage (combustion avant l'étincelle) qui percute les pistons.
+    Utiliser strictement l'indice prescrit par le constructeur. - Diamètre et
+    pas de filetage : M10, M12 ou M14 x 1,25 — Le filetage doit correspondre au
+    logement dans la culasse. Un mauvais diamètre abîme le filetage de culasse
+    lors du montage. Les moteurs modernes 4 soupapes utilisent majoritairement
+    du M12x1,25 ; les anciens moteurs 2 soupapes du M14x1,25. - Longueur de
+    filetage (reach) : courte (12 mm), longue (19 mm) ou extra-longue (26,5 mm)
+    — Une bougie trop longue pénètre dans la chambre de combustion et risque de
+    heurter les soupapes ou le piston. Une bougie trop courte crée une zone
+    morte non allumée qui génère des ratés et des dépôts de calamine sur les
+    électrodes. - Matériau de l'électrode centrale : nickel, platine ou iridium
+    — Nickel : durée de vie 30 000 à 40 000 km, économique, convient aux
+    véhicules anciens ou à forte consommation d'huile. Platine : 60 000 à 80 000
+    km, bonne tenue en température. Iridium : 100 000 à 160 000 km, électrode
+    ultra-fine (0,4 mm) qui réduit la tension d'amorçage et améliore la
+    régularité de la combustion. - Écartement inter-électrodes (gap) : mesure
+    obligatoire avant montage — Le gap (espacement entre électrode centrale et
+    masse) est généralement entre 0,7 et 1,3 mm selon le moteur. Les bougies
+    iridium et platine ne se règlent pas (électrode fragile). Les bougies nickel
+    doivent être vérifiées avec un calibre et ajustées si nécessaire au gap
+    constructeur. - Résistance intégrée (R) : obligatoire sur les véhicules
+    modernes — Les bougies avec résistance intégrée (suffixe R chez NGK, ex :
+    BKR6E au lieu de BK6E) limitent les interférences électromagnétiques avec
+    les calculateurs. Sur les véhicules post-2000, utiliser uniquement des
+    bougies avec résistance. - Intervalle de remplacement préventif : respecter
+    le carnet d'entretien — Au-delà de 40 000 km sans remplacement sur bougie
+    standard, l'électrode s'érode, le gap augmente, et la tension nécessaire à
+    l'étincelle dépasse la capacité de la bobine, ce qui la fatigue
+    prématurément. Remplacer toutes les bougies simultanément pour maintenir une
+    combustion équilibrée entre cylindres. Pour aller plus loin : consultez
+    notre guide d'achat bougie d'allumage — comparatif marques, critères de
+    choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Bougie d'allumage pour
+    connaître les spécifications. - Arrêtez le moteur et le laissez refroidir. -
+    Débranchez la batterie. - Localisez l'emplacement des bougiesd'allumage. -
+    Libérez l'accès aux bougies d'allumage suivant l'équipement devotre véhicule
+    : cache moteur, collecteur d'admission, boîtier de filtre àair... - Si vos
+    bougies d'allumage sont avecfaisceau d'allumage dans ce cas débranchez les
+    faisceaux des bougies d'allumage, il ne faut surtout pas tirer sur les
+    faisceaux. Marquezles faisceaux des bougies d'allumage avant de les
+    débranchés pour savoir surquel cylindre il était branché. - Si vos bougies
+    d'allumage sont avecrampe dans ce cas débrancher le connecteur de la rampe,
+    desserrez lesfixations de la rampe et retirez la rampe. - Si vos bougies
+    d'allumage sont avec bobinepar bougie dans ce cas débranchez les connecteurs
+    des bobines d'allumage etretirer les bobines d'allumage une par une. - Après
+    avoir libérer l'accès aux bougiesd'allumage utilisez une clé à bougie et une
+    rallonge pour les retirer. - Desserrez les bougies d'allumage une parune
+  S4_REPOSE: >-
+    Le remontage des bougies d'allumage est une opération délicate car le
+    filetage dans la culasse est fragile. Un serrage trop fort casse la
+    porcelaine ou écrase le filetage ; un serrage trop faible provoque des
+    fuites de compression. Vérifiez systématiquement l'écartement de l'électrode
+    avant montage — un écartement hors tolérance génère des ratés d'allumage
+    même sur une bougie neuve. - Vérifiez que les bougies d'allumage neuves sont
+    identiques à celles déposées (référence, type d'électrode standard, iridium
+    ou platine, longueur du filetage). Contrôlez l'écartement de l'électrode au
+    calibre à lame — valeur typique entre 0,7 et 1,1 mm selon constructeur. -
+    Contrôlez l'état des bobines d'allumage ou des faisceaux d'allumage :
+    craquelures, humidité, connecteur oxydé. Remplacez tout élément douteux
+    avant de remonter les bougies. - Nettoyez le puits de bougie avec un chiffon
+    propre pour éliminer toute trace de crasse ou d'huile pouvant tomber dans la
+    chambre de combustion. - Vissez chaque bougie d'allumage à la main jusqu'à
+    la butée du joint conique ou plat. Ne jamais forcer avec une clé dès le
+    début — le risque de foirer le filetage est maximal à cette étape. - Serrez
+    au couple prescrit à l'aide de la clé à bougie et d'un compte-tours : pour
+    les bougies avec joint plat, serrez d'un quart de tour (90°) après contact ;
+    pour les bougies avec joint conique, serrez de 1/16 de tour (environ 15 à 20
+    Nm). Consultez la valeur exacte dans la fiche technique de votre moteur. -
+    Reconnectez les faisceaux d'allumage ou les bobines d'allumage sur chaque
+    bougie dans l'ordre des cylindres (respectez les repères effectués au
+    démontage). Vérifiez le clic de verrouillage de chaque connecteur. -
+    Remontez les éléments déposés pour l'accès (rampe de bobines, cache moteur,
+    boîtier de filtre à air) dans l'ordre inverse du démontage. - Rebranchez la
+    batterie. - Démarrez le moteur à froid et maintenez le ralenti 2 minutes.
+    Vérifiez l'absence de raté d'allumage et de voyant moteur allumé. - Effacez
+    les codes défaut OBD éventuellement mémorisés (notamment les codes de raté
+    d'allumage P030x) si le voyant était allumé avant l'intervention.
+  S5: >-
+    Erreurs frequentes avec les bougies d'allumage : - Ne pas respecter
+    l'ecartement des electrodes (0,7 a 1,1 mm selon constructeur) — un
+    ecartement incorrect provoque des rates ou une surconsommation- Trop serrer
+    la bougie au montage — la culasse en aluminium se deforme et le filetage
+    s'arrache. Respecter le couple constructeur (20-30 Nm selon reference)-
+    Confondre bougies standard et bougies iridium/platine — les bougies longue
+    duree ont une periodicite differente, ne pas les remplacer trop tot ni trop
+    tard- Ne pas remplacer les bougies par jeu complet — des bougies d'age
+    different provoquent un fonctionnement irregulier du moteur- Visser la
+    bougie de travers dans le puits — le filetage en aluminium de la culasse se
+    detruit et la reparation est couteuse (insert helicoil)- Ne pas anti-
+    graisser le filetage (si preconise) — la bougie grippe dans la culasse et
+    casse au demontage suivant
+  S6: >-
+    Après le remplacement de vos bougies d'allumage, effectuez ces vérifications
+    dans l'ordre. - Vérifier le couple de serrage de chaque bougie selon les
+    préconisations constructeur (généralement 20 à 30 N·m) pour éviter fuite de
+    compression ou casse au filetage - Effacer tout code de raté d'allumage
+    stocké (type P0301 à P0308) et réaliser un essai de 15 km incluant des
+    accélérations franches - Contrôler le démarrage à froid : le moteur doit
+    démarrer en moins de 2 secondes sans rates les premières secondes - Vérifier
+    l'absence d'odeur d'essence non brûlée à l'échappement moteur chaud -
+    Surveiller la consommation sur les 500 premiers km : une normalisation vers
+    la consommation constructeur est attendue après remplacement des bougies
+    usées (seuil 40 000 km) - Contrôler simultanément les bobines d'allumage et
+    le faisceau haute tension si le remplacement est effectué à plus de 60 000
+    km Retrouvez les spécifications techniques sur la fiche référence bougie
+    d'allumage.
+  S7: >-
+    Quel est le prix d'un bougie d'allumage ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le bougie d'allumage
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon bougie d'allumage est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un bougie d'allumage défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- Faisceau d'allumage. - Bobine d'allumage. 📖 Fiche
+    technique Bougie d'allumage — intervalles et spécifications d’entretien.
+  S8: >-
+    Comment choisir Bougie d'allumage compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Bougie d'allumage ?En cas de demarrage difficile ou laborieux ou
+    de degradation mesurable, Puis-je monter Bougie d'allumage sans verification
+    atelier ?Le montage peut exiger controles de couple, alignement et
+    references.
+  META: >-
+    {"meta_title":"Bougie d'allumage : quand changer ? |
+    AutoMecanik","meta_description":"Démarrage difficile, ratés moteur,
+    surconsommation : reconnaître des bougies d'allumage usées et savoir à quel
+    kilométrage les remplacer sur moteur essence.","og_title":"Bougies
+    d'allumage usées : ratés moteur et surconsommation","og_description":"Ratés
+    au démarrage, voyant moteur allumé ou surconsommation ? Des bougies usées en
+    sont la cause. Standard : 30-45 000 km. Iridium/Platine : 60-100 000
+    km.","sources":[{"type":"rag","ref":"gammes/bougie-d-
+    allumage.md","field":"diagnostic.symptoms,domain.role,rendering.faq"}]}
 ---
 
 # Bougie d'allumage - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 3320
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-01'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transmettre le mouvement de l'arbre a cames aux soupapes
   must_be_true:
@@ -180,6 +182,48 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    remplacement: 'si claquement persistant au ralenti malgre huile correcte = poussoirs hydrauliques uses'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Transmettre le mouvement de l'arbre a cames aux soupapes. Pièces liées :
+    vérifier les composants adjacents lors du remplacement.
+  S2: >-
+    Intervalle : selon constructeur. Symptômes de défaillance : - Claquement
+    moteur au demarrage- Bruit qui persiste a chaud- Perte de puissance legere
+  S3: >-
+    Pour choisir le bon kit de poussoir culbuteur pour votre véhicule : - Marque
+    de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
+    Marques : Elring, Victor Reinz (premium), Febi, Ajusa (standard), Ridex
+    (budget)- Budget : 1000 à 5000 EUR
+  S4_DEPOSE: >-
+    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
+    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
+    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
+    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
+    l'état des pièces adjacentes.
+  S5: >-
+    Erreurs fréquentes avec le kit de poussoir culbuteur : - Ne pas vérifier la
+    référence exacte avant commande — une pièce de mauvaise référence ne
+    fonctionne pas correctement même si elle se monte physiquement- Oublier de
+    débrancher la batterie avant intervention — risque de court-circuit sur les
+    composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
+    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
+    après remplacement — le calculateur peut rester en mode dégradé
+  S6: >-
+    Après le remplacement du kit de poussoir culbuteur : - Controle visuel a
+    chaque revision ou entretien periodique- Remplacement preventif si signes d
+    usure detectes- Utiliser des pieces de qualite equivalente a l origine-
+    Respecter les preconisations constructeur pour les intervalles- Effacer les
+    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes
 ---
 
 # Kit de poussoir culbuteur - Guide Diagnostic Complet

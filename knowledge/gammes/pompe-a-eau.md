@@ -6,7 +6,8 @@ pg_id: 1260
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Faire circuler le liquide de refroidissement dans le circuit moteur
   must_be_true:
@@ -200,6 +202,197 @@ installation:
   - cle dynamometrique
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
+phase5_enrichment:
+  _source: automotive.hutchinson.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  technical_notes:
+    norme_iso_9981: 'ISO 9981'
+    val_000_km: '000 km'
+    val_135__c: '135 °C'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La pompe à eau fait circulerle liquide derefroidissement au sein dumoteur
+    par la rotation de sa poulie si elle est entraînée par lacourroie
+    d'accessoires. Et si la pompe à eau à une roue dentée, elles sera entraînée
+    par la courroie de distribution . La combustion du moteur produit de très
+    fortes chaleurs quifait augmenter la température des pièces mécanique,
+    qu'ils seront refroidis grâceau circuit de refroidissement moteur. Le
+    circuit de refroidissement est composé d'un radiateurde refroidissement,
+    d'une pompe à eau, d'un thermostat etd'un ventilateur de refroidissement à
+    travers lesquels circule le liquide de refroidissement.La pompe à eau fait
+    circuler le liquide de refroidissement dans cesystème. En savoir plus :
+    pompe à eau — définition et rôle mécanique 🚨 Voyant pompe à eau allum
+  S2: >-
+    La pompe à eau n'a pas de période de remplacement, mais elledoit être
+    remplacée dès que vous constatez les symptômes suivants : - Fuites de
+    liquide derefroidissement au niveau de la pompe à eau. - Bruits au niveau de
+    la pompeà eau. - Poulie grippé, remplacementuniquement de la poulie si il
+    n'y a pas de fuite de la pompe à eau. Si la pompe à eau défaillante n'est
+    pas remplacée, lerefroidissement du moteur ne sera plus assurée ce qui va
+    produire unesurchauffe du moteur (joint de culasse à long terme casse
+    moteur). Lorsque lapompe à eau est entraînée par la courroie de distribution
+    , la casse de la pompeà eau peut entraîner la rupture de la courroie de
+    distribution ce qui vaprovoquer une casse moteur c'est pour cela qu'il faut
+    toujours remplacerla pompe à eau avec le kit de distribution et vis versa.
+    Diagnostic complet : identifier une panne de pompe à eau
+  S2_DIAG: >-
+    SymptômeCause probableActionUn bruit anormal au niveau du pompe à eau peut
+    se manifester lors de la phase "acceleration"Pour identifier ce probleme de
+    bruit du pompe à eau:Verification visuelle du pompe à eauDes vibrations
+    provenant du pompe à eau sont souvent perceptibles a haute vitessePour
+    identifier ce probleme de vibration du pompe à eau:Verification visuelle du
+    pompe à eau
+  S3: >-
+    La pompe à eau entraîne la circulation du liquide de refroidissement dans le
+    circuit moteur, maintenant la température dans la plage de fonctionnement
+    normale (85 à 95 °C). Sur la majorité des véhicules modernes, la pompe à eau
+    est entraînée par la courroie de distribution et doit être remplacée
+    systématiquement lors de chaque révision de la distribution, tous les 120
+    000 à 200 000 km selon le constructeur. Choisir une pompe dimensionnellement
+    et hydrauliquement correcte est indispensable pour éviter une surchauffe
+    entraînant la déformation de la culasse. - Entraînement : courroie de
+    distribution, courroie accessoire ou chaîne — La pompe à eau peut être
+    entraînée par la courroie de distribution (remplacement simultané
+    obligatoire), par la courroie d'accessoires (remplacement indépendant
+    possible) ou par la chaîne de distribution (durée de vie moteur,
+    remplacement rare). Identifier le type d'entraînement avant de commander. -
+    Matériau de la turbine : métal ou plastique — Les pompes récentes utilisent
+    des turbines en plastique renforcé pour réduire le poids et le bruit. Si la
+    turbine d'origine est en métal, ne pas la remplacer par une pompe à turbine
+    plastique générique : le plastique peut se désolidariser de l'axe à haute
+    température, stoppant net la circulation sans bruit d'alerte. - Débit
+    hydraulique et dimension de la turbine — Le débit de la pompe (en L/min)
+    doit correspondre au circuit du constructeur. Une pompe sous-débitante ne
+    compense pas la chaleur à régime élevé ou avec la climatisation en
+    fonctionnement. Vérifier que le diamètre de la turbine et le nombre
+    d'ailettes correspondent à la référence d'origine. - Joint d'étanchéité
+    inclus — La pompe à eau est livrée avec ou sans joint de carter. Vérifier si
+    le joint de logement de la pompe est inclus dans la livraison. Monter une
+    pompe neuve sans remplacer le joint de carter est une source de fuite dès la
+    mise en service. - Kit complet distribution + pompe — Les fabricants (SKF,
+    INA, Dayco, Continental, Gates) proposent des kits intégrant courroie de
+    distribution, galets tendeurs et pompe à eau. Opter pour un kit d'un seul
+    fournisseur garantit la cohérence des cotes et un seul interlocuteur en cas
+    de réclamation. - Pièces liées à contrôler — Lors du remplacement, inspecter
+    systématiquement les durites de refroidissement (durcissement, fissures), le
+    thermostat (jeu de l'obturateur) et le bouchon du vase d'expansion (pression
+    de tarage entre 1,0 et 1,4 bar). Ces pièces sont accessibles lors du
+    démontage de la distribution. - Marque, modèle, année et code moteur —
+    Indispensable : le code moteur détermine la référence exacte de la pompe, sa
+    bride de fixation et le type d'entraînement. Un même modèle de voiture peut
+    avoir reçu plusieurs motorisations avec des pompes totalement différentes
+    selon la cylindrée ou la puissance.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Pompe à eau pour connaître
+    les spécifications. - Débranchez la batterie. - Levez et calez le véhicule.
+    - Démontez la roue avant droite. - Démontez le pare-boue avant droit. -
+    Vidangez le circuit derefroidissement à travers la ou les vis de vidange du
+    moteur. Note : une vis de vidange du liquide derefroidissement se trouve sur
+    le côté du bloc moteur et/ou en bas du radiateur.S'il n'y a pas de vis de
+    vidange sur votre moteur démontez la durite inférieuredu radiateur de
+    refroidissement en positionnant le bac à vidange en dessous pour récupérer
+    leliquide de refroidissement. - Repérez le cheminement de la courroie
+    d'accessoires. - Démontez la courroie d'accessoires. - Démontez la courroie
+    de distribution (si entraînée par ladistribution). - Démontez les durites de
+    liquide de refroidissement de la pompe à eau. - Desserrez les fixations de
+    la pompe à eau. - Démontez la pompe à eau.
+  S4_REPOSE: >-
+    - Vérifier que la pompe à eau neuve estidentique à celle démontée. -
+    Contrôler l'état de la courroied'accessoires, remplacée si nécessaire. -
+    Remplacez obligatoirement lekit de distribution si la courroie de
+    distribution entraîne la pompe à eau. - Remplacez les joints d'étanchéité de
+    la pompe à eau. - Graissez la nouvelle pompe à eau. - Remontez la pompe à
+    eau. - Serrez les fixations de la pompe à eau. - Remontez les canalisations
+    sur la pompe à eau. - Remontez la courroie de distribution (si entraînée par
+    ladistribution). - Remontez la courroie d'accessoires. - Remontez l'écran
+    pare-boue et la roue. - Remplissez et purgez le liquide de refroidissement.
+    - Desserrez la vis de purge du circuit de refroidissementpour chasser l'air
+    du circuit. - Refermez la vis de purge. - Démarrez le moteur. - Laissez
+    tourner le moteur au ralenti. - Contrôlez la température sur le tableau de
+    bord. - Arrêtez le moteur. - Laissez refroidir le moteur. - Contrôlez le
+    niveau du liquide de refroidissement. - Complétez le niveau du liquide de
+    refroidissement sinécessaire. ✅ Après remontage, vérifiez les spécifications
+    dans la fiche technique Pompe à eau.
+  S5: >-
+    Erreurs frequentes avec la pompe a eau : - Ignorer une fuite de liquide de
+    refroidissement au niveau de la pompe — meme legere, elle s'aggrave et
+    provoque une surchauffe moteur- Ne pas remplacer la pompe a eau lors du
+    changement du kit de distribution — si la pompe est entrainee par la
+    courroie de distribution, elle sera inaccessible jusqu'au prochain
+    remplacement (60 000 a 120 000 km)- Negliger un bruit de roulement cote
+    pompe a eau — signe que le roulement interne est use, la rupture est
+    imminente- Reutiliser l'ancien joint de pompe — le joint d'etancheite doit
+    etre neuf a chaque remplacement pour eviter les fuites- Ne pas purger
+    correctement le circuit de refroidissement apres remplacement — une bulle
+    d'air provoque des points chauds et un chauffage habitacle defaillant-
+    Oublier de verifier l'etat de la courroie et des galets lors du remplacement
+    de la pompe — une courroie usee endommage la pompe neuve
+  S6: >-
+    La pompe à eau assure la circulation du liquide de refroidissement dans
+    l'ensemble du circuit moteur. Après son remplacement — souvent effectué
+    conjointement avec la courroie ou la chaîne de distribution — des contrôles
+    d'étanchéité et de température sont indispensables avant de valider
+    l'intervention. - Purge complète du circuit de refroidissement : après
+    remplissage du vase d'expansion, démarrer le moteur avec le bouchon de purge
+    ouvert (si présent) ou le couvercle du vase légèrement desserré. Laisser le
+    moteur tourner jusqu'à ouverture du thermostat (70 à 85 °C selon véhicule)
+    et compléter le niveau en éliminant toutes les poches d'air. Un circuit mal
+    purgé provoque une surchauffe localisée malgré un niveau correct. - Absence
+    de fuite au joint de bride de pompe : à température de fonctionnement
+    stabilisée, inspecter la bride de la pompe sous tous les angles avec une
+    lampe. Toute suintement de liquide rose, bleu ou vert au niveau des vis de
+    fixation ou du joint d'étanchéité indique un serrage insuffisant (couple
+    standard : 8 à 12 N·m sur la plupart des moteurs) ou un joint mal
+    positionné. - Température moteur stable entre 88 et 95 °C : surveiller le
+    témoin de température ou le capteur sur outil de diagnostic pendant les 10
+    premières minutes de chauffe. Une montée au-delà de 100 °C alors que le
+    niveau est correct pointe vers une pompe dont les ailettes tournent dans le
+    mauvais sens (erreur d'installation sur pompe à entraînement électrique) ou
+    un air résiduel dans le circuit. - Absence de jeu axial ou radial dans la
+    poulie de pompe : moteur éteint et refroidi, saisir la poulie et tenter un
+    mouvement latéral puis axial. Le jeu tolérable est nul — tout jeu
+    perceptible indique un roulement de pompe mal serré ou un défaut de
+    fabrication de la pièce neuve. - Absence de bruit de roulement côté
+    distribution : au démarrage à froid, écouter la zone pompe à eau pendant 60
+    secondes. Un bruit de grincement ou de roulement bruité qui disparaît avec
+    la chauffe pointe vers un roulement de qualité insuffisante ou un alignement
+    incorrect de la poulie. - Niveau du liquide de refroidissement stable après
+    48 h : contrôler le niveau dans le vase d'expansion après refroidissement
+    complet du moteur (lendemain de l'intervention). Une baisse significative
+    trahit une micro-fuite non détectée à chaud ou une fuite interne vers le
+    circuit d'huile (joint de culasse à vérifier).
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    Quel est le prix d'un pompe à eau ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver le pompe à eau compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon pompe à eau est à changer ?Les signes d'usure les plus
+    courants sont détaillés dans la section diagnostic ci-dessus. En cas de
+    doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un
+    pompe à eau défaillant ?Cela dépend de la gravité du dysfonctionnement et du
+    rôle de la pièce dans la sécurité du véhicule. Consultez la section
+    symptômes pour évaluer l'urgence du remplacement.- faire circuler - pomper -
+    alimenter
+  S8: >-
+    Comment choisir Pompe à eau compatible avec mon vehicule ?Renseignez marque,
+    modele, type moteur et annee, puis verifiez la reference Quand remplacer
+    Pompe à eau ?En cas de fuite de liquide au niveau de la pompe ou de
+    degradation mesurable, Puis-je monter Pompe à eau sans verification atelier
+    ?Le montage peut exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Pompe à eau : Conseils Remplacement et Guide |
+    AutoMecanik","meta_description":"Surchauffe, fuite de liquide de
+    refroidissement : découvrez quand changer la pompe à eau, comment la
+    remplacer avec la courroie de distribution et éviter la casse moteur.
+    AutoMecanik."}
 ---
 
 # Pompe à eau - Guide Diagnostic Complet

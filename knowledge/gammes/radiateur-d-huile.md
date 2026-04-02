@@ -6,7 +6,8 @@ pg_id: 469
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-21'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Refroidir l'huile moteur via un echangeur thermique huile-eau ou huile-air pour maintenir la viscosite optimale et
     proteger le moteur
@@ -256,6 +258,153 @@ installation:
   tools:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    role: 'refroidit l''huile moteur ou BVA — souvent integre au bloc ou sur le circuit de refroidissement'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Danscertains véhicules, le radiateur de refroidissement est accompagné d'un
+    radiateurd'huile pour refroidir l'huile moteur. Dans certaine motorisation,
+    l'huilemoteur est soumise à des contraintes thermiques très élevées dés la
+    mise enmarche du moteur dans ce que cas elle doit être refroidit pour que
+    lesdifférentes pièces moteur soient bien lubrifier parce que l'huile joue le
+    rôlede protection entre les pièces mobile interne du moteur. La température
+    dumoteur peut atteindre les 100°C (voire 120°C) à cause des frictions entre
+    lespièces du moteur ce qui provoque un échauffement des métaux et par
+    conséquentl'huile maintien la température des pièces dans ce cas ildoit être
+    refroidit pour lubrification optimale. Le radiateur d'huile se situe à
+    l'avant du véhicule soit sous le pare-chocs,soit il est recouvert d'une
+    grille. Il refroidit l'huile moteur grâce au fluxd'air qui le traverse. Pour
+    bien contrôler latempérature vous pouvez installer un manomètre de
+    température d'huile. En savoir plus : radiateur d'huile — définition et rôle
+    mécanique 🚨 Bruit Radiateur d'huile : causes et diagnostic
+  S2: >-
+    Un radiateur d'huile défectueux présente plusieurs symptômes : - Fuite au
+    niveau duradiateur d'huile. - Déformation du radiateurd'huile à cause d'un
+    choc frontal. Un radiateur d'huileHS et qu'il n'est pas remplacé à temps
+    peut amener à la casse dumoteur à cause du manque d'huile moteur et du
+    surchauffe de ce dernier. Diagnostic complet : identifier une panne de
+    radiateur d'huile
+  S3: >-
+    Le radiateur d'huile maintient la température de l'huile moteur dans la
+    plage de viscosité optimale, typiquement entre 80 °C et 120 °C selon le
+    constructeur. Un radiateur de capacité inadaptée — trop petit pour une
+    utilisation intensive ou trop grand pour un moteur atmosphérique — perturbe
+    la thermique moteur et accélère le vieillissement de l'huile. La sélection
+    par référence véhicule est impérative. - Type de raccordement : eau-huile ou
+    air-huile — Les radiateurs d'huile eau-huile sont intégrés au circuit de
+    refroidissement moteur (thermosiphon) et logés dans le filtre à huile ou sur
+    le carter. Les radiateurs air-huile, généralement additionnels, sont
+    positionnés devant le radiateur principal. Ces deux technologies ont des
+    configurations de raccordement radicalement différentes. - Filetage des
+    raccords d'huile — Les filetages courants sur les radiateurs d'huile vissés
+    sont M20x1,5, M22x1,5 ou M26x1,5. Un adaptateur mal choisi provoque une
+    fuite d'huile sous pression. Mesurer le pas et le diamètre de l'embase sur
+    le bloc moteur avant toute commande. - Nombre de rangées et capacité
+    d'échange thermique — La capacité d'échange est proportionnelle au nombre de
+    rangées (de 2 à 8 rangées sur les modèles standards). Sur les moteurs diesel
+    à forte charge (traction ou utilitaire), ne pas descendre en dessous de la
+    capacité d'origine, au risque d'une surchauffe d'huile en côte prolongée. -
+    Présence d'un bypass thermostatique — Certains radiateurs d'huile intègrent
+    une vanne thermostatique qui court-circuite le radiateur quand l'huile est
+    froide (typiquement sous 60 °C). Cette fonction protège les coussinets au
+    démarrage hivernal. Vérifier si l'original en était équipé avant de
+    commander un modèle nu. - Matériau : aluminium ou acier — Les radiateurs
+    aluminium sont plus légers et offrent un meilleur échange thermique, mais
+    sont sensibles aux chocs mécaniques et à la corrosion galvanique si le
+    liquide de refroidissement est mal entretenu. L'acier est plus robuste mais
+    plus lourd. - Position et orientation des entrées/sorties — La position des
+    raccords (haut/bas, latéral/frontal) doit correspondre exactement au schéma
+    de tuyauterie du véhicule. Un radiateur d'aspect identique mais avec
+    raccords inversés impose une modification des durites non prévue. - Contrôle
+    simultané des joints et durites — Remplacer systématiquement les joints
+    toriques ou les colliers de serrage des durites d'huile lors du remplacement
+    du radiateur. Ces joints sont souvent détériorés lors du démontage et leur
+    réutilisation provoque des fuites. Pour aller plus loin : consultez notre
+    guide d'achat radiateur d'huile — comparatif marques, critères de choix et
+    prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Radiateur d'huile pour
+    connaître les spécifications. - Débranchez la batterie. - Levez et calez le
+    véhicule. - Vidanger l'huile moteur. - Localisez l'emplacement du
+    radiateurd'huile. - Démontez le pare-choc avant. - Démontez les fixations du
+    radiateurd'huile. - Désaccouplez les canalisations d'entrée etde sortie du
+    radiateur d'huile. - Démontez le radiateur d'huile.
+  S4_REPOSE: >-
+    - Vérifiez que le radiateurd'huile neuf est identique à celui démonté. -
+    Contrôlez l'état de fonctionnement duradiateur de refroidissement et le
+    remplacé si nécessaire. - Remontez le radiateur d'huile. - Accouplez les
+    canalisationsd'entrée et de sortie du radiateur d'huile. - Serrez les
+    fixations duradiateur d'huile. - Remontez lepare-choc avant. - Redescendre
+    le véhicule. - Rebranchez labatterie. - Remplissez l'huile moteur. -
+    Remontez un filtre à huileneuf. - Contrôler le bonfonctionnement du circuit
+    de lubrification. ✅ Après remontage, vérifiez les spécifications dans la
+    fiche technique Radiateur d'huile.
+  S5: >-
+    - ❌ "homologué CT - ❌ "sécurité garantie - ❌ "zéro panne - ❌ "garanti à vie
+    - ❌ "repare le moteur
+  S6: >-
+    Le radiateur d'huile est en interface directe entre le circuit huile moteur
+    et le circuit eau de refroidissement (ou l'air extérieur sur les modèles à
+    refroidissement par air). Son remplacement impose un protocole de
+    vérification rigoureux centré sur l'étanchéité des deux circuits et
+    l'absence de contamination croisée huile-eau. - Purge complète du circuit de
+    refroidissement : si le radiateur d'huile est du type eau-huile (le plus
+    courant), purger intégralement le circuit de refroidissement après remontage
+    pour éliminer toute bulle d'air. Remplir avec un mélange eau déminéralisée /
+    antigel à 50 % jusqu'au repère MAX du vase d'expansion. Une bulle d'air
+    persistante génère des points chauds locaux. - Contrôle d'absence de mélange
+    eau-huile : après le premier démarrage, observer la couleur de l'huile sur
+    la jauge : une couleur chocolat au lait ou des petites bulles blanches sur
+    le bouchon de vidange signalent une contamination eau-huile — signe d'un
+    joint interne défaillant ou d'un raccordement incorrect. Couper le moteur
+    immédiatement. - Vérification de la température d'huile : après 15 minutes
+    de chauffe en cycle mixte, la température d'huile doit se stabiliser entre
+    90 et 110 °C (lisible sur un outil de diagnostic OBD si le véhicule dispose
+    d'un capteur de température d'huile). Une température d'huile supérieure à
+    130 °C indique que l'échangeur ne fonctionne pas correctement. - Inspection
+    des raccords et colliers : contrôler visuellement les durites de connexion
+    au radiateur d'huile et les colliers de serrage. Aucun suintement d'huile ni
+    de liquide de refroidissement ne doit apparaître après montée en
+    température. Resserrer les colliers à la main après refroidissement si
+    nécessaire. - Contrôle du niveau d'huile moteur : le remplacement du
+    radiateur d'huile entraîne une perte d'huile. Vérifier le niveau sur jauge
+    froide avant le premier démarrage et après le premier cycle thermique.
+    Compléter jusqu'au repère MAX avec l'huile conforme aux préconisations
+    constructeur (viscosité 5W30, 5W40 ou autre selon moteur). - Absence de
+    fuites externes après 48h : inspecter le dessous du véhicule après une ou
+    deux journées de fonctionnement normal. Aucune trace d'huile ni de liquide
+    coloré ne doit apparaître sous le carter moteur à la verticale du radiateur
+    d'huile.
+  S7: >-
+    Quel est le prix d'un radiateur d'huile ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le radiateur d'huile
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon radiateur d'huile est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un radiateur d'huile défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- filtre a huile - pompe a huile
+  S8: >-
+    Comment choisir Radiateur d'huile compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Radiateur d'huile ?En cas de huile surchauffee ou de degradation
+    mesurable, il faut controler Puis-je monter Radiateur d'huile sans
+    verification atelier ?Le montage peut exiger controles de couple, alignement
+    et references.
+  META: >-
+    {"meta_title":"Radiateur d'huile : fuites et surchauffe moteur |
+    AutoMecanik","meta_description":"Huile surchauffée, mélange eau-huile, fuite
+    au niveau du radiateur ? Identifiez les causes d'un radiateur d'huile
+    défaillant et choisissez la bonne pièce pour votre
+    moteur.","source":"rag://gammes/radiateur-d-huile.md"}
 ---
 
 # Radiateur d'huile - Guide Diagnostic et Achat

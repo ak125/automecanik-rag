@@ -6,7 +6,8 @@ pg_id: 259
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Éclaire la route devant le véhicule
   must_be_true:
@@ -214,6 +216,228 @@ installation:
   - tournevis
   - gants (ne pas toucher ampoule halogene)
   prerequisite: Moteur eteint, acces par compartiment moteur ou coffre
+phase5_enrichment:
+  _source: HELLA TechWorld
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Projecteur parabolique
+    description: Reflecteur parabolique classique, ~27% lumiere utile
+    era: avant 2000
+  - type: Projecteur FF (Free-Form)
+    description: Reflecteur segmente optimise par ordinateur, ~45% lumiere utile
+    era: 2000-2015
+  - type: Projecteur lenticulaire (Super DE)
+    description: Optique a lentille, ~52% lumiere utile, faisceau concentre
+    era: 2005+
+  - type: Projecteur LED
+    description: Diodes electroluminescentes, duree de vie >10000h, faible consommation
+    era: 2015+
+  - type: Projecteur Xenon
+    description: Decharge gazeuse, ballast 30kV amorcage, 35W, 300Hz AC
+    era: 2000-2020
+  technical_notes:
+    ampoules_standard: 'H1, H4, H7, H11, HB3, HB4'
+    intensite_max_route: '300 000 cd combine'
+    hauteur_montage_croisement: '500-1200 mm'
+    tension_amorcage_xenon: 'jusqu'a 30 kV'
+    puissance_xenon: '35W regule a 300 Hz AC'
+    tension_min_ballast: '9V DC'
+  materials:
+  - composant: reflecteur
+    materiau: thermoplastique ou aluminium/magnesium metallise
+  - composant: glace
+    materiau: polycarbonate (resistant impacts)
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Les feux avant sontdes projecteurs de lumière leurs rôle est éclairé la
+    route empruntée par unvéhicule la nuit. Ils sont aussi des constituants
+    principaux de l'éclairage standard d'une automobile. Les phares avant
+    servent à rendre la voiture plusvisible par les autres (par exemple
+    lorsqu'il ya du brouillard ou de la pluie).Sur les modèles de voiture les
+    plus récent il existe des feux de jour pouraccroître la visibilité diurne.
+    Ils assurent les fonctions feu de route, feu de croisement et feu de
+    position . Un véhicule compte un nombre impressionnantde dispositifs
+    d'éclairage et de signalisation,qui sont placés à l'avant du véhicule, ils
+    changent d'un automobile à un autreselon l'équipement de votre voiture : -
+    Les feux de route : ils permettent au conducteurde voir loin lors de la
+    conduite dans une route sans éclairage pendant la nuit.Ils peuvent être
+    complétés par les feux de brouillard si la chaussée est vraiment sinueuse.
+    Ce typed'éclairage est représenté sur le tableau de bord par une image d'un
+    phare bleuémettant une onde lumineuse qu'est orientée perpendiculairement au
+    phare. Lesfeux de routes ont une portée de 100 mètres minimum, et on les
+    utilise sur desroutes sans aucun éclairage et si le véhicule est seul sur la
+    chaussée. - Les feux de croisement : ils sont nommés aussipar feu de codes,
+    ils sont représentés par l'image d'un phare vert émettantdes rayons lumineux
+    en diagonale, vers le bas à gauche. La portée des feux decroisement est de
+    30 mètres minimum, ils vont permettre aux usagers de laroute de voir le
+    véhicule pendant la nuit si le véhicule roule sur une route bienéclairée ou
+    sur une route non éclairée mais comprenant d'autre véhicule. Attention :
+    lors de l'utilisation des feux de route etsi vous croisez un autre véhicule,
+    le conducteur doit absolument passer en feux de croisement, pour ne pas
+    gênerl'autre voiture. - Les feux de position : ce type d'éclairage
+    estutilisé dans des situations de faible visibilité, ils servent pour être
+    vu parles usagers de la route, mais ils ne produisent pas un éclairage
+    suffisant pourconduire de nuit ou en cas de mauvaise visibilité. Ils sont
+    représentés sur letableau de bord par un symbole d'ampoule vert et ils ont
+    une couleur blanche àl'avant. En savoir plus : feu avant — définition et
+    rôle mécanique 🚨 Bruit Feu avant : causes et diagnostic
+  S2: >-
+    Un feu avantdéfectueux présente plusieurs symptômes : - Manque d'éclairage
+    lors de l'utilisation des feux avant. - Lors d'un contrôle visuel vous
+    remarquez que le feu avant est fissuré. - Lors d'un contrôle visuel vous
+    remarquez que le feu avant est sale à l'intérieur. Un feu avant HS etqu'il
+    n'est pas remplacé à temps peut causer des risques d'accidents lors
+    del'utilisation de la route et le refus de votre véhicule lors du
+    contrôletechnique. Diagnostic complet : identifier une panne de feu avant
+  S3: >-
+    Sélectionner un feu avant (phare) demande une rigueur particulière : ces
+    blocs optiques sont homologués par type de véhicule et intègrent des
+    fonctions multiples (code, route, antibrouillard, DRL) qui varient d'une
+    version à l'autre. Un phare mal choisi peut altérer la portée du faisceau,
+    éblouir les autres usagers ou déclencher un refus au contrôle technique.
+    Voici les paramètres techniques à contrôler avant commande. - Position
+    gauche ou droit et référence OEM — Un phare avant gauche et un phare avant
+    droit ont des géométries de lentilles inversées pour répartir le faisceau
+    correctement selon le côté de conduite. La référence OEM (Origin Equipment
+    Manufacturer) gravée sur le boîtier d'origine ou renseignée dans la
+    documentation constructeur est le seul identifiant fiable. - Marque, modèle,
+    millésime et phase de restylage — Un modèle vendu sur 10 ans peut avoir subi
+    2 à 3 facelifts qui modifient profondément la forme du phare. Renseignez le
+    millésime exact (ex. : 09/2018) et non uniquement l'année civile, car la
+    coupure constructeur peut intervenir en milieu d'année. - Technologie de
+    source lumineuse — Halogen (H7, H4, H1), Xénon/HID (D1S, D2S, D3S, D4S) ou
+    Full LED sont des technologies incompatibles entre elles sans modification
+    électronique lourde. Un phare xénon nécessite un ballast et des correcteurs
+    d'assiette spécifiques ; un phare LED intègre son propre driver et ne peut
+    pas recevoir d'ampoule aftermarket. - Présence de réglage électrique et
+    correcteur de portée — De nombreux véhicules modernes utilisent un
+    correcteur de portée motorisé piloté par la CAN-bus. Vérifiez que le phare
+    de remplacement intègre le même motoréducteur et dispose du même connecteur
+    de pilotage, sous peine de code défaut permanent et de faisceau fixe non
+    réglable. - Fonctions intégrées : DRL, clignotant, antibrouillard — Selon la
+    version d'équipement du véhicule (entrée de gamme vs version haute), les DRL
+    (feux diurnes) et le clignotant peuvent être intégrés dans le bloc principal
+    ou non. Comparez la liste des fonctions du phare d'origine avec celle du
+    phare de remplacement avant de valider la commande. - Indice d'étanchéité et
+    qualité du joint périmétrique — La condensation à l'intérieur du bloc
+    optique (buée visible) résulte d'un joint d'étanchéité défaillant. Lors du
+    remplacement, vérifiez que la pièce inclut le joint de pourtour en état et
+    un indice IP67 minimum. Un phare humide dégrade la portée lumineuse de 30 à
+    50 % en quelques mois. - Certification E-Mark et conformité aux normes ECE —
+    Seules les pièces portant le marquage E (cercle + numéro de pays
+    homologateur) sont légalement conformes pour circulation sur voie publique
+    en Europe. Évitez toute offre présentant des termes comme "universel",
+    "compatible tous modèles" ou "adaptable" : ces qualificatifs signalent une
+    pièce hors référence constructeur. Pour aller plus loin : consultez notre
+    guide d'achat feu avant — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Feu avant pour connaître
+    les spécifications. - Débranchez la batterie. - Démontez les caches de
+    protection situés dans le feu avant. - Débranchez les connecteurs du feu
+    avant. - Desserrez les fixations du pare-choc avant. - Démontez le pare-choc
+    avant. - Localisez les différentes fixations du feu avant. - Desserrez les
+    fixations du feu avant. - Démontez le feu avant.
+  S4_REPOSE: >-
+    Une fois le feu avant neuf en main, le remontage suit un ordre strict pour
+    garantir l'étanchéité du bloc optique, le bon positionnement du faisceau
+    lumineux et l'absence de faux contact. Vérifiez la conformité de la
+    référence avant d'engager la première fixation. - Contrôlez que le feu avant
+    neuf porte la même référence et le même type de source lumineuse (halogène,
+    xénon ou LED) que le bloc déposé. Un phare xénon ne s'adapte jamais à un
+    circuit halogène sans kit de conversion. - Inspectez les ampoules de feu
+    avant : si elles présentent un noircissement ou un filament cassé,
+    remplacez-les avant la repose pour éviter un second démontage immédiat. -
+    Vérifiez l'état du joint périphérique du bloc optique. S'il est écrasé ou
+    fissuré, enduisez la gorge d'un léger cordon de mastic silicone transparent
+    pour prévenir toute infiltration d'humidité. - Positionnez le feu avant dans
+    son logement en engageant d'abord les plots de centrage puis les pattes de
+    fixation. Ne forcez pas : toute résistance indique un mauvais alignement. -
+    Serrez les vis ou écrous de fixation du feu avant en croix, progressivement,
+    au couple préconisé par la revue technique (généralement entre 5 et 10 N·m
+    selon le modèle). - Rebranchez les connecteurs électriques jusqu'au clic de
+    verrouillage. Sur les véhicules équipés de correction électronique
+    d'assiette, rebranchez aussi le capteur de niveau. - Remontez le pare-chocs
+    avant ou les caches de protection, en commençant par clipser les agrafes
+    latérales avant de revisser les points de fixation inférieurs. - Rebranchez
+    la batterie en connectant d'abord la borne positive (+), puis la borne
+    négative (-). - Allumez les feux et vérifiez le fonctionnement de chaque
+    fonction : feux de croisement, feux de route, feux de position et, si
+    présent, feu diurne (DRL). Effectuez également un test de la correction
+    électrique de site si le véhicule en est équipé. - Faites régler
+    l'orientation du faisceau sur banc de réglage de phares (obligatoire après
+    tout remplacement de bloc optique) pour éviter d'éblouir les conducteurs
+    venant en sens inverse. ✅ Après remontage, vérifiez les spécifications dans
+    la fiche technique Feu avant.
+  S5: >-
+    Erreurs frequentes avec les feux avant : - Ne pas verifier le cote
+    (gauche/droite) et le type (halogene, xenon, LED) avant achat — les
+    references et connectiques different completement- Toucher l'ampoule
+    halogene avec les doigts — la graisse cutanee cree un point chaud qui fait
+    eclater l'ampoule. Manipuler avec un chiffon propre- Ne pas regler les feux
+    apres remplacement du bloc optique — un feu mal regle eblouit les autres
+    conducteurs la nuit- Confondre un probleme de ballast avec un defaut
+    d'ampoule xenon — le ballast est un composant separe qui alimente l'ampoule,
+    tester les deux- Ignorer un feu avant opaque ou jauni — la polycarbonate se
+    degrade aux UV, reduit l'eclairage de 40% et c'est un motif de contre-
+    visite- Oublier de verifier l'etancheite du joint apres montage — la buee
+    dans le phare corrode le reflecteur et reduit l'eclairage
+  S6: >-
+    Le remplacement d'un feu avant (bloc optique ou projecteur) impose des
+    vérifications fonctionnelles et un réglage de faisceau avant toute conduite
+    nocturne. Un phare mal réglé éblouit les autres conducteurs et peut
+    entraîner un refus au contrôle technique.- Fonctionnement des deux faisceaux
+    — code et route — Testez le feu de croisement (feu de code) et le feu de
+    route indépendamment. Chaque faisceau doit s'allumer sans scintillement. Sur
+    les projecteurs bi-xénon ou full LED, attendez 10 secondes pour vérifier la
+    stabilité de l'arc.- Réglage de la hauteur de faisceau — Placez le véhicule
+    à charge normale devant un mur blanc à 10 mètres. Le bord supérieur du
+    faisceau code doit se trouver entre 0,9 et 1,1 % de déflexion par rapport à
+    la hauteur du centre du phare (soit environ 10 cm en dessous de la hauteur
+    d'axe à 10 m). Ajustez via la vis de réglage vertical.- Absence de
+    condensation intérieure — Après 15 minutes de fonctionnement avec les feux
+    allumés, vérifiez l'absence de buée à l'intérieur du bloc. Une condensation
+    persistante indique que le cache arrière ou l'évent de décompression n'a pas
+    été correctement reposé.- Symétrie des faisceaux gauche/droit — Observez les
+    deux phares depuis l'avant du véhicule : la forme et la hauteur de la
+    coupure de faisceau doivent être identiques des deux côtés. Une asymétrie
+    révèle un problème de position du réflecteur ou de la douille d'ampoule.-
+    Correcteur de hauteur automatique fonctionnel — Sur les véhicules avec
+    correcteur électrique, changez la charge (passagers à l'arrière ou
+    chargement) et vérifiez que le faisceau s'ajuste automatiquement en quelques
+    secondes. Un faisceau fixe malgré la charge signale un capteur de hauteur ou
+    un moteur de correcteur défaillant.- Absence d'odeur de plastique brûlé —
+    Après 30 minutes de fonctionnement en feux de croisement, aucune odeur ne
+    doit être perceptible au niveau du phare. Une odeur indique une ampoule
+    incompatible (puissance trop élevée) ou un mauvais positionnement dans le
+    réflecteur.- Connexion électrique sécurisée — Vérifiez que le connecteur
+    principal du phare est verrouillé et que le cache arrière du phare est
+    correctement fermé. Un cache mal positionné expose l'ampoule à l'humidité et
+    provoque une dégradation prématurée du réflecteur.
+  S7: >-
+    Quel est le prix d'un feu avant ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver le feu avant compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon feu avant est à changer ?Les signes d'usure les plus courants
+    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
+    contrôler la pièce par un professionnel.Peut-on rouler avec un feu avant
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- ampoule feu avant - commande d eclairage
+    - feu arriere - feu clignotant
+  S8: >-
+    Comment choisir Feu avant compatible avec mon vehicule ?Renseignez marque,
+    modele, type moteur et annee, puis verifiez la reference Quand remplacer Feu
+    avant ?En cas de eclairage insuffisant nuit malgre ampoules ou de
+    degradation Puis-je monter Feu avant sans verification atelier ?Le montage
+    peut exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Feu avant : Guide Remplacement Phare |
+    AutoMecanik","meta_description":"Phare jauni, condensation, éclairage
+    insuffisant : identifiez quand changer votre feu avant, comment choisir le
+    bon bloc optique et le remplacer vous-même. Guide AutoMecanik."}
 ---
 
 # Feu avant - Guide Diagnostic Complet

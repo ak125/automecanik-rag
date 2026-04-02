@@ -6,7 +6,8 @@ pg_id: 158
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Doser la quantite d'air admise dans le moteur en fonction de la position de l'accelerateur
   must_be_true:
@@ -203,6 +205,225 @@ installation:
   - cle dynamometrique
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  glossary:
+  - terme: TPS
+    definition: Throttle Position Sensor — capteur de position du papillon integre au boitier
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le corps papillon estinstallé entre le filtre à air et le collecteur
+    d'admission du moteur, sonobjectif est de réguler le flux d'air qui va
+    rentrer dans le moteur à traversun clapet d'air mobile pour obtenir un
+    rapport air-carburant optimal pour lacombustion du carburant. Le principe de
+    fonctionnement est celui d'un voletpivotant qui s'ouvre (plus ou moins) pour
+    laisser passer l'air.Selon l'équipement du moteur un corps papillon peut
+    être reliémécaniquement à la pédale d'accélérateur via un simple câble ou
+    piloté par un mécanismeélectrique qu'est contrôlé par le calculateur
+    d'injection, il utilise des capteurs de position de la pédale d'accélérateur
+    pour faire fonctionnerle boîtier papillon. En savoir plus : boîtier papillon
+    — définition et rôle mécanique 🚨 Bruit Boîtier papillon : causes et
+    diagnostic
+  S2: >-
+    Un corps papillon défectueux présenteplusieurs symptômes : - Surconsommation
+    ducarburant. - Allumage du témoin degestion moteur sur le tableau de bord. -
+    Des secousses ressentieslors de l'accélération. - Perte de puissance lors
+    del'accélération. - Calage du moteur. Un corps papillon HS et qu'il n'est
+    pas changé à temps peutendommager plusieurs autres pièces : - Usure des
+    injecteurs. - Usure de la vanne EGR . - Usure du FAP. - Usure du catalyseur.
+    Diagnostic complet : identifier une panne de boîtier papillon Symptômes
+    détaillés et vérifications Un boîtier papillon encrassé ou défaillant
+    (parfois appelé corps papillon HS) peut se manifester de plusieurs façons.
+    Voici les signaux à surveiller, du plus discret au plus bloquant : - Ralenti
+    instable ou irrégulier : le régime moteur oscille au point mort, peut
+    indiquer un volet de dosage encrassé ou une valve de ralenti défectueuse. -
+    Accélérations saccadées : des à-coups répétés à l'accélération sont souvent
+    liés à un capteur de position papillon (TPS) hors tolérance ou à une prise
+    d'air parasite sur le conduit d'admission. - Calage moteur au démarrage ou
+    au ralenti : symptôme plus sévère indiquant un défaut de dosage
+    air/carburant — à traiter en priorité. - Sifflement au niveau de l'admission
+    : peut indiquer une fuite d'air en amont ou en aval du boîtier papillon,
+    souvent lié à un joint d'étanchéité usé. - Odeur d'essence prononcée : un
+    mélange trop riche consécutif à une information erronée du capteur TPS peut
+    générer ce symptôme. - Kilométrage élevé sans nettoyage : au-delà de 100 000
+    km, un encrassement progressif du volet est probable même sans symptôme
+    apparent. Hypothèses à explorer Ces symptômes peuvent indiquer : un
+    encrassement du volet papillon, une usure du capteur TPS, un défaut de la
+    valve de ralenti, ou une prise d'air sur le circuit d'admission. Un
+    diagnostic électronique permet de confirmer l'origine exacte. Vérifications
+    non-invasives (à faire soi-même) - Observer le compte-tours au ralenti : une
+    oscillation régulière entre 600 et 1 000 tr/min est un indicateur fiable
+    d'un problème de corps papillon. - Vérifier la présence d'un voyant moteur
+    (codes P0120–P0124 typiquement associés au capteur TPS). - Écouter le
+    conduit d'admission moteur tournant : un sifflement ou un chuintement trahit
+    une fuite d'air. - Observer la couleur des fumées d'échappement : une fumée
+    noire soutenue peut confirmer un mélange trop riche. - Inspecter
+    visuellement le boîtier papillon après dépose du conduit d'air : un dépôt
+    noir épais sur les parois est le signe d'un encrassement à traiter. Pour un
+    diagnostic personnalisé adapté à votre véhicule, utilisez notre outil de
+    diagnostic gratuit.
+  S3: >-
+    Le boîtier papillon (ou corps papillon) régule la quantité d'air admise dans
+    le moteur en modulant l'ouverture d'un volet en fonction de la position de
+    la pédale d'accélérateur. Sur les moteurs modernes, ce volet est commandé
+    électroniquement par un motoréducteur intégré au corps papillon, piloté par
+    le calculateur moteur (contrôle-moteur). Un boîtier inadapté — mauvais
+    diamètre d'alésage, motoréducteur incompatible, ou capteur de position (TPS)
+    non conforme — génère des codes défaut et des à-coups non corrigeables par
+    recalibration. Voici les critères déterminants avant toute commande. -
+    Diamètre d'alésage du volet papillon — Ce diamètre (exprimé en mm, courant
+    entre 50 et 82 mm selon la cylindrée moteur) conditionne le débit d'air
+    maximal admissible. Un boîtier avec un alésage de 5 mm de trop génère un
+    mélange trop riche à bas régime et perturbe le ralenti. Vérifier ce diamètre
+    dans la documentation technique ou le mesurer sur la pièce d'origine. -
+    Compatibilité du capteur de position papillon (TPS) — Le capteur de position
+    transmet l'angle d'ouverture du volet au calculateur. Certains véhicules
+    utilisent un capteur potentiométrique (signal analogique 0–5 V), d'autres un
+    capteur Hall (signal numérique). Un boîtier avec un TPS de technologie
+    différente sera refusé par le calculateur et génèrera un code P0120 ou
+    similaire. - Référence du motoréducteur intégré — Le motoréducteur
+    électrique commande le volet. Sa tension nominale (12 V) et son rapport de
+    réduction doivent correspondre aux paramètres attendus par le calculateur
+    (temps de réponse, couple, angle max). Un motoréducteur trop lent provoque
+    des à-coups à l'accélération ; trop rapide, il dépasse les butées mécaniques
+    et déclenche le mode dégradé. - Configuration des raccords air (entrée,
+    sortie, by-pass) — Comparer le nombre et le positionnement des raccords de
+    vide sur le boîtier (recyclage vapeurs d'huile, servos de ralenti, by-pass
+    de ralenti). Un raccord obturé ou mal connecté introduit une fuite d'air non
+    mesurée par le débitmètre, ce qui dérègle le mélange air-carburant. -
+    Procédure de recalibration obligatoire après montage — Tout boîtier papillon
+    électronique neuf nécessite une procédure d'initialisation à l'outil de
+    diagnostic (apprentissage position neutre, butées ouvert/fermé). Sans cette
+    étape, le calculateur conserve les valeurs de l'ancien boîtier et le ralenti
+    reste instable. Vérifier que votre atelier ou outillage permet cette
+    procédure. - Nettoyage ou remplacement : savoir distinguer — Sur certains
+    moteurs, le corps papillon encrassé de dépôts de carbone peut être nettoyé
+    avec un produit dégraissant spécifique (sans démonter le capteur TPS pour
+    éviter le déréglage). Le remplacement complet s'impose en cas de volet
+    grippé, de TPS hors-plage, ou de motoréducteur défaillant détecté à
+    l'oscilloscope. Pour aller plus loin : consultez notre guide d'achat boîtier
+    papillon — comparatif marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Corps papillon pour
+    connaître les spécifications. - >Débranchez la batterie. - Démontez le
+    filtre à air si nécessaire pour faciliter l'accès au corps papillon. -
+    Localisez l'emplacement du corps papillon. - Desserrez les vis de fixations
+    du corps papillon. - Débranchez le connecteur du corps papillon. - Démontez
+    le corps papillon.
+  S4_REPOSE: >-
+    Le remontage du boîtier papillon requiert une attention particulière sur les
+    modèles à commande électronique (drive-by-wire) : toute modification de la
+    position de repos du volet papillon nécessite une procédure de réadaptation
+    par valise de diagnostic. Sans cette procédure, le calculateur applique une
+    cartographie incorrecte qui provoque un ralenti instable ou des à-coups à
+    l'accélération. - Vérifiez que le corps papillon neuf est identique à celui
+    démonté : diamètre d'alésage, position du capteur de position (TPS intégré
+    ou séparé), type de connecteur. Sur les boîtiers motorisés, la résistance
+    électrique du moteur doit correspondre aux valeurs d'origine. - Remplacez le
+    filtre à air si son état le justifie. Un filtre encrassé augmente la
+    dépression dans le conduit et accélère l'encrassement du volet papillon
+    neuf, en particulier sur les trajets urbains courts. - Contrôlez l'état des
+    injecteurs (encrassement des bouts) si le moteur présentait un ralenti
+    instable prononcé avant la dépose. Un injecteur qui goutte contamine le
+    nouveau boîtier par les retours de carburant vapeur. - Nettoyez
+    soigneusement la face de joint du collecteur d'admission où vient s'appuyer
+    le boîtier papillon. Éliminez les résidus de l'ancien joint avec un grattoir
+    plastique sans rayer l'aluminium. - Posez un joint de corps papillon neuf
+    (fourni avec la pièce ou commandé séparément). N'utilisez pas de pâte à
+    joint silicone en remplacement : elle s'infiltre dans le conduit d'air et
+    obstrue le capteur MAF. - Remontez le corps papillon neuf sur le collecteur.
+    Engagez les vis à la main sans forcer. Serrez les vis de fixation au couple
+    prescrit (généralement 8 à 12 N·m) en croix pour un appui uniforme sur le
+    joint. - Reconnectez le connecteur du corps papillon. Le clip de
+    verrouillage doit s'enclencher distinctement. Reconnectez également le tuyau
+    de recirculation de vapeurs d'essence (reniflard) s'il était débranché. -
+    Remontez le boîtier de filtre à air et les conduits d'admission dans l'ordre
+    inverse de la dépose. Vérifiez l'étanchéité de tous les raccords et colliers
+    — tout faux air fausse la mesure du débitmètre. - Rebranchez la batterie.
+    Démarrez le moteur sans accélérer et laissez-le tourner 5 minutes au
+    ralenti. Vérifiez la stabilité du ralenti (doit être stable entre 700 et 850
+    tr/min selon moteur). Si le ralenti est instable, effectuez la procédure de
+    réadaptation du papillon avec une valise de diagnostic (apprentissage
+    position zéro, plage d'ouverture, inactivité électrique 15 minutes puis
+    démarrage progressif selon constructeur).
+  S5: >-
+    Erreurs frequentes avec le boitier papillon : - Ne pas nettoyer le corps
+    papillon avant de le remplacer — dans 80% des cas un nettoyage au produit
+    dedie suffit a resoudre les problemes de ralenti instable- Oublier de faire
+    un reapprentissage du papillon apres remplacement — le calculateur moteur
+    doit reapprendre les positions min/max du volet, sinon le ralenti est
+    instable- Confondre un probleme de capteur de position avec un defaut
+    mecanique du papillon — lire les codes defaut avant de remplacer la piece-
+    Ne pas verifier l'etat du filtre a air — un filtre colmate laisse passer des
+    poussieres qui encrassent le papillon- Debrancher le connecteur electrique
+    moteur tournant — risque de destruction du capteur de position par
+    surtension
+  S6: >-
+    Le boîtier papillon électronique nécessite une procédure de réinitialisation
+    après son remplacement. Sans cette étape, le calculateur moteur conserve les
+    valeurs d'apprentissage de l'ancien boîtier et le ralenti reste instable ou
+    le moteur peut caler. Voici les contrôles à effectuer dans l'ordre. -
+    Réinitialiser les valeurs d'adaptation du calculateur : avec un outil de
+    diagnostic OBD, effacer les codes défaut mémorisés et lancer la procédure de
+    réinitialisation du papillon (throttle body reset). Sur certains véhicules,
+    couper le contact 30 secondes suffit ; sur d'autres, une procédure
+    spécifique par outil est requise. - Effectuer la procédure d'apprentissage
+    du ralenti : démarrer le moteur à froid et le laisser monter en température
+    au ralenti sans actionner l'accélérateur pendant au moins 3 minutes. Le
+    calculateur apprend la position zéro du papillon et calibre le ralenti cible
+    (généralement 750 à 900 tr/min selon le moteur). - Vérifier la stabilité du
+    ralenti à chaud : le ralenti ne doit pas osciller de plus de ±50 tr/min une
+    fois le moteur à température. Des oscillations continues indiquent que
+    l'apprentissage est incomplet ou que le joint d'entrée d'air du boîtier
+    fuit. - Contrôler l'absence de sifflement d'air : inspecter les colliers de
+    serrage et le joint torique du boîtier papillon. Toute fuite d'air entre le
+    boîtier et la tubulure d'admission fausse la mesure du débitmètre et génère
+    un mélange air/carburant incorrect. - Tester les accélérations progressives
+    : augmenter progressivement le régime moteur de 800 à 3 000 tr/min. La
+    réponse doit être linéaire et sans à-coups. Des saccades persistent
+    signalent soit un mauvais apprentissage, soit un capteur de position
+    papillon (TPS) défectueux sur la pièce neuve. - Vérifier l'absence de code
+    défaut résiduel : après 15 minutes de conduite incluant plusieurs
+    accélérations franches, brancher l'outil OBD et confirmer qu'aucun code
+    P0120 à P0124 (capteur position papillon) ni P0506/P0507 (ralenti hors
+    plage) n'est présent. - Contrôler la consommation de carburant : un boîtier
+    papillon neuf mal calibré produit un mélange trop riche (odeur d'essence) ou
+    trop pauvre (claquements). Comparer la consommation sur les 100 premiers km
+    avec les valeurs habituelles du véhicule.
+  S7: >-
+    Quel est le prix d'un boîtier papillon ?Le prix varie selon le véhicule et
+    la marque. Utilisez notre sélecteur pour trouver le boîtier papillon
+    compatible avec votre véhicule et comparer les tarifs des différents
+    équipementiers.Comment savoir si mon boîtier papillon est à changer ?Les
+    signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un
+    professionnel.Peut-on rouler avec un boîtier papillon défaillant ?Cela
+    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
+    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
+    du remplacement.- capteur position papillon - capteur de cognement - capteur
+    temperature d air admission - corps papillon - injecteur - valve de reglage
+    du ralenti
+  S8: >-
+    Comment choisir Boîtier papillon compatible avec mon vehicule ?Renseignez
+    marque, modele, type moteur et annee, puis verifiez la reference Quand
+    remplacer Boîtier papillon ?En cas de ralenti instable ou irregulier ou de
+    degradation mesurable, Puis-je monter Boîtier papillon sans verification
+    atelier ?Le montage peut exiger controles de couple, alignement et
+    references.
+  META: >-
+    {"meta_title":"Boîtier papillon : ralenti instable et nettoyage |
+    AutoMecanik","meta_description":"Ralenti irrégulier, accélérations
+    saccadées, moteur qui cale : diagnostiquer un boîtier papillon encrassé ou
+    HS et savoir quand nettoyer ou le remplacer.","og_title":"Boîtier papillon
+    encrassé : ralenti instable et à-coups","og_description":"Ralenti instable,
+    moteur qui cale ou accélérations saccadées ? Le boîtier papillon dose l'air
+    moteur. Guide pour nettoyer ou remplacer la
+    pièce.","sources":[{"type":"rag","ref":"gammes/corps-
+    papillon.md","field":"diagnostic.symptoms,domain.role,rendering.faq"}]}
 ---
 
 # Boîtier papillon - Guide Diagnostic Complet

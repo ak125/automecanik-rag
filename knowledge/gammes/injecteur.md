@@ -6,7 +6,8 @@ pg_id: 3902
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Pulveriser le carburant sous forme de fines gouttelettes dans la chambre de combustion
   must_be_true:
@@ -212,6 +214,98 @@ installation:
   - cle dynamometrique
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
+phase5_enrichment:
+  _source: delphiautoparts.com + wixfilters.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 12
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_19_a: '19 a'
+    val_41_a: '41 a'
+    val_5_a: '5 a'
+    val_6_a: '6 a'
+    val_6_microns: '6 microns'
+    val_67_a: '67 a'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    L''injecteur pulvérise le carburant sous forme de fines gouttelettes dans la
+    chambre de combustion, à un moment et un débit précis calculés par le
+    calculateur moteur. Sur les moteurs diesel common rail, la pression
+    d''injection atteint 1600 à 2200 bars. Sur les moteurs essence à injection
+    directe (GDI/TSI/TFSI), elle varie de 50 à 350 bars. Niveau de difficulté :
+    Moyen (essence port injection) à Avancé (diesel common rail — codage
+    injecteur obligatoire). Outils nécessaires : - Clé dynamométrique (couple de
+    serrage injecteur : 20-30 Nm selon constructeur)- Extracteur d''injecteur
+    (diesel : injecteurs souvent grippés dans la culasse)- Outil de diagnostic
+    OBD pour codage injecteur (diesel common rail) Pièces liées : joints
+    d''injecteur (cuivre, à remplacer systématiquement), rampe d''injection
+    (common rail), pompe haute pression, filtre à carburant.
+  S2: >-
+    L''injecteur n''a pas de périodicité de remplacement fixe. Durée de vie :
+    150 000 à 250 000 km selon la qualité du carburant et l''entretien du filtre
+    à carburant. Symptômes de défaillance : - Ratés d''allumage ou raté sur un
+    cylindre — le calculateur peut couper l''injection du cylindre défaillant-
+    Fumée noire (mélange trop riche) ou blanche (carburant non brûlé) à
+    l''échappement- Claquement diesel anormal — injecteur avec un débit décalé-
+    Surconsommation de carburant notable — un injecteur qui fuit ou qui reste
+    ouvert enrichit le mélange- Odeur de carburant non brûlé — injection mal
+    pulvérisée, combustion incomplète- Voyant moteur allumé avec code cylindre
+    défaillant (P0201 à P0208)
+  S3: >-
+    Pour choisir le bon injecteur pour votre véhicule : - Référence constructeur
+    : l''injecteur est spécifique au moteur et au calibrage d''injection — une
+    mauvaise référence provoque des ratés ou endommage le catalyseur- Type de
+    motorisation : diesel common rail (haute pression, codage obligatoire),
+    diesel pompe-injecteur (intégré à la culasse), essence port injection (basse
+    pression), essence injection directe (GDI/TSI)- Marques OES : Bosch, Delphi,
+    Denso, Siemens VDO — les injecteurs adaptables bas de gamme sont
+    déconseillés sur diesel haute pression- Joints cuivre : toujours remplacer
+    les joints d''étanchéité (inclus dans les kits Bosch/Delphi), ne jamais les
+    réutiliser- Budget : 50 à 400 EUR l''unité selon motorisation — les
+    injecteurs diesel common rail sont les plus chers
+  S4_DEPOSE: >-
+    1. Débrancher la batterie et dépressuriser le circuit de carburant (essence
+    : actionner la pompe fusible retiré, diesel : attendre 10 min). 2.
+    Déconnecter les connecteurs électriques de chaque injecteur. 3. Dévisser les
+    conduites haute pression de la rampe d''injection vers les injecteurs (clé à
+    tuyauter, ne pas arrondir les écrous). 4. Dévisser la rampe d''injection si
+    nécessaire pour accéder aux injecteurs. 5. Extraire les injecteurs — essence
+    : déclipser ou dévisser. Diesel : utiliser un extracteur spécifique
+    (injecteurs souvent grippés par la calamine après 100 000+ km). 6. Retirer
+    les anciens joints cuivre du puits d''injecteur et nettoyer le siège dans la
+    culasse. 7. Obturer les puits pour éviter l''entrée de corps étrangers.
+  S5: >-
+    Erreurs fréquentes avec les injecteurs : - Réutiliser les joints cuivre
+    d''étanchéité — ils sont à usage unique, un joint réutilisé fuit et provoque
+    un claquement diesel ou une odeur de carburant- Ne pas faire coder les
+    injecteurs neufs sur diesel common rail — chaque injecteur a un code de
+    correction de débit (IMA/C2I) qui doit être enregistré dans le calculateur-
+    Mélanger des injecteurs de débits différents sur le même moteur — le
+    calculateur ne peut pas compenser et le moteur tourne de manière
+    irrégulière- Forcer l''extraction d''un injecteur diesel grippé sans
+    extracteur adapté — risque de casser l''injecteur dans la culasse
+    (réparation très coûteuse)- Ne pas remplacer le filtre à carburant en même
+    temps — un filtre colmaté envoie des impuretés qui détruisent les injecteurs
+    neufs- Ignorer un raté moteur intermittent — un injecteur défaillant dégrade
+    le catalyseur et le FAP en quelques milliers de km
+  S6: >-
+    Après le remplacement des injecteurs : - Codage : sur diesel common rail,
+    enregistrer le code IMA/C2I de chaque injecteur neuf dans le calculateur
+    moteur avec l''outil de diagnostic — sans codage le moteur tourne en mode
+    dégradé- Purge d''air : sur diesel, purger le circuit de carburant en
+    actionnant la pompe d''amorçage manuelle ou via la fonction diagnostic OBD-
+    Test de démarrage : le moteur doit démarrer sans ratés ni claquement
+    anormal. Un raté persistant indique un connecteur mal branché ou un code
+    injecteur non enregistré- Étanchéité : vérifier l''absence de fuite de
+    carburant autour des joints cuivre et des raccords haute pression après 5
+    minutes de fonctionnement- Effacer les codes défaut : les anciens codes
+    P0201-P0208 doivent être effacés pour que le calculateur quitte le mode
+    dégradé
 ---
 
 # Injecteur - Guide Diagnostic Complet

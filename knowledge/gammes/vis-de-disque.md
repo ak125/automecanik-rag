@@ -6,7 +6,8 @@ pg_id: 54
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Fixer le disque de frein sur le moyeu de roue
   must_be_true:
@@ -213,6 +215,167 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    couple: '8-12 Nm (Torx ou 6 pans)'
+    role: 'maintien du disque sur le moyeu pendant le montage de la roue — pas structural'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La vis de disque est une vis de centrage et de maintien qui fixe le disque
+    de frein sur le moyeu de roue lors des phases de montage. Généralement au
+    nombre d'une à deux par roue selon le véhicule, elle bloque le disque dans
+    sa position angulaire exacte pendant que l'on monte et serre les écrous de
+    roue — ce qui permet de travailler sans que le disque ne pivote librement
+    sur le moyeu. Une fois les écrous de roue serrés au couple prescrit, ce sont
+    ces derniers qui assurent le maintien principal du disque en service. La vis
+    de disque joue alors un rôle secondaire de sécurité anti-rotation : sur la
+    plupart des véhicules, sa présence n'est plus structurellement requise une
+    fois la roue en place, mais son absence peut laisser le disque osciller
+    légèrement lors des prochains montages ou lors d'une dépose de roue en
+    atelier (contrôle technique, vidange, etc.). Son matériau est généralement
+    de l'acier traité avec un filetage métrique M5 à M8 selon le constructeur,
+    et la tête est de type Torx ou Allen (six pans creux) pour permettre un
+    serrage précis. L'empreinte Torx est privilégiée pour sa résistance à
+    l'arrimage et sa tolérance à la corrosion, mais c'est aussi la première
+    partie à s'arrondir si l'on utilise un outil inadapté ou usé.
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : - Vis
+    grippee impossible a devisser - Tete de vis arrondie ou endommagee - Vis
+    rouillee visible a travers la jante - Disque qui bouge legerement vis
+    desserree - Bruit claquement freinage cassee absente
+  S2_DIAG: >-
+    SymptômeCause probableActionVis grippee impossible a devisserlocaliser
+    source et verifier usure mecaniqueObserver : vis grippee impossible a
+    devisser ?Tete de vis arrondie ou endommageebruit anormal detecte :
+    localiser source et verifier usure mecaniqueObserver : tete de vis arrondie
+    ou endommagee ?Vis rouillee visible a travers la janteUsure ou defaillance
+    causant : vis grippee impossible a devisserObserver : vis rouillee visible a
+    travers la jante ?Disque qui bouge legerement vis desserreelocaliser source
+    et verifier usure mecaniqueObserver : disque qui bouge legerement vis
+    desserree ?Bruit claquement freinage cassee absentelocaliser source et
+    verifier usure mecaniqueObserver : vis grippee impossible a devisser ?
+  S3: >-
+    Pour choisir les bons vis de disque pour votre véhicule : - Marque de votre
+    véhicule - Modele de votre véhicule - Annee de votre véhicule
+  S4_DEPOSE: >-
+    Le remplacement de la vis de disque est une opération courte mais qui peut
+    devenir complexe si la vis est grippée. La procédure ci-dessous couvre les
+    deux cas : vis encore dévissable et vis grippée nécessitant une extraction.
+    Toujours immobiliser le disque avant toute tentative de dévissage pour ne
+    pas faire tourner l'ensemble frein. - Lever le véhicule et déposer la roue :
+    soulever le véhicule sur chandelles, retirer les écrous de roue et sortir la
+    roue. Le disque de frein et sa vis sont maintenant accessibles sur le moyeu.
+    - Identifier l'empreinte et l'état de la vis : Torx ou Allen ? La tête est-
+    elle intacte ou déjà arrondie ? Inspecter avec une lampe. Si la tête est
+    encore saine, passer à l'étape 4. Si elle est foirée, aller directement à
+    l'étape 5. - Appliquer du dégrippant si nécessaire : pulvériser du
+    dégrippant à base de molybdène ou de zinc sur la vis et laisser pénétrer 10
+    à 15 minutes. Pour une vis très grippée, renouveler l'application 2 fois et
+    attendre 30 minutes au total. - Dévisser avec un embout neuf et adapté :
+    insérer l'embout Torx ou Allen neuf (jamais usé) à fond dans l'empreinte,
+    maintenir une pression axiale ferme et appliquer une force de rotation
+    progressive. Ne jamais à-coups qui arrondissent l'empreinte. - Extraction si
+    tête foirée : utiliser un embout extracteur pour vis endommagées (type
+    Irwin), une pince multiprise à mâchoires droites ou pointer au centre de la
+    vis et percer progressivement avec un foret de 2, puis 4 mm pour extraire le
+    noyau fileté. Prévoir du temps et des forets neufs. - Nettoyer le taraudage
+    du moyeu : passer un taraud de même pas de vis pour rétablir le filetage si
+    la vis grippée l'a endommagé. Éliminer les copeaux avec de l'air comprimé. -
+    Préparer et visser la vis neuve : appliquer frein-filet ou graisse cuivrée
+    selon la préconisation constructeur, introduire à la main pour vérifier
+    l'absence de faux pas de vis, puis serrer à la clé dynamométrique au couple
+    prescrit (généralement 4 à 8 Nm). - Remonter la roue et reposer le véhicule
+    : reposer la roue, serrer les écrous de roue au couple prescrit. Descendre
+    le véhicule, effectuer un déplacement de 10 m en marche avant et arrière,
+    puis re-contrôler le serrage des écrous.
+  S4_REPOSE: >-
+    Après l'extraction de l'ancienne vis de disque — qu'elle ait été dévissée
+    normalement ou extraite après grippage — la repose consiste à installer la
+    vis neuve avec le bon produit de blocage et au couple exact. Une vis sous-
+    serrée crée un bruit de claquement au freinage ; une vis sur-serrée se
+    grippe immédiatement et deviendra impossible à démonter lors du prochain
+    remplacement de disque. - Nettoyer le taraudage du moyeu : passer un taraud
+    de même diamètre et pas de vis dans le trou pour éliminer la rouille, les
+    résidus de filetage et les particules de la vis extraite. Souffler les
+    copeaux à l'air comprimé ou les retirer avec un chiffon propre. Un taraudage
+    propre est la condition d'un serrage au couple fiable. - Aligner le disque
+    neuf sur le moyeu : poser le disque de frein en centrant les trous de la vis
+    (généralement 1 trou par disque) sur le taraudage du moyeu. Le disque doit
+    reposer à plat, sans jeu axial. Si le disque bouge ou est incliné, vérifier
+    que les surfaces de contact du moyeu sont propres. - Appliquer le produit de
+    blocage selon la préconisation constructeur : deux options selon le
+    constructeur : frein-filet Loctite bleu (220 / 243) pour la majorité des
+    applications, ou graisse cuivrée sur filetage pour les constructeurs qui
+    préconisent un démontage facilité à la prochaine révision. Ne jamais
+    utiliser les deux simultanément ni choisir du Loctite rouge (démontage
+    impossible à froid). - Introduire la vis à la main : visser la vis neuve à
+    la main sur les 3 à 4 premiers filets pour s'assurer de l'absence de faux
+    pas de vis. Si la vis résiste dès le départ, dévisser complètement et
+    reprendre. Forcer à la clé sur un faux pas de vis détériore le taraudage du
+    moyeu — réparation coûteuse. - Serrer à la clé dynamométrique au couple
+    prescrit : serrer progressivement à la clé dynamométrique. Le couple
+    prescrit pour les vis de disque est généralement de 4 à 8 Nm selon le
+    constructeur — consulter la documentation technique du véhicule. Ne pas
+    estimer le couple à la main : une vis Torx M6 semble serrée bien avant
+    d'atteindre le couple. - Vérifier l'absence de dépassement du nez de vis :
+    la tête de vis doit être au ras de la surface du disque ou légèrement en
+    retrait. Une vis qui dépasse peut interférer avec l'étrier de frein ou le
+    cache-poussière lors du montage de la roue. - Remonter la roue et serrer les
+    écrous au couple : poser la roue, serrer les écrous de roue à la main en
+    croix, descendre le véhicule des chandelles, puis serrer les écrous au
+    couple final prescrit avec une clé dynamométrique (généralement 100 à 130 Nm
+    selon le véhicule). - Effectuer un freinage d'rodage : réaliser 5 à 10
+    freinages modérés depuis 50 km/h pour rodage si le disque de frein est neuf.
+    Ce rodage n'est pas lié à la vis mais s'effectue naturellement lors de la
+    validation de l'intervention.
+  S5: >-
+    - ❌ "homologué CT" - ❌ "sécurité garantie" - ❌ "zéro panne" - ❌ "garanti à
+    vie" - ❌ "freinage garanti"
+  S6: >-
+    Après le montage de la vis de disque neuve, quelques contrôles rapides
+    permettent de confirmer que le disque est correctement fixé et que le
+    freinage sera efficace et sans vibration lors des premières sollicitations.
+    - Contrôle du couple de serrage de la vis de disque : vérifier avec une clé
+    dynamométrique que la vis est serrée au couple prescrit par le constructeur
+    (généralement 4 à 8 Nm). Un serrage insuffisant laisse la vis se desserrer
+    aux vibrations ; excessif, il détériore le filetage du moyeu. - Absence de
+    jeu axial du disque sur le moyeu : tenter de faire bouger le disque
+    latéralement à la main — il ne doit présenter aucun jeu axial perceptible
+    une fois la vis serrée. Un jeu indique un filetage endommagé ou une vis
+    insuffisamment serrée. - Contrôle du voile du disque après repose : avec un
+    comparateur à cadran sur support magnétique, mesurer le voile du disque
+    après montage — valeur maximale généralement de 0,05 à 0,10 mm selon le
+    constructeur. Un voile excessif provoque une vibration de pédale au
+    freinage. - Serrage des écrous de roue au couple et vérification croisée :
+    serrer les écrous de roue en étoile au couple prescrit (généralement 100 à
+    130 Nm). Descendre le véhicule, avancer de 10 mètres, puis re-contrôler le
+    serrage à la clé dynamométrique. - Premier freinage progressif : effectuer 5
+    à 10 freinages progressifs depuis 40 km/h jusqu'à l'arrêt complet pour
+    constater l'absence de bruit anormal (claquement, craquement, sifflement)
+    qui signalerait un problème de montage.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (3 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S8: >-
+    Les vis de disque sont-elles indispensables ?Elles maintiennent le disque en
+    place pendant le montage. Une fois la roue serrée, les écrous de roue
+    assurent le maintien principal. Comment retirer une vis grippée ?Dégrippant,
+    chaleur localisée, embout à frapper. En dernier recours : perçage et
+    extraction. Prévoyez des vis neuves. Faut-il graisser ou freiner les vis
+    ?Selon constructeur : certains préconisent du frein-filet (Loctite bleu),
+    d'autres de la graisse cuivrée. Consultez la documentation technique.
+    Quelles sont les erreurs fréquentes à éviter ?Forcer une vis Torx/Allen
+    grippée sans outil → tête foirée. Oublier de nettoyer l'empreinte → l'embout
+    ripe. Comment faire un diagnostic rapide ?Vis déjà arrondie/rouillée →
+    prévoir vis neuves + embout neuf + dégrippant. Si elle casse :
+    extraction/perçage (prévoir temps atelier).
 ---
 
 # Vis de disque - Guide Diagnostic Complet

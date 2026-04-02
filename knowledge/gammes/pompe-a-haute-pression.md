@@ -6,7 +6,8 @@ pg_id: 3918
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mettre le carburant sous tres haute pression pour l'injection directe
   must_be_true:
@@ -184,6 +186,97 @@ installation:
   - cle dynamometrique
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Pompe a piston radial monocylindre
+    description: Avec poussoir a galet, la plus courante (Bosch CP1/CP3/CP4)
+    era: standard common rail
+  - type: Pompe axiale / en serie
+    description: Un ou plusieurs elements de pompage
+    era: anciens systemes
+  technical_notes:
+    pression_service: '50-350 bars selon configuration'
+    pression_basse_normale: '~4,0 bars'
+    pression_demarrage: '~7,0 bars'
+    pression_residuelle_10min: '>= 3,0 bars'
+    pression_haute: '40-120 bars selon regime'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La pompe à haute pression met le carburant sous très haute pression pour
+    l''injection directe dans les cylindres. Sur les moteurs diesel common rail,
+    elle comprime le carburant de 200 bars au ralenti à 1800-2200 bars à pleine
+    charge. Sur les moteurs essence injection directe (GDI/TSI/TFSI), la
+    pression varie de 50 à 350 bars. Niveau de difficulté : Avancé —
+    intervention sur le circuit haute pression, nécessite des précautions de
+    sécurité strictes. Comptez 2 à 4 heures. Outils : clé dynamométrique, clés à
+    tuyauter (raccords haute pression), outil OBD pour purge et calibration.
+    Pièces liées : injecteurs, rampe d''injection (common rail), filtre à
+    carburant, pompe de gavage (basse pression, dans le réservoir).
+  S2: >-
+    Pas de périodicité fixe. Durée de vie : 200 000+ km si le filtre à carburant
+    est remplacé régulièrement. Symptômes de défaillance : - Démarrage
+    impossible ou très long — la pompe ne monte plus en pression suffisante pour
+    ouvrir les injecteurs- Perte de puissance brutale — le calculateur limite la
+    pression d''injection en mode dégradé- Limaille métallique dans le filtre à
+    gasoil — usure interne des pistons ou des clapets de la pompe, débris
+    envoyés dans tout le circuit- Voyant moteur allumé avec codes pression de
+    rampe (P0087 : pression trop basse, P0088 : pression trop haute)- Broutement
+    ou à-coups à l''accélération — pression d''injection instable
+  S3: >-
+    Pour choisir la bonne pompe haute pression : - Motorisation exacte : diesel
+    common rail ou essence injection directe — les pompes ne sont pas
+    interchangeables même entre variantes du même moteur- Référence constructeur
+    : vérifier la référence Bosch CP1/CP3/CP4, Delphi DFP, Continental/Siemens —
+    chaque variante a un débit et une pression max différents- Nombre de pistons
+    et débit : les pompes CP4.1 (1 piston) et CP4.2 (2 pistons) ne sont pas
+    interchangeables- Pression de service : vérifier la compatibilité avec le
+    système d''injection du véhicule (1350, 1600, 1800 ou 2200 bars selon
+    génération)- Marques : Bosch, Delphi, Denso, Continental — pas d''adaptable
+    recommandé sur ce composant critique- Budget : 200 à 800 EUR — les pompes
+    reconditionnées échange standard offrent un bon rapport qualité/prix
+  S4_DEPOSE: >-
+    1. Débrancher la batterie et attendre 10 minutes (dépressurisation du
+    circuit haute pression). 2. Nettoyer soigneusement la zone autour de la
+    pompe pour éviter l''entrée de contaminants dans le circuit. 3. Débrancher
+    les conduites haute pression (clé à tuyauter) — obturer immédiatement chaque
+    raccord. 4. Débrancher la conduite d''alimentation basse pression (arrivée
+    du filtre à carburant). 5. Débrancher le connecteur électrique du régulateur
+    de débit. 6. Dévisser les vis de fixation de la pompe sur le bloc moteur (2
+    à 3 vis). 7. Extraire la pompe en la tirant droit — ne pas forcer
+    latéralement (arbre d''entraînement fragile). 8. Vérifier l''état du joint
+    torique et de l''arbre d''entraînement côté moteur.
+  S5: >-
+    Erreurs fréquentes avec la pompe haute pression : - Ne pas remplacer le
+    filtre à carburant avant de monter la pompe neuve — les impuretés et la
+    limaille de l''ancienne pompe détruisent la pompe neuve en quelques milliers
+    de km- Ne pas rincer la rampe d''injection et les conduites haute pression —
+    les débris métalliques piégés dans le circuit contaminent la pompe neuve et
+    les injecteurs- Oublier de remplir la pompe de carburant avant le premier
+    démarrage — un démarrage à sec provoque un grippage immédiat des pistons-
+    Forcer l''extraction de la pompe latéralement — l''arbre d''entraînement se
+    tord et endommage l''entraînement côté moteur- Monter une pompe de mauvaise
+    pression de service — une pompe CP4.1 à la place d''une CP4.2 ne fournit pas
+    le débit suffisant à pleine charge- Ignorer la limaille dans le filtre à
+    gasoil — c''est le signe que la pompe a distribué des débris métalliques
+    dans tout le circuit (injecteurs, rampe, conduites). Un remplacement de
+    pompe seul ne suffit pas
+  S6: >-
+    Après le remplacement de la pompe haute pression : - Purge d''air :
+    actionner la pompe d''amorçage manuelle (diesel) ou lancer une purge via
+    l''outil OBD — un circuit non purgé empêche le démarrage- Pression de rampe
+    : vérifier avec l''outil OBD que la pression de rampe au ralenti correspond
+    à la valeur constructeur (250-350 bars diesel, 50-120 bars essence GDI)-
+    Test de démarrage : le moteur doit démarrer en moins de 5 secondes. Un
+    démarrage trop long indique une purge incomplète ou un problème de clapet-
+    Étanchéité : vérifier l''absence de fuite sur les raccords haute pression
+    après 5 minutes de fonctionnement — la moindre fuite haute pression est
+    dangereuse- Effacer les codes : supprimer les codes P0087/P0088 pour que le
+    calculateur quitte le mode dégradé
 ---
 
 # Pompe à haute pression - Guide Diagnostic Complet

@@ -6,7 +6,8 @@ pg_id: 286
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: reviewed
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_enriched
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague6
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: 'La crémaillère de direction est le composant central du train avant qui convertit la rotation du volant en translation
     latérale (mouvement linéaire) via un mécanisme pignon-crémaillère dentée. Elle assure la liaison entre la colonne de direction
@@ -330,6 +332,248 @@ installation:
   - arrache-rotule
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Cremaillere hydraulique
+    description: Assistee par pompe de direction, verin hydraulique integre
+    era: standard jusqu'a 2010
+  - type: Cremaillere electrique (EPAS)
+    description: Moteur electrique sur la colonne ou la cremaillere, pas de fluide
+    era: 2010+, standard actuel
+  technical_notes:
+    geometrie: 'obligatoire apres tout remplacement ou repose'
+    soufflets: 'verifier l''etancheite — soufflet perce = eau + poussiere = cremaillere HS'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La crémaillère de direction est le composant central du train avant qui
+    convertit la rotation du volant en translation latérale (mouvement linéaire)
+    via un mécanisme pignon-crémaillère dentée. Elle assure la liaison entre la
+    colonne de direction et les roues directrices, conditionnant la précision de
+    trajectoire et la sécurité du véhicule. Elle s'insère dans un ensemble
+    comprenant les rotules axiales, les biellettes et les soufflets protecteurs.
+    On distingue trois familles : crémaillère non assistée (rare, sur voitures
+    légères anciennes), crémaillère assistée hydrauliquement (pompe + circuits
+    huile) et crémaillère à assistance électrique (moteur électromécanique
+    intégré, EPS). La durée de vie moyenne est de 150 000 km, conditionnée à
+    l'intégrité des soufflets et joints. Pièces liées : barre de direction ,
+    colonne de direction, pompe de direction assistee, rotule de direction ,
+    soufflet de direction , biellette de direction. trois familles : mécanique
+    (rare), hydraulique (DA/HPS) et électrique (EPS/EPAS) — non interchangeables
+    durée de vie moyenne de 150 000 km conditionnée à l intégrité des soufflets
+    et joints
+  S2: >-
+    Les cremailliere de direction sont à remplacer tous les 150 000 km environ.
+    Durée de vie moyenne de 150 000 km, conditionnée à l'intégrité des soufflets
+    et joints. Contrôler à chaque révision les soufflets et le niveau de
+    liquide. Symptômes d'usure : - Fuite liquide direction visible sous le
+    véhicule - Direction dure ou assistance intermittente - Jeu excessif dans le
+    volant - Bruit de grincement ou de couinement en tournant - Soufflets de
+    crémaillère fissurés ou déchirés - Niveau de liquide de direction qui baisse
+    régulièrement
+  S3: >-
+    Pour choisir les bons cremailliere de direction pour votre véhicule : - Type
+    d'assistance : Identifier si le véhicule est équipé d'une direction sans
+    assistance (rare), hydraulique (DA/HPS) ou électrique (EPS/EPAS). Les pièces
+    ne sont pas interchangeables. Présence d'une pompe = hydraulique ; absence
+    de pompe + moteur sur crémaillère ou colonne = électrique. - Référence OEM
+    constructeur : Vérifier la référence constructeur sur l'ancienne pièce ou
+    dans le catalogue technique. Les crémaillères sont fortement spécifiques au
+    modèle, à l'année et à la motorisation. Correspondance par immatriculation
+    (TecDoc, ETAI) recommandée. - Cotes de fixation et filetage des rotules :
+    Contrôler le taraudage des rotules (ex. M14x1,50), la longueur totale de la
+    tige de crémaillère (en mm) et les points de fixation au berceau. Une erreur
+    sur ces cotes rend la pièce inutilisable. - Pièce OE / Équivalent OE /
+    Adaptable / Reconditionnée : OE (TRW/ZF, Lemförder, Bosch, JTEKT, Delphi) =
+    qualité garantie, prix élevé. Équivalent OE (RIDEX, NTY, LIZARTE, Febi
+    Bilstein) = mêmes specs, prix intermédiaire. Reconditionnée (échange
+    standard GPA26, Cevam) = prix bas, garantie réduite. - Compatibilité ABS/ESP
+    : Sur certaines crémaillères électriques, le capteur de couple ou d'angle de
+    braquage est intégré. La nouvelle pièce doit être compatible avec le système
+    ESP/ABS et peut nécessiter une reprogrammation par valise diagnostic. - Type
+    et longueur des soufflets : Vérifier si les soufflets sont fournis avec la
+    crémaillère ou à commander séparément. Les dimensions (diamètre
+    d'entrée/sortie, longueur comprimée) varient selon le véhicule. - identifier
+    si le véhicule est équipé direction hydraulique (pompe DA) ou électrique
+    (EPS) — pièces non interchangeables - vérifier la référence OEM constructeur
+    via TecDoc ou ETAI en croisant avec l immatriculation - sur certaines
+    crémaillières électriques, le capteur de couple intégré nécessite une
+    compatibilité ABS/ESP et peut nécessiter une reprogrammation Pour aller plus
+    loin : consultez notre guide d'achat crémaillière de direction — comparatif
+    marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    1. Mise en sécurité et préparation : Garer sur surface plane et stable.
+    Serrer le frein de parking. Placer le véhicule sur cric hydraulique puis
+    poser les chandelles aux longerons. Ne jamais travailler sous un véhicule
+    tenu seulement par un cric. 2. Démontage des roues et déconnexion des
+    rotules : Retirer les roues avant. Déconnecter les rotules de direction aux
+    deux extrémités de la crémaillère à l'aide d'un extracteur de rotule (ne
+    jamais frapper à la masse sur la rotule). Déconnecter le joint de colonne
+    liant la colonne de direction à la crémaillère. 3. Déconnexion hydraulique
+    (uniquement direction hydraulique) : Démonter les raccords hydrauliques
+    (tuyaux aller et retour de la pompe). Récupérer l'intégralité du liquide de
+    direction dans un bac propre. Boucher immédiatement les raccords. Vérifier
+    le liquide récupéré sur un chiffon blanc — si des particules métalliques
+    sont visibles, la pompe d'assistance doit être remplacée 4. Dépose de la
+    crémaillère : Retirer les boulons de fixation sur le berceau moteur
+    (généralement 2 à 4 points de fixation). Faire coulisser la crémaillère hors
+    du berceau en manoeuvrant les roues si nécessaire. 5. Inspection avant
+    remontage : Contrôler l'état des silent-blocs de berceau et des biellettes.
+    Remplacer systématiquement les soufflets. Vérifier l'état des rotules
+    axiales. Nettoyer le conduit de retour à l'air comprimé — c'est le seul
+    conduit non nettoyé lors de la purge 6. Remontage et serrage au couple :
+    Positionner la nouvelle crémaillère. Serrer les boulons de fixation au
+    couple prescrit par le constructeur (clé dynamométrique obligatoire).
+    Reconnecter les durits hydrauliques avec joints neufs. Reconnecter les
+    rotules et la colonne. Vérifier et remettre le clapet anti-retour situé dans
+    l'orifice d'alimentation sur certains modèles — Ford, Espace V6 notamment 7.
+    Purge du circuit hydraulique (direction hydraulique) : Remplir le réservoir
+    de liquide de direction. Démarrer le moteur. Braquer de butée gauche à butée
+    droite lentement et à plusieurs reprises (environ 5 à 10 allers-retours).
+    Recompléter le niveau. 8. Géométrie obligatoire : Après tout remplacement de
+    crémaillère, un contrôle et réglage de la géométrie du train avant
+    (parallélisme, carrossage) est impératif. À réaliser en atelier équipé. -
+    deconnecter les rotules de direction avec un extracteur de rotule — ne
+    jamais frapper a la masse sur le cone - recuperer integralement le liquide
+    de direction dans un bac propre — verser sur chiffon blanc pour detecter des
+    particules metalliques : si visibles, la pompe doit etre remplacee (BT-110
+    Da Silva) - nettoyer le conduit de retour a l air comprime : c est le seul
+    conduit non nettoye lors de la purge (BT-110 Da Silva) - remettre le clapet
+    anti-retour dans l orifice d alimentation sur certains modeles — Ford,
+    Espace V6 notamment (BT-110 Da Silva)
+  S4_REPOSE: >-
+    Avant de remonter la crémaillière de direction, vérifiez que la pièce neuve
+    correspond exactement à celle déposée : longueur hors-tout, type de
+    direction (assistée hydraulique ou électrique), position des fixations sur
+    le berceau. Un écart de quelques millimètres sur la longueur des biellettes
+    compromet le parallélisme des roues. - Contrôlez les rotules de direction et
+    les biellettes de direction : remplacez-les si les rotules présentent du jeu
+    ou si les soufflets sont fissurés avant de remonter la crémaillière. -
+    Inspectez les soufflets de crémaillère neufs : posez-les sur la crémaillière
+    neuve avant mise en place, sans les tordre. - Engagez la crémaillière dans
+    son logement sur le berceau et serrez les vis de fixation au couple
+    préconisé par le constructeur (généralement 50 à 80 N·m selon modèle). -
+    Remontez les rotules de direction sur les pivots : serrez les écrous d'axe
+    de rotule au couple et posez les goupilles de sécurité ou les contre-écrous
+    selon le type. - Remontez les roues avant et descendez le véhicule. Serrez
+    les écrous de roue en croix au couple (110 à 130 N·m selon véhicule). -
+    Faites le niveau d'huile de direction assistée hydraulique : remplissez le
+    réservoir, braquez à fond plusieurs fois de gauche à droite pour purger
+    l'air, contrôlez le niveau à froid et répétez jusqu'à stabilisation. -
+    Vérifiez l'absence de fuite autour des raccords de la crémaillière et sur
+    les soufflets à la mise en marche du moteur. - Faites régler la géométrie et
+    le parallélisme en atelier équipé d'un banc de géométrie : un défaut de
+    parallélisme entraîne une usure rapide des pneumatiques et un tirage de
+    direction. - Effectuez un essai routier en conditions variées (ligne droite,
+    virage, manœuvres à faible vitesse) pour confirmer le centrage du volant et
+    l'absence de bruit. ✅ Après remontage, vérifiez les spécifications dans la
+    fiche technique Crémaillière de direction.
+  S5: >-
+    - Oublier la purge du circuit hydraulique après remplacement : toute poche
+    d'air résiduelle génère des bruits (gémissements), une assistance
+    irrégulière et une usure prématurée de la pompe. Purger en braquant de butée
+    en butée moteur tournant. - Ne pas refaire la géométrie du train avant :
+    c'est l'erreur la plus fréquente. Un remplacement de crémaillère modifie
+    systématiquement le parallélisme. Sans correction géométrique, les pneus
+    s'usent anormalement (usure en biseau) et la voiture dérive à haute vitesse.
+    - Forcer sur les rotules avec un marteau : utiliser un marteau pour déposer
+    les rotules endommage le filetage et le cône. Toujours utiliser un
+    extracteur de rotule (chasse-rotule) adapté. - Confondre crémaillère
+    mécanique et assistée : les pièces ne sont pas interchangeables. Vérifier
+    impérativement le type d'assistance avant commande. - Ne pas vérifier les
+    flexibles de servo-direction avant montage : la détérioration interne des
+    flexibles libère des particules de caoutchouc dans le circuit, cause
+    principale de panne des crémaillères et pompes neuves - Laisser tourner la
+    pompe à sec lors de la purge : maintenir le niveau de liquide dans le
+    réservoir en permanence pendant toute la procédure. Une pompe tournant à sec
+    s'endommage immédiatement - Ne pas remplacer les deux flexibles quand un
+    seul est défectueux : si un flexible est rigide, dur ou spongieux, l'autre
+    est certainement détérioré aussi. Toujours remplacer la paire - ne pas
+    verifier les flexibles de servo-direction avant montage : la deterioration
+    interne libere des particules de caoutchouc dans la cremaillere et le bloc
+    de soupapes — cause n1 de panne des cremailleres et pompes neuves (BT-110 Da
+    Silva) - laisser tourner la pompe a sec lors de la purge l endommage
+    immediatement — maintenir le niveau de liquide en permanence (BT-110 Da
+    Silva) - ne pas remplacer la paire de flexibles : si un flexible est rigide,
+    dur ou spongieux, l autre est certainement deteriore — toujours remplacer
+    les deux (BT-110 Da Silva)
+  S6: >-
+    - Géométrie du train avant obligatoire — Réaliser le contrôle et le réglage
+    du parallélisme et du carrossage en atelier équipé après tout remplacement
+    de crémaillère de direction ou de rotule de direction . Sans ce réglage, les
+    pneus s'usent en biseau et le véhicule dérive à haute vitesse. - Purge
+    complète du circuit hydraulique — Braquer de butée en butée 5 à 10 fois,
+    moteur tournant au ralenti, en maintenant le réservoir rempli en permanence.
+    Une pompe tournant à sec s'endommage immédiatement : surveiller le niveau à
+    chaque série d'allers-retours. - Contrôle des flexibles de servo-direction —
+    À chaque remplacement, inspecter l'état de chaque flexible du circuit
+    hydraulique. Un flexible rigide, dur ou spongieux libère des micro-
+    particules de caoutchouc qui endommagent la crémaillère neuve et le bloc de
+    soupapes. Utiliser uniquement le fluide recommandé par le constructeur ;
+    consulter le manuel utilisateur ou les spécifications constructeur. -
+    Vérification des particules métalliques — Verser quelques millilitres du
+    liquide de direction récupéré lors de la dépose sur un chiffon blanc. Si des
+    particules métalliques sont visibles, remplacer simultanément la pompe de
+    direction assistée pour éviter la contamination de la crémaillère neuve. -
+    Contrôle du niveau de liquide de direction — Vérifier le niveau à chaque
+    révision ou tous les 20 000 km. Une baisse régulière indique une fuite
+    active sur les joints ou les raccords hydrauliques. - Inspection visuelle
+    des soufflets de crémaillère — À chaque contrôle technique ou révision :
+    rechercher fissures, déchirures, gonflement. Une fissure = remplacement
+    immédiat pour éviter l'entrée d'eau et de poussière. - Reset capteur angle
+    de braquage (direction électrique EPS) — Sur direction électrique, effectuer
+    un reset du capteur d'angle de braquage via valise OBD après remplacement.
+    Vérifier l'absence de voyant direction assistée allumé. - Essai routier
+    progressif — Effectuer un premier essai à faible vitesse, vérifier la
+    fluidité de l'assistance dans les deux sens, l'absence de bruit anormal
+    (gémissement, grincement), le recentrage spontané du volant. Contrôler
+    l'absence de fuite sur tous les raccords hydrauliques après l'essai.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    Quel est le prix d'un crémaillière de direction ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le crémaillière
+    de direction compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon crémaillière de direction
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un crémaillière de direction défaillant
+    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
+    la sécurité du véhicule. Consultez la section symptômes pour évaluer
+    l'urgence du remplacement.- barre de direction - colonne de direction -
+    pompe de direction assistee - rotule de direction - soufflet de direction -
+    biellette de direction - bras de suspension - rotule de suspension
+  S8: >-
+    Comment choisir la crémaillère de direction compatible avec mon véhicule
+    ?Vérifiez d'abord le type d'assistance (hydraulique, électrique ou
+    mécanique), puis la référence OEM constructeur. Croisez avec
+    l'immatriculation via TecDoc ou ETAI. Contrôlez les cotes de fixation et le
+    filetage des rotules. Quand remplacer la crémaillère de direction ?Durée de
+    vie moyenne : 150 000 km. Remplacer dès l'apparition de fuites de liquide,
+    de direction dure intermittente, de jeu excessif au volant ou de soufflets
+    fissurés. Faut-il refaire la géométrie après remplacement de la crémaillère
+    ?Oui, c'est obligatoire. Un remplacement de crémaillère modifie
+    systématiquement le parallélisme. Sans réglage géométrique, les pneus
+    s'usent anormalement et la voiture dérive. Quelle différence entre
+    crémaillère hydraulique et électrique ?La crémaillère hydraulique utilise
+    une pompe et du liquide sous pression. La crémaillère électrique intègre un
+    moteur électromécanique (EPS), sans liquide. Les pièces ne sont pas
+    interchangeables. Peut-on rouler avec une crémaillère de direction
+    défectueuse ?C'est dangereux. Une crémaillère défectueuse compromet la
+    direction du véhicule : perte d'assistance, jeu au volant, risque de
+    blocage. Intervention rapide recommandée.
+  META: >-
+    {"meta_title":"Crémaillière de direction : guide
+    remplacement","meta_description":"Direction dure, fuite, jeu au volant :
+    quand changer la crémaillère ? Hydraulique ou électrique, critères de choix,
+    purge et géométrie expliqués."}
 ---
 
 # Crémaillère de direction - Guide Diagnostic et Achat Complet

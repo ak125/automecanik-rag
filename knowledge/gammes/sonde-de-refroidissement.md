@@ -6,7 +6,8 @@ pg_id: 830
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer la temperature du liquide de refroidissement et informer le calculateur pour le pilotage moteur
   must_be_true:
@@ -214,6 +216,212 @@ installation:
   - pince de serrage
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
+phase5_enrichment:
+  _source: HELLA TechWorld + NGK/NTK
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-29'
+  types_variants:
+  - type: Sonde NTC (Coefficient Temperature Negatif)
+    description: Resistance diminue quand temperature augmente
+    era: standard universel
+  technical_notes:
+    resistance_25C: '2,0 - 6 kohms (moteur froid)'
+    resistance_80C: '~300 ohms (moteur chaud)'
+    tension_reference: '5V fournie par calculateur'
+    continuite_cablage: '~0 ohm'
+    isolement_masse: '> 30 Mohms'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Un moteur peut être équipé d'une sonde de refroidissement,d'un capteur de
+    refroidissement et d'un interrupteur de refroidissement. Surcertain véhicule
+    ces fonctions peuvent être regroupées dans une ou deux sondes - La sonde
+    detempérature : elle mesure la température du moteur, informe leconducteur
+    sur le tableau de bord et allume le voyant de surchauffe. - Le capteur
+    detempérature : mesure la température du moteur et envoie lavaleur mesurée
+    au calculateur pour qu'il gère le fonctionnement du moteur. -
+    L'interrupteurde température : met en marche ou arrête le ventilateur
+    moteuren fonction de la température du moteur. Généralement la sonde
+    detempérature et le capteur de température sont situés sur la culasse et
+    l'interrupteurde température se situe soit sur le radiateurmoteur, ou dans
+    certains cas surune des durites de liquide de refroidissement accouplées à
+    ce dernier. En savoir plus : sonde de refroidissement — définition et rôle
+    mécanique 🚨 Bruit Sonde de refroidissement : causes et diagnostic
+  S2: >-
+    Il existe plusieurs symptômes de dysfonctionnement de sondede
+    refroidissement suivant les différents types : - Une sonde de températureHS
+    : mauvaise indication de température tableau de bord, le voyant desurchauffe
+    du moteur s'allume directement après la mise en route du moteur (lemoteur
+    est froid). - Un capteur de températureHS : perte de puissance, fumée
+    d'échappement noire, moteur ne démarre pas. - Interrupteur de températureHS
+    : voyant allumé sur le tableau de bord, le ventilateur moteur nefonctionne
+    pas. Si une des sondes de refroidissement est défectueuse etqu'elle n'est
+    pas remplacé à temps cela peut amener à la surchauffe du moteuret même à la
+    casse de ce dernier. Diagnostic complet : identifier une panne de sonde de
+    refroidissement
+  S3: >-
+    La sonde de refroidissement (aussi appelée capteur de température du liquide
+    de refroidissement ou CTT) informe le calculateur moteur en temps réel pour
+    piloter l'injection, l'allumage, le ventilateur électrique et le chauffage
+    habitacle. Une sonde avec une caractéristique de résistance différente de
+    l'original fausse l'ensemble de ces régulations, pouvant provoquer une
+    surconsommation persistante ou une surchauffe non détectée. La sélection par
+    référence constructeur est obligatoire. - Caractéristique NTC et valeurs de
+    résistance à des températures clés — Les sondes NTC (Negative Temperature
+    Coefficient) voient leur résistance diminuer quand la température monte. Les
+    valeurs de référence à vérifier : résistance à 20 °C (typiquement 2,2 kΩ à
+    3,5 kΩ), à 80 °C (200 à 350 Ω) et à 110 °C (80 à 120 Ω). Un écart de 10 %
+    sur ces valeurs décale la cartographie injection de 5 à 8 °C, ce qui
+    enrichit ou appauvrit le mélange. - Nombre de broches du connecteur et rôle
+    de chaque signal — Les sondes 1 broche alimentent uniquement le voyant de
+    température ou la jauge analogique. Les sondes 2 broches fournissent un
+    signal au calculateur moteur (injection/allumage). Les sondes 3 broches
+    combinent signal calculateur et affichage jauge. Une inversion de type prive
+    le calculateur de données ou sature l'affichage. - Filetage et pas de vis —
+    Les filetages les plus répandus sont M12x1,5 et M14x1,5. Certains
+    constructeurs utilisent M10x1 (Volkswagen groupe) ou des connecteurs
+    enfichables sans filetage. Un filetage trop grand force les pas de vis du
+    bloc moteur ; trop petit, il fuit. - Longueur de plongée dans le circuit —
+    La longueur active de la sonde (de 10 à 30 mm selon les modèles) détermine
+    si l'élément thermosensible est bien immergé dans le flux de liquide. Une
+    sonde trop courte mesure la température de la paroi du conduit, pas du
+    liquide, ce qui génère des erreurs de lecture à chaud. - Position de montage
+    sur le circuit : culasse ou collecteur — La plupart des véhicules utilisent
+    2 sondes de température : une en sortie de culasse (haute température,
+    signal calculateur) et une autre en entrée de radiateur ou sur le boîtier
+    thermostat (plus froide, affichage tableau de bord). Ces deux sondes ont des
+    caractéristiques et des emplacements différents. - Compatibilité avec les
+    liquides de refroidissement — Les sondes en laiton nickelé résistent aux
+    liquides IAT et HOAT. Sur les circuits utilisant des liquides OAT à base
+    d'azoles (pH élevé), préférer des sondes avec corps en acier inoxydable ou
+    avec revêtement compatible pour éviter la corrosion de la gaine. - Pièces à
+    contrôler avant remplacement — Avant de conclure à une sonde défaillante,
+    vérifier l'état du connecteur électrique (oxydation des broches), la
+    continuité du câblage (résistance de ligne inférieure à 1 Ω) et l'absence de
+    fuite de liquide au niveau du joint. Un mauvais contact électrique imite
+    parfaitement une sonde défaillante. Pour aller plus loin : consultez notre
+    guide d'achat sonde de refroidissement — comparatif marques, critères de
+    choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Sonde de refroidissement
+    pour connaître les spécifications. - Arrêtez le moteur et le laissé
+    refroidir. - Débranchez la batterie. - Ouvrir le bouchon du vase d'expansion
+    pour libérer la pression du circuitde refroidissement. - Refermez le bouchon
+    du vase d'expansion. - Levez et calez le véhicule en cas de besoin. - Mettre
+    un bac de récupération pour récupérer le liquide de refroidissementen cas
+    d'écoulement de ce dernier. - Localisez l'emplacement de la sonde
+    refroidissement à démonter. - Débranchez le connecteur électrique de la
+    sonde de refroidissement. - Démontez la sonde de refroidissementselon le
+    type de fixation (visser ou avec agrafe).
+  S4_REPOSE: >-
+    Le remontage de la sonde de refroidissement est une opération courte, mais
+    deux points sont non-négociables : l'absence de fuite au raccord fileté et
+    la purge complète du circuit. Un circuit mal purgé génère des poches d'air
+    qui faussent immédiatement les mesures de température et font tourner le
+    ventilateur en permanence. - Vérifiez que la sonde de refroidissement neuve
+    est identique à celle démontée : résistance CTN (courbe négative), nombre de
+    broches (2 ou 4), diamètre et pas de filetage. - Contrôlez l'état du
+    ventilateur de refroidissement et son module de commande — profitez de
+    l'intervention pour tester le fonctionnement électrique du motoventilateur
+    avant la remise en service du circuit. - Inspectez les durites de
+    refroidissement proches de l'emplacement de la sonde : toute durite avec des
+    craquelures visibles ou des zones molles doit être remplacée pendant
+    l'opération. - Enduisez le filetage de la sonde avec du téflon liquide ou un
+    ruban PTFE adapté aux applications de refroidissement pour garantir
+    l'étanchéité sans bloquer les contacts électriques. - Remontez la sonde de
+    refroidissement en la vissant à la main jusqu'en butée, puis serrez au
+    couple prescrit (typiquement 15 à 25 N·m) — ne pas serrer à l'excès pour
+    éviter de fissurer le pas de vis dans le bloc ou le boîtier. - Rebranchez le
+    connecteur électrique de la sonde jusqu'au clic de verrouillage — un
+    connecteur mal enfiché provoque exactement les mêmes symptômes qu'une sonde
+    défaillante (indicateur bloqué, ventilateur déréglé). - Remplissez le
+    circuit de refroidissement avec un mélange liquide de refroidissement / eau
+    déminéralisée à la concentration préconisée par le constructeur
+    (généralement 50/50 jusqu'à -35 °C). - Purgez le circuit en ouvrant les
+    purgeurs disponibles et en faisant tourner le moteur à froid jusqu'à
+    ouverture du thermostat : les bulles remontent naturellement vers le vase
+    d'expansion. Maintenez le niveau jusqu'à stabilisation. - Rebranchez la
+    batterie, démarrez le moteur et surveillez l'indicateur de température sur
+    les 10 premières minutes : l'aiguille doit monter progressivement jusqu'à la
+    position normale (milieu de cadran) et s'y stabiliser. - Vérifiez l'absence
+    de fuite au raccord de la sonde après le premier cycle de chauffe complet,
+    puis vérifiez à nouveau le niveau dans le vase d'expansion à moteur froid le
+    lendemain.
+  S5: >-
+    Erreurs frequentes avec la sonde de temperature de refroidissement : -
+    Confondre sonde de temperature pour jauge (tableau de bord) et sonde pour
+    calculateur moteur — ce sont deux pieces distinctes avec des connecteurs
+    differents- Ne pas vidanger partiellement le circuit avant depose — le
+    liquide de refroidissement coule a la depose de la sonde- Oublier de
+    remplacer le joint cuivre ou le joint torique de la sonde — un joint
+    reutilise provoque une fuite de liquide de refroidissement- Ignorer un
+    ventilateur qui tourne en permanence — signe de sonde en court-circuit, le
+    calculateur active le refroidissement par securite- Ne pas effacer les codes
+    defaut apres remplacement — le calculateur peut rester en mode degrade tant
+    que l'ancien defaut est memorise
+  S6: >-
+    La sonde de refroidissement (ou capteur de température liquide de
+    refroidissement) est un capteur électronique miniature dont le remplacement
+    prend moins de 30 minutes mais dont la validation post-montage est critique.
+    Elle transmet en permanence la température du circuit au calculateur moteur
+    — une mesure erronée perturbe directement la richesse du mélange air-
+    carburant, les seuils d'allumage du ventilateur et l'activation des
+    protections moteur. - Vérification de l'étanchéité du raccord : après
+    serrage de la sonde au couple constructeur (généralement 15 à 20 Nm),
+    démarrer le moteur et inspecter immédiatement la base du capteur. Aucun
+    suintement de liquide de refroidissement ni de vapeur blanche ne doit
+    apparaître. Utiliser du téflon ou un joint torique neuf si livré avec la
+    pièce — ne jamais reutiliser un joint vieux. - Contrôle de l'indicateur de
+    température au tableau de bord : surveiller la montée en température lors du
+    premier démarrage. L'aiguille doit progresser régulièrement depuis la
+    position froide (0 °C environ) jusqu'au point de stabilisation à mi-cadran
+    (entre 80 et 95 °C selon le thermostat). Une aiguille qui reste bloquée en
+    butée froide ou qui oscille signale un connecteur mal encliqueté ou une
+    sonde défaillante. - Déclenchement correct du ventilateur de refroidissement
+    : observer à quel moment le ventilateur électrique s'enclenche. Sur la
+    plupart des motorisations, le premier palier de ventilation se déclenche
+    entre 95 et 100 °C, le second palier entre 100 et 105 °C. Un ventilateur qui
+    tourne en permanence dès le démarrage ou qui ne se déclenche jamais indique
+    une sonde non calibrée sur le véhicule. - Absence de codes défaut liés à la
+    sonde : brancher un outil de diagnostic OBD après 5 à 10 minutes de chauffe.
+    Vérifier l'absence des codes P0115, P0116, P0117, P0118 (circuit de
+    température du liquide de refroidissement) et effacer les codes mémorisés
+    avant le remplacement si le voyant moteur était allumé. - Contrôle de la
+    consommation de carburant : après 100 km de circulation normale, la
+    consommation doit revenir dans les valeurs constructeur. Une surconsommation
+    persistante indique que le calculateur reçoit toujours un signal de froid
+    permanent depuis la sonde — souvent dû à une résistance de sonde hors plage.
+    - Vérification du niveau de liquide de refroidissement : le remplacement de
+    la sonde entraîne une légère perte de liquide. Contrôler le niveau dans le
+    vase d'expansion après refroidissement complet (moteur froid pendant au
+    moins 1 heure). Compléter avec le mélange antigel adapté si le niveau est
+    sous le repère MIN.
+  S7: >-
+    Quel est le prix d'un sonde de refroidissement ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le sonde de
+    refroidissement compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon sonde de refroidissement est
+    à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un sonde de refroidissement défaillant
+    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
+    la sécurité du véhicule. Consultez la section symptômes pour évaluer
+    l'urgence du remplacement.- Thermostat. - Pompe à eau . 📖 Fiche technique
+    Sonde de refroidissement — intervalles et spécifications d’entretien.
+  S8: >-
+    Comment choisir Sonde de refroidissement compatible avec mon
+    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
+    reference Quand remplacer Sonde de refroidissement ?En cas de indicateur
+    temperature bloque froid maximum ou de degradation Puis-je monter Sonde de
+    refroidissement sans verification atelier ?Le montage peut exiger controles
+    de couple, alignement et references.
+  META: >-
+    {"meta_title":"Sonde de refroidissement : symptômes et remplacement |
+    AutoMecanik","meta_description":"Indicateur température bloqué, ventilateur
+    déréglé, surconsommation à froid ? Diagnostiquez votre sonde de
+    refroidissement et trouvez la référence compatible avec votre
+    véhicule.","source":"rag://gammes/sonde-de-refroidissement.md"}
 ---
 
 # Sonde de refroidissement - Guide Diagnostic Complet

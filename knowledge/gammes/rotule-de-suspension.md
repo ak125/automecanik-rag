@@ -6,7 +6,8 @@ pg_id: 2462
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
-  last_enriched_at: '2026-03-28'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-gates-skf-trw
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Articuler le bras de suspension et la fusee - Supporte la charge verticale. NE DIRIGE PAS!
   must_be_true:
@@ -212,6 +214,95 @@ installation:
   - arrache-rotule
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
+phase5_enrichment:
+  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _validation_status: oem_verified
+  _enriched_at: '2026-03-30'
+  technical_notes:
+    couple_ecrou_rotule: '60-100 Nm selon constructeur'
+    charge_verticale: 'supporte le poids du vehicule (>500 kg par cote avant)'
+  materials:
+  - composant: rotule
+    materiau: acier traite trempe (supporte la charge verticale du vehicule)
+  - composant: cage
+    materiau: POM (polyoxymethylene) — glissement faible frottement
+  - composant: soufflet
+    materiau: caoutchouc NBR ou polyurethane
+  - composant: graisse
+    materiau: graisse lithium ou molybdene (longue duree sous charge)
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La rotule de suspension articule le bras de suspension et la fusée de roue.
+    Elle supporte la charge verticale du véhicule tout en permettant le
+    débattement de la suspension et le braquage. Elle ne DIRIGE PAS — c''est la
+    rotule de direction qui transmet le braquage. Niveau de difficulté :
+    Intermédiaire à avancé — nécessite un arrache-rotule et parfois une presse
+    (rotule sertie dans le bras). Géométrie obligatoire après. Comptez 1 à 2h
+    par côté. Outils : arrache-rotule conique, presse hydraulique (si rotule
+    sertie), clé dynamométrique, chandelles. Pièces liées : bras de suspension
+    (certains bras ont la rotule sertie = changer le bras complet), rotule de
+    direction (à ne pas confondre), silent-bloc de bras.
+  S2: >-
+    Durée de vie : 80 000 à 150 000 km selon les routes empruntées. Les routes
+    dégradées (nids de poule, dos d''âne) accélèrent l''usure. Symptômes de
+    défaillance : - Claquements sourds sur dos d''âne ou nids de poule — la
+    rotule a du jeu dans son logement- Véhicule qui tire d''un côté — le bras de
+    suspension ne maintient plus la géométrie du train avant- Jeu visible en
+    soulevant la roue à la main — test classique : levier sous la roue,
+    mouvement vertical anormal- Craquements en braquant à fond — la rotule force
+    en butée- Soufflet de rotule déchiré ou absent — la graisse sort et
+    l''eau/poussière entre, destruction rapide- Usure anormale des pneus avant —
+    le carrossage est modifié par le jeu de la rotule
+  S3: >-
+    Pour choisir la bonne rotule de suspension : - Position : rotule inférieure
+    (la plus courante, supporte le poids) ou rotule supérieure (train McPherson
+    : souvent intégrée au bras supérieur)- Rotule seule ou bras complet : sur
+    certains véhicules la rotule est sertie dans le bras de suspension — le
+    remplacement impose de changer le bras complet (pas de rotule séparée
+    disponible)- Rotule à visser ou à presser : les rotules à visser se
+    remplacent sans presse, les rotules pressées nécessitent un outillage
+    spécifique- Marques : Lemförder, ZF, Moog (premium), TRW, Meyle HD, Febi
+    Bilstein (standard) — privilégier les versions HD (Heavy Duty) renforcées-
+    Budget : 15 à 80 EUR la rotule seule, 60 à 250 EUR le bras complet avec
+    rotule sertie
+  S4_DEPOSE: >-
+    1. Lever le véhicule, déposer la roue, sécuriser sur chandelles. 2. Dévisser
+    l''écrou de la rotule sur la fusée (clé plate + contre-clé si la tige
+    tourne). 3. Utiliser l''arrache-rotule conique pour désolidariser le cône de
+    la fusée — ne jamais frapper sur la rotule elle-même. 4. Si rotule vissée
+    dans le bras : dévisser les vis de fixation de la rotule sur le bras de
+    suspension. 5. Si rotule sertie : déposer le bras complet (2 à 3 silentblocs
+    + 1 à 2 vis de fixation au châssis) et remplacer l''ensemble. 6. Nettoyer le
+    logement conique de la fusée avant montage de la rotule neuve.
+  S5: >-
+    Erreurs fréquentes avec la rotule de suspension : - Confondre rotule de
+    suspension et rotule de direction — la rotule de suspension est grosse et
+    conique (supporte le poids), la rotule de direction est petite et filetée
+    (transmet le braquage)- Essayer de remplacer une rotule sertie sans le bras
+    — sur les véhicules où la rotule est pressée dans le bras, acheter le bras
+    complet évite un montage bricolé qui lâchera prématurément- Ne pas faire la
+    géométrie après remplacement — le carrossage et le parallélisme changent
+    systématiquement- Ignorer un soufflet de rotule fissuré — l''eau et la
+    poussière détruisent la rotule en 10 000 à 20 000 km, la rupture peut
+    provoquer un accident grave- Oublier de serrer l''écrou de rotule au couple
+    constructeur — un écrou insuffisamment serré se desserre en roulant, risque
+    de déboîtement- Ne pas vérifier les silent-blocs du bras lors du
+    remplacement de la rotule — des silent-blocs fissurés faussent la géométrie
+    même avec une rotule neuve
+  S6: >-
+    Après le remplacement de la rotule de suspension : - Couple de serrage :
+    écrou de rotule sur fusée = 60-100 Nm selon constructeur (toujours vérifier
+    la valeur exacte). Utiliser un écrou neuf autobloquant si spécifié-
+    Géométrie obligatoire : parallélisme + carrossage dans les 50 km — une
+    rotule neuve sans géométrie use les pneus en quelques centaines de km- Test
+    de roulage : à basse vitesse sur route dégradée, aucun claquement ne doit
+    être audible. En ligne droite, le véhicule ne doit pas tirer- Vérifier le
+    soufflet : s''assurer que le soufflet de la rotule neuve est intact et
+    rempli de graisse — un soufflet sec réduit la durée de vie de moitié-
+    Resserrage : certains constructeurs demandent un resserrage à 1000 km —
+    vérifier le carnet d''entretien
 ---
 
 # Rotule de suspension - Guide Diagnostic Complet

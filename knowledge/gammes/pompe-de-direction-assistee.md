@@ -6,7 +6,8 @@ pg_id: 12
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Fournir la pression hydraulique pour assister l'effort de braquage - Reduit l'effort au volant
   must_be_true:
@@ -205,6 +207,165 @@ installation:
   - arrache-rotule
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
+phase5_enrichment:
+  _source: automotive.hutchinson.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  technical_notes:
+    norme_iso_9981: 'ISO 9981'
+    val_000_km: '000 km'
+    val_135__c: '135 °C'
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    La pompe de direction assistee fournit la pression hydraulique necessaire au
+    boitier de direction pour reduire l'effort de braquage du volant. Elle est
+    entrainee par la courroie d'accessoire a partir de la poulie de vilebrequin.
+    Types de pompes : - Pompe hydraulique a palettes : la plus repandue,
+    entrainee mecaniquement par la courroie- Pompe electro-hydraulique : moteur
+    electrique integre, independante du regime moteur- Direction assistee
+    electrique (EPAS) : pas de pompe hydraulique, un moteur electrique assiste
+    directement la cremaillere Pieces liees : cremaillere de direction, courroie
+    d'accessoire, durite haute pression de direction, reservoir de liquide de
+    direction.
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    Bruit grognement gemissement tournant volant - Direction dure en man uvre a
+    basse vitesse - Sifflement aigu au demarrage qui s attenue - Mousse ou
+    bulles dans le bocal de liquide - Fuite de liquide au niveau de la pompe -
+    Niveau de liquide qui baisse regulierement
+  S3: >-
+    Pour choisir les bons pompe de direction assistee pour votre véhicule : -
+    Marque de votre véhicule - Modele de votre véhicule - Annee de votre
+    véhicule - Vérifier : bruit grognement gemissement tournant volant -
+    Vérifier : direction dure en man uvre a basse vitesse - Vérifier :
+    sifflement aigu au demarrage qui s attenue - Vérifier : mousse ou bulles
+    dans le bocal de liquide - Vérifier : fuite de liquide au niveau de la pompe
+    - Vérifier : niveau de liquide qui baisse regulierement - Vérifier :
+    Direction dure en man uvre a basse vitessePour aller plus loin : consultez
+    notre guide d'achat pompe de direction assistée — comparatif marques,
+    critères de choix et prix.
+  S4_DEPOSE: >-
+    1. Debrancher la batterie. 2. Placer un bac de recuperation sous la pompe —
+    le liquide hydraulique coule a la deconnexion des durites. 3. Detendre la
+    courroie d'accessoire via le galet tendeur et la retirer de la poulie de la
+    pompe. 4. Deconnecter les durites haute pression et retour (cle a fourche,
+    ne pas utiliser de pince) — obturer immediatement les raccords pour eviter
+    l'entree d'air. 5. Devisser les vis de fixation de la pompe sur le support
+    moteur (2 a 3 vis selon vehicule). 6. Deposer la pompe en degageant la
+    poulie du passage de courroie. 7. Si la poulie est reutilisee : la demonter
+    avec un extracteur adapte (ne jamais frapper au marteau).
+  S4_REPOSE: >-
+    Le remontage de la pompe de direction assistée implique obligatoirement une
+    purge complète du circuit hydraulique après repose. Sans purge, les bulles
+    d'air dans le circuit provoquent un grincement caractéristique au braquage
+    et accélèrent l'usure de la pompe neuve. Ne jamais démarrer le moteur sans
+    s'assurer que le bocal de liquide de direction est au niveau maximum. -
+    Contrôler la conformité de la pompe neuve — Comparer la pompe de direction
+    assistée neuve avec celle déposée : nombre de gorges de la poulie, type et
+    diamètre des raccords hydrauliques (haute pression et retour basse
+    pression), sens de rotation. Une pompe d'échange standard doit correspondre
+    exactement en termes de raccords et de poulie. - Inspecter les rotules de
+    direction et la crémaillère — Contrôler l'absence de jeu dans les rotules de
+    direction et vérifier l'état de la crémaillère de direction : fuites de
+    soufflet, jeu dans le boîtier. Profiter de l'accès au circuit de direction
+    pour signaler ou traiter ces défaillances. - Contrôler l'état de la courroie
+    d'accessoires — Inspecter la courroie d'accessoires sur toute sa longueur :
+    craquelures, usure des flancs, effilochage. Si la courroie approche de son
+    kilométrage de remplacement (généralement 120 000 à 150 000 km), la
+    remplacer maintenant pendant que l'accès est dégagé. - Monter la pompe et
+    graisser les fixations — Positionner la pompe de direction assistée sur son
+    support. Appliquer un filet de frein-filet ou graisser les fixations pour
+    éviter le grippage. Serrer les boulons de fixation progressivement sans
+    serrage définitif pour permettre le positionnement de la courroie. -
+    Reconnecter les canalisations hydrauliques — Brancher la canalisation haute
+    pression et la canalisation de retour basse pression sur leurs raccords
+    respectifs de la pompe. Serrer les raccords banjo ou unions à la clé
+    dynamométrique. Un raccord insuffisamment serré fuit sous la pression du
+    circuit direction (jusqu'à 100 bars en plein braquage). - Remonter et tendre
+    la courroie d'accessoires — Engager la courroie d'accessoires sur toutes les
+    poulies dans l'ordre correct. Régler la tension : la courroie doit présenter
+    un léger fléchissement (environ 10 mm sous pression du pouce) sur le brin le
+    plus long. Serrer définitivement les fixations de la pompe une fois la
+    tension correcte obtenue. - Remonter le cache de protection — Remettre en
+    place le cache de protection de la pompe si le véhicule en est équipé.
+    Vérifier que les fixations sont bien serrées. - Remplir le bocal de liquide
+    de direction — Verser du liquide de direction assistée neuf (spécification
+    constructeur — ne pas utiliser du liquide ATF universel sans vérification)
+    jusqu'au repère MAX du bocal. Le bocal doit être plein avant tout démarrage.
+    - Purger le circuit et rebrancher la batterie — Rebrancher la batterie.
+    Démarrer le moteur. Sans rouler, braquer les roues à fond de gauche à droite
+    plusieurs fois lentement pour chasser les bulles d'air du circuit. Contrôler
+    le niveau dans le bocal entre chaque rotation et compléter si nécessaire.
+    Recommencer jusqu'à ce que le niveau soit stable et que le braquage soit
+    silencieux. - Essai routier et contrôle final — Effectuer un essai routier
+    incluant des manœuvres lentes pour confirmer l'absence de grincement ou de
+    dureté anormale au braquage. Vérifier après l'essai l'absence de fuite
+    autour des raccords et le niveau de liquide dans le bocal.
+  S5: >-
+    Erreurs frequentes avec la pompe de direction assistee : - Rouler avec un
+    niveau d'huile de direction bas — la pompe aspire de l'air, cavite et s'use
+    prematurement. Verifier le niveau regulierement- Utiliser une huile
+    hydraulique non conforme — chaque constructeur preconise un type d'huile
+    specifique (ATF, CHF, LHM), les melanger degrade les joints internes-
+    Ignorer un sifflement ou un gemissement en braquant — signe de pompe en fin
+    de vie ou de niveau d'huile bas- Ne pas verifier l'etat de la courroie
+    d'accessoire — une courroie detendue fait patiner la poulie de la pompe et
+    reduit la pression hydraulique- Oublier de purger le circuit hydraulique
+    apres remplacement — l'air dans le circuit provoque un fonctionnement
+    saccade et bruyant de la direction- Ne pas inspecter les durites haute
+    pression et le boitier de direction — une fuite en aval de la pompe provoque
+    les memes symptomes qu'une pompe defaillante
+  S6: >-
+    Contrôles statiques (moteur tournant)- Vérifier le niveau de liquide dans le
+    réservoir après purge (entre MIN et MAX, moteur chaud)- Inspecter tous les
+    raccords : aucune fuite de liquide haute pression ou retour- Écouter le
+    bruit de la pompe : un ronronnement sourd est normal, un gémissement aigu
+    indique de l'air dans le circuit- Vérifier la tension de la courroie
+    accessoire (pas de patinage au braquage)Test routier progressif- Manœuvrer à
+    l'arrêt : la direction doit être légère et homogène de butée à butée- Rouler
+    à 50 km/h : pas de durcissement de la direction ni de vibration dans le
+    volant- Effectuer des créneaux : assistance constante, sans à-coup ni bruit
+    anormal- Après 100 km, recontrôler le niveau de liquide et l'absence de
+    fuites⚠️ Important : Un gémissement persistant après purge complète peut
+    indiquer une prise d'air sur un raccord ou une durite d'aspiration poreuse.
+    Ne pas ignorer ce bruit — la pompe s'usera prématurément.
+  S_GARAGE: >-
+    Nous vous recommandons de confier cette intervention à un professionnel : -
+    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
+    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
+    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
+  S7: >-
+    Quel est le prix d'un pompe de direction assistée ?Le prix varie selon le
+    véhicule et la marque. Utilisez notre sélecteur pour trouver le pompe de
+    direction assistée compatible avec votre véhicule et comparer les tarifs des
+    différents équipementiers.Comment savoir si mon pompe de direction assistée
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
+    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
+    un professionnel.Peut-on rouler avec un pompe de direction assistée
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- colonne de direction - courroie d
+    accessoire - cremailliere de direction - poulie vilebrequin - rotule de
+    direction - rotule de suspension
+  S8: >-
+    Pompe de direction assistée OE ou échange standard ?L'échange standard est
+    économique et fiable. Vérifiez la compatibilité exacte (nombre de gorges
+    poulie, type de raccords). Comment savoir si ma pompe de direction assistée
+    est HS ?Bruit de grognement ou sifflement au volant, direction dure surtout
+    en manœuvre, mousse dans le bocal de liquide. Tous les combien changer la
+    pompe de direction assistée ?Entre 150 000 et 250 000 km. Changer le liquide
+    tous les 100 000 km prolonge sa durée de vie. Peut-on changer la pompe de
+    direction assistée soi-même ?Oui, opération accessible. Détendre la
+    courroie, débrancher les durites, déposer la pompe. Purge obligatoire après.
+    Quelle erreur éviter avec la pompe de direction assistée ?Ne pas rouler sans
+    liquide (détruit la pompe en quelques minutes). Bien purger le circuit après
+    remplacement.
+  META: >-
+    Remplacement pompe de direction assistée : compatibilité, purge du circuit,
+    erreurs à éviter et FAQ. Guide technique complet avec vérifications.
 ---
 
 # Pompe de direction assistée - Guide Diagnostic Complet

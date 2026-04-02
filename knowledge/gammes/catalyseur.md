@@ -6,7 +6,8 @@ pg_id: 429
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-03-25'
+schema_version: '5.0'
+updated_at: '2026-03-29'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -14,9 +15,10 @@ intent_targets:
 - compatibilite
 business_priority: medium
 lifecycle:
-  stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
-  last_enriched_at: '2026-03-26'
+  stage: v5_ssot
+  last_enriched_by: skill:phase5-vague5
+  last_enriched_at: '2026-03-29'
+  v5_migrated_at: '2026-03-29'
 domain:
   role: Transforme les gaz polluants (CO, HC, NOx) en gaz moins nocifs par réaction chimique
   must_be_true:
@@ -204,6 +206,193 @@ installation:
   - degripant
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
+phase5_enrichment:
+  _source: contenu LLM — a revalider contre sources OEM
+  _validation_status: pending_oem_validation
+  _enriched_at: '2026-03-30'
+  types_variants:
+  - type: Catalyseur 3 voies (essence)
+    description: Convertit CO, HC et NOx simultanement — necessite lambda=1
+    era: standard essence depuis 1993
+  - type: Catalyseur d'oxydation (diesel)
+    description: Convertit CO et HC en CO2 et H2O — avant le FAP
+    era: standard diesel
+  - type: Catalyseur SCR (AdBlue)
+    description: Reduction selective catalytique des NOx par injection d'uree (AdBlue)
+    era: diesel Euro 6, 2014+
+  technical_notes:
+    temperature_fonctionnement: '300 a 800°C (amorcage a ~300°C)'
+    duree_vie: '150 000 a 200 000 km si moteur bien entretenu'
+    homologation: 'numero d'homologation obligatoire (sinon echec CT)'
+  materials:
+  - composant: substrat
+    materiau: ceramique cordiérite en nid d'abeille (400-900 cellules/pouce²)
+  - composant: revetement actif
+    materiau: platine + palladium + rhodium (metaux precieux catalytiques)
+  - composant: enveloppe
+    materiau: acier inox + matelas ceramique isolant
+conseil_v5:
+  _sync_source: __seo_gamme_conseil
+  _sync_date: '2026-03-29'
+  S1: >-
+    Le catalyseur est constitué d'une coque en acier inoxydable et d'un noyauen
+    céramique (on l'appel aussi nid d'abeille) imprégné de métaux précieux
+    telsque le platine ou le rhodium. Le rôle du catalyseur est de diminuerla
+    pollution dans l'air en réduisant ou en détruisant les gaz polluants grâce
+    àun système de catalyse. Le fonctionnement du catalyseur change en fonction
+    de la motorisation : - Pour un moteur diesel : il convertit le monoxyde de
+    carbone et leshydrocarbures en dioxyde de carbone et en eau. Il est relié de
+    plus en plus auFAP. - Pour un moteur essence : il transforme le monoxyde de
+    carbone et ledioxyde d'azote en substance non polluante. L'efficacité du
+    fonctionnementdu catalyseur est à haute température, c'est pour cela qu'il
+    est placé près dumoteur (juste derrière le collecteur d'échappement ) pour
+    qu'il s'échauffe rapidementafin d'atteindre la température de
+    fonctionnement. En savoir plus : catalyseur — définition et rôle mécanique 🚨
+    Bruit Catalyseur : causes et diagnostic
+  S2: >-
+    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
+    voyant moteur allume codes p0420 p0430 - perte de puissance progressive du
+    moteur - bruit metallique de ferraille sous le vehicule - odeur d uf pourri
+    soufre a l echappement - echec au controle technique pollution -
+    surconsommation de carburant - **Bruit metallique de ferraille sous le
+    vehicule**
+  S3: >-
+    Le catalyseur transforme les gaz polluants du moteur (CO, HC, NOx) en CO₂,
+    vapeur d'eau et azote via une réaction chimique sur un substrat en céramique
+    ou en métal imprégné de platine, palladium et rhodium. Sa sélection est
+    contrainte à la fois par la géométrie d'échappement et par les normes
+    antipollution du véhicule — un catalyseur mal adapté échoue au contrôle
+    technique sur les mesures d'opacité ou de CO, ou génère des codes
+    P0420/P0430 en permanence. - Ne pas confondre catalyseur et FAP (filtre à
+    particules) : le catalyseur convertit les gaz gazeux ; le FAP filtre les
+    particules solides (suies) présentes uniquement sur les motorisations
+    diesel. Ces deux pièces sont distinctes sur le circuit d'échappement et non
+    substituables l'une à l'autre. - Norme antipollution du véhicule (Euro 3 à
+    Euro 6d) : chaque norme impose une efficacité de conversion minimale. Un
+    catalyseur Euro 3 monté sur un véhicule homologué Euro 6 ne satisfera pas
+    les seuils de conversion exigés par le calculateur moteur, qui déclenchera
+    les codes P0420/P0430 et le voyant moteur. - Position sur le circuit :
+    catalyseur proche moteur (manifold cat) ou sous caisse : le catalyseur
+    proche moteur monte en température plus vite (bénéfique à froid) mais subit
+    des contraintes thermiques plus élevées. Un catalyseur sous caisse est plus
+    accessible mais plus lent à atteindre sa fenêtre de fonctionnement (300°C
+    minimum). Vérifier la position d'origine avant commande. - Dimensions du
+    corps et diamètre des tubes de raccordement : les brides de raccordement (63
+    mm, 55 mm, 50 mm selon le moteur) et la longueur hors tout du catalyseur
+    doivent correspondre exactement à l'original. Un catalyseur universel
+    nécessite une adaptation par soudure — réservé à un montage atelier, pas à
+    l'autoréparation. - Matériau du substrat : céramique ou métallique : les
+    substrats céramiques (cordiérite) sont les plus courants et les moins
+    coûteux. Les substrats métalliques (feuilles d'acier inoxydable enroulées)
+    résistent mieux aux chocs thermiques et mécaniques — préférer le type
+    métallique si le véhicule a déjà subi un colmatage ou une casse par choc. -
+    Compatibilité avec les sondes lambda amont et aval : le catalyseur d'origine
+    est calibré pour que la sonde lambda aval (post-cat) lise une activité de
+    conversion conforme. Un catalyseur de mauvaise efficacité fait diverger les
+    signaux des deux sondes, déclenchant systématiquement les codes de
+    vieillissement catalyseur même à neuf. - Utilisation de carburant E10 ou
+    SP98 : certains moteurs à injection directe très compressés (turbo essence)
+    peuvent nécessiter du SP98 pour préserver le catalyseur. L'utilisation
+    prolongée de SP95-E10 avec un taux d'éthanol élevé peut accélérer la
+    détérioration du revêtement catalytique sur ces moteurs spécifiques. Pour
+    aller plus loin : consultez notre guide d'achat catalyseur — comparatif
+    marques, critères de choix et prix.
+  S4_DEPOSE: >-
+    📖 Avant de démonter, consultez la fiche technique Catalyseur pour connaître
+    les spécifications. - Arrêtez le véhicule et laissez le moteurce refroidir.
+    - Levez et calez le véhicule. - Localisez l'emplacement du
+    catalyseur.Certain fois le démontage du catalyseur nécessite à découper des
+    parties dutube d'échappement puisqu'il est monté en usine d'une seule pièce.
+    - Effectuez des découpes si nécessaire enutilisant un dégrippant pour
+    faciliter la tâche. - Desserrez les fixations du catalyseur surle collecteur
+    d'échappement et sur le silencieux d'échappement. - Démontez le catalyseur.
+  S4_REPOSE: >-
+    Le remontage du catalyseur doit être réalisé moteur froid. Les joints de
+    bride et les fixations doivent impérativement être neufs : un joint
+    d'échappement réutilisé fuit systématiquement sous l'effet des cycles
+    thermiques (–20 °C à +900 °C en sortie collecteur). Une fuite en amont du
+    catalyseur fausse également la lecture des sondes lambda. - Vérifiez que le
+    catalyseur neuf est identique à celui démonté : position des brides d'entrée
+    et de sortie, emplacement des filetages de sonde lambda, longueur hors tout.
+    Un catalyseur avec un diamètre de bride différent nécessite des adaptateurs
+    et compromet l'étanchéité. - Contrôlez l'état de la sonde lambda amont (et
+    aval si présente) et remplacez-la si les électrodes sont noires ou poreuses.
+    Une sonde lambda défaillante déclenchera un code P0420 ou P0430 même avec un
+    catalyseur neuf. - Contrôlez l'état du tube d'échappement en aval du
+    catalyseur : corrosion, fissures, déformation. Un tube oxydé rompt
+    rapidement les nouvelles fixations par électrolyse. - Installez des joints
+    de bride neufs et des fixations neuves (écrous auto-freinés ou bolts inox
+    selon préconisation). Ne réutilisez jamais les anciens écrous étirés par la
+    chaleur. - Enduisez les fixations et les joints d'un anti-grippage haute
+    température (type cuivre ou céramique, résistant à 1 000 °C). Sans anti-
+    grippage, le prochain démontage nécessitera une découpe. - Positionnez le
+    catalyseur neuf et alignez-le avec le collecteur en amont et le tube
+    d'échappement en aval. Vérifiez l'alignement axial avant de commencer à
+    serrer — un défaut d'alignement crée des contraintes qui fissurent les
+    brides. - Serrez les fixations du catalyseur au couple prescrit par le
+    constructeur (généralement 25 à 45 N·m selon le diamètre). Procédez en croix
+    pour une répartition uniforme de la pression sur le joint. - Si les sondes
+    lambda ont été déposées, remontez-les et serrez-les au couple prescrit (30 à
+    50 N·m). Reconnectez leurs connecteurs électriques en vérifiant l'absence de
+    tension parasite sur le câblage. - Descendez le véhicule et démarrez le
+    moteur. Laissez tourner 10 minutes à température normale, puis contrôlez
+    l'étanchéité à tous les joints — une fuite se détecte au bruit ou à la fumée
+    blanche sur bride froide. - Effectuez un effacement des codes défaut (P0420,
+    P0430) à la valise OBD. Le catalyseur neuf doit atteindre sa fenêtre de
+    fonctionnement (300 °C minimum) après 30 km de roulage mixte pour que le
+    calculateur valide l'absence de défaut.
+  S5: >-
+    Erreurs frequentes avec le catalyseur : - Confondre catalyseur bouche et
+    catalyseur casse en interne — un diagnostic par mesure de contre-pression ou
+    inspection endoscopique est necessaire avant remplacement- Remplacer le
+    catalyseur sans traiter la cause du colmatage — un moteur qui surconsomme de
+    l'huile ou un injecteur defaillant detruit le catalyseur neuf en quelques
+    milliers de km- Monter un catalyseur non homologue — un catalyseur sans
+    numero d'homologation est illegal et provoque un echec au controle
+    technique- Ne pas remplacer les joints de collecteur lors du demontage — les
+    joints ecrasés provoquent des fuites d'echappement et un bruit metallique-
+    Ignorer une odeur d'oeuf pourri a l'echappement — signe de catalyseur en fin
+    de vie ou de melange trop riche qui endommage le substrat- Rouler longtemps
+    avec un voyant moteur allume lie au catalyseur — le catalyseur surchauffe et
+    peut provoquer un incendie sous le vehicule
+  S6: >-
+    Après le remplacement de votre catalyseur, effectuez ces vérifications dans
+    l'ordre. - Effacez les codes défaut OBD mémorisés (codes P0420 et P0430 liés
+    à l'efficacité catalyseur) avec un outil de diagnostic avant le premier
+    démarrage. - Contrôlez le serrage des colliers et des joints d'étanchéité en
+    amont et en aval du catalyseur : aucune fuite de gaz d'échappement autour
+    des raccords. - Vérifiez le branchement des sondes lambda amont et aval :
+    connecteurs verrouillés, câblage sans frottement sur le catalyseur chaud. -
+    Démarrez le moteur à froid et écoutez pendant 3 minutes : aucun bruit
+    métallique de ferraille sous le véhicule, signe d'un matelas catalytique
+    endommagé. - Effectuez un trajet de 20 minutes avec phases d'accélération :
+    aucune odeur de soufre ou d'oeuf pourri à l'échappement ne doit persister
+    après montée en température. - Après 50 à 100 km de conduite, relancez une
+    lecture OBD : les codes P0420 et P0430 ne doivent pas revenir si la sonde
+    lambda et la gestion moteur sont conformes. Consultez également la page
+    références catalyseur pour identifier la pièce compatible avec votre
+    véhicule.
+  S7: >-
+    Quel est le prix d'un catalyseur ?Le prix varie selon le véhicule et la
+    marque. Utilisez notre sélecteur pour trouver le catalyseur compatible avec
+    votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon catalyseur est à changer ?Les signes d'usure les plus courants
+    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
+    contrôler la pièce par un professionnel.Peut-on rouler avec un catalyseur
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
+    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement.- transformer - convertir - reduire
+  S8: >-
+    Comment choisir Catalyseur compatible avec mon vehicule ?Renseignez marque,
+    modele, type moteur et annee, puis verifiez la reference Quand remplacer
+    Catalyseur ?En cas de voyant moteur allume codes p0420 p0430 ou de
+    degradation mesurable, Puis-je monter Catalyseur sans verification atelier
+    ?Le montage peut exiger controles de couple, alignement et references.
+  META: >-
+    {"meta_title":"Catalyseur : guide diagnostic et
+    remplacement","meta_description":"Voyant moteur P0420/P0430, odeur de
+    soufre, échec au CT : quand changer le catalyseur ? Causes de détérioration,
+    compatibilité et erreurs de montage."}
 ---
 
 # Catalyseur - Guide Diagnostic Complet
