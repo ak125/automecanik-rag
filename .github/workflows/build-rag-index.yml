@@ -99,7 +99,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🔨 Build and index knowledge
-        run: python scripts/reindex.py --path knowledge/ --weaviate-url $WEAVIATE_URL
+        run: python scripts/reindex.py --path knowledge/
         env:
           WEAVIATE_URL: ${{ secrets.WEAVIATE_URL }}
 
