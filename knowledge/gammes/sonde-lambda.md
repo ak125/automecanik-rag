@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -221,40 +221,29 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  types_variants:
-  - type: Sonde a zircone (jump voltage)
-    description: Corps ceramique dioxyde de zirconium + electrodes platine, signal binaire 0,1-0,9V
-    era: standard depuis 1990
-  - type: Sonde a titane (resistance)
-    description: Dioxyde de titane couche epaisse, modifie sa resistance selon O2, pas de tension generee
-    era: 1990-2005
-  - type: Sonde large bande (wideband)
-    description: 2 cellules electrochimiques (mesure + pompage), mesure continue lambda riche ET pauvre
-    era: 2005+, standard moteurs recents
+  _enriched_at: '2026-04-02'
+  _web_files_count: 3
+  _has_tech_data: true
   technical_notes:
-    tension_melange_pauvre: '~0,1V (lambda > 1)'
-    tension_melange_riche: '~0,9V (lambda < 1)'
-    tension_reference_demarrage: '0,4-0,6V'
-    resistance_chauffage: '2-14 ohms'
-    tension_alimentation_chauffage: '> 10,5V'
-    frequence_reponse: '0,5-4 Hz'
+    val_0_ohm: '0 ohm'
+    val_0_1_v: '0,1 V'
+    val_0_6_v: '0,6 V'
+    val_0_9_v: '0,9 V'
+    val_10_5_v: '10,5 V'
+    val_14_v: '14 V'
+    val_14_ohms: '14 ohms'
+    val_300_ohms: '300 ohms'
+    val_4_hz: '4 Hz'
+    val_5_v: '5 V'
   materials:
-  - composant: element sensible zircone
-    materiau: dioxyde de zirconium (ZrO2)
-  - composant: electrodes
-    materiau: platine
-  - composant: element sensible titane
-    materiau: dioxyde de titane (TiO2) couche epaisse
-  glossary:
-  - terme: lambda stoechiometrique
-    definition: Rapport air/carburant ideal (lambda=1), ~14,7:1 pour essence
-  - terme: boucle fermee
-    definition: Mode de regulation ou le calculateur ajuste le melange en temps reel via la sonde
-  - terme: sonde amont/aval
-    definition: Amont = avant catalyseur (regulation), aval = apres catalyseur (surveillance efficacite)
+  - materiau: 'platine'
+    source_ref: corpus RAG web OEM
+  - materiau: 'titane'
+    source_ref: corpus RAG web OEM
+  - materiau: 'zircone'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

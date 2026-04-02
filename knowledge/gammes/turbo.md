@@ -199,13 +199,21 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: denso-am.eu
+  _source: boschaftermarket.com + denso-am.eu + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 1
+  _web_files_count: 3
+  _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
+    val_10__m: '10 μm'
+    val_100__: '100 %'
+    val_2__v: '2. V'
     val_50_a: '50 a'
     val_6_a: '6 a'
+    val_95__: '95 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

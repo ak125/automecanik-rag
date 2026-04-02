@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -214,18 +214,13 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  types_variants:
-  - type: Capteur piezoelectrique resonant
-    description: Transforme les vibrations du bloc en tension electrique, frequence de resonance ciblee
-    era: standard
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    continuite_cablage: '< 1 ohm'
-    isolement_masse: '>= 30 Mohms'
-    diagnostic_oscilloscope: 'amplitude significative a l'acceleration brusque'
-    couple_serrage: 'critique — selon spec constructeur, pas de rondelle frein'
+    val_1_ohm: '1 ohm'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

@@ -213,36 +213,48 @@ installation:
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
 phase5_enrichment:
-  _source: ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + textar.com
+  _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + hella.com + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 33
+  _web_files_count: 37
+  _has_tech_data: true
   types_variants:
+  - type: 'Composite'
+    source_ref: corpus RAG web OEM
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
   - type: 'bi-matière'
     source_ref: corpus RAG web OEM
   - type: 'composite'
     source_ref: corpus RAG web OEM
+  - type: 'céramique'
+    source_ref: corpus RAG web OEM
   - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'plein'
     source_ref: corpus RAG web OEM
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
     norme_ece_r90: 'ECE R90'
+    norme_sae_j2521: 'SAE J2521'
+    val_0_001_mm: '0,001 mm'
+    val_0_015_mm: '0,015 mm'
+    val_0_03_mm: '0,03 mm'
     val_0_035_mm: '0,035 mm'
     val_0_05_mm: '0,05 mm'
     val_0_050_mm: '0,050 mm'
+    val_0_070_mm: '0,070 mm'
+    val_0_1_km: '0,1 km'
     val_0_1_mm: '0,1 mm'
     val_0_10_mm: '0,10 mm'
     val_0_12_mm: '0,12 mm'
     val_0_15_mm: '0,15 mm'
+    val_000_km: '000 km'
+    val_1_5_mm: '1,5 mm'
     val_1__v: '1. V'
-    val_10_nm: '10 Nm'
-    val_10_a: '10 a'
-    val_10__v: '10. V'
-    val_100_nm: '100 Nm'
-    val_100_a: '100 a'
-    val_115_nm: '115 Nm'
-    val_120_nm: '120 Nm'
   materials:
   - materiau: 'EPDM'
     source_ref: corpus RAG web OEM
@@ -250,7 +262,13 @@ phase5_enrichment:
     source_ref: corpus RAG web OEM
   - materiau: 'acier inoxydable'
     source_ref: corpus RAG web OEM
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'céramique'
+    source_ref: corpus RAG web OEM
   - materiau: 'fonte grise'
+    source_ref: corpus RAG web OEM
+  - materiau: 'graphite'
     source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil

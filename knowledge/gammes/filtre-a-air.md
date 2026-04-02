@@ -258,18 +258,24 @@ doc_id: e92eccb2-ffa9-570f-94d2-16998e7dde0b
 content_hash: sha256:d875a60be4decb16
 lang: fr
 phase5_enrichment:
-  _source: filtron.eu + mann-filter.com
+  _source: filtron.eu + hella.com + mann-filter.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 7
+  _web_files_count: 8
+  _has_tech_data: true
   types_variants:
   - type: 'plein'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_0_5_v: '0,5 V'
     val_2_a: '2 a'
+    val_4_5_v: '4,5 V'
     val_41_a: '41 a'
     val_97__: '97 %'
     val_99_9__: '99,9 %'
+  materials:
+  - materiau: 'platine'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

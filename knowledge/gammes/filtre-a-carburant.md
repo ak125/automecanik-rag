@@ -216,12 +216,14 @@ installation:
   - chiffon
   prerequisite: Moteur froid pour filtre a huile
 phase5_enrichment:
-  _source: mann-filter.com + wixfilters.com
+  _source: mann-filter.com + valeoservice.fr + wixfilters.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 6
+  _web_files_count: 7
+  _has_tech_data: true
   technical_notes:
     val_2_a: '2 a'
+    val_20__m: '20 µm'
     val_41_a: '41 a'
     val_420_litres: '420 litres'
     val_5_a: '5 a'
@@ -229,6 +231,7 @@ phase5_enrichment:
     val_6_microns: '6 microns'
     val_67_a: '67 a'
     val_70__: '70 %'
+    val_73__: '73 %'
     val_93__: '93 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

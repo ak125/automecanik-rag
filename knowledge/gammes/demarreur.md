@@ -206,17 +206,29 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: delphiautoparts.com + mann-filter.com + textar.com
+  _source: boschaftermarket.com + delphiautoparts.com + hella.com + mann-filter.com + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 8
+  _web_files_count: 10
+  _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_0_1_mm: '0,1 mm'
+    val_0_9_mm: '0,9 mm'
+    val_000_v: '000 V'
+    val_10_5_v: '10,5 V'
+    val_11_93_v: '11,93 V'
+    val_12_v: '12 V'
     val_2_a: '2 a'
+    val_24_v: '24 V'
+    val_3_0_ohms: '3,0 ohms'
     val_31_a: '31 a'
+    val_4__v: '4. V'
+    val_45_a: '45 A'
     val_59_a: '59 a'
+    val_90_a: '90 A'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

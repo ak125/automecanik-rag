@@ -267,11 +267,22 @@ installation:
   materials:
   - materiau: 'EPDM'
     source_ref: corpus RAG web OEM
+-_fabriqués_selon_la_norme_interne_d’ate: 'FMVSS 106.
+
+- Fabriqués selon la norme interne d’ATE'
+    val_100__: '100 %'
+    val_100_a: '100 a'
+    val_7_a: '7 a'
+    val_72_a: '72 a'
+  materials:
+  - materiau: 'EPDM'
+    source_ref: corpus RAG web OEM
 phase5_enrichment:
   _source: ate-freinage.fr + delphiautoparts.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
   _web_files_count: 6
+  _has_tech_data: true
   types_variants:
   - type: 'hydraulique'
     source_ref: corpus RAG web OEM

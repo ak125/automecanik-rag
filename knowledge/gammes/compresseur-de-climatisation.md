@@ -222,10 +222,11 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: automotive.hutchinson.com + denso-am.eu
+  _source: automotive.hutchinson.com + denso-am.eu + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 2
+  _web_files_count: 3
+  _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM

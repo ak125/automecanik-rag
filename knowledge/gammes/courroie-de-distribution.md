@@ -206,20 +206,24 @@ installation:
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 phase5_enrichment:
-  _source: bremboparts.com + denso-am.eu + textar.com
+  _source: bremboparts.com + denso-am.eu + hella.com + textar.com + valeoservice.fr
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 13
+  _web_files_count: 15
+  _has_tech_data: true
   types_variants:
   - type: 'hall'
     source_ref: corpus RAG web OEM
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    norme_ece_r90: 'ECE R90'
     val_10_nm: '10 Nm'
+    val_100__: '100 %'
     val_115_nm: '115 Nm'
     val_125_nm: '125 Nm'
     val_15_a: '15 a'
+    val_15_microns: '15 microns'
     val_16_nm: '16 Nm'
     val_16_a: '16 a'
     val_18_mm: '18 mm'
@@ -229,8 +233,6 @@ phase5_enrichment:
     val_210_nm: '210 Nm'
     val_22_nm: '22 Nm'
     val_26_a: '26 A'
-    val_29_a: '29 a'
-    val_3_a: '3 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

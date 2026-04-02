@@ -213,29 +213,38 @@ installation:
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 phase5_enrichment:
-  _source: ate-freinage.fr + denso-am.eu + ferodo.com + mann-filter.com
+  _source: ate-freinage.fr + denso-am.eu + ferodo.com + hella.com + mann-filter.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 5
+  _web_files_count: 16
+  _has_tech_data: true
   types_variants:
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'Pneumatique'
+    source_ref: corpus RAG web OEM
   - type: 'hall'
     source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
   technical_notes:
+    val_0_ohm: '0 ohm'
     val_0_035_mm: '0,035 mm'
     val_0_05_mm: '0,05 mm'
+    val_0_1_km: '0,1 km'
     val_0_1_mm: '0,1 mm'
-    val_4__v: '4. V'
-    val_420_litres: '420 litres'
-    val_53_litres: '53 litres'
-    val_550__c: '550 °C'
-    val_6_microns: '6 microns'
-    val_631_a: '631 a'
-    val_650__c: '650 °C'
-    val_7_a: '7 a'
-    val_70__: '70 %'
-    val_8_a: '8 a'
-    val_808_a: '808 a'
-    val_90_km: '90 km'
+    val_0_15_v: '0,15 V'
+    val_0_23_v: '0,23 V'
+    val_1_1_bar: '1,1 bar'
+    val_12_v: '12 V'
+    val_14_v: '14 V'
+    val_15_ohms: '15 ohms'
+    val_16_v: '16 V'
+    val_2_3_v: '2,3 V'
+    val_20__: '20 %'
+    val_3_bars: '3 bars'
   materials:
   - materiau: 'fonte grise'
     source_ref: corpus RAG web OEM

@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague5
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -207,30 +207,14 @@ installation:
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  types_variants:
-  - type: Catalyseur 3 voies (essence)
-    description: Convertit CO, HC et NOx simultanement — necessite lambda=1
-    era: standard essence depuis 1993
-  - type: Catalyseur d'oxydation (diesel)
-    description: Convertit CO et HC en CO2 et H2O — avant le FAP
-    era: standard diesel
-  - type: Catalyseur SCR (AdBlue)
-    description: Reduction selective catalytique des NOx par injection d'uree (AdBlue)
-    era: diesel Euro 6, 2014+
+  _source: hella.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    temperature_fonctionnement: '300 a 800°C (amorcage a ~300°C)'
-    duree_vie: '150 000 a 200 000 km si moteur bien entretenu'
-    homologation: 'numero d'homologation obligatoire (sinon echec CT)'
-  materials:
-  - composant: substrat
-    materiau: ceramique cordiérite en nid d'abeille (400-900 cellules/pouce²)
-  - composant: revetement actif
-    materiau: platine + palladium + rhodium (metaux precieux catalytiques)
-  - composant: enveloppe
-    materiau: acier inox + matelas ceramique isolant
+    val_0_ohm: '0 ohm'
+    val_15_ohms: '15 ohms'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

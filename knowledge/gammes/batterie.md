@@ -220,31 +220,32 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: automotive.hutchinson.com + bremboparts.com + denso-am.eu + textar.com
+  _source: automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + denso-am.eu + hella.com + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 8
+  _web_files_count: 13
+  _has_tech_data: true
   types_variants:
   - type: 'plein'
     source_ref: corpus RAG web OEM
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_0_1_mm: '0,1 mm'
+    val_0_9_mm: '0,9 mm'
+    val_000_v: '000 V'
     val_000__c: '000 °C'
+    val_1_1_bar: '1,1 bar'
     val_1__v: '1. V'
     val_10_nm: '10 Nm'
+    val_10_a: '10 a'
+    val_10_5_v: '10,5 V'
+    val_11_93_v: '11,93 V'
     val_115_nm: '115 Nm'
+    val_12_v: '12 V'
     val_125_nm: '125 Nm'
     val_16_nm: '16 Nm'
-    val_16_a: '16 a'
-    val_180_nm: '180 Nm'
-    val_2_a: '2 a'
-    val_2_mm: '2 mm'
-    val_20_nm: '20 Nm'
-    val_200_km: '200 km'
-    val_210_nm: '210 Nm'
-    val_22_nm: '22 Nm'
-    val_3_a: '3 a'
+    val_16_v: '16 V'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

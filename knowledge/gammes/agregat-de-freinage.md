@@ -370,34 +370,6 @@ installation:
     source_ref: corpus RAG web OEM
   - materiau: 'silicone'
     source_ref: corpus RAG web OEM
-phase5_enrichment:
-  _source: ate-freinage.fr + automotive.hutchinson.com + bremboparts.com + delphiautoparts.com + denso-am.eu + ferodo.com + filtron.eu + fram.com + gpa26.com + mann-filter.com + textar.com
-  _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 118
-  types_variants:
-  - type: 'bi-matière'
-    source_ref: corpus RAG web OEM
-  - type: 'composite'
-    source_ref: corpus RAG web OEM
-  - type: 'hydraulique'
-    source_ref: corpus RAG web OEM
-  - type: 'perforé'
-    source_ref: corpus RAG web OEM
-  - type: 'plein'
-    source_ref: corpus RAG web OEM
-  - type: 'pneumatique'
-    source_ref: corpus RAG web OEM
-  - type: 'ventilé'
-    source_ref: corpus RAG web OEM
-  - type: 'électrique'
-    source_ref: corpus RAG web OEM
-  technical_notes:
-    norme_dot_3.: 'DOT 3.'
-    norme_dot_5.1: 'DOT 5.1'
-    norme_ece_r90: 'ECE R90'
-    norme_fmvss_106.
-
 -_fabriqués_selon_la_norme_interne_d’ate: 'FMVSS 106.
 
 - Fabriqués selon la norme interne d’ATE'
@@ -429,6 +401,84 @@ phase5_enrichment:
   - materiau: 'acier inoxydable'
     source_ref: corpus RAG web OEM
   - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'fonte grise'
+    source_ref: corpus RAG web OEM
+  - materiau: 'graphite'
+    source_ref: corpus RAG web OEM
+  - materiau: 'silicone'
+    source_ref: corpus RAG web OEM
+phase5_enrichment:
+  _source: aftermarket.zf.com + ate-freinage.fr + automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + delphiautoparts.com + denso-am.eu + ferodo.com + filtron.eu + fram.com + gpa26.com + hella.com + mann-filter.com + sofima-aftermarket.com + textar.com + valeoservice.fr
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 131
+  _has_tech_data: true
+  types_variants:
+  - type: 'Composite'
+    source_ref: corpus RAG web OEM
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'bi-matière'
+    source_ref: corpus RAG web OEM
+  - type: 'composite'
+    source_ref: corpus RAG web OEM
+  - type: 'céramique'
+    source_ref: corpus RAG web OEM
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'perforé'
+    source_ref: corpus RAG web OEM
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
+  - type: 'ventilé'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    norme_dot_3.: 'DOT 3.'
+    norme_dot_5.1: 'DOT 5.1'
+    norme_ece_r90: 'ECE R90'
+    norme_fmvss_106.
+
+-_fabriqués_selon_la_norme_interne_d’ate: 'FMVSS 106.
+
+- Fabriqués selon la norme interne d’ATE'
+    norme_fmvss_§571.116_(dot_3: 'FMVSS §571.116 (DOT 3'
+    norme_fmvss-116_du_department_of_transportation_(dot).: 'FMVSS-116 du Department of Transportation (DOT).'
+    norme_sae_j1703: 'SAE J1703'
+    norme_sae_j2521: 'SAE J2521'
+    val_0_035_mm: '0,035 mm'
+    val_0_05_mm: '0,05 mm'
+    val_0_050_mm: '0,050 mm'
+    val_0_1_km: '0,1 km'
+    val_0_1_mm: '0,1 mm'
+    val_0_10_mm: '0,10 mm'
+    val_0_12_mm: '0,12 mm'
+    val_000_nm: '000 Nm'
+    val_000_km: '000 km'
+    val_000_v: '000 v'
+    val_000__c: '000 °C'
+    val_1__: '1 %'
+    val_1_ohm: '1 ohm'
+    val_1_5_mm: '1,5 mm'
+    val_1__v: '1. V'
+  materials:
+  - materiau: 'EPDM'
+    source_ref: corpus RAG web OEM
+  - materiau: 'HNBR'
+    source_ref: corpus RAG web OEM
+  - materiau: 'Silicone'
+    source_ref: corpus RAG web OEM
+  - materiau: 'acier inoxydable'
+    source_ref: corpus RAG web OEM
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'céramique'
     source_ref: corpus RAG web OEM
   - materiau: 'fonte grise'
     source_ref: corpus RAG web OEM

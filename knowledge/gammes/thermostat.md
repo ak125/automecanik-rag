@@ -215,14 +215,17 @@ installation:
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
 phase5_enrichment:
-  _source: denso-am.eu
+  _source: denso-am.eu + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 3
+  _web_files_count: 5
+  _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_1_5_bars: '1,5 bars'
+    val_2_a: '2 a'
     val_3_a: '3 a'
     val_4_a: '4 a'
     val_868_a: '868 a'

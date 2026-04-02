@@ -214,10 +214,11 @@ installation:
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
 phase5_enrichment:
-  _source: ate-freinage.fr
+  _source: ate-freinage.fr + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 2
+  _web_files_count: 3
+  _has_tech_data: true
   materials:
   - materiau: 'aluminium'
     source_ref: corpus RAG web OEM

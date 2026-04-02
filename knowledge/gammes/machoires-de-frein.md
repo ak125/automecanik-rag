@@ -220,6 +220,7 @@ phase5_enrichment:
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
   _web_files_count: 9
+  _has_tech_data: true
   types_variants:
   - type: 'composite'
     source_ref: corpus RAG web OEM

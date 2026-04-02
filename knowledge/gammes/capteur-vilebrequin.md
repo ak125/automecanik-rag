@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -169,26 +169,22 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Capteur inductif (2 broches)
-    description: Signal sinusoidal, pas d'alimentation externe, resistance 200-1000 ohms
-    era: standard
-  - type: Capteur a effet Hall (3 broches)
-    description: Signal rectangulaire, necessite alimentation 5V du calculateur
-    era: vehicules recents
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'Inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    resistance_inductif: '200 - 1000 ohms'
-    isolement_masse: '> 30 Mohms (infini attendu)'
-    signal_inductif: 'sinusoidal, amplitude proportionnelle au regime'
-    signal_hall: 'rectangulaire, amplitude constante'
-  glossary:
-  - terme: PMH
-    definition: Point Mort Haut — position du piston au sommet de sa course, reference pour le calage allumage/injection
-  - terme: roue dentee relucteur
-    definition: Couronne a dents sur le vilebrequin/volant moteur, avec 1 ou 2 dents manquantes pour le repere PMH
+    val_1000_ohms: '1000 ohms'
+    val_4__v: '4. V'
+    val_5_v: '5 V'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

@@ -212,6 +212,7 @@ phase5_enrichment:
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
   _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
     norme_iso_9981: 'ISO 9981'
     val_000_km: '000 km'

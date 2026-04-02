@@ -361,11 +361,14 @@ location_on_vehicle:
   - etrier
   - flexible
 phase5_enrichment:
-  _source: ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + profauto.fr + textar.com
+  _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + hella.com + profauto.fr + textar.com + valeoservice.fr
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 85
+  _web_files_count: 89
+  _has_tech_data: true
   types_variants:
+  - type: 'Composite'
+    source_ref: corpus RAG web OEM
   - type: 'bi-matière'
     source_ref: corpus RAG web OEM
   - type: 'composite'
@@ -382,21 +385,22 @@ phase5_enrichment:
     source_ref: corpus RAG web OEM
   technical_notes:
     norme_ece_r90: 'ECE R90'
+    norme_sae_j2521: 'SAE J2521'
     val_0_035_mm: '0,035 mm'
     val_0_05_mm: '0,05 mm'
     val_0_050_mm: '0,050 mm'
     val_0_1_mm: '0,1 mm'
     val_0_10_mm: '0,10 mm'
     val_0_12_mm: '0,12 mm'
+    val_000_km: '000 km'
+    val_1_5_mm: '1,5 mm'
+    val_10__m: '10 µm'
     val_10__v: '10. V'
     val_100__: '100 %'
     val_100_a: '100 a'
     val_11_a: '11 a'
     val_110_nm: '110 Nm'
     val_115_nm: '115 Nm'
-    val_120_nm: '120 Nm'
-    val_2_a: '2 a'
-    val_20__: '20 %'
   materials:
   - materiau: 'ALUMINIUM'
     source_ref: corpus RAG web OEM
@@ -405,6 +409,8 @@ phase5_enrichment:
   - materiau: 'aluminium'
     source_ref: corpus RAG web OEM
   - materiau: 'carbone-céramique'
+    source_ref: corpus RAG web OEM
+  - materiau: 'céramique'
     source_ref: corpus RAG web OEM
   - materiau: 'fonte grise'
     source_ref: corpus RAG web OEM

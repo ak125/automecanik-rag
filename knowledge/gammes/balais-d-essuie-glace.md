@@ -299,14 +299,18 @@ location_on_vehicle:
   adjacent_parts:
   - pieces adjacentes du meme systeme
 phase5_enrichment:
-  _source: boschwiperblades.com + denso-am.eu
+  _source: boschwiperblades.com + denso-am.eu + valeoservice.fr
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 27
+  _web_files_count: 33
+  _has_tech_data: true
   types_variants:
+  - type: 'composite'
+    source_ref: corpus RAG web OEM
   - type: 'hall'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_100__: '100 %'
     val_25_a: '25 a'
     val_250_mm: '250 mm'
     val_350_mm: '350 mm'

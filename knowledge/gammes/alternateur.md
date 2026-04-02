@@ -207,22 +207,27 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: automotive.hutchinson.com + denso-am.eu + gpa26.com + profauto.fr + textar.com
+  _source: automotive.hutchinson.com + boschaftermarket.com + denso-am.eu + gpa26.com + profauto.fr + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 10
+  _web_files_count: 11
+  _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
     norme_iso_9981: 'ISO 9981'
     val_000_km: '000 km'
+    val_12_v: '12 V'
     val_135__c: '135 °C'
+    val_24_v: '24 V'
     val_4_a: '4 a'
+    val_45_a: '45 A'
     val_503_a: '503 a'
     val_59_a: '59 a'
     val_6_a: '6 a'
     val_70_a: '70 a'
+    val_90_a: '90 A'
     val_988_a: '988 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

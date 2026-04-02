@@ -203,14 +203,18 @@ installation:
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 phase5_enrichment:
-  _source: automotive.hutchinson.com
+  _source: automotive.hutchinson.com + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 1
+  _web_files_count: 3
+  _has_tech_data: true
   technical_notes:
     norme_iso_9981: 'ISO 9981'
     val_000_km: '000 km'
+    val_1_5_bars: '1,5 bars'
     val_135__c: '135 °C'
+    val_3_bars: '3 bars'
+    val_360_v: '360 V'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

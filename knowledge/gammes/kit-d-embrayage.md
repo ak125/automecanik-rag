@@ -212,10 +212,11 @@ installation:
   - cle dynamometrique
   prerequisite: Depose complete de la boite de vitesses
 phase5_enrichment:
-  _source: ate-freinage.fr + automotive.hutchinson.com + bremboparts.com + textar.com
+  _source: ate-freinage.fr + automotive.hutchinson.com + bremboparts.com + hella.com + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 10
+  _web_files_count: 11
+  _has_tech_data: true
   types_variants:
   - type: 'hydraulique'
     source_ref: corpus RAG web OEM

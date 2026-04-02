@@ -219,12 +219,17 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: delphiautoparts.com + textar.com
+  _source: delphiautoparts.com + hella.com + textar.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 14
+  _web_files_count: 15
+  _has_tech_data: true
   types_variants:
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
   - type: 'composite'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
     source_ref: corpus RAG web OEM
   - type: 'perforé'
     source_ref: corpus RAG web OEM
@@ -232,6 +237,7 @@ phase5_enrichment:
     source_ref: corpus RAG web OEM
   technical_notes:
     norme_ece_r90: 'ECE R90'
+    val_0_1_km: '0,1 km'
     val_100_a: '100 a'
     val_21_a: '21 a'
     val_347_a: '347 a'

@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -197,21 +197,14 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld
+  _source: hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  types_variants:
-  - type: TPMS indirect
-    description: Utilise capteurs ABS, detecte par variation circonference roue, declenchement ~30% perte pression
-    era: base
-  - type: TPMS direct
-    description: Capteur dedie par roue, mesure pression + temperature, radio 433 MHz, batterie 5-10 ans
-    era: standard depuis 2014
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    frequence_radio: '433 MHz'
-    duree_vie_batterie: '5-10 ans (non remplacable = remplacement capteur)'
-    seuil_indirect: '~30% perte pression'
-    obligation_europe: 'vehicules neufs depuis novembre 2014'
+    val_10_a: '10 a'
+    val_30__: '30 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

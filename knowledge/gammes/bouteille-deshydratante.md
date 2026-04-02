@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -213,12 +213,11 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: HELLA TechWorld
+  _source: denso-am.eu
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  technical_notes:
-    remplacement: 'obligatoire a chaque ouverture du circuit (materiau hygroscopique)'
-    entretien_biennal: 'remplacement tous les 2 ans avec echange refrigerant'
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: false
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

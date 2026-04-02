@@ -216,12 +216,45 @@ installation:
   - arrache-rotule
   prerequisite: Pont elevateur recommande, vehicule decharge
 phase5_enrichment:
-  _source: ate-freinage.fr + bremboparts.com
+  _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 2
+  _web_files_count: 3
+  _has_tech_data: true
   types_variants:
+  - type: 'Composite'
+    source_ref: corpus RAG web OEM
   - type: 'bi-matière'
+    source_ref: corpus RAG web OEM
+  - type: 'composite'
+    source_ref: corpus RAG web OEM
+  - type: 'céramique'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    norme_ece_r90: 'ECE R90'
+    norme_sae_j2521: 'SAE J2521'
+    val_000_km: '000 km'
+    val_1_5_mm: '1,5 mm'
+    val_10__m: '10 µm'
+    val_100__: '100 %'
+    val_100_a: '100 a'
+    val_30__m: '30 µm'
+    val_45__: '45 %'
+    val_50000_km: '50000 km'
+    val_700__c: '700 °C'
+    val_80__: '80 %'
+    val_85__: '85 %'
+    val_97__: '97 %'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'céramique'
+    source_ref: corpus RAG web OEM
+  - materiau: 'fonte grise'
+    source_ref: corpus RAG web OEM
+  - materiau: 'graphite'
     source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil

@@ -349,10 +349,11 @@ installation:
   - chiffon
   prerequisite: Moteur froid pour filtre a huile
 phase5_enrichment:
-  _source: fram.com + gpa26.com + mann-filter.com + wixfilters.com
+  _source: fram.com + gpa26.com + mann-filter.com + sofima-aftermarket.com + wixfilters.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 20
+  _web_files_count: 23
+  _has_tech_data: true
   types_variants:
   - type: 'plein'
     source_ref: corpus RAG web OEM
@@ -360,12 +361,15 @@ phase5_enrichment:
     val_20_micron: '20 micron'
     val_31_a: '31 a'
     val_4_a: '4 a'
+    val_4_microns: '4 microns'
     val_51_a: '51 a'
     val_59_a: '59 a'
     val_70_a: '70 a'
     val_87_a: '87 a'
     val_99__: '99 %'
   materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
   - materiau: 'silicone'
     source_ref: corpus RAG web OEM
 conseil_v5:

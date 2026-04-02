@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -187,22 +187,13 @@ installation:
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  types_variants:
-  - type: Pompe a piston radial monocylindre
-    description: Avec poussoir a galet, la plus courante (Bosch CP1/CP3/CP4)
-    era: standard common rail
-  - type: Pompe axiale / en serie
-    description: Un ou plusieurs elements de pompage
-    era: anciens systemes
+  _enriched_at: '2026-04-02'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    pression_service: '50-350 bars selon configuration'
-    pression_basse_normale: '~4,0 bars'
-    pression_demarrage: '~7,0 bars'
-    pression_residuelle_10min: '>= 3,0 bars'
-    pression_haute: '40-120 bars selon regime'
+    val_350_bars: '350 bars'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

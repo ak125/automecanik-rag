@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague5
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -215,26 +215,14 @@ installation:
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  types_variants:
-  - type: FAP sans additif
-    description: Regeneration par post-injection carburant (hausse temperature echappement)
-    era: standard VAG, BMW, etc.
-  - type: FAP avec additif cerine
-    description: Additif injecte dans le gasoil pour abaisser la temperature de combustion des suies (PSA)
-    era: PSA 2000-2015
+  _source: delphiautoparts.com + hella.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 5
+  _has_tech_data: true
   technical_notes:
-    temperature_regeneration: '550-650°C (sans additif), 450°C (avec cerine)'
-    contre-pression_max: 'diagnostic pression differentielle avant/apres FAP'
-    reserve_cerine: 'a recharger tous les 120 000 km environ (PSA)'
-    huile_compatible: 'low SAPS obligatoire (ACEA C2/C3) — huiles standard colmatent le FAP'
-  materials:
-  - composant: substrat
-    materiau: carbure de silicium SiC en nid d'abeille (canaux bouches en alternance)
-  - composant: enveloppe
-    materiau: acier inox + isolant ceramique
+    val_0_ohm: '0 ohm'
+    val_15_ohms: '15 ohms'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

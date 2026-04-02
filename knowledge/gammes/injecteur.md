@@ -215,14 +215,17 @@ installation:
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
 phase5_enrichment:
-  _source: delphiautoparts.com + wixfilters.com
+  _source: delphiautoparts.com + hella.com + wixfilters.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 12
+  _web_files_count: 13
+  _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_0_ohm: '0 ohm'
+    val_15_ohms: '15 ohms'
     val_19_a: '19 a'
     val_41_a: '41 a'
     val_5_a: '5 a'

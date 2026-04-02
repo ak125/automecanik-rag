@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague4
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -218,31 +218,19 @@ installation:
   - chiffon
   prerequisite: Moteur froid pour filtre a huile
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: boschaftermarket.com + hella.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-02'
+  _web_files_count: 2
+  _has_tech_data: true
   types_variants:
-  - type: Filtre a particules standard
-    description: Media synthetique plisse, retient poussieres, pollens, particules > 2 microns
-    era: standard de base
-  - type: Filtre a charbon actif
-    description: Couche charbon actif en plus du media particules — absorbe les gaz (NOx, O3, odeurs)
-    era: recommande ville/trafic
-  - type: Filtre anti-allergene (HEPA)
-    description: Media haute efficacite, retient particules > 0,3 microns (allergenes, bacteries)
-    era: premium/allergiques
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    intervalle: '15 000 a 20 000 km ou 1 fois par an (reduire si conduite urbaine intense)'
-    sens_montage: 'fleche de flux d'air indiquee sur le filtre — inverser reduit l'efficacite'
-    emplacement: 'derriere la boite a gants, sous le pare-brise ou compartiment moteur selon vehicule'
-    nettoyage_boitier: 'aspirer les debris du logement a chaque remplacement'
-  materials:
-  - composant: media standard
-    materiau: non-tisse synthetique (polypropylene ou polyester)
-  - composant: couche charbon actif
-    materiau: granules de charbon actif (coconut shell ou houille)
-  - composant: cadre
-    materiau: carton rigide ou plastique (maintient la forme dans le logement)
+    val_10__m: '10 μm'
+    val_100__: '100 %'
+    val_2_a: '2 a'
+    val_95__: '95 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

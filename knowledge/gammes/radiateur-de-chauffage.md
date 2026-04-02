@@ -217,6 +217,7 @@ phase5_enrichment:
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
   _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
     val_43_a: '43 a'
 conseil_v5:

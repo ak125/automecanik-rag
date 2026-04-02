@@ -204,12 +204,15 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: gpa26.com
+  _source: gpa26.com + hella.com
   _validation_status: oem_verified
   _enriched_at: '2026-04-02'
-  _web_files_count: 4
+  _web_files_count: 5
+  _has_tech_data: true
   technical_notes:
     val_23_a: '23 a'
+    val_3_bars: '3 bars'
+    val_360_v: '360 V'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
