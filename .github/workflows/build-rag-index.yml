@@ -99,10 +99,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: 🔨 Build and index knowledge
-        run: python scripts/build_index.py knowledge/
+        run: python scripts/reindex.py --path knowledge/ --weaviate-url $WEAVIATE_URL
         env:
           WEAVIATE_URL: ${{ secrets.WEAVIATE_URL }}
-          EMBEDDING_MODEL: all-MiniLM-L6-v2
 
       - name: 📊 Summary
         if: always()
