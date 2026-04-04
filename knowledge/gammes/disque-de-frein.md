@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-03'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -21,8 +21,8 @@ priority_signals:
   margin_tier: high
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-03'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 _sources:
   ece-r90:
@@ -361,62 +361,63 @@ location_on_vehicle:
   - etrier
   - flexible
 phase5_enrichment:
-  _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + hella.com + profauto.fr + textar.com + valeoservice.fr
+  _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + hella.com
+    + profauto.fr + textar.com + valeoservice.fr
   _validation_status: oem_verified
   _enriched_at: '2026-04-03'
   _web_files_count: 89
   _has_tech_data: true
   types_variants:
-  - type: 'Composite'
+  - type: Composite
     source_ref: corpus RAG web OEM
-  - type: 'bi-matière'
+  - type: bi-matière
     source_ref: corpus RAG web OEM
-  - type: 'composite'
+  - type: composite
     source_ref: corpus RAG web OEM
-  - type: 'céramique'
+  - type: céramique
     source_ref: corpus RAG web OEM
-  - type: 'perforé'
+  - type: perforé
     source_ref: corpus RAG web OEM
-  - type: 'plein'
+  - type: plein
     source_ref: corpus RAG web OEM
-  - type: 'rainuré'
+  - type: rainuré
     source_ref: corpus RAG web OEM
-  - type: 'ventilé'
+  - type: ventilé
     source_ref: corpus RAG web OEM
   technical_notes:
-    norme_ece_r90: 'ECE R90'
-    norme_sae_j2521: 'SAE J2521'
-    val_0_035_mm: '0,035 mm'
-    val_0_05_mm: '0,05 mm'
-    val_0_050_mm: '0,050 mm'
-    val_0_1_mm: '0,1 mm'
-    val_0_10_mm: '0,10 mm'
-    val_0_12_mm: '0,12 mm'
-    val_000_km: '000 km'
-    val_1_5_mm: '1,5 mm'
-    val_10__m: '10 µm'
-    val_10__v: '10. V'
-    val_100__: '100 %'
-    val_100_a: '100 a'
-    val_11_a: '11 a'
-    val_110_nm: '110 Nm'
-    val_115_nm: '115 Nm'
+    norme_ece_r90: ECE R90
+    norme_sae_j2521: SAE J2521
+    val_0_035_mm: 0,035 mm
+    val_0_05_mm: 0,05 mm
+    val_0_050_mm: 0,050 mm
+    val_0_1_mm: 0,1 mm
+    val_0_10_mm: 0,10 mm
+    val_0_12_mm: 0,12 mm
+    val_000_km: 000 km
+    val_1_5_mm: 1,5 mm
+    val_10__m: 10 µm
+    val_10__v: 10. V
+    val_100__: 100 %
+    val_100_a: 100 a
+    val_11_a: 11 a
+    val_110_nm: 110 Nm
+    val_115_nm: 115 Nm
   materials:
-  - materiau: 'ALUMINIUM'
+  - materiau: ALUMINIUM
     source_ref: corpus RAG web OEM
-  - materiau: 'acier inox'
+  - materiau: acier inox
     source_ref: corpus RAG web OEM
-  - materiau: 'aluminium'
+  - materiau: aluminium
     source_ref: corpus RAG web OEM
-  - materiau: 'carbone-céramique'
+  - materiau: carbone-céramique
     source_ref: corpus RAG web OEM
-  - materiau: 'céramique'
+  - materiau: céramique
     source_ref: corpus RAG web OEM
-  - materiau: 'fonte grise'
+  - materiau: fonte grise
     source_ref: corpus RAG web OEM
-  - materiau: 'graphite'
+  - materiau: graphite
     source_ref: corpus RAG web OEM
-  - materiau: 'silicone'
+  - materiau: silicone
     source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
@@ -1013,96 +1014,58 @@ Le remplacement est possible pour un bricoleur equipe, mais le freinage est un e
 - **Pièces** : Graisse haute température
 - **Urgence** : Basse
 
-## Questions complémentaires pour affiner le diagnostic
-
-1. Le bruit apparaît-il à froid ou à chaud ?
-2. Le bruit est-il présent sur les 4 roues ou localisé ?
-3. Y a-t-il une vibration dans le volant ?
-4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
-5. Avez-vous un témoin d'usure allumé au tableau de bord ?
-
 
 ## Conseils supplementaires
 
-<!-- materialized-from-db web/7bab37f4daa6 2026-03-28 -->
-### Plaquettes directionnelles - Entretien - Comment identifier des plaquettes
+<!-- materialized-from-db web/16bf40cb18f3 2026-03-28 -->
+### Causes de surchauffe du disque de frein et conséquences - Comment éviter une
 
-## Comment identifier des plaquettes directionnelles
+## Comment éviter une surchauffe des disques de frein ?
 
-![Chanfreins sur la surface de friction](_raw/web-images/84879f3a19b410eb.jpg)
+Pour éviter une surchauffe des freins, il est crucial d’adopter un style de conduite correct et d’entretenir régulièrement le véhicule. Il faut éviter de freiner de manière brusque et prolongée pour réduire la charge sur le système de freinage, notamment en descente, en utilisant le frein moteur pour mieux maîtriser la décélération. Le maintien de la distance correcte permet d’exercer un f reinage graduel, en réduisant les contraintes thermiques sur les disques et en améliorant la sécurité au volant. Un autre aspect important réside dans l’ alternance du freinage avec des moments de relâchement de la pédale pour favoriser le refroidissement du disque et éviter qu’une accumulation de chaleur se produise. Des contrôles réguliers sont essentiels pour garantir l’efficacité du système de freinage. La vérification de l’usure des plaquettes et des disques, le remplacement du liquide de frein par des produits hautes performances et le contrôle du bon fonctionnement des étriers permettent de prévenir les problèmes de surchauffe et d’améliorer les performances du véhicule. De plus, le choix de composants d’excellente qualité, comme des disques de frein ventilés, des plaquettes et des liquides de frein hautes performances dotés d’un point d’ébullition élevé, favorise le maintien de l’efficacité du système et la réduction des risques de dysfonctionnement. Le respect de ces étapes améliorera la sécurité au volant, optimisera les performances du système de freinage et prolongera sa durée de vie.
 
-Flèches sur la cale antibruit
+<!-- materialized-from-db web/b6d84e5ac4e8 2026-03-28 -->
+### Comment éviter les problèmes liés aux disques de frein - section-1
 
-les flèches indiquent le sens de rotation du disque ; elles doivent donc être prises en compte pour le montage des plaquettes à l’intérieur du corps de l’étrier. Veiller à ce que la pointe de la flèche soit orientée dans le sens de rotation des roues lorsque le véhicule est en mouvement.
+# Comment éviter les problèmes liés aux disques de frein
 
-![Flèches sur la cale antibruit](_raw/web-images/7f587d3fa344ba08.jpg)
+- Comment éviter les problèmes liés aux disques de frein Skip Navigation Sélectionner la langue COMMENT ÉVITER LES PROBLÈMES LIÉS AUX DISQUES DE FREIN Pourquoi certains conducteurs ressentent-ils une vibration dans le volant ou la pédale de frein lors du freinage ? Pourquoi les disques de frein deviennent-ils bleus ou se fissurent-ils ? LA PHYSIQUE DU FREINAGE Tout d'abord, un peu de théorie. Lors du freinage, les plaquettes de frein sont pressées contre le disque de frein et provoquent un frottement. Dans ce cas, le disque de frein s'échauffe car l'énergie cinétique créée lors du freinage est convertie en chaleur. Une autre fonction du disque de frein est de dissiper la chaleur générée lors du freinage. Le matériau de friction de la plaquette contient des abrasifs qui interagissent avec la surface du disque - une aspérité s'accroche à une autre. Un frottement adhésif apparaît également, dans lequel une surface a tendance à adhérer à une autre. Il est important de garder à l'esprit ces deux phénomènes lors du freinage. Types de frottement au freinage 1. SURCHAUFFE DES DISQUES DE FREIN La première cause d'usure des disques de frein est la surchauffe. La surchauffe est destructive. La structure en fonte d'un disque de frein standard commence à se modifier lorsque la température critique d'environ 650°C est atteinte. Cette température est facilement dépassée si le conducteur ne laisse pas refroidir les disques après des freinages brusques répétés à grande vitesse. De plus, la surchauffe du disque de frein peut être le résultat d'une friction excessive due à une mauvaise mise en place des nouvelles plaquettes. Un disque de frein surchauffé La quantité d'énergie libérée lors d'un freinage à une vitesse de 90 km/h est suffisante pour faire bouillir deux litres d'eau en trois secondes. Dans le cas d'un camion, cette énergie est suffisante pour faire bouillir 53 litres d'eau en 4 secondes. En cas de freinage intense, la température des plaquettes et des disques peut atteindre 500-550°C. Une augmentation supplémentaire de la température entraîne une diminution de l'efficacité du freinage. Si la température atteint le point critique d'environ 650°C, la surface du disque change sa structure cristalline et la structure en fonte se transforme en une phase beaucoup plus dure appelée cémentite. Dans le même temps, dans les couches internes du matériau où la surchauffe s'est produite, la fonte conserve une structure plus molle. La combinaison de fonte molle et de cémentite dure crée un effet de croûte de glace. La cémentite a un coefficient de friction inférieur à celui de la fonte, de sorte que le bloc pressé contre elle glisse par rapport à une autre partie de la surface du disque. Il en résulte un freinage irrégulier, qui se ressent clairement sur la pédale. Dans ce cas, le faux-rond du disque ne dépassera pas toujours les valeurs critiques, qui ne sont pas supérieures à 0,1 mm le long de la périphérie extérieure du disque. La structure d'un disque normal, constitué de fonte grise, et la structure modifiée de la cémentite, diffèrent sensiblement lorsqu'on les observe au microscope. Les cristaux de cémentite à la surface ressemblent à des ulcères sur la surface du disque de frein. Les premiers signes visuels d'une surchauffe locale peuvent être des taches bleues bien visibles sur la surface du disque. TACHES BLEUES SUR LA SURFACE DU DISQUE DE FREIN L'intensification de la surchauffe extrême entraîne une propagation supplémentaire de la structure cristalline de la cémentite sur la surface du disque de frein, ce qui provoque une modification de sa géométrie. Le disque s'enfonce et le conducteur ressent le faux-rond. Fissures sur la surface de fonctionnement du disque de frein La longueur des fissures ne doit pas être supérieure à 25-30 millimètres. Plus la fissure est longue, plus elle est profonde, ce qui affecte également la géométrie du disque et la probabilité de coulure. La surchauffe du disque, qui peut ne pas être visuellement perceptible, peut être indirectement déterminée par l'effritement des bords blancs de la plaquette. Solution Suivez les règles de rodage des freins - pendant les 300 premiers kilomètres, il est important de freiner modérément. Il faut éviter de freiner fortement pendant la phase de rodage, sinon les disques n'auront pas le temps de refroidir et pourraient atteindre une température critique à laquelle le risque de surchauffe augmente considérablement. Maintenez les guides d'étrier propres. S'ils sont acides ou rouillés, l'étrier risque de ne pas s'ouvrir et les plaquettes risquent de ne pas s'éloigner de la surface du disque. Dans ce cas, la friction sera constante et le disque surchauffera. 2. DISQUES USÉS Très souvent, le disque surchauffe ou se fissure parce qu'il est usé, et son remplacement s'impose depuis longtemps. ÉPAISSEUR MINIMALE DU DISQUE DE FREIN De nombreuses personnes pensent que le disque de frein doit être remplacé lorsque son épaisseur a atteint la valeur minimale, indépendamment de l'épaisseur des plaquettes de frein. Un autre point de vue permet l'utilisation d'un disque de frein avec une épaisseur minimale en conjonction avec de nouvelles plaquettes de frein. Dès qu'elles sont usées, vous pouvez mettre de nouveaux disques et de nouvelles plaquettes. Ceci est incorrect et n'est pas sûr. Ceux qui changent le disque lorsque l'épaisseur minimale est atteinte font ce qu'il faut. L'épaisseur minimale recommandée pour les disques de frein est basée sur la physique. Si l'épaisseur est insuffisante, le disque ne peut pas dissiper la chaleur générée lors du freinage. Il ne peut pas non plus conserver la résistance requise. Les températures sont nettement supérieures à celles autorisées et le risque de surchauffe, voire de destruction physique, est élevé. De plus, un disque de frein usé a plus de chances d'être endommagé. Des plaquettes de frein neuves ne peuvent pas améliorer cette situation. La durée de vie d'un disque de frein usé est inférieure à celle de plaquettes de frein neuves. Si l'épaisseur du disque est conforme aux spécifications, mais proche de la valeur minimale admissible, il doit être remplacé lors de l'installation de plaquettes de frein neuves. Disque de frein fortement usé avec des rainures en surface 3. SALETÉ ENTRE LE MOYEU ET LE DISQUE DE FREIN Le troisième problème, qui est souvent oublié, est la contamination de la surface du moyeu et la surface intérieure du disque de frein. Une couche de rouille n'est peut-être pas évidente, mais il suffit de 2-3 grains de sable sur le moyeu pour qu'il y ait déjà 0,1-0,15 millimètre au niveau du rayon extérieur, ce qui entraîne un faux-rond notable. S'il y a de la saleté sur le moyeu, il faut soit le nettoyer, soit le changer. Contamination de la surface du disque Solution Lors du remplacement d'un disque de frein, il est important de bien nettoyer la surface du moyeu. Un petit grain de 0,05 mm suffit pour commencer à ressentir des vibrations sur le volant. Dans un système de freinage à disque, le jeu moyen entre les surfaces de la plaquette et du disque est d'environ 0,1 mm. Un grain de 0,05 mm sur le moyeu donne 0,1 mm sur la périphérie et entraîne un contact entre la plaquette et le disque pendant la conduite. Cela peut entraîner un bruit lors du freinage. 4. VARIATION DE L'ÉPAISSEUR DU DISQUE DE FREIN La quatrième raison de l'usure des disques de frein est la variation de l'épaisseur du disque. La raison en est le transfert inégal du matériau de friction de la plaquette sur la surface du disque. Cela se produit souvent lorsque les instructions de rodage des freins ne sont pas respectées. Un disque de frein mal aligné peut également provoquer une variation de l'épaisseur du disque (DTV). Pour comprendre que l'épaisseur du disque de frein est irrégulière, il est nécessaire de la mesurer avec un micromètre dans 8 zones autour de la circonférence du disque avec un intervalle de 45 degrés à chaque point. L'extérieur, le milieu et l'intérieur du disque doivent être mesurés. Cette méthode de mesure du disque de frein permet de déterminer le DTV du frein sur toute la surface de travail. Mesurer le disque avec un micromètre en 8 zones Parmi toutes les valeurs obtenues, le minimum et le maximum sont sélectionnés, après quoi la différence entre eux est calculée. Considérons l'écart des valeurs entre 0,025-0,035 mm. Cela suffit pour mesurer l'épaisseur du nouveau disque en trois points, puis il faut la vérifier par rapport au paramètre spécifié dans l'instruction d'installation du disque. Les informations sur l'épaisseur minimale maximale autorisée doivent être trouvées dans les recommandations du constructeur automobile ou sur le bord du disque lui-même. Regardez cette vidéo pour apprendre comment mesurer l'épaisseur d'un rotor de frein. 5. INSTALLATION INCORRECTE DU DISQUE DE FREIN La sortie du disque de frein peut être causée par une assise oblique par rapport au moyeu, qui peut à son tour être le résultat d'une contamination de la surface d'assise ou d'une déformation. Le jeu des roulements de roue ou le désalignement de l'étrier constituent une autre cause de désalignement. La déformation de la surface de contact avec le moyeu est causée par un serrage excessif ou insuffisant des boulons ou écrous de roue, ainsi que par le non-respect du couple et de la séquence de serrage recommandés par le fabricant. D'autres causes sont le serrage excessif des boulons ou écrous de roue, les contraintes mécaniques dues au déplacement et le montage ou l'installation incorrecte de l'étrier et du disque. La conséquence peut être le bruit, les vibrations ou même la déconnexion de la surface de contact du moyeu. Solution Remplacez le disque par un disque croisé et serrez-le conformément aux recommandations du fabricant. Avant d'installer les disques, vous devez vérifier le montage et l'installation correcte du boîtier de l'étrier. 6. QUALITÉ DES DISQUES DE FREIN Les disques de frein de mauvaise qualité ne sont pas toujours reconnaissables à leur apparence. Les principales raisons sont la qualité et la composition du matériau, le non-respect de la technologie de production ou l'utilisation de technologies dépassées. Solution Évitez les pièces bon marché d'origine inconnue et choisissez plutôt des disques de frein de qualité provenant de fabricants réputés. Les disques de frein Ferodo sont produits en utilisant uniquement la meilleure métallurgie, des processus de moulage de la plus haute qualité, des niveaux de construction d'équipement d'origine et des mesures de contrôle de qualité strictes. Tous ces éléments sont testés et approuvés par les ingénieurs de Ferodo qui développent des solutions de freinage pour les fournisseurs de systèmes de freinage et les constructeurs automobiles. " aria-label="DÉCOUVREZ PLUS >">DÉCOUVREZ PLUS > SOUVENEZ-VOUS Changez les disques de frein dès qu'ils atteignent l'épaisseur minimale recommandée.
 
-![Flèches sur la cale antibruit](_raw/web-images/02ab1f39d5e43fb5.jpg)
+![Types of friction during braking](_raw/web-images/25f6e0e1bd961dc0.jpg)
 
-![Flèches sur la cale antibruit](_raw/web-images/a79826c0660cd590.jpg)
+- Choisissez des disques de frein de qualité, évitez les produits d'origine inconnue.
 
-Fente en forme de demi-lune sur la cale antibruit
+![An overheated brake disc](_raw/web-images/a849662c82c40654.png)
 
-positionnée sur le côté de la plaquette qui entre en contact en premier avec le disque.
+- Faites appel à un technicien qualifié pour vous assurer que le disque de frein est monté correctement.
 
-![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/ef9a097c7b7bfc76.jpg)
+![Cracks on the brake disc operating surface](_raw/web-images/febd5dcaee94135d.png)
 
-![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/8c0eca099285688f.jpg)
+- Lors du montage, demandez à un spécialiste d'entretenir l'étrier de frein.
 
-![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/e435fd05d685dbd6.jpg)
+- Après l'installation, veillez à bien roder les freins en freinant légèrement et souvent pendant les 300 premiers kilomètres.
 
-Lettres L/R
+![Brake Disc heavily worn with surface grooves](_raw/web-images/2141ec7ed3fd91fd.jpg)
 
-il peut arriver que les flèches soient remplacées par les lettres majuscules L « Left » (gauche) ou R « Right » (droite), qui indiquent le côté de la voiture où la plaquette doit être montée.
+Pour plus d'informations sur les défaillances des disques de frein, veuillez consulter le traceur de problèmes de disques de frein :
 
-![Lettres L/R](_raw/web-images/0fca047b7378efa6.jpg)
+![Disc surface contamination](_raw/web-images/8174504247b04f80.png)
 
-Guide pratique de montage
+Le contenu de cet article est uniquement destiné à des fins de divertissement, d'information et de promotion et ne doit pas être utilisé en lieu et place d'un conseil professionnel auprès d'un technicien certifié.
 
-- Il convient de toujours vérifier la présence de chanfreins, de fentes et de repères de montage.
+![Measure the disc with a mircometer in 8 zones](_raw/web-images/1b99a1a4b5cc07e9.png)
 
-- Nettoyer l'étrier, les guides et les surfaces de contact
+RECEVEZ LES DERNIÈRES ACTUALITÉS FERODO
 
-- Appliquer une graisse spécifique sur les points de contact entre la plaquette de frein et le support.
+Veuillez lire et accepter notre Déclaration de confidentialité avant de vous inscrire à la newsletter.
 
-- Vérifier que l'étrier et les ressorts de retenue glissent correctement.
+Suivez-nous
 
-- Après l’installation, exécuter une procédure de rodage pour stabiliser le contact entre la plaquette et le disque.
+<!-- materialized-from-db web/29ffbfb0075c 2026-03-28 -->
+### Comment éviter le blocage par... - Entretien - section-1
 
-Se conformer en tous points aux instructions d'installation de Brembo afin de garantir la sécurité, le confort et la durabilité du système de freinage.
+# Comment éviter le blocage par... - Entretien
 
-<!-- materialized-from-db web/e6b464572c29 2026-03-28 -->
-### Instructions pour remplacer... - Montage auto - section-1
-
-# Instructions pour remplacer... - Montage auto
-
-- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les cylindres des roues Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser le liquide de frein recommandé par le constructeur. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool dénaturé. 2. À cause de la nature technique du produit, les maîtres-cylindres de frein doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. 3. Stabiliser le véhicule sur les chevalets, en veillant à ce qu’il soit parfaitement stable avant de déposer les roues et puis le tambour de frein. 4. Avant de continuer le démontage, repérer la position des différents composants pour garantir un remontage correct. 5. Déposer les mâchoires des freins, le ressort de retenue du patin et les pièces du mécanisme de réglage automatique. 6. Dévisser le connecteur du tuyau de frein du cylindre, en veillant à ne pas endommager ni déformer le tuyau. 7. Il est recommandé de remplacer les cylindres des roues des deux côtés simultanément. 8. Vider complètement le liquide de frein. Procédure de remplacement 1. Si le cylindre est vissé sur une plaque de support, déposer les boulons de fixation et libérer le cylindre de son logement. Si le cylindre est fixé avec des plaques à enclencher, débrancher le câble du frein à main et la garniture anti-poussière en caoutchouc sur la plaque à enclencher. 2. Si le cylindre est soutenu par un circlip, déposer le circlip du cylindre et extraire le cylindre de la plaque avec ses joints. 3. Nettoyer soigneusement la plaque de support. Procédure de montage 1. Pour les c ylindres vissés à la plaque de support, insérer un nouveau joint, puis fixer le cylindre à la plaque de support en utilisant les boulons de fixation et les serrer au couple recommandé par le constructeur du véhicule. 2. Pour les cylindres de type coulissant , graisser les zones de coulissement de la plaque de support, en veillant à laisser toutes les autres pièces sans graisse. Placer le cylindre sur la plaque de support et fixer les plaques à enclencher, en s’assurant qu’elles sont correctement positionnées. Remettre en place la garniture anti-poussière en caoutchouc et rebrancher le câble du frein à main. 3 . Pour les cylindres fixés avec des bagues à enclenchement , monter le nouveau câble sur la plaque de support avec de nouveaux joints, puis installer correctement la bague. S’il n’est pas déjà monté, monter un nouveau système de purge, raccorder le flexible de frein, en veillant à ce que le filetage sur le cylindre et le connecteur du tuyau correspondent, puis serrer la vis selon les serrages de couple recommandé par le constructeur du véhicule. 4. Remonter le frein, en contrôlant attentivement l’état d’usure des mâchoires, il est conseillé d’installer de nouvelles mâchoires. 5. Vérifier que le tambour n’est pas marqué ou usé, le remplacer en cas de doute. Les tambours peuvent être usinés (écrémés) s’ils sont marqués, et la sur dimension maximale acceptée (après l’écrémage) sur un véhicule passagers ou utilitaire léger est de 1,5 mm. 6. Vérifier que toutes les pièces ont été montées correctement. 7. Régler et purger le système, contrôler la présence de fuites. 8. Remonter les roues, abaisser le véhicule au sol et serrer les vis des roues. 9. Effectuer un essai sur route. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’ altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est a daptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamentale pour la sécurité du véhicule sur lequel il est installé et il doit, donc, être installé par du personnel qualifié ayant reçu une formation adéquate ou possédant suffisamment d’expérience dans l’installation et dans l’utilisation prévue du Produit. L’installateur doit avoir à sa disposition l’ outillage adéquat à l’installation et posséder des connaissances et une expérience appropriées pour s’occuper de l’entretien du véhicule. Une installation inadéquate ou erronée, due au non-respect de ces instructions ou autres, rendra nulles les Limitations de garantie et pourrait rendre l’installateur responsable quant aux dommages physiques ou matériels éventuellement provoqués. Il est fondamental de remplacer les disques de frein pour chaque essieu , en les prélevant de leur emballage. À chaque remplacement des disques, remplacer aussi leurs plaquettes. Éviter le contact de graisse et autres lubrifiants avec les surfaces de freinage du disque et des plaquettes parce que cela risque de rendre le système de freinage inefficace . Brembo décline toute responsabilité en cas de dommage matériel ou physique provoqué à ou par une personne conduisant un véhicule sur lequel le produit aurait été installé de façon inappropriée. ATTENTION! Les pièces remplacées doivent être éliminées selon les dispositions prescrites par la loi. Il est important d’éviter de frapper violemment ou d’endommager le Produit et ses composants, parce que cela risquerait de réduire son efficacité et de provoquer des dysfonctionnements. Si nécessaire, remplacer les composants endommagés. Pour éviter tout dommage physique, nous conseillons de: Toujours porter des gants lors de l’opération de démontage et de remontage des composants présentant des arêtes coupantes.
-
-![Approfondissements](_raw/web-images/2d2507a39e7ef6eb.jpg)
-
-![Comment choisir le bon produit](_raw/web-images/554e6f769f52f78a.jpg)
-
-![Montage auto](_raw/web-images/d8bc5a5c2c667779.jpg)
-
-![Montage moto](_raw/web-images/8f8c2ca53665bfa9.jpg)
-
-![Entretien](_raw/web-images/e936dadf5dced240.jpg)
-
-- Éviter le contact direct de la peau avec le matériau de friction des plaquettes et mâchoires parce que cela risque de provoquer des abrasions.
-
-![Service après-vente](_raw/web-images/c8ff08f5cb503a6a.jpg)
-
-![Limites de garantie](_raw/web-images/3f780074f3f64f27.jpg)
-
-![Contacter le support Brembo](_raw/web-images/1e8d4f4c405ed310.webp)
-
-![WeChat](_raw/web-images/dec8ad591b7cebf6.jpg)
-
-<!-- materialized-from-db web/19c4896f8fc0 2026-03-28 -->
-### Instructions pour remplacer... - Montage auto - section-1
-
-# Instructions pour remplacer... - Montage auto
-
-- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les mâchoires de frein Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des mâchoires de frein. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Ces instructions de montage sont un guide générique sur les réparations, qui peuvent varier d’un système de freinage à l’autre. Les instructions spécifiques émises par le constructeur du véhicule ou du système de freinage doivent impérativement être respectées. Identifier soigneusement la référence correcte de la série de mâchoires pour le véhicule en question, en fonction aussi de l’année de production et du système de freinage. Les mâchoires doivent être remplacées pour l’ensemble de l’essieu. Procédure de remplacement Avant de remplacer les mâchoires de frein, nous vous conseillons de faire attention aux indications suivantes: 1. Veiller à ce que le véhicule ne puisse pas se déplacer pendant la réparation, le soulever et s’assurer de sa stabilité. ATTENTION! Pour garantir la sécurité, toujours utiliser des outils adaptés et fiables. 2. Démonter une roue à la fois, en gardant l’autre roue comme référence pour le montage . ATTENTION ! Ne pas agir sur la pédale de frein après avoir démonté le tambour. 3. Démonter les ressorts qui fixent les mâchoires au plateau . 4. Décrocher le câble du frein à main. ATTENTION! Contrôler que le câble n’est pas usé. Dans le cas contraire, le remplacer. 5. Déposer les mâchoires et démonter le petit cylindre. ​​​ 6. Nettoyer le plateau et le tambour en utilisant un chiffon imbibé de détergent (ne pas utiliser de détergents à base d’huile minérale). ATTENTION! Lors de la phase de nettoyage, ne pas soulever de poussières. Si elles sont inhalées, elles risquent de nuire à la santé. Pour travailler dans des milieux fermés, utiliser un masque. ATTENTION! Le liquide de frein contenu dans les petits cylindres peut provoquer des dommages, le manipuler avec soin, ne pas jeter le liquide dans l’environnement. Procédure de montage 1. Remonter le nouveau petit cylindre sur le plateau et visser le tuyau du liquide de frein. Reassemble the new cylinder on the back plate and screw on the brake fluid tube. 2. Seulement pour les KITS PRÉ-ASSEMBLÉS: Déposer le support inférieur. 3. Appliquer de la graisse à point de fusion élevé sur les pièces du plateau en contact avec les mâchoires. 4. ATTENTION! La graisse de lubrification de ne doit pas être appliquée sur le matériau de freinage ou sur la partie intérieure de travail du tambour, cela risquerait de compromettre le fonctionnement du système de freinage. 5. Accrocher le câble du frein à main et loger les mâchoires sur le plateau. 6. Fixer les mâchoires au plateau en utilisant les ressorts spécifiques. 6. Centrer les mâchoires dans leur logement en les replaçant comme à l’origine. ATTENTION! Ne pas manipuler les dispositifs de réglage automatique pour garantir leur fonctionnement correct. 7. Actionner légèrement le frein à main et vérifier le fonctionnement correct de tous les mécanismes et tringleries. Après quoi, tout remettre dans la position initiale. 8. Remonter le tambour et régler le dispositif de réglage automatique en agissant plusieurs fois sur la pédale de frein. Purger le circuit de freinage. IMPORTANT! Les pièces de rechange contenues dans cet emballage ne doivent pas être montées par l’automobiliste (Interdiction aux termes de la Loi 122/92), toujours s’adresser à des ateliers et des mécaniciens spécialisés. 9. Les mâchoires de frein doivent être remplacées pour l’ensemble de l’essieu. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins , la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Les plaquettes de frein s’usent et elles doivent, donc, être contrôlées à intervalles réguliers. Lorsque le matériau de friction atteint 2 mm d’épaisseur ou lorsque le témoin de l’indicateur d’usure s’allume, il faut impérativement remplacer les plaquettes . Les disques Brembo Kit EV et les plaquettes Brembo Kit EV doivent toujours être montés ensemble. Leur association avec d’autres produits compromet le bon fonctionnement du KIT. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est adaptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamenta
+- Skip to main content Skip to menu Skip to footer Partager sur Comment éviter le blocage par adhérence des plaquettes de frein : les conseils de Brembo Le confinement a changé le mode de vie de la plupart d'entre nous. Une partie importante de la population télétravaille et l'utilisation de la voiture a diminué car seuls les trajets essentiels sont autorisés. Les voitures restent donc longtemps sans rouler. Si vous n'avez pas de garage, votre voiture est exposée aux conditions météorologiques. Dans ces conditions, le véhicule peut développer des problèmes de freinage qui se manifestent pendant la conduite. La surface des disques de frein commence à rouiller et, pendant l'utilisation normale du véhicule, cette rouille est éliminée au freinage. Mais laisser longtemps son véhicule immobilisé peut entraîner l'expansion des zones affectées par la corrosion. La corrosion sur la surface des freins peut provoquer du bruit lors du freinage et, plus inquiétant encore, peut augmenter les distances d'arrêt en raison d'une réduction des performances du s
 
 [...]

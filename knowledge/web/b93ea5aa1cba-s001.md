@@ -1,0 +1,72 @@
+        ---
+        title: 'Démarreur - s001'
+        source_type: guide
+        category: knowledge
+        truth_level: L2
+        verification_status: unverified
+        slug_gamme: contacteur-demarreur
+        source_uri: https://fr.wikipedia.org/wiki/Démarreur
+        source_url: https://fr.wikipedia.org/wiki/Démarreur
+        source_domain: fr.wikipedia.org
+        created_at: '2026-04-03T14:59:44.737573+00:00'
+        updated_at: '2026-04-03T14:59:44.737573+00:00'
+        ---
+
+        # Démarreur
+
+        Cet article ne cite pas suffisamment ses sources ( septembre 2013 ).
+Si vous disposez d'ouvrages ou d'articles de référence ou si vous connaissez des sites web de qualité traitant du thème abordé ici, merci de compléter l'article en donnant les références utiles à sa vérifiabilité et en les liant à la section « Notes et références ».
+Cet article sur les transports doit être recyclé ( 13 janvier 2015 ).
+Un démarreur est un système destiné à activer un dispositif qui peut ensuite fonctionner de manière autonome [ 1 ] .
+L'exemple le plus courant est le démarreur électrique d'un moteur à combustion interne , tel que celui équipant les groupes électrogènes , les engins ferroviaires thermiques ainsi que les véhicules automobiles, non hybrides , les poids-lourds ou les engins de travaux publics [ 2 ] .
+Différents véhicules utilisent un démarreur :
+Dans les premières années du XX e siècle, on voit apparaître un certain nombre de systèmes de démarrage à ressort, à lanceur ou à air comprimé [ 5 ] .
+En 1912, plusieurs types de démarreurs étaient en concurrence, les voitures Adams, S.C.A.T. et Wolseley avaient des démarreurs à air comprimé, et Sunbeam introduisit un moteur de démarreur à air avec une approche similaire de celle employée sur les démarreurs électriques Delco et Scott-Crossley (avec une roue dentée sur une roue libre). Les voitures Star et Adler avaient des moteurs à ressort (parfois dénommés moteurs d'horlogerie), qui utilisaient l'énergie emmagasinée dans un ressort pour entraîner le moteur. Si la voiture n'avait pas démarré, il suffisait de rembobiner le ressort avec la manivelle pour faire un nouvel essai. Les démarreurs électriques, du fait de la faible puissance des batteries de l'époque, furent tout d'abord considérés comme des organes peu fiables.
+Vers 1910 l'inventeur Henry Leland crée le démarreur électrique [ 6 ] . Cependant, pendant longtemps, on démarre les moteurs de voitures à la manivelle, avec plus ou moins de succès et les moteurs d'avions en tournant l'hélice à la main, ou à l'aide d'une manivelle, et les motocyclettes au kick .
+Sur les automobiles, le démarreur électrique est souvent actionné par la clé de contact tournée en bout de course, alors que les motocyclettes font le plus souvent appel à un bouton au guidon (qui a remplacé le kick-starter ). Sur les véhicules ou les groupes électrogènes, le démarreur électrique est un moteur à courant continu à excitation série .
+Longtemps, le démarrage des voitures de course, privées de démarreur électrique s'effectua grâce à un appareil auxiliaire pneumatique ou électrique. Pour le démarrage des gros Diesels équipant les engins de terrassement, on utilise un petit moteur à explosion lancé à la main ou avec un moteur électrique . La mise en route s'opère ainsi sans trop de difficulté, quelle que soit la température ou l'humidité.
+Il existe différents types de démarreur :
+Les moteurs servant à propulser les avions sont, à l'origine, des moteurs à combustion interne. On retrouve donc l'ensemble des systèmes de démarrage utilisés pour l'automobile.
+Les réacteurs d'avion utilisent l'air comprimé par groupe de puissance auxiliaire pour démarrer [ 8 ] .
+Le démarrage des réacteurs de fusée est parfois assuré par un « démarreur à poudre » pour lancer les turbo-pompes et assurer l'allumage de la combustion [ 9 ] .
+
+## Démarreur à air comprimé ou à explosif
+
+Le taux de compression plus élevé de certains moteurs d'avion ou Diesel, qui est nécessaire pour les vols en altitude, ne permet pas l'utilisation de démarreur électrique, dont le couple n'est pas assez élevé, pour un poids raisonnable. Dans ce cas, on utilise un dispositif de démarrage formé soit d'un réservoir d' air comprimé , soit d'une chambre de détente d'une cartouche à gaz ou à explosif , qui permet de mettre en route le moteur par surpression dans la chambre d'un piston [ 10 ] .
+
+## Turbomoteur et réacteurs
+
+Le fonctionnement des turbomoteurs et réacteurs nécessite des vitesses de rotation élevées, associées à des hautes températures et à des pressions élevées. Un dispositif mécanique ou électrique placé directement sur l'axe ou dans la proximité immédiate de la chambre de combustion risquerait d'être exposé à des conditions extrêmes, nécessiterait des batteries de grande capacité et serait donc trop lourd pour une utilisation aéronautique. Pour éviter ce problème, les avions équipés de réacteurs sont démarrés à l'aide d'un groupe auxiliaire de puissance, qui peut être interne (sur les avions de ligne) ou externe (sur les avions militaires).
+Le groupe de puissance auxiliaire est une petite turbine qui permet de générer de l'air comprimé et de l'électricité pour démarrer le réacteur [ 8 ] . Lui-même est généralement démarré de manière électrique ; une batterie d'accumulateurs ou un câble électrique au sol fournissant l’énergie nécessaire [ a ] .
+Les moteurs marins sont caractérisés par leur couple important et leur grande puissance. Selon la taille du moteur, on peut utiliser un autre moteur tel qu'un moteur de camion qui sert de démarreur, ou alors des systèmes spécifiques [réf. nécessaire] .
+
+## Démarrage à l'explosif
+
+Pour certains moteurs Diesel géants, la méthode la plus simple et la plus économique est d'utiliser un bâton de dynamite comme démarreur. On place un bâton de dynamite dans le cylindre dont le piston se trouve positionné légèrement après le point mort haut (volume minimal de la chambre). En explosant, la dynamite crée une surpression dans ce piston, ce qui lance le moteur [réf. nécessaire] .
+Les éoliennes nécessitent un vent de 15 km/h pour pouvoir démarrer et doivent s’arrêter dès que celui-ci dépasse 90 km/h [ 11 ] .
+Les éoliennes géantes qui servent à produire de l'électricité sont des dispositifs fragiles et complexes [réf. nécessaire] . Un moteur électrique, voire la génératrice elle-même, est souvent utilisé comme démarreur et comme système d'entretien du mouvement à basse vitesse, l'hélice géante n'étant pas capable de commencer sa rotation par elle-même sous l'effet du vent sans subir de torsion qui risque de l'abimer [réf. nécessaire] .
+
+## Turbines et générateurs à gaz
+
+Les turbines et génératrices à gaz qui servent à produire de l'électricité sont démarrées à l'aide de moteurs électriques fixes afin d'enclencher le processus de compression de l'air indispensable avant de commencer à injecter du carburant [ 12 ] .
+
+## Autres utilisation du mot démarreur
+
+Dans le domaine de l'électricité de puissance, le démarreur désigne un circuit électrique servant à limiter l'intensité du courant nécessaire à la mise en rotation du moteur.
+Dans certains fours ou hauts-fourneaux, on peut utiliser une charge de démarrage , improprement appelée démarreur , pour faire monter, en température, le four ou le haut-fourneau [ 13 ] .
+- ↑ Voir Fonctionnement APU
+- ↑ Informations lexicographiques et étymologiques de « démarreur » dans le Trésor de la langue française informatisé , sur le site du Centre national de ressources textuelles et lexicales
+- ↑ Le système de démarrage d'une voiture , sur le site autobrico.com, consulté le 7 janvier 2015
+- ↑ Voir : Démarreur Letombe. , aerophile.over-blog.com, consulté le 14 juillet 2019
+- ↑ Le système de démarrage d'une voiture , sur autobrico.com, consulté le 27 juillet 2016.
+- ↑ Rankin Kennedy, The book of the motor car , London, 1913 , 254 p. ( lire en ligne ) , p. 1 à 25
+- ↑ Le démarreur électrique a 100 ans , carter-cash.com du 1 er octobre 2012 , consulté le 27 juillet 2019
+- ↑ Le moteur Vulcain , capcomespace.net, consulté le 23 novembre 2019
+- ↑ a et b Voir : Principe de fonctionnement , sur lavionnaire.fr, consulté le 27 juillet 2016.
+- ↑ Le moteur Vucain , sur capcomespace.net, consulté le 26 juillet 2016.
+- ↑ (en) Voir "Gun shell starts army plane motor" , Popular Science 1935
+- ↑ Le fonctionnement d'une éolienne , edf.fr, consulté le 11 juillet 2021
+- ↑ Procédé de démarrage d'une turbine a gaz , European Patent Office , consulté le 14 juillet 2019
+- ↑ broyeurs à boulets démarreurs , wicina.eu, consulté le 14 juillet 2019
+- Portail de l’automobile
+- Portail du génie mécanique
