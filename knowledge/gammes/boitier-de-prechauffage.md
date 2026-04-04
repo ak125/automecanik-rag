@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6-final
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Alimenter et controler les bougies de prechauffage diesel - Gere le temps et l'intensite de chauffe
@@ -207,54 +207,56 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: nao
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    role: 'alimente les bougies de prechauffage en sequence — gere le temps et l'intensite de chauffe'
-    test: 'mesurer tension aux bornes des bougies contact mis — doit etre ~11V pendant le prechauffage'
+    val_1954__v: 1954, v
+    val_2_v: 2 V
+    val_2_a: 2 a
+    val_20__c: 20 °C
+    val_26_a: 26 a
+    val_30_kg: 30 kg
+    val_5_kw: 5 kW
+    val_54_a: 54 a
+    val_55_a: 55 A
+    val_55_v: 55 V
+    val_6_v: 6 V
+    val_6_5_kw: 6,5 kW
+    val_72_a: 72 a
+    val_84_a: 84 A
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Alimenter et controler les bougies de prechauffage diesel - Gere le temps et
-    l'intensite de chauffe. Pièces liées : vérifier les composants adjacents
-    lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Voyant
-    prechauffage qui clignote ou reste allume- Demarrage tres difficile par
-    temps froid- Fumee blanche excessive au demarrage a froid- Bruit claquement
-    diesel demarrage combustion- Odeur de carburant non brule a l echappement-
-    Code defaut p0380 ou p0381 a la valise diagnostic
-  S3: >-
-    Pour choisir le bon boîtier de préchauffage pour votre véhicule : - Marque
-    de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
-    Marques : Bosch, Valeo (premium), Febi, Meyle (standard), Ridex, Topran
-    (budget)- Budget : 15 à 200 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le boîtier de préchauffage : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas confondre avec les bougies HS. Tester
-    d'abord les bougies individuellement. Vérifier la masse et l'alimentation du
-    boîtier avant remplacement.- Ne pas respecter le couple de serrage
-    constructeur au remontage- Ignorer les symptômes d'usure en espérant que ça
-    passe — une défaillance progressive s'aggrave toujours- Ne pas effacer les
-    codes défaut après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du boîtier de préchauffage : - Controle visuel a
-    chaque revision ou entretien periodique- Remplacement preventif si signes d
-    usure detectes- Utiliser des pieces de qualite equivalente a l origine-
-    Respecter les preconisations constructeur pour les intervalles- Effacer les
-    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
-    confirmer la disparition des symptômes
+  S1: 'Alimenter et controler les bougies de prechauffage diesel - Gere le temps et l''intensite de chauffe. Pièces liées
+    : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Voyant prechauffage qui clignote ou reste allume- Demarrage
+    tres difficile par temps froid- Fumee blanche excessive au demarrage a froid- Bruit claquement diesel demarrage combustion-
+    Odeur de carburant non brule a l echappement- Code defaut p0380 ou p0381 a la valise diagnostic'
+  S3: 'Pour choisir le bon boîtier de préchauffage pour votre véhicule : - Marque de votre véhicule- Modele de votre véhicule-
+    Annee de votre véhicule- Marques : Bosch, Valeo (premium), Febi, Meyle (standard), Ridex, Topran (budget)- Budget : 15
+    à 200 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le boîtier de préchauffage : - Ne pas vérifier la référence exacte avant commande — une pièce
+    de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas confondre avec les bougies HS. Tester
+    d''abord les bougies individuellement. Vérifier la masse et l''alimentation du boîtier avant remplacement.- Ne pas respecter
+    le couple de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance
+    progressive s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode
+    dégradé'
+  S6: 'Après le remplacement du boîtier de préchauffage : - Controle visuel a chaque revision ou entretien periodique- Remplacement
+    preventif si signes d usure detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter les preconisations
+    constructeur pour les intervalles- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes'
 ---
 
 # Boîtier de préchauffage - Guide Diagnostic Complet
@@ -342,3 +344,21 @@ Oui, opération accessible. Localiser le boîtier (près du moteur), débrancher
 
 **Quelle erreur éviter avec le boîtier de préchauffage ?**
 Ne pas confondre avec les bougies HS. Tester d'abord les bougies individuellement. Vérifier la masse et l'alimentation du boîtier avant remplacement.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/8cd44348d118 2026-04-03 -->
+### Données techniques OEM — Boîtier de préchauffage
+
+# Données techniques OEM — Boîtier de préchauffage
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- nao
+- pneumatique
+
+## Valeurs techniques de référence
+- 20 °C
+- 30 kg

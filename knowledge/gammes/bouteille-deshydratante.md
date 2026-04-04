@@ -213,11 +213,23 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: denso-am.eu
+  _source: denso-am.eu + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
-  _has_tech_data: false
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
+  _has_tech_data: true
+  technical_notes:
+    val_10__: '10 %'
+    val_134_a: '134 a'
+    val_15__: '15 %'
+    val_16__: '16 %'
+    val_20__: '20 %'
+    val_31__: '31 %'
+    val_35__: '35 %'
+    val_5__: '5 %'
+    val_50__: '50 %'
+    val_54__: '54 %'
+    val_80__: '80 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

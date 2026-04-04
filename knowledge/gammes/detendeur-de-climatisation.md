@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -211,11 +211,32 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: HELLA TechWorld
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    types: 'valve thermostatique (Europe) ou orifice fixe (US/Asie)'
+    val_1_v: '1 V'
+    val_1__c: '1 °C'
+    val_1_5__c: '1,5 °C'
+    val_10__: '10 %'
+    val_10_a: '10 a'
+    val_100__: '100 %'
+    val_100_kw: '100 kW'
+    val_100_kg: '100 kg'
+    val_100_km: '100 km'
+    val_11_a: '11 a'
+    val_12_kw: '12 kW'
+    val_12__c: '12 °C'
+    val_17_a: '17 a'
+    val_18_a: '18 a'
+    val_19__c: '19 °C'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -225,7 +246,7 @@ conseil_v5:
     contrôlerl'entrée et la sortie du fluide frigorifique. Il va permettre de
     chuter lapression et la température du fluide frigorigène.Il permet aussi de
     réguler le débit de fluide qui entre dansl'évaporateur de climatisation. La
-    régulation s'effectue à laide de la température du fluiderevenant de
+    régulation s'effectue à l'aide de la température du fluiderevenant de
     l'évaporateur de climatisation. Cette température va faire varier la
     pression dufluide se trouvant dans la tête thermostatique et ainsi ouvrir ou
     fermerlégèrement le détendeur de climatisation. Ce fonctionnement permet

@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Permettre la rotation libre de la roue sur son axe - Supporte les charges radiales et axiales
@@ -215,7 +215,7 @@ installation:
 phase5_enrichment:
   _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + hella.com + textar.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 37
   _has_tech_data: true
   types_variants:
@@ -451,12 +451,84 @@ Dépend du type. Roulement-moyeu intégré : facile. Roulement à presser : néc
 
 **Quelle erreur éviter avec le roulement de roue ?**
 Ne pas serrer l'écrou de moyeu au couple exact (trop serré = destruction). Ne pas réutiliser l'écrou si à usage unique.
+## Variantes et types
+- bi-matière
+- composite
+- hydraulique
+- électrique
+
+## Normes applicables
+- ECE R90
+
+## Matériaux
+- EPDM
+- HNBR
+- acier inoxydable
+- fonte grise
+
+## Valeurs techniques de référence
+- 0,035 mm
+- 0,05 mm
+- 0,050 mm
+- 0,1 mm
+- 0,10 mm
+- 0,12 mm
+- 0,15 mm
+- 10 Nm
+- 100 Nm
+- 115 Nm
+- 120 Nm
 
 
 ## References supplementaires
 
+<!-- materialized-from-db manual/482d4664ca09 2026-04-03 -->
+### Données techniques OEM — Roulement de roue
+
+# Données techniques OEM — Roulement de roue
+Source : aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + hella.com + textar.com (37 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Composite
+- Hall
+- bi-matière
+- composite
+- céramique
+- hydraulique
+- inductif
+- plein
+- électrique
+
+## Normes applicables
+- ECE R90
+- SAE J2521
+
+## Matériaux
+- EPDM
+- HNBR
+- acier inoxydable
+- aluminium
+- céramique
+- fonte grise
+- graphite
+
+## Valeurs techniques de référence
+- 0,001 mm
+- 0,015 mm
+- 0,03 mm
+- 0,035 mm
+- 0,05 mm
+- 0,050 mm
+- 0,070 mm
+- 0,1 mm
+- 0,10 mm
+- 0,12 mm
+- 0,15 mm
+- 1,5 mm
+
 <!-- materialized-from-db manual/850f2d8bdc0c 2026-04-02 -->
-### Données techniques OEM — Montage maitrise
+### Données techniques OEM — Roulement de roue
 
 # Données techniques OEM — Montage maitrise
 Source : ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + textar.com (33 fichiers OEM analysés)

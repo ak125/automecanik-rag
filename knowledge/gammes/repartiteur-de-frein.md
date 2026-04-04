@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Repartir la pression de freinage entre les essieux
@@ -217,7 +217,7 @@ installation:
 phase5_enrichment:
   _source: ate-freinage.fr
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 1
   _has_tech_data: true
   types_variants:
@@ -407,12 +407,40 @@ Diagnostiquer 'répartiteur HS' sur véhicule ABS alors que la répartition est 
 
 **Comment faire un diagnostic rapide ?**
 Véhicule sans ABS + arrière qui bloque → répartiteur/correcteur à suspecter. Fuite sous caisse près essieu AR → répartiteur possible. Avec ABS : chercher d'abord défaut capteurs/diag.
+## Variantes et types
+- hydraulique
+
+## Matériaux
+- acier inoxydable
+- aluminium
+- fonte grise
+
+## Valeurs techniques de référence
+- 50 %
 
 
 ## References supplementaires
 
+<!-- materialized-from-db manual/ce743641d6dc 2026-04-03 -->
+### Données techniques OEM — Répartiteur de frein
+
+# Données techniques OEM — Répartiteur de frein
+Source : ate-freinage.fr (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+
+## Matériaux
+- acier inoxydable
+- aluminium
+- fonte grise
+
+## Valeurs techniques de référence
+- 50 %
+
 <!-- materialized-from-db manual/b45db7af3e98 2026-04-02 -->
-### Données techniques OEM — Montage maitrise
+### Données techniques OEM — Répartiteur de frein
 
 # Données techniques OEM — Montage maitrise
 Source : ate-freinage.fr (1 fichiers OEM analysés)

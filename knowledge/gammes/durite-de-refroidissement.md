@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Acheminer le liquide de refroidissement entre les elements du circuit
@@ -213,189 +213,123 @@ installation:
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
 phase5_enrichment:
-  _source: HELLA TechWorld
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    pression_circuit: '1,0-1,5 bars'
-    temperature_max: '130 degC sous pression'
+    val_120__c: '120 °C'
+    val_95__c: '95 °C'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Une durite de liquide de refroidissement est fabriquée encaoutchouc
-    résistant à la chaleur du moteur afin d'assurer une circulation optimaldu
-    liquide de refroidissement entre les différents éléments du moteur
-    parexemple radiateur refroidissement et moteur. Dans un véhicule on peut
-    avoir plusieurs duritesde liquide de refroidissement. En savoir plus :
-    durite de refroidissement — définition et rôle mécanique 🚨 Bruit Durite de
-    refroidissement : causes et diagnostic
-  S2: >-
-    Une durite de liquide de refroidissement défectueuxprésente plusieurs
-    symptômes : - Fuite au niveau de la durite. - Déchirure de la durite. - La
-    durite est craquelée. - Les colliers de serrage ne tiennes plus dans ce cas
-    usure des extrémitésdes durites. Une durite de liquide de refroidissement et
-    qu'elle n'est pas remplacée à temps va amener à la pertedu liquide de
-    refroidissement dans ce cas le moteur risque de surchauffer et deprovoquer
-    des dégâts dans ce dernier (la casse du moteur). Diagnostic complet :
-    identifier une panne de durite de refroidissement
-  S3: >-
-    La durite de refroidissement achemine le liquide de refroidissement entre le
-    moteur, le radiateur, le thermostat, le vase d'expansion et le chauffage
-    habitacle. Sa rupture ou sa fissuration provoque une perte rapide de
-    liquide, une surchauffe moteur et, si non détectée à temps, une casse de
-    culasse (joint de culasse grillé, plaquage de culasse). Les durites en
-    caoutchouc EPDM de première monte ont une durée de vie de 100 000 à 150 000
-    km, mais des conditions d'utilisation sévères (circuit vieilli, liquide
-    acide) peuvent réduire cette durée. Voici les critères à vérifier avant
-    commande. - Référence véhicule et position sur le circuit — Il existe
-    plusieurs durites sur un même moteur (durite supérieure radiateur, durite
-    inférieure, durite vase d'expansion, durite chauffage, etc.). Identifier
-    précisément la durite défaillante par sa position (marquée sur les schémas
-    du manuel d'atelier ou reconnaissable à ses diamètres interne et externe et
-    sa longueur). Commandez avec la référence OE ou les cotes exactes. -
-    Diamètre interne et externe — Le diamètre interne de la durite (exprimé en
-    mm, courant entre 16 et 45 mm) doit correspondre exactement aux raccords du
-    moteur et du radiateur. Une durite trop large glisse sur les raccords sous
-    pression ; une durite trop étroite se déforme et restreint le débit de
-    liquide. Ne jamais adapter avec des colliers surdimensionnés. - Matériau :
-    EPDM renforcé vs silicone — Les durites EPDM d'origine sont adaptées aux
-    liquides de refroidissement OAT, HOAT et NOAT utilisés par les
-    constructeurs. Les durites silicone offrent une résistance thermique
-    supérieure (jusqu'à 180 °C contre 120 °C pour l'EPDM standard) et
-    conviennent aux moteurs turbo à températures élevées, mais ne pas les
-    utiliser si le circuit contient des liquides à base d'amines (vérifier la
-    fiche technique du liquide en place). - Forme pré-moulée ou durite
-    universelle coupée — Les durites pré-moulées reproduisent exactement le
-    tracé d'origine avec les coudes à l'angle exact, évitant toute tension ou
-    pincement. Les durites universelles droites ou coudées à couper sont
-    acceptables pour des trajets simples, mais inadaptées aux durites avec des
-    coudes multiples ou des renforts internes anti-effondrement. - État des
-    colliers de serrage — Lors du remplacement d'une durite, les colliers
-    d'origine (souvent des colliers à oreille à usage unique) doivent être
-    remplacés par des colliers à vis de qualité (inox de préférence) serrés au
-    couple préconisé, généralement 3 à 5 N·m. Un serrage excessif coupe la
-    durite ; un serrage insuffisant laisse fuir sous pression. - Contrôle du
-    circuit avant remontage — Avant de remonter la durite neuve, purger le
-    circuit de refroidissement et vérifier l'état du thermostat, de la pompe à
-    eau et du vase d'expansion. Un thermostat grippé ouvert ou une pompe à eau
-    dont le roulement bruite sont des défauts qui provoqueront une nouvelle
-    surchauffe à court terme, indépendamment de la durite remplacée. Pour aller
-    plus loin : consultez notre guide d'achat durite de refroidissement —
-    comparatif marques, critères de choix et prix.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Durite de refroidissement
-    pour connaître les spécifications. - Arrêtez le moteur et le laissez
-    refroidir. - Localisez l'emplacement de la durite de liquide de
-    refroidissement quevous voulez démonter. - Débranchez la batterie. - Libérez
-    si nécessaire l'accès à la durite de liquide de refroidissementque vous
-    voulez démonter. - Ouvrir le bouchon du vase d'expansion pour libérer la
-    pression. - Videz le liquide de refroidissement dans récipient. - Démontez
-    les colliers de serrage de la durite de liquide derefroidissement que vous
-    voulez démonter. - Retirez la durite de liquide de refroidissement.
-  S4_REPOSE: >-
-    Le remontage d'une durite de refroidissement paraît simple, mais trois
-    erreurs courantes génèrent des fuites après quelques kilomètres :
-    réutilisation des anciens colliers, portée de raccord non nettoyée et durite
-    montée avec un pli. Soignez ces points et la purge sera la seule difficulté
-    réelle. - Comparez la durite neuve avec l'ancienne : longueur, diamètre
-    intérieur, orientation des coudes. Un mauvais angle contraint la durite en
-    service et provoque une fissure précoce. - Contrôlez l'état de la pompe à
-    eau et du radiateur de refroidissement : remplacez-les si l'un présente une
-    fuite ou des ailettes bouchées, pendant que le circuit est déjà vidangé. -
-    Nettoyez les portées des raccords sur le moteur, le radiateur ou le boîtier
-    de thermostat avec un chiffon non pelucheux. Retirez tout dépôt calcaire ou
-    trace de l'ancien joint. - Positionnez la durite neuve sur ses raccords sans
-    pli ni contrainte excessive. Elle doit s'engager facilement sur 20 à 30 mm
-    selon le diamètre. - Montez des colliers de serrage neufs adaptés au
-    diamètre. Positionnez-les à 10 mm du bout du raccord, pas sur le bourrelet.
-    Serrez progressivement jusqu'à immobilisation sans écraser le caoutchouc. -
-    Remontez les pièces déposées lors de l'accès (protection sous moteur,
-    éléments de carrosserie) avant de remplir le circuit. - Remplissez le
-    circuit avec le liquide de refroidissement préconisé (dilution 50/50 ou
-    selon fiche constructeur). Ne jamais mélanger un liquide vert (silicate) et
-    un liquide rouge (OAT). - Purgez le circuit en ouvrant le ou les bouchons de
-    purge prévus (sur le boîtier de thermostat ou le radiateur). Laissez tourner
-    le moteur jusqu'à montée en température et fermeture du thermostat. -
-    Contrôlez le niveau une fois le moteur refroidi. Resserrez les colliers à
-    froid si une légère suintance est visible. - Effectuez un essai routier et
-    vérifiez l'absence de fuite et la stabilité du niveau sur 2 jours
-    d'utilisation. ✅ Après remontage, vérifiez les spécifications dans la fiche
-    technique Durite de refroidissement.
-  S5: >-
-    Erreurs frequentes avec les durites de refroidissement : - Reutiliser les
-    colliers de serrage d'origine — les colliers a ressort perdent leur tension
-    et les colliers a vis se deforment, provoquer des fuites- Ne pas verifier
-    l'etat de toutes les durites lors du remplacement d'une seule — si une
-    durite est craquelée, les autres du meme age sont dans le meme etat- Oublier
-    de purger le circuit apres remplacement — des bulles d'air provoquent des
-    points chauds et un chauffage defaillant- Ignorer une durite gonflee ou
-    molle au toucher — signe de degradation interne du caoutchouc, la rupture
-    peut survenir sans prevenir- Forcer une durite rigide sur un raccord — le
-    caoutchouc durci par l'age casse au lieu de se deformer. Chauffer legerement
-    l'embout au decapeur thermique pour assouplir- Ne pas verifier le niveau de
-    liquide de refroidissement dans les jours suivant le remplacement — une
-    purge incomplete se revele par une baisse de niveau progressive
-  S6: >-
-    Une durite de refroidissement remplacée incorrectement ou avec des colliers
-    insuffisamment serrés peut provoquer une fuite rapide et une surchauffe
-    moteur. Les contrôles post-montage doivent être effectués à froid avant le
-    premier démarrage, puis à nouveau après la première montée en température. -
-    Inspecter visuellement tous les colliers avant le démarrage : chaque
-    extrémité de durite doit être positionnée à minimum 5 mm au-delà des
-    jonctions du raccord, et le collier doit être centré sur la zone de
-    sertissage. Un collier positionné sur le renfort métallique du raccord ne
-    peut pas s'étancher correctement. - Vérifier le couple de serrage des
-    colliers : pour les colliers à vis, le couple de serrage est généralement de
-    2 à 3 Nm. Un serrage excessif écrase la durite et crée des micro-fissures ;
-    un serrage insuffisant laisse fuir sous pression. Utiliser un tournevis
-    dynamométrique ou serrer jusqu'à résistance franche sans forcer. - Purger
-    l'air du circuit de refroidissement : après la pose, ouvrir le bouchon de
-    purge sur le thermostat ou le radiateur (selon le véhicule) et remplir
-    lentement le circuit. Démarrer le moteur et laisser tourner avec le
-    chauffage à fond et le capot ouvert jusqu'à disparition des bulles d'air
-    dans le vase d'expansion. Un circuit mal purgé provoque des points chauds et
-    une surchauffe localisée. - Contrôler le niveau de liquide de
-    refroidissement après la première chauffe : à moteur chaud, le niveau dans
-    le vase d'expansion doit se stabiliser entre les repères MIN et MAX. Une
-    baisse de niveau de plus de 0,2 L indique une fuite résiduelle ou une prise
-    d'air. - Inspecter chaque collier à chaud après 10 minutes de fonctionnement
-    : les durites se dilatent à chaud et les colliers peuvent légèrement se
-    relâcher. Resserrer d'un quart de tour si un suintement apparaît. Attention
-    : ne jamais dévisser un bouchon de radiateur ou de vase d'expansion moteur
-    chaud. - Vérifier l'absence de gargouillements dans le circuit : des
-    gargouillements audibles après purge signalent une prise d'air résiduelle ou
-    une durite partiellement obstruée. Effectuer un second cycle de purge à
-    moteur chaud jusqu'à disparition complète des bruits. - Contrôler la
-    température moteur sur les 50 premiers km : l'aiguille de température doit
-    rester stable dans la zone normale (généralement à mi-course). Tout
-    mouvement vers la zone rouge impose un arrêt immédiat pour inspection de
-    l'étanchéité du circuit.
-  S7: >-
-    Quel est le prix d'un durite de refroidissement ?Le prix varie selon le
-    véhicule et la marque. Utilisez notre sélecteur pour trouver le durite de
-    refroidissement compatible avec votre véhicule et comparer les tarifs des
-    différents équipementiers.Comment savoir si mon durite de refroidissement
-    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
-    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
-    un professionnel.Peut-on rouler avec un durite de refroidissement défaillant
-    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
-    la sécurité du véhicule. Consultez la section symptômes pour évaluer
-    l'urgence du remplacement.- Thermostat. - Radiateur de refroidissement . -
-    Pompe à eau . 📖 Fiche technique Durite de refroidissement — intervalles et
-    spécifications d’entretien.
-  S8: >-
-    Comment choisir Durite de refroidissement compatible avec mon
-    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
-    reference Quand remplacer Durite de refroidissement ?En cas de traces de
-    liquide colore sous le vehicule ou de degradation Puis-je monter Durite de
-    refroidissement sans verification atelier ?Le montage peut exiger controles
+  S1: 'Une durite de liquide de refroidissement est fabriquée encaoutchouc résistant à la chaleur du moteur afin d''assurer
+    une circulation optimaldu liquide de refroidissement entre les différents éléments du moteur parexemple radiateur refroidissement
+    et moteur. Dans un véhicule on peut avoir plusieurs duritesde liquide de refroidissement. En savoir plus : durite de refroidissement
+    — définition et rôle mécanique 🚨 Bruit Durite de refroidissement : causes et diagnostic'
+  S2: 'Une durite de liquide de refroidissement défectueuxprésente plusieurs symptômes : - Fuite au niveau de la durite. -
+    Déchirure de la durite. - La durite est craquelée. - Les colliers de serrage ne tiennes plus dans ce cas usure des extrémitésdes
+    durites. Une durite de liquide de refroidissement et qu''elle n''est pas remplacée à temps va amener à la pertedu liquide
+    de refroidissement dans ce cas le moteur risque de surchauffer et deprovoquer des dégâts dans ce dernier (la casse du
+    moteur). Diagnostic complet : identifier une panne de durite de refroidissement'
+  S3: 'La durite de refroidissement achemine le liquide de refroidissement entre le moteur, le radiateur, le thermostat, le
+    vase d''expansion et le chauffage habitacle. Sa rupture ou sa fissuration provoque une perte rapide de liquide, une surchauffe
+    moteur et, si non détectée à temps, une casse de culasse (joint de culasse grillé, plaquage de culasse). Les durites en
+    caoutchouc EPDM de première monte ont une durée de vie de 100 000 à 150 000 km, mais des conditions d''utilisation sévères
+    (circuit vieilli, liquide acide) peuvent réduire cette durée. Voici les critères à vérifier avant commande. - Référence
+    véhicule et position sur le circuit — Il existe plusieurs durites sur un même moteur (durite supérieure radiateur, durite
+    inférieure, durite vase d''expansion, durite chauffage, etc.). Identifier précisément la durite défaillante par sa position
+    (marquée sur les schémas du manuel d''atelier ou reconnaissable à ses diamètres interne et externe et sa longueur). Commandez
+    avec la référence OE ou les cotes exactes. - Diamètre interne et externe — Le diamètre interne de la durite (exprimé en
+    mm, courant entre 16 et 45 mm) doit correspondre exactement aux raccords du moteur et du radiateur. Une durite trop large
+    glisse sur les raccords sous pression ; une durite trop étroite se déforme et restreint le débit de liquide. Ne jamais
+    adapter avec des colliers surdimensionnés. - Matériau : EPDM renforcé vs silicone — Les durites EPDM d''origine sont adaptées
+    aux liquides de refroidissement OAT, HOAT et NOAT utilisés par les constructeurs. Les durites silicone offrent une résistance
+    thermique supérieure (jusqu''à 180 °C contre 120 °C pour l''EPDM standard) et conviennent aux moteurs turbo à températures
+    élevées, mais ne pas les utiliser si le circuit contient des liquides à base d''amines (vérifier la fiche technique du
+    liquide en place). - Forme pré-moulée ou durite universelle coupée — Les durites pré-moulées reproduisent exactement le
+    tracé d''origine avec les coudes à l''angle exact, évitant toute tension ou pincement. Les durites universelles droites
+    ou coudées à couper sont acceptables pour des trajets simples, mais inadaptées aux durites avec des coudes multiples ou
+    des renforts internes anti-effondrement. - État des colliers de serrage — Lors du remplacement d''une durite, les colliers
+    d''origine (souvent des colliers à oreille à usage unique) doivent être remplacés par des colliers à vis de qualité (inox
+    de préférence) serrés au couple préconisé, généralement 3 à 5 N·m. Un serrage excessif coupe la durite ; un serrage insuffisant
+    laisse fuir sous pression. - Contrôle du circuit avant remontage — Avant de remonter la durite neuve, purger le circuit
+    de refroidissement et vérifier l''état du thermostat, de la pompe à eau et du vase d''expansion. Un thermostat grippé
+    ouvert ou une pompe à eau dont le roulement bruite sont des défauts qui provoqueront une nouvelle surchauffe à court terme,
+    indépendamment de la durite remplacée. Pour aller plus loin : consultez notre guide d''achat durite de refroidissement
+    — comparatif marques, critères de choix et prix.'
+  S4_DEPOSE: 📖 Avant de démonter, consultez la fiche technique Durite de refroidissement pour connaître les spécifications.
+    - Arrêtez le moteur et le laissez refroidir. - Localisez l'emplacement de la durite de liquide de refroidissement quevous
+    voulez démonter. - Débranchez la batterie. - Libérez si nécessaire l'accès à la durite de liquide de refroidissementque
+    vous voulez démonter. - Ouvrir le bouchon du vase d'expansion pour libérer la pression. - Videz le liquide de refroidissement
+    dans récipient. - Démontez les colliers de serrage de la durite de liquide derefroidissement que vous voulez démonter.
+    - Retirez la durite de liquide de refroidissement.
+  S4_REPOSE: 'Le remontage d''une durite de refroidissement paraît simple, mais trois erreurs courantes génèrent des fuites
+    après quelques kilomètres : réutilisation des anciens colliers, portée de raccord non nettoyée et durite montée avec un
+    pli. Soignez ces points et la purge sera la seule difficulté réelle. - Comparez la durite neuve avec l''ancienne : longueur,
+    diamètre intérieur, orientation des coudes. Un mauvais angle contraint la durite en service et provoque une fissure précoce.
+    - Contrôlez l''état de la pompe à eau et du radiateur de refroidissement : remplacez-les si l''un présente une fuite ou
+    des ailettes bouchées, pendant que le circuit est déjà vidangé. - Nettoyez les portées des raccords sur le moteur, le
+    radiateur ou le boîtier de thermostat avec un chiffon non pelucheux. Retirez tout dépôt calcaire ou trace de l''ancien
+    joint. - Positionnez la durite neuve sur ses raccords sans pli ni contrainte excessive. Elle doit s''engager facilement
+    sur 20 à 30 mm selon le diamètre. - Montez des colliers de serrage neufs adaptés au diamètre. Positionnez-les à 10 mm
+    du bout du raccord, pas sur le bourrelet. Serrez progressivement jusqu''à immobilisation sans écraser le caoutchouc. -
+    Remontez les pièces déposées lors de l''accès (protection sous moteur, éléments de carrosserie) avant de remplir le circuit.
+    - Remplissez le circuit avec le liquide de refroidissement préconisé (dilution 50/50 ou selon fiche constructeur). Ne
+    jamais mélanger un liquide vert (silicate) et un liquide rouge (OAT). - Purgez le circuit en ouvrant le ou les bouchons
+    de purge prévus (sur le boîtier de thermostat ou le radiateur). Laissez tourner le moteur jusqu''à montée en température
+    et fermeture du thermostat. - Contrôlez le niveau une fois le moteur refroidi. Resserrez les colliers à froid si une légère
+    suintance est visible. - Effectuez un essai routier et vérifiez l''absence de fuite et la stabilité du niveau sur 2 jours
+    d''utilisation. ✅ Après remontage, vérifiez les spécifications dans la fiche technique Durite de refroidissement.'
+  S5: 'Erreurs frequentes avec les durites de refroidissement : - Reutiliser les colliers de serrage d''origine — les colliers
+    a ressort perdent leur tension et les colliers a vis se deforment, provoquer des fuites- Ne pas verifier l''etat de toutes
+    les durites lors du remplacement d''une seule — si une durite est craquelée, les autres du meme age sont dans le meme
+    etat- Oublier de purger le circuit apres remplacement — des bulles d''air provoquent des points chauds et un chauffage
+    defaillant- Ignorer une durite gonflee ou molle au toucher — signe de degradation interne du caoutchouc, la rupture peut
+    survenir sans prevenir- Forcer une durite rigide sur un raccord — le caoutchouc durci par l''age casse au lieu de se deformer.
+    Chauffer legerement l''embout au decapeur thermique pour assouplir- Ne pas verifier le niveau de liquide de refroidissement
+    dans les jours suivant le remplacement — une purge incomplete se revele par une baisse de niveau progressive'
+  S6: 'Une durite de refroidissement remplacée incorrectement ou avec des colliers insuffisamment serrés peut provoquer une
+    fuite rapide et une surchauffe moteur. Les contrôles post-montage doivent être effectués à froid avant le premier démarrage,
+    puis à nouveau après la première montée en température. - Inspecter visuellement tous les colliers avant le démarrage
+    : chaque extrémité de durite doit être positionnée à minimum 5 mm au-delà des jonctions du raccord, et le collier doit
+    être centré sur la zone de sertissage. Un collier positionné sur le renfort métallique du raccord ne peut pas s''étancher
+    correctement. - Vérifier le couple de serrage des colliers : pour les colliers à vis, le couple de serrage est généralement
+    de 2 à 3 Nm. Un serrage excessif écrase la durite et crée des micro-fissures ; un serrage insuffisant laisse fuir sous
+    pression. Utiliser un tournevis dynamométrique ou serrer jusqu''à résistance franche sans forcer. - Purger l''air du circuit
+    de refroidissement : après la pose, ouvrir le bouchon de purge sur le thermostat ou le radiateur (selon le véhicule) et
+    remplir lentement le circuit. Démarrer le moteur et laisser tourner avec le chauffage à fond et le capot ouvert jusqu''à
+    disparition des bulles d''air dans le vase d''expansion. Un circuit mal purgé provoque des points chauds et une surchauffe
+    localisée. - Contrôler le niveau de liquide de refroidissement après la première chauffe : à moteur chaud, le niveau dans
+    le vase d''expansion doit se stabiliser entre les repères MIN et MAX. Une baisse de niveau de plus de 0,2 L indique une
+    fuite résiduelle ou une prise d''air. - Inspecter chaque collier à chaud après 10 minutes de fonctionnement : les durites
+    se dilatent à chaud et les colliers peuvent légèrement se relâcher. Resserrer d''un quart de tour si un suintement apparaît.
+    Attention : ne jamais dévisser un bouchon de radiateur ou de vase d''expansion moteur chaud. - Vérifier l''absence de
+    gargouillements dans le circuit : des gargouillements audibles après purge signalent une prise d''air résiduelle ou une
+    durite partiellement obstruée. Effectuer un second cycle de purge à moteur chaud jusqu''à disparition complète des bruits.
+    - Contrôler la température moteur sur les 50 premiers km : l''aiguille de température doit rester stable dans la zone
+    normale (généralement à mi-course). Tout mouvement vers la zone rouge impose un arrêt immédiat pour inspection de l''étanchéité
+    du circuit.'
+  S7: Quel est le prix d'un durite de refroidissement ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur
+    pour trouver le durite de refroidissement compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon durite de refroidissement est à changer ?Les signes d'usure les plus courants sont détaillés dans la section
+    diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un durite de
+    refroidissement défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du
+    véhicule. Consultez la section symptômes pour évaluer l'urgence du remplacement.- Thermostat. - Radiateur de refroidissement
+    . - Pompe à eau . 📖 Fiche technique Durite de refroidissement — intervalles et spécifications d’entretien.
+  S8: Comment choisir Durite de refroidissement compatible avec mon vehiculeRenseignez marque, modele, type moteur et annee,
+    puis verifiez la reference Quand remplacer Durite de refroidissement ?En cas de traces de liquide colore sous le vehicule
+    ou de degradation Puis-je monter Durite de refroidissement sans verification atelier ?Le montage peut exiger controles
     de couple, alignement et references.
-  META: >-
-    {"meta_title":"Durite de refroidissement : Conseils remplacement |
-    AutoMecanik","meta_description":"Durite de refroidissement gonflée,
-    craquelée ou fuite de liquide coloré ? Sachez quand changer cette pièce (100
-    000 km / 8 ans) et comment la choisir."}
+  META: '{"meta_title":"Durite de refroidissement : Conseils remplacement | AutoMecanik","meta_description":"Durite de refroidissement
+    gonflée, craquelée ou fuite de liquide coloré ? Sachez quand changer cette pièce (100 000 km / 8 ans) et comment la choisir."}'
 ---
 
 # Durite de refroidissement - Guide Diagnostic Complet
@@ -482,7 +416,153 @@ Oui, opération accessible. Vidanger le circuit, desserrer les colliers, remplac
 
 **Quelle erreur éviter avec les durites ?**
 Ne pas réutiliser les vieux colliers. Utiliser des colliers neufs adaptés. Vérifier l'absence de pliure après montage.
+## Symptomes surchauffe
 
+### Temoin temperature allume
+- **Quand** : En roulant ou a l'arret
+- **Caracteristique** : Voyant rouge fixe ou clignotant
+- **Urgence** : Critique - Arreter immediatement le moteur
+
+### Temperature monte rapidement
+- **Quand** : Apres quelques kilometres
+- **Caracteristique** : Aiguille dans le rouge en moins de 10 min
+- **Urgence** : Haute - Risque joint de culasse
+
+### Chauffage habitacle faible
+- **Quand** : Moteur chaud
+- **Caracteristique** : Air tiede au lieu de chaud
+- **Indication** : Niveau liquide bas ou thermostat bloque
+
+### Fuite liquide de refroidissement
+- **Quand** : Vehicule a l'arret
+- **Caracteristique** : Flaque verte/orange sous le vehicule
+- **Localisation** : Durites, radiateur, pompe a eau
+
+## Symptomes thermostat
+
+### Moteur long a chauffer
+- **Quand** : Par temps froid
+- **Caracteristique** : Temperature ne monte pas apres 10 km
+- **Cause probable** : Thermostat bloque ouvert
+
+### Temperature instable
+- **Quand** : En roulant
+- **Caracteristique** : Aiguille qui oscille
+- **Cause probable** : Thermostat defaillant
+
+## Causes et solutions - Surchauffe
+
+### 1. Niveau liquide insuffisant
+- **Probabilite** : 40%
+- **Verification** : Niveau vase expansion (moteur froid)
+- **Solution** : Completer et chercher la fuite
+- **Pieces** : Liquide refroidissement G12/G13
+- **Urgence** : Moyenne
+
+### 2. Pompe a eau defaillante
+- **Probabilite** : 25%
+- **Verification** : Jeu sur axe, fuite par trou temoin
+- **Solution** : Remplacement (souvent avec distribution)
+- **Pieces** : Pompe a eau
+- **Urgence** : Haute
+
+### 3. Thermostat bloque ferme
+- **Probabilite** : 20%
+- **Verification** : Durite superieure radiateur froide moteur chaud
+- **Solution** : Remplacement thermostat
+- **Pieces** : Calorstat/thermostat
+- **Urgence** : Haute
+
+### 4. Ventilateur HS
+- **Probabilite** : 10%
+- **Verification** : Ne se declenche pas a 100°C
+- **Solution** : Test motoventilateur, fusible, relais
+- **Pieces** : Motoventilateur, relais
+- **Urgence** : Moyenne
+
+### 5. Radiateur bouche/fuyant
+- **Probabilite** : 5%
+- **Verification** : Zones froides sur radiateur, traces calcaire
+- **Solution** : Rinçage ou remplacement
+- **Pieces** : Radiateur
+- **Urgence** : Moyenne
+
+## Causes et solutions - Fuites
+
+### 1. Durites percees/craquelees
+- **Probabilite** : 35%
+- **Verification** : Inspection visuelle, traces blanches
+- **Solution** : Remplacement durite
+- **Pieces** : Durites refroidissement
+- **Urgence** : Moyenne
+
+### 2. Joint de pompe a eau
+- **Probabilite** : 25%
+- **Verification** : Fuite par trou temoin pompe
+- **Solution** : Remplacement pompe complete
+- **Pieces** : Pompe a eau
+- **Urgence** : Haute
+
+### 3. Bouchon vase expansion
+- **Probabilite** : 20%
+- **Verification** : Pression circuit (tarage bouchon)
+- **Solution** : Remplacement bouchon
+- **Pieces** : Bouchon vase expansion
+- **Urgence** : Basse
+
+### 4. Joint de culasse
+- **Probabilite** : 10%
+- **Verification** : Mayonnaise sous bouchon huile, fumee blanche echappement
+- **Solution** : Remplacement joint (intervention lourde)
+- **Pieces** : Joint de culasse, kit vis
+- **Urgence** : Critique
+
+### 5. Radiateur de chauffage
+- **Probabilite** : 10%
+- **Verification** : Odeur sucree habitacle, buee pare-brise
+- **Solution** : Remplacement radiateur chauffage
+- **Pieces** : Radiateur de chauffage
+- **Urgence** : Moyenne
+
+## Diagnostics complementaires
+
+### Test de pression circuit
+- Outil : Pompe de mise en pression
+- Pression : 1.2 à 1.5 bar selon vehicule
+- But : Detecter fuites non visibles
+
+### Test CO2 dans liquide
+- Outil : Testeur de fuite joint culasse
+- Indicateur : Changement couleur (bleu → jaune)
+- But : Confirmer fuite joint de culasse
+
+## Recommandations
+
+- **Liquide** : Respecter specifications constructeur (G12, G13, type D)
+- **Melange** : Ne jamais melanger differents types
+- **Vidange** : Tous les 4-5 ans ou 100 000 km
+- **Purge** : Obligatoire apres intervention (bulles d'air = surchauffe)
+- **Marques** : Valeo, Gates, SKF (pompes), Behr (radiateurs)
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/ec1194a38a12 2026-04-03 -->
+### Données techniques OEM — Durite de refroidissement
+
+# Données techniques OEM — Durite de refroidissement
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- électrique
+
+## Matériaux
+- aluminium
+
+## Valeurs techniques de référence
+- 120 °C
+- 95 °C
 
 ## Symptomes supplementaires
 

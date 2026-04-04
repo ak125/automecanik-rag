@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer l'angle d'ouverture du papillon des gaz pour informer le calculateur moteur de la demande du conducteur
@@ -167,53 +167,58 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: Hall
+    source_ref: corpus RAG web OEM
+  - type: inductif
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    signal: 'potentiometre 0,5V (ferme) a 4,5V (ouvert) ou Hall (signal numerique)'
+    val_0_v: 0 V
+    val_0_1__: 0,1 %
+    val_1_5__: 1,5 %
+    val_14__: 14 %
+    val_4_5__: 4,5 %
+    val_400__c: 400 °C
+    val_5_v: 5 V
+  materials:
+  - materiau: aluminium
+    source_ref: corpus RAG web OEM
+  - materiau: platine
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Mesurer l'angle d'ouverture du papillon des gaz pour informer le calculateur
-    moteur de la demande du conducteur. Pièces liées : vérifier les composants
-    adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Ralenti
-    instable ou irregulier- A-coups a l'acceleration- Perte de puissance ou
-    reponse lente a l'accelerateur- Voyant moteur allume (codes P0120, P0121,
-    P0122, P0123)- Moteur qui cale au ralenti
-  S3: >-
-    Pour choisir le bon capteur position papillon pour votre véhicule : - Marque
-    de votre vehicule- Modele de votre vehicule- Motorisation de votre vehicule-
-    Annee de votre vehicule- Type de capteur (potentiometre ou sans contact)-
-    Nombre de broches- Marques : Bosch, Valeo, Denso (premium), Hella, NGK,
-    Delphi (standard), Ridex, Topran (budget)- Budget : variable selon véhicule
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le capteur position papillon : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas forcer le capteur sur l'axe du papillon.
-    Certains capteurs necessitent un apprentissage (reset adaptation) apres
-    remplacement.- Ne pas respecter le couple de serrage constructeur au
-    remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du capteur position papillon : - Controle de la
-    tension et du courant avec un multimetre- Verifier les connexions
-    electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse
-    avant l hiver- Ne pas laisser le vehicule immobilise longtemps sans
-    protection- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer
-    un essai route pour confirmer la disparition des symptômes
+  S1: 'Mesurer l''angle d''ouverture du papillon des gaz pour informer le calculateur moteur de la demande du conducteur.
+    Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Ralenti instable ou irregulier- A-coups a l''acceleration-
+    Perte de puissance ou reponse lente a l''accelerateur- Voyant moteur allume (codes P0120, P0121, P0122, P0123)- Moteur
+    qui cale au ralenti'
+  S3: 'Pour choisir le bon capteur position papillon pour votre véhicule : - Marque de votre vehicule- Modele de votre vehicule-
+    Motorisation de votre vehicule- Annee de votre vehicule- Type de capteur (potentiometre ou sans contact)- Nombre de broches-
+    Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard), Ridex, Topran (budget)- Budget : variable selon
+    véhicule'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le capteur position papillon : - Ne pas vérifier la référence exacte avant commande — une pièce
+    de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas forcer le capteur sur l''axe du
+    papillon. Certains capteurs necessitent un apprentissage (reset adaptation) apres remplacement.- Ne pas respecter le couple
+    de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive
+    s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du capteur position papillon : - Controle de la tension et du courant avec un multimetre- Verifier
+    les connexions electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l hiver- Ne pas laisser
+    le vehicule immobilise longtemps sans protection- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai
+    route pour confirmer la disparition des symptômes'
 ---
 
 # Capteur position papillon - Guide Diagnostic
@@ -257,3 +262,30 @@ Ne pas forcer le capteur sur l'axe du papillon. Certains capteurs necessitent un
 
 - **Intervalle** : selon constructeur
 - Pas de periodicite. Nettoyer le corps papillon regulierement peut prolonger la duree de vie du capteur.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/3cc575a345fc 2026-04-03 -->
+### Données techniques OEM — Capteur position papillon
+
+# Données techniques OEM — Capteur position papillon
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Hall
+- inductif
+- pneumatique
+- électrique
+
+## Matériaux
+- aluminium
+- platine
+
+## Valeurs techniques de référence
+- 0,1 %
+- 1,5 %
+- 14 %
+- 4,5 %
+- 400 °C

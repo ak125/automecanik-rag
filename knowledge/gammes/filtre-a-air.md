@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L3
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: verified
 completeness_profile: filtration
 intent_targets:
@@ -18,7 +18,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Filtre l'air d'admission pour protéger le moteur des poussières et particules avant la combustion
@@ -260,7 +260,7 @@ lang: fr
 phase5_enrichment:
   _source: filtron.eu + hella.com + mann-filter.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 8
   _has_tech_data: true
   types_variants:
@@ -279,134 +279,82 @@ phase5_enrichment:
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Le filtre a air purifie l'air aspire par le moteur avant son admission dans
-    les cylindres. Il retient les poussieres, le sable, les insectes et les
-    particules en suspension qui endommagent les segments, les soupapes et les
-    parois des cylindres. Types de filtres : - Filtre a air sec (papier plisse)
-    : le plus repandu, a remplacer selon les preconisations constructeur (15 000
-    a 30 000 km ou 1 fois par an)- Filtre a air sport (lavable) : reutilisable
-    apres nettoyage, meilleur debit mais filtration legerement moins
-    fineEmplacement : dans le boitier de filtre a air situe dans le compartiment
-    moteur, accessible sans outils sur la plupart des vehicules. Pieces liees :
-    boitier de filtre a air, debitmetre d'air, durite d'admission, boitier
-    papillon.
-  S2: >-
-    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
-    Perte de puissance a l acceleration - Surconsommation de carburant anormale
-    - Fumee noire a l echappement - Sifflement anormal a l admission - Odeur de
-    carburant non brule - Plus de 30 000 km depuis le dernier changement
-  S2_DIAG: >-
-    SymptômeCause probableActionPerte de puissance a l accelerationlocaliser
-    source et verifier usure mecaniqueObserver : perte de puissance a l
-    acceleration ?Surconsommation de carburant anormaleremplacement preventif
-    recommandeComparer la consommation : surconsommation de carburant anormale
-    ?Fumee noire a l echappementbruit anormal detecte : localiser source et
-    verifier usure mecaniqueObserver : fumee noire a l echappement ?Sifflement
-    anormal a l admissionkilometrage eleve ou usure visible : remplacement
-    preventif recommandeObserver : sifflement anormal a l admission ?Odeur de
-    carburant non brulelocaliser source et verifier usure mecaniqueObserver :
-    perte de puissance a l acceleration ?Plus de 30 000 km depuis le dernier
-    changementlocaliser source et verifier usure mecaniqueObserver : perte de
-    puissance a l acceleration ?
-  S3: >-
-    Pour choisir les bons filtre a air pour votre véhicule : - Respecter les
-    dimensions exactes du filtre (longueur, largeur, hauteur) - Utiliser la
-    référence OE ou l'équivalence constructeur - Type : papier (usage standard,
-    20-30k km), coton lavable (performance, réutilisable), mousse (usage tout-
-    terrain) - Forme : panneau plat (boîte à air rectangulaire) ou cylindrique
-    (admission directe)Pour aller plus loin : consultez notre guide d'achat
-    filtre à air — comparatif marques, critères de choix et prix.
-  S4_DEPOSE: >-
-    1. Ouvrez le capot et localisez la boîte à air (généralement côté passager,
-    raccordée au conduit d'admission). 2. Déclipsez ou dévissez les fixations du
-    couvercle de la boîte à air. 3. Soulevez le couvercle et retirez l'ancien
-    filtre à air. 4. Nettoyez l'intérieur de la boîte à air avec un chiffon
-    propre (retirer poussière et débris). 5. Installez le filtre neuf dans le
-    bon sens (flèche de flux d'air vers le moteur). 6. Refermez le couvercle et
-    reclipsez ou revissez les fixations.
-  S4_REPOSE: >-
-    - Vérifiez que le filtre à air neuf est identique à celui démonté. -
-    Nettoyer le boîtier du filtre à air. - Mettre en place le filtre air. -
-    Fermez le boîtier du filtre à air. ✅ Après remontage, vérifiez les
-    spécifications dans la fiche technique Filtre à air.
-  S5: >-
-    - ❌ "homologué CT" - ❌ "sécurité garantie" - ❌ "zéro panne" - ❌ "garanti à
-    vie" - ❌ "zero panne" - - Support filtres à air – Voitures et camionnettes |
-    Pièces de rechange Champion Skip Navigation Select Language conseil
-    technique Que se passe-t-il si vous ne changez pas votre filtre à air à
-    temps... - # Filtre à air de voiture : fonctionnement, coût, utilité -
-    Filtre à air de voiture : fonctionnement, coût, utilité Acheter une voiture
-    Vendre ma voiture Guide du vendeur Guide de l'acheteur Trouver...
-  S6: >-
-    Après l'installation du nouveau filtre à air, vérifiez que le boîtier est
-    correctement fermé et que le moteur retrouve ses performances d'admission
-    normales. Un boîtier mal verrouillé annule immédiatement le bénéfice du
-    remplacement.- Fermeture complète du boîtier de filtre — Vérifiez que toutes
-    les agrafes ou vis du boîtier de filtre sont correctement refermées. Un
-    boîtier entrouvert laisse passer de l'air non filtré directement vers le
-    moteur, ce qui peut provoquer une usure prématurée des cylindres.-
-    Raccordement du débitmètre d'air (MAF) — Si le conduit d'admission a été
-    débranché pour accéder au filtre, reconnectez le connecteur du débitmètre
-    d'air. Un MAF débranché déclenche le voyant moteur (code P0101 ou P0102) et
-    provoque une cartographie air/carburant erronée.- Disparition du sifflement
-    à l'admission — Au démarrage, aucun sifflement anormal ne doit être audible
-    au niveau du boîtier de filtre. Un sifflement persistant indique un
-    interstice entre le filtre et son logement, souvent dû à un filtre de
-    référence incorrecte ou mal inséré.- Retour à une accélération franche — Sur
-    les 2 ou 3 premiers kilomètres, la perte de puissance à l'accélération —
-    symptôme typique d'un filtre colmaté — doit avoir disparu. Si la perte de
-    puissance persiste, contrôlez l'état du débitmètre d'air et du papillon des
-    gaz qui peuvent être encrassés indépendamment du filtre.- Absence de fumée
-    noire à l'échappement — Accélérez franchement sur les premiers kilomètres.
-    Les fumées noires liées à un excès de richesse par manque d'air doivent
-    avoir disparu. Si elles persistent, vérifiez que le capteur de position du
-    papillon (TPS) n'est pas défaillant.- Absence d'odeur de carburant non brûlé
-    — À l'arrêt moteur chaud, aucune odeur d'essence crue ne doit être
-    perceptible à l'avant du compartiment moteur. Une odeur persistante indique
-    un problème de richesse non lié au filtre à air et nécessite un diagnostic
-    injecteurs.- Consommation aux 100 km — retour à la normale sous 500 km — La
-    surconsommation liée au filtre colmaté disparaît progressivement. Si après
-    500 km la consommation reste anormalement élevée (plus de 10 % au-dessus des
-    valeurs constructeur), contrôlez l'état des bougies et du capteur de
-    pression d'admission.
-  S_GARAGE: >-
-    Nous vous recommandons de confier cette intervention à un professionnel : -
-    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
-    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
-    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
-  S7: >-
-    Quel est le prix d'un filtre à air ?Le prix varie selon le véhicule et la
-    marque. Utilisez notre sélecteur pour trouver le filtre à air compatible
-    avec votre véhicule et comparer les tarifs des différents
-    équipementiers.Comment savoir si mon filtre à air est à changer ?Les signes
-    d'usure les plus courants sont détaillés dans la section diagnostic ci-
-    dessus. En cas de doute, faites contrôler la pièce par un
-    professionnel.Peut-on rouler avec un filtre à air défaillant ?Cela dépend de
-    la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du
-    véhicule. Consultez la section symptômes pour évaluer l'urgence du
-    remplacement.- capteur position papillon - capteur pression du tuyau d
-    admission - capteur temperature d air admission - debitmetre d air - filtre
-    a carburant - filtre a huile - filtre d habitacle - valve de reglage du
-    ralenti
-  S8: >-
-    Filtre à air OE ou sport : que choisir ?Le filtre OE suffit pour un usage
-    normal. Les filtres sport (K&N, BMC) améliorent légèrement le débit mais
-    nécessitent un entretien régulier. Comment savoir si mon filtre à air est
-    encrassé ?Perte de puissance, surconsommation de carburant, fumée noire à
-    l'échappement, difficulté au démarrage. Tous les combien changer le filtre à
-    air ?Entre 20 000 et 40 000 km selon l'environnement. Plus souvent en zone
-    poussiéreuse ou urbaine. Contrôle visuel tous les 10 000 km. Peut-on changer
-    le filtre à air soi-même ?Oui, très facile. Ouvrir le boîtier (clips ou
-    vis), retirer l'ancien, placer le nouveau dans le bon sens. 5 minutes
-    maximum. Quelle erreur éviter avec le filtre à air ?Ne pas souffler un
-    filtre encrassé à l'air comprimé (endommage les fibres). Ne pas rouler sans
-    filtre. Vérifier l'étanchéité du boîtier.
-  META: >-
-    {"meta_title":"Filtre à air : Guide Entretien et Remplacement |
-    AutoMecanik","meta_description":"Quand changer votre filtre à air ?
-    Découvrez les symptômes d'un filtre encrassé, comment choisir le bon modèle
-    selon votre véhicule et comment le remplacer. Guide complet AutoMecanik."}
+  S1: 'Le filtre a air purifie l''air aspire par le moteur avant son admission dans les cylindres. Il retient les poussieres,
+    le sable, les insectes et les particules en suspension qui endommagent les segments, les soupapes et les parois des cylindres.
+    Types de filtres : - Filtre a air sec (papier plisse) : le plus repandu, a remplacer selon les preconisations constructeur
+    (15 000 a 30 000 km ou 1 fois par an)- Filtre a air sport (lavable) : reutilisable apres nettoyage, meilleur debit mais
+    filtration legerement moins fineEmplacement : dans le boitier de filtre a air situe dans le compartiment moteur, accessible
+    sans outils sur la plupart des vehicules. Pieces liees : boitier de filtre a air, debitmetre d''air, durite d''admission,
+    boitier papillon.'
+  S2: 'Ne pas attendre la panne complete pour intervenir. Symptômes d''usure : - Perte de puissance a l acceleration - Surconsommation
+    de carburant anormale - Fumee noire a l echappement - Sifflement anormal a l admission - Odeur de carburant non brule
+    - Plus de 30 000 km depuis le dernier changement'
+  S2_DIAG: 'SymptômeCause probableActionPerte de puissance a l accelerationlocaliser source et verifier usure mecaniqueObserver
+    : perte de puissance a l acceleration ?Surconsommation de carburant anormaleremplacement preventif recommandeComparer
+    la consommation : surconsommation de carburant anormale ?Fumee noire a l echappementbruit anormal detecte : localiser
+    source et verifier usure mecaniqueObserver : fumee noire a l echappement ?Sifflement anormal a l admissionkilometrage
+    eleve ou usure visible : remplacement preventif recommandeObserver : sifflement anormal a l admission ?Odeur de carburant
+    non brulelocaliser source et verifier usure mecaniqueObserver : perte de puissance a l acceleration ?Plus de 30 000 km
+    depuis le dernier changementlocaliser source et verifier usure mecaniqueObserver : perte de puissance a l acceleration
+    ?'
+  S3: 'Pour choisir les bons filtre a air pour votre véhicule : - Respecter les dimensions exactes du filtre (longueur, largeur,
+    hauteur) - Utiliser la référence OE ou l''équivalence constructeur - Type : papier (usage standard, 20-30k km), coton
+    lavable (performance, réutilisable), mousse (usage tout- terrain) - Forme : panneau plat (boîte à air rectangulaire) ou
+    cylindrique (admission directe)Pour aller plus loin : consultez notre guide d''achat filtre à air — comparatif marques,
+    critères de choix et prix.'
+  S4_DEPOSE: 1. Ouvrez le capot et localisez la boîte à air (généralement côté passager, raccordée au conduit d'admission).
+    2. Déclipsez ou dévissez les fixations du couvercle de la boîte à air. 3. Soulevez le couvercle et retirez l'ancien filtre
+    à air. 4. Nettoyez l'intérieur de la boîte à air avec un chiffon propre (retirer poussière et débris). 5. Installez le
+    filtre neuf dans le bon sens (flèche de flux d'air vers le moteur). 6. Refermez le couvercle et reclipsez ou revissez
+    les fixations.
+  S4_REPOSE: '- Vérifiez que le filtre à air neuf est identique à celui démonté. - Nettoyer le boîtier du filtre à air. -
+    Mettre en place le filtre air. - Fermez le boîtier du filtre à air. ✅ Après remontage, vérifiez les spécifications dans
+    la fiche technique Filtre à air.'
+  S5: '- ❌ "homologué CT" - ❌ "sécurité garantie" - ❌ "zéro panne" - ❌ "garanti à vie" - ❌ "zero panne" - - Support filtres
+    à air – Voitures et camionnettes | Pièces de rechange Champion Skip Navigation Select Language conseil technique Que se
+    passe-t-il si vous ne changez pas votre filtre à air à temps... - # Filtre à air de voiture : fonctionnement, coût, utilité
+    - Filtre à air de voiture : fonctionnement, coût, utilité Acheter une voiture Vendre ma voiture Guide du vendeur Guide
+    de l''acheteur Trouver...'
+  S6: Après l'installation du nouveau filtre à air, vérifiez que le boîtier est correctement fermé et que le moteur retrouve
+    ses performances d'admission normales. Un boîtier mal verrouillé annule immédiatement le bénéfice du remplacement.- Fermeture
+    complète du boîtier de filtre — Vérifiez que toutes les agrafes ou vis du boîtier de filtre sont correctement refermées.
+    Un boîtier entrouvert laisse passer de l'air non filtré directement vers le moteur, ce qui peut provoquer une usure prématurée
+    des cylindres.- Raccordement du débitmètre d'air (MAF) — Si le conduit d'admission a été débranché pour accéder au filtre,
+    reconnectez le connecteur du débitmètre d'air. Un MAF débranché déclenche le voyant moteur (code P0101 ou P0102) et provoque
+    une cartographie air/carburant erronée.- Disparition du sifflement à l'admission — Au démarrage, aucun sifflement anormal
+    ne doit être audible au niveau du boîtier de filtre. Un sifflement persistant indique un interstice entre le filtre et
+    son logement, souvent dû à un filtre de référence incorrecte ou mal inséré.- Retour à une accélération franche — Sur les
+    2 ou 3 premiers kilomètres, la perte de puissance à l'accélération — symptôme typique d'un filtre colmaté — doit avoir
+    disparu. Si la perte de puissance persiste, contrôlez l'état du débitmètre d'air et du papillon des gaz qui peuvent être
+    encrassés indépendamment du filtre.- Absence de fumée noire à l'échappement — Accélérez franchement sur les premiers kilomètres.
+    Les fumées noires liées à un excès de richesse par manque d'air doivent avoir disparu. Si elles persistent, vérifiez que
+    le capteur de position du papillon (TPS) n'est pas défaillant.- Absence d'odeur de carburant non brûlé — À l'arrêt moteur
+    chaud, aucune odeur d'essence crue ne doit être perceptible à l'avant du compartiment moteur. Une odeur persistante indique
+    un problème de richesse non lié au filtre à air et nécessite un diagnostic injecteurs.- Consommation aux 100 km — retour
+    à la normale sous 500 km — La surconsommation liée au filtre colmaté disparaît progressivement. Si après 500 km la consommation
+    reste anormalement élevée (plus de 10 % au-dessus des valeurs constructeur), contrôlez l'état des bougies et du capteur
+    de pression d'admission.
+  S_GARAGE: 'Nous vous recommandons de confier cette intervention à un professionnel : - Plusieurs causes possibles de défaillance
+    (4 identifiées) nécessitent un diagnostic professionnel Un garagiste qualifié dispose de l''outillage et de l''expérience
+    nécessaires pour effectuer cette opération en toute sécurité.'
+  S7: Quel est le prix d'un filtre à air ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur pour trouver
+    le filtre à air compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment savoir si
+    mon filtre à air est à changer ?Les signes d'usure les plus courants sont détaillés dans la section diagnostic ci- dessus.
+    En cas de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un filtre à air défaillant ?Cela dépend
+    de la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule. Consultez la section symptômes
+    pour évaluer l'urgence du remplacement.- capteur position papillon - capteur pression du tuyau d admission - capteur temperature
+    d air admission - debitmetre d air - filtre a carburant - filtre a huile - filtre d habitacle - valve de reglage du ralenti
+  S8: 'Filtre à air OE ou sport : que choisir ?Le filtre OE suffit pour un usage normal. Les filtres sport (K&N, BMC) améliorent
+    légèrement le débit mais nécessitent un entretien régulier. Comment savoir si mon filtre à air est encrassé ?Perte de
+    puissance, surconsommation de carburant, fumée noire à l''échappement, difficulté au démarrage. Tous les combien changer
+    le filtre à air ?Entre 20 000 et 40 000 km selon l''environnement. Plus souvent en zone poussiéreuse ou urbaine. Contrôle
+    visuel tous les 10 000 km. Peut-on changer le filtre à air soi-même ?Oui, très facile. Ouvrir le boîtier (clips ou vis),
+    retirer l''ancien, placer le nouveau dans le bon sens. 5 minutes maximum. Quelle erreur éviter avec le filtre à air ?Ne
+    pas souffler un filtre encrassé à l''air comprimé (endommage les fibres). Ne pas rouler sans filtre. Vérifier l''étanchéité
+    du boîtier.'
+  META: '{"meta_title":"Filtre à air : Guide Entretien et Remplacement | AutoMecanik","meta_description":"Quand changer votre
+    filtre à air ? Découvrez les symptômes d''un filtre encrassé, comment choisir le bon modèle selon votre véhicule et comment
+    le remplacer. Guide complet AutoMecanik."}'
 ---
 
 # Filtre à air - Guide Diagnostic Complet
@@ -495,15 +443,6 @@ Oui, très facile. Ouvrir le boîtier (clips ou vis), retirer l'ancien, placer l
 
 **Quelle erreur éviter avec le filtre à air ?**
 Ne pas souffler un filtre encrassé à l'air comprimé (endommage les fibres). Ne pas rouler sans filtre. Vérifier l'étanchéité du boîtier.
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/choisir-filtre-air.md 2026-02-15 -->
-### Guide - Comment choisir son filtre à air
-
-# Comment choisir son filtre à air
-
 ## Les critères essentiels
 
 ### Rôle du filtre à air
@@ -539,20 +478,6 @@ Ne pas souffler un filtre encrassé à l'air comprimé (endommage les fibres). N
 - Ne jamais souffler un filtre papier avec de l'air comprimé (risque de micro-perforations)
 - Ne pas dépasser 30 000 km sans remplacement (20 000 km en milieu poussiéreux)
 - Ne pas monter un filtre sport sans vérifier la compatibilité avec le débitmètre
-
-## FAQ
-
-**Peut-on nettoyer un filtre à air papier ?** Non, il faut le remplacer. Les fibres sont trop fines pour être nettoyées efficacement.
-
-**Un filtre sport augmente-t-il la puissance ?** Sur un moteur standard, le gain est négligeable (1-2 CV). L'intérêt est surtout la réutilisabilité.
-
-**À quelle fréquence le changer ?** Tous les 20 000-30 000 km, ou 15 000 km en conduite urbaine/poussiéreuse.
-
-<!-- materialized-from-db guides/references-oem.md 2026-01-01 -->
-### Guide - Comprendre les références OEM
-
-# Comprendre les références OEM (Origine Équipementier)
-
 ## Qu'est-ce qu'une référence OEM ?
 
 **OEM** = Original Equipment Manufacturer (Fabricant d'Équipement d'Origine)
@@ -633,3 +558,81 @@ Notre système prend en compte ces évolutions.
 2. **Photographiez** : L'étiquette de vos pièces d'origine
 3. **Utilisez le VIN** : Pour une identification précise
 4. **Comparez** : Les équipementiers pour le meilleur rapport qualité/prix
+
+
+## Conseils supplementaires
+
+<!-- materialized-from-db web/7377bedb9c7e 2026-03-28 -->
+### Filtres à huile pour voitures et cartouches de filtre à huile – Automobile
+
+# Filtres à huile pour voitures et cartouches de filtre à huile – Automobile – WIX Filters
+
+- FILTRES À HUILE The engine’s combustion chamber must remain clean, and therefore it also must be protected by a filter which prevents pollutants reaching the oil. The oil filter reduces the wear of close moving parts of the engine and decreases the risk of damage.</p>\r\n","repo:modifyDate":"2025-09-22T08:50:52Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"DESIGNED FOR ALL DRIVING CONDITIONS"}}"> DESIGNED FOR ALL DRIVING CONDITIONS The engine’s combustion chamber must remain clean, and therefore it also must be protected by a filter which prevents pollutants reaching the oil. The oil filter reduces the wear of close moving parts of the engine and decreases the risk of damage. POURQUOI CHOISIR LES FILTRES À HUILE WIX FILTERS ? Les matériaux sont contrôlés en permanence en laboratoire afin d’assurer en permanence le plus haut niveau de qualité. Nous pouvons affirmer avec certitude que tout aussi bien les matériaux filtrants, que les soupapes, les ressorts, les corps ainsi que les autres éléments<b> des filtres remplissent les exigences des fabricants automobiles et peuvent fonctionner dans les conditions d’utilisation les plus difficiles.</b></p>\r\n","repo:modifyDate":"2025-09-22T09:00:06Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"DES MATÉRIAUX DE QUALITÉ SUPÉRIEURE"}}"> DES MATÉRIAUX DE QUALITÉ SUPÉRIEURE Les matériaux sont contrôlés en permanence en laboratoire afin d’assurer en permanence le plus haut niveau de qualité. Nous pouvons affirmer avec certitude que tout aussi bien les matériaux filtrants, que les soupapes, les ressorts, les corps ainsi que les autres éléments des filtres remplissent les exigences des fabricants automobiles et peuvent fonctionner dans les conditions d’utilisation les plus difficiles. Les filtres à huile fabriqués sont soumis à plusieurs tests de vérification d’étanchéité. Ces tests sont effectués avec des machines de mesure modernes et automatisées. Uniquement les filtres étanches sont admis à la vente.</p>\r\n","repo:modifyDate":"2025-09-22T09:01:01Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"ÉTANCHÉITÉ ÉPROUVÉE"}}"> ÉTANCHÉITÉ ÉPROUVÉE Les filtres à huile fabriqués sont soumis à plusieurs tests de vérification d’étanchéité. Ces tests sont effectués avec des machines de mesure modernes et automatisées. Uniquement les filtres étanches sont admis à la vente. Une construction adaptée et des soupapes appropriées répondant aux exigences émises par le fabricant du moteur ou du véhicule sont cruciales dans le cas des filtres à huile spin-on avec soupape.<b> Pour les filtres à huile WIX Filters, les soupapes sont conçues selon des exigences spécifiques</b>, de manière à ce que les filtres remplissent toujours correctement leur rôle dans le système d’huile.</p>\r\n","repo:modifyDate":"2025-09-22T09:02:31Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"DES SOUPAPES ADAPTÉES AUX EXIGENCES"}}"> DES SOUPAPES ADAPTÉES AUX EXIGENCES Une construction adaptée et des soupapes appropriées répondant aux exigences émises par le fabricant du moteur ou du véhicule sont cruciales dans le cas des filtres à huile spin-on avec soupape. Pour les filtres à huile WIX Filters, les soupapes sont conçues selon des exigences spécifiques , de manière à ce que les filtres remplissent toujours correctement leur rôle dans le système d’huile. Depuis plusieurs années dans le domaine des filtres la tendance est au remplacement des éléments métalliques par des éléments en plastique. Grâce à cela, il a été possible de diminuer le poids du filtre et de faciliter ainsi son recyclage tout en maintenant une haute qualité de filtration.</p>\r\n","repo:modifyDate":"2025-09-22T09:02:22Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"MATÉRIAU PLASTIQUE MODERNE"}}"> MATÉRIAU PLASTIQUE MODERNE Depuis plusieurs années dans le domaine des filtres la tendance est au remplacement des éléments métalliques par des éléments en plastique. Grâce à cela, il a été possible de diminuer le poids du filtre et de faciliter ainsi son recyclage tout en maintenant une haute qualité de filtration. LA QUALITÉ DES FILTRES WIX PROVIENT DE NOTRE COMPÉTENCE EN TANT QUE FOURNISSEUR D’ÉQUIPEMENTS D’ORIGINE La haute qualité des produits WIX Filters résulte de l’expertise approfondie de MANN+HUMMEL – notre société et principal fournisseur de filtres d’origine pour les plus grands constructeurs automobiles au monde. MANN+HUMMEL est le leader mondial de la technologie de filtration. Notre savoir-faire et nos standards de qualité garantissent que chaque filtre WIX offre une protection fiable pendant toute la durée de service recommandée. REGARDE COMMENT FONCTIONNE UN FILTRE A HUILE</h4>\r\n","repo:modifyDate":"2025-09-22T09:05:18Z","@type":"mannhummel-base/components/whitelabel/teaser-block"}}"> REGARDE COMMENT FONCTIONNE UN FILTRE A HUILE REGARDEZ LA VIDÉO Ce type type de filtre a été inventé par les ingénieurs des laboratoires WIX Filters en 1954. Il est devenu par la suite la norme mondiale. Il se compose d’une cartouche installée dans le corps en acier disposant d’un filetage, grâce auquel le filtre est vissé directement sur le corps du moteur. Ces filtres sont faciles à changer et ont une conception résistant aux divers facteurs extérieurs (p. ex. à la haute pression). Son remplacement ne présente pratiquement aucun risque d’introduction de contaminants dans le système d’huile moteur.</p>\r\n","repo:modifyDate":"2025-09-22T09:05:55Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"LES FILTRES SPIN-ON. NOTRE INVENTION."}}"> LES FILTRES SPIN-ON. NOTRE INVENTION. Ce type type de filtre a été inventé par les ingénieurs des laboratoires WIX Filters en 1954. Il est devenu par la suite la norme mondiale. Il se compose d’une cartouche installée dans le corps en acier disposant d’un filetage, grâce auquel le filtre est vissé directement sur le corps du moteur. Ces filtres sont faciles à changer et ont une conception résistant aux divers facteurs extérieurs (p. ex. à la haute pression). Son remplacement ne présente pratiquement aucun risque d’introduction de contaminants dans le système d’huile moteur. Les cartouches de filtre à huile sont appliquées de manière étanche dans le boîtier intégré au moteur. Le corps dispose de soupapes nécessaires au fonctionnement correct du filtre dans le système d’huile du moteur et également des éléments stabilisant la cartouche du filtre. Dans les cartouches, il n’y a pas de pièces métalliques. La couronne et le noyau sont réalisés en matériaux plastiques modernes, ce qui permet de faciliter le recyclage du filtre.</p>\r\n","repo:modifyDate":"2025-09-22T09:06:32Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"LES CARTOUCHES DE FILTRE À HUILE"}}"> LES CARTOUCHES DE FILTRE À HUILE Les cartouches de filtre à huile sont appliquées de manière étanche dans le boîtier intégré au moteur. Le corps dispose de soupapes nécessaires au fonctionnement correct du filtre dans le système d’huile du moteur et également des éléments stabilisant la cartouche du filtre. Dans les cartouches, il n’y a pas de pièces métalliques. La couronne et le noyau sont réalisés en matériaux plastiques modernes, ce qui permet de faciliter le recyclage du filtre. TROUVEZ UN FILTRE
+
+- OÙ ACHETER
+
+- YOUTUBE
+
+- CONTACTEZ-NOUS
+
+ACCÈS RAPIDE
+
+## References supplementaires
+
+<!-- materialized-from-db web-catalog/fb7990425a5e 2026-03-28 -->
+### Filtres à air - Purflux - Filtres à air
+
+## Filtres à air
+
+Le filtre à air pourrait être comparé aux poumons d’une voiture. Il est conçu pour éliminer les poussières contenues dans l'air ambiant aspiré par le moteur. Selon leur capacité, les moteurs à pleine charge peuvent aspirer entre 200 et 500 m³ d'air par heure. Cet air contient une quantité d'impuretés plus ou moins importante selon les pays, les conditions météorologiques, le revêtement de la route, etc.Si ces poussières ne sont pas filtrées, elles provoqueront une usure prématurée du moteur.
+
+Pour garantir un haut niveau de performance et de qualité des filtres, PURFLUX dispose du savoir-faire indispensable en industrialisation haute performance.
+
+PURFLUX recommande le remplacement du filtre à air au moins une fois par an, de préférence en même temps que le filtre à huile, car un remplacement régulier du filtre à air assure :
+
+- Maintien des performances du véhicule
+
+- Puissance moteur optimale
+
+- Un moteur mieux protégé et moins polluant pour l'environnement (et par conséquent un niveau d'émissions acceptable pour la réglementation anti-pollution)
+
+La gamme complète de filtres à air de qualité PURFLUX couvre pratiquement tous les véhicules en circulation aujourd'hui et demain.
+
+<!-- materialized-from-db web-catalog/8c1a4aa61267 2026-03-28 -->
+### Filtres à huile moteur pour un fonctionnement propre et efficace - Notre catalogue en ligne est conçu pour vous
+
+# Filtres à huile moteur pour un fonctionnement propre et efficace
+
+- Nos filtres à huile travaillent dur pour votre moteur Ce composant crucial du moteur assure son <b>bon fonctionnement</b> et ses <b>performances optimales</b>. Chez <b>MANN-FILTER</b>, nous savons comment <b>tirer le meilleur parti</b> de chaque moteur. Et cela commence par une <b>filtration optimale</b>.</p>\r\n"}}" id="text-79769725c5" class="cmp-text cmp-text--standard"> Ce composant crucial du moteur assure son bon fonctionnement et ses performances optimales . Chez MANN-FILTER , nous savons comment tirer le meilleur parti de chaque moteur. Et cela commence par une filtration optimale . Fonctionnement sans faille. Performances optimales. Nous savons que vous avez bien conscience que l’entretien régulier est la clé de la longévité du moteur et de sa pleine fonctionnalité . Que vous soyez mécanicien en garage réalisant des entretiens annuels ou distributeur de confiance proposant des produits de qualité, choisissez les meilleurs filtres à huile moteur pour travailler efficacement. Chez MANN-FILTER , nous avons plus de 70 ans d’expérience dans la conception et le développement de solutions de filtration répondant aux exigences toujours plus élevées des moteurs, tous types de véhicules et de machines confondus. Nos filtres à huile pour véhicules retirent les résidus et les impuretés, permettant à une huile propre et pure de circuler dans le moteur. Nous concevons des filtres qui fonctionnent en harmonie avec les meilleures huiles haute performance et qui répondent aux derniers défis technologiques . Grâce à notre large gamme de produits, nos filtres sont également compatibles avec de nombreux moteurs plus anciens. Pour nous, c’est simple : des composants propres garantissent un fonctionnement optimal et des moteurs durant plus longtemps. Restez tranquille – du début à la fin du voyage Dans le monde de l'après-vente automobile, il vaut toujours mieux <b>prévenir</b> que guérir. La prévoyance et la connaissance peuvent <b>vous faire économiser</b> - ainsi qu'à vos clients - du <b>temps, de l'argent et des tracas</b>. Une fois qu'une particule de suie ou de poussière a pénétré dans l'huile moteur, elle commence à rayer les surfaces avec lesquelles elle entre en contact, <b>rendant votre lubrifiant plus abrasif</b>. Il ne suffit pas de changer l'huile, il faut aussi changer le filtre. <b>Changer fréquemment le filtre à huile permet d'éviter les dommages</b> et de maintenir le fonctionnement de votre filtre à huile à un <b>niveau optimal</b>.</p>\r\n<p>Découvrez les <b>avantages</b> d’un <b>changement régulier du filtre à huile</b>&nbsp;:</p>\r\n"}}" id="text-bc87a55d02" class="cmp-text cmp-text--standard"> Dans le monde de l'après-vente automobile, il vaut toujours mieux prévenir que guérir. La prévoyance et la connaissance peuvent vous faire économiser - ainsi qu'à vos clients - du temps, de l'argent et des tracas . Une fois qu'une particule de suie ou de poussière a pénétré dans l'huile moteur, elle commence à rayer les surfaces avec lesquelles elle entre en contact, rendant votre lubrifiant plus abrasif . Il ne suffit pas de changer l'huile, il faut aussi changer le filtre. Changer fréquemment le filtre à huile permet d'éviter les dommages et de maintenir le fonctionnement de votre filtre à huile à un niveau optimal . Découvrez les avantages d’un changement régulier du filtre à huile : Longévité – L'accumulation de résidus dans l'huile moteur peut endommager d'autres composants, mais une huile filtrée et propre permet de conserver des performances optimales
+
+- Protection – Protège les pièces de votre moteur contre l'usure
+
+- Fiabilité – Assure le bon fonctionnement de votre moteur, même par temps froid
+
+---
+
+## Trouvez le type de filtre à huile adéquat
+
+Les véhicules, les conditions de conduite et les applications spécifiques nécessitent des solutions sur mesure . Les filtres à huile MANN-FILTER sont conçus pour une excellente capacité de rétention des impuretés et une résistance élevée des matériaux , avec un ajustement sur mesure pour chaque modèle de véhicule ou de machine. En plus de proposer des filtres à huile pour voitures fiables, nos filtres à huile moteur garantissent également une fonctionnalité optimale dans divers secteurs industriels , notamment pour les véhicules utilitaires , agricoles , de chantier , miniers , et autres machines fortement sollicitées .
+
+Chaque filtre est conçu pour fournir une huile propre à votre moteur. En raison de la grande variété d’applications et de besoins, MANN-FILTER propose différents types de filtres à huile afin de répondre à des exigences précises. Découvrez ci-dessous comment ils protègent efficacement votre moteur .
+
+---
+
+### Filtre à huile Spin-on
+
+Nos filtres à huile à visser offrent un comportement fluide et des performances de haut niveau . La valve anti-retour (qui veille à ce que le filtre et les circuits d'huile ne se vident pas complètement lorsque le moteur est arrêté) permet à l'huile de circuler dès que vous allumez le moteur. Par temps froid , la valve de dérivation est essentielle pour garantir le démarrage de votre voiture. Les températures froides peuvent rendre l'huile épaisse et collante. Cette valve maintient la lubrification jusqu'à ce que l'huile atteigne la bonne température.
+
+---
+
+### Éléments filtrants
+
+Conçus pour les moteurs modernes, nos produits MANN-FILTER ont une excellente capacité de rétention de la saleté grâce à une conception ingénieuse des éléments filtrants.
+
+Nos médias filtrants modernes sont conçus pour répondre aux exigences techniques futures des moteurs . Nous utilisons une membrane anti-retour qui maintient l'huile moteur dans le filtre dès que le moteur s'arrête. Cela permet une alimentation en huile optimisée et encore plus rapide au démarrage.
+
+En plus de leurs avantages techniques, les éléments filtrants MANN-FILTER sont très respectueux de l'environnement : le boîtier du filtre dure toute la durée de vie du produit, seul l’élément filtrant facilement incinérable est à éliminer lors de la maintenance.
+
+Nous utilisons les services de YouTube pour vous proposer des contenus multimédias. Votre consentement est nécessaire pour utiliser ce service. Veuillez-vous reporter à notr
+
+[...]

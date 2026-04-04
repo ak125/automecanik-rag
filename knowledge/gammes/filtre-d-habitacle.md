@@ -220,7 +220,7 @@ installation:
 phase5_enrichment:
   _source: boschaftermarket.com + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 2
   _has_tech_data: true
   types_variants:
@@ -309,7 +309,7 @@ conseil_v5:
     -Vérifiez que le filtre d'habitacle neuf est identique à celui démonté. -
     Avant de remontez le filtre d'habitacle utiliser unantibactérien pour
     asperger le circuit et le filtre. - Mettre en place le filtre d'habitacle en
-    respectant le sensdu montage quest mentionné par des flèches. - Remontez le
+    respectant le sensdu montage qu'est mentionné par des flèches. - Remontez le
     couvercle du boîtier du filtre d'habitacle. - Mettre en place les couvercles
     démontés ou la boîte à gantsou le cache du caisson d'eau, suivant
     l'emplacement de votre filtre d'habitacle. ✅ Après remontage, vérifiez les

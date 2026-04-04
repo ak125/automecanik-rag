@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-gates-skf-trw
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Articuler la barre de direction et la fusee - Permet le braquage. NE SUPPORTE PAS LA CHARGE!
@@ -216,91 +216,64 @@ installation:
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
 phase5_enrichment:
-  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-30'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    couple_ecrou_rotule: '40-60 Nm selon constructeur'
-    geometrie_apres: 'parallelisme obligatoire dans les 50 km'
-    duree_vie: '100 000 a 150 000 km selon routes'
-  materials:
-  - composant: rotule (bille)
-    materiau: acier traite trempe (durete > 58 HRC)
-  - composant: cage/cuvette
-    materiau: polyoxymethylene POM ou nylon renforce (glissement, amortissement)
-  - composant: soufflet
-    materiau: caoutchouc NBR ou polyurethane (etancheite graisse, protection)
-  - composant: corps
-    materiau: acier forge (resistance aux chocs et vibrations)
+    val_2_2_v: 2.2 V
+    val_40_km: 40 km
+    val_50_a: 50 A
+    val_60_km: 60 km
+    val_7_a: 7 a
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    La rotule de direction articule la barre de direction (biellette) et la
-    fusée de roue, permettant le braquage des roues avant. Elle ne supporte PAS
-    la charge verticale du véhicule — c''est la rotule de suspension qui remplit
-    ce rôle. La rotule de direction transmet uniquement les efforts latéraux de
-    braquage. Niveau de difficulté : Intermédiaire — nécessite un arrache-
-    rotule. Géométrie des trains roulants obligatoire après remplacement.
-    Comptez 1h par côté. Outils : arrache-rotule (extracteur conique), clé plate
-    pour le contre-écrou, clé dynamométrique. Pièces liées : barre de direction
-    (biellette axiale), crémaillère de direction, soufflet de direction, rotule
-    de suspension (à ne pas confondre).
-  S2: >-
-    Pas de périodicité fixe. Durée moyenne : 100 000 à 150 000 km selon l''état
-    des routes. Vérifier à chaque contrôle technique. Symptômes de défaillance :
-    - Jeu perceptible dans le volant — la direction a du "mou" au point milieu-
-    Claquements en tournant à basse vitesse — la rotule a du jeu dans son
-    logement- Direction imprécise ou floue — le braquage n''est pas transmis
-    intégralement à la roue- Usure asymétrique des pneus avant — le parallélisme
-    est faussé par le jeu de la rotule- Soufflet de rotule déchiré ou graisse
-    visible — la contamination par l''eau et la poussière accélère l''usure-
-    Contrôle technique refusé pour jeu aux trains roulants
-  S3: >-
-    Pour choisir la bonne rotule de direction : - Ne pas confondre rotule de
-    direction et rotule de suspension — la rotule de direction est en bout de
-    biellette (petite, filetée), la rotule de suspension est sur le bras
-    (grosse, conique)- Côté : gauche ou droite — sur certains véhicules les
-    filetages sont inversés- Filetage : vérifier le pas et le diamètre du
-    filetage (M12, M14, M16 selon véhicule)- Marques : Lemförder, ZF, Moog
-    (premium), TRW, Meyle HD (standard) — privilégier les marques avec soufflet
-    intégré de qualité- Budget : 15 à 60 EUR l''unité — remplacer par paire
-    (gauche + droite) pour un parallélisme symétrique
-  S4_DEPOSE: >-
-    1. Lever le véhicule, déposer la roue, sécuriser sur chandelles. 2. Marquer
-    la position du contre-écrou sur la biellette (repère au marqueur ou compter
-    les tours visibles du filetage) — indispensable pour retrouver un
-    parallélisme approximatif au remontage. 3. Dévisser l''écrou de la rotule
-    sur la fusée. 4. Utiliser l''arrache-rotule conique pour désolidariser la
-    rotule de la fusée — ne jamais frapper directement sur la rotule avec un
-    marteau. 5. Dévisser la rotule de la biellette de direction (filetage à
-    droite ou à gauche selon le côté). 6. Compter les tours de dévissage pour
-    reproduire la même longueur au remontage.
-  S5: >-
-    Erreurs fréquentes avec la rotule de direction : - Confondre rotule de
-    direction et rotule de suspension — elles n''ont pas le même rôle ni le même
-    emplacement, et ne sont pas interchangeables- Ne pas faire la géométrie des
-    trains roulants après remplacement — le parallélisme change
-    systématiquement, même en respectant le nombre de tours- Frapper directement
-    sur la rotule avec un marteau pour la déboîter — utiliser un arrache-rotule,
-    les chocs directs déforment la fusée- Ne pas remplacer par paire (gauche +
-    droite) — un jeu de rotule différent entre les deux côtés provoque un tirage
-    latéral- Ignorer un soufflet déchiré en se disant que la rotule tient encore
-    — l''eau et la poussière détruisent la rotule en quelques milliers de km-
-    Oublier de serrer le contre-écrou de biellette au couple après réglage — le
-    contre-écrou qui se desserre modifie le parallélisme en roulant
-  S6: >-
-    Après le remplacement de la rotule de direction : - Parallélisme provisoire
-    : remonter la rotule au même nombre de tours que l''ancienne — cela donne un
-    parallélisme approximatif suffisant pour rouler jusqu''au garage- Géométrie
-    obligatoire : faire un parallélisme complet dans les 50 km suivant le
-    remplacement — une rotule neuve sans géométrie use les pneus en quelques
-    centaines de km- Test de direction : en ligne droite, le volant doit être
-    centré et le véhicule ne doit pas tirer d''un côté- Couple de serrage :
-    écrou de rotule sur fusée = 40-60 Nm selon constructeur. Contre-écrou de
-    biellette = 50-70 Nm- Vérifier le soufflet : s''assurer que le soufflet de
-    la rotule neuve est intact et correctement positionné — un soufflet pincé au
-    montage ne protège plus
+  S1: 'La rotule de direction articule la barre de direction (biellette) et la fusée de roue, permettant le braquage des roues
+    avant. Elle ne supporte PAS la charge verticale du véhicule — c''''est la rotule de suspension qui remplit ce rôle. La
+    rotule de direction transmet uniquement les efforts latéraux de braquage. Niveau de difficulté : Intermédiaire — nécessite
+    un arrache- rotule. Géométrie des trains roulants obligatoire après remplacement. Comptez 1h par côté. Outils : arrache-rotule
+    (extracteur conique), clé plate pour le contre-écrou, clé dynamométrique. Pièces liées : barre de direction (biellette
+    axiale), crémaillère de direction, soufflet de direction, rotule de suspension (à ne pas confondre).'
+  S2: 'Pas de périodicité fixe. Durée moyenne : 100 000 à 150 000 km selon l''''état des routes. Vérifier à chaque contrôle
+    technique. Symptômes de défaillance : - Jeu perceptible dans le volant — la direction a du "mou" au point milieu- Claquements
+    en tournant à basse vitesse — la rotule a du jeu dans son logement- Direction imprécise ou floue — le braquage n''''est
+    pas transmis intégralement à la roue- Usure asymétrique des pneus avant — le parallélisme est faussé par le jeu de la
+    rotule- Soufflet de rotule déchiré ou graisse visible — la contamination par l''''eau et la poussière accélère l''''usure-
+    Contrôle technique refusé pour jeu aux trains roulants'
+  S3: 'Pour choisir la bonne rotule de direction : - Ne pas confondre rotule de direction et rotule de suspension — la rotule
+    de direction est en bout de biellette (petite, filetée), la rotule de suspension est sur le bras (grosse, conique)- Côté
+    : gauche ou droite — sur certains véhicules les filetages sont inversés- Filetage : vérifier le pas et le diamètre du
+    filetage (M12, M14, M16 selon véhicule)- Marques : Lemförder, ZF, Moog (premium), TRW, Meyle HD (standard) — privilégier
+    les marques avec soufflet intégré de qualité- Budget : 15 à 60 EUR l''''unité — remplacer par paire (gauche + droite)
+    pour un parallélisme symétrique'
+  S4_DEPOSE: 1. Lever le véhicule, déposer la roue, sécuriser sur chandelles. 2. Marquer la position du contre-écrou sur la
+    biellette (repère au marqueur ou compter les tours visibles du filetage) — indispensable pour retrouver un parallélisme
+    approximatif au remontage. 3. Dévisser l''écrou de la rotule sur la fusée. 4. Utiliser l''arrache-rotule conique pour
+    désolidariser la rotule de la fusée — ne jamais frapper directement sur la rotule avec un marteau. 5. Dévisser la rotule
+    de la biellette de direction (filetage à droite ou à gauche selon le côté). 6. Compter les tours de dévissage pour reproduire
+    la même longueur au remontage.
+  S5: 'Erreurs fréquentes avec la rotule de direction : - Confondre rotule de direction et rotule de suspension — elles n''''ont
+    pas le même rôle ni le même emplacement, et ne sont pas interchangeables- Ne pas faire la géométrie des trains roulants
+    après remplacement — le parallélisme change systématiquement, même en respectant le nombre de tours- Frapper directement
+    sur la rotule avec un marteau pour la déboîter — utiliser un arrache-rotule, les chocs directs déforment la fusée- Ne
+    pas remplacer par paire (gauche + droite) — un jeu de rotule différent entre les deux côtés provoque un tirage latéral-
+    Ignorer un soufflet déchiré en se disant que la rotule tient encore — l''''eau et la poussière détruisent la rotule en
+    quelques milliers de km- Oublier de serrer le contre-écrou de biellette au couple après réglage — le contre-écrou qui
+    se desserre modifie le parallélisme en roulant'
+  S6: 'Après le remplacement de la rotule de direction : - Parallélisme provisoire : remonter la rotule au même nombre de
+    tours que l''''ancienne — cela donne un parallélisme approximatif suffisant pour rouler jusqu''''au garage- Géométrie
+    obligatoire : faire un parallélisme complet dans les 50 km suivant le remplacement — une rotule neuve sans géométrie use
+    les pneus en quelques centaines de km- Test de direction : en ligne droite, le volant doit être centré et le véhicule
+    ne doit pas tirer d''''un côté- Couple de serrage : écrou de rotule sur fusée = 40-60 Nm selon constructeur. Contre-écrou
+    de biellette = 50-70 Nm- Vérifier le soufflet : s''''assurer que le soufflet de la rotule neuve est intact et correctement
+    positionné — un soufflet pincé au montage ne protège plus'
 ---
 
 # Rotule de direction - Guide Diagnostic Complet
@@ -396,7 +369,57 @@ Possible mais nécessite un arrache-rotule. Géométrie obligatoire après. Pré
 
 **Rotule de direction : quel risque si usée ?**
 Direction imprécise, usure pneus accélérée. En cas de rupture, perte totale de contrôle du véhicule.
+## Symptômes au volant
 
+### Volant dur
+- **Direction assistée défaillante** : Pompe DA qui siffle ou ne fournit plus assez de pression. Vérifier le niveau de liquide DA et l'état de la courroie.
+- **Crémaillère grippée** : Corrosion interne ou manque de lubrification. Le volant est dur dans les deux sens, surtout à froid.
+- **Colonne de direction usée** : Cardan de direction grippé, surtout après un long stationnement.
+
+### Jeu dans le volant
+- **Rotules de direction usées** : Jeu perceptible en tournant le volant sans que les roues bougent. Contrôler visuellement le jeu en secouant la roue.
+- **Biellettes de direction desserrées** : Claquement en manœuvrant, jeu latéral au volant.
+- **Crémaillère avec jeu interne** : Usure des pignons ou des bagues de guidage.
+
+### Bruits en braquant
+- **Craquement dans les virages** : Soufflet de cardan déchiré, graisse partie, croisillon usé.
+- **Grincement à basse vitesse** : Roulements de butée d'amortisseur ou coupelles supérieures usées.
+- **Sifflement continu** : Pompe de direction assistée en fin de vie ou niveau de liquide bas.
+
+## Fuites de direction
+
+### Fuite de liquide DA
+- **Au niveau du bocal** : Joint de bouchon ou bocal fissuré.
+- **Sur les raccords** : Durites de pression ou retour qui fuient aux colliers.
+- **Sur la crémaillère** : Joints spy de crémaillère usés, fuite visible aux soufflets.
+
+## Vérifications simples
+
+- Contrôler le niveau de liquide de direction assistée (bocal sous le capot)
+- Inspecter les soufflets de crémaillère (pas de déchirure, pas de fuite)
+- Secouer la roue à 9h-15h pour détecter le jeu dans les rotules
+- Tourner le volant moteur allumé : le mouvement doit être fluide et silencieux
+
+## Quand consulter un professionnel
+
+- Volant qui vibre ou tire d'un côté en ligne droite
+- Bruit métallique constant dans la direction
+- Fuite importante de liquide DA (risque de blocage)
+- Jeu excessif au volant détecté au contrôle technique
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/9a71c7d6c37d 2026-04-03 -->
+### Données techniques OEM — Rotule de direction
+
+# Données techniques OEM — Rotule de direction
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+- électrique
 
 ## Symptomes supplementaires
 

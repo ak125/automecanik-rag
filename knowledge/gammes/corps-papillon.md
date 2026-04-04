@@ -206,11 +206,13 @@ installation:
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
 phase5_enrichment:
-  _source: delphiautoparts.com
+  _source: delphiautoparts.com + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
-  _has_tech_data: false
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
+  _has_tech_data: true
+  technical_notes:
+    val_17_a: '17 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

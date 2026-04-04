@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Faire circuler le liquide de refroidissement dans le circuit moteur
@@ -203,200 +203,133 @@ installation:
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 phase5_enrichment:
-  _source: automotive.hutchinson.com + hella.com
+  _source: automotive.hutchinson.com + fr.wikipedia.org + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 3
+  _enriched_at: '2026-04-03'
+  _web_files_count: 4
   _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
     norme_iso_9981: 'ISO 9981'
     val_000_km: '000 km'
     val_1_5_bars: '1,5 bars'
+    val_120__c: '120 °C'
     val_135__c: '135 °C'
     val_3_bars: '3 bars'
     val_360_v: '360 V'
+    val_95__c: '95 °C'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    La pompe à eau fait circulerle liquide derefroidissement au sein dumoteur
-    par la rotation de sa poulie si elle est entraînée par lacourroie
-    d'accessoires. Et si la pompe à eau à une roue dentée, elles sera entraînée
-    par la courroie de distribution . La combustion du moteur produit de très
-    fortes chaleurs quifait augmenter la température des pièces mécanique,
-    qu'ils seront refroidis grâceau circuit de refroidissement moteur. Le
-    circuit de refroidissement est composé d'un radiateurde refroidissement,
-    d'une pompe à eau, d'un thermostat etd'un ventilateur de refroidissement à
-    travers lesquels circule le liquide de refroidissement.La pompe à eau fait
-    circuler le liquide de refroidissement dans cesystème. En savoir plus :
-    pompe à eau — définition et rôle mécanique 🚨 Voyant pompe à eau allum
-  S2: >-
-    La pompe à eau n'a pas de période de remplacement, mais elledoit être
-    remplacée dès que vous constatez les symptômes suivants : - Fuites de
-    liquide derefroidissement au niveau de la pompe à eau. - Bruits au niveau de
-    la pompeà eau. - Poulie grippé, remplacementuniquement de la poulie si il
-    n'y a pas de fuite de la pompe à eau. Si la pompe à eau défaillante n'est
-    pas remplacée, lerefroidissement du moteur ne sera plus assurée ce qui va
-    produire unesurchauffe du moteur (joint de culasse à long terme casse
-    moteur). Lorsque lapompe à eau est entraînée par la courroie de distribution
-    , la casse de la pompeà eau peut entraîner la rupture de la courroie de
-    distribution ce qui vaprovoquer une casse moteur c'est pour cela qu'il faut
-    toujours remplacerla pompe à eau avec le kit de distribution et vis versa.
-    Diagnostic complet : identifier une panne de pompe à eau
-  S2_DIAG: >-
-    SymptômeCause probableActionUn bruit anormal au niveau du pompe à eau peut
-    se manifester lors de la phase "acceleration"Pour identifier ce probleme de
-    bruit du pompe à eau:Verification visuelle du pompe à eauDes vibrations
-    provenant du pompe à eau sont souvent perceptibles a haute vitessePour
-    identifier ce probleme de vibration du pompe à eau:Verification visuelle du
-    pompe à eau
-  S3: >-
-    La pompe à eau entraîne la circulation du liquide de refroidissement dans le
-    circuit moteur, maintenant la température dans la plage de fonctionnement
-    normale (85 à 95 °C). Sur la majorité des véhicules modernes, la pompe à eau
-    est entraînée par la courroie de distribution et doit être remplacée
-    systématiquement lors de chaque révision de la distribution, tous les 120
-    000 à 200 000 km selon le constructeur. Choisir une pompe dimensionnellement
-    et hydrauliquement correcte est indispensable pour éviter une surchauffe
-    entraînant la déformation de la culasse. - Entraînement : courroie de
-    distribution, courroie accessoire ou chaîne — La pompe à eau peut être
-    entraînée par la courroie de distribution (remplacement simultané
-    obligatoire), par la courroie d'accessoires (remplacement indépendant
-    possible) ou par la chaîne de distribution (durée de vie moteur,
-    remplacement rare). Identifier le type d'entraînement avant de commander. -
-    Matériau de la turbine : métal ou plastique — Les pompes récentes utilisent
-    des turbines en plastique renforcé pour réduire le poids et le bruit. Si la
-    turbine d'origine est en métal, ne pas la remplacer par une pompe à turbine
-    plastique générique : le plastique peut se désolidariser de l'axe à haute
-    température, stoppant net la circulation sans bruit d'alerte. - Débit
-    hydraulique et dimension de la turbine — Le débit de la pompe (en L/min)
-    doit correspondre au circuit du constructeur. Une pompe sous-débitante ne
-    compense pas la chaleur à régime élevé ou avec la climatisation en
-    fonctionnement. Vérifier que le diamètre de la turbine et le nombre
-    d'ailettes correspondent à la référence d'origine. - Joint d'étanchéité
-    inclus — La pompe à eau est livrée avec ou sans joint de carter. Vérifier si
-    le joint de logement de la pompe est inclus dans la livraison. Monter une
-    pompe neuve sans remplacer le joint de carter est une source de fuite dès la
-    mise en service. - Kit complet distribution + pompe — Les fabricants (SKF,
-    INA, Dayco, Continental, Gates) proposent des kits intégrant courroie de
-    distribution, galets tendeurs et pompe à eau. Opter pour un kit d'un seul
-    fournisseur garantit la cohérence des cotes et un seul interlocuteur en cas
-    de réclamation. - Pièces liées à contrôler — Lors du remplacement, inspecter
-    systématiquement les durites de refroidissement (durcissement, fissures), le
-    thermostat (jeu de l'obturateur) et le bouchon du vase d'expansion (pression
-    de tarage entre 1,0 et 1,4 bar). Ces pièces sont accessibles lors du
-    démontage de la distribution. - Marque, modèle, année et code moteur —
-    Indispensable : le code moteur détermine la référence exacte de la pompe, sa
-    bride de fixation et le type d'entraînement. Un même modèle de voiture peut
-    avoir reçu plusieurs motorisations avec des pompes totalement différentes
-    selon la cylindrée ou la puissance.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Pompe à eau pour connaître
-    les spécifications. - Débranchez la batterie. - Levez et calez le véhicule.
-    - Démontez la roue avant droite. - Démontez le pare-boue avant droit. -
-    Vidangez le circuit derefroidissement à travers la ou les vis de vidange du
-    moteur. Note : une vis de vidange du liquide derefroidissement se trouve sur
-    le côté du bloc moteur et/ou en bas du radiateur.S'il n'y a pas de vis de
-    vidange sur votre moteur démontez la durite inférieuredu radiateur de
-    refroidissement en positionnant le bac à vidange en dessous pour récupérer
-    leliquide de refroidissement. - Repérez le cheminement de la courroie
-    d'accessoires. - Démontez la courroie d'accessoires. - Démontez la courroie
-    de distribution (si entraînée par ladistribution). - Démontez les durites de
-    liquide de refroidissement de la pompe à eau. - Desserrez les fixations de
-    la pompe à eau. - Démontez la pompe à eau.
-  S4_REPOSE: >-
-    - Vérifier que la pompe à eau neuve estidentique à celle démontée. -
-    Contrôler l'état de la courroied'accessoires, remplacée si nécessaire. -
-    Remplacez obligatoirement lekit de distribution si la courroie de
-    distribution entraîne la pompe à eau. - Remplacez les joints d'étanchéité de
-    la pompe à eau. - Graissez la nouvelle pompe à eau. - Remontez la pompe à
-    eau. - Serrez les fixations de la pompe à eau. - Remontez les canalisations
-    sur la pompe à eau. - Remontez la courroie de distribution (si entraînée par
-    ladistribution). - Remontez la courroie d'accessoires. - Remontez l'écran
-    pare-boue et la roue. - Remplissez et purgez le liquide de refroidissement.
-    - Desserrez la vis de purge du circuit de refroidissementpour chasser l'air
-    du circuit. - Refermez la vis de purge. - Démarrez le moteur. - Laissez
-    tourner le moteur au ralenti. - Contrôlez la température sur le tableau de
-    bord. - Arrêtez le moteur. - Laissez refroidir le moteur. - Contrôlez le
-    niveau du liquide de refroidissement. - Complétez le niveau du liquide de
-    refroidissement sinécessaire. ✅ Après remontage, vérifiez les spécifications
-    dans la fiche technique Pompe à eau.
-  S5: >-
-    Erreurs frequentes avec la pompe a eau : - Ignorer une fuite de liquide de
-    refroidissement au niveau de la pompe — meme legere, elle s'aggrave et
-    provoque une surchauffe moteur- Ne pas remplacer la pompe a eau lors du
-    changement du kit de distribution — si la pompe est entrainee par la
-    courroie de distribution, elle sera inaccessible jusqu'au prochain
-    remplacement (60 000 a 120 000 km)- Negliger un bruit de roulement cote
-    pompe a eau — signe que le roulement interne est use, la rupture est
-    imminente- Reutiliser l'ancien joint de pompe — le joint d'etancheite doit
-    etre neuf a chaque remplacement pour eviter les fuites- Ne pas purger
-    correctement le circuit de refroidissement apres remplacement — une bulle
-    d'air provoque des points chauds et un chauffage habitacle defaillant-
-    Oublier de verifier l'etat de la courroie et des galets lors du remplacement
-    de la pompe — une courroie usee endommage la pompe neuve
-  S6: >-
-    La pompe à eau assure la circulation du liquide de refroidissement dans
-    l'ensemble du circuit moteur. Après son remplacement — souvent effectué
-    conjointement avec la courroie ou la chaîne de distribution — des contrôles
-    d'étanchéité et de température sont indispensables avant de valider
-    l'intervention. - Purge complète du circuit de refroidissement : après
-    remplissage du vase d'expansion, démarrer le moteur avec le bouchon de purge
-    ouvert (si présent) ou le couvercle du vase légèrement desserré. Laisser le
-    moteur tourner jusqu'à ouverture du thermostat (70 à 85 °C selon véhicule)
-    et compléter le niveau en éliminant toutes les poches d'air. Un circuit mal
-    purgé provoque une surchauffe localisée malgré un niveau correct. - Absence
-    de fuite au joint de bride de pompe : à température de fonctionnement
-    stabilisée, inspecter la bride de la pompe sous tous les angles avec une
-    lampe. Toute suintement de liquide rose, bleu ou vert au niveau des vis de
-    fixation ou du joint d'étanchéité indique un serrage insuffisant (couple
-    standard : 8 à 12 N·m sur la plupart des moteurs) ou un joint mal
-    positionné. - Température moteur stable entre 88 et 95 °C : surveiller le
-    témoin de température ou le capteur sur outil de diagnostic pendant les 10
-    premières minutes de chauffe. Une montée au-delà de 100 °C alors que le
-    niveau est correct pointe vers une pompe dont les ailettes tournent dans le
-    mauvais sens (erreur d'installation sur pompe à entraînement électrique) ou
-    un air résiduel dans le circuit. - Absence de jeu axial ou radial dans la
-    poulie de pompe : moteur éteint et refroidi, saisir la poulie et tenter un
-    mouvement latéral puis axial. Le jeu tolérable est nul — tout jeu
-    perceptible indique un roulement de pompe mal serré ou un défaut de
-    fabrication de la pièce neuve. - Absence de bruit de roulement côté
-    distribution : au démarrage à froid, écouter la zone pompe à eau pendant 60
-    secondes. Un bruit de grincement ou de roulement bruité qui disparaît avec
-    la chauffe pointe vers un roulement de qualité insuffisante ou un alignement
-    incorrect de la poulie. - Niveau du liquide de refroidissement stable après
-    48 h : contrôler le niveau dans le vase d'expansion après refroidissement
-    complet du moteur (lendemain de l'intervention). Une baisse significative
-    trahit une micro-fuite non détectée à chaud ou une fuite interne vers le
-    circuit d'huile (joint de culasse à vérifier).
-  S_GARAGE: >-
-    Nous vous recommandons de confier cette intervention à un professionnel : -
-    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
-    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
-    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
-  S7: >-
-    Quel est le prix d'un pompe à eau ?Le prix varie selon le véhicule et la
-    marque. Utilisez notre sélecteur pour trouver le pompe à eau compatible avec
-    votre véhicule et comparer les tarifs des différents équipementiers.Comment
-    savoir si mon pompe à eau est à changer ?Les signes d'usure les plus
-    courants sont détaillés dans la section diagnostic ci-dessus. En cas de
-    doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un
-    pompe à eau défaillant ?Cela dépend de la gravité du dysfonctionnement et du
-    rôle de la pièce dans la sécurité du véhicule. Consultez la section
-    symptômes pour évaluer l'urgence du remplacement.- faire circuler - pomper -
-    alimenter
-  S8: >-
-    Comment choisir Pompe à eau compatible avec mon vehicule ?Renseignez marque,
-    modele, type moteur et annee, puis verifiez la reference Quand remplacer
-    Pompe à eau ?En cas de fuite de liquide au niveau de la pompe ou de
-    degradation mesurable, Puis-je monter Pompe à eau sans verification atelier
-    ?Le montage peut exiger controles de couple, alignement et references.
-  META: >-
-    {"meta_title":"Pompe à eau : Conseils Remplacement et Guide |
-    AutoMecanik","meta_description":"Surchauffe, fuite de liquide de
-    refroidissement : découvrez quand changer la pompe à eau, comment la
-    remplacer avec la courroie de distribution et éviter la casse moteur.
-    AutoMecanik."}
+  S1: 'La pompe à eau fait circulerle liquide derefroidissement au sein dumoteur par la rotation de sa poulie si elle est
+    entraînée par lacourroie d''accessoires. Et si la pompe à eau à une roue dentée, elles sera entraînée par la courroie
+    de distribution . La combustion du moteur produit de très fortes chaleurs quifait augmenter la température des pièces
+    mécanique, qu''ils seront refroidis grâceau circuit de refroidissement moteur. Le circuit de refroidissement est composé
+    d''un radiateurde refroidissement, d''une pompe à eau, d''un thermostat etd''un ventilateur de refroidissement à travers
+    lesquels circule le liquide de refroidissement.La pompe à eau fait circuler le liquide de refroidissement dans cesystème.
+    En savoir plus : pompe à eau — définition et rôle mécanique 🚨 Voyant pompe à eau allum'
+  S2: 'La pompe à eau n''a pas de période de remplacement, mais elledoit être remplacée dès que vous constatez les symptômes
+    suivants : - Fuites de liquide derefroidissement au niveau de la pompe à eau. - Bruits au niveau de la pompeà eau. - Poulie
+    grippé, remplacementuniquement de la poulie si il n''y a pas de fuite de la pompe à eau. Si la pompe à eau défaillante
+    n''est pas remplacée, lerefroidissement du moteur ne sera plus assurée ce qui va produire unesurchauffe du moteur (joint
+    de culasse à long terme casse moteur). Lorsque lapompe à eau est entraînée par la courroie de distribution , la casse
+    de la pompeà eau peut entraîner la rupture de la courroie de distribution ce qui vaprovoquer une casse moteur c''est pour
+    cela qu''il faut toujours remplacerla pompe à eau avec le kit de distribution et vis versa. Diagnostic complet : identifier
+    une panne de pompe à eau'
+  S2_DIAG: SymptômeCause probableActionUn bruit anormal au niveau du pompe à eau peut se manifester lors de la phase "acceleration"Pour
+    identifier ce probleme de bruit du pompe à eau:Verification visuelle du pompe à eauDes vibrations provenant du pompe à
+    eau sont souvent perceptibles a haute vitessePour identifier ce probleme de vibration du pompe à eau:Verification visuelle
+    du pompe à eau
+  S3: 'La pompe à eau entraîne la circulation du liquide de refroidissement dans le circuit moteur, maintenant la température
+    dans la plage de fonctionnement normale (85 à 95 °C). Sur la majorité des véhicules modernes, la pompe à eau est entraînée
+    par la courroie de distribution et doit être remplacée systématiquement lors de chaque révision de la distribution, tous
+    les 120 000 à 200 000 km selon le constructeur. Choisir une pompe dimensionnellement et hydrauliquement correcte est indispensable
+    pour éviter une surchauffe entraînant la déformation de la culasse. - Entraînement : courroie de distribution, courroie
+    accessoire ou chaîne — La pompe à eau peut être entraînée par la courroie de distribution (remplacement simultané obligatoire),
+    par la courroie d''accessoires (remplacement indépendant possible) ou par la chaîne de distribution (durée de vie moteur,
+    remplacement rare). Identifier le type d''entraînement avant de commander. - Matériau de la turbine : métal ou plastique
+    — Les pompes récentes utilisent des turbines en plastique renforcé pour réduire le poids et le bruit. Si la turbine d''origine
+    est en métal, ne pas la remplacer par une pompe à turbine plastique générique : le plastique peut se désolidariser de
+    l''axe à haute température, stoppant net la circulation sans bruit d''alerte. - Débit hydraulique et dimension de la turbine
+    — Le débit de la pompe (en L/min) doit correspondre au circuit du constructeur. Une pompe sous-débitante ne compense pas
+    la chaleur à régime élevé ou avec la climatisation en fonctionnement. Vérifier que le diamètre de la turbine et le nombre
+    d''ailettes correspondent à la référence d''origine. - Joint d''étanchéité inclus — La pompe à eau est livrée avec ou
+    sans joint de carter. Vérifier si le joint de logement de la pompe est inclus dans la livraison. Monter une pompe neuve
+    sans remplacer le joint de carter est une source de fuite dès la mise en service. - Kit complet distribution + pompe —
+    Les fabricants (SKF, INA, Dayco, Continental, Gates) proposent des kits intégrant courroie de distribution, galets tendeurs
+    et pompe à eau. Opter pour un kit d''un seul fournisseur garantit la cohérence des cotes et un seul interlocuteur en cas
+    de réclamation. - Pièces liées à contrôler — Lors du remplacement, inspecter systématiquement les durites de refroidissement
+    (durcissement, fissures), le thermostat (jeu de l''obturateur) et le bouchon du vase d''expansion (pression de tarage
+    entre 1,0 et 1,4 bar). Ces pièces sont accessibles lors du démontage de la distribution. - Marque, modèle, année et code
+    moteur — Indispensable : le code moteur détermine la référence exacte de la pompe, sa bride de fixation et le type d''entraînement.
+    Un même modèle de voiture peut avoir reçu plusieurs motorisations avec des pompes totalement différentes selon la cylindrée
+    ou la puissance.'
+  S4_DEPOSE: '📖 Avant de démonter, consultez la fiche technique Pompe à eau pour connaître les spécifications. - Débranchez
+    la batterie. - Levez et calez le véhicule. - Démontez la roue avant droite. - Démontez le pare-boue avant droit. - Vidangez
+    le circuit derefroidissement à travers la ou les vis de vidange du moteur. Note : une vis de vidange du liquide derefroidissement
+    se trouve sur le côté du bloc moteur et/ou en bas du radiateur.S''il n''y a pas de vis de vidange sur votre moteur démontez
+    la durite inférieuredu radiateur de refroidissement en positionnant le bac à vidange en dessous pour récupérer leliquide
+    de refroidissement. - Repérez le cheminement de la courroie d''accessoires. - Démontez la courroie d''accessoires. - Démontez
+    la courroie de distribution (si entraînée par ladistribution). - Démontez les durites de liquide de refroidissement de
+    la pompe à eau. - Desserrez les fixations de la pompe à eau. - Démontez la pompe à eau.'
+  S4_REPOSE: '- Vérifier que la pompe à eau neuve estidentique à celle démontée. - Contrôler l''état de la courroied''accessoires,
+    remplacée si nécessaire. - Remplacez obligatoirement lekit de distribution si la courroie de distribution entraîne la
+    pompe à eau. - Remplacez les joints d''étanchéité de la pompe à eau. - Graissez la nouvelle pompe à eau. - Remontez la
+    pompe à eau. - Serrez les fixations de la pompe à eau. - Remontez les canalisations sur la pompe à eau. - Remontez la
+    courroie de distribution (si entraînée par ladistribution). - Remontez la courroie d''accessoires. - Remontez l''écran
+    pare-boue et la roue. - Remplissez et purgez le liquide de refroidissement. - Desserrez la vis de purge du circuit de
+    refroidissementpour chasser l''air du circuit. - Refermez la vis de purge. - Démarrez le moteur. - Laissez tourner le
+    moteur au ralenti. - Contrôlez la température sur le tableau de bord. - Arrêtez le moteur. - Laissez refroidir le moteur.
+    - Contrôlez le niveau du liquide de refroidissement. - Complétez le niveau du liquide de refroidissement sinécessaire.
+    ✅ Après remontage, vérifiez les spécifications dans la fiche technique Pompe à eau.'
+  S5: 'Erreurs frequentes avec la pompe a eau : - Ignorer une fuite de liquide de refroidissement au niveau de la pompe —
+    meme legere, elle s''aggrave et provoque une surchauffe moteur- Ne pas remplacer la pompe a eau lors du changement du
+    kit de distribution — si la pompe est entrainee par la courroie de distribution, elle sera inaccessible jusqu''au prochain
+    remplacement (60 000 a 120 000 km)- Negliger un bruit de roulement cote pompe a eau — signe que le roulement interne est
+    use, la rupture est imminente- Reutiliser l''ancien joint de pompe — le joint d''etancheite doit etre neuf a chaque remplacement
+    pour eviter les fuites- Ne pas purger correctement le circuit de refroidissement apres remplacement — une bulle d''air
+    provoque des points chauds et un chauffage habitacle defaillant- Oublier de verifier l''etat de la courroie et des galets
+    lors du remplacement de la pompe — une courroie usee endommage la pompe neuve'
+  S6: 'La pompe à eau assure la circulation du liquide de refroidissement dans l''ensemble du circuit moteur. Après son remplacement
+    — souvent effectué conjointement avec la courroie ou la chaîne de distribution — des contrôles d''étanchéité et de température
+    sont indispensables avant de valider l''intervention. - Purge complète du circuit de refroidissement : après remplissage
+    du vase d''expansion, démarrer le moteur avec le bouchon de purge ouvert (si présent) ou le couvercle du vase légèrement
+    desserré. Laisser le moteur tourner jusqu''à ouverture du thermostat (70 à 85 °C selon véhicule) et compléter le niveau
+    en éliminant toutes les poches d''air. Un circuit mal purgé provoque une surchauffe localisée malgré un niveau correct.
+    - Absence de fuite au joint de bride de pompe : à température de fonctionnement stabilisée, inspecter la bride de la pompe
+    sous tous les angles avec une lampe. Toute suintement de liquide rose, bleu ou vert au niveau des vis de fixation ou du
+    joint d''étanchéité indique un serrage insuffisant (couple standard : 8 à 12 N·m sur la plupart des moteurs) ou un joint
+    mal positionné. - Température moteur stable entre 88 et 95 °C : surveiller le témoin de température ou le capteur sur
+    outil de diagnostic pendant les 10 premières minutes de chauffe. Une montée au-delà de 100 °C alors que le niveau est
+    correct pointe vers une pompe dont les ailettes tournent dans le mauvais sens (erreur d''installation sur pompe à entraînement
+    électrique) ou un air résiduel dans le circuit. - Absence de jeu axial ou radial dans la poulie de pompe : moteur éteint
+    et refroidi, saisir la poulie et tenter un mouvement latéral puis axial. Le jeu tolérable est nul — tout jeu perceptible
+    indique un roulement de pompe mal serré ou un défaut de fabrication de la pièce neuve. - Absence de bruit de roulement
+    côté distribution : au démarrage à froid, écouter la zone pompe à eau pendant 60 secondes. Un bruit de grincement ou de
+    roulement bruité qui disparaît avec la chauffe pointe vers un roulement de qualité insuffisante ou un alignement incorrect
+    de la poulie. - Niveau du liquide de refroidissement stable après 48 h : contrôler le niveau dans le vase d''expansion
+    après refroidissement complet du moteur (lendemain de l''intervention). Une baisse significative trahit une micro-fuite
+    non détectée à chaud ou une fuite interne vers le circuit d''huile (joint de culasse à vérifier).'
+  S_GARAGE: 'Nous vous recommandons de confier cette intervention à un professionnel : - Plusieurs causes possibles de défaillance
+    (4 identifiées) nécessitent un diagnostic professionnel Un garagiste qualifié dispose de l''outillage et de l''expérience
+    nécessaires pour effectuer cette opération en toute sécurité.'
+  S7: Quel est le prix d'un pompe à eau ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur pour trouver
+    le pompe à eau compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment savoir si mon
+    pompe à eau est à changer ?Les signes d'usure les plus courants sont détaillés dans la section diagnostic ci-dessus. En
+    cas de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un pompe à eau défaillant ?Cela dépend
+    de la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule. Consultez la section symptômes
+    pour évaluer l'urgence du remplacement.- faire circuler - pomper - alimenter
+  S8: Comment choisir Pompe à eau compatible avec mon vehicule ?Renseignez marque, modele, type moteur et annee, puis verifiez
+    la reference Quand remplacer Pompe à eau ?En cas de fuite de liquide au niveau de la pompe ou de degradation mesurable,
+    Puis-je monter Pompe à eau sans verification atelier ?Le montage peut exiger controles de couple, alignement et references.
+  META: '{"meta_title":"Pompe à eau : Conseils Remplacement et Guide | AutoMecanik","meta_description":"Surchauffe, fuite
+    de liquide de refroidissement : découvrez quand changer la pompe à eau, comment la remplacer avec la courroie de distribution
+    et éviter la casse moteur. AutoMecanik."}'
 ---
 
 # Pompe à eau - Guide Diagnostic Complet
@@ -490,15 +423,6 @@ Possible si accessible, mais souvent liée à la distribution. Nécessite vidang
 
 **Quelle erreur éviter avec la pompe à eau ?**
 Ne pas monter une pompe sans changer le joint. Vérifier le sens de rotation de la turbine. Purger correctement le circuit après.
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/choisir-pompe-eau.md 2026-02-15 -->
-### Guide - Comment choisir sa pompe à eau
-
-# Comment choisir sa pompe à eau
-
 ## Rôle de la pompe à eau
 
 - Fait circuler le liquide de refroidissement dans le circuit moteur
@@ -542,20 +466,6 @@ Ne pas monter une pompe sans changer le joint. Vérifier le sens de rotation de 
 - Vérifier la compatibilité de la turbine (métal vs plastique) avec le type de liquide de refroidissement
 - Ne pas oublier de purger le circuit après remplacement
 - Toujours utiliser du liquide de refroidissement neuf compatible
-
-## FAQ
-
-**Faut-il changer la pompe à eau à chaque distribution ?** Oui, c'est fortement recommandé si elle est entraînée par la courroie de distribution. Le surcoût est faible par rapport au risque.
-
-**Quelle durée de vie ?** Environ 100 000-150 000 km. Souvent alignée sur le remplacement de la distribution.
-
-**Pompe OE ou aftermarket ?** Les deux sont acceptables si la marque est reconnue. Les pompes discount avec turbine en plastique de mauvaise qualité sont à éviter.
-
-<!-- materialized-from-db guides/choisir-courroie-distribution.md 2026-01-08 -->
-### Guide - Choisir son kit distribution
-
-# Comment choisir son kit de distribution
-
 ## Composition d'un kit complet
 
 ### Kit standard
@@ -654,14 +564,6 @@ Ne pas monter une pompe sans changer le joint. Vérifier le sens de rotation de 
 4. **Courroie accessoires** : Profiter de l'intervention
 5. **Liquide refroidissement** : Vidanger lors du remplacement
 6. **Carnet entretien** : Tamponner avec date et km
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/distribution-courroie.md 2026-01-08 -->
-### Diagnostic - Distribution et courroie
-
-# Distribution et courroie - Diagnostic complet
-
 ## Symptomes courants
 
 ### Bruit de claquement moteur
@@ -717,19 +619,6 @@ Ne pas monter une pompe sans changer le joint. Vérifier le sens de rotation de 
 | Essence | 5 ans | 100 000 km |
 | Diesel | 5 ans | 120 000 km |
 | HDI/TDI | 4 ans | 160 000 km |
-
-## Recommandations
-
-- **Remplacement preventif** : Respecter les preconisations constructeur
-- **Kit complet** : Toujours remplacer courroie + galets + pompe a eau ensemble
-- **Marques** : Privilegier Gates, Continental, SKF
-- **Huile** : Verifier absence de fuites d'huile sur la courroie
-
-<!-- materialized-from-db diagnostic/refroidissement.md 2026-01-08 -->
-### Diagnostic - Systeme de refroidissement
-
-# Systeme de refroidissement - Diagnostic complet
-
 ## Symptomes surchauffe
 
 ### Temoin temperature allume
@@ -857,3 +746,264 @@ Ne pas monter une pompe sans changer le joint. Vérifier le sens de rotation de 
 - **Vidange** : Tous les 4-5 ans ou 100 000 km
 - **Purge** : Obligatoire apres intervention (bulles d'air = surchauffe)
 - **Marques** : Valeo, Gates, SKF (pompes), Behr (radiateurs)
+
+
+## Conseils supplementaires
+
+<!-- materialized-from-db web/41593e6acbd2 2026-03-28 -->
+### Filtres à carburant pour automobiles – Automobile – WIX Filters - section-1
+
+# Filtres à carburant pour automobiles – Automobile – WIX Filters
+
+- FILTRES À CARBURANT La propreté du carburant arrivant au moteur est très importante, parce qu'elle impacte l’usure des pièces du moteur tels que les pompes, les injecteurs, les soupapes qui régulent la pression de carburant. Une bonne filtration du carburant est nécessaire pour un fonctionnement fiable du moteur.</p>\r\n","repo:modifyDate":"2025-09-22T11:24:17Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"OFFRANT DES PERFORMANCES INÉGALÉES DE PURIFICATION DU CARBURANT"}}"> OFFRANT DES PERFORMANCES INÉGALÉES DE PURIFICATION DU CARBURANT La propreté du carburant arrivant au moteur est très importante, parce qu'elle impacte l’usure des pièces du moteur tels que les pompes, les injecteurs, les soupapes qui régulent la pression de carburant. Une bonne filtration du carburant est nécessaire pour un fonctionnement fiable du moteur. POURQUOI CHOISIR LES FILTRES À CARBURANT WIX FILTERS? Les filtres à carburant WIX Filters arrêtent tout aussi bien les impuretés qui proviennent du réservoir de l’automobile ou du carburant telles que les particules de rouille, les limailles provenant des éléments du système d’injection ainsi que l’eau (dans le cas des moteurs diesel). Grâce à notre expérience et notre compétence, nous produisons des filtres à carburant qui répondent aux normes exigeantes des fabricants automobiles.</p>\r\n","repo:modifyDate":"2025-09-22T11:25:22Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"EFFICACITÉ DE LA FILTRATION"}}"> EFFICACITÉ DE LA FILTRATION Les filtres à carburant WIX Filters arrêtent tout aussi bien les impuretés qui proviennent du réservoir de l’automobile ou du carburant telles que les particules de rouille, les limailles provenant des éléments du système d’injection ainsi que l’eau (dans le cas des moteurs diesel). Grâce à notre expérience et notre compétence, nous produisons des filtres à carburant qui répondent aux normes exigeantes des fabricants automobiles. Chaque moteur a ses exigences propres. Pour les filtres WIX Filters, nous utilisons des matériaux filtrants adaptés aux exigences définies par les fabricants de moteur ou de véhicules. Les propriétés des médias filtrants testés en laboratoire permettent d’atteindre l’efficacité souhaitée. Nous effectuons annuellement environ 4000 tests en laboratoire en Europe.</p>\r\n","repo:modifyDate":"2025-09-22T11:26:16Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"ADAPTATION DES MATÉRIAUX FILTRANTS AU MOTEUR"}}"> ADAPTATION DES MATÉRIAUX FILTRANTS AU MOTEUR Chaque moteur a ses exigences propres. Pour les filtres WIX Filters, nous utilisons des matériaux filtrants adaptés aux exigences définies par les fabricants de moteur ou de véhicules. Les propriétés des médias filtrants testés en laboratoire permettent d’atteindre l’efficacité souhaitée. Nous effectuons annuellement environ 4000 tests en laboratoire en Europe. En plus de l’élimination des particules, notamment celles de 4 à 6 microns, soit celles qui sont les plus dangereuses pour tous les éléments du système d’injection, les filtres à carburant doivent être très étanches. Chaque fuite de carburant est un risque d’incendie pour une automobile. C’est pourquoi tous nos filtres sont soumis aux tests d’étanchéité.</p>\r\n","repo:modifyDate":"2025-09-22T11:26:54Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"ÉTANCHÉITÉ PARFAITE"}}"> ÉTANCHÉITÉ PARFAITE En plus de l’élimination des particules, notamment celles de 4 à 6 microns, soit celles qui sont les plus dangereuses pour tous les éléments du système d’injection, les filtres à carburant doivent être très étanches. Chaque fuite de carburant est un risque d’incendie pour une automobile. C’est pourquoi tous nos filtres sont soumis aux tests d’étanchéité. Les systèmes d’injection des moteurs diesel exigent une efficacité remarquable de filtration et une séparation de l’eau. WIX Filters propose un large assortiment de filtres à carburant pour les véhicules équipés de systèmes d’injection moderne. Des procédés tels que la séparation de l’eau en plusieurs étapes répond aux exigences techniques les plus élevées.</p>\r\n","repo:modifyDate":"2025-09-22T11:27:24Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"PROTECTION DES SYSTÈMES D'INJECTION MODERNES"}}"> PROTECTION DES SYSTÈMES D'INJECTION MODERNES Les systèmes d’injection des moteurs diesel exigent une efficacité remarquable de filtration et une séparation de l’eau. WIX Filters propose un large assortiment de filtres à carburant pour les véhicules équipés de systèmes d’injection moderne. Des procédés tels que la séparation de l’eau en plusieurs étapes répond aux exigences techniques les plus élevées. LA QUALITÉ DES FILTRES WIX PROVIENT DE NOTRE COMPÉTENCE EN TANT QUE FOURNISSEUR D’ÉQUIPEMENTS D’ORIGINE La haute qualité des produits WIX Filters résulte de l’expertise approfondie de MANN+HUMMEL – notre société et principal fournisseur de filtres d’origine pour les plus grands constructeurs automobiles au monde. MANN+HUMMEL est le leader mondial de la technologie de filtration. Notre savoir-faire et nos standards de qualité garantissent que chaque filtre WIX offre une protection fiable pendant toute la durée de service recommandée. REGARDE COMMENT FONCTIONNE UN FILTRE A CARBURANT</h4>\r\n","repo:modifyDate":"2025-09-22T11:28:34Z","@type":"mannhummel-base/components/whitelabel/teaser-block"}}"> REGARDE COMMENT FONCTIONNE UN FILTRE A CARBURANT REGARDEZ LA VIDÉO Le corps en métal ou en plastique hermétiquement fermé dispose de connexions adaptées aux durites. Ces filtres sont utilisés tout aussi bien pour les moteurs à essence que diesel. Certains modèles prévus pour les moteurs diesel disposent de systèmes de filtration à plusieurs étapes qui permettent d’augmenter l’efficacité ainsi que la durée d’utilisation du filtre.</p>\r\n","repo:modifyDate":"2025-09-22T11:33:48Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"FILTRES AVEC CONNEXIONS"}}"> FILTRES AVEC CONNEXIONS Le corps en métal ou en plastique hermétiquement fermé dispose de connexions adaptées aux durites. Ces filtres sont utilisés tout aussi bien pour les moteurs à essence que diesel. Certains modèles prévus pour les moteurs diesel disposent de systèmes de filtration à plusieurs étapes qui permettent d’augmenter l’efficacité ainsi que la durée d’utilisation du filtre. L’aspect ressemble aux filtres à huile spin-on, cependant ils sont dépourvus de soupape interne. Cette solution permet au moteur de s’arrêter avant l’arrivée du carburant contaminé. Le filtre obturé agit comme un fusible et permet d’éviter une panne grave du moteur. Grâce à cela, uniquement le carburant propre entre dans la chambre à combustion. La probabilité d'introduction accidentelle de polluants dans le système de carburant lors du remplacement du filtre à vis est quasi nulle.</p>\r\n","repo:modifyDate":"2025-09-22T11:34:25Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"CARTOUCHES DE FILTRE À CARBURANT"}}"> CARTOUCHES DE FILTRE À CARBURANT L’aspect ressemble aux filtres à huile spin-on, cependant ils sont dépourvus de soupape interne. Cette solution permet au moteur de s’arrêter avant l’arrivée du carburant contaminé. Le filtre obturé agit comme un fusible et permet d’éviter une panne grave du moteur. Grâce à cela, uniquement le carburant propre entre dans la chambre à combustion. La probabilité d'introduction accidentelle de polluants dans le système de carburant lors du remplacement du filtre à vis est quasi nulle. L’aspect ressemble aux filtres à huile spin-on, cependant ils sont dépourvus de soupape interne. Cette solution permet au moteur de s’arrêter avant l’arrivée du carburant contaminé. Le filtre obturé agit comme un fusible et permet d’éviter une panne grave du moteur. Grâce à cela, uniquement le carburant propre entre dans la chambre à combustion. La probabilité d'introduction accidentelle de polluants dans le système de carburant lors du remplacement du filtre à vis est quasi nulle.</p>\r\n","repo:modifyDate":"2025-09-22T11:35:11Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"FILTRES À VIS"}}"> FILTRES À VIS L’aspect ressemble aux filtres à huile spin-on, cependant ils sont dépourvus de soupape interne. Cette solution permet au moteur de s’arrêter avant l’arrivée du carburant contaminé. Le filtre obturé agit comme un fusible et permet d’éviter une panne grave du moteur. Grâce à cela, uniquement le carburant propre entre dans la chambre à combustion. La probabilité d'introduction accidentelle de polluants dans le système de carburant lors du remplacement du filtre à vis est quasi nulle. TROUVEZ UN FILTRE
+
+![](_raw/web-images/ff36149084c9b09c.jpg)
+
+![](_raw/web-images/d41ac56feae4b5a8.jpg)
+
+![](_raw/web-images/8d971be07dcf7360.jpg)
+
+![](_raw/web-images/67a6a2f64f9e0fb9.jpg)
+
+![](_raw/web-images/1f0ef3d7dc72fc7c.jpg)
+
+![](_raw/web-images/5cee958255b1a9f3.jpg)
+
+- OÙ ACHETER
+
+- YOUTUBE
+
+- CONTACTEZ-NOUS
+
+ACCÈS RAPIDE
+
+## References supplementaires
+
+<!-- materialized-from-db vehicles/renault-megane-3.md 2026-01-08 -->
+### Fiche vehicule - Renault Megane 3
+
+# Renault Megane 3 (2008-2016)
+
+## Identification
+
+- **Generation** : III
+- **Production** : 2008 - 2016
+- **Segment** : C (compacte)
+- **Carrosseries** : 3 portes, 5 portes, Estate (break), Coupe, CC (cabriolet), RS
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.6 16v | 110 ch | K4M |
+| 1.4 TCe | 130 ch | H4J |
+| 2.0 TCe | 180 ch | F4R |
+| 2.0 RS | 250/265 ch | F4R |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.5 dCi | 90/110 ch | K9K |
+| 1.6 dCi | 130 ch | R9M |
+| 1.9 dCi | 130 ch | F9Q |
+| 2.0 dCi | 150/160 ch | M9R |
+
+## Pieces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-40 000 km
+- **Disques avant** : 60-80 000 km
+- **Freins arriere** : Disques ou tambours selon version
+
+### Filtration
+- **Filtre a huile** : A chaque vidange
+- **Filtre a air** : 30 000 km
+- **Filtre habitacle** : 15 000 km
+- **Filtre a gasoil** (dCi) : 60 000 km
+
+### Distribution
+- **1.5 dCi (K9K)** : Courroie, 90 000 km ou 6 ans
+- **1.6 dCi (R9M)** : Chaine (sans entretien)
+- **2.0 dCi (M9R)** : Courroie, 120 000 km ou 6 ans
+- **1.6 16v (K4M)** : Courroie, 120 000 km ou 6 ans
+- **TCe** : Chaine (sans entretien)
+
+## Problemes connus
+
+### Moteur 1.5 dCi (K9K)
+- Injecteurs : Defaillance frequente (claquement, fumee)
+- Vanne EGR : Encrassement rapide
+- Turbo : Controle huile regulier, geometrie variable
+
+### Moteur 1.6 dCi (R9M)
+- Injecteurs piezo : Couteux a remplacer
+- Courroie accessoires : Galet tendeur a surveiller
+
+### Moteur 2.0 dCi (M9R)
+- Volant moteur bimasse : Bruit au ralenti
+- Pompe HP : Copeaux metalliques possibles
+
+### Electricite
+- Carte main libre : Problemes de detection
+- Tableau de bord : Pixels defaillants
+- Feux arriere LED : Bandeaux LED HS
+
+### Chassis
+- Roulements avant : Usure normale 80-100k km
+- Silent-blocs berceau : Claquements
+- Cardans : Soufflets a surveiller
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 20 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans ou 60 000 km
+
+## References OEM courantes
+
+| Piece | Reference Renault |
+|-------|-------------------|
+| Filtre a huile 1.5 dCi | 8200768913 |
+| Filtre a air 1.5 dCi | 8200431051 |
+| Plaquettes avant | 410607115R |
+| Disques avant | 402069518R |
+| Kit distribution 1.5 dCi | 130C17529R |
+
+## Conseils d'entretien
+
+1. **Huile moteur** : 5W-30 C3 ou C4 selon version
+2. **Liquide refroidissement** : Type D (jaune/vert)
+3. **Direction assistee** : Electrique (pas de fluide)
+4. **Boite EDC** : Vidange huile 60 000 km
+
+## Specificites par version
+
+### Megane RS (250/265 ch)
+- Freinage Brembo 4 pistons
+- Chassis Cup disponible (sport)
+- Differentiel autobloquant (option Trophy)
+- Entretien plus frequent recommande
+
+### Megane CC
+- Toit rigide retractable : Verifier joints et verins
+- Hydraulique toit : Controle niveau
+
+<!-- materialized-from-db vehicles/volkswagen-golf-6.md 2026-01-08 -->
+### Fiche vehicule - Volkswagen Golf 6
+
+# Volkswagen Golf 6 (2008-2012)
+
+## Identification
+
+- **Generation** : VI (5K)
+- **Production** : 2008 - 2012
+- **Segment** : C (compacte)
+- **Carrosseries** : 3 portes, 5 portes, Variant (break), Cabriolet
+- **Versions sport** : GTI, GTD, R
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.4 TSI | 122 ch | CAXA |
+| 1.4 TSI | 160 ch | CAVD |
+| 1.8 TSI | 160 ch | CDAA |
+| 2.0 TSI GTI | 210 ch | CCZB |
+| 2.0 TSI R | 270 ch | CDLF |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.6 TDI | 90/105 ch | CAYC |
+| 2.0 TDI | 110 ch | CBDB |
+| 2.0 TDI | 140 ch | CBAB |
+| 2.0 TDI GTD | 170 ch | CFGB |
+
+## Pieces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-50 000 km
+- **Disques avant** : 60-80 000 km
+- **Freins arriere** : Disques sur toutes versions
+
+### Filtration
+- **Filtre a huile** : A chaque vidange
+- **Filtre a air** : 40 000 km
+- **Filtre habitacle** : 20 000 km
+- **Filtre a gasoil** (TDI) : 60 000 km
+
+### Distribution
+- **1.4 TSI** : Chaine (attention etirement)
+- **1.6 TDI** : Courroie, 120 000 km ou 5 ans
+- **2.0 TDI** : Courroie, 120 000 km ou 5 ans
+- **2.0 TSI** : Chaine (sans entretien normal)
+
+## Problemes connus
+
+### Moteur 1.4 TSI (CAXA/CAVD)
+- Chaine distribution : Etirement premature (symptome: bruit au demarrage froid)
+- Tendeur chaine : Defaillant, a remplacer preventivement
+- Solution : Kit chaine complet (tendeur + guides + chaine)
+
+### Moteur 2.0 TDI (CR)
+- Injecteurs piezo : Defaillance possible apres 150k km
+- Vanne EGR : Encrassement, nettoyage ou suppression
+- FAP : Regenerations frequentes en ville
+
+### Boite DSG
+- Mecatronique : Defaillances possibles (a-coups, passage neutre)
+- Embrayages : Usure si conduite urbaine
+- Vidange huile : Tous les 60 000 km obligatoire
+
+### Electricite
+- Module confort : Problemes vitres, centralisation
+- Pompe a eau electrique (TSI) : Defaillante apres 100k km
+
+## Intervalles d'entretien
+
+### Vidange (selon service VAG)
+- **Service flexible** : 15-30 000 km selon usage
+- **Recommande** : 15 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans
+
+## References OEM courantes
+
+| Piece | Reference VAG |
+|-------|---------------|
+| Filtre a huile 2.0 TDI | 03L115562 |
+| Filtre a air 2.0 TDI | 1K0129620D |
+| Plaquettes avant | 5K0698151 |
+| Disques avant | 5K0615301 |
+| Kit distribution 2.0 TDI | Gates/Contitech |
+
+## Conseils d'entretien
+
+1. **Huile moteur** : 5W-30 504.00/507.00 (Long Life)
+2. **Alternative recommandee** : 5W-40 non Long Life + vidanges 15k km
+3. **Liquide refroidissement** : G12++ (rose/violet)
+4. **Boite DSG** : Vidange stricte 60 000 km
+
+## Specificites par version
+
+### Golf GTI
+- Freinage plus gros (312mm)
+- Differentiel XDS (freinage selectif)
+- Mode sport selectable
+- Huile 5W-40 recommandee
+
+### Golf R
+- Transmission 4Motion
+- Freinage 345mm avant
+- Entretien renforce recommande
+
+### Golf GTD
+- Performances
+
+[...]

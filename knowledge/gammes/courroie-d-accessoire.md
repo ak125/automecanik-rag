@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Entraîne les accessoires moteur
@@ -206,7 +206,7 @@ installation:
 phase5_enrichment:
   _source: automotive.hutchinson.com + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 2
   _has_tech_data: true
   types_variants:
@@ -315,37 +315,37 @@ conseil_v5:
     fissurée ? Découvrez quand changer la courroie d''accessoire, comment la remplacer et choisir le bon modèle sur AutoMecanik."}'
 ---
 
-# Courroie d'accessoire - Guide Diagnostic Complet
+## Catalogues et brochures
 
-## Fonction et Rôle
+Pour plus d'information Alternateurs visitez notre zone de téléchargement Click here.
 
-Entraîne les accessoires moteur
+---
 
-**Actions principales:** entrainer, transmettre
+## Installation et détection des pannes
 
-## Symptômes de Défaillance
+Les pannes d’alternateurs peuvent causer des dommages importants aux systèmes électriques d’un véhicule. Pour éviter cela, il est important d’installer les alternateurs correctement, et de résoudre les problèmes rapidement.
 
-### 🟡 Symptômes de Sécurité
+---
 
-- **Perte de direction assistee si sur meme courroie**
-  perte de direction assistee si sur meme courroie
+### Remplacement
 
-### 🟢 Autres Symptômes
+- Identifier chaque connexion de fil, et noter son emplacement sur l’alternateur.
 
-- sifflement au demarrage ou a l acceleration
-- courroie fissuree ou effilochee visible
-- voyant batterie allume alternateur non entraine
-- odeur de caoutchouc brule
-- plus de 60 000 km ou 5 ans depuis le remplacement
+- Débrancher les fils de l’alternateur.
 
-## Procédure de Diagnostic
+- Desserrer le boulon du bras horizontal de l’alternateur, mais ne pas encore le retirer.
 
-Pour diagnostiquer un problème de courroie d'accessoire:
+- Desserrer le contre-écrou ou le boulon de l’ensemble de tension, et tourner le boulon de réglage de sorte que la tension de la courroie d’entraînement soit suffisamment. Réduite pour permettre le retrait de la courroie. Certains véhicules peuvent être équipés d’un tendeur automatique à ressort. Faire tourner le tendeur à ressort à l’aide de l’outil approprié suffisamment loin, pour permettre le retrait de la courroie d’entraînement.
 
-1. **Inspection visuelle** - Examiner l'état du courroie d'accessoire
-2. **Test fonctionnel** - Vérifier le bon fonctionnement
-3. **Contrôle des fixations** - Examiner les supports et raccords
-4. **Diagnostic sonore** - Localiser la source des bruits anormaux
+- Retirer la courroie d’entraînement de l’alternateur.
+
+- Soutenir l’alternateur et retirer les boulons, maintenant l’alternateur en place. Mettre les boulons et l’alternateur de côté. Veiller à noter l’orientation du support et la longueur/l’emplacement de la fixation avant de retirer l’alternateur.
+
+- Inspecter l’état du câblage et des connecteurs. Inspecter les extrémités des fils usées, la continuité, les connecteurs desserrés ou cassés, la corrosion et la souplesse. Réparer ou remplacer au besoin.
+
+Comparer physiquement le nouvel alternateur à l’original. Comparer les décalages du boîtier et de la poulie, la taille et le type de la poulie, les emplacements des trous de pivotement et de réglage, les emplacements des connecteurs de fil et les configurations des bornes avec l’alternateur d’origine. Installer le ou les supports de montage, mais ne pas encore serrer complètement les boulons. Soutenir l’alternateur et le fixer en position, mais ne pas encore serrer complètement les boulons. Installer la courroie d’entraînement. Si la courroie d’entraînement est usée, étirée, fissurée, huileuse ou vitrée, elle doit être remplacée. Régler la tension de la courroie tout en serrant les boulons de montage et de réglage. Assurez-vous de régler la tension de la courroie et de serrer les boulons de montage selon les spécifications recommandées par le constructeur du véhicule. ATTENTION : Ne pas forcer ni heurter le boîtier de l’alternateur pour régler la tension de la courroie. Vérifier l’alignement de la courroie d’entraînement entre la poulie de l’alternateur et les autres poulies d’entraînement. S’assurer qu’il n’y a aucune interférence entre la courroie d’entraînement, et les autres composants. Rebrancher le connecteur de fil à son emplacement approprié sur l’alternateur. S’assurer qu’il n’y a aucune interférence entre le faisceau de câbles, et les autres composants. Réinstaller tous les composants. S’assurer que les fixations filetées sont correctement serrées, et qu’il n’y a aucune interférence entre les composants. Rebrancher le câble négatif de la batterie. Démarrez le moteur. Laissez pendant 5 minutes pour habituer la courroie d’entraînement. Réajuster la courroie d’entraînement en utilisant la spécification de tension « utilisée ». Éteignez le moteur et faites une nouvelle inspection. Tester à nouveau le système de charge pour vérifier qu’il fonctionne conformément aux spécifications du constructeur du véhicule. Recherche de défaut Trouvez et corrigez rapidement les défauts de l’alternateur. Le voyant d’avertissement de la batterie s’allume sur le tableau de bord. Les phares peuvent clignoter ou s’éteindre. Les accessoires électriques fonctionneront lentement ou pas du tout. Le conducteur remarquera un décrochage et un mauvais fonctionnement du moteur. La batterie s’écoule plus vite que prévu. Le moteur ne démarre pas ou
+
+[...]
 
 
 ## References supplementaires

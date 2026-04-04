@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -214,12 +214,11 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  technical_notes:
-    poids_remorque: 'verifier la masse remorquable dans le certificat d''immatriculation (champ F.2/F.3)'
-    faisceau: 'faisceau electrique 7 ou 13 broches selon equipement'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: false
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

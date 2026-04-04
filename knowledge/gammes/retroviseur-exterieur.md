@@ -219,17 +219,22 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: gpa26.com
+  _source: fr.wikipedia.org + gpa26.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 2
+  _enriched_at: '2026-04-03'
+  _web_files_count: 3
   _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
+    val_13_a: '13 a'
     val_4_a: '4 a'
     val_503_a: '503 a'
     val_59_a: '59 a'
     val_6_a: '6 a'
     val_70_a: '70 a'
+    val_8_a: '8 a'
     val_988_a: '988 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

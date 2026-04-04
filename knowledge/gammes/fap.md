@@ -215,14 +215,26 @@ installation:
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 phase5_enrichment:
-  _source: delphiautoparts.com + hella.com
+  _source: delphiautoparts.com + fr.wikipedia.org + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 5
+  _enriched_at: '2026-04-03'
+  _web_files_count: 6
   _has_tech_data: true
+  types_variants:
+  - type: 'polyv'
+    source_ref: corpus RAG web OEM
   technical_notes:
     val_0_ohm: '0 ohm'
+    val_000_km: '000 km'
+    val_15_a: '15 a'
     val_15_ohms: '15 ohms'
+    val_20_a: '20 a'
+    val_25_a: '25 a'
+    val_27_a: '27 a'
+    val_5_5_litres: '5,5 litres'
+    val_9_a: '9 A'
+    val_908_v: '908 V'
+    val_908_a: '908 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

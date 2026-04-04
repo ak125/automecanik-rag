@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Recycler une partie des gaz d'echappement vers l'admission pour reduire les emissions de NOx
@@ -215,7 +215,7 @@ installation:
 phase5_enrichment:
   _source: ate-freinage.fr + denso-am.eu + ferodo.com + hella.com + mann-filter.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 16
   _has_tech_data: true
   types_variants:
@@ -640,6 +640,130 @@ Ne pas supprimer l'EGR (illégal et risque de surconsommation). Ne pas oublier d
 - **Catalyseur colmaté** : Perte de puissance, moteur qui étouffe à l'accélération, voyant moteur allumé (codes P0420/P0430).
 - **Filtre à particules bouché** : Voyant FAP allumé, régénérations trop fréquentes, perte de puissance. Fréquent sur les trajets courts en ville.
 - **Sonde lambda défaillante** : Consommation en hausse, voyant moteur, mélange air/carburant mal régulé.
+## Variantes et types
+- hall
+
+## Matériaux
+- fonte grise
+
+## Valeurs techniques de référence
+- 0,035 mm
+- 0,05 mm
+- 0,1 mm
+- 550 °C
+- 650 °C
+## Témoins critiques (ARRÊT IMMÉDIAT)
+
+### Témoin huile moteur (rouge)
+- **Signification** : Pression d'huile insuffisante
+- **Action** : ARRÊT IMMÉDIAT du véhicule
+- **Causes** : Niveau bas, pompe à huile, fuite
+- **Risque** : Casse moteur
+- **Vérification** : Niveau d'huile à la jauge
+
+### Témoin température moteur (rouge)
+- **Signification** : Surchauffe moteur
+- **Action** : ARRÊT IMMÉDIAT, laisser refroidir
+- **Causes** : Liquide refroidissement, thermostat, ventilateur
+- **Risque** : Joint de culasse, casse moteur
+
+### Témoin frein (rouge)
+- **Signification** : Niveau liquide frein bas ou frein à main
+- **Action** : Vérifier frein à main, puis niveau liquide
+- **Causes** : Fuite, usure plaquettes extrême
+- **Risque** : Perte de freinage
+
+### Témoin batterie (rouge)
+- **Signification** : Charge batterie insuffisante
+- **Action** : Rejoindre un garage rapidement
+- **Causes** : Alternateur, courroie, batterie HS
+- **Risque** : Panne complète
+
+## Témoins importants (attention requise)
+
+### Témoin ABS (orange)
+- **Signification** : Système ABS désactivé
+- **Action** : Contrôle recommandé
+- **Causes** : Capteur ABS, bloc hydraulique
+- **Impact** : Freinage normal mais sans assistance ABS
+- **Pièces** : Capteur ABS, bloc ABS
+
+### Témoin ESP/ASR (orange)
+- **Signification** : Antipatinage/stabilité désactivé
+- **Action** : Conduire prudemment
+- **Causes** : Capteur, calculateur
+
+### Témoin airbag (orange)
+- **Signification** : Système airbag défaillant
+- **Action** : Contrôle obligatoire
+- **Risque** : Non-déclenchement en cas d'accident
+- **Pièces** : Contacteur tournant, capteur airbag
+
+### Témoin moteur (orange - check engine)
+- **Signification** : Anomalie gestion moteur
+- **Action** : Diagnostic OBD recommandé
+- **Causes multiples** : Capteur O2, catalyseur, allumage
+- **Impact** : Surconsommation, pollution
+
+### Témoin FAP/DPF (orange - diesel)
+- **Signification** : Filtre à particules saturé
+- **Action** : Rouler 20min sur autoroute (régénération)
+- **Causes** : Trajets courts répétés
+- **Pièces** : FAP, nettoyage, additif
+
+## Témoins d'information
+
+### Témoin préchauffage (diesel)
+- **Signification** : Préchauffage des bougies en cours
+- **Action** : Attendre extinction avant démarrage
+- **Normal** : S'éteint après quelques secondes
+
+### Témoin clignotant
+- **Signification** : Clignotant actif
+- **Anomalie si** : Clignote rapidement = ampoule grillée
+
+### Témoin feux de route
+- **Signification** : Pleins phares activés
+
+### Témoin antibrouillard
+- **Signification** : Feux de brouillard actifs
+
+## Codes couleur
+
+| Couleur | Signification | Action |
+|---------|---------------|--------|
+| **Rouge** | Danger immédiat | Arrêt véhicule |
+| **Orange** | Attention | Contrôle rapide |
+| **Vert/Bleu** | Information | Aucune |
+## Bruits d'échappement
+
+### Bruit métallique sous la voiture
+- **Catalyseur décollé** : Le substrat céramique interne s'est fragmenté et vibre dans le boîtier. Bruit de ferraille au ralenti.
+- **Silencieux percé** : Corrosion ayant percé le pot d'échappement. Bruit de souffle ou grondement.
+- **Flexible d'échappement fissuré** : Joint de raccord entre le collecteur et la ligne d'échappement. Bruit de fuite.
+- **Collier ou bride desserré** : Claquement rythmique, plus audible au ralenti.
+
+### Sifflement
+- **Fuite au collecteur** : Joint de collecteur d'échappement brûlé. Sifflement aigu surtout à froid, qui peut s'atténuer à chaud.
+- **Fissure sur le tube** : Soudure fatiguée ou corrosion localisée.
+
+## Fumées anormales
+
+### Fumée blanche épaisse
+- **Joint de culasse défaillant** : Liquide de refroidissement entre dans la chambre de combustion. Fumée blanche sucrée, persistante même moteur chaud. Vérifier le niveau de liquide de refroidissement.
+
+### Fumée noire
+- **Mélange trop riche** : Injecteurs qui fuient, capteur MAP/MAF défaillant, filtre à air colmaté.
+- **Turbo défaillant** : Fuite d'huile dans l'admission via les joints du turbo.
+
+### Fumée bleue
+- **Consommation d'huile** : Segments usés, guides de soupapes usés, ou joint de queue de soupape. L'huile brûle dans la chambre de combustion.
+
+## Catalyseur et FAP
+
+- **Catalyseur colmaté** : Perte de puissance, moteur qui étouffe à l'accélération, voyant moteur allumé (codes P0420/P0430).
+- **Filtre à particules bouché** : Voyant FAP allumé, régénérations trop fréquentes, perte de puissance. Fréquent sur les trajets courts en ville.
+- **Sonde lambda défaillante** : Consommation en hausse, voyant moteur, mélange air/carburant mal régulé.
 
 ## Quand consulter un professionnel
 
@@ -678,8 +802,33 @@ Amélioration des performances
 Résistance aux fortes pressions
 Fiabilité
 
+<!-- materialized-from-db manual/38af23bf7c77 2026-04-03 -->
+### Données techniques OEM — Vanne EGR
+
+# Données techniques OEM — Vanne EGR
+Source : ate-freinage.fr + denso-am.eu + ferodo.com + hella.com + mann-filter.com (16 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Hall
+- Pneumatique
+- hall
+- inductif
+- pneumatique
+
+## Matériaux
+- fonte grise
+
+## Valeurs techniques de référence
+- 0,035 mm
+- 0,05 mm
+- 0,1 mm
+- 1,1 bar
+- 20 %
+- 3 bars
+
 <!-- materialized-from-db manual/96043d143a3b 2026-04-02 -->
-### Données techniques OEM — Montage maitrise
+### Données techniques OEM — Vanne EGR
 
 # Données techniques OEM — Montage maitrise
 Source : ate-freinage.fr + denso-am.eu + ferodo.com (3 fichiers OEM analysés)

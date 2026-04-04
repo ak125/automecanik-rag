@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Detendre le fluide frigorigene avant l'evaporateur
@@ -217,55 +217,60 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: denso-am.eu
+  _source: denso-am.eu + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
-  _has_tech_data: false
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
+  _has_tech_data: true
+  types_variants:
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_000_km: '000 km'
+    val_100__c: '100 °C'
+    val_1000_a: '1000 a'
+    val_15_a: '15 a'
+    val_21_a: '21 a'
+    val_23_a: '23 a'
+    val_240_a: '240 a'
+    val_25__: '25 %'
+    val_25_mm: '25 mm'
+    val_30_a: '30 a'
+    val_33__: '33 %'
+    val_400_bars: '400 bars'
+    val_50_kw: '50 kW'
+    val_6_mm: '6 mm'
+    val_625__c: '625 °C'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Detendre le fluide frigorigene avant l'evaporateur. Pièces liées : vérifier
-    les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Clim qui
-    refroidit mal- Givre visible sur les conduites- Clim qui fonctionne par
-    a-coups- Compresseur qui s emballe- Bruits de glouglou dans le circuit- Clim
-    qui marche puis s arrete
-  S3: >-
-    Pour choisir le bon gicleur détendeur pour votre véhicule : - Renseignez
-    marque, modele, type puis comparez references et dimensions. Validez ensuite
-    les contraintes de climatisation pour confirmer Gicleur détendeur.- Verifier
-    la reference OE ou equivalence constructeur pour le vehicule exact-
-    Respecter le type de gaz refrigerant (R134a, R1234yf) pour la compatibilite-
-    Choisir un equipementier reconnu (Denso, Valeo, Delphi, NRF)- Marques :
-    Denso, Valeo (premium), NRF, Delphi, Hella (standard), Ridex (budget)-
-    Budget : 10 à 40 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le gicleur détendeur : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Confondre gicleur et détendeur (incompatibles). Ne
-    pas changer l'accumulateur avec le gicleur. Oublier le tirage au vide.- Ne
-    pas respecter le couple de serrage constructeur au remontage- Ignorer les
-    symptômes d'usure en espérant que ça passe — une défaillance progressive
-    s'aggrave toujours- Ne pas effacer les codes défaut après remplacement — le
-    calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du gicleur détendeur : - Faire tourner la
-    climatisation 10 min par semaine meme en hiver- Remplacement du filtre d
-    habitacle chaque annee- Recharge de gaz par un professionnel equipe (circuit
-    sous pression)- Controle d etancheite si baisse de performance- Effacer les
-    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
-    confirmer la disparition des symptômes
+  S1: 'Detendre le fluide frigorigene avant l''evaporateur. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Clim qui refroidit mal- Givre visible sur les conduites-
+    Clim qui fonctionne par a-coups- Compresseur qui s emballe- Bruits de glouglou dans le circuit- Clim qui marche puis s
+    arrete'
+  S3: 'Pour choisir le bon gicleur détendeur pour votre véhicule : - Renseignez marque, modele, type puis comparez references
+    et dimensions. Validez ensuite les contraintes de climatisation pour confirmer Gicleur détendeur.- Verifier la reference
+    OE ou equivalence constructeur pour le vehicule exact- Respecter le type de gaz refrigerant (R134a, R1234yf) pour la compatibilite-
+    Choisir un equipementier reconnu (Denso, Valeo, Delphi, NRF)- Marques : Denso, Valeo (premium), NRF, Delphi, Hella (standard),
+    Ridex (budget)- Budget : 10 à 40 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le gicleur détendeur : - Ne pas vérifier la référence exacte avant commande — une pièce de
+    mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Confondre gicleur et détendeur (incompatibles).
+    Ne pas changer l''accumulateur avec le gicleur. Oublier le tirage au vide.- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours-
+    Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du gicleur détendeur : - Faire tourner la climatisation 10 min par semaine meme en hiver- Remplacement
+    du filtre d habitacle chaque annee- Recharge de gaz par un professionnel equipe (circuit sous pression)- Controle d etancheite
+    si baisse de performance- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour confirmer
+    la disparition des symptômes'
 ---
 
 # Gicleur détendeur - Guide Diagnostic Complet
@@ -349,3 +354,29 @@ Confondre gicleur et détendeur (incompatibles). Ne pas changer l'accumulateur a
 
 **Comment faire un diagnostic rapide ?**
 Gicleur bouché → BP très basse, pas de froid. Gicleur usé → pressions instables. Filtre colmaté → débit faible.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/8198ade9ad34 2026-04-03 -->
+### Données techniques OEM — Gicleur détendeur
+
+# Données techniques OEM — Gicleur détendeur
+Source : denso-am.eu + fr.wikipedia.org (2 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- plein
+- électrique
+
+## Matériaux
+- aluminium
+
+## Valeurs techniques de référence
+- 100 °C
+- 25 %
+- 25 mm
+- 33 %
+- 400 bars
+- 6 mm
+- 625 °C

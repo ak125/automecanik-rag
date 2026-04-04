@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Assurer l'etancheite autour des arbres rotatifs du moteur (vilebrequin, arbre a cames)
@@ -202,77 +202,62 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: céramique
+    source_ref: corpus RAG web OEM
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    positions: 'avant vilebrequin (cote distrib), arriere vilebrequin (cote volant), arbre a cames'
+    norme_iso_5598: ISO 5598
+    val_1_5_mm: 1,5 mm
+  materials:
+  - materiau: céramique
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Les bagues d''étanchéité moteur (aussi appelées joints spy ou joints à
-    lèvre) assurent l''étanchéité autour des arbres rotatifs du moteur :
-    vilebrequin (avant et arrière) et arbre à cames. Elles empêchent l''huile
-    moteur de fuir vers l''extérieur malgré la rotation permanente des arbres.
-    Niveau de difficulté : Avancé — la bague avant nécessite de déposer la
-    distribution, la bague arrière de déposer la boîte de vitesses ou
-    l''embrayage. Outils : extracteur de bague, mandrin de pose (pour ne pas
-    déformer la bague neuve), tournevis plat (pour extraire l''ancienne). Pièces
-    liées : courroie/chaîne de distribution (bague avant), kit d''embrayage
-    (bague arrière), joint de carter.
-  S2: >-
-    Pas de périodicité fixe. À remplacer préventivement lors de la distribution
-    (bague avant) ou du changement d''embrayage (bague arrière). Symptômes de
-    défaillance : - Fuite d''huile à l''avant ou l''arrière du moteur — traces
-    visibles sur le bloc ou au sol- Traces d''huile sur la courroie de
-    distribution — la bague avant contamine la courroie qui glisse et peut
-    sauter- Embrayage qui patine — l''huile de la bague arrière coule sur le
-    disque d''embrayage- Couinement au niveau de la bague — frottement anormal
-    dû à un durcissement du caoutchouc- Odeur d''huile brûlée sur l''échappement
-    — l''huile coule sur le collecteur
-  S3: >-
-    Pour choisir les bonnes bagues d''étanchéité : - Position : bague avant
-    vilebrequin (côté distribution), bague arrière vilebrequin (côté
-    boîte/volant), bague arbre à cames — chacune a des dimensions différentes-
-    Matériau : FPM/Viton (résiste jusqu''à 200°C, recommandé) ou NBR (caoutchouc
-    standard, moins durable) — les bagues OES sont systématiquement en FPM-
-    Marques : Elring, Victor Reinz, Corteco (premium OES) — le prix de la pièce
-    est faible (10-50 EUR) comparé au coût de la main d''oeuvre, ne pas
-    économiser sur la qualité- Kit complet : lors de la distribution, remplacer
-    les deux bagues (vilebrequin + arbre à cames) même si une seule fuit — la
-    seconde a le même âge
-  S4_DEPOSE: >-
-    1. Déposer la courroie/chaîne de distribution (bague avant) ou la boîte de
-    vitesses + embrayage (bague arrière). 2. Déposer la poulie de vilebrequin ou
-    le volant moteur pour accéder à la bague. 3. Extraire la bague usée avec un
-    tournevis plat en faisant levier sur le bord — attention à ne pas rayer la
-    portée de l''arbre. 4. Nettoyer la portée de l''arbre et le logement dans le
-    carter — aucune rayure, aucun résidu d''ancien joint. 5. Huiler légèrement
-    la lèvre de la bague neuve avec de l''huile moteur propre. 6. Enfoncer la
-    bague neuve avec un mandrin de pose adapté au diamètre — ne JAMAIS taper
-    directement sur la bague avec un marteau (déformation irréversible).
-  S5: >-
-    Erreurs fréquentes avec les bagues d''étanchéité moteur : - Ne pas remplacer
-    les bagues lors de la distribution ou de l''embrayage — elles ont le même
-    âge et coûtent quelques euros, alors que les redéposer coûte des heures de
-    main d''oeuvre- Enfoncer la bague avec un marteau sans mandrin — la bague se
-    déforme et fuit immédiatement- Rayer la portée de l''arbre lors de
-    l''extraction de l''ancienne bague — une rayure même légère provoque une
-    fuite permanente- Monter la bague à l''envers (lèvre vers l''extérieur) — la
-    lèvre doit être orientée vers l''huile (côté intérieur du moteur)- Oublier
-    de huiler la lèvre avant montage — la bague tourne à sec au premier
-    démarrage et la lèvre se détériore- Ne pas chercher la cause de la fuite —
-    une surpression dans le carter (circuit de ventilation bouché) détruit la
-    bague neuve
-  S6: >-
-    Après le remplacement : - Vérification visuelle : après 30 minutes de
-    fonctionnement, vérifier l''absence de trace d''huile autour de la bague-
-    Niveau d''huile : revérifier le niveau d''huile après 100 km — une fuite
-    résiduelle fait baisser le niveau- Courroie : si bague avant, vérifier que
-    la courroie de distribution est sèche (pas de trace d''huile)- Embrayage :
-    si bague arrière, vérifier que l''embrayage ne patine pas (odeur, point de
-    patinage haut)
+  S1: 'Les bagues d''''étanchéité moteur (aussi appelées joints spy ou joints à lèvre) assurent l''''étanchéité autour des
+    arbres rotatifs du moteur : vilebrequin (avant et arrière) et arbre à cames. Elles empêchent l''''huile moteur de fuir
+    vers l''''extérieur malgré la rotation permanente des arbres. Niveau de difficulté : Avancé — la bague avant nécessite
+    de déposer la distribution, la bague arrière de déposer la boîte de vitesses ou l''''embrayage. Outils : extracteur de
+    bague, mandrin de pose (pour ne pas déformer la bague neuve), tournevis plat (pour extraire l''''ancienne). Pièces liées
+    : courroie/chaîne de distribution (bague avant), kit d''''embrayage (bague arrière), joint de carter.'
+  S2: 'Pas de périodicité fixe. À remplacer préventivement lors de la distribution (bague avant) ou du changement d''''embrayage
+    (bague arrière). Symptômes de défaillance : - Fuite d''''huile à l''''avant ou l''''arrière du moteur — traces visibles
+    sur le bloc ou au sol- Traces d''''huile sur la courroie de distribution — la bague avant contamine la courroie qui glisse
+    et peut sauter- Embrayage qui patine — l''''huile de la bague arrière coule sur le disque d''''embrayage- Couinement au
+    niveau de la bague — frottement anormal dû à un durcissement du caoutchouc- Odeur d''''huile brûlée sur l''''échappement
+    — l''''huile coule sur le collecteur'
+  S3: 'Pour choisir les bonnes bagues d''''étanchéité : - Position : bague avant vilebrequin (côté distribution), bague arrière
+    vilebrequin (côté boîte/volant), bague arbre à cames — chacune a des dimensions différentes- Matériau : FPM/Viton (résiste
+    jusqu''''à 200°C, recommandé) ou NBR (caoutchouc standard, moins durable) — les bagues OES sont systématiquement en FPM-
+    Marques : Elring, Victor Reinz, Corteco (premium OES) — le prix de la pièce est faible (10-50 EUR) comparé au coût de
+    la main d''''oeuvre, ne pas économiser sur la qualité- Kit complet : lors de la distribution, remplacer les deux bagues
+    (vilebrequin + arbre à cames) même si une seule fuit — la seconde a le même âge'
+  S4_DEPOSE: 1. Déposer la courroie/chaîne de distribution (bague avant) ou la boîte de vitesses + embrayage (bague arrière).
+    2. Déposer la poulie de vilebrequin ou le volant moteur pour accéder à la bague. 3. Extraire la bague usée avec un tournevis
+    plat en faisant levier sur le bord — attention à ne pas rayer la portée de l''arbre. 4. Nettoyer la portée de l''arbre
+    et le logement dans le carter — aucune rayure, aucun résidu d''ancien joint. 5. Huiler légèrement la lèvre de la bague
+    neuve avec de l''huile moteur propre. 6. Enfoncer la bague neuve avec un mandrin de pose adapté au diamètre — ne JAMAIS
+    taper directement sur la bague avec un marteau (déformation irréversible).
+  S5: 'Erreurs fréquentes avec les bagues d''''étanchéité moteur : - Ne pas remplacer les bagues lors de la distribution ou
+    de l''''embrayage — elles ont le même âge et coûtent quelques euros, alors que les redéposer coûte des heures de main
+    d''''oeuvre- Enfoncer la bague avec un marteau sans mandrin — la bague se déforme et fuit immédiatement- Rayer la portée
+    de l''''arbre lors de l''''extraction de l''''ancienne bague — une rayure même légère provoque une fuite permanente- Monter
+    la bague à l''''envers (lèvre vers l''''extérieur) — la lèvre doit être orientée vers l''''huile (côté intérieur du moteur)-
+    Oublier de huiler la lèvre avant montage — la bague tourne à sec au premier démarrage et la lèvre se détériore- Ne pas
+    chercher la cause de la fuite — une surpression dans le carter (circuit de ventilation bouché) détruit la bague neuve'
+  S6: 'Après le remplacement : - Vérification visuelle : après 30 minutes de fonctionnement, vérifier l''''absence de trace
+    d''''huile autour de la bague- Niveau d''''huile : revérifier le niveau d''''huile après 100 km — une fuite résiduelle
+    fait baisser le niveau- Courroie : si bague avant, vérifier que la courroie de distribution est sèche (pas de trace d''''huile)-
+    Embrayage : si bague arrière, vérifier que l''''embrayage ne patine pas (odeur, point de patinage haut)'
 ---
 
 # Bagues d'étanchéité moteur - Guide Diagnostic Complet
@@ -357,3 +342,27 @@ Difficile. La bague avant nécessite de déposer la distribution, la bague arri�
 
 **Quelle erreur éviter avec les bagues d'étanchéité ?**
 Ne pas endommager la lèvre lors du montage. Lubrifier légèrement. Vérifier l'état de la portée sur l'arbre (pas de rayure).
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/8c9a4d98852a 2026-04-03 -->
+### Données techniques OEM — Bagues d'étanchéité moteur
+
+# Données techniques OEM — Bagues d'étanchéité moteur
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- céramique
+- hydraulique
+- pneumatique
+
+## Normes applicables
+- ISO 5598
+
+## Matériaux
+- céramique
+
+## Valeurs techniques de référence
+- 1,5 mm

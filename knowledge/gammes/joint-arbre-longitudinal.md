@@ -196,7 +196,7 @@ phase5_enrichment:
   _validation_status: pending_oem_validation
   _enriched_at: '2026-03-30'
   technical_notes:
-    role: 'joint de cardan ou croisillon sur l'arbre de transmission (propulsion/4x4)'
+    role: "joint de cardan ou croisillon sur l'arbre de transmission (propulsion/4x4)"
     graissage: 'certains croisillons ont un graisseur — graissage periodique obligatoire'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

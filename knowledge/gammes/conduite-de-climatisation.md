@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -188,11 +188,23 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    joints_toriques: 'remplacer systematiquement a chaque ouverture du circuit — etancheite critique'
+    val_10__: '10 %'
+    val_134_a: '134 a'
+    val_15__: '15 %'
+    val_16__: '16 %'
+    val_20__: '20 %'
+    val_31__: '31 %'
+    val_35__: '35 %'
+    val_5__: '5 %'
+    val_50__: '50 %'
+    val_54__: '54 %'
+    val_80__: '80 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

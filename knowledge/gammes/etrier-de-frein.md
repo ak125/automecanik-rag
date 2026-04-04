@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Appliquer la pression hydraulique sur les plaquettes
@@ -221,7 +221,7 @@ installation:
 phase5_enrichment:
   _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + profauto.fr
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 34
   _has_tech_data: true
   types_variants:
@@ -560,12 +560,6 @@ Ne jamais appuyer sur la pédale de frein étrier déposé (piston éjecté). Ne
 3. Y a-t-il une vibration dans le volant ?
 4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
 5. Avez-vous un témoin d'usure allumé au tableau de bord ?
-
-## Recommandations
-
-- **Contrôle visuel** : Vérifier l'épaisseur des plaquettes (minimum 3mm)
-- **Kilométrage** : Remplacement préventif tous les 30 000 - 50 000 km
-- **Qualité** : Privilégier les marques équipementier (Bosch, Brembo, TRW)
 
 
 ## Conseils supplementaires

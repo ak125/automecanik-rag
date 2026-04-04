@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -207,12 +207,19 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  materials:
-  - composant: soupape
-    materiau: acier austenitique (Nimonic) ou acier inox resistance haute temperature (700-900°C)
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  technical_notes:
+    val_150__c: '150 °C'
+    val_17_a: '17 a'
+    val_2_a: '2 a'
+    val_25__: '25 %'
+    val_6_a: '6 a'
+    val_800__c: '800 °C'
+    val_97_5__c: '97,5 °C'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

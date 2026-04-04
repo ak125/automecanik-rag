@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Creer la friction a l'interieur du tambour
@@ -216,10 +216,10 @@ installation:
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
 phase5_enrichment:
-  _source: ate-freinage.fr + bremboparts.com + delphiautoparts.com + textar.com
+  _source: ate-freinage.fr + bremboparts.com + delphiautoparts.com + fr.wikipedia.org + textar.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 9
+  _enriched_at: '2026-04-03'
+  _web_files_count: 11
   _has_tech_data: true
   types_variants:
   - type: 'composite'
@@ -585,14 +585,35 @@ La norme ECE R90 encadre la conformite des pieces de freinage de remplacement (e
 4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
 5. Avez-vous un témoin d'usure allumé au tableau de bord ?
 
-## Recommandations
-
-- **Contrôle visuel** : Vérifier l'épaisseur des plaquettes (minimum 3mm)
-- **Kilométrage** : Remplacement préventif tous les 30 000 - 50 000 km
-- **Qualité** : Privilégier les marques équipementier (Bosch, Brembo, TRW)
-
 
 ## Conseils supplementaires
+
+<!-- materialized-from-db web/e6b464572c29 2026-03-28 -->
+### Instructions pour remplacer... - Montage auto - section-1
+
+# Instructions pour remplacer... - Montage auto
+
+- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les cylindres des roues Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser le liquide de frein recommandé par le constructeur. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool dénaturé. 2. À cause de la nature technique du produit, les maîtres-cylindres de frein doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. 3. Stabiliser le véhicule sur les chevalets, en veillant à ce qu’il soit parfaitement stable avant de déposer les roues et puis le tambour de frein. 4. Avant de continuer le démontage, repérer la position des différents composants pour garantir un remontage correct. 5. Déposer les mâchoires des freins, le ressort de retenue du patin et les pièces du mécanisme de réglage automatique. 6. Dévisser le connecteur du tuyau de frein du cylindre, en veillant à ne pas endommager ni déformer le tuyau. 7. Il est recommandé de remplacer les cylindres des roues des deux côtés simultanément. 8. Vider complètement le liquide de frein. Procédure de remplacement 1. Si le cylindre est vissé sur une plaque de support, déposer les boulons de fixation et libérer le cylindre de son logement. Si le cylindre est fixé avec des plaques à enclencher, débrancher le câble du frein à main et la garniture anti-poussière en caoutchouc sur la plaque à enclencher. 2. Si le cylindre est soutenu par un circlip, déposer le circlip du cylindre et extraire le cylindre de la plaque avec ses joints. 3. Nettoyer soigneusement la plaque de support. Procédure de montage 1. Pour les c ylindres vissés à la plaque de support, insérer un nouveau joint, puis fixer le cylindre à la plaque de support en utilisant les boulons de fixation et les serrer au couple recommandé par le constructeur du véhicule. 2. Pour les cylindres de type coulissant , graisser les zones de coulissement de la plaque de support, en veillant à laisser toutes les autres pièces sans graisse. Placer le cylindre sur la plaque de support et fixer les plaques à enclencher, en s’assurant qu’elles sont correctement positionnées. Remettre en place la garniture anti-poussière en caoutchouc et rebrancher le câble du frein à main. 3 . Pour les cylindres fixés avec des bagues à enclenchement , monter le nouveau câble sur la plaque de support avec de nouveaux joints, puis installer correctement la bague. S’il n’est pas déjà monté, monter un nouveau système de purge, raccorder le flexible de frein, en veillant à ce que le filetage sur le cylindre et le connecteur du tuyau correspondent, puis serrer la vis selon les serrages de couple recommandé par le constructeur du véhicule. 4. Remonter le frein, en contrôlant attentivement l’état d’usure des mâchoires, il est conseillé d’installer de nouvelles mâchoires. 5. Vérifier que le tambour n’est pas marqué ou usé, le remplacer en cas de doute. Les tambours peuvent être usinés (écrémés) s’ils sont marqués, et la sur dimension maximale acceptée (après l’écrémage) sur un véhicule passagers ou utilitaire léger est de 1,5 mm. 6. Vérifier que toutes les pièces ont été montées correctement. 7. Régler et purger le système, contrôler la présence de fuites. 8. Remonter les roues, abaisser le véhicule au sol et serrer les vis des roues. 9. Effectuer un essai sur route. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’ altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est a daptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamentale pour la sécurité du véhicule sur lequel il est installé et il doit, donc, être installé par du personnel qualifié ayant reçu une formation adéquate ou possédant suffisamment d’expérience dans l’installation et dans l’utilisation prévue du Produit. L’installateur doit avoir à sa disposition l’ outillage adéquat à l’installation et posséder des connaissances et une expérience appropriées pour s’occuper de l’entretien du véhicule. Une installation inadéquate ou erronée, due au non-respect de ces instructions ou autres, rendra nulles les Limitations de garantie et pourrait rendre l’installateur responsable quant aux dommages physiques ou matériels éventuellement provoqués. Il est fondamental de remplacer les disques de frein pour chaque essieu , en les prélevant de leur emballage. À chaque remplacement des disques, remplacer aussi leurs plaquettes. Éviter le contact de graisse et autres lubrifiants avec les surfaces de freinage du disque et des plaquettes parce que cela risque de rendre le système de freinage inefficace . Brembo décline toute responsabilité en cas de dommage matériel ou physique provoqué à ou par une personne conduisant un véhicule sur lequel le produit aurait été installé de façon inappropriée. ATTENTION! Les pièces remplacées doivent être éliminées selon les dispositions prescrites par la loi. Il est important d’éviter de frapper violemment ou d’endommager le Produit et ses composants, parce que cela risquerait de réduire son efficacité et de provoquer des dysfonctionnements. Si nécessaire, remplacer les composants endommagés. Pour éviter tout dommage physique, nous conseillons de: Toujours porter des gants lors de l’opération de démontage et de remontage des composants présentant des arêtes coupantes.
+
+![Approfondissements](_raw/web-images/2d2507a39e7ef6eb.jpg)
+
+![Comment choisir le bon produit](_raw/web-images/554e6f769f52f78a.jpg)
+
+![Montage auto](_raw/web-images/d8bc5a5c2c667779.jpg)
+
+![Montage moto](_raw/web-images/8f8c2ca53665bfa9.jpg)
+
+![Entretien](_raw/web-images/e936dadf5dced240.jpg)
+
+- Éviter le contact direct de la peau avec le matériau de friction des plaquettes et mâchoires parce que cela risque de provoquer des abrasions.
+
+![Service après-vente](_raw/web-images/c8ff08f5cb503a6a.jpg)
+
+![Limites de garantie](_raw/web-images/3f780074f3f64f27.jpg)
+
+![Contacter le support Brembo](_raw/web-images/1e8d4f4c405ed310.webp)
+
+![WeChat](_raw/web-images/dec8ad591b7cebf6.jpg)
 
 <!-- materialized-from-db web/19c4896f8fc0 2026-03-28 -->
 ### Instructions pour remplacer... - Montage auto - section-1
@@ -603,23 +624,6 @@ La norme ECE R90 encadre la conformite des pieces de freinage de remplacement (e
 
 ![Centrer les mâchoires dans leur logement en les replaçant comme à l’origine.   ATTENTION ! Ne pas manipuler les dispositifs de réglage automatique pour garantir leur fonctionnement correct.](_raw/web-images/80e8b633f7c39434.jpg)
 
-![Remonter le tambour et régler le dispositif de réglage automatique en agissant plusieurs fois sur la pédale de frein. Purger le circuit de freinage.   IMPORTANT ! Les pièces de rechange contenues dans cet emballage ne doivent pas être montées par l’automobiliste (Interdiction aux termes de la Loi 122/92), toujours s’adresser à des ateliers et des mécaniciens spécialisés.   9. Les mâchoires de frein doivent être remplacées pour l’ensemble de l’essieu.](_raw/web-images/ca4547da691947f9.jpg)
-
-![Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité. Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité.](_raw/web-images/5ca2bd43c39fe577.jpg)
-
-- Éviter le contact direct de la peau avec le matériau de friction des plaquettes et mâchoires parce que cela risque de provoquer des abrasions.
-
-- Ne pas mettre en contact le matériau de friction des plaquettes, les disques, les étriers ou les tuyaux de frein avec des graisses, huiles, autres lubrifiants ou produits dégraissants à base d’huile minérale parce que cela peut endommager le frein. Remplacer ces pièces en cas de contamination, si nécessaire. Les plaquettes de frein doivent être remplacées par essieu.
-
-- Ne pas utiliser d'outils pointus parce qu’une utilisation impropre risque de provoquer des dommages. Utiliser exclusivement l’outillage spécifique (clé dynamométrique, outil à expansion, extracteurs, etc.)
-
-- Si l’on remarque des dommages lors de l’intervention sur le système de freinage, il faut les réparer.
-
-<!-- materialized-from-db web/624cbc1f42da 2026-03-28 -->
-### Instructions pour remplacer... - Montage auto - section-1
-
-# Instructions pour remplacer... - Montage auto
-
-- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les freins à tambour Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des freins à tambour. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Ces instructions de montage sont un guide générique sur les réparations, qui peuvent varier d’un système de freinage à l’autre. Les instructions spécifiques émises par le constructeur du véhicule ou du système de freinage doivent impérativement être respectées. Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange utilisée pour le remplacement est adaptée à la marque et au modèle du véhicule. Procédure de remplacement La procédure décrite concerne une roue, elle doit être répétée sur l’autre roue de l’essieu. 1. Démonter les roues. 2. Le frein à main doit être complètement relâché. 3. Mettre complètement 4. Démonter le tambour du frein. AVERTISSEMENT ! N’appliquer aucune force pour éviter d’endommager les moyeux et les roulements des roues, les capteurs et les bagues dentées. AVERTISSEMENT! Utiliser les outils spéciaux prévus. 5. Dans le cas de tambours de freins avec roulements des roues et bagues dentées intégrées, démonter ces pièces pour leur réutilisation postérieure (uniquement si les pièces ne présentent de dommages ou de défauts). Avant de passer aux autres phases de remplacement, nous vous conseillons de suivre ces étapes pour le nettoyage et le contrôle du Produit qui favorisent un meilleur montage. Nettoyage/contrôle/montage préalable 1. Nettoyer la surface de la bride/rehausse de centrage dans le moyeu de la roue. Celui-ci doit être parfaitement propre, exempt de toute trace de rouille et d’ébarbure, lisse. Surface de la bride brillante (ne pas utiliser de ponceuses d’angle !). 2. Dans le cas de tambours de freins avec roulements des roues intégrés, monter les pièces neuves ou démontées ne présentant pas de dommages ou de défauts, en suivant les prescriptions. Appliquer le lubrifiant prescrit. 3. Monter les nouveaux éléments d’étanchéité pour les roulements des roues. 4. Si présente, monter la bague dentée (neuve ou sans dommages ni défauts). ​​​​​​ DANGER! Tous les composants du frein à tambour, comme cylindres de la roue, mâchoires de frein, ressorts, leviers, supports, languettes, etc. doivent être contrôlés avant leur réutilisation pour vérifier leur parfait état et fonctionnement ou bien procéder au remplacement des pièces. 5. Sauf indication contraire, éliminer complètement le traitement anticorrosion du nouveau tambour de frein uniquement au niveau de la surface de la bride et de la surface de travail. Vérifier que la surface de la bride est propre, sans ébarbure et intacte. Procédure de montage 1. En cas d’utilisation de nouvelles mâchoires de frein, mettre complètement à zéro leur réglage. 2. Dans le cas d’un moyeu de la roue séparé, appliquer uniformément une très fine couche d’huile anticorrosion (pas en pâte) sur la bride. 3. Centrer le tambour de frein. En fonction du type de construction, fixer avec la vis ou avec le dispositif de sécurité et/ou avec la roue. 4. Serrer uniformément en croix ou (procéder dans le sens des aiguilles d'une montre) en deux phases en utilisant le moment de torsion prescrit. 5. Sur les tambours de frein avec moyeu de la roue intégré, centrer le tambour de frein, régler/fixer le roulement de la roue selon les prescriptions, fermer avec une calotte neuve ou ne présentant pas de dommages ni défauts. 6. Régler selon les prescriptions le jeu des mâchoires du frein de service/frein à main. 7. Dans le cas d’un moyeu de la roue séparé, appliquer uniformément une très fine couche d’huile anticorrosion (pas en pâte) sur la bride. 8. Si le système hydraulique avait été ouvert, remplir/purger le système de freinage avec le liquide prescrit. Contrôle du fonctionnement ATTENTION! Contrôler que les parties en caoutchouc ne sont pas endommagées. Si nécessaire, les remplacer. 1. Actionner la pédale pour rapprocher les mâchoires du tambour. Répéter l’opération jusqu’à ce que la course de la pédale soit correcte. 2. Contrôler le niveau du liquide de frein dans le réservoir et faire l’appoint, si nécessaire. 3. Effectuer l'équilibrage de la roue. 4. Remonter la roue et serrer les vis de roue de la façon indiquée par le constructeur du véhicule ou dans le catalogue Brembo. Essai et rodage Effectuer un essai sur route. Durant cet essai, éviter de freiner brusquement et pendant plus de 3 secondes. L’essai sert à vérifier l’absence de bruits et de vibrations provenant des freins. Le rodage à conseiller à l’utilisateur final consiste à parcourir 200 km, en effectuant des freinages doux et courts, sans faire intervenir l’ABS. DANGER! Un mauvais rodage risque de compromettre l’efficacité du système de freinage . Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins , la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort. La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des d
+![Remonter le tambour et régler le dispositif de réglage automatique en agissant plusieurs fois sur la pédale de frein. Purger le circuit de freinage.   IMPORTANT ! Les pièces de rechange contenues dans cet emballage ne doivent pas être montées par l’automobiliste (Interdiction aux termes de la Loi 122/92), toujours s’adresser à des ateliers et des méc
 
 [...]

@@ -189,7 +189,7 @@ phase5_enrichment:
   _validation_status: pending_oem_validation
   _enriched_at: '2026-03-30'
   technical_notes:
-    role: 'roulement a aiguilles centre du volant moteur — guide l'arbre primaire de la boite'
+    role: "roulement a aiguilles centre du volant moteur — guide l'arbre primaire de la boite"
     remplacement: 'systematique avec le kit embrayage — meme si il semble bon, meme age = meme usure'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

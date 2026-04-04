@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-gates-skf-trw
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -216,21 +216,11 @@ installation:
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
 phase5_enrichment:
-  _source: Gates / SKF / TRW-ZF (donnees techniques constructeur)
+  _source: bremboparts.com
   _validation_status: oem_verified
-  _enriched_at: '2026-03-30'
-  technical_notes:
-    diametre_tambour: '180, 200, 203, 228 mm selon vehicule — mesurer avant commande'
-    garnitures_machoires: 'organique (standard) ou semi-metallique (utilitaire charge)'
-    ressorts: 'raideur calibree constructeur — NE PAS reutiliser les anciens'
-    rodage: '200 km freinages progressifs, ne pas freiner fort'
-  materials:
-  - composant: machoires
-    materiau: support acier + garniture organique collee ou rivetee
-  - composant: cylindre de roue
-    materiau: corps fonte d'aluminium + pistons acier + joints EPDM
-  - composant: ressorts
-    materiau: acier ressort traite thermiquement
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: false
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

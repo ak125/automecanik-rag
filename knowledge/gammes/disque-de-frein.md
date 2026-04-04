@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -22,7 +22,7 @@ priority_signals:
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 _sources:
   ece-r90:
@@ -363,7 +363,7 @@ location_on_vehicle:
 phase5_enrichment:
   _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + hella.com + profauto.fr + textar.com + valeoservice.fr
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 89
   _has_tech_data: true
   types_variants:
@@ -1021,21 +1021,62 @@ Le remplacement est possible pour un bricoleur equipe, mais le freinage est un e
 4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
 5. Avez-vous un témoin d'usure allumé au tableau de bord ?
 
-## Recommandations
-
-- **Contrôle visuel** : Vérifier l'épaisseur des plaquettes (minimum 3mm)
-- **Kilométrage** : Remplacement préventif tous les 30 000 - 50 000 km
-- **Qualité** : Privilégier les marques équipementier (Bosch, Brembo, TRW)
-
 
 ## Conseils supplementaires
 
-<!-- materialized-from-db web/3cb342907fc5 2026-03-28 -->
+<!-- materialized-from-db web/7bab37f4daa6 2026-03-28 -->
+### Plaquettes directionnelles - Entretien - Comment identifier des plaquettes
+
+## Comment identifier des plaquettes directionnelles
+
+![Chanfreins sur la surface de friction](_raw/web-images/84879f3a19b410eb.jpg)
+
+Flèches sur la cale antibruit
+
+les flèches indiquent le sens de rotation du disque ; elles doivent donc être prises en compte pour le montage des plaquettes à l’intérieur du corps de l’étrier. Veiller à ce que la pointe de la flèche soit orientée dans le sens de rotation des roues lorsque le véhicule est en mouvement.
+
+![Flèches sur la cale antibruit](_raw/web-images/7f587d3fa344ba08.jpg)
+
+![Flèches sur la cale antibruit](_raw/web-images/02ab1f39d5e43fb5.jpg)
+
+![Flèches sur la cale antibruit](_raw/web-images/a79826c0660cd590.jpg)
+
+Fente en forme de demi-lune sur la cale antibruit
+
+positionnée sur le côté de la plaquette qui entre en contact en premier avec le disque.
+
+![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/ef9a097c7b7bfc76.jpg)
+
+![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/8c0eca099285688f.jpg)
+
+![Fente en forme de demi-lune sur la cale antibruit](_raw/web-images/e435fd05d685dbd6.jpg)
+
+Lettres L/R
+
+il peut arriver que les flèches soient remplacées par les lettres majuscules L « Left » (gauche) ou R « Right » (droite), qui indiquent le côté de la voiture où la plaquette doit être montée.
+
+![Lettres L/R](_raw/web-images/0fca047b7378efa6.jpg)
+
+Guide pratique de montage
+
+- Il convient de toujours vérifier la présence de chanfreins, de fentes et de repères de montage.
+
+- Nettoyer l'étrier, les guides et les surfaces de contact
+
+- Appliquer une graisse spécifique sur les points de contact entre la plaquette de frein et le support.
+
+- Vérifier que l'étrier et les ressorts de retenue glissent correctement.
+
+- Après l’installation, exécuter une procédure de rodage pour stabiliser le contact entre la plaquette et le disque.
+
+Se conformer en tous points aux instructions d'installation de Brembo afin de garantir la sécurité, le confort et la durabilité du système de freinage.
+
+<!-- materialized-from-db web/e6b464572c29 2026-03-28 -->
 ### Instructions pour remplacer... - Montage auto - section-1
 
 # Instructions pour remplacer... - Montage auto
 
-- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les maîtres-cylindres de frein ou les cylindres des maîtres-cylindres de frein Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser uniquement du liquide de frein DOT3 ou DOT4, à l’exception des véhicules qui requièrent du liquide de frein DOTS (à base de silicium). 2. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool dénaturé. 3. À cause de la nature technique du produit, les maîtres-cylindres de frein doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. Procédure de remplacement 1. Si le cylindre est équipé de vis de purge, brancher la vis de purge du cylindre à un tuyau en caoutchouc et placer l'extrémité libre du tuyau dans un récipient transparent. 2. Déposer les couvertures, supports, branchements électriques ou autres pièces éventuelles, qui gêneront la dépose du cylindre une fois desserré. 3. Desserrer légèrement les vis des tuyaux en retenant les tuyaux de sortie. 4. Déposer les vis ou les boulons qui retiennent le cylindre sur le servofrein ou sur le pare-feu. 5. Desserrer complètement les vis du tuyau de sortie et éloigner les tuyaux du cylindre, en faisant attention à ne pas les plier ni les déformer. Placer un chiffon sous le cylindre pour capturer la sortie de liquide et déposer le cylindre. 6. Si le liquide de frein se renverse sur la peinture, laver immédiatement avec de l'eau. Procédure de montage 1. Retirer les capuchons de protection du nouveau cylindre. 2. Contrôler que le joint de sortie de l’unité servo, si présente, est monté correctement et est en bon état. 3. Placer le cylindre (si possible, avec le réservoir déjà inséré) et contrôler attentivement que la tige de poussée du servo soit positionnée correctement ou que la tige de poussée reliée à la pédale de frein puisse se déplacer librement. 4. Remettre en place les boulons ou les vis de montage du cylindre, en les remplaçant s’ils sont endommagés. Le couple de serrage des boulons doit correspondre à celui recommandé par le constructeur du véhicule. 5. Brancher les connecteurs du tuyau de frein, en veillant à ce que le filetage sur les connecteurs du tuyau et le cylindre correspondent. Serrer les connecteurs selon les couples de serrage recommandé par le constructeur du véhicule. 6. Monter le réservoir et remplir avec le liquide de frein comme spécifié par le constructeur du véhicule. 7. Si le système ABS est installé, suivre scrupuleusement toutes les instructions du constructeur du véhicule. 8. Purger le système de freinage en suivant les instructions du constructeur du véhicule. 9. Vérifier la présence de fuites sur le système de freinage. 10. Contrôler le niveau du liquide de frein. 11. Effectuer un essai sur route. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins , la modification ou la manipulation du produit risquent d’ altérer son fonctionnement et de compromettre sa sécurité . Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques, alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est adaptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamentale pour la sécurité du véhicule sur lequel il est installé et il doit, donc, être installé par du personnel qualifié ayant reçu une formation adéquate ou possédant suffisamment d’expérience dans l’installation et dans l’utilisation prévue du Produit. L’installateur doit avoir à sa disposition l’ outillage adéquat à l’installation et posséder des connaissances et une expérience appropriées pour s’occuper de l’entretien du véhicule. Une installation inadéquate ou erronée, due au non-respect de ces instructions ou autres, rendra nulles les Limitations de garantie et pourrait rendre l’installateur responsable quant aux dommages physiques ou matériels éventuellement provoqués. Il est fondamental de r emplacer les disques de frein pour chaque essieu , en les prélevant de leur emballage. À chaque remplacement des disques, remplacer aussi leurs plaquettes. Éviter le contact de graisse et autres lubrifiants avec les surfaces de freinage du disque et des plaquettes parce que cela risque de rendre le système de freinage inefficace. Brembo décline toute responsabilité en cas de dommage matériel ou physique provoqué à ou par une personne conduisant un véhicule sur lequel le produit aurait été installé de façon inappropriée. ATTENTION! Les pièces remplacées doivent être éliminées selon les dispositions prescrites par la loi. Il est important d’éviter de frapper violemment ou d’endommager le Produit et ses composants, parce que cela risquerait de réduire son efficacité et de provoquer des dysfonctionnements. Si nécessaire, remplacer les composants endommagés. Pour éviter tout dommage physique, nous conseillons de: Toujours porter des gants lors de l’opération de démontage et de remontage des composants présentant des arêtes coupantes.
+- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les cylindres des roues Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser le liquide de frein recommandé par le constructeur. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool dénaturé. 2. À cause de la nature technique du produit, les maîtres-cylindres de frein doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. 3. Stabiliser le véhicule sur les chevalets, en veillant à ce qu’il soit parfaitement stable avant de déposer les roues et puis le tambour de frein. 4. Avant de continuer le démontage, repérer la position des différents composants pour garantir un remontage correct. 5. Déposer les mâchoires des freins, le ressort de retenue du patin et les pièces du mécanisme de réglage automatique. 6. Dévisser le connecteur du tuyau de frein du cylindre, en veillant à ne pas endommager ni déformer le tuyau. 7. Il est recommandé de remplacer les cylindres des roues des deux côtés simultanément. 8. Vider complètement le liquide de frein. Procédure de remplacement 1. Si le cylindre est vissé sur une plaque de support, déposer les boulons de fixation et libérer le cylindre de son logement. Si le cylindre est fixé avec des plaques à enclencher, débrancher le câble du frein à main et la garniture anti-poussière en caoutchouc sur la plaque à enclencher. 2. Si le cylindre est soutenu par un circlip, déposer le circlip du cylindre et extraire le cylindre de la plaque avec ses joints. 3. Nettoyer soigneusement la plaque de support. Procédure de montage 1. Pour les c ylindres vissés à la plaque de support, insérer un nouveau joint, puis fixer le cylindre à la plaque de support en utilisant les boulons de fixation et les serrer au couple recommandé par le constructeur du véhicule. 2. Pour les cylindres de type coulissant , graisser les zones de coulissement de la plaque de support, en veillant à laisser toutes les autres pièces sans graisse. Placer le cylindre sur la plaque de support et fixer les plaques à enclencher, en s’assurant qu’elles sont correctement positionnées. Remettre en place la garniture anti-poussière en caoutchouc et rebrancher le câble du frein à main. 3 . Pour les cylindres fixés avec des bagues à enclenchement , monter le nouveau câble sur la plaque de support avec de nouveaux joints, puis installer correctement la bague. S’il n’est pas déjà monté, monter un nouveau système de purge, raccorder le flexible de frein, en veillant à ce que le filetage sur le cylindre et le connecteur du tuyau correspondent, puis serrer la vis selon les serrages de couple recommandé par le constructeur du véhicule. 4. Remonter le frein, en contrôlant attentivement l’état d’usure des mâchoires, il est conseillé d’installer de nouvelles mâchoires. 5. Vérifier que le tambour n’est pas marqué ou usé, le remplacer en cas de doute. Les tambours peuvent être usinés (écrémés) s’ils sont marqués, et la sur dimension maximale acceptée (après l’écrémage) sur un véhicule passagers ou utilitaire léger est de 1,5 mm. 6. Vérifier que toutes les pièces ont été montées correctement. 7. Régler et purger le système, contrôler la présence de fuites. 8. Remonter les roues, abaisser le véhicule au sol et serrer les vis des roues. 9. Effectuer un essai sur route. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’ altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est a daptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamentale pour la sécurité du véhicule sur lequel il est installé et il doit, donc, être installé par du personnel qualifié ayant reçu une formation adéquate ou possédant suffisamment d’expérience dans l’installation et dans l’utilisation prévue du Produit. L’installateur doit avoir à sa disposition l’ outillage adéquat à l’installation et posséder des connaissances et une expérience appropriées pour s’occuper de l’entretien du véhicule. Une installation inadéquate ou erronée, due au non-respect de ces instructions ou autres, rendra nulles les Limitations de garantie et pourrait rendre l’installateur responsable quant aux dommages physiques ou matériels éventuellement provoqués. Il est fondamental de remplacer les disques de frein pour chaque essieu , en les prélevant de leur emballage. À chaque remplacement des disques, remplacer aussi leurs plaquettes. Éviter le contact de graisse et autres lubrifiants avec les surfaces de freinage du disque et des plaquettes parce que cela risque de rendre le système de freinage inefficace . Brembo décline toute responsabilité en cas de dommage matériel ou physique provoqué à ou par une personne conduisant un véhicule sur lequel le produit aurait été installé de façon inappropriée. ATTENTION! Les pièces remplacées doivent être éliminées selon les dispositions prescrites par la loi. Il est important d’éviter de frapper violemment ou d’endommager le Produit et ses composants, parce que cela risquerait de réduire son efficacité et de provoquer des dysfonctionnements. Si nécessaire, remplacer les composants endommagés. Pour éviter tout dommage physique, nous conseillons de: Toujours porter des gants lors de l’opération de démontage et de remontage des composants présentant des arêtes coupantes.
 
 ![Approfondissements](_raw/web-images/2d2507a39e7ef6eb.jpg)
 
@@ -1057,79 +1098,11 @@ Le remplacement est possible pour un bricoleur equipe, mais le freinage est un e
 
 ![WeChat](_raw/web-images/dec8ad591b7cebf6.jpg)
 
-<!-- materialized-from-db web/cf6140b58cea 2026-03-28 -->
-### Comment installer correctement les plaquettes de frein - section-1
+<!-- materialized-from-db web/19c4896f8fc0 2026-03-28 -->
+### Instructions pour remplacer... - Montage auto - section-1
 
-# Comment installer correctement les plaquettes de frein
+# Instructions pour remplacer... - Montage auto
 
-- Comment installer correctement les plaquettes de frein Skip Navigation Sélectionner la langue Comment installer correctement les plaquettes de frein Comment installer correctement les plaquettes de frein Travaillez malin lorsque vous remplacez les composants les plus sollicités d'un véhicule. Évitez les bruits de frein, le cliquetis des étriers et le mouvement des plaquettes en suivant ces étapes simples INTRODUCTION La plupart des conducteurs n'accordent pas assez d'importance à leurs freins, considérant qu'ils fonctionneront parfaitement tout le temps. Cependant, après des milliers d'heures de conduite, y compris d'innombrables trajets courts et longs dans tous types de conditions, les freins commencent inévitablement à montrer des signes d'usure tels qu'une réduction de la puissance de freinage, des bruits parasites ou d'autres problèmes. Bien que le remplacement des plaquettes de frein - la réparation la plus courante - soit un travail de routine pour un mécanicien expérimenté, l'importance des plaquettes pour la sécurité de fonctionnement d'un véhicule signifie qu'il y a peu de place pour l'erreur. Que vous soyez novice en matière d'installation de plaquettes de frein ou que vous ayez besoin d'une remise à niveau sur la manière de procéder, voici un aperçu de Ferodo® des quatre étapes fondamentales nécessaires au remplacement réussi des composants les plus sollicités d'un véhicule. Sélectionnez les bonnes plaquettes de rechange. S'il existe d'innombrables marques et variétés de plaquettes de frein, toutes ne se valent pas. Les meilleures marques, telles que Ferodo, bénéficient d'une expérience impressionnante en matière de performances et de fiabilité. En fait, Ferodo a récemment célébré son 125e anniversaire de leadership en matière de freinage. De plus, les plaquettes de frein de meilleure qualité sont livrées avec tout le matériel nécessaire pour effectuer le travail complet. Un autre conseil important est d'utiliser la même marque de disques et de plaquettes de frein pour garantir une compatibilité, des performances, une longévité et une facilité d'installation optimales.
-
-- Préparez-vous correctement. Remplacer les plaquettes de frein n'est pas aussi simple que d'enlever les plaquettes usées et d'en installer de nouvelles. Avant l'installation, les étriers doivent être soigneusement inspectés et débarrassés de la saleté accumulée au cours de l'utilisation quotidienne. De plus, l'application d'une graisse de haute qualité et résistante à la température sur la butée des plaquettes de frein, les supports d'étriers et les plaques d'appui des nouvelles plaquettes peut contribuer à éliminer les bruits de freinage.
-
-- Comprendre et prendre en compte les variations des différentes plaquettes. Comme c'est le cas pour de nombreux composants automobiles, différents véhicules nécessiteront différentes variétés de plaquettes de frein dotées de leur propre conception. Vous devez être conscient de ces variations lorsque vous choisissez les bonnes plaquettes de rechange.
-
-- Comme c'est le cas pour de nombreux composants automobiles, différents véhicules nécessiteront différentes variétés de plaquettes de frein dotées de leur propre conception. Vous devez être conscient de ces variations lorsque vous choisissez les bonnes plaquettes de rechange.
-
-Après le démontage, vérifiez et nettoyez les surfaces de montage des étriers de frein pour garantir un effort de glissement maximal de 3 à 4 kg.
-
-![Cleaning 600x400](_raw/web-images/3be683d2192a491a.jpg)
-
-Une petite quantité de graisse de frein spéciale résistante à la température peut être appliquée sur les composants suivants sur les composants suivants :
-
-![pad disc caliper](_raw/web-images/53c4af651d491c0c.jpg)
-
-Cela permet d'éliminer les bruits lors du freinage.
-
-N'utilisez JAMAIS de graisse à base de cuivre pour les pièces du système de freinage, car elle pourrait provoquer une corrosion électrochimique et un collage à haute température.
-
-![pad 600x331 transp](_raw/web-images/d337a742a9c0b29f.png)
-
-Nous recommandons l'utilisation d'une pâte de montage sans cuivre à base de silicone à haute viscosité, contenant du graphite naturel pur (référence FGB068).
-
-3a. Plaquettes de frein directionnelles
-
-Certains systèmes de freinage utilisent désormais des plaquettes de frein asymétriques, qui appliquent la plaquette de frein sur le disque selon un angle, afin de réduire de manière significative les vibrations et le bruit.
-
-Ce type de plaquette peut présenter un chanfrein sur la surface de frottement ou une découpe dans la cale de réduction du bruit sur la plaque d'appui. Ces deux éléments doivent être positionnés sur l'étrier d'une manière spécifique pour garantir un montage correct.
-
-Il est important que le marquage de la flèche sur la plaque arrière de la plaquette corresponde au sens de rotation du disque de frein. Si ces instructions ne sont pas respectées, des bruits peuvent apparaître.
-
-![Installation directional brake pads](_raw/web-images/f9ee15b357c46dbf.jpg)
-
-3b. Plaquettes de frein avec rivets sur la plaque arrière
-
-Certaines plaquettes contiennent des rivets sur la plaque arrière. Dans ce cas, ceux-ci doivent être montés dans la bonne position pour éviter un désalignement des plaquettes, ce qui peut générer des vibrations et du bruit.
-
-![backplate rivets](_raw/web-images/3745b4e1faca929c.jpg)
-
-La plaquette illustrée à gauche doit être montée du côté de la réaction du véhicule, identifié par les rivets (3) à angle droit avec les languettes de verrouillage (4). La plaquette illustrée à droite doit être monté du côté du piston. Cette plaquette est identifiée par les rivets (1) parallèles aux languettes de verrouillage (2).
-
-3c. Comment retirer correctement le papier protecteur 3M
-
-Si les plaquettes de frein sont fournies avec une feuille adhésive, seul le papier doit être retiré. Veuillez laisser la feuille adhésive sur la plaque arrière, car elle fixe la plaquette de frein à l'étrier et évite tout mouvement.
-
-![backplate adhesive 600x355](_raw/web-images/1d81cb3950fc1be3.jpg)
-
-Les ressorts limitent les mouvements et les vibrations si un mastic de blocage est appliqué sur les boulons de l'étrier, ce qui protège le boulon contre le desserrage et vous aide à éviter de serrer les boulons avec un couple excessif. Cela permet un maintien sûr, réduisant le risque de bruit et de vibration des freins.
-
-Vérifiez l'aspect des accessoires de montage supplémentaires (tels que les dispositifs de retenue, les cales anti-bruit, etc.) - s'il y a des signes de déformation, de corrosion ou de dommage, il faut les remplacer.
-
-![bolts and springs](_raw/web-images/03ca04a9cdd1822e.jpg)
-
-Fixez les boulons de l'étrier et de la roue avec le couple de serrage recommandé par le constructeur du véhicule (le couple de serrage du boulon de l'étrier est souvent de 30 Nm, et celui des boulons/écrous de la roue d'environ 110 Nm). Respectez toujours les spécifications du constructeur automobile en ce qui concerne le couple de serrage recommandé.
-
-N'utilisez JAMAIS de clé à chocs pneumatique ni de lubrifiant pour filetage lorsque vous serrez des boulons/écrous. Nous recommandons d'utiliser un outil à air comprimé doux, puis une clé dynamométrique pour serrer les boulons/écrous de roue.
-
-![Tools](_raw/web-images/6c2261eeb971c7eb.jpg)
-
-- par mesure de sécurité avant de prendre la route, vérifier la course de la pédale de frein et sa dureté lorsqu'elle est enfoncée.
-
-- premier rodage : en respectant toutes les mesures de sécurité nécessaires, effectuer 20 freinages de 80 à 30 km/h avec une pression légère ou modérée sur la pédale. IMPORTANT : l'intervalle entre les freinages doit être d'au moins 30 secondes, afin de ne pas surchauffer les freins !
-
-- Pendant les 200-300 premiers kilomètres, évitez les freinages brusques, les freinages à grande vitesse, ainsi que sur une voiture surchargée.
-
-Nous recommandons vivement d'utiliser des plaquettes et des disques de frein de la même marque afin de garantir une compatibilité totale.
-
-Vérifiez l
+- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer les mâchoires de frein Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des mâchoires de frein. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Ces instructions de montage sont un guide générique sur les réparations, qui peuvent varier d’un système de freinage à l’autre. Les instructions spécifiques émises par le constructeur du véhicule ou du système de freinage doivent impérativement être respectées. Identifier soigneusement la référence correcte de la série de mâchoires pour le véhicule en question, en fonction aussi de l’année de production et du système de freinage. Les mâchoires doivent être remplacées pour l’ensemble de l’essieu. Procédure de remplacement Avant de remplacer les mâchoires de frein, nous vous conseillons de faire attention aux indications suivantes: 1. Veiller à ce que le véhicule ne puisse pas se déplacer pendant la réparation, le soulever et s’assurer de sa stabilité. ATTENTION! Pour garantir la sécurité, toujours utiliser des outils adaptés et fiables. 2. Démonter une roue à la fois, en gardant l’autre roue comme référence pour le montage . ATTENTION ! Ne pas agir sur la pédale de frein après avoir démonté le tambour. 3. Démonter les ressorts qui fixent les mâchoires au plateau . 4. Décrocher le câble du frein à main. ATTENTION! Contrôler que le câble n’est pas usé. Dans le cas contraire, le remplacer. 5. Déposer les mâchoires et démonter le petit cylindre. ​​​ 6. Nettoyer le plateau et le tambour en utilisant un chiffon imbibé de détergent (ne pas utiliser de détergents à base d’huile minérale). ATTENTION! Lors de la phase de nettoyage, ne pas soulever de poussières. Si elles sont inhalées, elles risquent de nuire à la santé. Pour travailler dans des milieux fermés, utiliser un masque. ATTENTION! Le liquide de frein contenu dans les petits cylindres peut provoquer des dommages, le manipuler avec soin, ne pas jeter le liquide dans l’environnement. Procédure de montage 1. Remonter le nouveau petit cylindre sur le plateau et visser le tuyau du liquide de frein. Reassemble the new cylinder on the back plate and screw on the brake fluid tube. 2. Seulement pour les KITS PRÉ-ASSEMBLÉS: Déposer le support inférieur. 3. Appliquer de la graisse à point de fusion élevé sur les pièces du plateau en contact avec les mâchoires. 4. ATTENTION! La graisse de lubrification de ne doit pas être appliquée sur le matériau de freinage ou sur la partie intérieure de travail du tambour, cela risquerait de compromettre le fonctionnement du système de freinage. 5. Accrocher le câble du frein à main et loger les mâchoires sur le plateau. 6. Fixer les mâchoires au plateau en utilisant les ressorts spécifiques. 6. Centrer les mâchoires dans leur logement en les replaçant comme à l’origine. ATTENTION! Ne pas manipuler les dispositifs de réglage automatique pour garantir leur fonctionnement correct. 7. Actionner légèrement le frein à main et vérifier le fonctionnement correct de tous les mécanismes et tringleries. Après quoi, tout remettre dans la position initiale. 8. Remonter le tambour et régler le dispositif de réglage automatique en agissant plusieurs fois sur la pédale de frein. Purger le circuit de freinage. IMPORTANT! Les pièces de rechange contenues dans cet emballage ne doivent pas être montées par l’automobiliste (Interdiction aux termes de la Loi 122/92), toujours s’adresser à des ateliers et des mécaniciens spécialisés. 9. Les mâchoires de frein doivent être remplacées pour l’ensemble de l’essieu. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité . Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’ utilisation à d’autres fins , la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Les plaquettes de frein s’usent et elles doivent, donc, être contrôlées à intervalles réguliers. Lorsque le matériau de friction atteint 2 mm d’épaisseur ou lorsque le témoin de l’indicateur d’usure s’allume, il faut impérativement remplacer les plaquettes . Les disques Brembo Kit EV et les plaquettes Brembo Kit EV doivent toujours être montés ensemble. Leur association avec d’autres produits compromet le bon fonctionnement du KIT. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort . La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est adaptée à la marque et au modèle du véhicule. Le Produit revêt une importance fondamenta
 
 [...]

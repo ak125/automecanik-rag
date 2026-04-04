@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Commander l'ouverture et la fermeture des soupapes
@@ -178,154 +178,106 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  glossary:
-  - terme: came
-    definition: Profil excentrique qui transforme la rotation de l'arbre en mouvement lineaire de la soupape
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_2_a: '2 A'
+    val_2_a: '2 a'
+    val_7_6_litres: '7,6 litres'
+    val_800_v: '800 V'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    - Niveau de difficulté : avancé (professionnel) — calage de distribution
-    requis. - Temps estimé : 4 à 8 h selon le moteur. - Outils : piges de calage
-    spécifiques, clé dynamométrique 10-50 Nm, comparateur, clés Torx. -
-    Consommables : joint de couvre-culasse neuf, huile moteur + filtre neufs,
-    pâte d'étanchéité. - Sécurité : ne jamais tourner le vilebrequin sans calage
-    sur un moteur interférent — risque de collision soupapes-pistons.
-  S2: >-
-    Symptômes d'un arbre à cames usé ou défectueux : Symptômes sonores : -
-    Claquement métallique au ralenti — jeu excessif entre les cames et les
-    poussoirs. Le bruit s'atténue à chaud (dilatation). - Bruit de distribution
-    anormal — cliquetis régulier synchronisé avec le régime moteur. Distinct du
-    claquement d'injecteurs. Symptômes de performance : - Perte de puissance
-    progressive — les cames usées ne lèvent plus assez les soupapes, le
-    remplissage est insuffisant. - Ratés d'allumage — la synchronisation des
-    soupapes est décalée, le mélange n'est plus optimal. - Consommation en
-    hausse — le moteur compense la perte de rendement. Symptômes visuels : -
-    Voyant moteur allumé — codes P0340-P0349 (capteur arbre à cames) ou
-    P0011-P0014 (calage variable). - Usure visible des cames — profil arrondi au
-    lieu d'ovoïde net. Nécessite dépose du cache culbuteurs. ⚠️ Un arbre à cames
-    grippé peut entraîner la rupture de la courroie/chaîne de distribution et un
-    contact soupapes/pistons sur les moteurs interférents.
-  S3: >-
-    - Nombre de cames : admission seule (simple ACT) ou admission + échappement
-    (double ACT). Ne pas confondre. - Profil des cames : spécifique à chaque
-    motorisation. Vérifiez la référence OEM exacte. - Entraînement : par
-    courroie ou chaîne. Le pignon/poulie de l'arbre doit correspondre au type
-    d'entraînement. - Capteur de position : certains arbres intègrent une cible
-    pour le capteur d'arbre à cames. Vérifiez la compatibilité. - Système de
-    distribution variable (VVT) : si équipé, l'arbre intègre un phaser ou un
-    actuateur. La référence est spécifique. Pour aller plus loin : consultez
-    notre guide d'achat arbre à came — comparatif marques, critères de choix et
-    prix.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Arbre à came pour
-    connaître les spécifications. - Calez le véhicule. - Débranchez la batterie.
-    - Démontez le cache moteur. - Vidangez le liquide de refroidissement. -
-    Démontez la courroie d'accessoires. - Démontez la courroie de distribution
-    ou lachaîne de distribution (suivant le type de distribution). - Démontez la
-    vanne EGR. - Démontez le cache de protection supérieure du collecteur
-    d'échappement. - Démontez la vis de fixation de la poulie d'arbre à cames. -
-    Démontez la poulie d'arbre à cames. - Démontez le carter arrière de
-    protectionde la courroie de distribution (suivant équipement). - Démontez le
-    capteur d'arbre à cames. - Démontez la pompe à vide de freinage. - Démontez
-    le filtre àcarburant pour moteur diesel. - Démontez le support dufiltre à
-    carburant pour moteur diesel. - Démontez les injecteurs. - Démontez le
-    carter des chapeauxde palier d'arbres à cames. - Sur certain motorisationles
-    arbres à cames sont entraînées par une petite chaîne dans ce cas il
-    faudradémontez cette dernière. - Démontez la fixation du tendeur de
-    chaîned'arbres à cames. - Démontez les vis de palier d'arbre à cames. -
-    Démontez les arbres à cames et la bague d'étanchéité.
-  S4_REPOSE: >-
-    Le remontage d'un arbre à cames est une opération de haute précision sur la
-    distribution du moteur. Le calage des arbres à cames par rapport au
-    vilebrequin conditionne directement le fonctionnement des soupapes. Une
-    erreur de positionnement entraîne une perte de puissance, des claquements de
-    soupapes ou, dans les cas graves, un contact entre pistons et soupapes.
-    Consultez impérativement la revue technique de votre véhicule pour les
-    ordres de serrage et les valeurs de calage. - Vérifiez que l'arbre à cames
-    neuf est identique à celui déposé : nombre et profil des cames, diamètre des
-    paliers, position du crabot de synchronisation. - Lubrifiez généreusement
-    les paliers de l'arbre à cames, le corps des poussoirs de soupape et les
-    linguets de commande avec de l'huile moteur propre ou une huile d'assemblage
-    dédiée. - Positionnez l'arbre à cames dans les chapeaux de palier en
-    respectant le marquage de position (repère de came ou encoche d'alignement
-    visible sur l'arbre). - Remontez les bagues d'étanchéité à l'aide d'un
-    chasse-bague adapté — ne jamais les frapper directement. Appliquez un léger
-    film d'huile sur la lèvre avant montage. - Serrez les vis de palier d'arbre
-    à cames en plusieurs passes dans l'ordre prescrit par le constructeur
-    (typiquement de l'intérieur vers l'extérieur), en respectant le couple de
-    serrage (généralement 10 à 20 Nm selon motorisation). - Positionnez la
-    chaîne ou courroie de distribution sur la poulie d'arbre à cames en alignant
-    les repères de calage. Si présence d'une chaîne secondaire d'arbres à cames,
-    respecter le nombre de tours indiqué dans la revue technique (souvent 40
-    tours) pour le calage final. - Remontez le tendeur de chaîne et vérifiez la
-    tension. Remontez le carter de palier en appliquant un léger cordon de pâte
-    d'étanchéité sur les zones prévues ; respectez l'ordre de serrage. -
-    Remontez dans l'ordre inverse les éléments déposés : capteur d'arbre à
-    cames, pompe à vide, poulie d'arbre à cames (couple de la vis de poulie
-    selon constructeur, souvent 80 à 120 Nm), vanne EGR, courroie d'accessoires.
-    - Remplissez le niveau de liquide de refroidissement et vérifiez le niveau
-    d'huile moteur. Rebranchez la batterie. - Démarrez le moteur et laissez
-    tourner au ralenti 2 à 3 minutes. Vérifiez l'absence de claquement, de
-    voyant allumé et de fuite d'huile au niveau du carter. Effectuez une lecture
-    de défauts avec l'outil de diagnostic pour confirmer l'absence de codes liés
-    à la distribution.
-  S5: >-
-    - Mauvais calage de distribution — un décalage d'une dent dégrade les
-    performances. Plusieurs dents = destruction du moteur interférent. -
-    Desserrage brutal des chapeaux — l'arbre se déforme. Procédez par quarts de
-    tour, en étoile, du centre vers l'extérieur. - Démarrage sans lubrification
-    — un palier neuf démarré à sec est rayé irréversiblement. - Joint de couvre-
-    culasse réutilisé — fuite d'huile garantie. Joint neuf obligatoire. - Jeu
-    aux soupapes non vérifié — un arbre neuf modifie le jeu. Réglez selon les
-    spécifications constructeur. - Rotation du vilebrequin sans calage —
-    collision soupapes-pistons sur moteur interférent.
-  S6: >-
-    - Calage de distribution : repères alignés PMH cylindre 1, piges en place. -
-    Rotation manuelle : 2 tours complets à la main sans résistance anormale. -
-    Pression d'huile : voyant d'huile éteint en moins de 5 secondes après
-    démarrage. - Ralenti stable : pas de claquement ni de raté, régime régulier.
-    - Absence de fuite : vérifiez le joint de couvre-culasse après 10 min moteur
-    tournant.
-  S7: >-
-    Quel est le prix d'un arbre à came ?Le prix varie selon le véhicule et la
-    marque. Utilisez notre sélecteur pour trouver l'arbre à came compatible avec
-    votre véhicule et comparer les tarifs des différents équipementiers.Comment
-    savoir si l'arbre à came est à changer ?Les signes d'usure les plus courants
-    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
-    contrôler la pièce par un professionnel.Peut-on rouler avec un arbre à came
-    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
-    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
-    évaluer l'urgence du remplacement. - Kit de distribution (courroie/chaîne +
-    tendeur + galets) — à remplacer systématiquement. - Poussoirs hydrauliques
-    ou linguets — vérifiez le jeu, usure couplée à l'arbre. - Joint de couvre-
-    culasse neuf — obligatoire à chaque ouverture. - Huile moteur + filtre neufs
-    — vidange obligatoire (résidus métalliques). - Joint/pompe à eau — à
+  S1: '- Niveau de difficulté : avancé (professionnel) — calage de distribution requis. - Temps estimé : 4 à 8 h selon le
+    moteur. - Outils : piges de calage spécifiques, clé dynamométrique 10-50 Nm, comparateur, clés Torx. - Consommables :
+    joint de couvre-culasse neuf, huile moteur + filtre neufs, pâte d''étanchéité. - Sécurité : ne jamais tourner le vilebrequin
+    sans calage sur un moteur interférent — risque de collision soupapes-pistons.'
+  S2: 'Symptômes d''un arbre à cames usé ou défectueux : Symptômes sonores : - Claquement métallique au ralenti — jeu excessif
+    entre les cames et les poussoirs. Le bruit s''atténue à chaud (dilatation). - Bruit de distribution anormal — cliquetis
+    régulier synchronisé avec le régime moteur. Distinct du claquement d''injecteurs. Symptômes de performance : - Perte de
+    puissance progressive — les cames usées ne lèvent plus assez les soupapes, le remplissage est insuffisant. - Ratés d''allumage
+    — la synchronisation des soupapes est décalée, le mélange n''est plus optimal. - Consommation en hausse — le moteur compense
+    la perte de rendement. Symptômes visuels : - Voyant moteur allumé — codes P0340-P0349 (capteur arbre à cames) ou P0011-P0014
+    (calage variable). - Usure visible des cames — profil arrondi au lieu d''ovoïde net. Nécessite dépose du cache culbuteurs.
+    ⚠️ Un arbre à cames grippé peut entraîner la rupture de la courroie/chaîne de distribution et un contact soupapes/pistons
+    sur les moteurs interférents.'
+  S3: '- Nombre de cames : admission seule (simple ACT) ou admission + échappement (double ACT). Ne pas confondre. - Profil
+    des cames : spécifique à chaque motorisation. Vérifiez la référence OEM exacte. - Entraînement : par courroie ou chaîne.
+    Le pignon/poulie de l''arbre doit correspondre au type d''entraînement. - Capteur de position : certains arbres intègrent
+    une cible pour le capteur d''arbre à cames. Vérifiez la compatibilité. - Système de distribution variable (VVT) : si équipé,
+    l''arbre intègre un phaser ou un actuateur. La référence est spécifique. Pour aller plus loin : consultez notre guide
+    d''achat arbre à came — comparatif marques, critères de choix et prix.'
+  S4_DEPOSE: 📖 Avant de démonter, consultez la fiche technique Arbre à came pour connaître les spécifications. - Calez le
+    véhicule. - Débranchez la batterie. - Démontez le cache moteur. - Vidangez le liquide de refroidissement. - Démontez la
+    courroie d'accessoires. - Démontez la courroie de distribution ou lachaîne de distribution (suivant le type de distribution).
+    - Démontez la vanne EGR. - Démontez le cache de protection supérieure du collecteur d'échappement. - Démontez la vis de
+    fixation de la poulie d'arbre à cames. - Démontez la poulie d'arbre à cames. - Démontez le carter arrière de protectionde
+    la courroie de distribution (suivant équipement). - Démontez le capteur d'arbre à cames. - Démontez la pompe à vide de
+    freinage. - Démontez le filtre àcarburant pour moteur diesel. - Démontez le support dufiltre à carburant pour moteur diesel.
+    - Démontez les injecteurs. - Démontez le carter des chapeauxde palier d'arbres à cames. - Sur certain motorisationles
+    arbres à cames sont entraînées par une petite chaîne dans ce cas il faudradémontez cette dernière. - Démontez la fixation
+    du tendeur de chaîned'arbres à cames. - Démontez les vis de palier d'arbre à cames. - Démontez les arbres à cames et la
+    bague d'étanchéité.
+  S4_REPOSE: 'Le remontage d''un arbre à cames est une opération de haute précision sur la distribution du moteur. Le calage
+    des arbres à cames par rapport au vilebrequin conditionne directement le fonctionnement des soupapes. Une erreur de positionnement
+    entraîne une perte de puissance, des claquements de soupapes ou, dans les cas graves, un contact entre pistons et soupapes.
+    Consultez impérativement la revue technique de votre véhicule pour les ordres de serrage et les valeurs de calage. - Vérifiez
+    que l''arbre à cames neuf est identique à celui déposé : nombre et profil des cames, diamètre des paliers, position du
+    crabot de synchronisation. - Lubrifiez généreusement les paliers de l''arbre à cames, le corps des poussoirs de soupape
+    et les linguets de commande avec de l''huile moteur propre ou une huile d''assemblage dédiée. - Positionnez l''arbre à
+    cames dans les chapeaux de palier en respectant le marquage de position (repère de came ou encoche d''alignement visible
+    sur l''arbre). - Remontez les bagues d''étanchéité à l''aide d''un chasse-bague adapté — ne jamais les frapper directement.
+    Appliquez un léger film d''huile sur la lèvre avant montage. - Serrez les vis de palier d''arbre à cames en plusieurs
+    passes dans l''ordre prescrit par le constructeur (typiquement de l''intérieur vers l''extérieur), en respectant le couple
+    de serrage (généralement 10 à 20 Nm selon motorisation). - Positionnez la chaîne ou courroie de distribution sur la poulie
+    d''arbre à cames en alignant les repères de calage. Si présence d''une chaîne secondaire d''arbres à cames, respecter
+    le nombre de tours indiqué dans la revue technique (souvent 40 tours) pour le calage final. - Remontez le tendeur de chaîne
+    et vérifiez la tension. Remontez le carter de palier en appliquant un léger cordon de pâte d''étanchéité sur les zones
+    prévues ; respectez l''ordre de serrage. - Remontez dans l''ordre inverse les éléments déposés : capteur d''arbre à cames,
+    pompe à vide, poulie d''arbre à cames (couple de la vis de poulie selon constructeur, souvent 80 à 120 Nm), vanne EGR,
+    courroie d''accessoires. - Remplissez le niveau de liquide de refroidissement et vérifiez le niveau d''huile moteur. Rebranchez
+    la batterie. - Démarrez le moteur et laissez tourner au ralenti 2 à 3 minutes. Vérifiez l''absence de claquement, de voyant
+    allumé et de fuite d''huile au niveau du carter. Effectuez une lecture de défauts avec l''outil de diagnostic pour confirmer
+    l''absence de codes liés à la distribution.'
+  S5: '- Mauvais calage de distribution — un décalage d''une dent dégrade les performances. Plusieurs dents = destruction
+    du moteur interférent. - Desserrage brutal des chapeaux — l''arbre se déforme. Procédez par quarts de tour, en étoile,
+    du centre vers l''extérieur. - Démarrage sans lubrification — un palier neuf démarré à sec est rayé irréversiblement.
+    - Joint de couvre- culasse réutilisé — fuite d''huile garantie. Joint neuf obligatoire. - Jeu aux soupapes non vérifié
+    — un arbre neuf modifie le jeu. Réglez selon les spécifications constructeur. - Rotation du vilebrequin sans calage —
+    collision soupapes-pistons sur moteur interférent.'
+  S6: '- Calage de distribution : repères alignés PMH cylindre 1, piges en place. - Rotation manuelle : 2 tours complets à
+    la main sans résistance anormale. - Pression d''huile : voyant d''huile éteint en moins de 5 secondes après démarrage.
+    - Ralenti stable : pas de claquement ni de raté, régime régulier. - Absence de fuite : vérifiez le joint de couvre-culasse
+    après 10 min moteur tournant.'
+  S7: Quel est le prix d'un arbre à came ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur pour trouver
+    l'arbre à came compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment savoir si l'arbre
+    à came est à changer ?Les signes d'usure les plus courants sont détaillés dans la section diagnostic ci-dessus. En cas
+    de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un arbre à came défaillant ?Cela dépend de
+    la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule. Consultez la section symptômes pour
+    évaluer l'urgence du remplacement. - Kit de distribution (courroie/chaîne + tendeur + galets) — à remplacer systématiquement.
+    - Poussoirs hydrauliques ou linguets — vérifiez le jeu, usure couplée à l'arbre. - Joint de couvre- culasse neuf — obligatoire
+    à chaque ouverture. - Huile moteur + filtre neufs — vidange obligatoire (résidus métalliques). - Joint/pompe à eau — à
     remplacer si entraînée par la distribution.
-  S8: >-
-    - L'arbre à cames s'use-t-il ? Rarement avec un entretien correct. L'usure
-    survient par manque de lubrification (vidanges négligées, niveau bas). -
-    Peut-on changer un seul arbre sur un double ACT ? Oui, mais vérifiez l'usure
-    de l'autre. Un écart crée un déséquilibre admission/échappement. - Faut-il
-    remplacer les paliers ? Si les paliers de culasse présentent des rayures ou
-    un jeu excessif, la culasse doit être rectifiée. - Combien de temps dure
-    l'intervention ? 4 à 8 h. Le coût main-d'œuvre est la majorité de la
-    facture. - Un arbre à cames se reconditionne-t-il ? Le reprofilage existe
-    mais est rare. Le remplacement neuf est la norme.
-  META: >-
-    {"meta_title":"Arbre à came : claquement moteur, causes |
-    AutoMecanik","meta_description":"Claquement au ralenti, bruit métallique ou
-    perte de puissance ? L'arbre à came commande les soupapes. Symptômes,
-    diagnostic et compatibilité par véhicule.","og_title":"Arbre à came :
-    diagnostic claquement et remplacement","og_description":"Bruit moteur,
-    claquement ou perte de puissance au ralenti : peut-être l'arbre à came.
-    Guide complet : causes, vérification synchronisation, pièces associées.","ca
-    nonical_intent":"diagnostic","schema_type":"HowTo","sources":[{"type":"rag",
-    "ref":"gammes/arbre-a-came.md","field":"domain.role + diagnostic.symptoms +
-    domain.related_parts"}]}
+  S8: '- L''arbre à cames s''use-t-il ? Rarement avec un entretien correct. L''usure survient par manque de lubrification
+    (vidanges négligées, niveau bas). - Peut-on changer un seul arbre sur un double ACT ? Oui, mais vérifiez l''usure de l''autre.
+    Un écart crée un déséquilibre admission/échappement. - Faut-il remplacer les paliers ? Si les paliers de culasse présentent
+    des rayures ou un jeu excessif, la culasse doit être rectifiée. - Combien de temps dure l''intervention ? 4 à 8 h. Le
+    coût main-d''œuvre est la majorité de la facture. - Un arbre à cames se reconditionne-t-il ? Le reprofilage existe mais
+    est rare. Le remplacement neuf est la norme.'
+  META: '{"meta_title":"Arbre à came : claquement moteur, causes | AutoMecanik","meta_description":"Claquement au ralenti,
+    bruit métallique ou perte de puissance ? L''arbre à came commande les soupapes. Symptômes, diagnostic et compatibilité
+    par véhicule.","og_title":"Arbre à came : diagnostic claquement et remplacement","og_description":"Bruit moteur, claquement
+    ou perte de puissance au ralenti : peut-être l''arbre à came. Guide complet : causes, vérification synchronisation, pièces
+    associées.","ca nonical_intent":"diagnostic","schema_type":"HowTo","sources":[{"type":"rag", "ref":"gammes/arbre-a-came.md","field":"domain.role
+    + diagnostic.symptoms + domain.related_parts"}]}'
 ---
 
 # Arbre à came - Guide Diagnostic Complet
@@ -407,3 +359,17 @@ En cas de bruit moteur ou de degradation mesurable, il faut controler rapidement
 
 **Puis-je monter Arbre à came sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/71924bfb5ea1 2026-04-03 -->
+### Données techniques OEM — Arbre à came
+
+# Données techniques OEM — Arbre à came
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+- électrique

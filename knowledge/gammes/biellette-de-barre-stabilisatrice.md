@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Relier la barre stabilisatrice a la suspension
@@ -221,62 +221,68 @@ installation:
   - cle dynamometrique
   prerequisite: Pont elevateur, geometrie a refaire apres
 phase5_enrichment:
-  _source: delphiautoparts.com
+  _source: delphiautoparts.com + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 2
+  _enriched_at: '2026-04-03'
+  _web_files_count: 3
   _has_tech_data: true
+  types_variants:
+  - type: hall
+    source_ref: corpus RAG web OEM
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: perforé
+    source_ref: corpus RAG web OEM
+  - type: plein
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: ventilé
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    val_000_nm: '000 Nm'
-    val_10_a: '10 a'
-    val_100_a: '100 a'
-    val_30_a: '30 a'
-    val_7_a: '7 a'
-    val_800_nm: '800 Nm'
+    val_000_nm: 000 Nm
+    val_10_a: 10 a
+    val_10_mm: 10 mm
+    val_100__: 100 %
+    val_100_a: 100 a
+    val_11_mm: 11 mm
+    val_118_kw: 118 kW
+    val_13__: 13 %
+    val_130_km: 130 km
+    val_14_a: 14 a
+    val_14_mm: 14 mm
+    val_16_v: 16 v
+    val_2__v: 2. V
+    val_21_mm: 21 mm
+    val_240_mm: 240 mm
   materials:
-  - materiau: 'aluminium'
+  - materiau: aluminium
     source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Relier la barre stabilisatrice a la suspension. Pièces liées : vérifier les
-    composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Claquements
-    sourds sur dos d ane ou nids de poule- Bruits de cognement dans les virages
-    serres- Sensation flottement roulis excessif virage- Jeu visible en secouant
-    la biellette a la main- Craquements au passage de ralentisseurs- Plus de 100
-    000 km sans remplacement
-  S3: >-
-    Pour choisir le bon biellette de barre stabilisatrice pour votre véhicule :
-    - Marque de votre véhicule- Modele de votre véhicule- Annee de votre
-    véhicule- Marques : Lemforder, TRW (premium), Febi, Meyle, MOOG (standard),
-    Ridex, Topran (budget)- Budget : 15 à 60 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le biellette de barre stabilisatrice : - Ne pas
-    vérifier la référence exacte avant commande — une pièce de mauvaise
-    référence ne fonctionne pas correctement même si elle se monte physiquement-
-    Oublier de débrancher la batterie avant intervention — risque de court-
-    circuit sur les composants électroniques- Ne pas serrer avec le véhicule sur
-    chandelles (roues pendantes). Attendre que le véhicule soit au sol pour le
-    serrage final.- Ne pas respecter le couple de serrage constructeur au
-    remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du biellette de barre stabilisatrice : - Controle du
-    jeu de direction a chaque revision- Verifier les soufflets de protection
-    (pas de fuite de graisse)- Faire verifier la geometrie apres remplacement-
-    Inspecter les biellettes et rotules associees- Effacer les codes défaut
-    éventuels avec l'outil OBD- Effectuer un essai route pour confirmer la
-    disparition des symptômes
+  S1: 'Relier la barre stabilisatrice a la suspension. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Claquements sourds sur dos d ane ou nids de poule- Bruits
+    de cognement dans les virages serres- Sensation flottement roulis excessif virage- Jeu visible en secouant la biellette
+    a la main- Craquements au passage de ralentisseurs- Plus de 100 000 km sans remplacement'
+  S3: 'Pour choisir le bon biellette de barre stabilisatrice pour votre véhicule : - Marque de votre véhicule- Modele de votre
+    véhicule- Annee de votre véhicule- Marques : Lemforder, TRW (premium), Febi, Meyle, MOOG (standard), Ridex, Topran (budget)-
+    Budget : 15 à 60 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le biellette de barre stabilisatrice : - Ne pas vérifier la référence exacte avant commande
+    — une pièce de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher
+    la batterie avant intervention — risque de court- circuit sur les composants électroniques- Ne pas serrer avec le véhicule
+    sur chandelles (roues pendantes). Attendre que le véhicule soit au sol pour le serrage final.- Ne pas respecter le couple
+    de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive
+    s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du biellette de barre stabilisatrice : - Controle du jeu de direction a chaque revision- Verifier
+    les soufflets de protection (pas de fuite de graisse)- Faire verifier la geometrie apres remplacement- Inspecter les biellettes
+    et rotules associees- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour confirmer la
+    disparition des symptômes'
 ---
 
 # Biellette de barre stabilisatrice - Guide Diagnostic Complet
@@ -362,7 +368,169 @@ Oui, opération accessible. Dévisser les deux écrous (haut et bas), extraire l
 
 **Quelle erreur éviter avec les biellettes de stabilisatrice ?**
 Ne pas serrer avec le véhicule sur chandelles (roues pendantes). Attendre que le véhicule soit au sol pour le serrage final.
+## Symptomes amortisseurs uses
 
+### Rebonds excessifs
+- **Quand** : Passage dos d'ane, ralentisseurs
+- **Caracteristique** : Vehicule continue de rebondir
+- **Test** : Appuyer sur aile, plus de 2 rebonds = use
+
+### Tenue de route degradee
+- **Quand** : Virage, freinage, autoroute
+- **Caracteristique** : Vehicule flottant, instable
+- **Urgence** : Securite - A remplacer rapidement
+
+### Usure pneus anormale
+- **Quand** : Controle visuel
+- **Caracteristique** : Usure en vagues, facettes
+- **Indication** : Amortisseurs HS depuis longtemps
+
+### Bruits de suspension
+- **Quand** : Routes degradees
+- **Caracteristique** : Claquements, cognements
+- **Distinction** : Amortisseur vs silent-bloc vs rotule
+
+## Symptomes ressorts
+
+### Vehicule affaisse
+- **Quand** : A l'arret
+- **Caracteristique** : Un cote plus bas que l'autre
+- **Cause** : Ressort casse ou fatigue
+
+### Bruits metalliques
+- **Quand** : Compression suspension
+- **Caracteristique** : Claquement sec, grincement
+- **Verification** : Coupelle superieure, butee
+
+## Symptomes rotules et silent-blocs
+
+### Jeu dans la direction
+- **Quand** : Manoeuvres parking
+- **Caracteristique** : Direction floue, impreise
+- **Test** : Roue levee, jeu lateral
+
+### Claquements sourds
+- **Quand** : Depart, freinage, dos d'ane
+- **Caracteristique** : Bruit sourd cote roue
+- **Cause probable** : Silent-bloc triangle use
+
+## Causes et solutions - Amortisseurs
+
+### 1. Amortisseurs uses (fuite huile)
+- **Probabilite** : 60%
+- **Verification** : Traces huile sur corps amortisseur
+- **Solution** : Remplacement par paire (essieu)
+- **Pieces** : Amortisseurs avant/arriere
+- **Urgence** : Haute (securite)
+
+### 2. Coupelles/butees HS
+- **Probabilite** : 25%
+- **Verification** : Bruit rotation volant a l'arret
+- **Solution** : Remplacement kit complet
+- **Pieces** : Kit butee + roulement
+- **Urgence** : Moyenne
+
+### 3. Ressort casse
+- **Probabilite** : 10%
+- **Verification** : Inspection visuelle, hauteur caisse
+- **Solution** : Remplacement par paire
+- **Pieces** : Ressorts de suspension
+- **Urgence** : Haute
+
+### 4. Soufflet dechire
+- **Probabilite** : 5%
+- **Verification** : Poussiere/eau dans amortisseur
+- **Solution** : Remplacement amortisseur (soufflet non vendu seul)
+- **Pieces** : Amortisseur complet
+- **Urgence** : Moyenne
+
+## Causes et solutions - Train roulant
+
+### 1. Silent-blocs triangle uses
+- **Probabilite** : 40%
+- **Verification** : Jeu visible, caoutchouc craquele
+- **Solution** : Remplacement triangle complet ou silent-bloc seul
+- **Pieces** : Triangle de suspension, silent-bloc
+- **Urgence** : Moyenne
+
+### 2. Rotule de direction usee
+- **Probabilite** : 25%
+- **Verification** : Jeu rotule (roue levee)
+- **Solution** : Remplacement + geometrie
+- **Pieces** : Rotule de direction
+- **Urgence** : Haute (securite)
+
+### 3. Biellette de barre stabilisatrice
+- **Probabilite** : 20%
+- **Verification** : Claquement dans virages
+- **Solution** : Remplacement biellettes
+- **Pieces** : Biellettes stabilisateur
+- **Urgence** : Moyenne
+
+### 4. Roulement de roue
+- **Probabilite** : 15%
+- **Verification** : Ronronnement proportionnel vitesse
+- **Solution** : Remplacement roulement
+- **Pieces** : Roulement moyeu
+- **Urgence** : Haute
+
+## Intervalles de remplacement
+
+| Piece | Kilometrage indicatif |
+|-------|----------------------|
+| Amortisseurs | 80 000 - 100 000 km |
+| Ressorts | Controle apres 120 000 km |
+| Silent-blocs | 100 000 - 150 000 km |
+| Rotules | 100 000 - 150 000 km |
+| Biellettes | 80 000 - 120 000 km |
+
+## Recommandations
+
+- **Remplacement par paire** : Toujours remplacer par essieu (AV gauche + AV droit)
+- **Geometrie** : Obligatoire apres remplacement rotules, triangles
+- **Kit complet** : Preferer kits avec butee et soufflet
+- **Marques** : Bilstein, Monroe, Sachs, KYB (amortisseurs), Lemforder, TRW (train roulant)
+- **Controle** : A chaque revision, au CT tous les 2 ans
+
+## Test rapide amortisseurs
+
+1. Stationner sur sol plat
+2. Appuyer fortement sur chaque aile
+3. Relacher et compter les rebonds
+4. **OK** : 1-2 rebonds max
+5. **Use** : Plus de 2 rebonds
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/cce6e9c9d356 2026-04-03 -->
+### Données techniques OEM — Biellette de barre stabilisatrice
+
+# Données techniques OEM — Biellette de barre stabilisatrice
+Source : delphiautoparts.com + fr.wikipedia.org (3 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hall
+- hydraulique
+- perforé
+- plein
+- pneumatique
+- ventilé
+- électrique
+
+## Matériaux
+- aluminium
+
+## Valeurs techniques de référence
+- 000 Nm
+- 10 mm
+- 100 %
+- 11 mm
+- 13 %
+- 14 mm
+- 21 mm
+- 240 mm
 
 ## Symptomes supplementaires
 

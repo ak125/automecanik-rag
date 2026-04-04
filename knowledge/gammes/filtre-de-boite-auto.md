@@ -223,7 +223,7 @@ phase5_enrichment:
     description: Filtre sur la conduite de retour du radiateur de BVA, plus accessible
     era: certaines BVA
   technical_notes:
-    intervalle: '60 000 a 80 000 km ou selon constructeur (certains disent 'a vie' = faux)'
+    intervalle: "60 000 a 80 000 km ou selon constructeur (certains disent 'a vie' = faux)"
     huile_bva: 'huile ATF specifique a la boite (DEXRON, MATIC, LT71141...) — ne PAS melanger les types'
     quantite_vidange: 'vidange partielle = 3-5L, vidange complete par rincage = 8-12L selon boite'
     temperature_huile: 'fonctionnement normal 80-100°C, max 150°C (au-dela = degradation acceleree)'

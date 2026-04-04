@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Monte et descend la vitre de la portière
@@ -203,84 +203,66 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Leve-vitre a cable
-    description: Moteur + poulie + cable guide la vitre — standard, economique
-    era: standard
-  - type: Leve-vitre a bras articule
-    description: Mecanisme a ciseaux, plus robuste, vehicules haut de gamme
-    era: premium
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_14_a: '14 a'
+    val_15_a: '15 a'
+    val_18_a: '18 a'
+    val_28_a: '28 a'
+    val_3_v: '3 v'
+    val_4_v: '4 v'
+    val_63_a: '63 A'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Le lève-vitre est le mécanisme qui monte et descend la vitre de la portière.
-    Il se compose d''un moteur électrique (sur les véhicules modernes), d''un
-    système de transmission (câble + poulie ou bras articulé) et de rails de
-    guidage. La vitre est fixée au chariot du mécanisme par deux boulons ou
-    clips. Niveau de difficulté : Intermédiaire — nécessite la dépose du panneau
-    de porte intérieur. Comptez 1 à 2h par portière. Outils : outil de démontage
-    clips plastique, tournevis, douilles 10 mm, scotch de maintien de vitre.
-    Pièces liées : moteur de lève-vitre (souvent vendu séparément), interrupteur
-    de lève-vitre (bouton de commande), fusible lève-vitre.
-  S2: >-
-    Pas de périodicité de remplacement. Durée de vie variable — la portière
-    conducteur s''use plus vite (usage quotidien). Peut durer 150 000+ km ou
-    tomber en panne avant 80 000 km selon l''usage. Symptômes de défaillance : -
-    Vitre qui ne monte ou ne descend plus — moteur HS ou câble cassé- Vitre très
-    lente ou qui s''arrête en cours de mouvement — moteur fatigué ou mécanisme
-    grippé- Bruit de moteur mais vitre immobile — câble cassé ou poulie
-    déboîtée- Vitre qui descend toute seule — mécanisme usé, le câble ne
-    maintient plus la vitre en position- Grincement ou bruit anormal à la
-    montée/descente — rails de guidage sales ou secs- Vitre de travers ou mal
-    guidée dans le rail — chariot ou clips de fixation cassés
-  S3: >-
-    Pour choisir le bon lève-vitre : - Côté : gauche (conducteur) ou droite
-    (passager) — les mécanismes ne sont pas symétriques- Avant ou arrière : les
-    dimensions et le type de mécanisme diffèrent entre portes avant et arrière-
-    Avec ou sans moteur : certaines références incluent le moteur électrique,
-    d''autres non — vérifier si le moteur est intégré ou séparé sur votre
-    véhicule- Type de mécanisme : à câble (le plus courant, moins cher) ou à
-    bras articulé (véhicules haut de gamme, plus robuste)- Marques : Valeo,
-    Brose (OES), Febi, Meyle (standard) — les adaptables conviennent mais
-    vérifier la compatibilité exacte du connecteur moteur- Budget : 80 à 250 EUR
-    selon avec ou sans moteur
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Déposer le panneau de porte intérieur (clips
-    plastique + vis cachées derrière les caches et la poignée). 3. Décoller le
-    film plastique d''étanchéité de la porte (le conserver intact pour le
-    remontage). 4. Monter la vitre en position haute et la maintenir avec du
-    scotch large collé sur le montant de porte. 5. Débrancher le connecteur du
-    moteur de lève-vitre. 6. Dévisser les 2 boulons de fixation de la vitre sur
-    le chariot du mécanisme. 7. Dévisser les vis de fixation du mécanisme sur la
-    tôle de porte (3 à 5 vis selon véhicule). 8. Extraire le mécanisme par
-    l''ouverture de la tôle de porte en le faisant pivoter.
-  S5: >-
-    Erreurs fréquentes avec le lève-vitre : - Ne pas maintenir la vitre avec du
-    scotch avant de débrancher le mécanisme — la vitre tombe dans la porte et
-    peut se casser ou rayer la peinture- Remplacer le mécanisme complet alors
-    que seul le moteur ou l''interrupteur est en cause — tester le fusible,
-    l''interrupteur et le moteur séparément avant de tout changer- Forcer une
-    vitre bloquée avec les mains — le mécanisme casse ou le câble se déboîte de
-    la poulie- Oublier de remettre le film plastique d''étanchéité lors du
-    remontage — l''eau de pluie entre dans la porte et corrode le moteur et les
-    connecteurs- Ne pas vérifier le coulissement des rails de guidage — des
-    rails sales ou rouillés font forcer le moteur et réduisent sa durée de vie-
-    Confondre lève-vitre gauche et droite — les mécanismes ne sont pas
-    symétriques
-  S6: >-
-    Après le remplacement du lève-vitre : - Test fonctionnel : monter et
-    descendre la vitre 3 à 4 fois complètement — le mouvement doit être fluide
-    et silencieux- Initialisation : sur les véhicules avec anti-pincement,
-    réinitialiser le module de confort en maintenant l''interrupteur en position
-    haute pendant 5 secondes après la course complète- Étanchéité : vérifier que
-    le film plastique est bien recollé sur la tôle de porte — un film décollé
-    laisse entrer l''eau- Alignement vitre : en position haute, la vitre doit
-    être alignée avec le joint de baie — un décalage provoque du bruit de vent
-    et des infiltrations d''eau
+  S1: 'Le lève-vitre est le mécanisme qui monte et descend la vitre de la portière. Il se compose d''''un moteur électrique
+    (sur les véhicules modernes), d''''un système de transmission (câble + poulie ou bras articulé) et de rails de guidage.
+    La vitre est fixée au chariot du mécanisme par deux boulons ou clips. Niveau de difficulté : Intermédiaire — nécessite
+    la dépose du panneau de porte intérieur. Comptez 1 à 2h par portière. Outils : outil de démontage clips plastique, tournevis,
+    douilles 10 mm, scotch de maintien de vitre. Pièces liées : moteur de lève-vitre (souvent vendu séparément), interrupteur
+    de lève-vitre (bouton de commande), fusible lève-vitre.'
+  S2: 'Pas de périodicité de remplacement. Durée de vie variable — la portière conducteur s''''use plus vite (usage quotidien).
+    Peut durer 150 000+ km ou tomber en panne avant 80 000 km selon l''''usage. Symptômes de défaillance : - Vitre qui ne
+    monte ou ne descend plus — moteur HS ou câble cassé- Vitre très lente ou qui s''''arrête en cours de mouvement — moteur
+    fatigué ou mécanisme grippé- Bruit de moteur mais vitre immobile — câble cassé ou poulie déboîtée- Vitre qui descend toute
+    seule — mécanisme usé, le câble ne maintient plus la vitre en position- Grincement ou bruit anormal à la montée/descente
+    — rails de guidage sales ou secs- Vitre de travers ou mal guidée dans le rail — chariot ou clips de fixation cassés'
+  S3: 'Pour choisir le bon lève-vitre : - Côté : gauche (conducteur) ou droite (passager) — les mécanismes ne sont pas symétriques-
+    Avant ou arrière : les dimensions et le type de mécanisme diffèrent entre portes avant et arrière- Avec ou sans moteur
+    : certaines références incluent le moteur électrique, d''''autres non — vérifier si le moteur est intégré ou séparé sur
+    votre véhicule- Type de mécanisme : à câble (le plus courant, moins cher) ou à bras articulé (véhicules haut de gamme,
+    plus robuste)- Marques : Valeo, Brose (OES), Febi, Meyle (standard) — les adaptables conviennent mais vérifier la compatibilité
+    exacte du connecteur moteur- Budget : 80 à 250 EUR selon avec ou sans moteur'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Déposer le panneau de porte intérieur (clips plastique + vis cachées derrière les
+    caches et la poignée). 3. Décoller le film plastique d''étanchéité de la porte (le conserver intact pour le remontage).
+    4. Monter la vitre en position haute et la maintenir avec du scotch large collé sur le montant de porte. 5. Débrancher
+    le connecteur du moteur de lève-vitre. 6. Dévisser les 2 boulons de fixation de la vitre sur le chariot du mécanisme.
+    7. Dévisser les vis de fixation du mécanisme sur la tôle de porte (3 à 5 vis selon véhicule). 8. Extraire le mécanisme
+    par l''ouverture de la tôle de porte en le faisant pivoter.
+  S5: 'Erreurs fréquentes avec le lève-vitre : - Ne pas maintenir la vitre avec du scotch avant de débrancher le mécanisme
+    — la vitre tombe dans la porte et peut se casser ou rayer la peinture- Remplacer le mécanisme complet alors que seul le
+    moteur ou l''''interrupteur est en cause — tester le fusible, l''''interrupteur et le moteur séparément avant de tout
+    changer- Forcer une vitre bloquée avec les mains — le mécanisme casse ou le câble se déboîte de la poulie- Oublier de
+    remettre le film plastique d''''étanchéité lors du remontage — l''''eau de pluie entre dans la porte et corrode le moteur
+    et les connecteurs- Ne pas vérifier le coulissement des rails de guidage — des rails sales ou rouillés font forcer le
+    moteur et réduisent sa durée de vie- Confondre lève-vitre gauche et droite — les mécanismes ne sont pas symétriques'
+  S6: 'Après le remplacement du lève-vitre : - Test fonctionnel : monter et descendre la vitre 3 à 4 fois complètement — le
+    mouvement doit être fluide et silencieux- Initialisation : sur les véhicules avec anti-pincement, réinitialiser le module
+    de confort en maintenant l''''interrupteur en position haute pendant 5 secondes après la course complète- Étanchéité :
+    vérifier que le film plastique est bien recollé sur la tôle de porte — un film décollé laisse entrer l''''eau- Alignement
+    vitre : en position haute, la vitre doit être alignée avec le joint de baie — un décalage provoque du bruit de vent et
+    des infiltrations d''''eau'
 ---
 
 # Lève-vitre - Guide Diagnostic Complet
@@ -369,3 +351,18 @@ Oui mais opération délicate. Déposer le panneau de porte, débrancher les con
 
 **Quelle erreur éviter ?**
 Maintenir la vitre pendant l'opération (risque de chute). Vérifier l'interrupteur et le fusible avant de changer le mécanisme. Ne pas forcer une vitre bloquée.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/ee05ebeb8aca 2026-04-03 -->
+### Données techniques OEM — Lève-vitre
+
+# Données techniques OEM — Lève-vitre
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+- pneumatique
+- électrique

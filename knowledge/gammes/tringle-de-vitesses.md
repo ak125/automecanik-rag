@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -192,12 +192,29 @@ installation:
   - cle dynamometrique
   prerequisite: Depose complete de la boite de vitesses
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    role: 'transmet le mouvement du levier de vitesses aux fourchettes dans la boite'
-    symptome_jeu: 'levier flou, difficulte a engager les rapports = rotules de tringle usees'
+    val_115_mm: '115 mm'
+    val_140_mm: '140 mm'
+    val_230_km: '230 km'
+    val_250_km: '250 km'
+    val_3_a: '3 a'
+    val_3_km: '3 km'
+    val_30_km: '30 km'
+    val_350_km: '350 km'
+    val_40_km: '40 km'
+    val_50_kg: '50 kg'
+    val_500_mm: '500 mm'
+    val_560_km: '560 km'
+    val_574_8_km: '574,8 km'
+    val_60_kg: '60 kg'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

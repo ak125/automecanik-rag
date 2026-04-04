@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Kit complet pour la synchronisation de la distribution avec tous les composants necessaires
@@ -208,7 +208,7 @@ installation:
 phase5_enrichment:
   _source: bremboparts.com + denso-am.eu + hella.com + textar.com + valeoservice.fr
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 15
   _has_tech_data: true
   types_variants:
@@ -625,6 +625,480 @@ Le montage peut exiger controles de couple, alignement et references. En cas de 
 - **Kit complet** : Toujours remplacer courroie + galets + pompe a eau ensemble
 - **Marques** : Privilegier Gates, Continental, SKF
 - **Huile** : Verifier absence de fuites d'huile sur la courroie
+## Identification
+
+- **Generation** : III
+- **Production** : 2008 - 2016
+- **Segment** : C (compacte)
+- **Carrosseries** : 3 portes, 5 portes, Estate (break), Coupe, CC (cabriolet), RS
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.6 16v | 110 ch | K4M |
+| 1.4 TCe | 130 ch | H4J |
+| 2.0 TCe | 180 ch | F4R |
+| 2.0 RS | 250/265 ch | F4R |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.5 dCi | 90/110 ch | K9K |
+| 1.6 dCi | 130 ch | R9M |
+| 1.9 dCi | 130 ch | F9Q |
+| 2.0 dCi | 150/160 ch | M9R |
+
+## Pieces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-40 000 km
+- **Disques avant** : 60-80 000 km
+- **Freins arriere** : Disques ou tambours selon version
+
+### Filtration
+- **Filtre a huile** : A chaque vidange
+- **Filtre a air** : 30 000 km
+- **Filtre habitacle** : 15 000 km
+- **Filtre a gasoil** (dCi) : 60 000 km
+
+### Distribution
+- **1.5 dCi (K9K)** : Courroie, 90 000 km ou 6 ans
+- **1.6 dCi (R9M)** : Chaine (sans entretien)
+- **2.0 dCi (M9R)** : Courroie, 120 000 km ou 6 ans
+- **1.6 16v (K4M)** : Courroie, 120 000 km ou 6 ans
+- **TCe** : Chaine (sans entretien)
+
+## Problemes connus
+
+### Moteur 1.5 dCi (K9K)
+- Injecteurs : Defaillance frequente (claquement, fumee)
+- Vanne EGR : Encrassement rapide
+- Turbo : Controle huile regulier, geometrie variable
+
+### Moteur 1.6 dCi (R9M)
+- Injecteurs piezo : Couteux a remplacer
+- Courroie accessoires : Galet tendeur a surveiller
+
+### Moteur 2.0 dCi (M9R)
+- Volant moteur bimasse : Bruit au ralenti
+- Pompe HP : Copeaux metalliques possibles
+
+### Electricite
+- Carte main libre : Problemes de detection
+- Tableau de bord : Pixels defaillants
+- Feux arriere LED : Bandeaux LED HS
+
+### Chassis
+- Roulements avant : Usure normale 80-100k km
+- Silent-blocs berceau : Claquements
+- Cardans : Soufflets a surveiller
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 20 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans ou 60 000 km
+
+## References OEM courantes
+
+| Piece | Reference Renault |
+|-------|-------------------|
+| Filtre a huile 1.5 dCi | 8200768913 |
+| Filtre a air 1.5 dCi | 8200431051 |
+| Plaquettes avant | 410607115R |
+| Disques avant | 402069518R |
+| Kit distribution 1.5 dCi | 130C17529R |
+
+## Conseils d'entretien
+
+1. **Huile moteur** : 5W-30 C3 ou C4 selon version
+2. **Liquide refroidissement** : Type D (jaune/vert)
+3. **Direction assistee** : Electrique (pas de fluide)
+4. **Boite EDC** : Vidange huile 60 000 km
+## Identification
+
+- **Generation** : VI (5K)
+- **Production** : 2008 - 2012
+- **Segment** : C (compacte)
+- **Carrosseries** : 3 portes, 5 portes, Variant (break), Cabriolet
+- **Versions sport** : GTI, GTD, R
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.4 TSI | 122 ch | CAXA |
+| 1.4 TSI | 160 ch | CAVD |
+| 1.8 TSI | 160 ch | CDAA |
+| 2.0 TSI GTI | 210 ch | CCZB |
+| 2.0 TSI R | 270 ch | CDLF |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.6 TDI | 90/105 ch | CAYC |
+| 2.0 TDI | 110 ch | CBDB |
+| 2.0 TDI | 140 ch | CBAB |
+| 2.0 TDI GTD | 170 ch | CFGB |
+
+## Pieces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-50 000 km
+- **Disques avant** : 60-80 000 km
+- **Freins arriere** : Disques sur toutes versions
+
+### Filtration
+- **Filtre a huile** : A chaque vidange
+- **Filtre a air** : 40 000 km
+- **Filtre habitacle** : 20 000 km
+- **Filtre a gasoil** (TDI) : 60 000 km
+
+### Distribution
+- **1.4 TSI** : Chaine (attention etirement)
+- **1.6 TDI** : Courroie, 120 000 km ou 5 ans
+- **2.0 TDI** : Courroie, 120 000 km ou 5 ans
+- **2.0 TSI** : Chaine (sans entretien normal)
+
+## Problemes connus
+
+### Moteur 1.4 TSI (CAXA/CAVD)
+- Chaine distribution : Etirement premature (symptome: bruit au demarrage froid)
+- Tendeur chaine : Defaillant, a remplacer preventivement
+- Solution : Kit chaine complet (tendeur + guides + chaine)
+
+### Moteur 2.0 TDI (CR)
+- Injecteurs piezo : Defaillance possible apres 150k km
+- Vanne EGR : Encrassement, nettoyage ou suppression
+- FAP : Regenerations frequentes en ville
+
+### Boite DSG
+- Mecatronique : Defaillances possibles (a-coups, passage neutre)
+- Embrayages : Usure si conduite urbaine
+- Vidange huile : Tous les 60 000 km obligatoire
+
+### Electricite
+- Module confort : Problemes vitres, centralisation
+- Pompe a eau electrique (TSI) : Defaillante apres 100k km
+
+## Intervalles d'entretien
+
+### Vidange (selon service VAG)
+- **Service flexible** : 15-30 000 km selon usage
+- **Recommande** : 15 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans
+
+## References OEM courantes
+
+| Piece | Reference VAG |
+|-------|---------------|
+| Filtre a huile 2.0 TDI | 03L115562 |
+| Filtre a air 2.0 TDI | 1K0129620D |
+| Plaquettes avant | 5K0698151 |
+| Disques avant | 5K0615301 |
+| Kit distribution 2.0 TDI | Gates/Contitech |
+
+## Conseils d'entretien
+
+1. **Huile moteur** : 5W-30 504.00/507.00 (Long Life)
+2. **Alternative recommandee** : 5W-40 non Long Life + vidanges 15k km
+3. **Liquide refroidissement** : G12++ (rose/violet)
+4. **Boite DSG** : Vidange stricte 60 000 km
+## Identification
+
+### C3 I (2002-2009)
+- **Code** : FC
+- **Segment** : B (citadine)
+- **Carrosseries** : 5 portes, Pluriel (decouvrable)
+
+### C3 II (2009-2016)
+- **Code** : A51
+- **Segment** : B
+- **Carrosseries** : 5 portes
+
+### C3 III (2016-2024)
+- **Code** : SX
+- **Segment** : B
+- **Carrosseries** : 5 portes
+- **Design** : Airbumps, bi-ton
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur | Generation |
+|--------|-----------|-------------|------------|
+| 1.1i | 60 ch | HFZ (TU1JP) | C3 I |
+| 1.4i | 75 ch | KFV (TU3JP) | C3 I/II |
+| 1.6 VTi | 120 ch | EP6 | C3 II |
+| 1.2 PureTech | 82 ch | EB2 | C3 II/III |
+| 1.2 PureTech | 110 ch | EB2DT turbo | C3 III |
+
+### Diesel
+| Moteur | Puissance | Code moteur | Generation |
+|--------|-----------|-------------|------------|
+| 1.4 HDi | 68 ch | 8HZ (DV4TD) | C3 I/II |
+| 1.6 HDi | 90/92 ch | 9HX (DV6) | C3 I/II |
+| 1.5 BlueHDi | 100 ch | DV5 | C3 III |
+
+## Pieces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-40 000 km
+- **Disques avant** : 60-80 000 km
+- **Arriere** : Tambours (I/II), disques (certaines III)
+
+### Filtration
+- **Filtre a huile** : A chaque vidange
+- **Filtre a air** : 30 000 km
+- **Filtre habitacle** : 15 000 km
+- **Filtre a gasoil** : 60 000 km
+
+### Distribution
+- **Moteurs TU (1.1/1.4)** : Courroie, 80 000 km ou 5 ans
+- **1.4/1.6 HDi** : Courroie, 100 000 km ou 10 ans
+- **PureTech EB2** : Courroie, 100 000 km ou 10 ans
+- **1.6 VTi (EP6)** : Chaine
+
+## Problemes connus
+
+### Moteur PureTech EB2 (1.2 turbo)
+- **Courroie** : Etirement premature, controle frequent
+- **Poulie damper** : Eclatement possible
+- **Consommation huile** : A surveiller
+
+### Moteur EP6 (1.6 VTi/THP)
+- **Chaine distribution** : Etirement (bruit demarrage)
+- **Capteur arbre a cames** : Defaillant
+- **Bobines allumage** : A remplacer par kit renforce
+
+### Moteur 1.4/1.6 HDi (DV4/DV6)
+- **Vanne EGR** : Encrassement frequent
+- **Injecteurs** : Fuite retour, demarrage difficile
+- **Poulie damper** : Controle visuel regulier
+
+### Electricite
+- **BSI** : Dysfonctionnements (essuie-glaces, centralisation)
+- **Combine** : Affichage defaillant
+- **Antidemarrage** : Problemes cle/transpondeur
+
+### Chassis
+- **Roulements avant** : Remplacement frequent
+- **Silent-blocs** : Claquements suspension
+- **Cardans** : Soufflets fragiles
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 15 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans
+
+## References OEM courantes
+
+| Piece | Reference PSA |
+|-------|---------------|
+| Filtre a huile 1.4 HDi | 1109AY |
+| Filtre a air 1.4 HDi | 1444VJ |
+| Plaquettes avant | 4254.22 |
+| Disques avant 266mm | 4249.34 |
+| Kit distribution PureTech | 1611841580 |
+
+## Conseils d'entretien
+
+1. **Huile moteur essence** : 5W-30 ou 0W-30
+2. **Huile moteur diesel** : 5W-30 C2 (FAP)
+3. **Liquide refroidissement** : Revkogel 2000
+4. **Direction** : Electrique (pas de fluide)
+## Identification
+
+- **Génération** : Unique (T1/T3)
+- **Production** : 1998 - 2012
+- **Segment** : B (citadine)
+- **Carrosseries** : 3 portes, 5 portes, CC (cabriolet), SW (break), RC/GTI
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.1i | 60 ch | HFX (TU1JP) |
+| 1.4i | 75 ch | KFW (TU3JP) |
+| 1.6i | 88/110 ch | NFU (TU5JP4) |
+| 2.0 GTI | 137 ch | RFK (EW10J4) |
+| 2.0 RC | 177 ch | RFK (EW10J4S) |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.4 HDi | 68 ch | 8HX (DV4TD) |
+| 1.6 HDi | 90/110 ch | 9HY/9HZ (DV6) |
+| 2.0 HDi | 90 ch | RHY (DW10TD) |
+
+## Pièces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : 30-40 000 km
+- **Disques avant** : 60-80 000 km
+- **Tambours arrière** : Standard sur la plupart des versions
+- **Kit frein arrière** : Mâchoires + cylindres
+
+### Filtration
+- **Filtre à huile** : À chaque vidange
+- **Filtre à air** : 30 000 km
+- **Filtre habitacle** : 15 000 km
+- **Filtre à gasoil** (HDi) : 60 000 km
+
+### Distribution
+- **Essence TU** : Courroie, 80 000 km ou 5 ans
+- **HDi DV4/DV6** : Courroie, 100 000 km ou 10 ans
+- **HDi DW10** : Courroie, 120 000 km
+
+## Problèmes connus
+
+### Moteur 1.4 HDi (DV4)
+- Injecteurs : Encrassement, démarrage difficile
+- Vanne EGR : Colmatage fréquent
+- Poulie damper : Éclatement (bruit moteur)
+
+### Moteur 1.6 HDi (DV6)
+- Volant moteur bimasse : Usure prématurée (bruit au ralenti)
+- Turbo : Contrôle régulier huile
+
+### Électricité
+- BSI (Boîtier de Servitude Intelligent) : Dysfonctionnements
+- Antidémarrage : Problèmes transpondeur clé
+
+### Train roulant
+- Cardans : Soufflets à surveiller
+- Roulements avant : Usure normale
+- Triangles de suspension : Silent-blocs
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 15 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Liquide de frein
+- Tous les 2 ans
+
+## Références OEM courantes
+
+| Pièce | Référence Peugeot |
+|-------|-------------------|
+| Filtre à huile 1.4 HDi | 1109AY |
+| Filtre à air 1.4 HDi | 1444VJ |
+| Plaquettes avant | 4254.22 |
+| Disques avant | 4249.G5 |
+| Kit distribution 1.4 HDi | 0831V4 |
+
+## Conseils d'entretien
+
+1. **Huile moteur diesel** : 5W-30 spéciale FAP si équipé
+2. **Essence** : 10W-40 ou 5W-40 selon préconisation
+3. **Liquide refroidissement** : Type Revkogel 2000 (vert)
+4. **LHM** : Si direction assistée hydraulique (citadines anciennes)
+## Variantes et types
+- hall
+- électrique
+## Identification
+
+- **Génération** : III (BR/CR)
+- **Production** : 2005 - 2014
+- **Segment** : B (citadine)
+- **Carrosseries** : 3 portes, 5 portes, Estate (break)
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.2 16V | 75 ch | D4F |
+| 1.2 TCE | 100 ch | D4F |
+| 1.4 16V | 98 ch | K4J |
+| 1.6 16V | 110 ch | K4M |
+| 2.0 RS | 197/200 ch | F4R |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.5 dCi | 65/68 ch | K9K |
+| 1.5 dCi | 85/86 ch | K9K |
+| 1.5 dCi | 105/106 ch | K9K |
+
+## Pièces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : Remplacement 30-40 000 km
+- **Disques avant** : Remplacement 60-80 000 km
+- **Plaquettes arrière** : 50-70 000 km (si disques)
+- **Tambours** : Contrôle à 100 000 km
+
+### Filtration
+- **Filtre à huile** : À chaque vidange
+- **Filtre à air** : 30 000 km ou 2 ans
+- **Filtre habitacle** : 15 000 km ou 1 an
+- **Filtre à carburant** (diesel) : 60 000 km
+
+### Distribution
+- **Type** : Courroie
+- **Intervalle** : 90 000 km ou 5 ans (selon motorisation)
+- **Kit complet** : Courroie + galets + pompe à eau recommandé
+
+## Problèmes connus
+
+### Moteur 1.5 dCi (K9K)
+- Vanne EGR : Encrassement fréquent
+- Injecteurs : Fuite de carburant (rappel)
+- Turbo : Usure prématurée (huile de qualité importante)
+
+### Électricité
+- Platine fusibles : Problèmes de contacts
+- Capteur pédale accélérateur : Défaillance
+
+### Train roulant
+- Rotules de direction : Usure normale
+- Silent-blocs bras : À contrôler à 100 000 km
+
+## Rappels constructeur
+
+| Rappel | Motorisation | Période | Détail |
+|--------|-------------|---------|--------|
+| Injecteurs Delphi — fuite carburant | 1.5 dCi (K9K) | 2005-2010 | Fuite au raccord haute pression des injecteurs. Risque incendie. Remplacement gratuit des joints et clips de fixation. Concerne ~500 000 véhicules en Europe. |
+| Platine fusibles — court-circuit | Toutes motorisations | 2006-2009 (certaines séries) | Défaut de soudure sur la platine fusibles habitacle pouvant provoquer un dysfonctionnement électrique. Remplacement platine en concession. |
+| Pédale accélérateur — signal erratique | 1.5 dCi | 2007-2009 | Capteur de position pédale accélérateur défaillant pouvant causer des à-coups ou une perte de puissance. Remplacement du capteur. |
+
+> **Vérification** : le numéro de rappel est consultable sur rappel.renault.fr avec le VIN du véhicule.
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 15 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Contrôle général
+- Tous les 20 000 km ou 1 an
+
+## Références OEM courantes
+
+| Pièce | Référence Renault |
+|-------|-------------------|
+| Filtre à huile 1.5 dCi | 8200768927 |
+| Filtre à air 1.5 dCi | 8200431051 |
+| Plaquettes avant | 410602192R |
+| Dis
+
+[...]
 
 
 ## References supplementaires
@@ -1089,8 +1563,35 @@ Le montage peut exiger controles de couple, alignement et references. En cas de 
 - Vérins de capote : Contrôle annuel
 - Joints de capote : Entretien spécifique
 
+<!-- materialized-from-db manual/b12e6daf1fe2 2026-04-03 -->
+### Données techniques OEM — Courroie de distribution
+
+# Données techniques OEM — Courroie de distribution
+Source : bremboparts.com + denso-am.eu + hella.com + textar.com + valeoservice.fr (15 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hall
+- électrique
+
+## Normes applicables
+- ECE R90
+
+## Valeurs techniques de référence
+- 10 Nm
+- 100 %
+- 115 Nm
+- 125 Nm
+- 16 Nm
+- 18 mm
+- 180 Nm
+- 20 Nm
+- 20 mm
+- 210 Nm
+- 22 Nm
+
 <!-- materialized-from-db manual/cc6a270d3e4e 2026-04-02 -->
-### Données techniques OEM — Montage maitrise
+### Données techniques OEM — Courroie de distribution
 
 # Données techniques OEM — Montage maitrise
 Source : bremboparts.com + denso-am.eu + textar.com (13 fichiers OEM analysés)
@@ -1184,24 +1685,6 @@ Validation : oem_verified
 | Platine fusibles — court-circuit | Toutes motorisations | 2006-2009 (certaines séries) | Défaut de soudure sur la platine fusibles habitacle pouvant provoquer un dysfonctionnement électrique. Remplacement platine en concession. |
 | Pédale accélérateur — signal erratique | 1.5 dCi | 2007-2009 | Capteur de position pédale accélérateur défaillant pouvant causer des à-coups ou une perte de puissance. Remplacement du capteur. |
 
-> **Vérification** : le numéro de rappel est consultable sur rappel.renault.fr avec le VIN du véhicule.
-
-## Intervalles d'entretien
-
-### Vidange
-- **Essence** : 15 000 km ou 1 an
-- **Diesel** : 20 000 km ou 1 an
-
-### Contrôle général
-- Tous les 20 000 km ou 1 an
-
-## Références OEM courantes
-
-| Pièce | Référence Renault |
-|-------|-------------------|
-| Filtre à huile 1.5 dCi | 8200768927 |
-| Filtre à air 1.5 dCi | 8200431051 |
-| Plaquettes avant | 410602192R |
-| Dis
+> **Vérification** : le numéro de rappel est consultable sur rappel.renault.fr a
 
 [...]

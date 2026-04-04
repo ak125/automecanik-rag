@@ -230,12 +230,12 @@ phase5_enrichment:
     description: 2 masses reliees par ressorts — absorbe les vibrations torsionnelles diesel
     era: diesel depuis 1995, standard actuel
   - type: Volant semi-rigide
-    description: Compromis : disque avec insert elastomere, moins cher que bimasse
+    description: "Compromis : disque avec insert elastomere, moins cher que bimasse"
     era: petits diesel/essence turbo
   technical_notes:
     jeu_angulaire_bimasse: 'mesurer au comparateur — max 1-2 degres selon constructeur'
     bruit_claquement_froid: 'bimasse use = claquement metallique a froid qui disparait a chaud'
-    remplacement_avec_embrayage: 'TOUJOURS remplacer ensemble si bimasse use — sinon l'embrayage neuf casse'
+    remplacement_avec_embrayage: "TOUJOURS remplacer ensemble si bimasse use — sinon l'embrayage neuf casse"
     couple_vis_fixation: 'selon constructeur (souvent vis TTY a usage unique)'
   materials:
   - composant: masse primaire

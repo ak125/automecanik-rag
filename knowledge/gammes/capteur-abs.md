@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer la vitesse de rotation de chaque roue et transmettre l'information au calculateur ABS
@@ -221,28 +221,28 @@ installation:
 phase5_enrichment:
   _source: delphiautoparts.com + hella.com + textar.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 15
   _has_tech_data: true
   types_variants:
-  - type: 'Hall'
+  - type: Hall
     source_ref: corpus RAG web OEM
-  - type: 'composite'
+  - type: composite
     source_ref: corpus RAG web OEM
-  - type: 'inductif'
+  - type: inductif
     source_ref: corpus RAG web OEM
-  - type: 'perforé'
+  - type: perforé
     source_ref: corpus RAG web OEM
-  - type: 'ventilé'
+  - type: ventilé
     source_ref: corpus RAG web OEM
   technical_notes:
-    norme_ece_r90: 'ECE R90'
-    val_0_1_km: '0,1 km'
-    val_100_a: '100 a'
-    val_21_a: '21 a'
-    val_347_a: '347 a'
-    val_5_a: '5 a'
-    val_7_a: '7 a'
+    norme_ece_r90: ECE R90
+    val_0_1_km: 0,1 km
+    val_100_a: 100 a
+    val_21_a: 21 a
+    val_347_a: 347 a
+    val_5_a: 5 a
+    val_7_a: 7 a
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -572,6 +572,188 @@ Ne pas forcer si le capteur est grippé (risque de casse). Nettoyer la cible (ro
 | **Rouge** | Danger immédiat | Arrêt véhicule |
 | **Orange** | Attention | Contrôle rapide |
 | **Vert/Bleu** | Information | Aucune |
+## Variantes et types
+- composite
+- perforé
+- ventilé
+
+## Normes applicables
+
+[...]
+## Témoins critiques (ARRÊT IMMÉDIAT)
+
+### Témoin huile moteur (rouge)
+- **Signification** : Pression d'huile insuffisante
+- **Action** : ARRÊT IMMÉDIAT du véhicule
+- **Causes** : Niveau bas, pompe à huile, fuite
+- **Risque** : Casse moteur
+- **Vérification** : Niveau d'huile à la jauge
+
+### Témoin température moteur (rouge)
+- **Signification** : Surchauffe moteur
+- **Action** : ARRÊT IMMÉDIAT, laisser refroidir
+- **Causes** : Liquide refroidissement, thermostat, ventilateur
+- **Risque** : Joint de culasse, casse moteur
+
+### Témoin frein (rouge)
+- **Signification** : Niveau liquide frein bas ou frein à main
+- **Action** : Vérifier frein à main, puis niveau liquide
+- **Causes** : Fuite, usure plaquettes extrême
+- **Risque** : Perte de freinage
+
+### Témoin batterie (rouge)
+- **Signification** : Charge batterie insuffisante
+- **Action** : Rejoindre un garage rapidement
+- **Causes** : Alternateur, courroie, batterie HS
+- **Risque** : Panne complète
+
+## Témoins importants (attention requise)
+
+### Témoin ABS (orange)
+- **Signification** : Système ABS désactivé
+- **Action** : Contrôle recommandé
+- **Causes** : Capteur ABS, bloc hydraulique
+- **Impact** : Freinage normal mais sans assistance ABS
+- **Pièces** : Capteur ABS, bloc ABS
+
+### Témoin ESP/ASR (orange)
+- **Signification** : Antipatinage/stabilité désactivé
+- **Action** : Conduire prudemment
+- **Causes** : Capteur, calculateur
+
+### Témoin airbag (orange)
+- **Signification** : Système airbag défaillant
+- **Action** : Contrôle obligatoire
+- **Risque** : Non-déclenchement en cas d'accident
+- **Pièces** : Contacteur tournant, capteur airbag
+
+### Témoin moteur (orange - check engine)
+- **Signification** : Anomalie gestion moteur
+- **Action** : Diagnostic OBD recommandé
+- **Causes multiples** : Capteur O2, catalyseur, allumage
+- **Impact** : Surconsommation, pollution
+
+### Témoin FAP/DPF (orange - diesel)
+- **Signification** : Filtre à particules saturé
+- **Action** : Rouler 20min sur autoroute (régénération)
+- **Causes** : Trajets courts répétés
+- **Pièces** : FAP, nettoyage, additif
+
+## Témoins d'information
+
+### Témoin préchauffage (diesel)
+- **Signification** : Préchauffage des bougies en cours
+- **Action** : Attendre extinction avant démarrage
+- **Normal** : S'éteint après quelques secondes
+
+### Témoin clignotant
+- **Signification** : Clignotant actif
+- **Anomalie si** : Clignote rapidement = ampoule grillée
+
+### Témoin feux de route
+- **Signification** : Pleins phares activés
+
+### Témoin antibrouillard
+- **Signification** : Feux de brouillard actifs
+
+## Codes couleur
+
+| Couleur | Signification | Action |
+|---------|---------------|--------|
+| **Rouge** | Danger immédiat | Arrêt véhicule |
+| **Orange** | Attention | Contrôle rapide |
+| **Vert/Bleu** | Information | Aucune |
+## Variantes et types
+- Hall
+- composite
+- inductif
+- perforé
+- venti
+
+[...]
+## Témoins critiques (ARRÊT IMMÉDIAT)
+
+### Témoin huile moteur (rouge)
+- **Signification** : Pression d'huile insuffisante
+- **Action** : ARRÊT IMMÉDIAT du véhicule
+- **Causes** : Niveau bas, pompe à huile, fuite
+- **Risque** : Casse moteur
+- **Vérification** : Niveau d'huile à la jauge
+
+### Témoin température moteur (rouge)
+- **Signification** : Surchauffe moteur
+- **Action** : ARRÊT IMMÉDIAT, laisser refroidir
+- **Causes** : Liquide refroidissement, thermostat, ventilateur
+- **Risque** : Joint de culasse, casse moteur
+
+### Témoin frein (rouge)
+- **Signification** : Niveau liquide frein bas ou frein à main
+- **Action** : Vérifier frein à main, puis niveau liquide
+- **Causes** : Fuite, usure plaquettes extrême
+- **Risque** : Perte de freinage
+
+### Témoin batterie (rouge)
+- **Signification** : Charge batterie insuffisante
+- **Action** : Rejoindre un garage rapidement
+- **Causes** : Alternateur, courroie, batterie HS
+- **Risque** : Panne complète
+
+## Témoins importants (attention requise)
+
+### Témoin ABS (orange)
+- **Signification** : Système ABS désactivé
+- **Action** : Contrôle recommandé
+- **Causes** : Capteur ABS, bloc hydraulique
+- **Impact** : Freinage normal mais sans assistance ABS
+- **Pièces** : Capteur ABS, bloc ABS
+
+### Témoin ESP/ASR (orange)
+- **Signification** : Antipatinage/stabilité désactivé
+- **Action** : Conduire prudemment
+- **Causes** : Capteur, calculateur
+
+### Témoin airbag (orange)
+- **Signification** : Système airbag défaillant
+- **Action** : Contrôle obligatoire
+- **Risque** : Non-déclenchement en cas d'accident
+- **Pièces** : Contacteur tournant, capteur airbag
+
+### Témoin moteur (orange - check engine)
+- **Signification** : Anomalie gestion moteur
+- **Action** : Diagnostic OBD recommandé
+- **Causes multiples** : Capteur O2, catalyseur, allumage
+- **Impact** : Surconsommation, pollution
+
+### Témoin FAP/DPF (orange - diesel)
+- **Signification** : Filtre à particules saturé
+- **Action** : Rouler 20min sur autoroute (régénération)
+- **Causes** : Trajets courts répétés
+- **Pièces** : FAP, nettoyage, additif
+
+## Témoins d'information
+
+### Témoin préchauffage (diesel)
+- **Signification** : Préchauffage des bougies en cours
+- **Action** : Attendre extinction avant démarrage
+- **Normal** : S'éteint après quelques secondes
+
+### Témoin clignotant
+- **Signification** : Clignotant actif
+- **Anomalie si** : Clignote rapidement = ampoule grillée
+
+### Témoin feux de route
+- **Signification** : Pleins phares activés
+
+### Témoin antibrouillard
+- **Signification** : Feux de brouillard actifs
+
+## Codes couleur
+
+| Couleur | Signification | Action |
+|---------|---------------|--------|
+| **Rouge** | Danger immédiat | Arrêt véhicule |
+| **Orange** | Attention | Contrôle rapide |
+| **Vert/Bleu** | Information | Aucune |
 
 ## Diagnostic OBD-II
 
@@ -651,7 +833,7 @@ Pour les témoins moteur, un diagnostic OBD permet de lire les codes défaut :
 ## References supplementaires
 
 <!-- materialized-from-db manual/e5b55c545755 2026-04-02 -->
-### Données techniques OEM — Montage maitrise
+### Données techniques OEM — Capteur ABS
 
 # Données techniques OEM — Montage maitrise
 Source : delphiautoparts.com + textar.com (14 fichiers OEM analysés)

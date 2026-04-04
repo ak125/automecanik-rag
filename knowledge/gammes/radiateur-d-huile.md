@@ -261,7 +261,7 @@ installation:
 phase5_enrichment:
   _source: gpa26.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 1
   _has_tech_data: false
 conseil_v5:

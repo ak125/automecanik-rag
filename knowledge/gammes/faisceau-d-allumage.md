@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Transmettre la haute tension de la bobine aux bougies d'allumage sans perte
@@ -205,185 +205,136 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Faisceau haute tension silicone
-    description: Isolation silicone, resistance repartie ~10-16 kohms/m, anti-parasite
-    era: standard
+  - type: Hall
+    source_ref: corpus RAG web OEM
+  - type: inductif
+    source_ref: corpus RAG web OEM
+  - type: plein
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_000_v: 000 V
+    val_12_v: 12 V
+    val_300_v: 300 V
+    val_4_a: 4 A
+    val_400__c: 400 °C
+    val_6_a: 6 a
+    val_8_k_: 8 kΩ
+    val_9_a: 9 A
+  materials:
+  - materiau: platine
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Le faisceau d'allumage nommé aussi faisceau haute tension estle jeu de
-    câbles électriques qui relient les bougies d'allumage aux bobines
-    d'allumage. Le faisceau d'allumage transfert l'impulsions électriques de la
-    bobined'allumage directement sur la bougie d'allumage pour garantir un
-    démarrageoptimal du moteur. Pour optimiser la combustion,les faisceaux
-    d'allumage doivent être capables de délivrer des tensions quipeuvent
-    atteindre 40 000 Volts. Certains moteurs n'ont pas besoin de faisceau
-    d'allumage carla bougie d'allumage et la bobine d'allumage sont directement
-    connectées. Les faisceaux d'allumage possèdentdifférents types de
-    résistances antiparasites selon les technologies et lesmatériaux utilisés.
-    En savoir plus : faisceau d'allumage — définition et rôle mécanique 🚨 Bruit
-    Faisceau d'allumage : causes et diagnostic
-  S2: >-
-    Les faisceaux d'allumage sont soumis à de fortes contraintesdans ce cas ils
-    doivent être vérifiés régulièrement et les remplacés auxpremiers signes
-    d'usure. Le diagnostic d'un faisceau d'allumage peut être fait de deux
-    façons : - Un contrôle visuelapprofondi du faisceau d'allumage endommagé
-    constitue une première étape pourle diagnostic et peut permettre
-    d'identifier rapidement s'il est à changer ounon. - Un contrôle avec
-    l'appareilde mesure multimètre dans le cas ou les faisceaux d'allumage
-    présentant unaspect intact peuvent être contrôlés avec un multimètre qu'est
-    indispensablepermet d'effectuer les tests nécessaire de la valeur de
-    résistance du faisceaud'allumage et de comparer les mesures avec les valeurs
-    de résistancesadmissibles. Diagnostic complet : identifier une panne de
-    faisceau d'allumage
-  S3: >-
-    Le faisceau d'allumage (fils de bougie ou câbles haute tension) achemine les
-    impulsions électriques générées par la bobine d'allumage jusqu'à chaque
-    bougie avec une tension de 20 000 à 40 000 volts. Un câble vieilli présente
-    des microfissures dans son isolant qui provoquent des fuites électriques
-    (arcs visibles dans l'obscurité), des ratés d'allumage et une
-    surconsommation de carburant. Ce composant ne concerne que les moteurs à
-    allumage commandé (essence), jamais les moteurs diesel. Voici les critères
-    de sélection à respecter. - Référence spécifique au véhicule, au moteur et à
-    la bobine associée — Le faisceau doit correspondre exactement au nombre de
-    cylindres (3, 4, 6 ou 8), à l'ordre d'allumage du moteur et au type de
-    bobine (bobine unique, bobine bi-cylindre, bobines individuelles). Un
-    faisceau de 4 cylindres ne peut pas être utilisé sur un 6 cylindres, même si
-    les connecteurs semblent similaires. - Résistance des câbles en ohms par
-    mètre — La résistance interne des fils conditionne la qualité de l'impulsion
-    transmise aux bougies. Les câbles d'origine présentent généralement une
-    résistance de 1 000 à 6 000 ohms/m selon la longueur et le type de moteur.
-    Une résistance trop faible favorise les interférences électromagnétiques sur
-    l'électronique embarquée ; une résistance trop élevée affaiblit l'étincelle
-    aux hauts régimes. - Diamètre et matériau de l'âme conductrice — Les câbles
-    qualité OEM utilisent une âme en cuivre spiralé ou en carbone supprimé
-    (résistance spiralée) pour l'antiparasitage. L'âme doit avoir une section
-    suffisante pour conduire les courants de pointe (jusqu'à 150 mA) sans
-    échauffement excessif. Évitez les câbles avec âme en aluminium pur, moins
-    conducteur et plus fragile aux courbures répétées. - Épaisseur et qualité de
-    l'isolant silicone — L'isolant silicone doit résister à des températures de
-    -40°C à +200°C (environnement moteur) et à une tension de rupture
-    diélectrique d'au moins 40 kV. Un isolant fin ou de mauvaise qualité se
-    fissure dès 3 à 5 ans, générant des arcs parasites vers la culasse ou les
-    pièces métalliques voisines, visibles sous forme d'éclairs bleutés dans
-    l'obscurité. - Connecteurs de bougie et de bobine : type et diamètre de
-    chapeau — Les chapeaux (côté bougie) existent en diamètre 14 mm ou 16 mm
-    selon le filetage de bougie, avec ou sans anti-arrêt (clip de maintien).
-    Côté bobine, les connecteurs varient selon les marques (connexion à vis,
-    connexion à baïonnette, connecteur enfichable HEI). Un connecteur mal adapté
-    provoque un arc en retrait qui grille le chapeau en quelques semaines. -
-    Remplacement simultané avec les bougies — Les bougies et le faisceau
-    d'allumage ont des intervalles de remplacement similaires : 60 000 km pour
-    les bougies standard, 80 000 à 100 000 km pour les câbles. Il est
-    techniquement justifié de remplacer les deux simultanément pour garantir que
-    les gains d'une nouvelle bougie ne sont pas annulés par un câble vieilli à
-    haute résistance. - Compatibilité avec les systèmes anti-interférence
-    électromagnétique (EMI) — Les véhicules modernes disposent d'une
-    électronique embarquée sensible (calculateur moteur, radio, ABS). Un
-    faisceau d'allumage non antiparasité émet des perturbations radio-
-    électriques qui peuvent provoquer des dysfonctionnements de l'autoradio ou
-    des erreurs aléatoires du calculateur. Vérifiez la mention "résistance
-    antiparasite intégrée" ou "EMI shielded" sur la fiche technique. Pour aller
-    plus loin : consultez notre guide d'achat faisceau d'allumage — comparatif
-    marques, critères de choix et prix.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Faisceau d'allumage pour
-    connaître les spécifications. - Arrêtez le moteur et le laissez refroidir. -
-    Débranchez la batterie. - Localisez l'emplacement des faisceaux d'allumage.
-    - Libérez l'accès aux faisceaux d'allumage suivant l'équipement devotre
-    véhicule : cache moteur, collecteur d'admission, boîtier de filtre àair... -
-    Utilisez un outil spécial pour le démontage des faisceaux d'allumage en
-    letournant d'un quart de tour. Attention :Tirez sur le faisceau d'allumage
-    peut l'endommager ou l'arracher. - Démontez les faisceaux d'allumage.
-  S4_REPOSE: >-
-    - Vérifiez que les faisceaux d'allumage neufsont identiques à ceux démontés.
-    Les faisceaux d'allumageont de différentes longueurs dans ce cas il est
-    essentiel d'utiliser le câbledédié, dont la longueur permet d'atteindre la
-    bougie d'allumage correspondante. - Contrôlez le bon fonctionnement
-    desbobines d'allumage et les remplacées si nécessaire. - Contrôlez si les
-    bougies d'allumage sont usées etles remplacés si nécessaire. - Remontez les
-    faisceaux d'allumage à l'aided'un outil spécialisé. - Il faut s'assurer que
-    les faisceaux d'allumage ne soient pas trop tendusou écrasés. Eviter le
-    contact avec des parties chaudes ou en marche du moteur. - Remontez toutes
-    les pièces démontées. - Rebranchez la batterie. - Contrôlez le
-    fonctionnement du moteur. ✅ Après remontage, vérifiez les spécifications
-    dans la fiche technique Faisceau d'allumage.
-  S5: >-
-    Erreurs frequentes avec le faisceau d'allumage : - Ne pas remplacer le
-    faisceau complet — si un fil est defaillant, les autres ont le meme age et
-    la meme usure d'isolant- Tirer sur les fils au lieu des capuchons pour
-    debrancher — le conducteur interne casse et la resistance augmente,
-    provoquant des rates- Confondre l'ordre d'allumage lors du remontage —
-    chaque fil correspond a un cylindre precis, une inversion provoque des rates
-    moteur ou un non-demarrage- Ignorer des rates moteur par temps humide —
-    l'humidite s'infiltre dans les fissures de l'isolant et cree des arcs
-    electriques parasites- Ne pas verifier l'etat de la tete de delco (si
-    equipee) lors du changement du faisceau — un doigt de delco use ou un plot
-    oxyde annule le benefice du faisceau neuf- Utiliser un faisceau universel au
-    lieu de la reference exacte — la longueur et le diametre des capuchons
-    doivent correspondre au moteur
-  S6: >-
-    Après la pose du nouveau faisceau d'allumage, procédez à ces vérifications
-    dans l'ordre pour confirmer que chaque câble délivre correctement la haute
-    tension à son cylindre.- Connexions bougies — déclic obligatoire — Enfichez
-    chaque embout de câble à fond sur la bougie correspondante jusqu'au déclic
-    de verrouillage. Un connecteur mal serti est la première cause de raté
-    moteur après ce remplacement.- Ordre d'allumage respecté — Vérifiez que
-    chaque câble est branché sur le bon cylindre selon la séquence constructeur
-    (ex. 1-3-4-2 sur moteur 4 cylindres inline). Un câble inversé provoque des
-    ratés francs dès le démarrage.- Test d'arc électrique dans l'obscurité —
-    Démarrez le moteur dans un endroit sombre et observez l'ensemble du
-    faisceau. Aucun arc bleuté ne doit être visible sur les câbles ni aux
-    jonctions bobine ou bougies. Un arc révèle une isolation défaillante ou une
-    connexion insuffisante.- Test de démarrage par temps humide — Humidifiez
-    légèrement les câbles avec un linge humide ou testez après pluie. Le
-    démarrage difficile par temps humide — symptôme caractéristique du faisceau
-    défaillant — doit avoir totalement disparu.- Ralenti stable entre 700 et 850
-    tr/min — Le régime de ralenti doit être stable sans à-coups ni ratés. Une
-    oscillation du régime ou un raté persistant sur un cylindre précis implique
-    de contrôler la bougie et la connexion correspondante.- Absence d'odeur de
-    carburant à l'échappement — Après 5 minutes de fonctionnement, aucune odeur
-    d'essence non brûlée ne doit être perceptible à l'arrière du véhicule. Une
-    odeur persistante indique qu'un cylindre ne s'enflamme pas correctement.-
-    Fixation et dégagement thermique des câbles — Vérifiez que les câbles ne
-    touchent pas le collecteur d'échappement, les courroies ni les arêtes
-    métalliques vives. Remettez en place tous les colliers de maintien d'origine
-    pour éviter les vibrations et l'usure prématurée de l'isolation.
-  S7: >-
-    Quel est le prix d'un faisceau d'allumage ?Le prix varie selon le véhicule
-    et la marque. Utilisez notre sélecteur pour trouver le faisceau d'allumage
-    compatible avec votre véhicule et comparer les tarifs des différents
-    équipementiers.Comment savoir si mon faisceau d'allumage est à changer ?Les
-    signes d'usure les plus courants sont détaillés dans la section diagnostic
-    ci-dessus. En cas de doute, faites contrôler la pièce par un
-    professionnel.Peut-on rouler avec un faisceau d'allumage défaillant ?Cela
-    dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la
-    sécurité du véhicule. Consultez la section symptômes pour évaluer l'urgence
-    du remplacement.- Bougie d'allumage. - Bobine d'allumage. 📖 Fiche technique
+  S1: 'Le faisceau d''allumage nommé aussi faisceau haute tension estle jeu de câbles électriques qui relient les bougies
+    d''allumage aux bobines d''allumage. Le faisceau d''allumage transfert l''impulsions électriques de la bobined''allumage
+    directement sur la bougie d''allumage pour garantir un démarrageoptimal du moteur. Pour optimiser la combustion,les faisceaux
+    d''allumage doivent être capables de délivrer des tensions quipeuvent atteindre 40 000 Volts. Certains moteurs n''ont
+    pas besoin de faisceau d''allumage carla bougie d''allumage et la bobine d''allumage sont directement connectées. Les
+    faisceaux d''allumage possèdentdifférents types de résistances antiparasites selon les technologies et lesmatériaux utilisés.
+    En savoir plus : faisceau d''allumage — définition et rôle mécanique 🚨 Bruit Faisceau d''allumage : causes et diagnostic'
+  S2: 'Les faisceaux d''allumage sont soumis à de fortes contraintesdans ce cas ils doivent être vérifiés régulièrement et
+    les remplacés auxpremiers signes d''usure. Le diagnostic d''un faisceau d''allumage peut être fait de deux façons : -
+    Un contrôle visuelapprofondi du faisceau d''allumage endommagé constitue une première étape pourle diagnostic et peut
+    permettre d''identifier rapidement s''il est à changer ounon. - Un contrôle avec l''appareilde mesure multimètre dans
+    le cas ou les faisceaux d''allumage présentant unaspect intact peuvent être contrôlés avec un multimètre qu''est indispensablepermet
+    d''effectuer les tests nécessaire de la valeur de résistance du faisceaud''allumage et de comparer les mesures avec les
+    valeurs de résistancesadmissibles. Diagnostic complet : identifier une panne de faisceau d''allumage'
+  S3: 'Le faisceau d''allumage (fils de bougie ou câbles haute tension) achemine les impulsions électriques générées par la
+    bobine d''allumage jusqu''à chaque bougie avec une tension de 20 000 à 40 000 volts. Un câble vieilli présente des microfissures
+    dans son isolant qui provoquent des fuites électriques (arcs visibles dans l''obscurité), des ratés d''allumage et une
+    surconsommation de carburant. Ce composant ne concerne que les moteurs à allumage commandé (essence), jamais les moteurs
+    diesel. Voici les critères de sélection à respecter. - Référence spécifique au véhicule, au moteur et à la bobine associée
+    — Le faisceau doit correspondre exactement au nombre de cylindres (3, 4, 6 ou 8), à l''ordre d''allumage du moteur et
+    au type de bobine (bobine unique, bobine bi-cylindre, bobines individuelles). Un faisceau de 4 cylindres ne peut pas être
+    utilisé sur un 6 cylindres, même si les connecteurs semblent similaires. - Résistance des câbles en ohms par mètre — La
+    résistance interne des fils conditionne la qualité de l''impulsion transmise aux bougies. Les câbles d''origine présentent
+    généralement une résistance de 1 000 à 6 000 ohms/m selon la longueur et le type de moteur. Une résistance trop faible
+    favorise les interférences électromagnétiques sur l''électronique embarquée ; une résistance trop élevée affaiblit l''étincelle
+    aux hauts régimes. - Diamètre et matériau de l''âme conductrice — Les câbles qualité OEM utilisent une âme en cuivre spiralé
+    ou en carbone supprimé (résistance spiralée) pour l''antiparasitage. L''âme doit avoir une section suffisante pour conduire
+    les courants de pointe (jusqu''à 150 mA) sans échauffement excessif. Évitez les câbles avec âme en aluminium pur, moins
+    conducteur et plus fragile aux courbures répétées. - Épaisseur et qualité de l''isolant silicone — L''isolant silicone
+    doit résister à des températures de -40°C à +200°C (environnement moteur) et à une tension de rupture diélectrique d''au
+    moins 40 kV. Un isolant fin ou de mauvaise qualité se fissure dès 3 à 5 ans, générant des arcs parasites vers la culasse
+    ou les pièces métalliques voisines, visibles sous forme d''éclairs bleutés dans l''obscurité. - Connecteurs de bougie
+    et de bobine : type et diamètre de chapeau — Les chapeaux (côté bougie) existent en diamètre 14 mm ou 16 mm selon le filetage
+    de bougie, avec ou sans anti-arrêt (clip de maintien). Côté bobine, les connecteurs varient selon les marques (connexion
+    à vis, connexion à baïonnette, connecteur enfichable HEI). Un connecteur mal adapté provoque un arc en retrait qui grille
+    le chapeau en quelques semaines. - Remplacement simultané avec les bougies — Les bougies et le faisceau d''allumage ont
+    des intervalles de remplacement similaires : 60 000 km pour les bougies standard, 80 000 à 100 000 km pour les câbles.
+    Il est techniquement justifié de remplacer les deux simultanément pour garantir que les gains d''une nouvelle bougie ne
+    sont pas annulés par un câble vieilli à haute résistance. - Compatibilité avec les systèmes anti-interférence électromagnétique
+    (EMI) — Les véhicules modernes disposent d''une électronique embarquée sensible (calculateur moteur, radio, ABS). Un faisceau
+    d''allumage non antiparasité émet des perturbations radio- électriques qui peuvent provoquer des dysfonctionnements de
+    l''autoradio ou des erreurs aléatoires du calculateur. Vérifiez la mention "résistance antiparasite intégrée" ou "EMI
+    shielded" sur la fiche technique. Pour aller plus loin : consultez notre guide d''achat faisceau d''allumage — comparatif
+    marques, critères de choix et prix.'
+  S4_DEPOSE: '📖 Avant de démonter, consultez la fiche technique Faisceau d''allumage pour connaître les spécifications. -
+    Arrêtez le moteur et le laissez refroidir. - Débranchez la batterie. - Localisez l''emplacement des faisceaux d''allumage.
+    - Libérez l''accès aux faisceaux d''allumage suivant l''équipement devotre véhicule : cache moteur, collecteur d''admission,
+    boîtier de filtre àair... - Utilisez un outil spécial pour le démontage des faisceaux d''allumage en letournant d''un
+    quart de tour. Attention :Tirez sur le faisceau d''allumage peut l''endommager ou l''arracher. - Démontez les faisceaux
+    d''allumage.'
+  S4_REPOSE: '- Vérifiez que les faisceaux d''allumage neufsont identiques à ceux démontés. Les faisceaux d''allumageont de
+    différentes longueurs dans ce cas il est essentiel d''utiliser le câbledédié, dont la longueur permet d''atteindre la
+    bougie d''allumage correspondante. - Contrôlez le bon fonctionnement desbobines d''allumage et les remplacées si nécessaire.
+    - Contrôlez si les bougies d''allumage sont usées etles remplacés si nécessaire. - Remontez les faisceaux d''allumage
+    à l''aided''un outil spécialisé. - Il faut s''assurer que les faisceaux d''allumage ne soient pas trop tendusou écrasés.
+    Eviter le contact avec des parties chaudes ou en marche du moteur. - Remontez toutes les pièces démontées. - Rebranchez
+    la batterie. - Contrôlez le fonctionnement du moteur. ✅ Après remontage, vérifiez les spécifications dans la fiche technique
+    Faisceau d''allumage.'
+  S5: 'Erreurs frequentes avec le faisceau d''allumage : - Ne pas remplacer le faisceau complet — si un fil est defaillant,
+    les autres ont le meme age et la meme usure d''isolant- Tirer sur les fils au lieu des capuchons pour debrancher — le
+    conducteur interne casse et la resistance augmente, provoquant des rates- Confondre l''ordre d''allumage lors du remontage
+    — chaque fil correspond a un cylindre precis, une inversion provoque des rates moteur ou un non-demarrage- Ignorer des
+    rates moteur par temps humide — l''humidite s''infiltre dans les fissures de l''isolant et cree des arcs electriques parasites-
+    Ne pas verifier l''etat de la tete de delco (si equipee) lors du changement du faisceau — un doigt de delco use ou un
+    plot oxyde annule le benefice du faisceau neuf- Utiliser un faisceau universel au lieu de la reference exacte — la longueur
+    et le diametre des capuchons doivent correspondre au moteur'
+  S6: Après la pose du nouveau faisceau d'allumage, procédez à ces vérifications dans l'ordre pour confirmer que chaque câble
+    délivre correctement la haute tension à son cylindre.- Connexions bougies — déclic obligatoire — Enfichez chaque embout
+    de câble à fond sur la bougie correspondante jusqu'au déclic de verrouillage. Un connecteur mal serti est la première
+    cause de raté moteur après ce remplacement.- Ordre d'allumage respecté — Vérifiez que chaque câble est branché sur le
+    bon cylindre selon la séquence constructeur (ex. 1-3-4-2 sur moteur 4 cylindres inline). Un câble inversé provoque des
+    ratés francs dès le démarrage.- Test d'arc électrique dans l'obscurité — Démarrez le moteur dans un endroit sombre et
+    observez l'ensemble du faisceau. Aucun arc bleuté ne doit être visible sur les câbles ni aux jonctions bobine ou bougies.
+    Un arc révèle une isolation défaillante ou une connexion insuffisante.- Test de démarrage par temps humide — Humidifiez
+    légèrement les câbles avec un linge humide ou testez après pluie. Le démarrage difficile par temps humide — symptôme caractéristique
+    du faisceau défaillant — doit avoir totalement disparu.- Ralenti stable entre 700 et 850 tr/min — Le régime de ralenti
+    doit être stable sans à-coups ni ratés. Une oscillation du régime ou un raté persistant sur un cylindre précis implique
+    de contrôler la bougie et la connexion correspondante.- Absence d'odeur de carburant à l'échappement — Après 5 minutes
+    de fonctionnement, aucune odeur d'essence non brûlée ne doit être perceptible à l'arrière du véhicule. Une odeur persistante
+    indique qu'un cylindre ne s'enflamme pas correctement.- Fixation et dégagement thermique des câbles — Vérifiez que les
+    câbles ne touchent pas le collecteur d'échappement, les courroies ni les arêtes métalliques vives. Remettez en place tous
+    les colliers de maintien d'origine pour éviter les vibrations et l'usure prématurée de l'isolation.
+  S7: Quel est le prix d'un faisceau d'allumage ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur pour
+    trouver le faisceau d'allumage compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon faisceau d'allumage est à changer ?Les signes d'usure les plus courants sont détaillés dans la section diagnostic
+    ci-dessus. En cas de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un faisceau d'allumage
+    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule. Consultez
+    la section symptômes pour évaluer l'urgence du remplacement.- Bougie d'allumage. - Bobine d'allumage. 📖 Fiche technique
     Faisceau d'allumage — intervalles et spécifications d’entretien.
-  S8: >-
-    Comment choisir Faisceau d'allumage compatible avec mon vehicule ?Renseignez
-    marque, modele, type moteur et annee, puis verifiez la reference Quand
-    remplacer Faisceau d'allumage ?En cas de rates moteur a l acceleration ou au
-    ralenti ou de degradation Puis-je monter Faisceau d'allumage sans
-    verification atelier ?Le montage peut exiger controles de couple, alignement
-    et references.
-  META: >-
-    {"meta_title":"Faisceau d'allumage : quand changer ? |
-    AutoMecanik","meta_description":"Rates moteur, démarrage difficile par temps
-    humide, arc électrique visible ? Votre faisceau d'allumage est suspect. Ce
-    guide vous aide à diagnostiquer et choisir la pièce
-    compatible.","og_title":"Faisceau d'allumage : guide diagnostic et
-    remplacement","og_description":"Rates moteur, démarrage difficile par temps
-    humide, arc électrique visible ? Votre faisceau d'allumage est suspect. Ce
-    guide vous aide à diagnostiquer et choisir la pièce compatible.","schema_typ
-    e":"Article","primary_intent":"diagnostic","gate_report":"PASS","char_count_
-    title":51,"char_count_desc":188}
+  S8: Comment choisir Faisceau d'allumage compatible avec mon vehicule ?Renseignez marque, modele, type moteur et annee, puis
+    verifiez la reference Quand remplacer Faisceau d'allumage ?En cas de rates moteur a l acceleration ou au ralenti ou de
+    degradation Puis-je monter Faisceau d'allumage sans verification atelier ?Le montage peut exiger controles de couple,
+    alignement et references.
+  META: '{"meta_title":"Faisceau d''allumage : quand changer ? | AutoMecanik","meta_description":"Rates moteur, démarrage
+    difficile par temps humide, arc électrique visible ? Votre faisceau d''allumage est suspect. Ce guide vous aide à diagnostiquer
+    et choisir la pièce compatible.","og_title":"Faisceau d''allumage : guide diagnostic et remplacement","og_description":"Rates
+    moteur, démarrage difficile par temps humide, arc électrique visible ? Votre faisceau d''allumage est suspect. Ce guide
+    vous aide à diagnostiquer et choisir la pièce compatible.","schema_typ e":"Article","primary_intent":"diagnostic","gate_report":"PASS","char_count_
+    title":51,"char_count_desc":188}'
 ---
 
 # Faisceau d'allumage - Guide Diagnostic Complet
@@ -466,3 +417,26 @@ Oui, opération simple. Débrancher un par un pour ne pas mélanger l'ordre. Cli
 
 **Quelle erreur éviter avec les faisceaux d'allumage ?**
 Ne pas tirer sur le câble mais sur le capuchon. Respecter l'ordre de branchement. Vérifier l'absence de fissures avant remontage.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/863cdc55bd2d 2026-04-03 -->
+### Données techniques OEM — Faisceau d'allumage
+
+# Données techniques OEM — Faisceau d'allumage
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Hall
+- inductif
+- plein
+- pneumatique
+- électrique
+
+## Matériaux
+- platine
+
+## Valeurs techniques de référence
+- 400 °C

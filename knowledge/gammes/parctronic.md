@@ -112,7 +112,7 @@ rendering:
   pgId: '1209'
   intro_title: A quoi sert Parctronic ?
   risk_title: Pourquoi remplacer Parctronic a temps ?
-  risk_explanation: '**Défaillance progressive** - Usure normale due à l''utilisation'
+  risk_explanation: "**Défaillance progressive** - Usure normale due à l''utilisation"
   risk_consequences:
   - '**Défaillance progressive** - Usure normale due à l''utilisation'
   - '**Conditions d''utilisation** - Sollicitations excessives ou environnement défavorable'
@@ -186,7 +186,7 @@ phase5_enrichment:
   _validation_status: pending_oem_validation
   _enriched_at: '2026-03-30'
   technical_notes:
-    role: 'systeme d'aide au stationnement — calculateur + capteurs ultrasons + buzzer/ecran'
+    role: "systeme d'aide au stationnement — calculateur + capteurs ultrasons + buzzer/ecran"
     nettoyage: 'nettoyer les capteurs regulierement (boue, neige, glace) pour eviter fausses alertes'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

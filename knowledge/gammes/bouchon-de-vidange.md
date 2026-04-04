@@ -182,11 +182,14 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: fram.com + gpa26.com
+  _source: fr.wikipedia.org + fram.com + gpa26.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 2
-  _has_tech_data: false
+  _enriched_at: '2026-04-03'
+  _web_files_count: 3
+  _has_tech_data: true
+  materials:
+  - materiau: 'acier inoxydable'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

@@ -6,7 +6,7 @@ pg_id: 7
 source_type: gamme
 doc_family: catalog
 truth_level: L3
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: verified
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ completeness_profile: filtration
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Filtre l'huile moteur pour retenir les impuretés métalliques et résidus de combustion, protégeant pistons, bielles
@@ -351,7 +351,7 @@ installation:
 phase5_enrichment:
   _source: fram.com + gpa26.com + mann-filter.com + sofima-aftermarket.com + wixfilters.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 23
   _has_tech_data: true
   types_variants:
@@ -375,143 +375,85 @@ phase5_enrichment:
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Filtre l'huile moteur pour retenir les impuretés métalliques et résidus de
-    combustion, protégeant pistons, bielles et arbre à cames. ## Trouvez le type
-    de filtre à huile adéquat Les véhicules, les conditions de conduite et les
-    applications spécifiques nécessitent des solutions sur... Pièces liées :
-    huile moteur, joint de vidange carter, filtre a air, filtre a carburant,
-    filtre d habitacle, bouchon de vidange . Le filtre retient les particules
-    metalliques issues de l usure des pistons et des bielles Sans filtration
-    efficace, les impuretes abrasives circulent dans le circuit et accelerent l
-    usure du moteur Fonctionne en serie avec la pompe a huile pour maintenir une
-    pression constante dans les galeries
-  S2: >-
-    Les filtre a huile sont à remplacer tous les 10 000 à 30 000 km environ.
-    Essence classique 10 000-15 000 km (ou 1 an). Diesel moderne 15 000-20 000
-    km. Longlife (VW/BMW) jusqu'à 30 000 km. Se change à chaque vidange.
-    Symptômes d'usure : - Voyant huile qui s allume ou clignote - Bruit de
-    claquement ou de cliquetis au ralenti - Huile tres noire avant echeance
-    vidange - Baisse du niveau d huile plus rapide - Odeur d huile brulee dans l
-    habitacle
-  S2_DIAG: >-
-    SymptômeCause probableActionVoyant huile qui s allume ou clignoteFiltre
-    colmate par accumulation d impuretes metalliques et residus de
-    combustionVoyant huile qui s allume ou clignote ?Bruit de claquement ou de
-    cliquetis au ralentiIntervalle de vidange depasse ou huile de mauvaise
-    viscositeBruit de claquement ou de cliquetis au ralenti ?Huile tres noire
-    avant echeance vidangeJoint torique defaillant ou ancien joint reste colle
-    causant une fuiteObserver : huile tres noire avant echeance vidange ?Baisse
-    du niveau d huile plus rapideClapet by-pass bloque en position ouverte
-    laissant passer l huile non filtreeObserver : baisse du niveau d huile plus
-    rapide ?Odeur d huile brulee dans l habitacleFiltre colmate par accumulation
-    d impuretes metalliques et residus de combustionVoyant huile qui s allume ou
-    clignote ?
-  S3: >-
-    Pour choisir les bons filtre a huile pour votre véhicule : - Marque de votre
-    vehicule - Modele de votre vehicule - Motorisation de votre vehicule - Type
-    de filtre monte (vissant spin-on ou cartouche element filtrant) - Reference
-    constructeur OEM (si disponible) - Diametre du filetage et joint torique -
-    Pression differentielle supportee (bar) - Presence clapet anti-retour
-    (obligatoire moteurs modernes) - Presence clapet by-pass (protection moteur
-    si colmatage) - Compatibilite huile longlife (VW 502.00, BMW LL-01)
-  S4_DEPOSE: >-
-    1. # Filtres à huile pour voitures et cartouches de filtre à huile –
-    Automobile – WIX Filters - FILTRES À HUILE The engine’s combustion chamber
-    must remain clean, and therefore it also must be protected by a filter which
-    prevents pollutants reaching the oil. The oil filter reduces the wear of
-    close... 2. ### Gaskets and Seals The primary function of a gasket is to
-    create a tight seal between the filter and the engine block. This prevents
-    engine oil from leaking out, which could starve the engine of lubrication
-    and cause damage. While gaskets are designed to last for the life of the oil
-    filter, they... 3. ## Différentes opérations Ces deux structures différentes
-    entraînent également des méthodes d’installation différentes. Pour installer
-    le filtre à immersion, il faut d’abord appliquer de l’huile neuve sur le
-    joint d’étanchéité. Ensuite, le filtre est vissé dans la base, en veillant à
-    le serrer de... 4. ## Intervalles corrigés Pour garantir son efficacité, le
-    filtre à huile du moteur doit être remplacé régulièrement, aux intervalles
-    spécifiés par les constructeurs automobiles. La plupart d’entre eux
-    recommandent cette intervention tous les 15 000 kilomètres pour les moteurs
-    à essence et tous les...
-  S4_REPOSE: >-
-    - Vérifiez que le filtre à huile neuf est identique à celui démonté. -
-    Remplacez les joints d'étanchéité du filtre à huile. - Lubrifiez les joints
-    neufs avec de l'huile avant de les remontés. - Lubrifiez le filtre à huile.
-    - Mettre en place le filtre à huile. - Dans le cas d'un filtre à huile
-    vissé, serrez ce dernier au coupleprescrit. - Dans le cas d'un élément
-    filtrant, mettre le filtre à huile dans sonboîtier et serrez le couvercle au
-    couple prescrit. - Ouvrir le bouchon du remplissage d'huile moteur. -
-    Remplissez l'huile avec la quantité préconisée par le constructeur. -
-    Contrôlez le niveau d'huile avec la jauge d'huile. - Rajoutez de l'huile si
-    nécessaire. - Recontrôler le niveau d'huile. - Démarrez le moteur et le
-    laissez tourner un peu au ralentie. - Arrêtez le moteur et le laissez
-    refroidir. - Contrôlez de nouveau le niveau d'huile. ✅ Après remontage,
-    vérifiez les spécifications dans la fiche technique Filtre à huile.
-  S5: >-
-    Erreurs frequentes avec le filtre a huile : - Ne pas remplacer le filtre a
-    chaque vidange — un filtre sature laisse passer les impuretes dans le moteur
-    et accelere l'usure des pieces internes- Trop serrer le filtre au montage —
-    le joint ecrase ne se demontera plus a la prochaine vidange, et risque de
-    fuir- Oublier de huiler le joint torique du filtre neuf avant montage — le
-    joint seche colle au bloc moteur et fuit- Installer un filtre de mauvaise
-    reference — un filtre trop petit ou avec un clapet anti-retour inadequat
-    provoque un manque de pression d'huile au demarrage- Ne pas verifier que
-    l'ancien joint est bien parti avec le vieux filtre — un double joint
-    provoque une fuite massive d'huile- Faire tourner le moteur sans huile apres
-    vidange pour "evacuer l'ancienne" — destruction immediate des paliers et
-    coussinets
-  S6: >-
-    - Niveau d huile à la jauge : vérifier le niveau 5 minutes après le premier
-    démarrage — l huile a rempli le filtre neuf et le niveau a baissé. Compléter
-    si nécessaire entre les repères MIN et MAX. - Étanchéité du filtre :
-    inspecter sous le filtre et sous la vis de vidange après 2 minutes de
-    ralenti — aucune goutte ne doit apparaître. Si suintement, resserrer d un
-    quart de tour maximum. - Étanchéité du joint torique : vérifier qu aucune
-    trace d huile ne coule le long du bloc moteur au niveau du plan de joint.
-    Cause fréquente : ancien joint resté collé sous le filtre neuf. - Voyant
-    huile éteint : après démarrage moteur, le voyant huile doit s éteindre en
-    moins de 5 secondes. S il reste allumé, couper le moteur immédiatement et
-    vérifier le serrage du filtre et le niveau. - Essai moteur au ralenti :
-    laisser tourner 2-3 minutes au ralenti et écouter — aucun cliquetis ni bruit
-    anormal ne doit apparaître. Un cliquetis indiquerait un problème de pression
-    d huile. - Remise à zéro indicateur maintenance : sur véhicules équipés,
-    réinitialiser le compteur de vidange selon la procédure constructeur — sinon
-    le voyant reste allumé jusqu à la prochaine intervention. - Essai route
-    progressif : effectuer un trajet de 5-10 km en montant progressivement en
-    régime. Revérifier le niveau d huile à froid et inspecter le filtre une
-    dernière fois.
-  S_GARAGE: >-
-    Nous vous recommandons de confier cette intervention à un professionnel : -
-    Plusieurs causes possibles de défaillance (4 identifiées) nécessitent un
-    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
-    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
-  S7: >-
-    - huile moteur - joint de vidange carter - filtre a air - filtre a carburant
-    - filtre d habitacle - bouchon de vidange
-  S8: >-
-    Filtre à huile OE ou adaptable : que choisir ?Les filtres OES (Bosch) ou
-    adaptables (Mann, Mahle) offrent une qualité équivalente à l'OE pour moins
-    cher. Vérifiez le filetage et le diamètre du joint. Comment savoir si mon
-    filtre à huile est bouché ?Voyant huile allumé, bruit de cliquetis moteur,
-    huile noire et épaisse à la jauge, consommation d'huile excessive. Tous les
-    combien changer le filtre à huile ?À chaque vidange, soit entre 15 000 et 30
-    000 km ou 1 an. Ne jamais réutiliser un ancien filtre même récent. Peut-on
-    changer le filtre à huile soi-même ?Oui, opération simple lors de la
-    vidange. Clé à filtre nécessaire. Graisser le joint neuf avec de l'huile.
-    Serrage à la main + 3/4 de tour. Quelle erreur éviter avec le filtre à huile
-    ?Ne pas trop serrer (écrase le joint). Ne pas oublier de retirer l'ancien
-    joint collé sur le bloc. Toujours pré-remplir le filtre si possible. Peut-on
-    changer le filtre à huile sans faire la vidange ?Techniquement possible mais
-    déconseillé. Retirer le filtre entraîne une perte d'huile. Le filtre neuf
-    dans de l'huile usagée ne remplit pas pleinement son rôle. Le joint torique
-    se change-t-il en même temps que le filtre ?Oui, systématiquement. Sur
-    filtre cartouche, le joint torique est souvent fourni. Erreur fréquente —
-    toujours vérifier que l'ancien joint n'est pas resté collé sur le bloc.
-  META: >-
-    {"meta_title":"Filtre à huile moteur : guide de
-    remplacement","meta_description":"Voyant huile allumé, cliquetis au ralenti
-    : quand changer le filtre à huile ? Spin-on ou cartouche, compatibilité VW
-    502.00 / BMW LL-01 et étapes de vidange."}
+  S1: 'Filtre l''huile moteur pour retenir les impuretés métalliques et résidus de combustion, protégeant pistons, bielles
+    et arbre à cames. ## Trouvez le type de filtre à huile adéquat Les véhicules, les conditions de conduite et les applications
+    spécifiques nécessitent des solutions sur... Pièces liées : huile moteur, joint de vidange carter, filtre a air, filtre
+    a carburant, filtre d habitacle, bouchon de vidange . Le filtre retient les particules metalliques issues de l usure des
+    pistons et des bielles Sans filtration efficace, les impuretes abrasives circulent dans le circuit et accelerent l usure
+    du moteur Fonctionne en serie avec la pompe a huile pour maintenir une pression constante dans les galeries'
+  S2: 'Les filtre a huile sont à remplacer tous les 10 000 à 30 000 km environ. Essence classique 10 000-15 000 km (ou 1 an).
+    Diesel moderne 15 000-20 000 km. Longlife (VW/BMW) jusqu''à 30 000 km. Se change à chaque vidange. Symptômes d''usure
+    : - Voyant huile qui s allume ou clignote - Bruit de claquement ou de cliquetis au ralenti - Huile tres noire avant echeance
+    vidange - Baisse du niveau d huile plus rapide - Odeur d huile brulee dans l habitacle'
+  S2_DIAG: 'SymptômeCause probableActionVoyant huile qui s allume ou clignoteFiltre colmate par accumulation d impuretes metalliques
+    et residus de combustionVoyant huile qui s allume ou clignote ?Bruit de claquement ou de cliquetis au ralentiIntervalle
+    de vidange depasse ou huile de mauvaise viscositeBruit de claquement ou de cliquetis au ralenti ?Huile tres noire avant
+    echeance vidangeJoint torique defaillant ou ancien joint reste colle causant une fuiteObserver : huile tres noire avant
+    echeance vidange ?Baisse du niveau d huile plus rapideClapet by-pass bloque en position ouverte laissant passer l huile
+    non filtreeObserver : baisse du niveau d huile plus rapide ?Odeur d huile brulee dans l habitacleFiltre colmate par accumulation
+    d impuretes metalliques et residus de combustionVoyant huile qui s allume ou clignote ?'
+  S3: 'Pour choisir les bons filtre a huile pour votre véhicule : - Marque de votre vehicule - Modele de votre vehicule -
+    Motorisation de votre vehicule - Type de filtre monte (vissant spin-on ou cartouche element filtrant) - Reference constructeur
+    OEM (si disponible) - Diametre du filetage et joint torique - Pression differentielle supportee (bar) - Presence clapet
+    anti-retour (obligatoire moteurs modernes) - Presence clapet by-pass (protection moteur si colmatage) - Compatibilite
+    huile longlife (VW 502.00, BMW LL-01)'
+  S4_DEPOSE: '1. # Filtres à huile pour voitures et cartouches de filtre à huile – Automobile – WIX Filters - FILTRES À HUILE
+    The engine’s combustion chamber must remain clean, and therefore it also must be protected by a filter which prevents
+    pollutants reaching the oil. The oil filter reduces the wear of close... 2. ### Gaskets and Seals The primary function
+    of a gasket is to create a tight seal between the filter and the engine block. This prevents engine oil from leaking out,
+    which could starve the engine of lubrication and cause damage. While gaskets are designed to last for the life of the
+    oil filter, they... 3. ## Différentes opérations Ces deux structures différentes entraînent également des méthodes d’installation
+    différentes. Pour installer le filtre à immersion, il faut d’abord appliquer de l’huile neuve sur le joint d’étanchéité.
+    Ensuite, le filtre est vissé dans la base, en veillant à le serrer de... 4. ## Intervalles corrigés Pour garantir son
+    efficacité, le filtre à huile du moteur doit être remplacé régulièrement, aux intervalles spécifiés par les constructeurs
+    automobiles. La plupart d’entre eux recommandent cette intervention tous les 15 000 kilomètres pour les moteurs à essence
+    et tous les...'
+  S4_REPOSE: '- Vérifiez que le filtre à huile neuf est identique à celui démonté. - Remplacez les joints d''étanchéité du
+    filtre à huile. - Lubrifiez les joints neufs avec de l''huile avant de les remontés. - Lubrifiez le filtre à huile. -
+    Mettre en place le filtre à huile. - Dans le cas d''un filtre à huile vissé, serrez ce dernier au coupleprescrit. - Dans
+    le cas d''un élément filtrant, mettre le filtre à huile dans sonboîtier et serrez le couvercle au couple prescrit. - Ouvrir
+    le bouchon du remplissage d''huile moteur. - Remplissez l''huile avec la quantité préconisée par le constructeur. - Contrôlez
+    le niveau d''huile avec la jauge d''huile. - Rajoutez de l''huile si nécessaire. - Recontrôler le niveau d''huile. - Démarrez
+    le moteur et le laissez tourner un peu au ralentie. - Arrêtez le moteur et le laissez refroidir. - Contrôlez de nouveau
+    le niveau d''huile. ✅ Après remontage, vérifiez les spécifications dans la fiche technique Filtre à huile.'
+  S5: 'Erreurs frequentes avec le filtre a huile : - Ne pas remplacer le filtre a chaque vidange — un filtre sature laisse
+    passer les impuretes dans le moteur et accelere l''usure des pieces internes- Trop serrer le filtre au montage — le joint
+    ecrase ne se demontera plus a la prochaine vidange, et risque de fuir- Oublier de huiler le joint torique du filtre neuf
+    avant montage — le joint seche colle au bloc moteur et fuit- Installer un filtre de mauvaise reference — un filtre trop
+    petit ou avec un clapet anti-retour inadequat provoque un manque de pression d''huile au demarrage- Ne pas verifier que
+    l''ancien joint est bien parti avec le vieux filtre — un double joint provoque une fuite massive d''huile- Faire tourner
+    le moteur sans huile apres vidange pour "evacuer l''ancienne" — destruction immediate des paliers et coussinets'
+  S6: '- Niveau d huile à la jauge : vérifier le niveau 5 minutes après le premier démarrage — l huile a rempli le filtre
+    neuf et le niveau a baissé. Compléter si nécessaire entre les repères MIN et MAX. - Étanchéité du filtre : inspecter sous
+    le filtre et sous la vis de vidange après 2 minutes de ralenti — aucune goutte ne doit apparaître. Si suintement, resserrer
+    d un quart de tour maximum. - Étanchéité du joint torique : vérifier qu aucune trace d huile ne coule le long du bloc
+    moteur au niveau du plan de joint. Cause fréquente : ancien joint resté collé sous le filtre neuf. - Voyant huile éteint
+    : après démarrage moteur, le voyant huile doit s éteindre en moins de 5 secondes. S il reste allumé, couper le moteur
+    immédiatement et vérifier le serrage du filtre et le niveau. - Essai moteur au ralenti : laisser tourner 2-3 minutes au
+    ralenti et écouter — aucun cliquetis ni bruit anormal ne doit apparaître. Un cliquetis indiquerait un problème de pression
+    d huile. - Remise à zéro indicateur maintenance : sur véhicules équipés, réinitialiser le compteur de vidange selon la
+    procédure constructeur — sinon le voyant reste allumé jusqu à la prochaine intervention. - Essai route progressif : effectuer
+    un trajet de 5-10 km en montant progressivement en régime. Revérifier le niveau d huile à froid et inspecter le filtre
+    une dernière fois.'
+  S_GARAGE: 'Nous vous recommandons de confier cette intervention à un professionnel : - Plusieurs causes possibles de défaillance
+    (4 identifiées) nécessitent un diagnostic professionnel Un garagiste qualifié dispose de l''outillage et de l''expérience
+    nécessaires pour effectuer cette opération en toute sécurité.'
+  S7: '- huile moteur - joint de vidange carter - filtre a air - filtre a carburant - filtre d habitacle - bouchon de vidange'
+  S8: 'Filtre à huile OE ou adaptable : que choisir ?Les filtres OES (Bosch) ou adaptables (Mann, Mahle) offrent une qualité
+    équivalente à l''OE pour moins cher. Vérifiez le filetage et le diamètre du joint. Comment savoir si mon filtre à huile
+    est bouché ?Voyant huile allumé, bruit de cliquetis moteur, huile noire et épaisse à la jauge, consommation d''huile excessive.
+    Tous les combien changer le filtre à huile ?À chaque vidange, soit entre 15 000 et 30 000 km ou 1 an. Ne jamais réutiliser
+    un ancien filtre même récent. Peut-on changer le filtre à huile soi-même ?Oui, opération simple lors de la vidange. Clé
+    à filtre nécessaire. Graisser le joint neuf avec de l''huile. Serrage à la main + 3/4 de tour. Quelle erreur éviter avec
+    le filtre à huile ?Ne pas trop serrer (écrase le joint). Ne pas oublier de retirer l''ancien joint collé sur le bloc.
+    Toujours pré-remplir le filtre si possible. Peut-on changer le filtre à huile sans faire la vidange ?Techniquement possible
+    mais déconseillé. Retirer le filtre entraîne une perte d''huile. Le filtre neuf dans de l''huile usagée ne remplit pas
+    pleinement son rôle. Le joint torique se change-t-il en même temps que le filtre ?Oui, systématiquement. Sur filtre cartouche,
+    le joint torique est souvent fourni. Erreur fréquente — toujours vérifier que l''ancien joint n''est pas resté collé sur
+    le bloc.'
+  META: '{"meta_title":"Filtre à huile moteur : guide de remplacement","meta_description":"Voyant huile allumé, cliquetis
+    au ralenti : quand changer le filtre à huile ? Spin-on ou cartouche, compatibilité VW 502.00 / BMW LL-01 et étapes de
+    vidange."}'
 ---
 
 # Filtre à huile - Guide Diagnostic Complet
@@ -645,19 +587,6 @@ Techniquement possible mais déconseillé. Retirer le filtre entraîne une perte
 
 **Le joint torique se change-t-il en même temps que le filtre ?**
 Oui, systématiquement. Sur filtre cartouche, le joint torique est souvent fourni. Erreur fréquente — toujours vérifier que l'ancien joint n'est pas resté collé sur le bloc.
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/selecteur-vehicule-pieces-auto.md 2026-02-17 -->
-### Guide - Sélecteur de véhicule pièces auto : 4 méthodes
-
-# Sélecteur de véhicule pièces auto : 4 méthodes pour trouver la bonne pièce
-
-Chaque véhicule a des spécifications techniques uniques : dimensions de disques, type de fixation, connecteurs électriques. Commander une pièce incompatible peut entraîner un montage impossible, un dysfonctionnement ou un danger. Le sélecteur de véhicule pièces auto garantit que seules les pièces compatibles avec votre véhicule vous sont proposées parmi les 4 millions de références du catalogue Automecanik.
-
-4 méthodes disponibles : plaque d'immatriculation, numéro VIN, sélection manuelle (marque/modèle/motorisation), ou référence OEM.
-
 ## Mots-clés et expressions SEO
 
 ### Intention informationnelle
@@ -856,5 +785,83 @@ Les véhicules importés depuis l'Europe (Allemagne, Belgique, Espagne, Italie) 
 ### Q : Où trouver un logiciel de vue éclatée automobile gratuit ?
 
 Les catalogues en ligne comme TecDoc et 7zap proposent des vues éclatées gratuites pour identifier les pièces par position sur le véhicule. Automecanik intègre ces données TecDoc directement dans son catalogue : en sélectionnant votre véhicule, vous accédez aux schémas de montage e
+
+[...]
+
+
+## Conseils supplementaires
+
+<!-- materialized-from-db web/7377bedb9c7e 2026-03-28 -->
+### Filtres à huile pour voitures et cartouches de filtre à huile – Automobile
+
+# Filtres à huile pour voitures et cartouches de filtre à huile – Automobile – WIX Filters
+
+- FILTRES À HUILE The engine’s combustion chamber must remain clean, and therefore it also must be protected by a filter which prevents pollutants reaching the oil. The oil filter reduces the wear of close moving parts of the engine and decreases the risk of damage.</p>\r\n","repo:modifyDate":"2025-09-22T08:50:52Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"DESIGNED FOR ALL DRIVING CONDITIONS"}}"> DESIGNED FOR ALL DRIVING CONDITIONS The engine’s combustion chamber must remain clean, and therefore it also must be protected by a filter which prevents pollutants reaching the oil. The oil filter reduces the wear of close moving parts of the engine and decreases the risk of damage. POURQUOI CHOISIR LES FILTRES À HUILE WIX FILTERS ? Les matériaux sont contrôlés en permanence en laboratoire afin d’assurer en permanence le plus haut niveau de qualité. Nous pouvons affirmer avec certitude que tout aussi bien les matériaux filtrants, que les soupapes, les ressorts, les corps ainsi que les autres éléments<b> des filtres remplissent les exigences des fabricants automobiles et peuvent fonctionner dans les conditions d’utilisation les plus difficiles.</b></p>\r\n","repo:modifyDate":"2025-09-22T09:00:06Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"DES MATÉRIAUX DE QUALITÉ SUPÉRIEURE"}}"> DES MATÉRIAUX DE QUALITÉ SUPÉRIEURE Les matériaux sont contrôlés en permanence en laboratoire afin d’assurer en permanence le plus haut niveau de qualité. Nous pouvons affirmer avec certitude que tout aussi bien les matériaux filtrants, que les soupapes, les ressorts, les corps ainsi que les autres éléments des filtres remplissent les exigences des fabricants automobiles et peuvent fonctionner dans les conditions d’utilisation les plus difficiles. Les filtres à huile fabriqués sont soumis à plusieurs tests de vérification d’étanchéité. Ces tests sont effectués avec des machines de mesure modernes et automatisées. Uniquement les filtres étanches sont admis à la vente.</p>\r\n","repo:modifyDate":"2025-09-22T09:01:01Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"ÉTANCHÉITÉ ÉPROUVÉE"}}"> ÉTANCHÉITÉ ÉPROUVÉE Les filtres à huile fabriqués sont soumis à plusieurs tests de vérification d’étanchéité. Ces tests sont effectués avec des machines de mesure modernes et automatisées. Uniquement les filtres étanches sont admis à la vente. Une construction adaptée et des soupapes appropriées répondant aux exigences émises par le fabricant du moteur ou du véhicule sont cruciales dans le cas des filtres à huile spin-on avec soupape.<b> Pour les filtres à huile WIX Filters, les soupapes sont conçues selon des exigences spécifiques</b>, de manière à ce que les filtres remplissent toujours correctement leur rôle dans le système d’huile.</p>\r\n","repo:modifyDate":"2025-09-22T09:02:31Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"DES SOUPAPES ADAPTÉES AUX EXIGENCES"}}"> DES SOUPAPES ADAPTÉES AUX EXIGENCES Une construction adaptée et des soupapes appropriées répondant aux exigences émises par le fabricant du moteur ou du véhicule sont cruciales dans le cas des filtres à huile spin-on avec soupape. Pour les filtres à huile WIX Filters, les soupapes sont conçues selon des exigences spécifiques , de manière à ce que les filtres remplissent toujours correctement leur rôle dans le système d’huile. Depuis plusieurs années dans le domaine des filtres la tendance est au remplacement des éléments métalliques par des éléments en plastique. Grâce à cela, il a été possible de diminuer le poids du filtre et de faciliter ainsi son recyclage tout en maintenant une haute qualité de filtration.</p>\r\n","repo:modifyDate":"2025-09-22T09:02:22Z","@type":"mannhummel-base/components/whitelabel/teaser-content","dc:title":"MATÉRIAU PLASTIQUE MODERNE"}}"> MATÉRIAU PLASTIQUE MODERNE Depuis plusieurs années dans le domaine des filtres la tendance est au remplacement des éléments métalliques par des éléments en plastique. Grâce à cela, il a été possible de diminuer le poids du filtre et de faciliter ainsi son recyclage tout en maintenant une haute qualité de filtration. LA QUALITÉ DES FILTRES WIX PROVIENT DE NOTRE COMPÉTENCE EN TANT QUE FOURNISSEUR D’ÉQUIPEMENTS D’ORIGINE La haute qualité des produits WIX Filters résulte de l’expertise approfondie de MANN+HUMMEL – notre société et principal fournisseur de filtres d’origine pour les plus grands constructeurs automobiles au monde. MANN+HUMMEL est le leader mondial de la technologie de filtration. Notre savoir-faire et nos standards de qualité garantissent que chaque filtre WIX offre une protection fiable pendant toute la durée de service recommandée. REGARDE COMMENT FONCTIONNE UN FILTRE A HUILE</h4>\r\n","repo:modifyDate":"2025-09-22T09:05:18Z","@type":"mannhummel-base/components/whitelabel/teaser-block"}}"> REGARDE COMMENT FONCTIONNE UN FILTRE A HUILE REGARDEZ LA VIDÉO Ce type type de filtre a été inventé par les ingénieurs des laboratoires WIX Filters en 1954. Il est devenu par la suite la norme mondiale. Il se compose d’une cartouche installée dans le corps en acier disposant d’un filetage, grâce auquel le filtre est vissé directement sur le corps du moteur. Ces filtres sont faciles à changer et ont une conception résistant aux divers facteurs extérieurs (p. ex. à la haute pression). Son remplacement ne présente pratiquement aucun risque d’introduction de contaminants dans le système d’huile moteur.</p>\r\n","repo:modifyDate":"2025-09-22T09:05:55Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"LES FILTRES SPIN-ON. NOTRE INVENTION."}}"> LES FILTRES SPIN-ON. NOTRE INVENTION. Ce type type de filtre a été inventé par les ingénieurs des laboratoires WIX Filters en 1954. Il est devenu par la suite la norme mondiale. Il se compose d’une cartouche installée dans le corps en acier disposant d’un filetage, grâce auquel le filtre est vissé directement sur le corps du moteur. Ces filtres sont faciles à changer et ont une conception résistant aux divers facteurs extérieurs (p. ex. à la haute pression). Son remplacement ne présente pratiquement aucun risque d’introduction de contaminants dans le système d’huile moteur. Les cartouches de filtre à huile sont appliquées de manière étanche dans le boîtier intégré au moteur. Le corps dispose de soupapes nécessaires au fonctionnement correct du filtre dans le système d’huile du moteur et également des éléments stabilisant la cartouche du filtre. Dans les cartouches, il n’y a pas de pièces métalliques. La couronne et le noyau sont réalisés en matériaux plastiques modernes, ce qui permet de faciliter le recyclage du filtre.</p>\r\n","repo:modifyDate":"2025-09-22T09:06:32Z","@type":"mannhummel-base/components/whitelabel/teaser-media-object","dc:title":"LES CARTOUCHES DE FILTRE À HUILE"}}"> LES CARTOUCHES DE FILTRE À HUILE Les cartouches de filtre à huile sont appliquées de manière étanche dans le boîtier intégré au moteur. Le corps dispose de soupapes nécessaires au fonctionnement correct du filtre dans le système d’huile du moteur et également des éléments stabilisant la cartouche du filtre. Dans les cartouches, il n’y a pas de pièces métalliques. La couronne et le noyau sont réalisés en matériaux plastiques modernes, ce qui permet de faciliter le recyclage du filtre. TROUVEZ UN FILTRE
+
+- OÙ ACHETER
+
+- YOUTUBE
+
+- CONTACTEZ-NOUS
+
+ACCÈS RAPIDE
+
+## References supplementaires
+
+<!-- materialized-from-db web-catalog/fb7990425a5e 2026-03-28 -->
+### Filtres à air - Purflux - Filtres à air
+
+## Filtres à air
+
+Le filtre à air pourrait être comparé aux poumons d’une voiture. Il est conçu pour éliminer les poussières contenues dans l'air ambiant aspiré par le moteur. Selon leur capacité, les moteurs à pleine charge peuvent aspirer entre 200 et 500 m³ d'air par heure. Cet air contient une quantité d'impuretés plus ou moins importante selon les pays, les conditions météorologiques, le revêtement de la route, etc.Si ces poussières ne sont pas filtrées, elles provoqueront une usure prématurée du moteur.
+
+Pour garantir un haut niveau de performance et de qualité des filtres, PURFLUX dispose du savoir-faire indispensable en industrialisation haute performance.
+
+PURFLUX recommande le remplacement du filtre à air au moins une fois par an, de préférence en même temps que le filtre à huile, car un remplacement régulier du filtre à air assure :
+
+- Maintien des performances du véhicule
+
+- Puissance moteur optimale
+
+- Un moteur mieux protégé et moins polluant pour l'environnement (et par conséquent un niveau d'émissions acceptable pour la réglementation anti-pollution)
+
+La gamme complète de filtres à air de qualité PURFLUX couvre pratiquement tous les véhicules en circulation aujourd'hui et demain.
+
+<!-- materialized-from-db web-catalog/8c1a4aa61267 2026-03-28 -->
+### Filtres à huile moteur pour un fonctionnement propre et efficace - Notre catalogue en ligne est conçu pour vous
+
+# Filtres à huile moteur pour un fonctionnement propre et efficace
+
+- Nos filtres à huile travaillent dur pour votre moteur Ce composant crucial du moteur assure son <b>bon fonctionnement</b> et ses <b>performances optimales</b>. Chez <b>MANN-FILTER</b>, nous savons comment <b>tirer le meilleur parti</b> de chaque moteur. Et cela commence par une <b>filtration optimale</b>.</p>\r\n"}}" id="text-79769725c5" class="cmp-text cmp-text--standard"> Ce composant crucial du moteur assure son bon fonctionnement et ses performances optimales . Chez MANN-FILTER , nous savons comment tirer le meilleur parti de chaque moteur. Et cela commence par une filtration optimale . Fonctionnement sans faille. Performances optimales. Nous savons que vous avez bien conscience que l’entretien régulier est la clé de la longévité du moteur et de sa pleine fonctionnalité . Que vous soyez mécanicien en garage réalisant des entretiens annuels ou distributeur de confiance proposant des produits de qualité, choisissez les meilleurs filtres à huile moteur pour travailler efficacement. Chez MANN-FILTER , nous avons plus de 70 ans d’expérience dans la conception et le développement de solutions de filtration répondant aux exigences toujours plus élevées des moteurs, tous types de véhicules et de machines confondus. Nos filtres à huile pour véhicules retirent les résidus et les impuretés, permettant à une huile propre et pure de circuler dans le moteur. Nous concevons des filtres qui fonctionnent en harmonie avec les meilleures huiles haute performance et qui répondent aux derniers défis technologiques . Grâce à notre large gamme de produits, nos filtres sont également compatibles avec de nombreux moteurs plus anciens. Pour nous, c’est simple : des composants propres garantissent un fonctionnement optimal et des moteurs durant plus longtemps. Restez tranquille – du début à la fin du voyage Dans le monde de l'après-vente automobile, il vaut toujours mieux <b>prévenir</b> que guérir. La prévoyance et la connaissance peuvent <b>vous faire économiser</b> - ainsi qu'à vos clients - du <b>temps, de l'argent et des tracas</b>. Une fois qu'une particule de suie ou de poussière a pénétré dans l'huile moteur, elle commence à rayer les surfaces avec lesquelles elle entre en contact, <b>rendant votre lubrifiant plus abrasif</b>. Il ne suffit pas de changer l'huile, il faut aussi changer le filtre. <b>Changer fréquemment le filtre à huile permet d'éviter les dommages</b> et de maintenir le fonctionnement de votre filtre à huile à un <b>niveau optimal</b>.</p>\r\n<p>Découvrez les <b>avantages</b> d’un <b>changement régulier du filtre à huile</b>&nbsp;:</p>\r\n"}}" id="text-bc87a55d02" class="cmp-text cmp-text--standard"> Dans le monde de l'après-vente automobile, il vaut toujours mieux prévenir que guérir. La prévoyance et la connaissance peuvent vous faire économiser - ainsi qu'à vos clients - du temps, de l'argent et des tracas . Une fois qu'une particule de suie ou de poussière a pénétré dans l'huile moteur, elle commence à rayer les surfaces avec lesquelles elle entre en contact, rendant votre lubrifiant plus abrasif . Il ne suffit pas de changer l'huile, il faut aussi changer le filtre. Changer fréquemment le filtre à huile permet d'éviter les dommages et de maintenir le fonctionnement de votre filtre à huile à un niveau optimal . Découvrez les avantages d’un changement régulier du filtre à huile : Longévité – L'accumulation de résidus dans l'huile moteur peut endommager d'autres composants, mais une huile filtrée et propre permet de conserver des performances optimales
+
+- Protection – Protège les pièces de votre moteur contre l'usure
+
+- Fiabilité – Assure le bon fonctionnement de votre moteur, même par temps froid
+
+---
+
+## Trouvez le type de filtre à huile adéquat
+
+Les véhicules, les conditions de conduite et les applications spécifiques nécessitent des solutions sur mesure . Les filtres à huile MANN-FILTER sont conçus pour une excellente capacité de rétention des impuretés et une résistance élevée des matériaux , avec un ajustement sur mesure pour chaque modèle de véhicule ou de machine. En plus de proposer des filtres à huile pour voitures fiables, nos filtres à huile moteur garantissent également une fonctionnalité optimale dans divers secteurs industriels , notamment pour les véhicules utilitaires , agricoles , de chantier , miniers , et autres machines fortement sollicitées .
+
+Chaque filtre est conçu pour fournir une huile propre à votre moteur. En raison de la grande variété d’applications et de besoins, MANN-FILTER propose différents types de filtres à huile afin de répondre à des exigences précises. Découvrez ci-dessous comment ils protègent efficacement votre moteur .
+
+---
+
+### Filtre à huile Spin-on
+
+Nos filtres à huile à visser offrent un comportement fluide et des performances de haut niveau . La valve anti-retour (qui veille à ce que le filtre et les circuits d'huile ne se vident pas complètement lorsque le moteur est arrêté) permet à l'huile de circuler dès que vous allumez le moteur. Par temps froid , la valve de dérivation est essentielle pour garantir le démarrage de votre voiture. Les températures froides peuvent rendre l'huile épaisse et collante. Cette valve maintient la lubrification jusqu'à ce que l'huile atteigne la bonne température.
+
+---
+
+### Éléments filtrants
+
+Conçus pour les moteurs modernes, nos produits MANN-FILTER ont une excellente capacité de rétention de la saleté grâce à une conception ingénieuse des éléments filtrants.
+
+Nos médias filtrants modernes sont conçus pour répondre aux exigences techniques futures des moteurs . Nous utilisons une membrane anti-retour qui maintient l'huile moteur dans le filtre dès que le moteur s'arrête. Cela permet une alimentation en huile optimisée et encore plus rapide au démarrage.
+
+En plus de leurs avantages techniques, les éléments filtrants MANN-FILTER sont très respectueux de l'environnement : le boîtier du filtre dure toute la durée de vie du produit, seul l’élément filtrant facilement incinérable est à éliminer lors de la maintenance.
+
+Nous utilisons les services de YouTube pour vous proposer des contenus multimédias. Votre consentement est nécessaire pour utiliser ce service. Veuillez-vous reporter à notr
 
 [...]

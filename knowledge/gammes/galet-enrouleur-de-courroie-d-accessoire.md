@@ -215,7 +215,7 @@ phase5_enrichment:
   _validation_status: pending_oem_validation
   _enriched_at: '2026-03-30'
   technical_notes:
-    role: 'guide le cheminement de la courroie d'accessoire (pas de tension — c'est le tendeur qui tend)'
+    role: "guide le cheminement de la courroie d'accessoire (pas de tension — c'est le tendeur qui tend)"
     remplacement: 'systematique avec la courroie — roulement fatigue = bruit + risque de blocage'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

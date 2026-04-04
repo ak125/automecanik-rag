@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: high
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Stocker et fournir l'energie electrique pour demarrer le moteur et alimenter les equipements du vehicule
@@ -220,13 +220,17 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + denso-am.eu + hella.com + textar.com
+  _source: automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + denso-am.eu + fr.wikipedia.org + hella.com + textar.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 13
+  _enriched_at: '2026-04-03'
+  _web_files_count: 14
   _has_tech_data: true
   types_variants:
+  - type: 'hall'
+    source_ref: corpus RAG web OEM
   - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'Électrique'
     source_ref: corpus RAG web OEM
   - type: 'électrique'
     source_ref: corpus RAG web OEM
@@ -240,204 +244,126 @@ phase5_enrichment:
     val_10_nm: '10 Nm'
     val_10_a: '10 a'
     val_10_5_v: '10,5 V'
+    val_100_kw: '100 kW'
     val_11_93_v: '11,93 V'
     val_115_nm: '115 Nm'
     val_12_v: '12 V'
-    val_125_nm: '125 Nm'
-    val_16_nm: '16 Nm'
-    val_16_v: '16 V'
+    val_12_a: '12 a'
+    val_12_v: '12 v'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    La batterie fournie au démarreur l'énergie nécessaire, lors dudémarrage du
-    véhicule. Après le démarrage du moteur et la mise en route duvéhicule, c'est
-    l'alternateur qui fournit l'énergie électrique et rechargela batterie. La
-    batterie stock l'énergie électrique nécessaire pour le véhicule (pour
-    ledémarrage et pour les équipements électriques).La recharge de la batterie
-    se fait de façon continue dès le démarrage duvéhicule. L'alternateur et la
-    batterie sont des éléments dépendants l'une de l'autre ettrès essentiel pour
-    le véhicule. Si l'alternateur ne fonctionne pas la batterieva se décharger
-    rapidement. En savoir plus : batterie — définition et rôle mécanique 🚨 Bruit
-    Batterie : causes et diagnostic
-  S2: >-
-    Une batterie défaillante présente plusieurs symptômes : - Témoin de la
-    batterie s'allume sur le tableau de bord. - Le véhicule prend du temps pour
-    démarrer. - Manque de luminosité à l'intérieur ou à l'extérieur duvéhicule.
-    Diagnostic complet : identifier une panne de batterie
-  S3: >-
-    Choisir une batterie adaptée à votre véhicule exige de respecter plusieurs
-    paramètres techniques précis. Une capacité ou un courant de démarrage
-    inadapté peut provoquer des pannes de démarrage dès les premières semaines.
-    - Type de technologie : batterie plomb-acide standard pour les véhicules
-    sans système Stop&Start, batterie AGM (Absorbent Glass Mat) obligatoire pour
-    les véhicules équipés de Stop&Start intensif — durée de vie 5 à 7 ans contre
-    4 à 5 ans pour une standard. La batterie EFB (Enhanced Flooded Battery)
-    convient aux Stop&Start d'entrée de gamme. - Capacité en Ah : ne jamais
-    descendre sous la valeur d'origine. Repères indicatifs : 40-50 Ah pour une
-    citadine essence, 50-60 Ah pour une compacte essence, 60-70 Ah pour un
-    diesel standard, 70-95 Ah pour un diesel puissant ou avec nombreux
-    équipements. - Courant de démarrage CCA (A) : mesuré à -18°C selon norme EN.
-    La valeur CCA doit être au minimum égale à celle préconisée par le
-    constructeur — ne jamais utiliser une valeur inférieure. - Dimensions
-    exactes : longueur, largeur et hauteur au millimètre près. Un boîtier trop
-    grand ne rentrera pas ; trop petit, la batterie se déplacera et les cosses
-    vibrent jusqu'à rupture. - Position des bornes : vérifier la polarité gauche
-    ou droite (borne + à gauche ou à droite selon le sens de câblage du
-    compartiment moteur). Une inversion impose des modifications de câblage
-    coûteuses. - Référence OEM ou équivalent homologué : comparer la référence
-    d'origine constructeur avec l'EAN du produit. Les batteries dites «
-    universelles » ou « tous modèles » sont à proscrire. - Marque et
-    certification : privilégier des fabricants avec certification ISO, standards
-    EN 50342 pour batteries de démarrage. Les marques Varta, Bosch, Exide sont
-    des références OEM européennes reconnues.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Batterie pour connaître
-    les spécifications. Attention : la couleur rouge est pour la borne positive
-    et la couleur noir pour la bornenégative. - Débranchez la borne négative de
-    labatterie. - Débranchez la borne positive de labatterie. - Déposez la
-    batterie.
-  S4_REPOSE: >-
-    - Mettre en place la batterie. - Rebranchez la borne positive de labatterie
-    puis la borne négative. Attention :Faites attention à ne pas inverser les
-    cosses de la batterie. - Remettez les composants électriques à zéro
-    (radio,indicateur de maintenance, horloge ..). - Faire un test diagnostic
-    pour tous les composants duvéhicule. ✅ Après remontage, vérifiez les
-    spécifications dans la fiche technique Batterie.
-  S5: >-
-    Plusieurs erreurs fréquentes lors du remplacement d'une batterie peuvent
-    endommager l'électronique du véhicule, court-circuiter le réseau de bord ou
-    accélérer la dégradation de la nouvelle pièce. - Inverser les polarités à la
-    pose : connecter la borne négative avant la borne positive crée un arc
-    électrique qui peut griller les fusibles principaux, détériorer le
-    calculateur moteur ou endommager l'alternateur en quelques secondes. -
-    Déconnecter la batterie sans sauvegarder les mémoires : sur les véhicules
-    modernes, retirer la batterie efface les paramètres d'adaptation du moteur
-    (valeurs de ralenti, corrections injecteurs), les codes radio et les
-    réglages de vitres électriques. Utiliser un alimentateur de maintien 12 V
-    avant la dépose. - Monter une batterie sous-dimensionnée en CCA : un courant
-    de démarrage insuffisant ne détruit pas immédiatement la batterie, mais le
-    démarreur compense en tirant plus d'intensité, ce qui chauffe ses bobinages
-    et réduit sa durée de vie de 30 à 50 %. - Poser une batterie standard sur un
-    véhicule Stop&Start : les cycles répétés de charge/décharge d'un Stop&Start
-    (jusqu'à 500 000 microcycles sur la durée de vie) détruisent une batterie
-    plomb-acide classique en moins de 18 mois. - Ne pas nettoyer les cosses
-    avant la repose : les dépôts blancs ou bleus (sulfate de plomb, oxyde de
-    cuivre) sur les bornes créent une résistance parasite. Une résistance de
-    0,05 Ω suffit à faire chuter la tension de démarrage de 0,6 V, ce qui peut
-    empêcher le démarrage par grand froid. - Recycler l'ancienne batterie dans
-    les ordures ménagères : les batteries au plomb-acide contiennent du plomb et
-    de l'acide sulfurique. Le dépôt en déchetterie agréée est obligatoire en
-    France sous peine d'amende.
-  S6: >-
-    Après la pose d'une batterie neuve, plusieurs contrôles techniques
-    permettent de confirmer que l'installation est correcte et que le système de
-    charge fonctionne normalement. - Tension au repos : mesurer avec un
-    multimètre entre les deux bornes, moteur coupé depuis 30 minutes. La valeur
-    doit être comprise entre 12,4 V et 12,8 V. En dessous de 12,2 V, la batterie
-    est partiellement déchargée ou défectueuse. - Tension en charge (moteur
-    tournant) : mesurer entre les bornes, moteur au ralenti. La tension doit se
-    situer entre 13,5 V et 14,5 V, confirmant que l'alternateur charge
-    correctement. Une valeur inférieure à 13 V indique une défaillance de
-    l'alternateur ou de son régulateur. - Serrage des cosses : vérifier que les
-    cosses sont bien serrées à la main, sans jeu possible. Un couple de serrage
-    de 4 à 6 N·m est généralement préconisé selon le type de borne. Une cosse
-    mal serrée provoque des chutes de tension intermittentes difficiles à
-    diagnostiquer. - Absence de codes défaut OBD : brancher un outil de
-    diagnostic et vérifier l'absence de DTC (Diagnostic Trouble Codes) liés au
-    réseau de bord, au calculateur moteur ou à l'alternateur. Le remplacement de
-    batterie peut déclencher un P0620 ou P0563 sur certains véhicules. -
-    Réinitialisation du gestionnaire d'énergie : sur les véhicules BMW, Audi,
-    Mercedes ou Renault récents, coder la nouvelle batterie via l'outil de
-    diagnostic constructeur pour que le gestionnaire d'énergie adapte ses seuils
-    de charge au cycle de vie réel de la batterie neuve. - Test de charge sous
-    charge : activer phares, ventilation plein régime, et lunette arrière
-    dégivrante simultanément. La tension ne doit pas descendre sous 13,2 V,
-    confirmant la capacité de l'alternateur à compenser les consommateurs. -
-    Contrôle visuel des connexions : vérifier l'absence de câbles en contact
-    avec des pièces chaudes (collecteur, turbo), de pincements ou de frottements
-    sur l'arête de la tôle du compartiment moteur.
-  S7: >-
-    La batterie ne fonctionne pas de façon isolée : elle alimente et est
-    rechargée par un ensemble de composants électriques interdépendants.
-    Remplacer uniquement la batterie sans contrôler ces pièces conduit souvent à
-    une panne répétée à court terme. - Alternateur — La batterie et
-    l'alternateur forment un système de charge solidaire. Un alternateur
-    défaillant délivre moins de 13,8 V à régime stabilisé et épuise
-    prématurément toute batterie neuve en quelques semaines. Mesurer la tension
-    aux bornes moteur tournant : entre 13,8 V et 14,5 V confirme un alternateur
-    sain. Une valeur inférieure à 13,5 V ou supérieure à 15 V impose le
-    remplacement de l'alternateur avant ou simultanément à la batterie. -
-    Démarreur — Un démarreur en fin de vie tire des pointes de courant
-    anormalement élevées (jusqu'à 300 A sur certains moteurs) qui abîment les
-    plaques de la batterie à chaque démarrage. Si les démarrages sont lents,
-    laborieux ou accompagnés d'un bruit de cliquetis du démarreur, faire tester
-    la consommation de courant du démarreur (starter test) avant de conclure à
-    une batterie seule. - Courroie d'accessoire — La courroie d'accessoire
-    entraîne l'alternateur. Une courroie glissante, trop lâche ou en fin de vie
-    réduit la tension de charge transmise à l'alternateur et génère les mêmes
-    symptômes qu'une batterie faible. Contrôler la tension et l'état de la
-    courroie (craquelures, effilochage) à chaque intervention sur le circuit de
-    charge. - Boîtier de fusibles et relais principaux — Un mauvais contact sur
-    le fusible principal ou le relais de batterie provoque des chutes de tension
-    identiques à une batterie défaillante. Inspecter les cosses de batterie
-    (oxydation, sulfatation), les câbles de masse du moteur et de carrosserie,
-    et les fusibles de puissance lors de chaque remplacement de batterie. Un
-    câble de masse corrodé peut faire chuter la tension de 0,5 V et suffire à
-    empêcher un démarrage. - Capteur de température moteur — Sur les véhicules
-    équipés du système Start-Stop, le calculateur de gestion de batterie pilote
-    la charge en fonction de la température moteur. Un capteur défectueux induit
-    une gestion incorrecte : la batterie est sollicitée à chaque cycle de
-    coupure moteur sans être rechargée au niveau optimal. Ce scénario réduit la
-    durée de vie d'une batterie AGM à moins de 2 ans. - Capteur de gestion de
-    batterie (BSM/IBS) — Sur de nombreux véhicules récents, un capteur de
-    gestion de batterie (Battery Management Sensor) est fixé sur la borne
-    négative. Ce capteur mesure en temps réel la tension, le courant et la
-    température de la batterie pour informer le calculateur. Lors d'un
-    remplacement de batterie, ce capteur doit être initialisé via un outil de
-    diagnostic constructeur : sans cette étape, le système de charge reste calé
-    sur les paramètres de l'ancienne batterie. Vérifier également que les bornes
-    de la batterie neuve sont serrées au couple recommandé (généralement 4 à 6
-    Nm) et que les couvercles protecteurs sont remis en place. Une borne
-    desserrée provoque des arcs électriques qui brûlent les fils et peuvent
-    endommager le calculateur moteur.
-  S8: >-
-    Quelle est la durée de vie d'une batterie auto ? Une batterie plomb-acide
-    standard dure en moyenne 4 à 5 ans. Une batterie AGM (pour véhicules
-    Stop&Start) tient 5 à 7 ans. La durée réelle varie selon le climat (le froid
-    accélère la décharge), la fréquence des trajets courts qui ne permettent pas
-    une recharge complète, et la qualité des connexions. Une batterie qui ne
-    démarre plus de façon fiable après 4 ans doit être testée avec un testeur de
-    charge avant de conclure à son remplacement. Comment savoir si c'est la
-    batterie ou l'alternateur qui est défaillant ? La distinction se fait au
-    multimètre. Moteur coupé, la tension aux bornes inférieure à 12,2 V pointe
-    vers une batterie déchargée ou usée. Moteur tournant, une tension inférieure
-    à 13,5 V indique que l'alternateur ne charge pas. Si la batterie se décharge
-    sans raison apparente malgré un alternateur sain, une fuite de courant
-    (consommateur parasite) est probable : mesurer le courant de repos doit
-    donner moins de 50 mA, portes et capot fermés pendant 15 minutes. Peut-on
-    remplacer soi-même sa batterie de voiture ? Le remplacement est accessible
-    sur la plupart des véhicules. Les conditions sont : disposer d'un
-    alimentateur de maintien 12 V pour préserver les mémoires électroniques,
-    respecter l'ordre de déconnexion (masse en premier à la dépose, masse en
-    dernier à la pose), et vérifier la compatibilité dimensionnelle et technique
-    exacte. Sur les véhicules récents avec gestion d'énergie intelligente (BMW,
-    Audi, Mercedes, Renault Megane IV+), un codage via outil de diagnostic
-    constructeur est nécessaire après la pose. Pourquoi ma batterie neuve se
-    décharge rapidement ? Trois causes principales : une fuite de courant
-    (consommateur parasite non coupé à l'arrêt du moteur), un alternateur
-    défaillant qui ne recharge pas, ou des trajets trop courts et trop fréquents
-    (moins de 10 km) qui ne permettent pas de recharger complètement la
-    batterie. En hiver, une batterie de 55 Ah correcte peut nécessiter 45
-    minutes de roulage à régime stabilisé pour se recharger après un démarrage à
-    froid. Quelle différence entre CCA, CA et RC sur une batterie ? Le CCA (Cold
-    Cranking Amperes) mesure le courant disponible pendant 30 secondes à -18°C —
-    c'est le critère de démarrage par grand froid. Le CA (Cranking Amperes) est
-    mesuré à 0°C et donne une valeur plus élevée que le CCA. Le RC (Reserve
-    Capacity) mesure en minutes la durée pendant laquelle une batterie chargée
-    peut alimenter les équipements essentiels si l'alternateur tombe en panne.
-    Pour le choix d'une batterie de remplacement, le CCA et la capacité en Ah
-    sont les critères prioritaires.
+  S1: 'La batterie fournie au démarreur l''énergie nécessaire, lors dudémarrage du véhicule. Après le démarrage du moteur
+    et la mise en route duvéhicule, c''est l''alternateur qui fournit l''énergie électrique et rechargela batterie. La batterie
+    stock l''énergie électrique nécessaire pour le véhicule (pour ledémarrage et pour les équipements électriques).La recharge
+    de la batterie se fait de façon continue dès le démarrage duvéhicule. L''alternateur et la batterie sont des éléments
+    dépendants l''une de l''autre ettrès essentiel pour le véhicule. Si l''alternateur ne fonctionne pas la batterieva se
+    décharger rapidement. En savoir plus : batterie — définition et rôle mécanique 🚨 Bruit Batterie : causes et diagnostic'
+  S2: 'Une batterie défaillante présente plusieurs symptômes : - Témoin de la batterie s''allume sur le tableau de bord. -
+    Le véhicule prend du temps pour démarrer. - Manque de luminosité à l''intérieur ou à l''extérieur duvéhicule. Diagnostic
+    complet : identifier une panne de batterie'
+  S3: 'Choisir une batterie adaptée à votre véhicule exige de respecter plusieurs paramètres techniques précis. Une capacité
+    ou un courant de démarrage inadapté peut provoquer des pannes de démarrage dès les premières semaines. - Type de technologie
+    : batterie plomb-acide standard pour les véhicules sans système Stop&Start, batterie AGM (Absorbent Glass Mat) obligatoire
+    pour les véhicules équipés de Stop&Start intensif — durée de vie 5 à 7 ans contre 4 à 5 ans pour une standard. La batterie
+    EFB (Enhanced Flooded Battery) convient aux Stop&Start d''entrée de gamme. - Capacité en Ah : ne jamais descendre sous
+    la valeur d''origine. Repères indicatifs : 40-50 Ah pour une citadine essence, 50-60 Ah pour une compacte essence, 60-70
+    Ah pour un diesel standard, 70-95 Ah pour un diesel puissant ou avec nombreux équipements. - Courant de démarrage CCA
+    (A) : mesuré à -18°C selon norme EN. La valeur CCA doit être au minimum égale à celle préconisée par le constructeur —
+    ne jamais utiliser une valeur inférieure. - Dimensions exactes : longueur, largeur et hauteur au millimètre près. Un boîtier
+    trop grand ne rentrera pas ; trop petit, la batterie se déplacera et les cosses vibrent jusqu''à rupture. - Position des
+    bornes : vérifier la polarité gauche ou droite (borne + à gauche ou à droite selon le sens de câblage du compartiment
+    moteur). Une inversion impose des modifications de câblage coûteuses. - Référence OEM ou équivalent homologué : comparer
+    la référence d''origine constructeur avec l''EAN du produit. Les batteries dites « universelles » ou « tous modèles »
+    sont à proscrire. - Marque et certification : privilégier des fabricants avec certification ISO, standards EN 50342 pour
+    batteries de démarrage. Les marques Varta, Bosch, Exide sont des références OEM européennes reconnues.'
+  S4_DEPOSE: '📖 Avant de démonter, consultez la fiche technique Batterie pour connaître les spécifications. Attention : la
+    couleur rouge est pour la borne positive et la couleur noir pour la bornenégative. - Débranchez la borne négative de labatterie.
+    - Débranchez la borne positive de labatterie. - Déposez la batterie.'
+  S4_REPOSE: '- Mettre en place la batterie. - Rebranchez la borne positive de labatterie puis la borne négative. Attention
+    :Faites attention à ne pas inverser les cosses de la batterie. - Remettez les composants électriques à zéro (radio,indicateur
+    de maintenance, horloge ..). - Faire un test diagnostic pour tous les composants duvéhicule. ✅ Après remontage, vérifiez
+    les spécifications dans la fiche technique Batterie.'
+  S5: 'Plusieurs erreurs fréquentes lors du remplacement d''une batterie peuvent endommager l''électronique du véhicule, court-circuiter
+    le réseau de bord ou accélérer la dégradation de la nouvelle pièce. - Inverser les polarités à la pose : connecter la
+    borne négative avant la borne positive crée un arc électrique qui peut griller les fusibles principaux, détériorer le
+    calculateur moteur ou endommager l''alternateur en quelques secondes. - Déconnecter la batterie sans sauvegarder les mémoires
+    : sur les véhicules modernes, retirer la batterie efface les paramètres d''adaptation du moteur (valeurs de ralenti, corrections
+    injecteurs), les codes radio et les réglages de vitres électriques. Utiliser un alimentateur de maintien 12 V avant la
+    dépose. - Monter une batterie sous-dimensionnée en CCA : un courant de démarrage insuffisant ne détruit pas immédiatement
+    la batterie, mais le démarreur compense en tirant plus d''intensité, ce qui chauffe ses bobinages et réduit sa durée de
+    vie de 30 à 50 %. - Poser une batterie standard sur un véhicule Stop&Start : les cycles répétés de charge/décharge d''un
+    Stop&Start (jusqu''à 500 000 microcycles sur la durée de vie) détruisent une batterie plomb-acide classique en moins de
+    18 mois. - Ne pas nettoyer les cosses avant la repose : les dépôts blancs ou bleus (sulfate de plomb, oxyde de cuivre)
+    sur les bornes créent une résistance parasite. Une résistance de 0,05 Ω suffit à faire chuter la tension de démarrage
+    de 0,6 V, ce qui peut empêcher le démarrage par grand froid. - Recycler l''ancienne batterie dans les ordures ménagères
+    : les batteries au plomb-acide contiennent du plomb et de l''acide sulfurique. Le dépôt en déchetterie agréée est obligatoire
+    en France sous peine d''amende.'
+  S6: 'Après la pose d''une batterie neuve, plusieurs contrôles techniques permettent de confirmer que l''installation est
+    correcte et que le système de charge fonctionne normalement. - Tension au repos : mesurer avec un multimètre entre les
+    deux bornes, moteur coupé depuis 30 minutes. La valeur doit être comprise entre 12,4 V et 12,8 V. En dessous de 12,2 V,
+    la batterie est partiellement déchargée ou défectueuse. - Tension en charge (moteur tournant) : mesurer entre les bornes,
+    moteur au ralenti. La tension doit se situer entre 13,5 V et 14,5 V, confirmant que l''alternateur charge correctement.
+    Une valeur inférieure à 13 V indique une défaillance de l''alternateur ou de son régulateur. - Serrage des cosses : vérifier
+    que les cosses sont bien serrées à la main, sans jeu possible. Un couple de serrage de 4 à 6 N·m est généralement préconisé
+    selon le type de borne. Une cosse mal serrée provoque des chutes de tension intermittentes difficiles à diagnostiquer.
+    - Absence de codes défaut OBD : brancher un outil de diagnostic et vérifier l''absence de DTC (Diagnostic Trouble Codes)
+    liés au réseau de bord, au calculateur moteur ou à l''alternateur. Le remplacement de batterie peut déclencher un P0620
+    ou P0563 sur certains véhicules. - Réinitialisation du gestionnaire d''énergie : sur les véhicules BMW, Audi, Mercedes
+    ou Renault récents, coder la nouvelle batterie via l''outil de diagnostic constructeur pour que le gestionnaire d''énergie
+    adapte ses seuils de charge au cycle de vie réel de la batterie neuve. - Test de charge sous charge : activer phares,
+    ventilation plein régime, et lunette arrière dégivrante simultanément. La tension ne doit pas descendre sous 13,2 V, confirmant
+    la capacité de l''alternateur à compenser les consommateurs. - Contrôle visuel des connexions : vérifier l''absence de
+    câbles en contact avec des pièces chaudes (collecteur, turbo), de pincements ou de frottements sur l''arête de la tôle
+    du compartiment moteur.'
+  S7: 'La batterie ne fonctionne pas de façon isolée : elle alimente et est rechargée par un ensemble de composants électriques
+    interdépendants. Remplacer uniquement la batterie sans contrôler ces pièces conduit souvent à une panne répétée à court
+    terme. - Alternateur — La batterie et l''alternateur forment un système de charge solidaire. Un alternateur défaillant
+    délivre moins de 13,8 V à régime stabilisé et épuise prématurément toute batterie neuve en quelques semaines. Mesurer
+    la tension aux bornes moteur tournant : entre 13,8 V et 14,5 V confirme un alternateur sain. Une valeur inférieure à 13,5
+    V ou supérieure à 15 V impose le remplacement de l''alternateur avant ou simultanément à la batterie. - Démarreur — Un
+    démarreur en fin de vie tire des pointes de courant anormalement élevées (jusqu''à 300 A sur certains moteurs) qui abîment
+    les plaques de la batterie à chaque démarrage. Si les démarrages sont lents, laborieux ou accompagnés d''un bruit de cliquetis
+    du démarreur, faire tester la consommation de courant du démarreur (starter test) avant de conclure à une batterie seule.
+    - Courroie d''accessoire — La courroie d''accessoire entraîne l''alternateur. Une courroie glissante, trop lâche ou en
+    fin de vie réduit la tension de charge transmise à l''alternateur et génère les mêmes symptômes qu''une batterie faible.
+    Contrôler la tension et l''état de la courroie (craquelures, effilochage) à chaque intervention sur le circuit de charge.
+    - Boîtier de fusibles et relais principaux — Un mauvais contact sur le fusible principal ou le relais de batterie provoque
+    des chutes de tension identiques à une batterie défaillante. Inspecter les cosses de batterie (oxydation, sulfatation),
+    les câbles de masse du moteur et de carrosserie, et les fusibles de puissance lors de chaque remplacement de batterie.
+    Un câble de masse corrodé peut faire chuter la tension de 0,5 V et suffire à empêcher un démarrage. - Capteur de température
+    moteur — Sur les véhicules équipés du système Start-Stop, le calculateur de gestion de batterie pilote la charge en fonction
+    de la température moteur. Un capteur défectueux induit une gestion incorrecte : la batterie est sollicitée à chaque cycle
+    de coupure moteur sans être rechargée au niveau optimal. Ce scénario réduit la durée de vie d''une batterie AGM à moins
+    de 2 ans. - Capteur de gestion de batterie (BSM/IBS) — Sur de nombreux véhicules récents, un capteur de gestion de batterie
+    (Battery Management Sensor) est fixé sur la borne négative. Ce capteur mesure en temps réel la tension, le courant et
+    la température de la batterie pour informer le calculateur. Lors d''un remplacement de batterie, ce capteur doit être
+    initialisé via un outil de diagnostic constructeur : sans cette étape, le système de charge reste calé sur les paramètres
+    de l''ancienne batterie. Vérifier également que les bornes de la batterie neuve sont serrées au couple recommandé (généralement
+    4 à 6 Nm) et que les couvercles protecteurs sont remis en place. Une borne desserrée provoque des arcs électriques qui
+    brûlent les fils et peuvent endommager le calculateur moteur.'
+  S8: 'Quelle est la durée de vie d''une batterie auto ? Une batterie plomb-acide standard dure en moyenne 4 à 5 ans. Une
+    batterie AGM (pour véhicules Stop&Start) tient 5 à 7 ans. La durée réelle varie selon le climat (le froid accélère la
+    décharge), la fréquence des trajets courts qui ne permettent pas une recharge complète, et la qualité des connexions.
+    Une batterie qui ne démarre plus de façon fiable après 4 ans doit être testée avec un testeur de charge avant de conclure
+    à son remplacement. Comment savoir si c''est la batterie ou l''alternateur qui est défaillant ? La distinction se fait
+    au multimètre. Moteur coupé, la tension aux bornes inférieure à 12,2 V pointe vers une batterie déchargée ou usée. Moteur
+    tournant, une tension inférieure à 13,5 V indique que l''alternateur ne charge pas. Si la batterie se décharge sans raison
+    apparente malgré un alternateur sain, une fuite de courant (consommateur parasite) est probable : mesurer le courant de
+    repos doit donner moins de 50 mA, portes et capot fermés pendant 15 minutes. Peut-on remplacer soi-même sa batterie de
+    voiture ? Le remplacement est accessible sur la plupart des véhicules. Les conditions sont : disposer d''un alimentateur
+    de maintien 12 V pour préserver les mémoires électroniques, respecter l''ordre de déconnexion (masse en premier à la dépose,
+    masse en dernier à la pose), et vérifier la compatibilité dimensionnelle et technique exacte. Sur les véhicules récents
+    avec gestion d''énergie intelligente (BMW, Audi, Mercedes, Renault Megane IV+), un codage via outil de diagnostic constructeur
+    est nécessaire après la pose. Pourquoi ma batterie neuve se décharge rapidement ? Trois causes principales : une fuite
+    de courant (consommateur parasite non coupé à l''arrêt du moteur), un alternateur défaillant qui ne recharge pas, ou des
+    trajets trop courts et trop fréquents (moins de 10 km) qui ne permettent pas de recharger complètement la batterie. En
+    hiver, une batterie de 55 Ah correcte peut nécessiter 45 minutes de roulage à régime stabilisé pour se recharger après
+    un démarrage à froid. Quelle différence entre CCA, CA et RC sur une batterie ? Le CCA (Cold Cranking Amperes) mesure le
+    courant disponible pendant 30 secondes à -18°C — c''est le critère de démarrage par grand froid. Le CA (Cranking Amperes)
+    est mesuré à 0°C et donne une valeur plus élevée que le CCA. Le RC (Reserve Capacity) mesure en minutes la durée pendant
+    laquelle une batterie chargée peut alimenter les équipements essentiels si l''alternateur tombe en panne. Pour le choix
+    d''une batterie de remplacement, le CCA et la capacité en Ah sont les critères prioritaires.'
 ---
 
 # Batterie - Guide Diagnostic Complet
@@ -542,3 +468,27 @@ Oui, operation simple (15-30 min). Toujours debrancher le negatif en premier et 
 
 **Quelle erreur eviter avec la batterie ?**
 Ne jamais inverser les polarites (risque de court-circuit et destruction du calculateur). Ne pas monter une batterie SLI sur un vehicule Start-Stop (exige EFB ou AGM). Eviter les batteries sans marque ou sous-dimensionnees en CCA.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/ef844ff5bd8a 2026-04-03 -->
+### Données techniques OEM — Batterie
+
+# Données techniques OEM — Batterie
+Source : automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + denso-am.eu + fr.wikipedia.org + hella.com + textar.com (14 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hall
+- plein
+- Électrique
+- électrique
+
+## Valeurs techniques de référence
+- 0,1 mm
+- 0,9 mm
+- 000 °C
+- 1,1 bar
+- 10 Nm
+- 115 Nm

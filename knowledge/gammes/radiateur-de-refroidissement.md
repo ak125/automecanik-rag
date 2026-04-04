@@ -211,13 +211,33 @@ installation:
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
 phase5_enrichment:
-  _source: denso-am.eu
+  _source: denso-am.eu + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
   _has_tech_data: true
   types_variants:
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
   - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_0_5_bar: '0,5 bar'
+    val_1_bar: '1 bar'
+    val_100__c: '100 °C'
+    val_110__c: '110 °C'
+    val_20__c: '20 °C'
+    val_30__c: '30 °C'
+    val_480__c: '480 °C'
+    val_500__c: '500 °C'
+    val_560__c: '560 °C'
+    val_60__c: '60 °C'
+    val_80__c: '80 °C'
+    val_90__c: '90 °C'
+  materials:
+  - materiau: 'aluminium'
     source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
@@ -301,12 +321,12 @@ conseil_v5:
     vis de purges. - Remplissez le circuit derefroidissement par la quantité du
     liquide préconisé par le constructeur (cetteinformation vous pouvez la
     trouver dans la notice d'utilisation de votrevéhicule). - Laissez le liquide
-    derefroidissement sécouler jusqu'à qu'il sort sans bulle d'air. - Fermez la
+    derefroidissement s'écouler jusqu'à qu'il sort sans bulle d'air. - Fermez la
     vis de purge. - Démarrez le moteur. - Laissez le moteur tournerau ralenti et
     contrôlez l'évacuation des bulles d'air du circuit derefroidissement. -
     Contrôlez le niveau duliquide de refroidissement et le corrigez si
     nécessaire. - Laissez tourner le moteur jusqu'à enclenchement duventilateur
-    de refroidissement. - Ouvrir le bouchon du vasedexpansion après l'arrêt du
+    de refroidissement. - Ouvrir le bouchon du vased'expansion après l'arrêt du
     ventilateur de refroidissement pour laisser échapper la pression. -
     Contrôlez le niveau du liquide derefroidissement et le corrigez si
     nécessaire. - Arrêtez le moteur et lelaissez refroidir. - Contrôlez le

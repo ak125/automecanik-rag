@@ -6,7 +6,7 @@ pg_id: 402
 source_type: gamme
 doc_family: catalog
 truth_level: L2
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -21,7 +21,7 @@ priority_signals:
 lifecycle:
   stage: auto_generated
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 _sources:
   ece-r90:
@@ -289,7 +289,7 @@ installation:
 phase5_enrichment:
   _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com + delphiautoparts.com + ferodo.com + gpa26.com + profauto.fr + textar.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 92
   _has_tech_data: true
   types_variants:
@@ -617,103 +617,8 @@ Saisissez le numéro OEM (Origine Équipementier) gravé sur la pièce d'origine
 | **Quand l'utiliser** | Commandes courantes | Pièces sécurité, variantes, import | Sans carte grise, véhicule connu | Remplacement à l'identique |
 | **Limitation** | Plaques étrangères non reconnues | VIN pas toujours sous la main | Doute entre motorisations proches | Pièce usagée nécessaire |
 
-## Carte grise — champs utiles pour identifier son véhicule
-
-| Champ | Contenu | Utilité pour le sélecteur |
-|-------|---------|---------------------------|
-| **B** | Date de première immatriculation | Année du véhicule (étape 3 sélection manuelle) |
-| **D.1** | Marque du véhicule | Étape 1 sélection manuelle |
-| **D.2** | Type mine / variante / version | Identification précise de la version |
-| **E** | Numéro VIN (17 caractères) | Méthode VIN — 99%+ de fiabilité |
-| **P.3** | Type de carburant (essence, diesel, hybride, électrique, GPL) | Motorisation — étape 4 sélection manuelle |
-| **F.1** | Masse en charge maximale techniquement admissible (PTAC) | Dimensionner freinage et suspension |
-| **F.2** | PTAC de l'ensemble (véhicule + remorque) | Dimensionner freinage |
-| **F.3** | Masse en charge maximale de l'ensemble en service (PTRA) | Dimensionner suspension (amortisseurs, ressorts) |
-
-**Astuce** : prenez votre carte grise en photo avec votre téléphone. Vous aurez toutes les infos sous la main la prochaine fois, même loin du véhicule.
-
-## Variantes de montage
-
-Les constructeurs automobiles utilisent plusieurs fournisseurs pour une même pièce. En cours de production, ils peuvent changer de fournisseur, modifier des spécifications ou ajouter des options.
-
-### Pourquoi les variantes existent
-
-- **Multi-fournisseurs** : un même modèle peut être équipé en première monte par différents équipementiers selon la date et le lieu de fabrication.
-- **Évolutions en série** : les constructeurs améliorent les pièces en continu. Un véhicule de début de série peut avoir des spécifications différentes d'un véhicule de fin de série.
-- **Options d'usine** : les packs sport, suspensions pilotées ou systèmes Start & Stop modifient les pièces requises.
-
-### Exemples courants de variantes (même véhicule)
-
-| Catégorie | Variante |
-|-----------|----------|
-| **Freinage** | Diamètre disque 280 vs 288 vs 312 mm, ventilé vs plein |
-| **Batterie** | Start & Stop → AGM/EFB obligatoire |
-| **Filtration** | Cartouche vs vissé selon moteur |
-| **Suspension** | Standard vs sport / pilotée |
-
-### Comment éviter l'erreur
-
-1. Vérifiez les critères clés sur la fiche produit (diamètre, capteur, type de fixation).
-2. Privilégiez le VIN quand c'est disponible — 99% de compatibilité.
-3. En cas de doute : comparez le numéro OE de l'ancienne pièce avec les références proposées. Le numéro OE = la meilleure confirmation.
-
-## Dépannage
-
-### Mon véhicule n'apparaît pas dans le sélecteur
-
-**Cause probable** : véhicule importé, très récent, ou plaque étrangère non reconnue.
-**Solution** : passez en recherche par VIN (champ E de la carte grise). Les véhicules importés depuis l'Allemagne ou la Belgique sont généralement reconnus par VIN même si la plaque ne fonctionne pas.
-
-### J'hésite entre deux motorisations proches
-
-**Cause probable** : le modèle existe avec plusieurs cylindrées ou puissances similaires (ex : 1.5 dCi 90ch vs 1
-
-[...]
-
 
 ## Conseils supplementaires
-
-<!-- materialized-from-db web/8e08445d2550 2026-03-28 -->
-### Difference entre les plaquettes de frein standard et les Xtra . - section-1
-
-# Difference entre les plaquettes de frein standard et les Xtra .
-
-# Plaquettes de frein standard ou Xtra : lesquelles choisir?
-
-![Montrer les plaquettes Xtra et les plaquettes de frein standard de Brembo](_raw/web-images/bd1f2134f6c780e6.jpg)
-
-<!-- materialized-from-db web/aa1ee27642e9 2026-03-28 -->
-### Comment faire si plaquettes et disque de frein grincent et sifflent - section-1
-
-# Comment faire si plaquettes et disque de frein grincent et sifflent
-
-- Skip to main content Skip to menu Skip to footer Partager sur Bruits et vibrations Quels sont les conseils de Brembo pour un remplacement dans les règles de l'art afin de prévenir tous bruits et vibrations ? Les sifflements du système de freinage, tout comme les vibrations, ne sont généralement pas dus au dysfonctionnement ou à la mauvaise qualité d'une pièce neuve. Plus souvent qu'on ne l'imagine, ces sifflements sont dus à l’usure d'autres pièces du système de freinage, qui font alors apparaître un dysfonctionnement des plaquettes ou des disques. Lors du remplacement des plaquettes et des disques, il est recommandé de ne pas se limiter à leur simple substitution, mais d'effectuer une vérification approfondie et un entretien complet de l'ensemble du système de freinage. Il est généralement conseillé d'exécuter les opérations suivantes : En cas de remplacement des plaquettes , vérifier l'état d'usure du disque.
-
-- En cas de remplacement des disques , toujours remplacer les plaquettes.
-
-- Nettoyer les surfaces d'accouplement du disque et du moyeu de roue (des saletés ou de la rouille)
-
-- S’il y a des dépôts de matière ou de saleté (disque usagé), nettoyer également la surface de la bande de freinage.
-
-- Contrôler l’oscillation du disque monté sur le moyeu de roue. Normalement, elle ne doit pas excéder 0,10 mm. En cas de problème, vérifier l'oscillation du moyeu de roue sans le disque, qui ne doit pas excéder 0,050 mm.
-
-![Lubrifiant Brembo B-Quiet pour systèmes de freinage](_raw/web-images/057d50d39bbd8d69.jpg)
-
-- Lorsque l'on remplace des plaquettes équipées d'une cale antibruit amovible (shim), attention à la remonter correctement. Ne pas réutiliser la cale antibruit usagée.
-
-- Contrôler que les pistons, les joints, la coiffe de protection contre la poussière et les éléments coulissants de l'étrier ne sont pas détériorés ou corrodés, et qu'ils sont en mesure de coulisser. Utiliser de la graisse spéciale appropriée à chacune des pièces et n'attaquant pas les composants en caoutchouc. Remplacer toutes les pièces détériorées.
-
-- Nettoyer et appliquer une graisse antibruit sur les surfaces de contact entre l'étrier et les plaquettes.
-
-- Inspecter, nettoyer ou remplacer à neuf les ressorts de l'étrier s'ils s'ont vieux et usés.
-
-- Vérifier le bon positionnement des ressorts .
-
-- Contrôler le niveau du liquide de frein , qui doit se trouver entre les points min et max. Le liquide de frein doit être vidangé tous les deux ans ou selon les prescriptions du constructeur.
-
-- Serrer les vis de la roue avec la séquence appropriée à l'aide d'une clé dynamométrique au couple de serrage prescrit .
-
-- Effectuer un test sur route , en s'assurant du bon fonctionnement du système et de l'absence de vibrations et de bruits. Il s'avère fondamental de suggérer au conducteur de respecter un rodage de 300 km environ , au cours duquel les freinages brusques et une utilisation intensive des freins devront être évités, afin de permettre l'alignement optimal des disques et des plaquettes.
 
 <!-- materialized-from-db web/3cb342907fc5 2026-03-28 -->
 ### Instructions pour remplacer... - Montage auto - section-1
@@ -747,6 +652,33 @@ Les constructeurs automobiles utilisent plusieurs fournisseurs pour une même pi
 
 # Instructions pour remplacer le... - Montage auto
 
-- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer le cylindre émetteur d'embrayage et le maître-cylindre Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser le liquide de frein recommandé par le constructeur. 2. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool isopropylique ou dénaturé. 3. À cause de la nature technique du produit, les cylindres émetteurs d'embrayage et le maître-cylindre doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. 4. De nombreux véhicules plus récents sont équipés d’un cylindre esclave concentrique qui est monté à l'intérieur du logement de la cloche de boîte de vitesses. Afin de remplacer cette unité, la boîte de vitesses doit être déposée. 5. Certains de ces cylindres esclaves concentriques ont un tuyau d’alimentation et un tuyau de purge et purger ces systèmes est normalement simple. D’autres ont un seul tuyau d'alimentation avec des branchements de tuyaux extérieurs où le système est purgé. Ceux-ci peuvent être difficiles à purger, nous vous conseillons de suivre attentivement les procédures du fabricant. 6. Sur certains des nouveaux systèmes, le tuyau qui relie le cylindre émetteur d’embrayage au maître-cylindre est maintenu en place dans les cylindres à l’aide d’un clip et il est scellé avec un petit joint torique. Veiller à ce que ces tuyaux soient correctement montés pour éviter les fuites. 7. À présent, sur certains véhicules, les cylindres émetteurs d’embrayage sont montés à l’intérieur du véhicule et il est important de suivre les procédures correctes pour les déposer parce qu’il pourrait être nécessaire de déposer ou de desserrer des éléments critiques comme la colonne de direction. Procédure de remplacement 1. Soulever le véhicule et le soutenir en utilisant des supports spécifiques. 2. Déposer la moulure du compartiment de pieds en suivant les lignes directrices du constructeur du véhicule. 3. Débrancher le tuyau du cylindre, sceller le trou avec un bouchon en caoutchouc pour éviter que le fluide ne sorte. 4. Déposer le maître-cylindre ou le cylindre émetteur d'embrayage en suivant les lignes directrices du constructeur du véhicule. 5. Faire attention au diamètre/dimension du piston lors du remplacement du cylindre. Procédure de montage 1. Remplacer en même temps le cylindre émetteur d'embrayage et le maître-cylindre. 2. Installer les cylindres conformément aux instructions du constructeur du véhicule. 3. S’assurer que le maître-cylindre d’embrayage est parfaitement aligné et sûr pour empêcher de pousser la tige de poussée dans le cylindre coudé. 4. Brancher le tuyau. 5. Serrer les vis et les écrous à un couple approprié. 6. Vidanger le liquide de frein. 7. Purger l'embrayage. 8. Actionner plusieurs fois la pédale d'embrayage. 9. Vérifier le niveau du liquide de frein et si nécessaire, faire l’appoint, puis fermer le bouchon. 10. Vérifier s’il y a des fuites dans le système. 11. Contrôler la position de la pédale et la régler si nécessaire. 12. Assembler à nouveau la moulure du compartiment de pieds en suivant les lignes directrices du constructeur du véhicule. 13. Effectuer un essai sur route et contrôler la fonction de frein et d’embrayage. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité. Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort. La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-
+- Skip to main content Skip to menu Skip to footer Partager sur Instructions pour remplacer le cylindre émetteur d'embrayage et le maître-cylindre Nous vous conseillons de lire et de suivre attentivement les instructions fournies. Vous trouverez les mêmes instructions dans l’emballage des maîtres-cylindres. N’oubliez pas de les conserver pendant toute la durée de vie du produit. En cas de passage de propriété, elles devront être remises au nouveau propriétaire du véhicule. Indications générales 1. Utiliser le liquide de frein recommandé par le constructeur. 2. Le liquide de frein doit être complètement remplacé après que le réservoir a été soigneusement lavé avec de l'alcool isopropylique ou dénaturé. 3. À cause de la nature technique du produit, les cylindres émetteurs d'embrayage et le maître-cylindre doivent être remplacés par un technicien qualifié et, en cas de réclamation, il faudra le démontrer à l’aide d'une facture. 4. De nombreux véhicules plus récents sont équipés d’un cylindre esclave concentrique qui est monté à l'intérieur du logement de la cloche de boîte de vitesses. Afin de remplacer cette unité, la boîte de vitesses doit être déposée. 5. Certains de ces cylindres esclaves concentriques ont un tuyau d’alimentation et un tuyau de purge et purger ces systèmes est normalement simple. D’autres ont un seul tuyau d'alimentation avec des branchements de tuyaux extérieurs où le système est purgé. Ceux-ci peuvent être difficiles à purger, nous vous conseillons de suivre attentivement les procédures du fabricant. 6. Sur certains des nouveaux systèmes, le tuyau qui relie le cylindre émetteur d’embrayage au maître-cylindre est maintenu en place dans les cylindres à l’aide d’un clip et il est scellé avec un petit joint torique. Veiller à ce que ces tuyaux soient correctement montés pour éviter les fuites. 7. À présent, sur certains véhicules, les cylindres émetteurs d’embrayage sont montés à l’intérieur du véhicule et il est important de suivre les procédures correctes pour les déposer parce qu’il pourrait être nécessaire de déposer ou de desserrer des éléments critiques comme la colonne de direction. Procédure de remplacement 1. Soulever le véhicule et le soutenir en utilisant des supports spécifiques. 2. Déposer la moulure du compartiment de pieds en suivant les lignes directrices du constructeur du véhicule. 3. Débrancher le tuyau du cylindre, sceller le trou avec un bouchon en caoutchouc pour éviter que le fluide ne sorte. 4. Déposer le maître-cylindre ou le cylindre émetteur d'embrayage en suivant les lignes directrices du constructeur du véhicule. 5. Faire attention au diamètre/dimension du piston lors du remplacement du cylindre. Procédure de montage 1. Remplacer en même temps le cylindre émetteur d'embrayage et le maître-cylindre. 2. Installer les cylindres conformément aux instructions du constructeur du véhicule. 3. S’assurer que le maître-cylindre d’embrayage est parfaitement aligné et sûr pour empêcher de pousser la tige de poussée dans le cylindre coudé. 4. Brancher le tuyau. 5. Serrer les vis et les écrous à un couple approprié. 6. Vidanger le liquide de frein. 7. Purger l'embrayage. 8. Actionner plusieurs fois la pédale d'embrayage. 9. Vérifier le niveau du liquide de frein et si nécessaire, faire l’appoint, puis fermer le bouchon. 10. Vérifier s’il y a des fuites dans le système. 11. Contrôler la position de la pédale et la régler si nécessaire. 12. Assembler à nouveau la moulure du compartiment de pieds en suivant les lignes directrices du constructeur du véhicule. 13. Effectuer un essai sur route et contrôler la fonction de frein et d’embrayage. Informations générales et de sécurité Le produit Brembo a été conçu pour respecter les meilleurs standards de sécurité. Les Produits ne doivent pas être destinés à une utilisation différente de celle pour laquelle ils ont été conçus et fabriqués. L’utilisation à d’autres fins, la modification ou la manipulation du produit risquent d’altérer son fonctionnement et de compromettre sa sécurité. Toute modification éventuelle ou toute utilisation impropre rendent nulles les Limitations de garantie et peuvent rendre la personne utilisant le Produit dans ces conditions responsable quant aux dommages physiques ou matériels éventuellement causés à des tiers. Dans ces instructions, lorsqu’il est indiqué « DANGER! », cela signifie que le non-respect de la procédure indiquée a de fortes probabilités de provoquer de graves dommages physiques ou même la mort. La mention « ATTENTION! » indique une procédure dont le non-respect peut provoquer des dommages physiques , alors que la mention « AVERTISSEMENT! » indique une procédure dont le non-respect peut provoquer des dommages au véhicule. DANGER! Avant de commencer la procédure de remplacement, s’assurer que la pièce de rechange est adaptée à la marque et au modèle du véhicule . Le Produit revêt une importance fondamentale pour la sécurité du véhicule sur lequel il est installé et il doit, donc, être installé par du personnel qualifié ayant reçu une formation adéquate ou possédant suffisamment d’expérience dans l’installation et dans l’utilisation prévue du Produit. L’installateur doit avoir à sa disposition l’ outillage adéquat à l’installation et posséder des connaissances et une expérience appropriées pour s’occuper de l’entretien du véhicule. Une installation inadéquate ou erronée, due au non-respect de ces instructions ou autres, rendra nulles les Limitations de garantie et pourrait rendre l’installateur responsable quant aux dommages physiques ou matériels éventuellement provoqués. Il est fondamental de remplacer les disques de frein pour chaque essieu, en les prélevant de leur emballage. À chaque remplacement des disques, remplacer aussi leurs plaquettes. Éviter le contact de graisse et autres lubrifiants avec les surfaces de freinage du disque et des plaquettes parce que cela risque de rendre le système de freinage inefficace. Brembo décline toute responsabilité en cas de dommage matériel ou physique provoqué à ou par une personne conduisant un véhicule sur lequel le produit aurait été installé de façon inappropriée. ATTENTION! Les pièces remplacées doivent être éliminées selon les dispositions prescrites par la loi. Il est important d’éviter de frapper violemment ou d’endommager le Produit et ses composants, parce que cela risquerait de réduire son efficacité et de provoquer des dysfonctionnements. Si nécessaire, remplacer les composants endommagés. Pour éviter tout dommage physique, nous conseillons de : Toujours porter des gants lors de l’opération de démontage et de remontage des composants présentant des arêtes coupantes.
+
+![Approfondissements](_raw/web-images/2d2507a39e7ef6eb.jpg)
+
+![Comment choisir le bon produit](_raw/web-images/554e6f769f52f78a.jpg)
+
+![Montage auto](_raw/web-images/d8bc5a5c2c667779.jpg)
+
+![Montage moto](_raw/web-images/8f8c2ca53665bfa9.jpg)
+
+![Entretien](_raw/web-images/e936dadf5dced240.jpg)
+
+- Éviter le contact direct de la peau avec le matériau de friction des plaquettes et mâchoires parce que cela risque de provoquer des abrasions.
+
+![Service après-vente](_raw/web-images/c8ff08f5cb503a6a.jpg)
+
+![Limites de garantie](_raw/web-images/3f780074f3f64f27.jpg)
+
+![Contacter le support Brembo](_raw/web-images/1e8d4f4c405ed310.webp)
+
+![WeChat](_raw/web-images/dec8ad591b7cebf6.jpg)
+
+<!-- materialized-from-db web/aa1ee27642e9 2026-03-28 -->
+### Comment faire si plaquettes et disque de frein grincent et sifflent - section-1
+
+# Comment faire si plaquettes et disque de frein grincent et sifflent
+
+- Skip to main content Skip to menu Skip to footer Partager sur Bruits et vibrations Quels sont les conseils de Brembo pour un remplacement dans les règles de l'art afin de prévenir tous bruits et vibrations ? Les sifflements du système de freinage, tout comme les vibrations, ne sont généralement pas dus au dysfonctionnement ou à la mauvaise qualité d'une pièce neuve. Plus souvent qu'on ne l'imagine, ces sifflements sont dus à l’usure d'autres pièces du système de freinage, qui font alors apparaître un dysfonctionnement des plaquettes ou des disques. Lors du remplacement des plaquette
 
 [...]

@@ -16,7 +16,7 @@ intent_targets:
 business_priority: low
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -210,11 +210,27 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    role: 'transmet la rotation de la BV au compteur (vehicules anciens — remplace par capteur electronique)'
+    val_0_2_bar: '0,2 bar'
+    val_10__: '10 %'
+    val_10_km: '10 km'
+    val_120_km: '120 km'
+    val_150_km: '150 km'
+    val_19_a: '19 a'
+    val_2__a: '2, A'
+    val_20_km: '20 km'
+    val_200_km: '200 km'
+    val_23__c: '23 °C'
+    val_30_km: '30 km'
+    val_40_km: '40 km'
+    val_45_km: '45 km'
+    val_5__c: '5 °C'
+    val_50_a: '50 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

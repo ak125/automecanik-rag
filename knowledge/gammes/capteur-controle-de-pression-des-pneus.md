@@ -197,14 +197,23 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: hella.com
+  _source: fr.wikipedia.org + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
   _has_tech_data: true
+  types_variants:
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
   technical_notes:
     val_10_a: '10 a'
+    val_100__: '100 %'
+    val_150_km: '150 km'
+    val_2__a: '2, a'
+    val_20__: '20 %'
     val_30__: '30 %'
+    val_4_a: '4 a'
+    val_6_a: '6 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

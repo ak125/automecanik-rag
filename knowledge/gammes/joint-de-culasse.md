@@ -206,7 +206,7 @@ installation:
 phase5_enrichment:
   _source: gpa26.com + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 5
   _has_tech_data: true
   technical_notes:

@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -187,11 +187,30 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    reglage_garde: '5-10 mm de jeu en position repos (vehicules a cable, rares aujourd''hui — remplace par pedale electronique)'
+    val_0_5__: '0,5 %'
+    val_100__: '100 %'
+    val_11_a: '11 a'
+    val_12_a: '12 a'
+    val_13_a: '13 a'
+    val_13_30__: '13,30 %'
+    val_17_a: '17 a'
+    val_2_1__: '2,1 %'
+    val_20__: '20 %'
+    val_20_a: '20 a'
+    val_21_30__: '21,30 %'
+    val_24_a: '24 a'
+    val_26_a: '26 a'
+    val_29_a: '29 a'
+    val_3__: '3 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

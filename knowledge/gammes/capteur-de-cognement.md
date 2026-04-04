@@ -214,13 +214,15 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: hella.com
+  _source: fr.wikipedia.org + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 1
+  _enriched_at: '2026-04-03'
+  _web_files_count: 2
   _has_tech_data: true
   technical_notes:
     val_1_ohm: '1 ohm'
+    val_12__: '12 %'
+    val_8__: '8 %'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

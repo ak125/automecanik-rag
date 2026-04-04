@@ -234,7 +234,7 @@ conseil_v5:
     c'est une pièce qui ne s'use pas facilement. Le poussoir de soupape peut
     être grippé à froid. Des signes de jeu et plus fréquemment de claquements
     bruyants sont le signe que la pièce est défectueuse. Lors du remplacement
-    d'un poussoir de soupape il faut remplacer de lensemble de jeu de soupape
+    d'un poussoir de soupape il faut remplacer de l'ensemble de jeu de soupape
     et faire le réglage du jeu.Un poussoir de soupape est à contrôlez si vous
     remarquez un claquement au niveau du moteur. Il existe deux typesde
     claquement : - Des claquementslors du démarrage à froid et qui se

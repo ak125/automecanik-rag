@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -203,11 +203,33 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    type: 'flotteur magnetique ou thermique (mesure par conductivite de l''huile)'
+    val_0_v: '0 V'
+    val_0_1__: '0,1 %'
+    val_1_5__: '1,5 %'
+    val_14__: '14 %'
+    val_4_5__: '4,5 %'
+    val_400__c: '400 °C'
+    val_5_v: '5 V'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'platine'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -217,8 +239,8 @@ conseil_v5:
     conducteur lorsque le niveaud'huile passe au niveau bas de la quantité
     prescrite. Le capteur de niveaud'huile envoie un signal au calculateur
     moteur et ce dernier affiche les données surl'écran dans l'habitacle soit
-    par l'allumage d'un voyant souvent rouge ou par l'affichagedune phrase
-    niveau dhuile incorrecte. Un capteur de niveau d'huile doit être en bonne
+    par l'allumage d'un voyant souvent rouge ou par l'affichaged'une phrase
+    niveau d'huile incorrecte. Un capteur de niveau d'huile doit être en bonne
     état pour une lubrification optimale dumoteur. En savoir plus : capteur
     niveau d'huile moteur — définition et rôle mécanique 🚨 Bruit Capteur niveau
     d'huile moteur : causes et diagnostic

@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-03-29'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Controler les oscillations du ressort et stabiliser la roue. Dissipe l'energie des chocs. NE SUPPORTE PAS LE POIDS
@@ -218,7 +218,7 @@ installation:
 phase5_enrichment:
   _source: aftermarket.zf.com + ate-freinage.fr + bremboparts.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 3
   _has_tech_data: true
   types_variants:
@@ -259,171 +259,102 @@ phase5_enrichment:
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    L'amortisseurest une jambe de suspension à système de compression qui
-    fonctionne à l'huile ou au gaz. L'huile ou le gaz est comprimée dans le
-    cylindre de l'amortisseurgrâce à un piston qui ne cesse de monter et
-    descendre à chaque déformation dela route parcouru par le véhicule. Ce
-    mouvement permanent a pour fonctiond'amortir les chocs.
-    L'amortisseurfonctionne en duo avec le ressortde suspension. La combinaison
-    entre eux assure le confort à bord du véhicule etla bonne tenue de route. En
-    savoir plus : amortisseur — définition et rôle mécanique 🚨 Bruit de
-    amortisseur : que faire ?
-  S2: >-
-    Ne pas attendre la panne complete pour intervenir. Symptômes d'usure : -
-    Vehicule qui rebondit excessivement sur les bosses - Fuite huile visible
-    corps amortisseur - Usure asymetrique ou irreguliere des pneus - Bruit de
-    cognement sur routes degradees - Sensation d instabilite en virage ou au
-    freinage - Plus de 80 000 km sans remplacement
-  S2_DIAG: >-
-    SymptômeCause probableActionUn bruit anormal au niveau du amortisseur peut
-    se manifester lors de la phase "acceleration"Pour identifier ce probleme de
-    bruit du amortisseur:Verification visuelle du amortisseurDes vibrations
-    provenant du amortisseur sont souvent perceptibles a haute vitessePour
-    identifier ce probleme de vibration du amortisseur:Verification visuelle du
-    amortisseur
-  S3: >-
-    L'amortisseur contrôle les oscillations du ressort de suspension. Un modèle
-    incompatible modifie dangereusement le comportement routier du
-    véhicule.Vérifications indispensables- Essieu : avant ou arrière — les
-    amortisseurs avant et arrière ont des caractéristiques très différentes-
-    Type de fixation : œillet/œillet, tige/œillet, ou tige/coupelle — doit
-    correspondre exactement aux points d'ancrage du véhicule- Longueur comprimé
-    et déployé : mesurer l'amortisseur déposé dans les deux positions (tolérance
-    ± 5 mm)- Technologie : hydraulique, à gaz monotube ou à gaz bitube — le type
-    d'origine est recommandé pour un remplacement standard- Diamètre de tige :
-    12, 14 ou 16 mm selon le modèle — conditionne la coupelle et l'écrou
-    supérieurMéthode de vérificationRelever la référence OE sur l'amortisseur
-    déposé ou via le VIN. Comparer les cotes et le type de fixation haute et
-    basse.Pour aller plus loin : consultez notre guide d'achat amortisseur —
-    comparatif marques, critères de choix et prix.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Amortisseur pour connaître
-    les spécifications. - Levez le véhicule. - Démontez le tapis du coffre (si
-    nécessaire pour accéder àla fixation supérieure de l'amortisseur). -
-    Démontez les fixations supérieures de l'amortisseur. - Démontez la roue. -
-    Démontez la fixation inférieure de l'amortisseur. - Démontez l'amortisseur.
-  S4_REPOSE: >-
-    - Vérifier que l'amortisseur neuf est identique à celuidémonté. - Contrôlez
-    la butée élastique d?amortisseur et remplacéessi nécessaire. - Remontez
-    l'amortisseur. - Serrez les fixations inférieure et supérieure de
-    l'amortisseur. - Reposez la roue. - Redescendre le véhicule. - Resserrez la
-    roue. - Faire un essai routier. ✅ Après remontage, vérifiez les
-    spécifications dans la fiche technique Amortisseur.
-  S5: >-
-    - Ne changer qu'un seul amortisseur sur un essieu — Un amortisseur neuf d'un
-    côté et un amortisseur usé de l'autre créent une dissymétrie de comportement
-    : le côté neuf rebondit moins que le côté usé, le véhicule se déporte au
-    freinage et la tenue de route devient imprévisible. Remplacer toujours les
-    amortisseurs par paire sur le même essieu, les deux avant ou les deux
-    arrière. - Oublier coupelle, butée et soufflet lors du remplacement — La
-    coupelle supérieure (palier de pivot avant), la butée de suspension et le
-    soufflet de protection de la tige s'usent au même rythme que l'amortisseur.
-    Remonter un amortisseur neuf avec une butée fissurée ou une coupelle à
-    roulement grippé recréera des bruits de claquement à froid dans les 6 mois.
-    Ces pièces sont vendues en kit et représentent un faible surcoût pour une
-    intervention durable. - Utiliser un compresseur de ressorts non homologué ou
-    mal engagé — Le ressort de suspension comprimé stocke une énergie
-    équivalente à plusieurs centaines de joules. Un compresseur endommagé, des
-    crochets mal engagés sur les spires ou une compression asymétrique
-    provoquent une libération violente du ressort pouvant causer des fractures.
-    Utiliser des compresseurs homologués dont les crochets couvrent entièrement
-    les spires. - Serrer l'écrou de tige sans maintenir la tige en rotation —
-    Sur la plupart des amortisseurs, la tige de piston tourne librement sans une
-    clé de maintien. Vissez l'écrou sans immobiliser la tige revient à ne rien
-    serrer : l'écrou tourne dans le vide. Engager une clé Allen (hexagonale
-    femelle) ou un plat de maintien dans l'extrémité de la tige pendant le
-    serrage de l'écrou. - Monter l'amortisseur tête en bas — La tige chromée
-    doit toujours pointer vers le haut. Un amortisseur monotube inversé provoque
-    une fuite d'huile immédiate (la chambre à gaz se retrouve en bas). Vérifier
-    l'orientation avant montage : la tige polie (chromée ou dorée) = partie
-    haute, le corps plus large = partie basse. - Négliger l'amorçage de
-    l'amortisseur neuf — Un amortisseur livré en position comprimée (piston à
-    mi-course) peut contenir une poche d'air résiduelle. Avant montage,
-    comprimer et étendre la tige 5 à 10 fois tige vers le haut (position
-    verticale). Ce geste chasse l'air piégé et garantit une amortissement
-    optimal dès la première sollicitation. - Serrer les silentblocs inférieurs
-    véhicule suspendu — Les silentblocs de la fixation basse de l'amortisseur
-    doivent être serrés au couple en position de charge normale (véhicule posé
-    sur ses roues). Serrer en position levée précontraint le caoutchouc du
-    silentbloc, ce qui provoque des bruits de claquement à froid et réduit la
-    durée de vie du silentbloc à quelques mois. - Omettre le contrôle de
-    géométrie après remplacement avant — Le remplacement des amortisseurs avant
-    modifie parfois légèrement le carrossage et le parallélisme selon le type de
-    suspension. Un train avant mal géométré use les pneus de façon asymétrique
-    (usure latérale d'un flanc) et dévie la trajectoire au freinage. Faire
-    contrôler la géométrie dans les 500 km suivant le remplacement des
-    amortisseurs avant. 📖 Fiche technique Amortisseur — couples de serrage et
-    spécifications constructeur.
-  S6: >-
-    Contrôles statiques (véhicule au sol)- Vérifier que le véhicule est à la
-    même hauteur des deux côtés (mesurer l'écart aile/sol)- Contrôler le serrage
-    de l'écrou de tige supérieur et des fixations inférieures au couple
-    constructeur- Inspecter que le soufflet de protection est en place et non
-    pincé- Appuyer fermement sur chaque coin du véhicule et relâcher : la caisse
-    doit revenir en position et se stabiliser en 1-2 oscillations maximumTest
-    routier progressif- Rouler à 30 km/h sur route plane : pas de bruit de
-    cognement ni de grincement- Passer sur un ralentisseur à 30 km/h : la caisse
-    absorbe le choc sans rebond excessif- Rouler à 90 km/h : stabilité en ligne
-    droite, pas de flottement ni de louvoiement- Freiner d'urgence : le véhicule
-    doit rester stable et en ligne, sans plongée excessive de l'avant⚠️
-    Important : Si le véhicule penche d'un côté après remplacement, vérifiez que
-    les ressorts de suspension sont identiques des deux côtés. Un ressort cassé
-    ou affaissé annule l'efficacité de l'amortisseur neuf.
-  S_GARAGE: >-
-    Nous vous recommandons de confier cette intervention à un professionnel : -
-    Plusieurs causes possibles de défaillance (3 identifiées) nécessitent un
-    diagnostic professionnel Un garagiste qualifié dispose de l'outillage et de
-    l'expérience nécessaires pour effectuer cette opération en toute sécurité.
-  S7: >-
-    Quel est le prix d'un amortisseur ?Le prix varie selon le véhicule et la
-    marque. Utilisez notre sélecteur pour trouver l'amortisseur compatible avec
-    votre véhicule et comparer les tarifs des différents équipementiers.Comment
-    savoir si l'amortisseur est à changer ?Les signes d'usure les plus courants
-    sont détaillés dans la section diagnostic ci-dessus. En cas de doute, faites
-    contrôler la pièce par un professionnel.Peut-on rouler avec un amortisseur
-    défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la
-    pièce dans la sécurité du véhicule. Consultez la section symptômes pour
-    évaluer l'urgence du remplacement.Lors du remplacement des amortisseurs,
-    inspectez systématiquement ces pièces connexes :- Coupelle d'amortisseur —
-    le roulement de coupelle s'use et provoque des craquements en braquant,
-    remplacer avec l'amortisseur- Butée de suspension — absorbe les fins de
-    course, se désagrège avec le temps, remplacer systématiquement- Soufflet de
-    protection — protège la tige chromée de la corrosion, inclus dans les kits
-    de protection- Ressort de suspension — vérifier l'absence de spire cassée et
-    la hauteur (comparer les deux côtés)- Biellette de barre stabilisatrice —
-    souvent accessible lors de la dépose, vérifier le jeu des rotules- Silent-
-    blocs de bras — un silent-bloc usé transmet les chocs malgré un amortisseur
-    neuf- Roulement de roue — un jeu de roulement peut être confondu avec un
-    bruit d'amortisseur
-  S8: >-
-    Comment savoir si mes amortisseurs sont usés ?Les signes principaux : le
-    véhicule rebondit excessivement sur les bosses, la tenue de route se dégrade
-    en virage, les distances de freinage augmentent, et les pneus s'usent de
-    manière irrégulière. Le test simple : appuyez fermement sur un coin du
-    véhicule et relâchez — s'il rebondit plus d'une fois, l'amortisseur est
-    fatigué. Une fuite d'huile visible sur le corps est un signe évident.Tous
-    les combien faut-il changer les amortisseurs ?La recommandation générale est
-    entre 60 000 et 100 000 km, mais cela dépend fortement des conditions
-    d'utilisation. Sur routes dégradées ou avec un véhicule lourdement chargé,
-    l'usure est plus rapide. Après 80 000 km, faites contrôler leur efficacité
-    même sans symptôme apparent.Amortisseurs à gaz ou hydrauliques, que choisir
-    ?Les amortisseurs à gaz (monotube ou bitube pressurisé) offrent une
-    meilleure tenue de route et résistent mieux à l'échauffement. Les
-    hydrauliques sont plus confortables mais moins performants en usage sportif.
-    Pour un remplacement standard, choisissez le même type que l'origine. Pour
-    améliorer le comportement, passez au gaz monotube.Pourquoi faut-il les
-    changer par paire ?Un amortisseur neuf et un usé créent un déséquilibre
-    dangereux : le côté usé rebondit davantage, réduisant l'adhérence de cette
-    roue au sol. En freinage d'urgence ou en évitement, le véhicule peut devenir
-    instable. Toujours remplacer les deux amortisseurs du même essieu.Les
-    amortisseurs influencent-ils le freinage ?Oui, significativement. Des
-    amortisseurs usés augmentent les distances de freinage de 10 à 20 % car les
-    roues perdent le contact avec le sol lors des rebonds. L'ABS fonctionne
-    moins efficacement quand les roues décollent entre les oscillations.
-  META: >-
-    Guide remplacement amortisseurs : compatibilité, erreurs courantes, pièces
-    liées et vérifications après montage. Toujours changer par paire.
+  S1: 'L''amortisseurest une jambe de suspension à système de compression qui fonctionne à l''huile ou au gaz. L''huile ou
+    le gaz est comprimée dans le cylindre de l''amortisseurgrâce à un piston qui ne cesse de monter et descendre à chaque
+    déformation dela route parcouru par le véhicule. Ce mouvement permanent a pour fonctiond''amortir les chocs. L''amortisseurfonctionne
+    en duo avec le ressortde suspension. La combinaison entre eux assure le confort à bord du véhicule etla bonne tenue de
+    route. En savoir plus : amortisseur — définition et rôle mécanique 🚨 Bruit de amortisseur : que faire ?'
+  S2: 'Ne pas attendre la panne complete pour intervenir. Symptômes d''usure : - Vehicule qui rebondit excessivement sur les
+    bosses - Fuite huile visible corps amortisseur - Usure asymetrique ou irreguliere des pneus - Bruit de cognement sur routes
+    degradees - Sensation d instabilite en virage ou au freinage - Plus de 80 000 km sans remplacement'
+  S2_DIAG: SymptômeCause probableActionUn bruit anormal au niveau du amortisseur peut se manifester lors de la phase "acceleration"Pour
+    identifier ce probleme de bruit du amortisseur:Verification visuelle du amortisseurDes vibrations provenant du amortisseur
+    sont souvent perceptibles a haute vitessePour identifier ce probleme de vibration du amortisseur:Verification visuelle
+    du amortisseur
+  S3: 'L''amortisseur contrôle les oscillations du ressort de suspension. Un modèle incompatible modifie dangereusement le
+    comportement routier du véhicule.Vérifications indispensables- Essieu : avant ou arrière — les amortisseurs avant et arrière
+    ont des caractéristiques très différentes- Type de fixation : œillet/œillet, tige/œillet, ou tige/coupelle — doit correspondre
+    exactement aux points d''ancrage du véhicule- Longueur comprimé et déployé : mesurer l''amortisseur déposé dans les deux
+    positions (tolérance ± 5 mm)- Technologie : hydraulique, à gaz monotube ou à gaz bitube — le type d''origine est recommandé
+    pour un remplacement standard- Diamètre de tige : 12, 14 ou 16 mm selon le modèle — conditionne la coupelle et l''écrou
+    supérieurMéthode de vérificationRelever la référence OE sur l''amortisseur déposé ou via le VIN. Comparer les cotes et
+    le type de fixation haute et basse.Pour aller plus loin : consultez notre guide d''achat amortisseur — comparatif marques,
+    critères de choix et prix.'
+  S4_DEPOSE: 📖 Avant de démonter, consultez la fiche technique Amortisseur pour connaître les spécifications. - Levez le véhicule.
+    - Démontez le tapis du coffre (si nécessaire pour accéder àla fixation supérieure de l'amortisseur). - Démontez les fixations
+    supérieures de l'amortisseur. - Démontez la roue. - Démontez la fixation inférieure de l'amortisseur. - Démontez l'amortisseur.
+  S4_REPOSE: '- Vérifier que l''amortisseur neuf est identique à celuidémonté. - Contrôlez la butée élastique d?amortisseur
+    et remplacéessi nécessaire. - Remontez l''amortisseur. - Serrez les fixations inférieure et supérieure de l''amortisseur.
+    - Reposez la roue. - Redescendre le véhicule. - Resserrez la roue. - Faire un essai routier. ✅ Après remontage, vérifiez
+    les spécifications dans la fiche technique Amortisseur.'
+  S5: '- Ne changer qu''un seul amortisseur sur un essieu — Un amortisseur neuf d''un côté et un amortisseur usé de l''autre
+    créent une dissymétrie de comportement : le côté neuf rebondit moins que le côté usé, le véhicule se déporte au freinage
+    et la tenue de route devient imprévisible. Remplacer toujours les amortisseurs par paire sur le même essieu, les deux
+    avant ou les deux arrière. - Oublier coupelle, butée et soufflet lors du remplacement — La coupelle supérieure (palier
+    de pivot avant), la butée de suspension et le soufflet de protection de la tige s''usent au même rythme que l''amortisseur.
+    Remonter un amortisseur neuf avec une butée fissurée ou une coupelle à roulement grippé recréera des bruits de claquement
+    à froid dans les 6 mois. Ces pièces sont vendues en kit et représentent un faible surcoût pour une intervention durable.
+    - Utiliser un compresseur de ressorts non homologué ou mal engagé — Le ressort de suspension comprimé stocke une énergie
+    équivalente à plusieurs centaines de joules. Un compresseur endommagé, des crochets mal engagés sur les spires ou une
+    compression asymétrique provoquent une libération violente du ressort pouvant causer des fractures. Utiliser des compresseurs
+    homologués dont les crochets couvrent entièrement les spires. - Serrer l''écrou de tige sans maintenir la tige en rotation
+    — Sur la plupart des amortisseurs, la tige de piston tourne librement sans une clé de maintien. Vissez l''écrou sans immobiliser
+    la tige revient à ne rien serrer : l''écrou tourne dans le vide. Engager une clé Allen (hexagonale femelle) ou un plat
+    de maintien dans l''extrémité de la tige pendant le serrage de l''écrou. - Monter l''amortisseur tête en bas — La tige
+    chromée doit toujours pointer vers le haut. Un amortisseur monotube inversé provoque une fuite d''huile immédiate (la
+    chambre à gaz se retrouve en bas). Vérifier l''orientation avant montage : la tige polie (chromée ou dorée) = partie haute,
+    le corps plus large = partie basse. - Négliger l''amorçage de l''amortisseur neuf — Un amortisseur livré en position comprimée
+    (piston à mi-course) peut contenir une poche d''air résiduelle. Avant montage, comprimer et étendre la tige 5 à 10 fois
+    tige vers le haut (position verticale). Ce geste chasse l''air piégé et garantit une amortissement optimal dès la première
+    sollicitation. - Serrer les silentblocs inférieurs véhicule suspendu — Les silentblocs de la fixation basse de l''amortisseur
+    doivent être serrés au couple en position de charge normale (véhicule posé sur ses roues). Serrer en position levée précontraint
+    le caoutchouc du silentbloc, ce qui provoque des bruits de claquement à froid et réduit la durée de vie du silentbloc
+    à quelques mois. - Omettre le contrôle de géométrie après remplacement avant — Le remplacement des amortisseurs avant
+    modifie parfois légèrement le carrossage et le parallélisme selon le type de suspension. Un train avant mal géométré use
+    les pneus de façon asymétrique (usure latérale d''un flanc) et dévie la trajectoire au freinage. Faire contrôler la géométrie
+    dans les 500 km suivant le remplacement des amortisseurs avant. 📖 Fiche technique Amortisseur — couples de serrage et
+    spécifications constructeur.'
+  S6: 'Contrôles statiques (véhicule au sol)- Vérifier que le véhicule est à la même hauteur des deux côtés (mesurer l''écart
+    aile/sol)- Contrôler le serrage de l''écrou de tige supérieur et des fixations inférieures au couple constructeur- Inspecter
+    que le soufflet de protection est en place et non pincé- Appuyer fermement sur chaque coin du véhicule et relâcher : la
+    caisse doit revenir en position et se stabiliser en 1-2 oscillations maximumTest routier progressif- Rouler à 30 km/h
+    sur route plane : pas de bruit de cognement ni de grincement- Passer sur un ralentisseur à 30 km/h : la caisse absorbe
+    le choc sans rebond excessif- Rouler à 90 km/h : stabilité en ligne droite, pas de flottement ni de louvoiement- Freiner
+    d''urgence : le véhicule doit rester stable et en ligne, sans plongée excessive de l''avant⚠️ Important : Si le véhicule
+    penche d''un côté après remplacement, vérifiez que les ressorts de suspension sont identiques des deux côtés. Un ressort
+    cassé ou affaissé annule l''efficacité de l''amortisseur neuf.'
+  S_GARAGE: 'Nous vous recommandons de confier cette intervention à un professionnel : - Plusieurs causes possibles de défaillance
+    (3 identifiées) nécessitent un diagnostic professionnel Un garagiste qualifié dispose de l''outillage et de l''expérience
+    nécessaires pour effectuer cette opération en toute sécurité.'
+  S7: Quel est le prix d'un amortisseur ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur pour trouver
+    l'amortisseur compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment savoir si l'amortisseur
+    est à changer ?Les signes d'usure les plus courants sont détaillés dans la section diagnostic ci-dessus. En cas de doute,
+    faites contrôler la pièce par un professionnel.Peut-on rouler avec un amortisseur défaillant ?Cela dépend de la gravité
+    du dysfonctionnement et du rôle de la pièce dans la sécurité du véhicule. Consultez la section symptômes pour évaluer
+    l'urgence du remplacement.Lors du remplacement des amortisseurs, inspectez systématiquement ces pièces connexes :- Coupelle
+    d'amortisseur — le roulement de coupelle s'use et provoque des craquements en braquant, remplacer avec l'amortisseur-
+    Butée de suspension — absorbe les fins de course, se désagrège avec le temps, remplacer systématiquement- Soufflet de
+    protection — protège la tige chromée de la corrosion, inclus dans les kits de protection- Ressort de suspension — vérifier
+    l'absence de spire cassée et la hauteur (comparer les deux côtés)- Biellette de barre stabilisatrice — souvent accessible
+    lors de la dépose, vérifier le jeu des rotules- Silent- blocs de bras — un silent-bloc usé transmet les chocs malgré un
+    amortisseur neuf- Roulement de roue — un jeu de roulement peut être confondu avec un bruit d'amortisseur
+  S8: 'Comment savoir si mes amortisseurs sont usés ?Les signes principaux : le véhicule rebondit excessivement sur les bosses,
+    la tenue de route se dégrade en virage, les distances de freinage augmentent, et les pneus s''usent de manière irrégulière.
+    Le test simple : appuyez fermement sur un coin du véhicule et relâchez — s''il rebondit plus d''une fois, l''amortisseur
+    est fatigué. Une fuite d''huile visible sur le corps est un signe évident.Tous les combien faut-il changer les amortisseurs
+    ?La recommandation générale est entre 60 000 et 100 000 km, mais cela dépend fortement des conditions d''utilisation.
+    Sur routes dégradées ou avec un véhicule lourdement chargé, l''usure est plus rapide. Après 80 000 km, faites contrôler
+    leur efficacité même sans symptôme apparent.Amortisseurs à gaz ou hydrauliques, que choisir ?Les amortisseurs à gaz (monotube
+    ou bitube pressurisé) offrent une meilleure tenue de route et résistent mieux à l''échauffement. Les hydrauliques sont
+    plus confortables mais moins performants en usage sportif. Pour un remplacement standard, choisissez le même type que
+    l''origine. Pour améliorer le comportement, passez au gaz monotube.Pourquoi faut-il les changer par paire ?Un amortisseur
+    neuf et un usé créent un déséquilibre dangereux : le côté usé rebondit davantage, réduisant l''adhérence de cette roue
+    au sol. En freinage d''urgence ou en évitement, le véhicule peut devenir instable. Toujours remplacer les deux amortisseurs
+    du même essieu.Les amortisseurs influencent-ils le freinage ?Oui, significativement. Des amortisseurs usés augmentent
+    les distances de freinage de 10 à 20 % car les roues perdent le contact avec le sol lors des rebonds. L''ABS fonctionne
+    moins efficacement quand les roues décollent entre les oscillations.'
+  META: 'Guide remplacement amortisseurs : compatibilité, erreurs courantes, pièces liées et vérifications après montage.
+    Toujours changer par paire.'
 ---
 
 # Amortisseur - Guide Diagnostic Complet
@@ -513,15 +444,6 @@ Possible mais nécessite compresseur de ressorts (dangereux). Géométrie obliga
 
 **Quelle erreur éviter avec les amortisseurs ?**
 Ne jamais changer un seul amortisseur. Toujours par paire sur le même essieu. Vérifier coupelles et butées en même temps.
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/identifier-panne-auto.md 2026-02-21 -->
-### Guide - Comment identifier une panne auto : methodes, signes et urgences
-
-# Comment identifier une panne auto : guide complet
-
 ## Pourquoi identifier soi-meme sa panne ?
 
 Un diagnostic precoce permet d'eviter une panne totale, de reduire le cout de reparation et d'arriver chez le garagiste avec une hypothese claire. 80% des pannes presentent des signes avant-coureurs pendant plusieurs semaines avant l'immobilisation.
@@ -591,39 +513,6 @@ Les codes OBD se lisent avec un scanner OBD2 (disponibles a partir de 30 EUR) :
 7. Appeler le 3477 (societe d'autoroute) depuis une borne d'appel orange ou votre telephone
 
 **Ne jamais tenter de reparer sur la BAU.** Appelez le prestataire agree de l'autoroute.
-
-## FAQ : Identifier sa panne auto
-
-### Comment savoir quel est le probleme de ma voiture ?
-Commencez par observer les symptomes : voyants allumes, bruits, vibrations, odeurs. Si un voyant moteur est allume, lisez le code OBD avec un scanner. Pour les pannes sans voyant, decrivez le symptome (canal sensoriel + moment d'apparition) dans notre outil de diagnostic.
-
-### Comment identifier une panne de demarreur ?
-Un demarreur defaillant se manifeste par un clic unique sans demarrage (relais de demarrage), un grincement de courte duree, ou une absence totale de reaction moteur alors que la batterie est chargee. Le diagnostic se confirme en mesurant la tension aux bornes du demarreur lors de la sollicitation.
-
-### Qu'est-ce qu'une panne voyant ABS ?
-Le voyant ABS orange indique une defaillance du systeme antiblocage. Le freinage normal reste fonctionnel mais l'assistance ABS est desactivee. Cause la plus frequente : capteur ABS de roue defaillant (50-80 EUR la piece). Ne pas ignorer : rouler sans ABS est legalement autorise mais deconseille.
-
-### Comment lire un code panne voiture ?
-Branchez un scanner OBD2 sur le port OBD situe sous le tableau de bord (cote conducteur, generalement sous la colonne de direction). Selectionnez "Lire les codes defaut". Le code P0xxx s'interprete via notre outil ou des bases specialisees. Effacez le code seulement apres reparation.
-
-### Voiture en panne qui ne demarre pas : par ou commencer ?
-Verifiez dans cet ordre : 1) Batterie (tension > 12.4V), 2) Demarreur (bruit de clic = OK cote relais), 3) Bobines et bougies (si moteur tourne mais cale), 4) Circuit d'alimentation (pompe a carburant). Un diagnostic OBD indique souvent la piste exacte.
-
-### Panne mecanique ou electrique : comment savoir ?
-Une panne mecanique est generalement progressive et s'accompagne de bruits ou vibrations. Une panne electrique est souvent soudaine avec voyant allume. L'outil de diagnostic OBD lit les defauts electroniques ; une inspection physique confirme les pannes mecaniques.
-
-### Que faire si un voyant rouge s'allume en conduisant ?
-Un voyant rouge impose l'arret immediat securise du vehicule (huile moteur, temperature moteur, frein). Garez-vous des que possible en securite, coupez le moteur, et n'attendez pas que la situation empire. Relancer un moteur surchauffe ou en manque de pression d'huile cause des dommages irreversibles.
-
-<!-- materialized-from-db guides/selecteur-vehicule-pieces-auto.md 2026-02-17 -->
-### Guide - Sélecteur de véhicule pièces auto : 4 méthodes
-
-# Sélecteur de véhicule pièces auto : 4 méthodes pour trouver la bonne pièce
-
-Chaque véhicule a des spécifications techniques uniques : dimensions de disques, type de fixation, connecteurs électriques. Commander une pièce incompatible peut entraîner un montage impossible, un dysfonctionnement ou un danger. Le sélecteur de véhicule pièces auto garantit que seules les pièces compatibles avec votre véhicule vous sont proposées parmi les 4 millions de références du catalogue Automecanik.
-
-4 méthodes disponibles : plaque d'immatriculation, numéro VIN, sélection manuelle (marque/modèle/motorisation), ou référence OEM.
-
 ## Mots-clés et expressions SEO
 
 ### Intention informationnelle
@@ -770,3 +659,512 @@ Les constructeurs automobiles utilisent plusieurs fournisseurs pour une même pi
 **Solution** : comparez le numéro OE de votre pièce actuelle avec les références propo
 
 [...]
+
+
+## Conseils supplementaires
+
+<!-- materialized-from-db web/2d8006fe60a7 2026-03-03 -->
+### La direction assistée - Sondage au hasard :
+
+## Sondage au hasard :
+
+Pour l'achat d'une auto vous optez pour :
+
+Sur le même sujet
+
+- Fonctionnement d'une voiture électrique
+
+- Les différents types d'hybrides : Micro hybride MHEV, Full hybride (HEV) et PHEV
+
+- Cycle Miller : une variante du cycle classique dit Otto
+
+- Cycle Atkinson : une variante du cycle classique dit Otto
+
+- Otto : le cycle classique d'un moteur à quatre temps
+
+- Les principaux composants d'un moteur thermique
+
+- Les masses mobiles d'un moteur
+
+- Moteur 6 temps Porsche : bien comprendre le fonctionnement
+
+- Les facteurs de pertes du moteur thermiques (rendement)
+
+- Le cycle à 4 temps du moteur diesel en détails
+
+- Le cycle à 4 temps du moteur essence en détails
+
+- Cycle 4 temps : différences entre essence et diesel
+
+- Fonctionnement d'un moteur
+
+- Comment fonctionne la recharge par induction
+
+- Taux de compression : définition, mesures et problèmes potentiels
+
+- Le couvre-culasse : le couvercle de la culasse ?
+
+- Les différentes courroies d'un moteur (distribution et accessoires)
+
+- Recyclage des gaz d'échappement : les différents systèmes
+
+- Les différents mécanismes qui corrigent le jeu aux soupapes
+
+- Poussoirs hydrauliques : utilité et fonctionnement
+
+- Les pastilles de compensation d'usure (soupapes)
+
+- Fonctionnement et constituants du vilebrequin
+
+- Fonctionnement du moteur rotatif (type Wankel)
+
+- Différence entre une vanne EGR haute pression et basse pression
+
+- Pompe à vide : fonctionnement, variantes et problèmes
+
+- Pompe d'injection d'air secondaire : utilité et fonctionnement
+
+- Fonctionnement des galets tendeurs
+
+- Rôle des clapets / volets d'admission
+
+- Les différents capteurs de vitesse
+
+- Les différents types d'échangeurs d'un moteur
+
+- Utilité et rôles de l'échangeur air / air pour un moteur
+
+- Capteurs liés au turbo
+
+- Gestion thermique / refroidissement d'une voiture électrique
+
+- Compression d'un moteur : comment et pourquoi ?
+
+- Principe du starter
+
+- Le régulateur de ralenti / moteur pas à pas
+
+- Fonctionnement de la distribution variable
+
+- Fonctionnement du moteur à compression variable
+
+- Les différents capteurs et sondes d'une voiture
+
+- L'admission d'air
+
+- La poulie damper : rôle et faiblesses
+
+- Utilité et pannes de la sonde lambda
+
+- Différences entre carter sec et humide
+
+- Lubrification avec carter sec
+
+- Le calorstat / Thermostat
+
+- La segmentation d'un moteur
+
+- Reniflard : fonctionnement et problèmes
+
+- Le collecteur d'admission : utilité et fonctionnement
+
+- Double arbre à cames en tête
+
+- Soupapes
+
+- Arbre à cames : rôle, types et emplacements
+
+- Boîtier Papillon
+
+- Fonctionnement de la distribution d'un moteur
+
+- Fonctionnement du débitmètre
+
+- Rôle du boitier BSI (boitier de servitude intelligent)
+
+- Fonctionnement de la vanne EGR
+
+- Fonctionnement d'un alternateur
+
+- Refroidissement moteur
+
+- Fonctionnement d'une bougie d'allumage
+
+- Les types de bougies d'allumage
+
+- L'allumage d'un moteur essence
+
+- Utilité et avantages de la double injection : directe et indirecte
+
+- Canister : fonctionnement et pannes
+
+- Programmation des injecteurs : utilité et méthode
+
+- La charge stratifiée : comment et pourquoi ?
+
+- Circuit de carburant / injection
+
+- Injection monopoint et multipoint
+
+- Différence entre injection classique et rampe commune
+
+- Différence entre injection directe et indirecte
+
+- Fonctionnement de l'injection
+
+- Turbo électrique : fonctionnement et utilité
+
+- Fonctionnement Skyactiv-X
+
+- La Dump Valve : principe
+
+- Différences entre moteur atmosphérique et suralimenté par turbo
+
+- Fonctionnement des moteurs bi-turbo
+
+- Fonctionnement du diesel tri-turbo BMW 50d
+
+- Fonctionnement de la wastegate
+
+- Fonctionnement détaillé du turbo
+
+- Différences entre volant moteur mono-masse et bi-masses
+
+- Volant moteur : utilité et fonctionnement
+
+- Fonctionnement de la transmission Xdrive BMW
+
+- Avantages et inconvénients d'une transmission intégrale 4 roues motrices
+
+- Torque Vectoring / Couple vectoriel : fonctionnement
+
+- Les types de différentiels à glissement limité
+
+- Différen
+
+[...]
+
+## References supplementaires
+
+<!-- materialized-from-db policies/garantie.md 2026-02-22 -->
+### Politique de garantie
+
+# Politique de Garantie AutoMecanik
+
+## Garantie légale de conformité
+
+Conformément aux articles L.217-4 et suivants du Code de la consommation, tous nos produits bénéficient de la **garantie légale de conformité de 2 ans**.
+
+### Couverture
+- Défauts de conformité existant au moment de la livraison
+- Défauts apparaissant dans les 24 mois suivant la livraison
+
+### Présomption de défaut
+- **0 à 24 mois** : Le défaut est présumé exister au moment de la livraison
+- Pas besoin de prouver que le défaut existait à l'achat
+
+## Garantie des vices cachés
+
+Conformément aux articles 1641 et suivants du Code civil, vous êtes protégé contre les vices cachés rendant le produit impropre à son usage.
+
+### Délai d'action
+- 2 ans à compter de la découverte du vice
+
+## Garantie constructeur
+
+Certains produits bénéficient d'une garantie constructeur additionnelle :
+
+| Type de produit | Garantie constructeur |
+|-----------------|----------------------|
+| Batteries | 2 ans |
+| Amortisseurs | 2 ans |
+| Pièces électroniques | 1 an |
+| Pièces d'usure | 6 mois ou 10 000 km |
+
+## Exclusions de garantie
+
+La garantie ne s'applique pas dans les cas suivants :
+
+### Usure normale
+- Plaquettes de frein, disques, embrayage
+- Courroies, filtres, bougies
+- Pneus, balais d'essuie-glace
+
+### Mauvaise utilisation
+- Montage incorrect
+- Non-respect des préconisations constructeur
+- Utilisation sur véhicule non compatible
+
+### Modifications
+- Pièce modifiée ou altérée
+- Réparation effectuée par un tiers non agréé
+
+## Procédure de réclamation
+
+### Étape 1 : Contact
+1. Connectez-vous à votre espace client
+2. Accédez à la commande concernée
+3. Cliquez sur "Signaler un problème"
+4. Joignez des photos du défaut
+
+### Étape 2 : Analyse
+- Notre équipe technique analyse votre demande
+- Réponse sous 48h ouvrées
+- Demande d'informations complémentaires si nécessaire
+
+### Étape 3 : Résolution
+Selon le cas :
+- **Échange** : Envoi d'un nouveau produit
+- **Remboursement** : Intégral si échange impossible
+- **Réparation** : Si applicable (rare)
+
+## Pièces retournées
+
+### Produit défectueux
+- Retour à nos frais (étiquette prépayée)
+- Analyse technique systématique
+
+### Expertise contradictoire
+- En cas de désaccord, expertise indépendante possible
+- Frais partagés, remboursés si défaut confirmé
+
+## Délais de traitement
+
+| Étape | Délai |
+|-------|-------|
+| Accusé réception | 24h |
+| Analyse initiale | 48h |
+| Décision | 5 jours ouvrés |
+| Expédition échange | 24-48h après validation |
+| Remboursement | 5-7 jours ouvrés |
+
+## Contact
+
+Pour toute question relative à la garantie :
+- **Email** : garantie@automecanik.com
+- **Téléphone** : Voir numéro sur le site
+- **Espace client** : Section "Mes commandes"
+
+<!-- materialized-from-db manual/175ae6f22c88 2026-04-03 -->
+### Données techniques OEM — Amortisseur
+
+# Données techniques OEM — Amortisseur
+Source : aftermarket.zf.com + ate-freinage.fr + bremboparts.com (3 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Composite
+- bi-matière
+- composite
+- céramique
+- électrique
+
+## Normes applicables
+- ECE R90
+- SAE J2521
+
+## Matériaux
+- aluminium
+- céramique
+- fonte grise
+- graphite
+
+## Valeurs techniques de référence
+- 1,5 mm
+- 100 %
+- 45 %
+- 700 °C
+- 80 %
+- 85 %
+- 97 %
+
+<!-- materialized-from-db vehicles/renault-clio-3 2026-03-16 -->
+### Fiche véhicule - Renault Clio 3
+
+# Renault Clio 3 (2005-2014)
+
+## Identification
+
+- **Génération** : III (BR/CR)
+- **Production** : 2005 - 2014
+- **Segment** : B (citadine)
+- **Carrosseries** : 3 portes, 5 portes, Estate (break)
+
+## Motorisations principales
+
+### Essence
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.2 16V | 75 ch | D4F |
+| 1.2 TCE | 100 ch | D4F |
+| 1.4 16V | 98 ch | K4J |
+| 1.6 16V | 110 ch | K4M |
+| 2.0 RS | 197/200 ch | F4R |
+
+### Diesel
+| Moteur | Puissance | Code moteur |
+|--------|-----------|-------------|
+| 1.5 dCi | 65/68 ch | K9K |
+| 1.5 dCi | 85/86 ch | K9K |
+| 1.5 dCi | 105/106 ch | K9K |
+
+## Pièces d'usure courantes
+
+### Freinage
+- **Plaquettes avant** : Remplacement 30-40 000 km
+- **Disques avant** : Remplacement 60-80 000 km
+- **Plaquettes arrière** : 50-70 000 km (si disques)
+- **Tambours** : Contrôle à 100 000 km
+
+### Filtration
+- **Filtre à huile** : À chaque vidange
+- **Filtre à air** : 30 000 km ou 2 ans
+- **Filtre habitacle** : 15 000 km ou 1 an
+- **Filtre à carburant** (diesel) : 60 000 km
+
+### Distribution
+- **Type** : Courroie
+- **Intervalle** : 90 000 km ou 5 ans (selon motorisation)
+- **Kit complet** : Courroie + galets + pompe à eau recommandé
+
+## Problèmes connus
+
+### Moteur 1.5 dCi (K9K)
+- Vanne EGR : Encrassement fréquent
+- Injecteurs : Fuite de carburant (rappel)
+- Turbo : Usure prématurée (huile de qualité importante)
+
+### Électricité
+- Platine fusibles : Problèmes de contacts
+- Capteur pédale accélérateur : Défaillance
+
+### Train roulant
+- Rotules de direction : Usure normale
+- Silent-blocs bras : À contrôler à 100 000 km
+
+## Rappels constructeur
+
+| Rappel | Motorisation | Période | Détail |
+|--------|-------------|---------|--------|
+| Injecteurs Delphi — fuite carburant | 1.5 dCi (K9K) | 2005-2010 | Fuite au raccord haute pression des injecteurs. Risque incendie. Remplacement gratuit des joints et clips de fixation. Concerne ~500 000 véhicules en Europe. |
+| Platine fusibles — court-circuit | Toutes motorisations | 2006-2009 (certaines séries) | Défaut de soudure sur la platine fusibles habitacle pouvant provoquer un dysfonctionnement électrique. Remplacement platine en concession. |
+| Pédale accélérateur — signal erratique | 1.5 dCi | 2007-2009 | Capteur de position pédale accélérateur défaillant pouvant causer des à-coups ou une perte de puissance. Remplacement du capteur. |
+
+> **Vérification** : le numéro de rappel est consultable sur rappel.renault.fr avec le VIN du véhicule.
+
+## Intervalles d'entretien
+
+### Vidange
+- **Essence** : 15 000 km ou 1 an
+- **Diesel** : 20 000 km ou 1 an
+
+### Contrôle général
+- Tous les 20 000 km ou 1 an
+
+## Références OEM courantes
+
+| Pièce | Référence Renault |
+|-------|-------------------|
+| Filtre à huile 1.5 dCi | 8200768927 |
+| Filtre à air 1.5 dCi | 8200431051 |
+| Plaquettes avant | 410602192R |
+| Disques avant | 402069518R |
+| Courroie distribution | 130C17529R |
+
+## Conseils propriétaire
+
+1. **Respectez la norme d'huile, pas seulement la viscosité.** Sur les 1.5 dCi avec FAP, utiliser 5W-30 norme RN0720/C4. Une huile non conforme encrasse le FAP. Essence : 5W-40 norme RN0700.
+2. **Surveillez le calorstat sur les 1.5 dCi.** Un calorstat bloqué ouvert empêche le moteur d'atteindre sa température, augmente la consommation et favorise l'encrassement. Symptôme : chauffage défaillant en hiver. Remplacement 50-100€.
+3. **Attention au joint de collecteur d'échappement (1.2 16V D4F).** Bruit métallique à froid = fuite au joint. À remplacer rapidement sous peine d'endommager la sonde lambda.
+4. **Roulez 20 min pour régénérer le FAP.** Trajets courts urbains empêchent la régénération. Faire régulièrement un trajet à 3000 tr/min sur voie rapide.
+5. **Ne confondez pas TCe et D4F.** Le 1.2 TCe 100ch (turbo) ≠ 1.2 16V atmosphérique D4F. Intervalles, huile, filtre différents. Vérifier le code moteur (plaque constructeur porte gauche).
+
+## Coûts d'entretien
+
+| Opération | Fourchette (pièces + MO) | Fréquence |
+|-----------|-------------------------|-----------|
+| Vidange + filtre à huile | 60-120€ | 15000km/1an (diesel) — 20000km/2ans (essence) |
+| Kit distribution + pompe à eau | 400-700€ | 90000km/5ans (dCi) — 120000km/6ans (essence) |
+| Plaquettes + disques freins avant | 150-280€ | 30000-50000km |
+| Plaquettes + disques freins arrière | 100-200€ | 60000-80000km |
+| Amortisseurs avant (paire) | 200-350€ | 80000-120000km |
+| Amortisseurs arrière (paire) | 150-280€ | 80000-120000km |
+| Kit embrayage complet | 450-750€ | 120000-180000km |
+
+## Spécifications techniques
+
+### Dimensions
+| Paramètre | 3/5 portes | Estate |
+|-----------|-----------|--------|
+| Longueur | 3990mm | 4235mm |
+| Largeur | 1720mm | 1720mm |
+| Hauteur | 1498mm | 1470mm |
+| Empattement | 2472mm | 2587mm |
+
+### Poids à vide
+| Motorisation | Poids |
+|-------------|-------|
+| 1.2 16V 75ch (D4F) | 1010-1060kg |
+| 1.4 16V 98ch (K4J) | 1090kg |
+| 1.6 16V 110ch (K4M) | 1110kg |
+| 2.0 RS 197/200ch (F4R) | 1240-1280kg |
+| 1.5 dCi 65/68ch (K9K) | 1090-1120kg |
+| 1.5 dCi 85/86ch (K9K) | 1100-1140kg |
+| 1.5 dCi 105/106ch (K9K) | 1140-1170kg |
+
+### Volumes et capacités
+| Paramètre | Valeur |
+|-----------|--------|
+| Coffre 5 portes | 288L (1038L sièges rabattus) |
+| Coffre Estate | 439L (1380L sièges rabattus) |
+| Réservoir essence | 55L |
+| Réservoir diesel | 50L |
+| Huile moteur 1.2 16V | 3.3L |
+| Huile moteur 1.5 dCi | 4.5L (avec filtre) |
+| Huile moteur 2.0 RS | 5.2L |
+
+## FAQ véhicule
+
+**Q1 : Quand changer la courroie de distribution sur une Clio 3 ?**
+Essence : 120000km ou 6 ans. Diesel 1.5 dCi : 90000km ou 5 ans. Ne pas dépasser sous peine de casse moteur.
+
+**Q2 : Problèmes vanne EGR 1.5 dCi ?**
+Encrassement fréquent en usage urbain. Symptômes : perte de puissance, fumées noires, voyant moteur. Nettoyage tous les 30000-40000km recommandé. Remplacement : 200-400€.
+
+**Q3 : Quelle huile pour ma Clio 3 ?**
+Essence : 5W-40 norme RN0700. Diesel : 5W-30 norme RN0720 (sans FAP) ou C4/RN0720 (avec FAP).
+
+**Q4 : Pièces compatibles avec d'autres Renault ?**
+Oui. La Clio 3 partage pièces avec Modus, Twingo II, Kangoo II (moteurs K9K et D4F, freinage, filtres, train roulant).
+
+**Q5 : Turbo 1.5 dCi qui siffle ?**
+Le turbo BorgWarner KP35 peut s'user après 150000km si vidanges non respectées. Peut aussi être une durite fissurée ou électrovanne de suralimentation.
+
+**Q6 : Fréquence vidange ?**
+Diesel : 15000km ou 1 an. Essence : 20000km ou 2 ans. Raccourcir de 20-30% en usage urbain.
+
+**Q7 : Injecteurs fragiles ?**
+Les injecteurs Delphi du K9K sont un point sensible. Fuite joint cuivre ou défaut pulvérisation après 120000km. Remplacement : 150-350€/injecteur.
+
+## Conseils saisonniers
+
+### Hiver
+- **Batterie** : tester après 4-5 ans, remplacer si <70% capacité (50-60Ah)
+- **Pneus** : hiver en 185/65 R15, ou 4 saisons pour usage urbain
+- **Liquide refroidissement** : Type D (Renault Glaceol RX), protection -35°C, ne pas mélanger
+- **Éclairage** : ampoules H7 (croisement) + H1 (route), garder un jeu de rechange
+
+### Été
+- **Climatisation** : vérifier gaz R134a tous les 2-3 ans (remplacement compresseur : 500-900€)
+- **Refroidissement** : inspecter durites et bouchon vase expansion (fissure fréquente Clio 3)
+- **Filtre habitacle** : remplacer au printemps (accès boîte à gants, simple à faire)
+
+## Véhicules proches (même plateforme / pièces partagées)
+
+| Modèle | Années | Ce qui est partagé |
+|--------|--------|-------------------|
+| Renault Modus / Grand Modus | 2004-2012 | Plateforme B, moteurs D4F/K9K, boîte JH3/JR5, train roulant avant |
+| Renault Twingo II | 2007-2014 | Moteurs D4F/K9K, freinage, filtration, allumage |
+| Dacia Sandero I | 2008-2012 | Plateforme B90, moteur K9K, freinage, liaison au sol |
+| Nissan Micra K12 | 2003-2010 | Plateforme Nissan B, train roulant, direction, freinage |
+| Renault Kangoo II | 2008-2021 | Moteur K9K, filtres, injecteurs, turbo, accessoires moteur |

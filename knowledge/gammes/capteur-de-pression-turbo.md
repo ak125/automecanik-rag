@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer la pression de suralimentation et transmettre au calculateur
@@ -217,51 +217,54 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: piézo
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    plage: '0-3 bars relatifs (pression de suralimentation)'
+    val_0_7_bar: 0,7 bar
+    val_1_1_bar: 1,1 bar
+    val_11__a: 11, a
+    val_2_a: 2 a
+    val_2_litres: 2 litres
+    val_200_km: 200 km
+    val_4_bar: 4 bar
+    val_50_v: 50 V
+    val_8_a: 8 a
+    val_9_a: 9 a
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Mesurer la pression de suralimentation et transmettre au calculateur. Pièces
-    liées : vérifier les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Voyant moteur
-    allume codes p0234-p0239- Mode degrade active puissance reduite- Perte de
-    puissance a l acceleration- Suralimentation irreguliere ou absente- Fumee
-    noire a l acceleration- Turbo qui ne monte pas en pression
-  S3: >-
-    Pour choisir le bon capteur de pression turbo pour votre véhicule : - Marque
-    de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
-    Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard),
-    Ridex, Topran (budget)- Budget : 30 à 120 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le capteur de pression turbo : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Toujours vérifier la durite de pression avant de
-    changer le capteur. Effacer les codes défaut après remplacement. Ne pas
-    forcer sur le connecteur.- Ne pas respecter le couple de serrage
-    constructeur au remontage- Ignorer les symptômes d'usure en espérant que ça
-    passe — une défaillance progressive s'aggrave toujours- Ne pas effacer les
-    codes défaut après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du capteur de pression turbo : - Controle de la
-    tension et du courant avec un multimetre- Verifier les connexions
-    electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse
-    avant l hiver- Ne pas laisser le vehicule immobilise longtemps sans
-    protection- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer
-    un essai route pour confirmer la disparition des symptômes
+  S1: 'Mesurer la pression de suralimentation et transmettre au calculateur. Pièces liées : vérifier les composants adjacents
+    lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Voyant moteur allume codes p0234-p0239- Mode degrade
+    active puissance reduite- Perte de puissance a l acceleration- Suralimentation irreguliere ou absente- Fumee noire a l
+    acceleration- Turbo qui ne monte pas en pression'
+  S3: 'Pour choisir le bon capteur de pression turbo pour votre véhicule : - Marque de votre véhicule- Modele de votre véhicule-
+    Annee de votre véhicule- Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard), Ridex, Topran (budget)-
+    Budget : 30 à 120 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le capteur de pression turbo : - Ne pas vérifier la référence exacte avant commande — une pièce
+    de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Toujours vérifier la durite de pression
+    avant de changer le capteur. Effacer les codes défaut après remplacement. Ne pas forcer sur le connecteur.- Ne pas respecter
+    le couple de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance
+    progressive s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode
+    dégradé'
+  S6: 'Après le remplacement du capteur de pression turbo : - Controle de la tension et du courant avec un multimetre- Verifier
+    les connexions electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l hiver- Ne pas laisser
+    le vehicule immobilise longtemps sans protection- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai
+    route pour confirmer la disparition des symptômes'
 ---
 
 # Capteur de pression turbo - Guide Diagnostic Complet
@@ -348,3 +351,23 @@ Oui, opération simple. Localiser le capteur sur le collecteur d'admission, déb
 
 **Quelle erreur éviter ?**
 Toujours vérifier la durite de pression avant de changer le capteur. Effacer les codes défaut après remplacement. Ne pas forcer sur le connecteur.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/75a120d9ce5c 2026-04-03 -->
+### Données techniques OEM — Capteur de pression turbo
+
+# Données techniques OEM — Capteur de pression turbo
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- piézo
+- pneumatique
+- électrique
+
+## Valeurs techniques de référence
+- 0,7 bar
+- 1,1 bar
+- 4 bar

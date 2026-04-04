@@ -214,10 +214,10 @@ installation:
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
 phase5_enrichment:
-  _source: ate-freinage.fr + hella.com
+  _source: ate-freinage.fr + bremboparts.com + hella.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 3
+  _enriched_at: '2026-04-03'
+  _web_files_count: 4
   _has_tech_data: true
   materials:
   - materiau: 'aluminium'

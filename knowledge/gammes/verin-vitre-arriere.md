@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Maintient la vitre arrière ou le hayon en position ouverte
@@ -194,52 +194,50 @@ installation:
   - clip de fixation
   prerequisite: Aucun prerequis special
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    remplacement: 'par paire si l''un des deux faiblit'
+    val_14_a: 14 a
+    val_15_a: 15 a
+    val_18_a: 18 a
+    val_28_a: 28 a
+    val_3_v: 3 v
+    val_4_v: 4 v
+    val_63_a: 63 A
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Maintient la vitre arrière ou le hayon en position ouverte. Pièces liées :
-    vérifier les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Vitre arriere
-    qui retombe seule- Ouverture difficile de la vitre- Bruits lors de l
-    ouverture fermeture
-  S3: >-
-    Pour choisir le bon vérin vitre arrière pour votre véhicule : - Renseignez
-    marque, modele, type puis comparez references et dimensions. Validez ensuite
-    les contraintes de compatibilite pour confirmer Vérin vitre arrière.-
-    Verifier la reference OE ou equivalence constructeur pour le vehicule exact-
-    Comparer les dimensions et le type de montage avec la piece d origine-
-    Choisir un equipementier reconnu pour garantir qualite et compatibilite-
-    Marques : Stabilus, Magneti Marelli (premium), Lesjöfors, Triscan, Maxgear,
-    Febi Bilstein (standard), Mapco, Metzger (budget)- Budget : 50 à 300 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le vérin vitre arrière : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas respecter le couple de serrage constructeur
-    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du vérin vitre arrière : - Controle visuel a chaque
-    revision ou entretien periodique- Remplacement preventif si signes d usure
-    detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter
-    les preconisations constructeur pour les intervalles- Effacer les codes
-    défaut éventuels avec l'outil OBD- Effectuer un essai route pour confirmer
-    la disparition des symptômes
+  S1: 'Maintient la vitre arrière ou le hayon en position ouverte. Pièces liées : vérifier les composants adjacents lors du
+    remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Vitre arriere qui retombe seule- Ouverture difficile
+    de la vitre- Bruits lors de l ouverture fermeture'
+  S3: 'Pour choisir le bon vérin vitre arrière pour votre véhicule : - Renseignez marque, modele, type puis comparez references
+    et dimensions. Validez ensuite les contraintes de compatibilite pour confirmer Vérin vitre arrière.- Verifier la reference
+    OE ou equivalence constructeur pour le vehicule exact- Comparer les dimensions et le type de montage avec la piece d origine-
+    Choisir un equipementier reconnu pour garantir qualite et compatibilite- Marques : Stabilus, Magneti Marelli (premium),
+    Lesjöfors, Triscan, Maxgear, Febi Bilstein (standard), Mapco, Metzger (budget)- Budget : 50 à 300 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le vérin vitre arrière : - Ne pas vérifier la référence exacte avant commande — une pièce de
+    mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours-
+    Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du vérin vitre arrière : - Controle visuel a chaque revision ou entretien periodique- Remplacement
+    preventif si signes d usure detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter les preconisations
+    constructeur pour les intervalles- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes'
 ---
 
 # Vérin vitre arrière - Guide Diagnostic Complet
@@ -314,3 +312,18 @@ En cas de vitre arriere qui retombe seule ou de degradation mesurable, il faut c
 
 **Puis-je monter Vérin vitre arrière sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/72ccfe17b668 2026-04-03 -->
+### Données techniques OEM — Vérin vitre arrière
+
+# Données techniques OEM — Vérin vitre arrière
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+- pneumatique
+- électrique

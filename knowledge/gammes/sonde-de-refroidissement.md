@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -217,19 +217,14 @@ installation:
   - bac de recuperation
   prerequisite: Moteur froid, circuit vidange avant depose
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  types_variants:
-  - type: Sonde NTC (Coefficient Temperature Negatif)
-    description: Resistance diminue quand temperature augmente
-    era: standard universel
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    resistance_25C: '2,0 - 6 kohms (moteur froid)'
-    resistance_80C: '~300 ohms (moteur chaud)'
-    tension_reference: '5V fournie par calculateur'
-    continuite_cablage: '~0 ohm'
-    isolement_masse: '> 30 Mohms'
+    val_195_8__c: '195,8 °C'
+    val_23_a: '23 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

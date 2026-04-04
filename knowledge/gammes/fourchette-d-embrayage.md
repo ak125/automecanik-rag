@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6-final
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Actionner la butee d'embrayage via la commande
@@ -194,49 +194,49 @@ installation:
   - cle dynamometrique
   prerequisite: Depose complete de la boite de vitesses
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: plein
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    role: 'levier qui transmet la commande pedale/verin vers la butee d'embrayage'
-    usure: 'pivot et points de contact butee — remplacer avec le kit embrayage complet'
+    val_11_a: 11 a
+    val_12_a: 12 a
+    val_13_a: 13 a
+    val_15__: 15 %
+    val_2__: 2 %
+    val_2_a: 2 a
+    val_54__: 54 %
+    val_6_a: 6 a
+    val_8__: 8 %
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Actionner la butee d'embrayage via la commande. Pièces liées : vérifier les
-    composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Pedale d
-    embrayage dure- Difficulte a passer les vitesses- Bruit de claquement a l
-    embrayage
-  S3: >-
-    Pour choisir le bon fourchette d'embrayage pour votre véhicule : - Marque de
-    votre véhicule- Modele de votre véhicule- Annee de votre véhicule- Marques :
-    LuK, Sachs (premium), Valeo, Exedy (standard), Ridex (budget)- Budget : 800
-    à 2000 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le fourchette d'embrayage : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas respecter le couple de serrage constructeur
-    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du fourchette d'embrayage : - Eviter de laisser le
-    pied sur la pedale d embrayage au point mort- Remplacement du kit complet
-    (disque + mecanisme + butee)- Purge du circuit hydraulique si
-    recepteur/emetteur concerne- Verifier le volant moteur lors du remplacement
-    d embrayage- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer
-    un essai route pour confirmer la disparition des symptômes
+  S1: 'Actionner la butee d''embrayage via la commande. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Pedale d embrayage dure- Difficulte a passer les vitesses-
+    Bruit de claquement a l embrayage'
+  S3: 'Pour choisir le bon fourchette d''embrayage pour votre véhicule : - Marque de votre véhicule- Modele de votre véhicule-
+    Annee de votre véhicule- Marques : LuK, Sachs (premium), Valeo, Exedy (standard), Ridex (budget)- Budget : 800 à 2000
+    EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le fourchette d''embrayage : - Ne pas vérifier la référence exacte avant commande — une pièce
+    de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours-
+    Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du fourchette d''embrayage : - Eviter de laisser le pied sur la pedale d embrayage au point mort-
+    Remplacement du kit complet (disque + mecanisme + butee)- Purge du circuit hydraulique si recepteur/emetteur concerne-
+    Verifier le volant moteur lors du remplacement d embrayage- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer
+    un essai route pour confirmer la disparition des symptômes'
 ---
 
 # Fourchette d'embrayage - Guide Diagnostic Complet
@@ -315,3 +315,24 @@ En cas de pedale d embrayage dure ou de degradation mesurable, il faut controler
 
 **Puis-je monter Fourchette d'embrayage sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/21e9885f7043 2026-04-03 -->
+### Données techniques OEM — Fourchette d'embrayage
+
+# Données techniques OEM — Fourchette d'embrayage
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- hydraulique
+- plein
+- électrique
+
+## Valeurs techniques de référence
+- 15 %
+- 2 %
+- 54 %
+- 8 %

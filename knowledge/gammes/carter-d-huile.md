@@ -195,10 +195,10 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: gpa26.com
+  _source: fr.wikipedia.org + gpa26.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 3
+  _enriched_at: '2026-04-03'
+  _web_files_count: 4
   _has_tech_data: true
   technical_notes:
     val_23_a: '23 a'
@@ -227,7 +227,7 @@ conseil_v5:
     d'une fuited'huile au niveau du carter. - Allumage du témoin deniveau
     d'huile moteur dans le tableau de bord à cause d'une fuite d'huile dansle
     carter. - Fissure oudéformation dans le carter d'huile. - Une fausse
-    manuvrelors du serrage du bouchon de vidange d'huile peut endommager le
+    manuvrelors du serrage du bouchon de vidange d'huile peut endommager le
     filetage quiva créer une fuite d'huile dans le carter. Un carter d'huile HS
     et qu'il n'est pas remplacé à temps amèneà une fuite d'huile dans ce cas
     tous les pièces du moteur ne serrons paslubrifié ce qui peut causer la casse

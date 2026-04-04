@@ -239,7 +239,7 @@ conseil_v5:
     plusieurs symptômes : - Fissure ou craquelure au niveau du soufflet de
     direction. - Des traces de graisse côté roue dans ce cas le soufflet de
     direction estpercé. Si un soufflet de directionest HS, dans ce cas la barre
-    de direction ne sera plus graissé qui peut amenerà lusure dautre pièces :
+    de direction ne sera plus graissé qui peut amenerà l'usure d'autre pièces :
     - Barre de direction. - Crémaillère de direction. - Rotule de direction .
     Diagnostic complet : identifier une panne de soufflet de direction
   S3: >-

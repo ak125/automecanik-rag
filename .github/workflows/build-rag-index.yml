@@ -19,6 +19,14 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install PyYAML
+        run: pip install pyyaml --quiet
+
       - name: 🔍 Validate frontmatter and truth_level
         id: validate
         run: |
@@ -64,3 +72,54 @@ jobs:
             echo "::error::No valid documents found"
             exit 1
           fi
+
+      - name: 🧪 Parse YAML frontmatter (strict)
+        run: |
+          python3 - <<'EOF'
+          import yaml, re, sys, glob, os
+
+          errors = []
+
+          for path in sorted(glob.glob('knowledge/**/*.md', recursive=True)):
+              content = open(path, encoding='utf-8', errors='replace').read()
+              m = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+              if not m:
+                  continue  # already reported by bash step above
+              try:
+                  yaml.safe_load(m.group(1))
+              except yaml.YAMLError as e:
+                  errors.append(f'{path}: {str(e)[:200]}')
+
+          if errors:
+              print(f'❌ {len(errors)} file(s) have invalid YAML frontmatter:')
+              for e in errors:
+                  print(f'  {e}')
+              sys.exit(1)
+
+          print(f'✅ All frontmatter blocks parse as valid YAML')
+          EOF
+
+  build-index:
+    name: 🚀 Build Weaviate Index
+    runs-on: ubuntu-latest
+    needs: validate
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install weaviate-client pyyaml fastembed --quiet
+
+      - name: 🔄 Run reindex
+        env:
+          WEAVIATE_URL: ${{ secrets.WEAVIATE_URL }}
+          WEAVIATE_API_KEY: ${{ secrets.WEAVIATE_API_KEY }}
+        run: |
+          python scripts/reindex.py --path knowledge/

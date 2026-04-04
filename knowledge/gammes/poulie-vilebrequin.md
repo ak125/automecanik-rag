@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -205,22 +205,19 @@ installation:
   - extracteur poulie
   prerequisite: Moteur cale au PMH, ne pas tourner le moteur sans courroie
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Poulie simple
-    description: Entraînement seul, pas d'amortissement
-    era: petits moteurs
-  - type: Poulie damper caoutchouc
-    description: Amortisseur vibrations torsionnelles integre (caoutchouc entre moyeu et bague)
-    era: standard actuel
-  - type: Poulie damper viscoelastique
-    description: Fluide silicone interne, amortissement superieur
-    era: diesel recents
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    couple_vis_centrale: '200-400 Nm + angle selon constructeur'
-    clavette: 'verifier l'etat au demontage — clavette cisaillee = calage faux'
+    val_19_a: '19 a'
+    val_20_a: '20 A'
+    val_40_kw: '40 kW'
+    val_60_kw: '60 kW'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

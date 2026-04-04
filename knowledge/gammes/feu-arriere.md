@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -216,17 +216,35 @@ installation:
   - gants (ne pas toucher ampoule halogene)
   prerequisite: Moteur eteint, acces par compartiment moteur ou coffre
 phase5_enrichment:
-  _source: HELLA TechWorld
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    intensite_stop: 'min 60 cd (rouge)'
-    intensite_position: '4 cd (rouge)'
-    frequence_clignotant: '60-120 flashs/min (orange)'
-    surface_antibrouillard: 'max 140 cm2 (rouge)'
-    intensite_eclaireur_plaque: 'min 2,5 cd/m2 (blanc)'
-    hauteur_montage: '350-1500 mm'
-    espacement_lateral: 'min 600 mm'
+    val_110_mm: '110 mm'
+    val_120_mm: '120 mm'
+    val_13_a: '13 a'
+    val_187_v: '187 v'
+    val_2_a: '2 a'
+    val_20_km: '20 km'
+    val_24_a: '24 a'
+    val_29_a: '29 a'
+    val_3_a: '3 a'
+    val_30_km: '30 km'
+    val_365_a: '365 a'
+    val_365_v: '365 v'
+    val_45_km: '45 km'
+    val_5_km: '5 km'
+    val_90_mm: '90 mm'
+  materials:
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -256,7 +274,7 @@ conseil_v5:
     du côté droit de la voiture. Les catadioptres rouges : ce sont 2
     dispositifsréfléchissants rouges, leurs rôle est de refléter au conducteur
     lalumière des feux avant de la voiture, ce qui va permettre de signaler
-    àl'usager de lautre automobile la présence d'un autre véhicule devant lui
+    àl'usager de l'autre automobile la présence d'un autre véhicule devant lui
     mêmesi les feux de position de celle de devant ne sont pas allumés. Les feux
     de position : cetype d'éclairage est utilisé dans des situations de faible
     visibilité, ilsservent pour être vu par les usagers de la route, mais ils ne

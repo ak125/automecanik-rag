@@ -215,18 +215,21 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: delphiautoparts.com
+  _source: delphiautoparts.com + fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
-  _web_files_count: 9
+  _enriched_at: '2026-04-03'
+  _web_files_count: 10
   _has_tech_data: true
   types_variants:
   - type: 'électrique'
     source_ref: corpus RAG web OEM
   technical_notes:
+    val_000_v: '000 V'
     val_000_v: '000 v'
     val_100_a: '100 a'
+    val_12_v: '12 V'
     val_12_v: '12 v'
+    val_20_a: '20 A'
     val_7_a: '7 a'
 conseil_v5:
   _sync_source: __seo_gamme_conseil

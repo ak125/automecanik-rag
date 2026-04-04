@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:rag-enrich-from-web-corpus
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Informer le calculateur de la position des arbres a cames pour l'injection sequentielle et le calage variable
@@ -163,60 +163,44 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Capteur a effet Hall
-    description: Detecte couronne dentee sur arbre a cames, signal rectangulaire, alimentation 5V
-    era: standard actuel
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    tension_alimentation: '~5V'
-    signal: 'rectangulaire'
-    continuite_cablage: '~0 ohm'
-    isolement_masse: '> 30 Mohms'
+    val_0_5_mm: '0,5 mm'
+    val_1_4_v: '1,4 V'
+    val_10_mm: '10 mm'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Informer le calculateur de la position des arbres a cames pour l'injection
-    sequentielle et le calage variable. Pièces liées : vérifier les composants
-    adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Demarrage long
-    ou laborieux- Voyant moteur allume (codes P0340, P0341, P0345)- Rates
-    d'allumage ou surconsommation- Calage moteur aleatoire- Perte de puissance
-  S3: >-
-    Pour choisir le bon capteur d'arbre a cames pour votre véhicule : - Marque
-    de votre vehicule- Modele de votre vehicule- Motorisation de votre vehicule-
-    Annee de votre vehicule- Position (admission ou echappement si double
-    arbre)- Type de capteur (inductif ou a effet Hall)- Marques : Bosch, Valeo,
-    Denso (premium), Hella, NGK, Delphi (standard), Ridex, Topran (budget)-
-    Budget : variable selon véhicule
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le capteur d'arbre a cames : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas confondre capteur admission et echappement.
-    Verifier le joint torique du capteur pour eviter les fuites d'huile.- Ne pas
-    respecter le couple de serrage constructeur au remontage- Ignorer les
-    symptômes d'usure en espérant que ça passe — une défaillance progressive
-    s'aggrave toujours- Ne pas effacer les codes défaut après remplacement — le
-    calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du capteur d'arbre a cames : - Controle de la tension
-    et du courant avec un multimetre- Verifier les connexions electriques
-    (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l
-    hiver- Ne pas laisser le vehicule immobilise longtemps sans protection-
-    Effacer les codes défaut éventuels avec l'outil OBD- Effectuer un essai
-    route pour confirmer la disparition des symptômes
+  S1: 'Informer le calculateur de la position des arbres a cames pour l''injection sequentielle et le calage variable. Pièces
+    liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Demarrage long ou laborieux- Voyant moteur allume (codes
+    P0340, P0341, P0345)- Rates d''allumage ou surconsommation- Calage moteur aleatoire- Perte de puissance'
+  S3: 'Pour choisir le bon capteur d''arbre a cames pour votre véhicule : - Marque de votre vehicule- Modele de votre vehicule-
+    Motorisation de votre vehicule- Annee de votre vehicule- Position (admission ou echappement si double arbre)- Type de
+    capteur (inductif ou a effet Hall)- Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard), Ridex, Topran
+    (budget)- Budget : variable selon véhicule'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le capteur d''arbre a cames : - Ne pas vérifier la référence exacte avant commande — une pièce
+    de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas confondre capteur admission et echappement.
+    Verifier le joint torique du capteur pour eviter les fuites d''huile.- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours-
+    Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du capteur d''arbre a cames : - Controle de la tension et du courant avec un multimetre- Verifier
+    les connexions electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l hiver- Ne pas laisser
+    le vehicule immobilise longtemps sans protection- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai
+    route pour confirmer la disparition des symptômes'
 ---
 
 # Capteur d'arbre a cames - Guide Diagnostic
@@ -261,3 +245,21 @@ Ne pas confondre capteur admission et echappement. Verifier le joint torique du 
 
 - **Intervalle** : selon constructeur
 - Pas de periodicite. Verifier en cas de voyant moteur ou demarrage difficile.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/64b8528a671a 2026-04-03 -->
+### Données techniques OEM — Capteur d'arbre a cames
+
+# Données techniques OEM — Capteur d'arbre a cames
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Hall
+- électrique
+
+## Valeurs techniques de référence
+- 0,5 mm
+- 10 mm

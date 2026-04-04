@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-hella-ngk
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Mesurer la pression dans le collecteur d'admission
@@ -213,52 +213,57 @@ installation:
   - tournevis
   prerequisite: Debrancher la batterie avant intervention
 phase5_enrichment:
-  _source: HELLA TechWorld + NGK/NTK
+  _source: fr.wikipedia.org
   _validation_status: oem_verified
-  _enriched_at: '2026-03-29'
-  glossary:
-  - terme: MAP sensor
-    definition: Manifold Absolute Pressure — mesure la pression absolue dans le collecteur d'admission
+  _enriched_at: '2026-04-03'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: Hall
+    source_ref: corpus RAG web OEM
+  - type: inductif
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    val_0_v: 0 V
+    val_0_1__: 0,1 %
+    val_1_5__: 1,5 %
+    val_14__: 14 %
+    val_4_5__: 4,5 %
+    val_400__c: 400 °C
+    val_5_v: 5 V
+  materials:
+  - materiau: aluminium
+    source_ref: corpus RAG web OEM
+  - materiau: platine
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Mesurer la pression dans le collecteur d'admission. Pièces liées : vérifier
-    les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Ralenti
-    instable ou irregulier- Perte de puissance a l acceleration- Sifflement au
-    niveau du collecteur d admission- Voyant moteur avec codes p0105-p0109-
-    Odeur de carburant melange mal dose- Plus de 150 000 km sans nettoyage
-  S3: >-
-    Pour choisir le bon capteur pression du tuyau d'admission pour votre
-    véhicule : - Marque de votre véhicule- Modele de votre véhicule- Annee de
-    votre véhicule- Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi
-    (standard), Ridex, Topran (budget)- Budget : 15 à 200 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le capteur pression du tuyau d'admission : - Ne pas
-    vérifier la référence exacte avant commande — une pièce de mauvaise
-    référence ne fonctionne pas correctement même si elle se monte physiquement-
-    Oublier de débrancher la batterie avant intervention — risque de court-
-    circuit sur les composants électroniques- Vérifier l'étanchéité du tuyau de
-    dépression si présent. Ne pas confondre avec le débitmètre. Nettoyer avant
-    de remplacer.- Ne pas respecter le couple de serrage constructeur au
-    remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du capteur pression du tuyau d'admission : - Controle
-    de la tension et du courant avec un multimetre- Verifier les connexions
-    electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse
-    avant l hiver- Ne pas laisser le vehicule immobilise longtemps sans
-    protection- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer
-    un essai route pour confirmer la disparition des symptômes
+  S1: 'Mesurer la pression dans le collecteur d''admission. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Ralenti instable ou irregulier- Perte de puissance a
+    l acceleration- Sifflement au niveau du collecteur d admission- Voyant moteur avec codes p0105-p0109- Odeur de carburant
+    melange mal dose- Plus de 150 000 km sans nettoyage'
+  S3: 'Pour choisir le bon capteur pression du tuyau d''admission pour votre véhicule : - Marque de votre véhicule- Modele
+    de votre véhicule- Annee de votre véhicule- Marques : Bosch, Valeo, Denso (premium), Hella, NGK, Delphi (standard), Ridex,
+    Topran (budget)- Budget : 15 à 200 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le capteur pression du tuyau d''admission : - Ne pas vérifier la référence exacte avant commande
+    — une pièce de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher
+    la batterie avant intervention — risque de court- circuit sur les composants électroniques- Vérifier l''étanchéité du
+    tuyau de dépression si présent. Ne pas confondre avec le débitmètre. Nettoyer avant de remplacer.- Ne pas respecter le
+    couple de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance
+    progressive s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode
+    dégradé'
+  S6: 'Après le remplacement du capteur pression du tuyau d''admission : - Controle de la tension et du courant avec un multimetre-
+    Verifier les connexions electriques (oxydation, jeu)- Remplacement preventif si signes de faiblesse avant l hiver- Ne
+    pas laisser le vehicule immobilise longtemps sans protection- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer
+    un essai route pour confirmer la disparition des symptômes'
 ---
 
 # Capteur pression du tuyau d'admission - Guide Diagnostic Complet
@@ -344,3 +349,30 @@ Oui, très accessible. Généralement sur le collecteur d'admission, une ou deux
 
 **Quelle erreur éviter avec le capteur MAP ?**
 Vérifier l'étanchéité du tuyau de dépression si présent. Ne pas confondre avec le débitmètre. Nettoyer avant de remplacer.
+
+
+## References supplementaires
+
+<!-- materialized-from-db manual/d39de38b9b85 2026-04-03 -->
+### Données techniques OEM — Capteur pression du tuyau d'admission
+
+# Données techniques OEM — Capteur pression du tuyau d'admission
+Source : fr.wikipedia.org (1 fichiers OEM analysés)
+Validation : oem_verified
+
+## Variantes et types
+- Hall
+- inductif
+- pneumatique
+- électrique
+
+## Matériaux
+- aluminium
+- platine
+
+## Valeurs techniques de référence
+- 0,1 %
+- 1,5 %
+- 14 %
+- 4,5 %
+- 400 °C

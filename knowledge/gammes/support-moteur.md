@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-02'
+updated_at: '2026-04-03'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -17,7 +17,7 @@ business_priority: medium
 lifecycle:
   stage: v5_ssot
   last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-02'
+  last_enriched_at: '2026-04-03'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Fixe et isole le moteur du châssis
@@ -254,7 +254,7 @@ lang: fr
 phase5_enrichment:
   _source: automotive.hutchinson.com + delphiautoparts.com
   _validation_status: oem_verified
-  _enriched_at: '2026-04-02'
+  _enriched_at: '2026-04-03'
   _web_files_count: 7
   _has_tech_data: true
   types_variants:
@@ -464,23 +464,25 @@ Copyright © 2023 PHINIA Inc.
 
 ## References supplementaires
 
-<!-- materialized-from-db manual/f52fb3d37d68 2026-03-28 -->
-### Articulation double isolation
+<!-- materialized-from-db manual/22931f35d800 2026-03-28 -->
+### Biellette de reprise de couple active
 
-Articulation double isolation
+Suspension Moteur
+Biellette de reprise de couple active
 
-Nos articulations à double filtration, alliant caoutchouc naturel sur mesure à des composants métalliques et plastiques avancés, atténuent efficacement les vibrations du groupe motopropulseur et de la route. Optimisée pour les performances NVH et la fiabilité, elles offrent des matériaux personnalisables et une rentabilité maximale sans compromis sur la qualité.
+Conçue pour garantir un confort de conduite optimal, notre solution de filtration pour supports intègre des stratégies de contrôle actif permettant de générer des réponses dynamiques locales et précises en temps réel, sur une large plage de conditions de fonctionnement. Grâce à des configurations dédiées, le système s’adapte aux vibrations du groupe motopropulseur. Au-delà de la conception mécanique, nous développons des algorithmes, des composants électroniques et des logiciels embarqués pour permettre un comportement intelligent du système.
 
 Principaux bénéfices
-Amélioration des performances NVH
-Optimisation fonctionnelle : filtration et endurance
+Amélioration des performances NVH en temps réel
 Caractéristiques techniques
 Structures
 
 Fonction :
-L’élément principal en caoutchouc (EPC), composé principalement de caoutchouc naturel pour ses propriétés de déformabilité, est lié à au moins deux composants internes et externes métalliques ou composites, ainsi qu’à un composant additionnel généralement constitué d’un matériau à plus forte densité, intégré à l’EPC pour agir comme masse mobile.
+L’élément principal en caoutchouc (EPC), composé principalement de caoutchouc naturel pour ses propriétés de déformabilité, est lié à au moins deux composants internes et externes, métalliques ou composites.
 
-Nos articulations élastiques à double isolation assurent une filtration accrue entre deux structures du véhicule.
+Cet EPC est associé à un support principalement en métal ou en composite pour ses faibles propriétés de déformabilité et sa haute résistance. Sa structure est conçue pour annuler la raideur dynamique jusqu’à un certain niveau d’excitation. Dans ce cas, aucune vibration ni charge n’est transmise.
+
+Ce produit gère le couple moteur et les mouvements de rotation tout en assurant le meilleur niveau de filtration.
 Conception sur mesure, de la conception à la fin de vie.
 
 Performances
@@ -492,7 +494,8 @@ Plage de température : de -40°C à +110°C
 
 Filtration
 
-Entre -30 dB et -40 dB, optimisée par la double isolation
+Amortissement élevé à basse fréquence pour un confort amélioré sur route dégradée, grâce à la conception et aux caractéristiques du fluide
+Raideur dynamique nulle à haute fréquence pour un confort optimal au ralenti et sur route lisse, grâce à la conception et aux caractéristiques du fluide
 
 Poids
 
@@ -508,83 +511,69 @@ Comportement :
 
 Déflexion sous charge
 Rigidité
+Annulation de la raideur dynamique
 
 Performances :
 
-Amortissement
+Viscosité du fluide
 Fatigue
 Mélange
+Activation en temps réel
+Faible consommation
 Bénéfices
 Réduction des vibrations
-Réduction du bruit
 Amélioration des performances
-Optimisation des coûts
-Longévité
+Confort
+Réduction du bruit
+Efficacité énergétique
+Industries
+Automobile
+Produits associés
+Toutes nos solutions Groupe motopropulseur
 
-<!-- materialized-from-db manual/69487d02dcd6 2026-03-28 -->
-### Suspension Moteur
+Voici aussi la version ultra épurée, centrée uniquement sur le contenu utile :
 
-Suspension Moteur
-Support conventionnel
+Biellette de reprise de couple active
 
-Notre solution de filtration pour supports est conçue pour atténuer les vibrations induites par le groupe motopropulseur et la route, garantissant des performances NVH optimales et une fiabilité à long terme sur toutes les plateformes de mobilité. Grâce à des options personnalisables en formulations de caoutchouc naturel, métaux et plastiques, elle offre une flexibilité inégalée en matière de conception et d’intégration, tout en étant entièrement optimisée pour l’efficacité économique sans compromis sur la qualité.
+Conçue pour améliorer le confort de conduite, cette solution de support moteur intègre un contrôle actif permettant de générer en temps réel des réponses dynamiques locales et précises sur une large plage de fonctionnement. Le système s’adapte aux vibrations du groupe motopropulseur et combine conception mécanique, algorithmes, électronique et logiciel embarqué pour assurer un comportement intelligent.
 
-Principaux bénéfices
-Optimisation des coûts
-Durabilité et comportement ajustable
-Conception bi-matière
+Principal bénéfice
+Amélioration des performances NVH en temps réel
 Caractéristiques techniques
-Structures
 
-Fonction :
-L’Élément Principal en Caoutchouc (EPC), composé principalement de caoutchouc naturel pour ses propriétés de déformabilité, est lié à au moins deux composants métalliques ou composites. Nos supports assurent la conformité entre deux structures du véhicule.
-Conception sur mesure, de la conception jusqu'à la fin de vie.
+Structure :
+L’élément principal en caoutchouc naturel est lié à plusieurs composants métalliques ou composites. Il est associé à un support rigide conçu pour annuler la raideur dynamique jusqu’à un certain niveau d’excitation, afin de limiter la transmission des vibrations et des charges.
+Le système gère le couple moteur et les mouvements de rotation tout en assurant un haut niveau de filtration.
 
-Performances
+Performances mécaniques :
 
-Comportement :
+Supporte les charges maximales
+Température de fonctionnement : -40°C à +110°C
 
-Déflexion sous charge
-Rigidité
+Filtration vibratoire :
 
-Performances :
+Amortissement élevé à basse fréquence
+Raideur dynamique nulle à haute fréquence
 
-Amortissement
-Fatigue
-Mélange
+Autres points :
 
-Caractéristiques
-
-Comportement :
-
-Déflexion sous charge
-Rigidité
-
-Performances :
-
-Amortissement
-Fatigue
+Poids optimisé
+Résistance aux liquides et à l’humidité
+Protection anticorrosion
+Activation en temps réel
+Faible consommation
 Bénéfices
 Réduction des vibrations
-Optimisation des coûts
-Longévité
+Amélioration des performances
+Confort
+Réduction du bruit
+Efficacité énergétique
 
-<!-- materialized-from-db manual/b105723c365e 2026-03-28 -->
-### Articulation hydraulique
+<!-- materialized-from-db manual/f52fb3d37d68 2026-03-28 -->
+### Articulation double isolation
 
-Articulation hydraulique
+Articulation double isolation
 
-Conçue pour offrir un confort de conduite premium, nos solutions de filtration hydraulique cylindrique assurent un amortissement important aux fréquences et amplitudes ciblées. Cette technologie permet de réduire efficacement les vibrations induites par le groupe motopropulseur et la route. Grâce à une large gamme de matériaux, incluant des formulations en caoutchouc naturel, des composants métalliques et plastiques, nos articulations garantissent des performances supérieures, une durabilité à long terme, tout en assurant la compétitivité des coûts sans compromis sur la qualité.
-
-Principaux bénéfices
-Amortissement renforcé
-Optimisation fonctionnelle : filtration et endurance
-Caractéristiques techniques
-Structures
-
-Fonction :
-Ce composant élastomère à fluide intégré est constitué d’un élément principal en caoutchouc (EPC), principalement en caoutchouc naturel pour ses propriétés de déformabilité, lié à au moins deux composants — interne et manchon de fenêtre — métalliques ou composites.
-
-Un liquide de type glycol est encapsulé entre l’EPC et un composant externe. Sa structure est conçue pour offrir un haut niveau d’amortissement à une fréquenc
+Nos articulations à double filtration, alliant caoutchouc naturel sur mesure à des composants métalliques et plastiques avancés, atténuent efficacement les vibrations du groupe motopropulseur et de la route. Optimisée pour les performances NVH et la 
 
 [...]
