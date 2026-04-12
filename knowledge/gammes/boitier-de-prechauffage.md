@@ -344,21 +344,3 @@ Oui, opération accessible. Localiser le boîtier (près du moteur), débrancher
 
 **Quelle erreur éviter avec le boîtier de préchauffage ?**
 Ne pas confondre avec les bougies HS. Tester d'abord les bougies individuellement. Vérifier la masse et l'alimentation du boîtier avant remplacement.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/8cd44348d118 2026-04-03 -->
-### Données techniques OEM — Boîtier de préchauffage
-
-# Données techniques OEM — Boîtier de préchauffage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- nao
-- pneumatique
-
-## Valeurs techniques de référence
-- 20 °C
-- 30 kg

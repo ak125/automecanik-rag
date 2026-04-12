@@ -15,7 +15,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v4_converted
-  last_enriched_by: script:rag-fill-remaining-gaps
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-28'
 domain:
   role: Module hydraulique de freinage avec ABS/ESP
@@ -216,6 +216,84 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: aftermarket.zf.com + ate-freinage.fr + automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + delphiautoparts.com + denso-am.eu + ferodo.com + filtron.eu + fram.com + gpa26.com + hella.com + mann-filter.com + sofima-aftermarket.com + textar.com + valeoservice.fr
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 131
+  _has_tech_data: true
+  types_variants:
+  - type: 'Composite'
+    source_ref: corpus RAG web OEM
+  - type: 'Hall'
+    source_ref: corpus RAG web OEM
+  - type: 'bi-matière'
+    source_ref: corpus RAG web OEM
+  - type: 'composite'
+    source_ref: corpus RAG web OEM
+  - type: 'céramique'
+    source_ref: corpus RAG web OEM
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  - type: 'inductif'
+    source_ref: corpus RAG web OEM
+  - type: 'perforé'
+    source_ref: corpus RAG web OEM
+  - type: 'plein'
+    source_ref: corpus RAG web OEM
+  - type: 'pneumatique'
+    source_ref: corpus RAG web OEM
+  - type: 'ventilé'
+    source_ref: corpus RAG web OEM
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    norme_dot_3.: 'DOT 3.'
+    norme_dot_5.1: 'DOT 5.1'
+    norme_ece_r90: 'ECE R90'
+    norme_fmvss_106.
+
+-_fabriqués_selon_la_norme_interne_d’ate: 'FMVSS 106.
+
+- Fabriqués selon la norme interne d’ATE'
+    norme_fmvss_§571.116_(dot_3: 'FMVSS §571.116 (DOT 3'
+    norme_fmvss-116_du_department_of_transportation_(dot).: 'FMVSS-116 du Department of Transportation (DOT).'
+    norme_sae_j1703: 'SAE J1703'
+    norme_sae_j2521: 'SAE J2521'
+    val_0_035_mm: '0,035 mm'
+    val_0_05_mm: '0,05 mm'
+    val_0_050_mm: '0,050 mm'
+    val_0_1_km: '0,1 km'
+    val_0_1_mm: '0,1 mm'
+    val_0_10_mm: '0,10 mm'
+    val_0_12_mm: '0,12 mm'
+    val_000_nm: '000 Nm'
+    val_000_km: '000 km'
+    val_000_v: '000 v'
+    val_000__c: '000 °C'
+    val_1__: '1 %'
+    val_1_ohm: '1 ohm'
+    val_1_5_mm: '1,5 mm'
+    val_1__v: '1. V'
+  materials:
+  - materiau: 'EPDM'
+    source_ref: corpus RAG web OEM
+  - materiau: 'HNBR'
+    source_ref: corpus RAG web OEM
+  - materiau: 'Silicone'
+    source_ref: corpus RAG web OEM
+  - materiau: 'acier inoxydable'
+    source_ref: corpus RAG web OEM
+  - materiau: 'aluminium'
+    source_ref: corpus RAG web OEM
+  - materiau: 'céramique'
+    source_ref: corpus RAG web OEM
+  - materiau: 'fonte grise'
+    source_ref: corpus RAG web OEM
+  - materiau: 'graphite'
+    source_ref: corpus RAG web OEM
+  - materiau: 'silicone'
+    source_ref: corpus RAG web OEM
 ---
 
 # Agregat de freinage - Guide Diagnostic Complet
@@ -310,484 +388,3 @@ Oui, le freinage classique fonctionne. Mais l'ABS est désactivé : risque de bl
 
 **Quelle erreur éviter avec le bloc ABS ?**
 Ne pas débrancher le bloc moteur tournant. Éviter les courts-circuits lors du diagnostic. Faire une purge ABS après remplacement (outil requis).
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/freinage__purge.md 2026-03-03 -->
-### Purge du circuit de freinage - procedure
-
-## Procedure
-
-1. verifier niveau de liquide et etat du bocal.
-2. respecter l'ordre de purge constructeur.
-3. purger roue par roue jusqu'a disparition des bulles.
-4. maintenir le niveau de liquide pendant toute l'operation.
-5. controler la fermete de pedale et l'absence de fuite.
-
-## Controle final
-
-- pedale ferme
-- freinage stable
-- aucun voyant defaut
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/bosch-freinage-brochure-reparation-fad-2020-fr.md 2026-02-14 -->
-### bosch freinage brochure reparation fad 2020 fr
-
-[[PDF_PAGE:1]]
-Frein à disque :
-Conseils et informations pour
-le diagnostic et les réparations freinage.
-
-[[PDF_PAGE:3]]
-Disque de frein
-Conseils et informations pour le diagnostic
-et les réparations freinage.
-Les descriptions ci-dessous sont volontairement d'une portée générale et ne s'applique
-pas à tous les véhicules ni à tous les types de frein à disque. En cas de doute merci de
-vous référer à la notice du fabricant
-1. Préparatifs
-▶ Me surer l'efficacité de freinage sur un banc d'essai.
-▶ Ef
-fectuer éventuellement un essai sur route si la réclamation du client l'exige.
-▶ V
-érifier les roulements de roues, la suspension, les barres de force, les bras
-de guidage, les essieux, la direction, les pneus et les jantes.
-▶ T
-out dommage sur la carrosserie peut avoir un impact négatif sur la réponse
-de freinage.
-fectuer les vérifications selon la check-list de freinage.
-2. Dépose
-▶ Éliminer le s grosses salissures avant la dépose.
-▶ Déposer l'é
-trier de frein et les plaquettes
-3. Dépose
-▶ A ccrocher l'étrier de frein de façon à ce que le flexible de frein ne soit
-pas étiré.
-ESI[tronic]
-ESI[tronic] contient des instructions
-complémentaires pour le dépannage,
-qui sont plus détaillées et spécifiques
-aux véhicules, avec des informations
-concernant la position de montage,
-la dépose, la pose, les réglages et
-les couples de serrage. Il comporte
-également des tests, des valeurs de
-réglage et des solutions à d'autres
-problèmes.
-Important !
-Ne pas intervenir sur la pédale de frein ni sur le frein de parking durant
-la réparation du système de freinage. Assurez-vous qu’il n’y ait pas de dépôt
-de graisse ou d’huile sur les surfaces en friction avant de remonter les roues.
-Acier moulé –
-sûr, parfait, adéquat
-L’augmentation de la puissance des
-moteurs et du poids des véhicules met
-le système de freinage à rude épreuve,
-seuls les disques de frein en acier de
-qualité supérieure moulés et de structure
-homogène respectent les spécifications
-des constructeurs automobile.
-3
-
-[[PDF_PAGE:4]]
-Disque de frein – Conseils et informations pour le diagnostic et
-les réparations freinage
-4. Vérification du disque de frein (degré d'usure)
-▶ Sécuriser le disque de frein à l'aide d'entretoises et des boulons de
-roue
-▶ Mesurer le degré d'usure du disque de frein avec un pied à co ulisse
-5. Vérification du disque de frein (voilage latéral)
-▶ Utiliser un comparateur monter sur support magné tique articulé
-▶ Ajuster le support magnétique de façon que le palpeu r du comparateur
-soit en contact avec la surface de friction, à env iron 10 à 15 mm du bord
-extérieur, et soit légèrement en appui
-▶ Faire to urner doucement le disque de frein et mesurer le voilage latéral
-6. Vérification du disque de frein (voilage latéral)
-▶ En cas de disques ventilés, mesurer également le voilage latéral sur la face
-intérieure du disque de frein
-7. Vérification du disque de frein (écart d'épaisseur)
-▶ A l'aide d'un micromèt re extérieur, mesurer l'épaisseur du disque de frein
-sur au moins 8 points et relever les valeurs mesurées.
-▶ La dif
-férence entre la valeur maximale et la valeur minimale mesurée
-correspond à l'écart d'épaisseur
-Nous vous recommandons de répéter ces mesure s après le montage du
-nouveau
-4
-
-[[PDF_PAGE:5]]
-Causes Conséquences Les conseils de
-Bosch
-▶ Poussières ou particules
-mé
-talliques en contact
-avec la plaquette ou
-le disque de frein.
-▶ Bruit au freinage.
-▶
-Fr
-ottement lors du
-freinage.
-▶ Mauv
-aise efficacité du
-▶ Lorsq ue vous changez
-les disques de frein,
-changez toujours
-les plaquettes de
-frein en même temps
-▶
-F
-onctionnement
-anormal de l'étier de
-frein.
-▶
-Voile du disq
-ue de frein.
-aise et/ou inégale
-efficacité au freinage.
-▶ Vibr
-ations dans le volant.
-ation dans la pédale
-de frein.
-▶ Vér
-ifier l'étrier de frein
-et le moyeu de roue lors
-du remplacement des
-disques de frein.
-▶
-Surc
-hauffe due à des
-plaquettes de frein
-bloquées.
-▶
-Le v
-éhicule a roulé avec
-le frein à main.
-▶ Le
-s pistons de l'étrier
-de frein sont coincés.
-▶ Surchauffe.
-ifier la totalité du
-système de freinage
-▶ S'as
-surer que l'étrier
-de frein fonctionne
-correctement
-▶
-ais nettoyage de
-la surface de contact.
-▶ Domma
-ges liés à des
-corps étrangers.
-▶ Défor
-mation du moyeu
-de la roue.
-▶ Au
-gmentation du voile
-du disque de frein.
-ottements lors du
-▶ Ne
-ttoyer la surface de
-contact entre le disque
-de frein et le moyeu de
-roue avant de monter
-un nouveau disque.
-▶
-Ne pa
-s utiliser de pâte
-lubrifiante (pâte de cuivre).
-▶ Cont
-act avec des
-substances corrosives
-(sel sur la route, agents
-nettoyants...).
-▶
-ge lié à l'eau
-ou à une trop faible
-utilisation des freins.
-▶ Bruit lors du freinage.
-▶
-Per
-formances de
-freinage irrégulières.
-▶ Remplac
-er les disques
-et les plaquettes de
-▶ Pré
-venir le consommateur
-qu'il peut occasionnellement
-solliciter les freins en
-augmentant la pression
-sur la pédale de frein.
-Disque de frein – Identifier et résoudre les problèmes les plus courants
-Corrosion de
-la zone de friction
-Marquages et rainures
-sur la surface de
-friction
-Usure inégale
-Une décoloration
-bleutée à la surface
-du disque
-Marques sur
-5
-
-[[PDF_PAGE:6]]
-8. Vérification des pièces voisines
-▶ Démonter, nettoyer et vérifier les composants tels qu e le plateau de frein
-▶ Contrôler également les pièces voisines, telles que les f lexibles de frein
-9. Préparation du moyeu de roue
-▶ Avant de poser le nouveau disque, nettoyer et vé rifier la portée du moyeu de
-▶ Nettoyer la portée du moyeu de roue avec une brosse de polissage spéciale
-10. Vérification du moyeu (oscillation)
-▶ Ajuster le support magnétique de façon que le pal peur du manomètre soit
-en contact avec la portée du moyeu, à environ 2 à 4 mm d u bord extérieur,
-et soit légèrement en appui
-▶ Le palpeur ne doit pas pouvoir tomber dans les trous de f ixation des
-boulons de roue
-▶ Faire tourner doucement le moyeu et mesurer l'osci llation
-11. Pose d'un nouveau disque de frein
-▶ Ne pas appliquer de lubrifiants ni de vernis sur la portée nettoyée et
-brillante du moyeu de roue
-▶ Fixer le nouveau disque de frein à l'aide d'entretoises et de s boulons
-de roue
-▶ Mesurer le voilage latéral
-12. Pose de la chape d'étrier
-▶ Avant de poser la chape, lubrifier les emplacements accueillant les
-oreilles des plaquettes e t (selon la conception de l'étrier de frein) les
-colonnettes de l'étrier à l'aide du Bosch Superfit réf. 5 000 000 150
-ou 5 000 000 376
-▶ Installer les vis de la chape avec du frein filet et serrer (au couple
-spécifique)
-intérieur
-e du disque de frein
-· Ne jamais utiliser de lubrifiant contenant du cuivre
-·
-Pour certains véhicules, des vis neuves devront être utilisées
-· Les vis récupérées doivent être nettoyées avant toute réutilisation
-Ne pas procéder à un surfaçage
-6
-
-[[PDF_PAGE:7]]
-13. Repousse du piston (étrier sans anti-retour)
-▶ A l'aide d'un repousse piston, repousser complètement le piston de l'étrier
-de frein sans anti-retour
-▶ Dans le cas d'un étrier fixe, vérifier ensuite la position du piston et la
-
-corriger si nécessaire
-▶ Vérifier la position du joint cache poussière du piston
-14. Repousse du piston (étrier avec anti-retour)
-▶ Faire rentrer le piston de l'étrier de frein avec anti-retour à l'aide d'un
-repousse piston, en le poussant à fond avec un mouvement de rotation
-▶ Le dévisser ensuite sur environ 1/4 à 1/2 tour jusqu’à ce que les marquages
-à l'intérieur du piston soient alignés par rapport à ceux du logement de
-l'étrier.
-· Le dos des plaquettes de frein autocollantes ne doit jamais être lubrifié
-· Le frein à main doit être totalement desserré lors de la repousse du piston et le
-levier doit être en butée
-· Pour les véhicules équipés d'un frein à main électromécanique, le système doit
-être en mode service. Ceci nécessite l'utilisation d'un appareil de la gamme KTS
-7
-
-[[PDF_PAGE:8]]
-15. Montage des plaquettes
-▶ Placer les plaques de guidage des plaquettes sur l a
-chape si besoin
-▶ Lubrifier les oreilles des plaquettes à l'aide du
-Bosch Superfit réf. 5 000 000 150 ou 5 000 000 376
-16. Montage des plaquettes
-▶ Installer les plaquettes sur la chape
-▶ S'assurer que la position de montage est correcte, notamment pour
-les plaquettes directionnelles, celles-ci présentant un sens
-17. Montage des plaquettes
-▶ Retirer la protection de la couche adhésive au dos de la plaquette
-juste avant le montage
-Ne jamais appliquer de lubrifiant sur la couche adhésive
-Astuce d'atelier
-Une réparation avec de la graisse contenant
-du cuivre peut entraîner des vibrations en
-résonance et/ou empêcher les plaquettes
-de frein de revenir souplement en position
-desserrée. Cela peut donc entraîner des
-crissements.
-En appliquant la graisse de frein Superfit
-de Bosch sur les oreilles des plaquettes
-de frein, il est possible d'éviter ces bruits et
-d'améliorer les propriétés de glissement des
-plaquettes dans leur logement.
-8
-
-[[PDF_PAGE:9]]
-Causes Conséquences Les conseils de Bosch
-▶ Les étriers et/ou
-s pistons sont bloqués.
-▶ Le guide d'é
-trier de
-frein ne fonctionne
-pas correctement.
-▶
-Le v éhicule dévie d'un
-coté lors du freinage.
-▶ Une usur
-e plus rapide
-et/ou inégale des
-▶
-Vér ifier les étriers
-er les plaquettes
-▶ Usure de
-s joints et/ou
-des ressorts des étriers
-▶
-Un jeu e
-xcessif des
-étriers.
-e prématurée
-des plaquettes de frein.
-▶ Bruits lors du freinage.
-ifier les étriers de
-frein et les remplacer
-si nécessaire.
-▶
-▶ Pous
-sières ou particules
-métalliques en contact
-▶
-Éraf
-lures à la surface
-▶ Bruit lors du fr
-einage.
-ations lors du
-aise efficacité au
-ifier les disques de
-▶
-▶ Tr
-ès forte température
-due au contact permanent
-entre les plaquettes et
-le disque.
-▶
-Une lé
-gère courbure du
-support de la plaquette.
-s étriers de frein et/
-ou les pistons sont
-bloqués.
-▶
-éhicule dévie d'un
-▶ Surchauffe du disque.
-▶
-Usure iné
-gale de
-la garniture de freinage.
-Plaquettes de frein – Identifier et résoudre les problèmes les plus
-courants
-Usure sur une
-seule face
-Usure conique :
-verticale ou horizontale
-Rainures et marques
-sur le matériel de
-Fissures ou cassures
-dans le matériel de
-9
-
-[[PDF_PAGE:10]]
-Après la réparation proprement dite,
-il reste à effectuer des tâches et des
-contrôles finaux, par exemple des tests
-ou des essais sur route.
-18. Montage de l'étrier, train avant
-▶ Monter l'étrier sur la chape et s'assurer qu'il est correctement
-positionné
-▶ Visser les colonnettes de l'étrier de frein
-▶ Installer et serrer les boulons de l'étrier (au co uple spécifique)
-▶ Remplacer les pièces accessoires telles que ressor ts, agrafes, etc
-▶ Après le montage, pomper plusieurs fois avec la pédale de frein
-19. Montage de l'étrier, train arrière
-▶ Monter l'étrier sur la chape et s'assurer qu'il est correctement positionné.
-L'ergot présent sur le dos de la plaquette doit se trouver dans l'encoche du
-piston
-▶ Visser les colonnettes de l'étrier de frein, remplacer les pièces accessoires
-telles que ressorts, agrafes, etc.
-▶ Après le montage, pomper plusieurs fois avec la pédale de frein. Les câbles
-du frein à main ne devront être attachés qu'à ce stade. Effectuer ensuite le
-réglage du frein de parking
-10
-
-[[PDF_PAGE:11]]
-Checklist de freinage
-20 points de sécurité
-Les tests et vérifications ci-dessous comprennent des contrôles visuels, fonctionnels et
-d'étanchéité. Ils sont complétés par des contrôles internes et tests d'efficacité. Une dépose
-et repose peut s'avérer nécessaire. Pour la description des procédures de pose/dépose et
-pour toute autre information, se reporter à ESI[tronic].
-Test OK not OK
-~ p
-1. Test d’efficacité sur banc de freinage
-Force de freinage / écart de freinage / détermination du coefficient de freinage / contrôle des valeurs spécifiées.
-Pour plus d'informations, se reporter à ESI[tronic]
-2. Essai sur route
-Bruit / vibration de la pédale de frein / vibrations dans le volant / volant non centré / la voiture tire à
-gauche ou à droite
-3. Roulements de roue
-Etat, bruit de roulement / jeu latéral / jeu axial / étanchéité
-4. Suspension des roues
-Joints d'appui et de guidage / moyeu / système de fixation de la roue
-5. Essieux, suspension, direction
-Jambe de force / amortisseur / ressorts / axe de guidage / supports en caoutchouc / direction
-6. Pneus / jantes
-Profondeur de profil / usure / pression / équilibrage / adéquation avec le véhicule / détériorations
-7. Actionnement du frein de service
-Caoutchouc de la pédale / course à vide / jeu dans la tringlerie / facilité de mouvement de l'axe de
-la pédale / contacteur de feu stop
-8. Actionnement du frein à main
-Course du levier / bouton poussoir / facilité de mouvement / voyant / système de commande en cas
-d'AFU électromécanique
-9. Servofrein, clapet de retenue
-Détériorations externes / fixations / clapet de retenue / flexibles et tuyaux / fonctionnement et étanchéité
-du servofrein. Pour plus d'informations, se reporter à ESI[tronic]
-10. Réservoir de liquide hydraulique
-Bouchon / réservoir / fixation / contacteur de niveau
-11. Liquide de frein
-Niveau / aspect / altération du liquide de frein / teneur en eau / point d'ébullition
-12. Maître-cylindre
-Dommages externes / fixation appropriée / raccordements / étanchéité
-13. ABS/TCS/ESP®/SBC – Bloc hydraulique
-Dommages externes / fixation appropriée / raccordements / protections / fonctionnement / étanchéité
-Important ! Il peut s'avérer nécessaire d'effectuer un essai hydraulique et électrique
-14. Tuyaux de frein, flexibles de frein
-D
-ommage externes / fixation appropriée / raccordements / corrosion / pose sans torsion / vétusté / étanchéité
-15. Régulateur de freinage, limiteur de freinage
-Dommages externes / fixation appropriée / raccordements / tige de commande, levier / butée / fonctionnement
-16. Étrier de frein
-Dommages externes / fixation appropriée / vis de purge / soufflets / étanchéité / supports de plaquette /
-guides / mouvement aisé du piston / garniture anti-poussière / réglage de base
-17. Plaquette de frein
-Épaisseur (*) de la plaquette de frein / dommages / fissures / polissage / position de montage / colonnettes
-plaquettes / plaques coulissantes
-Important ! (*) Limite d'usure de 4 mm d'épaisseur, mesurée sans le plateau de frein
-18. Disque de frein
-Degré d'usure / dommages / formations de fissures / corrosion / voilage latéral / tolérance d'épaisseur /
-voilage radial
-19. Frein à tambour
-Plateau de frein / cylindre de frein / levier de frein à main / système de rattrapage / sabot de frein /
-mâchoire de frein / ressorts de rappel / réglage initial
-20. Câbles de frein, liaisons de freinage
-Dommages externes / fixations / installation correcte / ruptures
-11
-
-[[PDF_PAGE:12]]
-Pour en savoir plus : www.bosch.fr
-What drives you,
-drives us*
-Bosch : votre partenaire pour
-un avenir prometteur du garage
-boschaftermarket.com
-Les technologies de Bosch sont présentes sur presque tous les véhicules
-du monde. Notre priorité ? Nos clients, et garant
-
-[...]

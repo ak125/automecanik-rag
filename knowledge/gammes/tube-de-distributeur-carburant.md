@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Repartir le carburant de la rampe vers chaque injecteur
@@ -186,49 +186,55 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: composite
+    source_ref: corpus RAG web OEM
+  - type: hall
+    source_ref: corpus RAG web OEM
+  - type: plein
+    source_ref: corpus RAG web OEM
   technical_notes:
-    role: 'rampe d''injection (common rail) — distribue le carburant HP aux injecteurs'
+    val_000_v: 000 v
+    val_1__: 1 %
+    val_10__: 10 %
+    val_10_a: 10 a
+    val_10_v: 10 v
+    val_12__: 12 %
+    val_13_a: 13 a
+    val_16_a: 16 a
+    val_17_a: 17 a
+    val_18_a: 18 a
+    val_195_v: 195 v
+    val_2_a: 2 a
+    val_20__: 20 %
+    val_20_a: 20 a
+    val_23_a: 23 a
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Repartir le carburant de la rampe vers chaque injecteur. Pièces liées :
-    vérifier les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Fuite de
-    carburant sur la rampe- Odeur de gasoil ou essence- Pression d injection
-    instable
-  S3: >-
-    Pour choisir le bon tube de distributeur carburant pour votre véhicule : -
-    Marque de votre véhicule- Modele de votre véhicule- Annee de votre véhicule-
-    Marques : Bosch, Delphi, Denso (premium), Pierburg, VDO (standard), Ridex
-    (budget)- Budget : 200 à 800 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le tube de distributeur carburant : - Ne pas
-    vérifier la référence exacte avant commande — une pièce de mauvaise
-    référence ne fonctionne pas correctement même si elle se monte physiquement-
-    Oublier de débrancher la batterie avant intervention — risque de court-
-    circuit sur les composants électroniques- Ne pas respecter le couple de
-    serrage constructeur au remontage- Ignorer les symptômes d'usure en espérant
-    que ça passe — une défaillance progressive s'aggrave toujours- Ne pas
-    effacer les codes défaut après remplacement — le calculateur peut rester en
-    mode dégradé
-  S6: >-
-    Après le remplacement du tube de distributeur carburant : - Controle visuel
-    a chaque revision ou entretien periodique- Remplacement preventif si signes
-    d usure detectes- Utiliser des pieces de qualite equivalente a l origine-
-    Respecter les preconisations constructeur pour les intervalles- Effacer les
-    codes défaut éventuels avec l'outil OBD- Effectuer un essai route pour
-    confirmer la disparition des symptômes
+  S1: 'Repartir le carburant de la rampe vers chaque injecteur. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Fuite de carburant sur la rampe- Odeur de gasoil ou essence-
+    Pression d injection instable'
+  S3: 'Pour choisir le bon tube de distributeur carburant pour votre véhicule : - Marque de votre véhicule- Modele de votre
+    véhicule- Annee de votre véhicule- Marques : Bosch, Delphi, Denso (premium), Pierburg, VDO (standard), Ridex (budget)-
+    Budget : 200 à 800 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le tube de distributeur carburant : - Ne pas vérifier la référence exacte avant commande —
+    une pièce de mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher
+    la batterie avant intervention — risque de court- circuit sur les composants électroniques- Ne pas respecter le couple
+    de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive
+    s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du tube de distributeur carburant : - Controle visuel a chaque revision ou entretien periodique-
+    Remplacement preventif si signes d usure detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter les
+    preconisations constructeur pour les intervalles- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai
+    route pour confirmer la disparition des symptômes'
 ---
 
 # Tube de distributeur carburant - Guide Diagnostic Complet

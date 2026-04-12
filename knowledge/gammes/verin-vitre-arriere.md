@@ -312,18 +312,3 @@ En cas de vitre arriere qui retombe seule ou de degradation mesurable, il faut c
 
 **Puis-je monter Vérin vitre arrière sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/72ccfe17b668 2026-04-03 -->
-### Données techniques OEM — Vérin vitre arrière
-
-# Données techniques OEM — Vérin vitre arrière
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- pneumatique
-- électrique

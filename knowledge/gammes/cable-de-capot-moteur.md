@@ -433,19 +433,3 @@ En cas de capot impossible a ouvrir ou de degradation mesurable, il faut control
 
 **Puis-je monter Câble de capot moteur sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/d08af57ba8c4 2026-04-03 -->
-### Données techniques OEM — Câble de capot moteur
-
-# Données techniques OEM — Câble de capot moteur
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-
-## Matériaux
-- aluminium

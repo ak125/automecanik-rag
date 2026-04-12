@@ -209,30 +209,3 @@ conseil_v5:
 # Capteur température de carburant
 
 <!-- A enrichir : Phase 5 -->
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/3473873e08ac 2026-04-03 -->
-### Données techniques OEM — Capteur température de carburant
-
-# Données techniques OEM — Capteur température de carburant
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

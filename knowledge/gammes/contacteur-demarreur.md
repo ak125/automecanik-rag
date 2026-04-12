@@ -421,17 +421,3 @@ En cas de aucune reaction a la cle de contact ou de degradation mesurable, il fa
 
 **Puis-je monter Contacteur démarreur sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/2e276e4a0c44 2026-04-03 -->
-### Données techniques OEM — Contacteur démarreur
-
-# Données techniques OEM — Contacteur démarreur
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- pneumatique
-- électrique

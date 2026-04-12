@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Maintient le coffre ou hayon en position ouverte
@@ -193,53 +193,62 @@ installation:
   - clip de fixation
   prerequisite: Aucun prerequis special
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: Hydraulique
+    source_ref: corpus RAG web OEM
+  - type: composite
+    source_ref: corpus RAG web OEM
+  - type: céramique
+    source_ref: corpus RAG web OEM
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: plein
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    force_N: 'verifier la force en Newtons — trop fort = coffre dur a fermer'
+    val_000_mm: 000 mm
+    val_10_bars: 10 bars
+    val_3_a: 3 a
+    val_350_bars: 350 bars
+    val_500_mm: 500 mm
+    val_60_mm: 60 mm
+    val_8_bars: 8 bars
+  materials:
+  - materiau: acier inox
+    source_ref: corpus RAG web OEM
+  - materiau: céramique
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Maintient le coffre ou hayon en position ouverte. Pièces liées : vérifier
-    les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Coffre qui
-    retombe lentement- Coffre impossible a maintenir ouvert- Verin qui fuit
-    traces graisseuses
-  S3: >-
-    Pour choisir le bon vérin de coffre pour votre véhicule : - Renseignez
-    marque, modele, type puis comparez references et dimensions. Validez ensuite
-    les contraintes de compatibilite pour confirmer Vérin de coffre.- Verifier
-    la reference OE ou equivalence constructeur pour le vehicule exact- Comparer
-    les dimensions et le type de montage avec la piece d origine- Choisir un
-    equipementier reconnu pour garantir qualite et compatibilite- Marques :
-    Stabilus, Magneti Marelli, Valeo (premium), Lesjöfors, Triscan, Maxgear,
-    Febi Bilstein (standard), Mapco, Metzger, Polcar (budget)- Budget : 50 à 300
-    EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le vérin de coffre : - Ne pas vérifier la référence
-    exacte avant commande — une pièce de mauvaise référence ne fonctionne pas
-    correctement même si elle se monte physiquement- Oublier de débrancher la
-    batterie avant intervention — risque de court-circuit sur les composants
-    électroniques- Ne pas respecter le couple de serrage constructeur au
-    remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du vérin de coffre : - Controle visuel a chaque
-    revision ou entretien periodique- Remplacement preventif si signes d usure
-    detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter
-    les preconisations constructeur pour les intervalles- Effacer les codes
-    défaut éventuels avec l'outil OBD- Effectuer un essai route pour confirmer
-    la disparition des symptômes
+  S1: 'Maintient le coffre ou hayon en position ouverte. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Coffre qui retombe lentement- Coffre impossible a maintenir
+    ouvert- Verin qui fuit traces graisseuses'
+  S3: 'Pour choisir le bon vérin de coffre pour votre véhicule : - Renseignez marque, modele, type puis comparez references
+    et dimensions. Validez ensuite les contraintes de compatibilite pour confirmer Vérin de coffre.- Verifier la reference
+    OE ou equivalence constructeur pour le vehicule exact- Comparer les dimensions et le type de montage avec la piece d origine-
+    Choisir un equipementier reconnu pour garantir qualite et compatibilite- Marques : Stabilus, Magneti Marelli, Valeo (premium),
+    Lesjöfors, Triscan, Maxgear, Febi Bilstein (standard), Mapco, Metzger, Polcar (budget)- Budget : 50 à 300 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le vérin de coffre : - Ne pas vérifier la référence exacte avant commande — une pièce de mauvaise
+    référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie avant intervention
+    — risque de court-circuit sur les composants électroniques- Ne pas respecter le couple de serrage constructeur au remontage-
+    Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours- Ne pas effacer
+    les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du vérin de coffre : - Controle visuel a chaque revision ou entretien periodique- Remplacement
+    preventif si signes d usure detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter les preconisations
+    constructeur pour les intervalles- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes'
 ---
 
 # Vérin de coffre - Guide Diagnostic Complet

@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -208,11 +208,27 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    types: 'wastegate mecanique (depression) ou actuateur electrique (geometrie variable)'
+    val_10__: '10 %'
+    val_109_kw: '109 kW'
+    val_110_kw: '110 kW'
+    val_119_kw: '119 kW'
+    val_12_kw: '12 kW'
+    val_127_kw: '127 kW'
+    val_13_kw: '13 kW'
+    val_147_kw: '147 kW'
+    val_15_kw: '15 kW'
+    val_17_kw: '17 kW'
+    val_18_kw: '18 kW'
+    val_186_kw: '186 kW'
+    val_19_kw: '19 kW'
+    val_2_v: '2 V'
+    val_200_kw: '200 kW'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'

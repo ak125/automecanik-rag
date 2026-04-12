@@ -455,33 +455,3 @@ En cas de rates d allumage intermittents ou de degradation mesurable, il faut co
 
 **Puis-je monter Module d'allumage sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/8d6b19db9276 2026-04-03 -->
-### Données techniques OEM — Module d'allumage
-
-# Données techniques OEM — Module d'allumage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- hall
-- organique
-- piézo
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 15 %
-- 20 %
-- 20,95 %
-- 30 %
-- 30 bars
-- 33,9 %
-- 35 %
-- 380 °C
-- 40 %
-- 40,1 %

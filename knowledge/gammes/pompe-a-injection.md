@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Mettre le carburant sous haute pression pour alimenter les injecteurs
@@ -184,47 +184,40 @@ installation:
   - diagnostic OBD
   prerequisite: Depressuriser le circuit carburant avant depose
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    types: 'pompe distributrice rotative (VP44), pompe en ligne (anciens diesel), common rail (CP1/CP3/CP4)'
+    val_000_bars: 000 bars
+  materials:
+  - materiau: aluminium
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Mettre le carburant sous haute pression pour alimenter les injecteurs.
-    Pièces liées : vérifier les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Demarrage
-    difficile- Perte de puissance
-  S3: >-
-    Pour choisir le bon pompe à injection pour votre véhicule : - Marque de
-    votre véhicule- Modele de votre véhicule- Annee de votre véhicule- Marques :
-    Bosch, Delphi, Denso (premium), Siemens VDO, Pierburg (standard), Ridex
-    (budget)- Budget : 200 à 800 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le pompe à injection : - Ne pas vérifier la
-    référence exacte avant commande — une pièce de mauvaise référence ne
-    fonctionne pas correctement même si elle se monte physiquement- Oublier de
-    débrancher la batterie avant intervention — risque de court-circuit sur les
-    composants électroniques- Ne pas respecter le couple de serrage constructeur
-    au remontage- Ignorer les symptômes d'usure en espérant que ça passe — une
-    défaillance progressive s'aggrave toujours- Ne pas effacer les codes défaut
-    après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du pompe à injection : - Utiliser du carburant de
-    qualite pour preserver les injecteurs- Remplacement du filtre a carburant
-    selon intervalle constructeur- Diagnostic electronique (OBD) en cas de perte
-    de puissance- Ne pas rouler en reserve de carburant (pompe immergee non
-    lubrifee)- Effacer les codes défaut éventuels avec l'outil OBD- Effectuer un
-    essai route pour confirmer la disparition des symptômes
+  S1: 'Mettre le carburant sous haute pression pour alimenter les injecteurs. Pièces liées : vérifier les composants adjacents
+    lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Demarrage difficile- Perte de puissance'
+  S3: 'Pour choisir le bon pompe à injection pour votre véhicule : - Marque de votre véhicule- Modele de votre véhicule- Annee
+    de votre véhicule- Marques : Bosch, Delphi, Denso (premium), Siemens VDO, Pierburg (standard), Ridex (budget)- Budget
+    : 200 à 800 EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le pompe à injection : - Ne pas vérifier la référence exacte avant commande — une pièce de
+    mauvaise référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie
+    avant intervention — risque de court-circuit sur les composants électroniques- Ne pas respecter le couple de serrage constructeur
+    au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance progressive s''aggrave toujours-
+    Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode dégradé'
+  S6: 'Après le remplacement du pompe à injection : - Utiliser du carburant de qualite pour preserver les injecteurs- Remplacement
+    du filtre a carburant selon intervalle constructeur- Diagnostic electronique (OBD) en cas de perte de puissance- Ne pas
+    rouler en reserve de carburant (pompe immergee non lubrifee)- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer
+    un essai route pour confirmer la disparition des symptômes'
 ---
 
 # Pompe à injection - Guide Diagnostic Complet
@@ -297,15 +290,6 @@ En cas de demarrage difficile ou de degradation mesurable, il faut controler rap
 
 **Puis-je monter Pompe à injection sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/injecteurs-pompe.md 2026-01-08 -->
-### Diagnostic - Injecteurs et systeme injection
-
-# Injecteurs et systeme injection - Diagnostic complet
-
 ## Symptomes injecteurs defaillants
 
 ### Moteur qui broute

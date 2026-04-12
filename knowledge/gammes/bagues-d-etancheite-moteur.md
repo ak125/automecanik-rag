@@ -342,27 +342,3 @@ Difficile. La bague avant nécessite de déposer la distribution, la bague arri�
 
 **Quelle erreur éviter avec les bagues d'étanchéité ?**
 Ne pas endommager la lèvre lors du montage. Lubrifier légèrement. Vérifier l'état de la portée sur l'arbre (pas de rayure).
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/8c9a4d98852a 2026-04-03 -->
-### Données techniques OEM — Bagues d'étanchéité moteur
-
-# Données techniques OEM — Bagues d'étanchéité moteur
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- céramique
-- hydraulique
-- pneumatique
-
-## Normes applicables
-- ISO 5598
-
-## Matériaux
-- céramique
-
-## Valeurs techniques de référence
-- 1,5 mm

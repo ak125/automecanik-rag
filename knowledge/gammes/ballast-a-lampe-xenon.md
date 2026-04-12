@@ -499,24 +499,3 @@ En cas de phare xenon ne s'allume pas ou de degradation mesurable, il faut contr
 
 **Puis-je monter Ballast à lampe xénon sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/0f9c82e7fa81 2026-04-03 -->
-### Données techniques OEM — Ballast à lampe xénon
-
-# Données techniques OEM — Ballast à lampe xénon
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- céramique
-- électrique
-
-## Matériaux
-- céramique
-
-## Valeurs techniques de référence
-- 000 °C
-- 10 %

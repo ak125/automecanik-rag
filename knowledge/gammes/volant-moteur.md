@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague5
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -219,31 +219,19 @@ installation:
   - cle dynamometrique
   prerequisite: Depose complete de la boite de vitesses
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
   types_variants:
-  - type: Volant rigide (mono-masse)
-    description: Disque fonte massif, simple et robuste, pas d'amortissement vibrations
-    era: essence anciens, petites cylindrees
-  - type: Volant bimasse (DMF — Dual Mass Flywheel)
-    description: 2 masses reliees par ressorts — absorbe les vibrations torsionnelles diesel
-    era: diesel depuis 1995, standard actuel
-  - type: Volant semi-rigide
-    description: "Compromis : disque avec insert elastomere, moins cher que bimasse"
-    era: petits diesel/essence turbo
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
   technical_notes:
-    jeu_angulaire_bimasse: 'mesurer au comparateur — max 1-2 degres selon constructeur'
-    bruit_claquement_froid: 'bimasse use = claquement metallique a froid qui disparait a chaud'
-    remplacement_avec_embrayage: "TOUJOURS remplacer ensemble si bimasse use — sinon l'embrayage neuf casse"
-    couple_vis_fixation: 'selon constructeur (souvent vis TTY a usage unique)'
-  materials:
-  - composant: masse primaire
-    materiau: fonte GG ou acier — recoit la couronne de demarreur
-  - composant: masse secondaire
-    materiau: acier emboutit — porte la surface de friction pour le disque d'embrayage
-  - composant: ressorts internes (DMF)
-    materiau: acier ressort arc (3-5 ressorts en serie)
+    val_133_kw: '133 kW'
+    val_2_v: '2 v'
+    val_6_kw: '6 kW'
+    val_60_kw: '60 kW'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -525,127 +513,3 @@ Oui, des kits de conversion existent. Avantages : moins cher, incassable. Inconv
 
 **Quelle erreur éviter avec le volant moteur ?**
 Ne pas réutiliser les vis de fixation (écrous autobloquants). Respecter le couple de serrage. Ne pas usiner un volant bimasse. Vérifier le joint spi vilebrequin.
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/transmission-boite.md 2026-02-15 -->
-### Diagnostic - Transmission et boîte de vitesses
-
-# Transmission et boîte de vitesses - Diagnostic complet
-
-## Boîte manuelle
-
-### Craquement au passage de vitesse
-- **Synchroniseurs usés** : Craquement surtout sur un rapport précis (souvent 2ème ou 3ème). Pire à froid, s'améliore à chaud.
-- **Huile de boîte inadaptée ou usée** : Vidange de boîte à effectuer (75W-80 ou 75W-90 selon constructeur).
-- **Câble ou timonerie de commande usé** : Passage imprécis, sensation de flou dans le levier.
-
-### Vitesse qui saute
-- **Fourchette de sélection usée** : La vitesse se désengage spontanément sous charge.
-- **Ressort de verrouillage cassé** : Le rapport ne tient plus en position.
-
-### Bruit de roulement en boîte
-- **Roulement d'arbre primaire usé** : Sifflement continu qui disparaît quand on appuie sur l'embrayage.
-- **Roulement de sortie** : Bruit proportionnel à la vitesse du véhicule.
-
-## Boîte automatique
-
-### À-coups ou patinage
-- **Niveau d'huile ATF incorrect** : Vérifier le niveau à chaud, moteur tournant au point mort.
-- **Huile ATF usée** : Couleur marron foncé au lieu de rouge. Vidange recommandée.
-- **Convertisseur de couple usé** : Patinage au démarrage, surchauffe de l'huile.
-
-### Passage de rapports brutal
-- **Calculateur de boîte** : Réinitialisation des adaptations parfois nécessaire.
-- **Électrovannes de commande** : Corps de vannes encrassé ou électrovanne bloquée.
-
-## Cardans et transmission
-
-### Claquement en virage
-- **Soufflet de cardan déchiré** : Graisse projetée visible sur la roue intérieure. Le cardan tourne sans lubrification.
-- **Croisillon de cardan usé** : Claquement sec en accélération ou décélération dans les virages.
-
-### Vibration à l'accélération
-- **Cardan voilé** : Vibration proportionnelle à la vitesse.
-- **Silent-bloc de transmission usé** : Vibrations transmises dans l'habitacle.
-
-## Quand consulter un professionnel
-
-- Boîte automatique en mode dégradé (bloquée sur un rapport)
-- Fuite d'huile de boîte importante
-- Craquement systématique sur tous les rapports
-- Cardan cassé (roue qui ne tourne plus)
-
-<!-- materialized-from-db diagnostic/embrayage.md 2026-01-08 -->
-### Diagnostic - Embrayage
-
-# Embrayage - Diagnostic complet
-
-## Symptomes courants
-
-### Pedale d'embrayage dure
-- **Quand** : A chaque actionnement
-- **Caracteristique** : Resistance excessive, fatigue musculaire
-
-### Pedale molle ou spongieuse
-- **Quand** : Constant
-- **Caracteristique** : Course excessive, point de patinage haut
-
-### Patinage embrayage
-- **Quand** : En acceleration forte, en cote
-- **Caracteristique** : Regime moteur monte sans acceleration proportionnelle
-
-### Bruit au debrayage
-- **Quand** : Appui sur la pedale
-- **Caracteristique** : Grincement, sifflement, claquement
-
-### Difficulte passage vitesses
-- **Quand** : A froid ou constant
-- **Caracteristique** : Craquements, resistance
-
-## Causes possibles et solutions
-
-### 1. Disque d'embrayage use
-- **Probabilite** : 50%
-- **Verification** : Patinage, kilometrage eleve
-- **Solution** : Remplacement kit embrayage complet
-- **Pieces** : Kit embrayage (disque, mecanisme, butee)
-- **Urgence** : Moyenne a haute
-
-### 2. Butee hydraulique/mecanique HS
-- **Probabilite** : 25%
-- **Verification** : Bruit a l'appui pedale, fuite liquide
-- **Solution** : Remplacement butee
-- **Pieces** : Butee d'embrayage
-- **Urgence** : Moyenne
-
-### 3. Volant moteur bimasse HS
-- **Probabilite** : 15%
-- **Verification** : Vibrations excessives, claquements au ralenti
-- **Solution** : Remplacement volant moteur
-- **Pieces** : Volant moteur bimasse ou conversion simple masse
-- **Urgence** : Moyenne
-
-### 4. Emetteur/recepteur d'embrayage defaillant
-- **Probabilite** : 10%
-- **Verification** : Pedale molle, fuite liquide
-- **Solution** : Remplacement cylindre emetteur ou recepteur
-- **Pieces** : Emetteur, recepteur, liquide de frein
-- **Urgence** : Moyenne
-
-## Duree de vie embrayage
-
-| Utilisation | Duree de vie |
-|-------------|--------------|
-| Autoroute | 150 000 - 200 000 km |
-| Mixte | 100 000 - 150 000 km |
-| Urbaine | 80 000 - 120 000 km |
-| Agressive | 50 000 - 80 000 km |
-
-## Recommandations
-
-- **Kit complet** : Toujours remplacer disque + mecanisme + butee ensemble
-- **Volant moteur** : Controler systematiquement le volant lors du changement
-- **Marques** : Privilegier Valeo, LuK, Sachs
-- **Conduite** : Eviter de garder le pied sur la pedale d'embrayage

@@ -459,18 +459,3 @@ Oui, opération simple. Localiser le contacteur sur la boîte (fil électrique),
 
 **Quelle erreur éviter avec le contacteur de recul ?**
 Prévoir un joint neuf si fourni. Avoir un récipient pour l'huile qui peut couler. Serrer au couple pour éviter les fuites. Vérifier le niveau d'huile de boîte après.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/2838de2ba64c 2026-04-03 -->
-### Données techniques OEM — Contacteur feu de recul
-
-# Données techniques OEM — Contacteur feu de recul
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- hall
-- plein

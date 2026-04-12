@@ -306,32 +306,3 @@ En cas de demarrage difficile a froid ou de degradation mesurable, il faut contr
 
 **Puis-je monter Capteur de pression Common Rail sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/f05e1442c372 2026-04-03 -->
-### Données techniques OEM — Capteur de pression Common Rail
-
-# Données techniques OEM — Capteur de pression Common Rail
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- électrique
-
-## Matériaux
-- acier inoxydable
-
-## Valeurs techniques de référence
-- 0,1 %
-- 0,6 %
-- 0,7 %
-- 0,8 %
-- 1 mm
-- 1,2 %
-- 13 mm
-- 200 °C
-- 300 mm
-- 5 mm
-- 60 kg

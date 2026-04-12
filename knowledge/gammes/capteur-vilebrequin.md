@@ -341,18 +341,3 @@ Ne pas forcer le capteur dans son logement. Respecter l'entrefer. Ne pas confond
 
 - **Intervalle** : selon constructeur
 - Pas de periodicite fixe. Remplacer en cas de codes defaut P0335/P0336 confirmes.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/ba0f9ca4ac46 2026-04-03 -->
-### Données techniques OEM — Capteur vilebrequin
-
-# Données techniques OEM — Capteur vilebrequin
-Source : hella.com (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- Inductif
-- inductif

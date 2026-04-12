@@ -298,23 +298,3 @@ En cas de accelerations irregulieres ou saccadees ou de degradation mesurable, i
 
 **Puis-je monter Capteur de pédale d'accélérateur sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/4449870b14e5 2026-04-03 -->
-### Données techniques OEM — Capteur de pédale d'accélérateur
-
-# Données techniques OEM — Capteur de pédale d'accélérateur
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hall
-- plein
-- polyv
-- électrique
-
-## Valeurs techniques de référence
-- 10 %
-- 90 %

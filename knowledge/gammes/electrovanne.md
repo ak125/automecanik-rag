@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-04-03'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: script:rag-enrich-from-web-corpus
-  last_enriched_at: '2026-04-03'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Actionner l'ouverture ou fermeture d'un circuit sous commande electrique
@@ -192,18 +192,17 @@ phase5_enrichment:
   _web_files_count: 1
   _has_tech_data: true
   types_variants:
-  - type: 'hydraulique'
+  - type: hydraulique
     source_ref: corpus RAG web OEM
-  - type: 'pneumatique'
+  - type: pneumatique
     source_ref: corpus RAG web OEM
-  - type: 'électrique'
+  - type: électrique
     source_ref: corpus RAG web OEM
   technical_notes:
-    val_2_v: '2 V'
-    val_2_v: '2 v'
-    val_3_v: '3 v'
-    val_4_v: '4 v'
-    val_5_v: '5 v'
+    val_2_v: 2 v
+    val_3_v: 3 v
+    val_4_v: 4 v
+    val_5_v: 5 v
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -299,17 +298,6 @@ En cas de voyant moteur allume ou de degradation mesurable, il faut controler ra
 
 **Puis-je monter Electrovanne sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/407ccc480d5b 2026-04-03 -->
-### Données techniques OEM — Electrovanne
-
-# Données techniques OEM — Electrovanne
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
 ## Variantes et types
 - hydraulique
 - pneumatique

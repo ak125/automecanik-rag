@@ -454,28 +454,3 @@ Possible mais attention : système sous haute pression (diesel). Dépressuriser 
 
 **Quelle erreur éviter avec le capteur de pression carburant ?**
 Ne jamais réutiliser le joint. Respecter le couple de serrage. Ne pas confondre avec le régulateur de pression.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/ec88a4276f29 2026-04-03 -->
-### Données techniques OEM — Capteur pression de carburant
-
-# Données techniques OEM — Capteur pression de carburant
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 0 %
-- 10 %
-- 100 %
-- 11 %
-- 15 %
-- 20 %
-- 23 %
-- 25 %
-- 30 %

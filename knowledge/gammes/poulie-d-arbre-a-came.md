@@ -411,29 +411,3 @@ Déconseillé sans expérience. Nécessite de caler la distribution. Erreur = de
 
 **Quelle erreur éviter avec la poulie d'arbre à came ?**
 Ne jamais réutiliser une poulie usée. Respecter les repères de calage. Serrer au couple exact.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/25dec5f35b7f 2026-04-03 -->
-### Données techniques OEM — Poulie d'arbre à came
-
-# Données techniques OEM — Poulie d'arbre à came
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- composite
-- plein
-
-## Matériaux
-- aluminium
-
-## Valeurs techniques de référence
-- 20 %
-- 35 %
-- 65 %
-- 70 %
-- 80 %
-- 85 %
-- 99 %

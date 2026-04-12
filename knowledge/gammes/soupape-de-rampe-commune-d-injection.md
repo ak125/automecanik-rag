@@ -304,23 +304,3 @@ En cas de pression de rail instable ou de degradation mesurable, il faut control
 
 **Puis-je monter Soupape de rampe commune d'injection sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/22895d2339fd 2026-04-03 -->
-### Données techniques OEM — Soupape de rampe commune d'injection
-
-# Données techniques OEM — Soupape de rampe commune d'injection
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- piézo
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 200 bars
-- 500 bars

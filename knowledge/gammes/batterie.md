@@ -468,27 +468,3 @@ Oui, operation simple (15-30 min). Toujours debrancher le negatif en premier et 
 
 **Quelle erreur eviter avec la batterie ?**
 Ne jamais inverser les polarites (risque de court-circuit et destruction du calculateur). Ne pas monter une batterie SLI sur un vehicule Start-Stop (exige EFB ou AGM). Eviter les batteries sans marque ou sous-dimensionnees en CCA.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/ef844ff5bd8a 2026-04-03 -->
-### Données techniques OEM — Batterie
-
-# Données techniques OEM — Batterie
-Source : automotive.hutchinson.com + boschaftermarket.com + bremboparts.com + denso-am.eu + fr.wikipedia.org + hella.com + textar.com (14 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hall
-- plein
-- Électrique
-- électrique
-
-## Valeurs techniques de référence
-- 0,1 mm
-- 0,9 mm
-- 000 °C
-- 1,1 bar
-- 10 Nm
-- 115 Nm

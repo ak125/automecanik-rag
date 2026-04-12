@@ -204,33 +204,3 @@ conseil_v5:
 # Capteur d'allumage
 
 <!-- A enrichir : Phase 5 -->
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/3fdacd0f7f03 2026-04-03 -->
-### Données techniques OEM — Capteur d''allumage
-
-# Données techniques OEM — Capteur d''allumage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- hall
-- organique
-- piézo
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 15 %
-- 20 %
-- 20,95 %
-- 30 %
-- 30 bars
-- 33,9 %
-- 35 %
-- 380 °C
-- 40 %
-- 40,1 %

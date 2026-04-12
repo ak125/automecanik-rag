@@ -352,30 +352,3 @@ Oui, pièce accessible sous le véhicule. Attention à ne pas abîmer les tuyaux
 
 **Quelle erreur éviter avec le capteur FAP ?**
 Ne pas nettoyer les tuyaux de pression lors du remplacement du capteur. Des tuyaux bouchés provoqueront les mêmes symptômes qu'un capteur HS.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/55bbbb8e9aba 2026-04-03 -->
-### Données techniques OEM — Capteur pression de gaz d'échappement
-
-# Données techniques OEM — Capteur pression de gaz d'échappement
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

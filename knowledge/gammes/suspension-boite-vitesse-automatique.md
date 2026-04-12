@@ -369,18 +369,3 @@ Ne pas confondre support moteur et support BVA (references differentes). Toujour
 
 - **Intervalle** : selon etat
 - Verifier visuellement tous les 80000 km. Remplacer si caoutchouc fissure, affaisse ou decole.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/eeb86ff10147 2026-04-03 -->
-### Données techniques OEM — Suspension boite vitesse automatique
-
-# Données techniques OEM — Suspension boite vitesse automatique
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- pneumatique
-- électrique

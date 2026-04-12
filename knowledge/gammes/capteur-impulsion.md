@@ -351,30 +351,3 @@ Oui, généralement accessible. Une vis de fixation, un connecteur. Attention à
 
 **Quelle erreur éviter avec le capteur PMH ?**
 Ne pas forcer le connecteur. Vérifier l'état de la cible (dents du volant moteur). Ne pas utiliser de capteur incompatible (inductif vs effet Hall).
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/e108b1f7051b 2026-04-03 -->
-### Données techniques OEM — Capteur impulsion
-
-# Données techniques OEM — Capteur impulsion
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

@@ -427,25 +427,3 @@ En cas de phares mal orientés ou de degradation mesurable, il faut controler ra
 
 **Puis-je monter Correcteur de portée sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/6f34f818fcaa 2026-04-03 -->
-### Données techniques OEM — Correcteur de portée
-
-# Données techniques OEM — Correcteur de portée
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Organique
-- organique
-
-## Normes applicables
-- ISO 13666
-
-## Valeurs techniques de référence
-- 100 %
-- 30 %
-- 5 %
