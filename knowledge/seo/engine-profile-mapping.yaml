@@ -1,0 +1,223 @@
+# Engine profile mapping — SEO editorial source of truth
+#
+# Maps each (fuel x power_tier) synthetic engine profile to a curated list of
+# gamme slugs in /opt/automecanik/rag/knowledge/gammes/ whose diagnostic
+# symptoms will compose the S_MOTOR_ISSUES block of R8 vehicle pages.
+#
+# Consumed by backend/src/modules/admin/services/engine-profile-rag-loader.service.ts
+# at runtime (no build step). To modify content :
+#   1. Edit the symptom labels in the referenced gammes/<slug>.md frontmatter
+#      (diagnostic.symptoms[].label), OR
+#   2. Edit the gamme mapping below.
+#   3. Commit via signed PR (G3).
+# Effective immediately at next R8 enrichment — no rebuild needed.
+#
+# Editorial owner : SEO + mechanic SME
+# ADR : 015 (RAG single source of truth), 022 (R8 control plane)
+
+---
+type: seo
+subtype: r8_engine_profile_mapping
+schema_version: 1
+updated_at: '2026-04-24'
+
+profiles:
+  # ── Essence (6 power tiers) ────────────────────────────────────────────────
+  essence_p1_mini:
+    description: >
+      Bloc essence atmosphérique 3 ou 4 cylindres à injection multipoint,
+      faible cylindrée adaptée aux trajets urbains.
+    gammes:
+      - bougie-d-allumage
+      - bobine-d-allumage
+      - alternateur
+      - sonde-lambda
+      - debitmetre-d-air
+      - thermostat
+
+  essence_p2_basse:
+    description: >
+      Moteur essence 4 cylindres à injection électronique séquentielle,
+      distribution par courroie crantée ou chaîne.
+    gammes:
+      - bougie-d-allumage
+      - bobine-d-allumage
+      - capteur-vilebrequin
+      - corps-papillon
+      - sonde-lambda
+      - courroie-de-distribution
+
+  essence_p3_moyenne:
+    description: >
+      Moteur essence turbocompressé de cylindrée moyenne (TCe, THP, TSI),
+      injection directe ou semi-directe.
+    gammes:
+      - turbo
+      - bobine-d-allumage
+      - chaine-de-distribution
+      - capteur-vilebrequin
+      - debitmetre-d-air
+      - thermostat
+
+  essence_p4_haute:
+    description: >
+      Bloc essence à injection directe haute pression, turbocompresseur,
+      distribution par chaîne et gestion électronique complète.
+    gammes:
+      - turbo
+      - bobine-d-allumage
+      - chaine-de-distribution
+      - injecteur
+      - debitmetre-d-air
+      - sonde-lambda
+
+  essence_p5_sport:
+    description: >
+      Motorisation sportive suralimentée, injection directe haute pression,
+      culasse multisoupapes, refroidisseur intercooler renforcé.
+    gammes:
+      - turbo
+      - injecteur
+      - chaine-de-distribution
+      - bobine-d-allumage
+      - volant-moteur
+      - sonde-lambda
+
+  essence_p6_tres_haute:
+    description: >
+      Moteur haute performance multi-turbo ou V6/V8 à injection directe,
+      distribution complexe et lubrification renforcée.
+    gammes:
+      - turbo
+      - injecteur
+      - chaine-de-distribution
+      - volant-moteur
+      - capteur-vilebrequin
+      - thermostat
+
+  # ── Diesel (6 power tiers) ─────────────────────────────────────────────────
+  diesel_p1_mini:
+    description: >
+      Bloc diesel à common rail, turbocompresseur basse pression,
+      FAP et vanne EGR sur les Euro 4 et suivantes.
+    gammes:
+      - vanne-egr
+      - fap
+      - injecteur
+      - turbo
+      - debitmetre-d-air
+      - pompe-a-vide-de-freinage
+
+  diesel_p2_basse:
+    description: >
+      Diesel common rail première génération, turbocompresseur à géométrie
+      fixe, FAP catalysé sur certaines déclinaisons.
+    gammes:
+      - vanne-egr
+      - fap
+      - injecteur
+      - turbo
+      - pompe-a-vide-de-freinage
+      - thermostat
+
+  diesel_p3_moyenne:
+    description: >
+      Diesel common rail seconde génération, turbo à géométrie variable (VGT),
+      FAP + gestion électronique EDC.
+    gammes:
+      - vanne-egr
+      - fap
+      - injecteur
+      - turbo
+      - volant-moteur
+      - debitmetre-d-air
+
+  diesel_p4_haute:
+    description: >
+      Diesel à injection piézo haute pression, turbo VGT,
+      post-traitement SCR + AdBlue conformité Euro 6.
+    gammes:
+      - vanne-egr
+      - fap
+      - injecteur
+      - turbo
+      - volant-moteur
+      - capteur-de-pression-turbo
+
+  diesel_p5_sport:
+    description: >
+      Diesel performance bi-turbo séquentiel, injection piézo 2000+ bar,
+      SCR + AdBlue conformité Euro 6d.
+    gammes:
+      - turbo
+      - injecteur
+      - fap
+      - vanne-egr
+      - volant-moteur
+      - capteur-de-pression-turbo
+
+  diesel_p6_tres_haute:
+    description: >
+      Diesel haut de gamme V6 ou V8, turbo compound ou tri-turbo,
+      injection common rail 2500 bar, post-traitement multi-étages.
+    gammes:
+      - turbo
+      - injecteur
+      - fap
+      - vanne-egr
+      - volant-moteur
+      - capteur-de-pression-turbo
+
+  # ── Hybrides (2 profils) ──────────────────────────────────────────────────
+  hybride_essence_p3_moyenne:
+    description: >
+      Chaîne de traction hybride essence–électrique, transmission eCVT ou à
+      engrenages planétaires, batterie HV NiMH ou Li-ion.
+    gammes:
+      - batterie
+      - alternateur
+      - thermostat
+      - sonde-lambda
+
+  hybride_essence_p5_sport:
+    description: >
+      Hybride essence–électrique haute puissance, moteur thermique turbo
+      associé à générateur-moteur, batterie Li-ion refroidie.
+    gammes:
+      - batterie
+      - turbo
+      - alternateur
+      - sonde-lambda
+      - thermostat
+
+  # ── Électrique pur ────────────────────────────────────────────────────────
+  electrique_p6_tres_haute:
+    description: >
+      Propulsion 100 % électrique, moteur synchrone à aimants permanents ou
+      asynchrone, batterie lithium-ion haute densité.
+    gammes:
+      - batterie
+      - alternateur  # proxy for DC/DC converter, circuit 12V auxiliaire
+
+  # ── Fallback neutre ───────────────────────────────────────────────────────
+  inconnu_p3_moyenne:
+    description: >
+      Motorisation spécifique à ce modèle — consulter la documentation
+      constructeur pour le type d'injection et de suralimentation.
+    gammes:
+      - alternateur
+      - thermostat
+      - sonde-lambda
+      - batterie
+      - courroie-de-distribution
+
+# SEO opener variations used by the loader to rotate the S_MOTOR_ISSUES intro
+# per typeId. Placeholders : {brand} {model} {type} {power} {fuel}.
+seo_openers:
+  - Problèmes techniques récurrents de la motorisation {type} {power} ch {fuel} — vérifiez ces points à l'entretien.
+  - "Faiblesses connues de la {brand} {model} {type} ({power} ch) : composants à surveiller en priorité."
+  - Points techniques sensibles de ce bloc {type} {fuel} — liste extraite des retours atelier.
+  - Pannes fréquentes sur la motorisation {type} de {power} ch — à contrôler lors d'un achat d'occasion.
+  - Défaillances typiques de ce moteur {fuel} {power} ch équipant la {brand} {model}.
+  - Avant un achat ou une réparation sur la {brand} {model} {type}, prenez connaissance de ces faiblesses documentées.
+  - Retour d'expérience atelier sur la motorisation {type} {power} ch — points de vigilance.
