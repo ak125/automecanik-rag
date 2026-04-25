@@ -264,7 +264,7 @@ motorisations:
   moteur: 1.5 dCi
   puissance: 88 ch
   fuel: Diesel
-  code_moteur: K9K
+  code_moteur: '-'
   famille_moteur: dCi
   cylindree: '150'
   body: 3/5 portes
@@ -274,8 +274,8 @@ motorisations:
   - 3333AXR
   - BR2H0H
   - BR2HAH
-  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
-  verification_status: verified
+  source_url: https://www.fiches-auto.fr/fiche-technique-renault/specs-106-technique-renault-clio-3.php
+  verification_status: partial
 problemes_connus:
 - 'Rétroviseur  extérieur: Miroir casse fissure ou decolle'
 - 'Rétroviseur  extérieur: Coque de retroviseur cassee choc accrochage'
