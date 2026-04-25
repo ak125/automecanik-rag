@@ -4,65 +4,278 @@ doc_family: catalog
 source_type: vehicle
 title: Fiche vehicule - RENAULT CLIO III
 truth_level: L2
-updated_at: '2026-03-16'
+updated_at: '2026-04-25'
 verification_status: draft
 modele_id: 140004
 marque_id: 140
 motorisations:
-- moteur: 1.5 dCi
-  puissance: 106 ch
-  code: '-'
-- moteur: 1.5 dCi
-  puissance: 64 ch
-  code: '-'
-- moteur: 1.5 dCi
-  puissance: 68 ch
-  code: '-'
-- moteur: 1.5 dCi
-  puissance: 75 ch
-  code: '-'
-- moteur: 1.5 dCi
-  puissance: 86 ch
-  code: '-'
-- moteur: 1.5 dCi
-  puissance: 88 ch
-  code: '-'
-- moteur: 1.2 16V (Phase 1)
-  puissance: 101 ch
-  code: '-'
-- moteur: 1.2 16V (Phase 2)
+- type_id: 11056
+  moteur: 1.2 16V (Phase 2)
   puissance: 103 ch
-  code: '-'
-- moteur: 1.6 16V
-  puissance: 112 ch
-  code: '-'
-- moteur: 1.6 16V GT
-  puissance: 128 ch
-  code: '-'
-- moteur: 2.0 16V
-  puissance: 139 ch
-  code: '-'
-- moteur: 2.0 16V Sport (Phase 1)
-  puissance: 197 ch
-  code: '-'
-- moteur: 2.0 16V Sport (Phase 2)
-  puissance: 200 ch
-  code: '-'
-- moteur: 1.2 16V
-  puissance: 58 ch
-  code: '-'
-- moteur: 1.2 16V
-  puissance: 65 ch
-  code: '-'
-- moteur: 1.2 16V
+  fuel: Essence
+  code_moteur: '-'
+  cylindree: '120'
+  body: 3/5 portes
+  periode: 2010-2014
+  norme_euro: Euro 5
+  cnit:
+  - 3333AYS
+  - BR140H
+  - BRC40H
+  verification_status: partial
+- type_id: 19045
+  moteur: 1.2 16V
   puissance: 75 ch
-  code: '-'
-- moteur: 1.6 16V
+  fuel: Essence
+  code_moteur: D4F
+  cylindree: '120'
+  body: 3/5 portes
+  periode: 2005-2014
+  norme_euro: Euro 4
+  cnit:
+  - '3333159'
+  - '3333186'
+  - 3333AAO
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19047
+  moteur: 1.2 16V
+  puissance: 65 ch
+  fuel: Essence
+  code_moteur: '-'
+  cylindree: '120'
+  body: 3/5 portes
+  periode: 2005-2014
+  norme_euro: Euro 4
+  cnit:
+  - '3333185'
+  - 3333AAQ
+  - BR1JBH
+  verification_status: partial
+- type_id: 19048
+  moteur: 1.6 16V
   puissance: 88 ch
-  code: '-'
-- moteur: 1.4 16V
+  fuel: Essence
+  code_moteur: '-'
+  cylindree: '160'
+  body: 3/5 portes
+  periode: 2005-2007
+  norme_euro: Euro 4
+  cnit:
+  - '3333165'
+  - 3333AAM
+  - CR190H
+  verification_status: partial
+- type_id: 19049
+  moteur: 1.6 16V
+  puissance: 112 ch
+  fuel: Essence
+  code_moteur: K4M
+  cylindree: '160'
+  body: 3/5 portes
+  periode: 2005-2014
+  norme_euro: Euro 4
+  cnit:
+  - '3333162'
+  - 3333AAJ
+  - BR1B0A
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19050
+  moteur: 1.4 16V
   puissance: 98 ch
-  code: '-'
+  fuel: Essence
+  code_moteur: K4J
+  cylindree: '140'
+  body: 3/5 portes
+  periode: 2005-2012
+  norme_euro: Euro 4
+  cnit:
+  - '3333163'
+  - 3333AAI
+  - 3333ABD
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19051
+  moteur: 1.5 dCi
+  puissance: 68 ch
+  fuel: Diesel
+  code_moteur: K9K
+  famille_moteur: dCi
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2005-2012
+  norme_euro: Euro 4
+  cnit:
+  - '3333164'
+  - 3333AAN
+  - BR1G0H
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19052
+  moteur: 1.5 dCi
+  puissance: 86 ch
+  fuel: Diesel
+  code_moteur: K9K
+  famille_moteur: dCi
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2005-2012
+  norme_euro: Euro 4
+  cnit:
+  - '3333160'
+  - 3333AAK
+  - BR1F05
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19053
+  moteur: 1.5 dCi
+  puissance: 106 ch
+  fuel: Diesel
+  code_moteur: K9K
+  famille_moteur: dCi
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2005-2014
+  norme_euro: Euro 4
+  cnit:
+  - '3333161'
+  - 3333AAL
+  - 3333AKL
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 19355
+  moteur: 2.0 16V Sport (Phase 1)
+  puissance: 197 ch
+  fuel: Essence
+  code_moteur: F4R
+  cylindree: '200'
+  body: 3/5 portes
+  periode: 2006-2012
+  norme_euro: Euro 4
+  cnit:
+  - 3333AJV
+  - CR1N06
+  - MRE1821E9506
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 22674
+  moteur: 2.0 16V
+  puissance: 139 ch
+  fuel: Essence
+  code_moteur: F4R
+  cylindree: '200'
+  body: 3/5 portes
+  periode: 2006-2014
+  norme_euro: Euro 4
+  cnit:
+  - 3333AJT
+  - BRCC06
+  - BRCC0A
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 23045
+  moteur: 1.2 16V (Phase 1)
+  puissance: 101 ch
+  fuel: Essence
+  code_moteur: D4FT
+  cylindree: '120'
+  body: 3/5 portes
+  periode: 2007-2014
+  norme_euro: Euro 4
+  cnit:
+  - 3333AOZ
+  - BR0P0H
+  - BR1P0H
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 26627
+  moteur: 1.5 dCi
+  puissance: 64 ch
+  fuel: Diesel
+  code_moteur: '-'
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2005-2012
+  norme_euro: Euro 4
+  cnit:
+  - 3333ARJ
+  - BR5F0H
+  - MRE5021EK161
+  verification_status: partial
+- type_id: 27329
+  moteur: 1.2 16V
+  puissance: 58 ch
+  fuel: Essence
+  code_moteur: D4F
+  cylindree: '120'
+  body: 3/5 portes
+  periode: 2006-2010
+  norme_euro: Euro 4
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: partial
+- type_id: 31207
+  moteur: 1.6 16V GT
+  puissance: 128 ch
+  fuel: Essence
+  code_moteur: K4M
+  cylindree: '160'
+  body: 3/5 portes
+  periode: 2009-2014
+  norme_euro: Euro 5
+  cnit:
+  - 3333ATF
+  - BRA006
+  - BRA0T6
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 31527
+  moteur: 2.0 16V Sport (Phase 2)
+  puissance: 200 ch
+  fuel: Essence
+  code_moteur: F4R
+  cylindree: '200'
+  body: 3/5 portes
+  periode: 2008-2014
+  norme_euro: Euro 4
+  cnit:
+  - 3333ATU
+  - CR1N06
+  - CRJN06
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 34744
+  moteur: 1.5 dCi
+  puissance: 75 ch
+  fuel: Diesel
+  code_moteur: K9K
+  famille_moteur: dCi
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2010-2014
+  norme_euro: Euro 5
+  cnit:
+  - 3333AXS
+  - BR2V0H
+  - CR2V0H
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
+- type_id: 34746
+  moteur: 1.5 dCi
+  puissance: 88 ch
+  fuel: Diesel
+  code_moteur: K9K
+  famille_moteur: dCi
+  cylindree: '150'
+  body: 3/5 portes
+  periode: 2010-2014
+  norme_euro: Euro 5
+  cnit:
+  - 3333AXR
+  - BR2H0H
+  - BR2HAH
+  source_url: https://fr.wikipedia.org/wiki/Renault_Clio_III
+  verification_status: verified
 problemes_connus:
 - 'Rétroviseur  extérieur: Miroir casse fissure ou decolle'
 - 'Rétroviseur  extérieur: Coque de retroviseur cassee choc accrochage'
