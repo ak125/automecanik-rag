@@ -1,0 +1,935 @@
+{
+  "_meta": {
+    "source_label": "wikidata-sparql-models",
+    "source_uri": "https://www.wikidata.org/wiki/Q6746",
+    "fetched_at": "2026-04-21T15:24:13.204201+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "qid": "Q2443038",
+      "name": "Citroën C4 Cactus",
+      "inception": "2014-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q867692",
+      "name": "Citroën C-Métisse",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2074957",
+      "name": "GTbyCitroën",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2564737",
+      "name": "Citroën Hypnos",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974498",
+      "name": "Citroën C-Buggy",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974499",
+      "name": "Citroën C-Airplay",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974504",
+      "name": "Citroën DS Inside",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4591934",
+      "name": "Citroën GS Camargue",
+      "inception": "1972-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093694",
+      "name": "Citroën SM",
+      "inception": "1970-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3555482",
+      "name": "Citroën Bijou",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093615",
+      "name": "Citroën Eco 2000",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q119859",
+      "name": "Citroën C8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q138305",
+      "name": "Citroën B14",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q326015",
+      "name": "Citroën 2 CV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q465966",
+      "name": "Citroën DS",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q920837",
+      "name": "Citroën Type A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q938850",
+      "name": "Citroën Saxo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q939640",
+      "name": "Citroën BX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q960745",
+      "name": "Citroën Rosalie",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q963533",
+      "name": "Citroën Visa",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1065813",
+      "name": "Citroën DS4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1080152",
+      "name": "Citroën 2CV fourgonnette",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093531",
+      "name": "Citroën Axel",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093535",
+      "name": "Citroën Ami 6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093538",
+      "name": "Citroën AX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093547",
+      "name": "Citroën C-Crosser",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093561",
+      "name": "Citroën C35",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093602",
+      "name": "Citroën C6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093613",
+      "name": "Citroën CX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093620",
+      "name": "DS 5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093624",
+      "name": "Citroën Dyane",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093635",
+      "name": "Citroën Évasion",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093657",
+      "name": "Citroën LN et LNA",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093661",
+      "name": "Citroën M35",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093682",
+      "name": "Citroën TUB",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093703",
+      "name": "Citroën Type H",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093708",
+      "name": "Citroën Type C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093728",
+      "name": "Citroën Xsara Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1141318",
+      "name": "Citroën C4 Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1240938",
+      "name": "Citroën FAF",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1466803",
+      "name": "Citroën Nemo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1515731",
+      "name": "Hoffmann 2CV Cabrio",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3678340",
+      "name": "Citroen DS3 R3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3678345",
+      "name": "Citroën C-ZERO",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4036239",
+      "name": "Citroën Metropolis",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122853",
+      "name": "Citroën Activa",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122855",
+      "name": "Citroën Berlingo électrique",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122856",
+      "name": "Citroën 7U",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122860",
+      "name": "Citroën C3 Aircross",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122865",
+      "name": "Citroën Osée",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122870",
+      "name": "Citroën Prototype Y",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5122871",
+      "name": "Citroën Synergie",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q504633",
+      "name": "Citroën Xsara",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q515127",
+      "name": "Citroën B2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q543236",
+      "name": "Citroën GS et GSA",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q627956",
+      "name": "Citroën Méhari",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q658918",
+      "name": "Citroën XM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q728076",
+      "name": "Citroën C1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q728314",
+      "name": "Citroën C2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q736206",
+      "name": "Citroën Jumpy",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q756741",
+      "name": "Citroën Berlingo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q822665",
+      "name": "Citroën C5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q840940",
+      "name": "Citroën Xantia",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q867560",
+      "name": "Citroën Traction Avant",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1630402",
+      "name": "Citroën C3 Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1637418",
+      "name": "Citroën C4 Aircross",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1791606",
+      "name": "Citroën Zabrus",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1836612",
+      "name": "Citroën Acadiane",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1851788",
+      "name": "Citroën Lacoste",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1924133",
+      "name": "Citroën B12",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1980591",
+      "name": "Citroën C15",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2140125",
+      "name": "Citroën C3 Pluriel",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2257292",
+      "name": "Citroën Survolt",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2310708",
+      "name": "Citroën BX 4TC",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2537154",
+      "name": "Citroën 2cv Manx",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2669766",
+      "name": "Citroën Ami 8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974488",
+      "name": "Citroën B15",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974491",
+      "name": "Citroën B10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974492",
+      "name": "Citroën C-Élysée",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974494",
+      "name": "Citroën C3 II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974503",
+      "name": "Citroën C6 (1928)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974505",
+      "name": "Citroën Kégresse",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974507",
+      "name": "Citroën Karin",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974508",
+      "name": "Citroën ID",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974510",
+      "name": "Citroën Saxo électrique",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974515",
+      "name": "Citroën Revolte",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974518",
+      "name": "Citroën Tubik",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2974522",
+      "name": "Citroën Type G",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q10337976",
+      "name": "Citroën C4 II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q13403069",
+      "name": "Citroën C4 Picasso II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q15489954",
+      "name": "DS 5LS",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16039942",
+      "name": "Citroën C3 I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16536873",
+      "name": "Citroën DS3 R5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16536878",
+      "name": "Citroën DS3 RRC",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16540029",
+      "name": "Citroën C-XR",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17387939",
+      "name": "Citroën C-Cactus",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18214402",
+      "name": "Citroën-Kégresse P17",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18432675",
+      "name": "Citroën 2CV AZAM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589891",
+      "name": "Citroën C5 I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589895",
+      "name": "Citroën C1 I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18610895",
+      "name": "Citroën C4 I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18745484",
+      "name": "Citroën C1 II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18745497",
+      "name": "Citroën C5 II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20724366",
+      "name": "Citroën C3 III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q22950015",
+      "name": "Citroën e-Méhari",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q23021883",
+      "name": "Citroën C6 (2016)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q23021884",
+      "name": "Citroën GS Birotor",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q23637399",
+      "name": "Citroën Tulip",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q24200156",
+      "name": "DS 4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q25387284",
+      "name": "Citroën Cactus",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q28493919",
+      "name": "Citroën CXperience",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q30750112",
+      "name": "Citroën C5 X",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q39076504",
+      "name": "Citroën C3 Aircross",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q54556027",
+      "name": "Citroën C5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q60853548",
+      "name": "DS 9",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q107392780",
+      "name": "Q107392780",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q108760254",
+      "name": "Citroën C3 (CC21)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q111971355",
+      "name": "Citroën e-C4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q112806529",
+      "name": "Citroën C4 X",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q113147169",
+      "name": "Citroën C4 Picasso (1st generation)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q86670161",
+      "name": "Citroën C4 III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q86733857",
+      "name": "Citroën Ami",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q90701162",
+      "name": "Citroën DS3 Cabrio",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q90701166",
+      "name": "Citroën DS3 Electrum",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q90921710",
+      "name": "Citroën C2 R2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91025324",
+      "name": "Citroën XM Serie I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91025333",
+      "name": "Citroën XM Serie II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q97366466",
+      "name": "Citroën Xanthia",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q123113826",
+      "name": "Citroën C3 IV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q123917106",
+      "name": "Citroën Yagán",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q124152142",
+      "name": "Citroën DS Chapron Majesty",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q125574525",
+      "name": "Citroën C3 Aircross (Brésil, Inde)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    }
+  ]
+}

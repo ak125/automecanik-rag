@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "chevrolet",
+    "marque_id": 44,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Chevrolet fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Chevrolet est une division historique de General Motors (GM) depuis 1918. GM est l'un des plus grands constructeurs automobiles mondiaux et inclut également Buick, Cadillac, GMC et plusieurs autres marques sur les marchés américain et asiatique."
+    },
+    {
+      "q": "Les pièces Chevrolet sont-elles compatibles avec d'autres marques GM ?",
+      "a": "Chevrolet, Buick, Cadillac et GMC appartiennent au même groupe General Motors et partagent de nombreuses plateformes techniques (notamment GMT, BEV3 pour l'électrique). De nombreuses pièces mécaniques (moteurs, transmissions) sont partagées entre ces marques, principalement sur les marchés nord-américains. La compatibilité reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Chevrolet produit-il des véhicules ?",
+      "a": "Chevrolet a été fondée en 1911 à Détroit (Michigan, États-Unis) par Louis Chevrolet (pilote d'origine suisse) et William C. Durant (fondateur de General Motors). La marque a été intégrée à GM en 1918 et est devenue l'une des marques de masse les plus emblématiques de l'industrie automobile américaine."
+    },
+    {
+      "q": "Chevrolet est-il toujours commercialisé en Europe ?",
+      "a": "Non, plus en gamme complète. Chevrolet a quitté le marché européen grand public fin 2015. Quelques modèles emblématiques (Corvette, Camaro, Tahoe) restent disponibles via importation spécialisée. Pour les autres marchés (Amérique du Nord, Amérique du Sud, Moyen-Orient, Asie), Chevrolet conserve une gamme étendue."
+    },
+    {
+      "q": "Où se trouve le siège social de Chevrolet ?",
+      "a": "Le siège social de Chevrolet est intégré à celui de General Motors à Détroit, dans le Michigan (États-Unis), au Renaissance Center. La marque dispose d'usines aux États-Unis, au Mexique, au Canada, au Brésil, en Corée du Sud (via GM Korea, ex-Daewoo) et en Chine."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "ds",
+    "marque_id": 441,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "DS Automobiles fait-il partie d'un groupe automobile ?",
+      "a": "Oui. DS Automobiles est une filiale du groupe Stellantis depuis sa création en 2021. La marque a d'abord été lancée comme la gamme premium de Citroën entre 2009 et 2014, avant de devenir une marque indépendante au sein du groupe PSA en 2014, puis Stellantis depuis 2021."
+    },
+    {
+      "q": "Les pièces DS sont-elles compatibles avec Citroën, Peugeot ou Opel ?",
+      "a": "DS Automobiles, Citroën, Peugeot et Opel appartiennent au même groupe Stellantis (anciennement PSA pour les trois premières). De nombreuses pièces mécaniques (plateformes EMP2, CMP, motorisations PureTech, BlueHDi) sont partagées entre ces marques. La compatibilité reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand DS Automobiles existe-t-il en tant que marque indépendante ?",
+      "a": "DS a été lancée en 2009 comme ligne premium de Citroën (DS3, DS4, DS5). La marque s'est autonomisée en 2014 sous le nom DS Automobiles, devenant une marque à part entière au sein du groupe PSA. Le nom DS rend hommage à la mythique Citroën DS lancée en 1955. La marque est intégrée à Stellantis depuis 2021."
+    },
+    {
+      "q": "DS Automobiles propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. DS couvre essence (PureTech), diesel (BlueHDi, en réduction), hybride rechargeable (E-Tense) et 100 % électrique (DS 3 E-Tense depuis 2019, DS 4 E-Tense, DS 7 E-Tense, DS 9 E-Tense). La marque s'oriente vers une électrification accélérée avec l'objectif de proposer une gamme entièrement électrifiée."
+    },
+    {
+      "q": "Où se trouve le siège social de DS Automobiles ?",
+      "a": "Le siège social de DS Automobiles est situé à Vélizy-Villacoublay, en France (Yvelines), au sein du groupe Stellantis. Les véhicules DS sont produits en France (Poissy, Mulhouse) et au Maroc (Kenitra) selon les modèles."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

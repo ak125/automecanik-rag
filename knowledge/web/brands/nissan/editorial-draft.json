@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "nissan",
+    "marque_id": 119,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Nissan fait-il partie d'un groupe automobile ou d'une alliance ?",
+      "a": "Nissan est lié à Renault depuis 1999 et à Mitsubishi depuis 2017, à travers l'Alliance Renault-Nissan-Mitsubishi (siège aux Pays-Bas). Nissan reste un constructeur juridiquement indépendant mais bénéficie de plateformes et synergies industrielles importantes au sein de l'Alliance. Nissan possède également la marque premium Infiniti et la marque commerciale Datsun (relancée en 2013)."
+    },
+    {
+      "q": "Les pièces Nissan sont-elles compatibles avec Renault ?",
+      "a": "Nissan, Renault et Mitsubishi font partie de l'Alliance Renault-Nissan-Mitsubishi depuis 1999. Certaines plateformes (notamment la plateforme CMF) et moteurs sont partagés entre les marques. La compatibilité de pièces existe sur certains modèles, mais reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand Nissan produit-il des véhicules ?",
+      "a": "Nissan Motor Co., Ltd. a été fondée en 1933 au Japon, à l'origine sous le nom de Datsun. La marque Nissan a été adoptée officiellement en 1934. Le constructeur japonais a connu une expansion mondiale importante à partir des années 1960."
+    },
+    {
+      "q": "Nissan propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Nissan couvre l'ensemble de la gamme : essence, diesel, hybride (technologie e-Power propriétaire) et 100 % électrique. Nissan est l'un des pionniers du véhicule électrique grand public avec la Leaf, lancée en 2010 et toujours produite."
+    },
+    {
+      "q": "Où se trouve le siège social de Nissan ?",
+      "a": "Le siège social de Nissan Motor Co., Ltd. est situé à Yokohama, au Japon, depuis 2010. Le constructeur dispose d'usines au Japon, aux États-Unis, au Mexique, au Royaume-Uni (Sunderland), en Espagne et dans plusieurs autres pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

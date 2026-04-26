@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "brand_alias": "fiat",
+    "marque_id": 58,
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level strict"
+  },
+  "curated_by": "claude-code-2026-04-22-wave2",
+  "faq": [
+    {
+      "q": "Fiat fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Fiat est une marque du groupe Stellantis depuis 2021. Avant cela, Fiat était la maison mère du groupe Fiat Chrysler Automobiles (FCA), formé en 2014 après le rachat de Chrysler. Fiat Automobiles S.p.A. fait également partie de l'écosystème historique Fiat (Lancia, Alfa Romeo, Abarth, Maserati)."
+    },
+    {
+      "q": "Les pièces Fiat sont-elles compatibles avec Alfa Romeo, Lancia ou les marques Stellantis ?",
+      "a": "Fiat, Alfa Romeo, Lancia et Abarth appartiennent au même périmètre Stellantis (ex-FCA). Certaines pièces mécaniques (moteurs essence FIRE, T-Jet, Multiair, plateformes citadines) sont partagées entre ces marques. Avec les marques ex-PSA de Stellantis (Peugeot, Citroën, DS, Opel), la convergence est en cours mais reste limitée selon les modèles. À vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Fiat produit-il des véhicules ?",
+      "a": "Fiat a été fondée en 1899 à Turin sous le nom F.I.A.T. (Fabbrica Italiana Automobili Torino). C'est l'un des plus anciens constructeurs automobiles encore en activité. Le siège social est historiquement implanté dans l'usine de Mirafiori à Turin (Italie)."
+    },
+    {
+      "q": "Fiat propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Fiat couvre l'ensemble de la gamme : essence, diesel, hybride et électrique (Fiat 500e depuis 2020). La marque s'est historiquement spécialisée dans les citadines et compactes, avec une forte présence sur le marché européen."
+    },
+    {
+      "q": "Où se trouve le siège social de Fiat ?",
+      "a": "Le siège social de Fiat Automobiles S.p.A. est situé dans l'usine de Mirafiori à Turin, en Italie. Le siège a été officiellement transféré à Mirafiori en 2019. Le groupe Stellantis, dont Fiat fait partie, a son siège à Hoofddorp aux Pays-Bas."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

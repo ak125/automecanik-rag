@@ -1,0 +1,1061 @@
+{
+  "_meta": {
+    "source_label": "wikidata-sparql-models",
+    "source_uri": "https://www.wikidata.org/wiki/Q6742",
+    "fetched_at": "2026-04-21T15:24:00.100939+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "qid": "Q85793017",
+      "name": "Peugeot Landtrek",
+      "inception": "2020-02-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q365119",
+      "name": "Peugeot Quark",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q648206",
+      "name": "Peugeot Buggy Hoggar",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3051304",
+      "name": "Peugeot Flux",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3125322",
+      "name": "Peugeot 20Cup",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377743",
+      "name": "Peugeot 4002",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377774",
+      "name": "Peugeot Prologue",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1125703",
+      "name": "Peugeot BB1",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2074957",
+      "name": "GTbyCitroën",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q123616265",
+      "name": "Peugeot 406 Coupé 2.2 HDi",
+      "inception": "2001-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377787",
+      "name": "Peugeot Touareg",
+      "inception": "1995-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q6073736",
+      "name": "Peugeot 806 Runabout",
+      "inception": "1995-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093694",
+      "name": "Citroën SM",
+      "inception": "1970-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3555482",
+      "name": "Citroën Bijou",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377776",
+      "name": "Peugeot Proxima",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5689916",
+      "name": "Peugeot Oxia",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q29917890",
+      "name": "Peugeot Asphalte",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916848",
+      "name": "Peugeot VLV",
+      "inception": "1941-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q281228",
+      "name": "Peugeot Type 3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q301247",
+      "name": "Peugeot Type 82",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q328139",
+      "name": "Peugeot 406",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q168484",
+      "name": "Peugeot Type 127",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q179308",
+      "name": "Peugeot 604",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q181002",
+      "name": "Peugeot 505",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q207976",
+      "name": "Peugeot 206",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q214229",
+      "name": "Peugeot 107",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q215218",
+      "name": "Peugeot 205",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q215227",
+      "name": "Peugeot 307",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q222305",
+      "name": "Peugeot Type 88",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q222542",
+      "name": "Peugeot Type 31",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q222775",
+      "name": "Peugeot 207",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q224867",
+      "name": "Peugeot Type 105",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q898017",
+      "name": "Peugeot 508",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q898614",
+      "name": "Peugeot Partner",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q914093",
+      "name": "Citroën C-Crosser - Peugeot 4007 - Mitsubishi Outlander CUO",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q914153",
+      "name": "Peugeot Type 8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q914172",
+      "name": "Peugeot Type 33",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q914277",
+      "name": "Peugeot Type 26",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916765",
+      "name": "Peugeot Type 174",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916777",
+      "name": "Peugeot Type 175",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916790",
+      "name": "Peugeot Type 177",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916802",
+      "name": "Peugeot Type 153",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q916827",
+      "name": "Peugeot Type 159",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q431152",
+      "name": "Peugeot 306",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q465966",
+      "name": "Citroën DS",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q465995",
+      "name": "Peugeot 407",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q370785",
+      "name": "Citroën ZX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1361311",
+      "name": "Peugeot 305",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1362426",
+      "name": "Peugeot 204",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1362801",
+      "name": "Simca-Talbot Horizon",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1396421",
+      "name": "Peugeot Type 6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1404230",
+      "name": "Peugeot Type 1583",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1421648",
+      "name": "Peugeot Type 2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1437865",
+      "name": "Peugeot Type 1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1454844",
+      "name": "Peugeot 4008",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1456770",
+      "name": "Peugeot Type 23",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1499080",
+      "name": "Peugeot Type 20 et 29",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1502075",
+      "name": "Talbot Tagora",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1503395",
+      "name": "Peugeot 807",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1536014",
+      "name": "Peugeot Type 81",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1536597",
+      "name": "Peugeot Type 139",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1538903",
+      "name": "Peugeot Type 71",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539200",
+      "name": "Peugeot Quadrilette",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539214",
+      "name": "Peugeot Type 56",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539829",
+      "name": "Peugeot Type 190",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539847",
+      "name": "Peugeot Type 125",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539860",
+      "name": "Peugeot Type 163",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1540343",
+      "name": "Peugeot Type 183",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1541428",
+      "name": "Peugeot Type 10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1563341",
+      "name": "Peugeot Type 80",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1566009",
+      "name": "Peugeot Type 95",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1612804",
+      "name": "Peugeot Type 164",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1630402",
+      "name": "Citroën C3 Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1640253",
+      "name": "Peugeot 201",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1744608",
+      "name": "Peugeot Type 173",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1754228",
+      "name": "Peugeot Type 76",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q497858",
+      "name": "Peugeot 308",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q504138",
+      "name": "Peugeot 607",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q504633",
+      "name": "Citroën Xsara",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q511515",
+      "name": "Peugeot Type 16",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q513866",
+      "name": "Peugeot 202",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q531262",
+      "name": "Peugeot 302",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q541373",
+      "name": "Peugeot Type 50",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q542182",
+      "name": "Peugeot 1007",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q543236",
+      "name": "Citroën GS et GSA",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q546657",
+      "name": "Peugeot 304",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q582767",
+      "name": "Peugeot 806",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q594990",
+      "name": "Peugeot 301",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q627956",
+      "name": "Citroën Méhari",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q629268",
+      "name": "Talbot Samba",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q629751",
+      "name": "Peugeot 205 Turbo 16",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q636378",
+      "name": "Peugeot Type 176",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q636908",
+      "name": "Peugeot 401",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q658918",
+      "name": "Citroën XM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q728076",
+      "name": "Citroën C1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q728314",
+      "name": "Citroën C2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q736206",
+      "name": "Citroën Jumpy",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q756741",
+      "name": "Citroën Berlingo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q762609",
+      "name": "Peugeot Type 15",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q776431",
+      "name": "Peugeot Type 36",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q822665",
+      "name": "Citroën C5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q825781",
+      "name": "Peugeot 405",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q825790",
+      "name": "Peugeot 605",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q826094",
+      "name": "Peugeot 106",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q840940",
+      "name": "Citroën Xantia",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q849464",
+      "name": "Peugeot 104",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2569581",
+      "name": "Peugeot EX1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2623587",
+      "name": "Peugeot Type 24",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2623647",
+      "name": "Peugeot Type 181",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3206212",
+      "name": "Peugeot J9",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377739",
+      "name": "Peugeot 106 XSI",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377740",
+      "name": "Peugeot 108",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377742",
+      "name": "Peugeot 308 II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377747",
+      "name": "Peugeot 405 Turbo 16",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377762",
+      "name": "Peugeot HR1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377766",
+      "name": "Peugeot 406 Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377775",
+      "name": "Peugeot Q3A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377786",
+      "name": "Peugeot SxC",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3377791",
+      "name": "Peugeot Type 160",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q920837",
+      "name": "Citroën Type A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q921822",
+      "name": "Peugeot 404",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q928471",
+      "name": "Peugeot 504",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q938860",
+      "name": "Peugeot Type 54",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q939640",
+      "name": "Citroën BX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q956235",
+      "name": "Peugeot Type 91",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q960745",
+      "name": "Citroën Rosalie",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q963533",
+      "name": "Citroën Visa",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1065813",
+      "name": "Citroën DS4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093538",
+      "name": "Citroën AX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093547",
+      "name": "Citroën C-Crosser",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093561",
+      "name": "Citroën C35",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093602",
+      "name": "Citroën C6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093613",
+      "name": "Citroën CX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093620",
+      "name": "DS 5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093624",
+      "name": "Citroën Dyane",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093657",
+      "name": "Citroën LN et LNA",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093682",
+      "name": "Citroën TUB",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093703",
+      "name": "Citroën Type H",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093708",
+      "name": "Citroën Type C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093728",
+      "name": "Citroën Xsara Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1114672",
+      "name": "Peugeot J7",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1115271",
+      "name": "Peugeot D3 et D4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130681",
+      "name": "Peugeot 403",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130819",
+      "name": "Peugeot 3008",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1139986",
+      "name": "Peugeot 309",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1141318",
+      "name": "Citroën C4 Picasso",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1143459",
+      "name": "Peugeot 203",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1164784",
+      "name": "Peugeot 208 I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1165454",
+      "name": "Peugeot 5008",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1240938",
+      "name": "Citroën FAF",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    }
+  ]
+}

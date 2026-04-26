@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "brand_alias": "dacia",
+    "marque_id": 47,
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level strict"
+  },
+  "curated_by": "claude-code-2026-04-22-wave2",
+  "faq": [
+    {
+      "q": "Dacia fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Dacia est une filiale du groupe Renault depuis 1999. Le constructeur roumain fait partie de l'Alliance Renault-Nissan-Mitsubishi et bénéficie des plateformes techniques partagées au sein de Renault Group, qui inclut également Renault, Alpine et Mobilize."
+    },
+    {
+      "q": "Les pièces Dacia sont-elles compatibles avec Renault ?",
+      "a": "Dacia et Renault appartiennent au même Renault Group depuis 1999. De nombreuses pièces mécaniques (moteurs, plateformes, transmissions) sont partagées entre les deux marques. Cette compatibilité étendue est l'une des raisons de la maîtrise des coûts de Dacia. La compatibilité précise reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Dacia produit-il des véhicules ?",
+      "a": "Dacia a été créée en 1966 en Roumanie. La première Dacia, la 1100, a été lancée le 3 août 1968 — à l'origine une copie de la Renault 8 assemblée à Pitești après accord avec la Régie Renault. Le rachat par Renault en 1999 a marqué un tournant avec la stratégie low-cost moderne."
+    },
+    {
+      "q": "Dacia propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Dacia couvre la gamme essence, diesel, hybride et électrique (Dacia Spring depuis 2021). Le positionnement reste celui d'un constructeur proposant des modèles à prix maîtrisé, en s'appuyant sur les plateformes éprouvées du groupe Renault."
+    },
+    {
+      "q": "Où se trouve le siège social de Dacia ?",
+      "a": "Le siège social de Dacia est situé à Mioveni, en Roumanie. L'usine historique de Pitești-Mioveni reste le principal site industriel de la marque depuis 1968."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

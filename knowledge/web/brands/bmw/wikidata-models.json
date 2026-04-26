@@ -1,0 +1,1061 @@
+{
+  "_meta": {
+    "source_label": "wikidata-sparql-models",
+    "source_uri": "https://www.wikidata.org/wiki/Q26678",
+    "fetched_at": "2026-04-21T15:23:51.464529+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "qid": "Q97159640",
+      "name": "BMW iX3",
+      "inception": "2020-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q97370281",
+      "name": "Mini John Cooper Works Buggy",
+      "inception": "2017-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q31836809",
+      "name": "Mini John Cooper Works Rally",
+      "inception": "2016-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4311136",
+      "name": "BMW Serie 3 Gran Turismo",
+      "inception": "2013-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q606472",
+      "name": "Mini All4 Racing",
+      "inception": "2010-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q778046",
+      "name": "BMW H2R",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796438",
+      "name": "BMW Concept CS",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796511",
+      "name": "BMW Gina",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1124637",
+      "name": "Rolls-Royce 100EX",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130591",
+      "name": "Rolls-Royce Phantom",
+      "inception": "2003-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q11781425",
+      "name": "Mini (2001-2006)",
+      "inception": "2001-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q787413",
+      "name": "BMW Nazca C2",
+      "inception": "1991-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796433",
+      "name": "BMW E1",
+      "inception": "1991-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796574",
+      "name": "BMW M1",
+      "inception": "1974-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796753",
+      "name": "BMW Turbo",
+      "inception": "1972-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796417",
+      "name": "BMW 700",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2278908",
+      "name": "BMW 321",
+      "inception": "1938-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q585787",
+      "name": "BMW 327",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q603167",
+      "name": "BMW Hydrogen 7",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q604134",
+      "name": "BMW E3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q626846",
+      "name": "BMW F30",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q636732",
+      "name": "BMW E24",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q720382",
+      "name": "BMW 600",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q720552",
+      "name": "BMW Z3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q730915",
+      "name": "BMW E21",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q746980",
+      "name": "BMW X1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q756792",
+      "name": "BMW E46",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q780998",
+      "name": "BMW E65",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796370",
+      "name": "BMW 2000 GL",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796372",
+      "name": "BMW 2004",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796379",
+      "name": "BMW 3/15",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796380",
+      "name": "BMW 303",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796381",
+      "name": "BMW 3/20",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796384",
+      "name": "BMW 309",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796385",
+      "name": "BMW 3200 Michelotti Vignale",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796387",
+      "name": "BMW 319",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796388",
+      "name": "BMW 325",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796391",
+      "name": "BMW 320",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796392",
+      "name": "BMW 531",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796394",
+      "name": "BMW 332",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796396",
+      "name": "BMW 337",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796399",
+      "name": "BMW 505",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796403",
+      "name": "BMW 328",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796404",
+      "name": "BMW 501",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796406",
+      "name": "BMW 503",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796414",
+      "name": "BMW 507",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796428",
+      "name": "BMW Concept 7 Series ActiveHybrid",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796431",
+      "name": "BMW Concept X6 ActiveHybrid",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796436",
+      "name": "BMW Série 3 Compact",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796448",
+      "name": "BMW E23",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796453",
+      "name": "BMW E32",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796458",
+      "name": "BMW X5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796462",
+      "name": "BMW E63",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796465",
+      "name": "BMW E70",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796469",
+      "name": "BMW E87",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796478",
+      "name": "BMW F12",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796481",
+      "name": "BMW E9",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796487",
+      "name": "BMW F 76",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796488",
+      "name": "BMW 7 F01",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796490",
+      "name": "BMW F20",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796514",
+      "name": "BMW K1 (automobile)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796516",
+      "name": "BMW K4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796579",
+      "name": "Q796579",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796598",
+      "name": "BMW M5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796601",
+      "name": "BMW M6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796755",
+      "name": "BMW Vision ConnectedDrive",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796774",
+      "name": "BMW Z1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796778",
+      "name": "BMW X5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796780",
+      "name": "BMW X3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796783",
+      "name": "BMW Z4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796785",
+      "name": "BMW i3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796799",
+      "name": "BMW i8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796803",
+      "name": "BMW Z8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q838837",
+      "name": "BMW E30",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q180392",
+      "name": "BMW 315",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q268336",
+      "name": "BMW 3200 CS",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q378796",
+      "name": "Q378796",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q387566",
+      "name": "BMW Série 5 Gran Turismo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q389480",
+      "name": "BMW 340",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q930466",
+      "name": "BMW E89",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q977805",
+      "name": "Mini Paceman",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1141639",
+      "name": "BMW E38",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1578941",
+      "name": "Mini Countryman",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1718027",
+      "name": "BMW 326",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1751040",
+      "name": "BMW 335",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1754362",
+      "name": "BMW E85",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1817201",
+      "name": "Rolls-Royce Phantom Drophead Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1860725",
+      "name": "BMW X3 (F25)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2056075",
+      "name": "BMW 1800",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2311318",
+      "name": "BMW E92",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2332702",
+      "name": "BMW Z",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2416119",
+      "name": "Rolls-Royce Phantom Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2647299",
+      "name": "BMW E83",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2651136",
+      "name": "Alpina B3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2877227",
+      "name": "BMW M5 (E28)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2877229",
+      "name": "BMW M5 (E34)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2917325",
+      "name": "Q2917325",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2917398",
+      "name": "BMW M3 CSL",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q11959926",
+      "name": "BMW 1602",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q11959928",
+      "name": "BMW E31",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q12062564",
+      "name": "BMW X7",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q13411061",
+      "name": "BMW F15",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q14404794",
+      "name": "BMW F32",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q15947574",
+      "name": "BMW X2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16039717",
+      "name": "BMW Lovos",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16060432",
+      "name": "BMW 1500",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16535169",
+      "name": "BMW Serie 2 Active Tourer",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3272917",
+      "name": "BMW 2000",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3631932",
+      "name": "BMW 1600",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3858405",
+      "name": "Mini Roadster",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4034709",
+      "name": "BMW Z10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4836061",
+      "name": "BMW M Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4836070",
+      "name": "BMW M Roadster",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4836084",
+      "name": "BMW X4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4836088",
+      "name": "BMW Zagato Coupe",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q6865039",
+      "name": "Mini E",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q7243315",
+      "name": "Limousine du Premier ministre",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q7361314",
+      "name": "Rolls-Royce 102EX",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q8238943",
+      "name": "BMW E86",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9163486",
+      "name": "BMW 315/1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9163491",
+      "name": "Q9163491",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9163497",
+      "name": "BMW E39",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9163498",
+      "name": "BMW M5 E60/E61",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9163499",
+      "name": "BMW M5 (F10)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q9642124",
+      "name": "BMW ActiveE",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q10700656",
+      "name": "Touring",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q64085785",
+      "name": "BMW F40",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q65094373",
+      "name": "BMW G06",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q65126990",
+      "name": "BMW Série 8 Gran Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q65551003",
+      "name": "Mini Electric",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17238973",
+      "name": "BMW Isetta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20084075",
+      "name": "BMW G11",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20086818",
+      "name": "BMW F48",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20164983",
+      "name": "BMW E84",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20748311",
+      "name": "BMW F22",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20749279",
+      "name": "BMW 1502",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20749282",
+      "name": "BMW 1802",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q21036535",
+      "name": "BMW M3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q21036537",
+      "name": "BMW M3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q23021036",
+      "name": "BMW i5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q25245626",
+      "name": "BMW 1602 Elektro-Antrieb",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q107447016",
+      "name": "BMW G42",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q109017543",
+      "name": "BMW M3 (G80)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q109967114",
+      "name": "BMW Concept XM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q111446755",
+      "name": "BMW i3 eDrive35L",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q111666207",
+      "name": "BMW G70",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q111677072",
+      "name": "BMW i7",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q112190791",
+      "name": "BMW iX1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q112222244",
+      "name": "BMW X1 (U11)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q112515397",
+      "name": "BMW Série 2 Coupé",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    }
+  ]
+}

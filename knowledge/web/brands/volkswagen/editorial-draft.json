@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "volkswagen",
+    "marque_id": 173,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Volkswagen fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Volkswagen est la marque éponyme et historique du Groupe Volkswagen AG, l'un des plus grands constructeurs mondiaux. Le groupe inclut également Audi, SEAT, Škoda, Porsche, Bentley, Lamborghini, Ducati (motos), MAN et Scania (poids lourds). En 2018, le groupe Volkswagen est le premier constructeur mondial avec 10,8 millions d'unités vendues."
+    },
+    {
+      "q": "Les pièces Volkswagen sont-elles compatibles avec Audi, SEAT et Škoda ?",
+      "a": "Volkswagen, Audi, SEAT et Škoda appartiennent au même Groupe Volkswagen AG et partagent de nombreuses plateformes techniques (MQB, MLB, MEB pour l'électrique). Beaucoup de pièces mécaniques (moteurs, organes de transmission, châssis) sont interchangeables. La compatibilité précise reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Volkswagen produit-il des véhicules ?",
+      "a": "Volkswagen (« voiture du peuple ») a été fondée en 1937 à l'initiative de l'organisation Front allemand du travail. La production en série a véritablement démarré après la Seconde Guerre mondiale, avec le succès mondial de la Coccinelle (Type 1), puis de la Golf à partir de 1974."
+    },
+    {
+      "q": "Volkswagen propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Volkswagen couvre l'ensemble de la gamme : essence (TSI), diesel (TDI), hybride rechargeable (eHybrid) et 100 % électrique (gamme ID. depuis 2019 avec ID.3, ID.4, ID.5, ID.7, ID. Buzz). Le constructeur a engagé une transformation accélérée vers l'électrique à la suite du dieselgate (2015)."
+    },
+    {
+      "q": "Où se trouve le siège social de Volkswagen ?",
+      "a": "Le siège social du Groupe Volkswagen AG est situé à Wolfsburg, en Basse-Saxe (Allemagne). L'usine de Wolfsburg, inaugurée en 1938, reste le plus grand site automobile au monde par sa surface et l'un des principaux sites industriels du constructeur."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

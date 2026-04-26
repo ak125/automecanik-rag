@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "suzuki",
+    "marque_id": 158,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Suzuki fait-il partie d'un groupe automobile ?",
+      "a": "Suzuki Motor Corporation est un constructeur japonais largement indépendant. Suzuki a entretenu un partenariat capitalistique avec Volkswagen de 2009 à 2015 (qui s'est mal terminé). Depuis 2017, Suzuki coopère avec Toyota dans le cadre d'un partenariat technique sur l'hybride et l'électrique, sans participation croisée majeure."
+    },
+    {
+      "q": "Quelles activités Suzuki couvre-t-il en dehors de l'automobile ?",
+      "a": "Suzuki est avant tout un important fabricant de motos. La marque produit également des automobiles, des scooters, des quads (ATV), des moteurs hors-bord pour bateaux et des fauteuils roulants motorisés. Suzuki est particulièrement présent sur le marché des petites cylindrées en motos et des micro-citadines en automobile."
+    },
+    {
+      "q": "Depuis quand Suzuki produit-il des véhicules ?",
+      "a": "Suzuki a été fondée en 1909 au Japon par Michio Suzuki, à l'origine fabricant de métiers à tisser. La production de motocyclettes a démarré en 1952 et l'activité automobile en 1955 avec la Suzulight. Suzuki est devenu un acteur mondial des micro-citadines et un leader en Inde via sa filiale Maruti Suzuki."
+    },
+    {
+      "q": "Suzuki propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Suzuki couvre essence, diesel, hybride léger (mild-hybrid) et hybride complet (en collaboration avec Toyota sur certains modèles européens). Le constructeur n'a pas encore lancé de modèle 100 % électrique en Europe à grande échelle, mais prévoit une électrification progressive de sa gamme."
+    },
+    {
+      "q": "Où se trouve le siège social de Suzuki ?",
+      "a": "Le siège social de Suzuki Motor Corporation est situé à Hamamatsu, dans la préfecture de Shizuoka (Japon). Suzuki dispose d'usines au Japon, en Inde (via Maruti Suzuki, leader du marché indien), en Hongrie, au Pakistan et dans plusieurs autres pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

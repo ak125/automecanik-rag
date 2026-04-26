@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "mercedes-benz",
+    "marque_id": 108,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Mercedes-Benz fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Mercedes-Benz est la marque emblématique du groupe Mercedes-Benz Group AG (anciennement Daimler AG jusqu'en 2022). Le groupe a séparé ses activités véhicules utilitaires en 2021 (devenues Daimler Truck), recentrant Mercedes-Benz sur les voitures particulières et utilitaires légers."
+    },
+    {
+      "q": "Les pièces Mercedes-Benz sont-elles compatibles avec Smart ?",
+      "a": "Smart appartenait historiquement au groupe Daimler/Mercedes-Benz. Depuis 2019, Smart est une coentreprise 50/50 entre Mercedes-Benz Group et le constructeur chinois Geely. Certaines pièces Smart historiques (avant 2019) partagent des organes avec Mercedes. La compatibilité reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Mercedes-Benz produit-il des véhicules ?",
+      "a": "La marque Mercedes-Benz a été créée officiellement en 1926 par la fusion de Benz & Cie. (fondée par Karl Benz en 1883, premier brevet automobile mondial en 1886) et de Daimler-Motoren-Gesellschaft (fondée par Gottlieb Daimler en 1890). Mercedes-Benz revendique ainsi l'invention de l'automobile moderne."
+    },
+    {
+      "q": "Mercedes-Benz propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Mercedes-Benz couvre l'ensemble de la gamme : essence, diesel, hybride rechargeable (gamme EQ Power) et 100 % électrique (gamme EQ depuis 2019 avec EQC, EQS, EQE, etc.). La marque vise une électrification accrue de sa gamme à l'horizon 2030."
+    },
+    {
+      "q": "Où se trouve le siège social de Mercedes-Benz ?",
+      "a": "Le siège social de Mercedes-Benz Group AG est situé à Stuttgart, dans le Bade-Wurtemberg (Allemagne). L'usine historique de Sindelfingen et le centre de R&D sont également implantés dans la région de Stuttgart."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

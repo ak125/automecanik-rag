@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "brand_alias": "hyundai",
+    "marque_id": 76,
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level strict"
+  },
+  "curated_by": "claude-code-2026-04-22-wave2",
+  "faq": [
+    {
+      "q": "Hyundai fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Hyundai Motor Company appartient au Hyundai Motor Group, qui inclut également Kia (depuis 1998) et la marque premium Genesis (lancée en 2015). Hyundai est l'un des plus grands constructeurs mondiaux par volume de ventes."
+    },
+    {
+      "q": "Les pièces Hyundai sont-elles compatibles avec Kia ?",
+      "a": "Hyundai et Kia appartiennent au même Hyundai Motor Group depuis 1998 et partagent un grand nombre de plateformes techniques, moteurs et organes mécaniques. La compatibilité entre certains équivalents Hyundai/Kia est étendue. À vérifier référence par référence selon les modèles concernés."
+    },
+    {
+      "q": "Depuis quand Hyundai produit-il des véhicules ?",
+      "a": "Hyundai Motor Company a été fondée en 1967 par Chung Ju-yung en Corée du Sud, filiale automobile du conglomérat Hyundai créé en 1947. La marque a connu une expansion mondiale rapide à partir des années 2000 et est devenue un acteur majeur de l'industrie automobile."
+    },
+    {
+      "q": "Hyundai propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Hyundai couvre l'ensemble de la gamme : essence, diesel, hybride, hybride rechargeable, 100 % électrique (gamme Ioniq) et hydrogène (Hyundai Nexo, pile à combustible). Le constructeur est l'un des leaders mondiaux sur les motorisations alternatives."
+    },
+    {
+      "q": "Où se trouve le siège social de Hyundai ?",
+      "a": "Le siège social de Hyundai Motor Company est situé à Séoul, en Corée du Sud. Le constructeur exploite des usines en Corée, en Chine, en Inde, en République tchèque, en Turquie, aux États-Unis et au Brésil."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

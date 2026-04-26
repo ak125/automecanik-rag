@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "skoda",
+    "marque_id": 150,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Škoda fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Škoda Auto est une filiale du groupe Volkswagen depuis 1991 (acquisition progressive après la chute du régime tchécoslovaque). Le groupe Volkswagen inclut également Volkswagen, Audi, SEAT, Porsche, Bentley, Lamborghini et d'autres marques. Škoda partage les plateformes techniques du groupe (MQB, MEB, etc.)."
+    },
+    {
+      "q": "Les pièces Škoda sont-elles compatibles avec Volkswagen, Audi et SEAT ?",
+      "a": "Škoda, Volkswagen, Audi et SEAT appartiennent au même groupe Volkswagen et partagent de nombreuses plateformes techniques. Beaucoup de pièces mécaniques (moteurs, organes de transmission, châssis) sont interchangeables entre ces marques. La compatibilité précise reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand Škoda produit-il des véhicules ?",
+      "a": "Škoda a été fondée en 1895 en Bohême (actuelle République tchèque) par Václav Laurin et Václav Klement, à l'origine fabricant de bicyclettes (Laurin & Klement). La production automobile a démarré en 1905. La marque a été nationalisée en 1948, puis privatisée et rachetée par Volkswagen en 1991."
+    },
+    {
+      "q": "Škoda propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Škoda couvre essence (TSI), diesel (TDI), hybride rechargeable (iV) et 100 % électrique (gamme Enyaq depuis 2020, gamme Elroq à venir). La marque s'oriente vers une électrification accélérée au sein du groupe Volkswagen."
+    },
+    {
+      "q": "Où se trouve le siège social de Škoda ?",
+      "a": "Le siège social de Škoda Auto est situé à Mladá Boleslav, en République tchèque. L'usine historique de Mladá Boleslav reste le principal site industriel de la marque, complétée par les usines de Kvasiny et Vrchlabí (Tchéquie) ainsi que des sites en Inde et en Chine."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

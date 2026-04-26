@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "source_label": "nhtsa-recalls",
+    "source_uri": "https://api.nhtsa.gov/recalls/recallsByVehicle?make=ALFA%20ROMEO",
+    "fetched_at": "2026-04-21T15:15:16.900760+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": []
+}

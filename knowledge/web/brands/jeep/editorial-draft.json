@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "jeep",
+    "marque_id": 86,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Jeep fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Jeep appartient depuis 2010 au groupe Fiat (devenu Fiat Chrysler Automobiles en 2014, puis Stellantis en 2021 à la suite de la fusion FCA + PSA). Jeep est intégré au périmètre Stellantis North America aux côtés de Chrysler, Dodge et Ram."
+    },
+    {
+      "q": "Les pièces Jeep sont-elles compatibles avec Chrysler, Dodge ou Ram ?",
+      "a": "Jeep, Chrysler, Dodge et Ram appartiennent au même périmètre Stellantis North America (ex-FCA). De nombreuses pièces mécaniques (moteurs, transmissions, plateformes 4x4) sont partagées entre ces marques nord-américaines. La compatibilité précise reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand Jeep produit-il des véhicules ?",
+      "a": "La marque Jeep est née en 1941 aux États-Unis avec le célèbre modèle militaire Willys MB de la Seconde Guerre mondiale. Jeep s'est ensuite spécialisée dans les véhicules tout-terrain civils, devenant l'une des références mondiales du SUV."
+    },
+    {
+      "q": "Jeep propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Jeep couvre essence, diesel, hybride rechargeable (gamme 4xe lancée en 2020) et 100 % électrique (Avenger depuis 2023, Wagoneer S et Recon en cours). La marque s'oriente vers une électrification accélérée tout en conservant son ADN tout-terrain."
+    },
+    {
+      "q": "Où se trouve le siège social de Jeep ?",
+      "a": "Le siège social de Jeep est situé à Auburn Hills, dans le Michigan (États-Unis), au sein de Stellantis North America. Jeep dispose d'usines aux États-Unis, en Italie (Mirafiori, Pomigliano), en Pologne, au Brésil, en Chine et en Inde."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

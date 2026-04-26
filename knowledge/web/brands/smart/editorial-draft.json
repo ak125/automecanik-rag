@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "smart",
+    "marque_id": 151,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Smart fait-il partie d'un groupe automobile ?",
+      "a": "Smart est, depuis 2019, une coentreprise (joint-venture) à 50/50 entre le groupe Mercedes-Benz (anciennement Daimler) et le constructeur chinois Geely. Avant 2019, Smart était une filiale à 100 % de Daimler/Mercedes-Benz. Le siège opérationnel de la coentreprise est situé à Hangzhou en Chine."
+    },
+    {
+      "q": "Les pièces Smart sont-elles compatibles avec Mercedes-Benz ?",
+      "a": "Smart historique (avant 2019) partageait certains organes mécaniques avec Mercedes-Benz (moteurs notamment, sous l'ère Daimler). Les nouveaux modèles Smart conçus dans le cadre de la coentreprise Geely + Mercedes (Smart #1, Smart #3) reposent sur des plateformes Geely (SEA). La compatibilité avec Mercedes est donc forte sur les modèles anciens et limitée sur les nouvelles générations."
+    },
+    {
+      "q": "Depuis quand Smart produit-il des véhicules ?",
+      "a": "Smart a été créée en 1994 sous l'impulsion du groupe horloger suisse Swatch en collaboration avec Mercedes-Benz. Le nom Smart vient de Swatch Mercedes ART. La première génération de Smart Fortwo (Smart City Coupé) a été lancée en 1998, marquant l'entrée dans le segment des microcitadines deux places."
+    },
+    {
+      "q": "Smart propose-t-il toujours des véhicules thermiques ?",
+      "a": "Non. Depuis 2020, Smart est devenue une marque exclusivement 100 % électrique. La gamme actuelle comprend la Smart #1 et la Smart #3, des SUV électriques de petite et moyenne taille, conçus avec Geely et Mercedes-Benz Design."
+    },
+    {
+      "q": "Où se trouve le siège opérationnel de Smart ?",
+      "a": "Depuis 2019, le siège opérationnel de la coentreprise Smart Automobile Co. Ltd est situé à Hangzhou, en Chine. La conception est partagée entre les centres de design Mercedes-Benz et les équipes Geely. Les véhicules sont produits dans l'usine de Xi'an en Chine."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

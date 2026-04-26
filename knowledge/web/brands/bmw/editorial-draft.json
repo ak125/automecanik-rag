@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "brand_alias": "bmw",
+    "marque_id": 33,
+    "status": "DRAFT — sourcé Wikipedia FR + RAG, marque-level strict",
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level — aucun modèle/motorisation cité"
+  },
+  "curated_by": "claude-code-2026-04-22",
+  "faq": [
+    {
+      "q": "BMW fait-il partie d'un groupe automobile ?",
+      "a": "Oui. BMW dirige le Groupe BMW, qui inclut également Mini (acquise en 2000) et Rolls-Royce (rachetée en 1998). Le constructeur a aussi produit des motos sous la marque BMW Motorrad et a possédé temporairement Land Rover (revendu à Ford en 2000) ainsi que Rover."
+    },
+    {
+      "q": "Les pièces BMW sont-elles compatibles avec Mini et Rolls-Royce ?",
+      "a": "BMW, Mini et Rolls-Royce appartiennent au même Groupe BMW depuis 1998-2000. Certaines pièces mécaniques (moteurs notamment) sont partagées entre BMW et Mini, dans une moindre mesure avec Rolls-Royce qui conserve un positionnement très différencié. La compatibilité reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand BMW produit-il des véhicules ?",
+      "a": "BMW a été fondée le 7 mars 1916 par fusion de deux entreprises de mécanique de Munich (Bayerische Flugzeugwerke et Rapp Motorenwerke). Initialement constructeur de moteurs d'avions puis de motos, BMW commercialise sa première automobile en 1928 (BMW 3/15, dérivée de l'Austin Seven sous licence)."
+    },
+    {
+      "q": "BMW propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. BMW couvre l'ensemble de la gamme : essence, diesel, hybride rechargeable et électrique pur (gamme BMW i depuis 2013 avec i3 et i8). Le constructeur a arrêté la production de moteurs V12 en 2022 et concentre désormais ses investissements sur l'électrification de toute sa gamme."
+    },
+    {
+      "q": "Où se trouve le siège social de BMW et son principal site industriel ?",
+      "a": "Le siège social et le musée BMW sont situés à Munich, en Bavière (Allemagne). L'usine de Munich, inaugurée en 1950, produit historiquement les Séries 1, 3 et 5. Le Groupe BMW exploite plus de 24 sites de production dans 13 pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

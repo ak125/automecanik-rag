@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "kia",
+    "marque_id": 88,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Kia fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Kia appartient au Hyundai Motor Group depuis 1998. Le groupe coréen inclut également Hyundai et la marque premium Genesis (lancée en 2015). Le Hyundai Motor Group est l'un des plus grands constructeurs mondiaux par volume de ventes."
+    },
+    {
+      "q": "Les pièces Kia sont-elles compatibles avec Hyundai ?",
+      "a": "Kia et Hyundai appartiennent au même Hyundai Motor Group depuis 1998 et partagent un grand nombre de plateformes techniques, moteurs et organes mécaniques. La compatibilité entre certains équivalents Kia/Hyundai est étendue. À vérifier référence par référence selon les modèles concernés."
+    },
+    {
+      "q": "Depuis quand Kia produit-il des véhicules ?",
+      "a": "Kia Corporation a été fondée en 1944 en Corée du Sud, ce qui en fait le plus ancien constructeur automobile coréen. Initialement spécialisée dans la production de bicyclettes et de motos, Kia a démarré son activité automobile dans les années 1970. Le constructeur a été racheté par Hyundai en 1998 après une crise financière."
+    },
+    {
+      "q": "Kia propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Kia couvre l'ensemble de la gamme : essence, diesel, hybride, hybride rechargeable et 100 % électrique (gamme EV). Le constructeur partage avec Hyundai sa stratégie de leadership sur les motorisations alternatives."
+    },
+    {
+      "q": "Où se trouve le siège social de Kia ?",
+      "a": "Le siège social de Kia Corporation est situé à Séoul, en Corée du Sud. Le constructeur dispose d'usines en Corée, aux États-Unis (Géorgie), en Slovaquie, en Chine et en Inde."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

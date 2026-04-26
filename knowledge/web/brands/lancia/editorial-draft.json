@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "lancia",
+    "marque_id": 92,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Lancia fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Lancia est intégrée au groupe Stellantis depuis 2021. Avant cela, Lancia faisait partie de Fiat depuis 1969, puis de Fiat Chrysler Automobiles. La marque a engagé une relance européenne en 2024 avec la nouvelle Ypsilon, première étape d'un repositionnement haut de gamme."
+    },
+    {
+      "q": "Les pièces Lancia sont-elles compatibles avec Fiat, Alfa Romeo ou Stellantis ?",
+      "a": "Lancia, Fiat et Alfa Romeo partagent un long historique au sein du même groupe (Fiat puis Stellantis). De nombreuses pièces mécaniques (moteurs, plateformes citadines) sont partagées. Avec les marques ex-PSA de Stellantis, la convergence est en cours sur les modèles récents. La compatibilité reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Lancia produit-il des véhicules ?",
+      "a": "Lancia a été fondée le 27 novembre 1906 à Turin (Italie) par Vincenzo Lancia. Constructeur historique italien, Lancia a marqué l'histoire de l'automobile avec des innovations comme le moteur V4 (1922), les premiers châssis monocoques (Lambda, 1922) et de nombreux titres en compétition (rallye, endurance)."
+    },
+    {
+      "q": "Lancia propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. La gamme Lancia est en pleine relance européenne (2024-2026). La nouvelle Ypsilon (2024) est proposée en versions essence hybride et 100 % électrique. La marque vise un positionnement premium électrifié sur le segment européen."
+    },
+    {
+      "q": "Où se trouve le siège social de Lancia ?",
+      "a": "Le siège social historique de Lancia est situé à Turin, en Italie. La marque est aujourd'hui pilotée depuis le siège Stellantis de Turin et a intensifié ses investissements design et R&D dans le cadre de la relance lancée en 2024."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

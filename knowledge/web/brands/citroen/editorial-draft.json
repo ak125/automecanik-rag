@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "brand_alias": "citroen",
+    "marque_id": 46,
+    "status": "DRAFT — sourcé Wikipedia FR + RAG, marque-level strict",
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level — aucun modèle/motorisation cité"
+  },
+  "curated_by": "claude-code-2026-04-22",
+  "faq": [
+    {
+      "q": "Citroën fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Citroën est aujourd'hui une filiale du groupe Stellantis (depuis 2021). Avant cela, Citroën appartenait à PSA Peugeot-Citroën à partir de 1976, après son acquisition par Peugeot. Citroën avait elle-même été rachetée par Michelin en 1934 puis cédée à Peugeot en 1976."
+    },
+    {
+      "q": "Les pièces Citroën sont-elles compatibles avec Peugeot et DS Automobiles ?",
+      "a": "Citroën, Peugeot et DS Automobiles appartiennent au même groupe (Stellantis depuis 2021, PSA depuis 1976). Certaines pièces mécaniques sont partagées entre ces marques, en particulier sur les plateformes communes et les motorisations diesel HDi. La compatibilité précise reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand Citroën produit-il des véhicules ?",
+      "a": "Citroën a été fondée en 1919 par André Citroën, qui transforme alors son ancienne usine de fabrication d'obus du quai de Javel (Paris 15e) en site de production automobile. La Citroën Type A, premier modèle de la marque, est la première automobile construite en série en Europe."
+    },
+    {
+      "q": "Citroën propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Citroën couvre l'ensemble de la gamme : essence, diesel, hybride et électrique. La marque s'est historiquement distinguée par ses motorisations diesel HDi (partagées avec le groupe PSA puis Stellantis) et conserve une gamme couvrant citadines, berlines, SUV et utilitaires."
+    },
+    {
+      "q": "Où se trouve le siège social historique de Citroën ?",
+      "a": "Citroën est née quai de Javel à Paris (actuel quai André-Citroën, 15e arrondissement) en 1919, sur l'emplacement actuel du parc André-Citroën. La marque est aujourd'hui intégrée au groupe Stellantis dont le siège est à Hoofddorp aux Pays-Bas, avec une présence française importante."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

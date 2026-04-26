@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "source_label": "rappel-conso-fr",
+    "source_uri": "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/rappelconso-v2-gtin-espaces/records?where=search%28sous_categorie_produit%2C%20%22automobiles%22%29%20AND%20search%28marque_produit%2C%20%22ALFA%20ROMEO%22%29",
+    "fetched_at": "2026-04-21T15:23:47.238345+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "reference": "sr/00845/26",
+      "date": "2026-03-27T00:00:00+00:00",
+      "brand": "alfa romeo",
+      "model": "junior - mhev voiture de tourisme. niv: zaa5avvp0rja00010 - zaa5avat4tja53139.",
+      "category": "automobiles, motos, scooters",
+      "defect": "il n'y a pas suffisamment de dégagement (< 10 mm) entre le tube du filtre à particules à essence et le capuchon de protection terminal de l'alternateur de démarrage à courroie de 48 v. dans des conditions humides, le manque de dégagement et de contact entre ces composants peut entraîner une infiltration d'eau, provoquant un arc électrique qui peut déclencher un événement thermique, tel qu'une surchauffe. il y a un risque d'incendie.",
+      "risks": "incendie",
+      "conduct": null,
+      "info": "e3*2018/858*00078*08*00 e3*2018/858*00078*11*00 e3*2018/858*00078*12*00 e3*2018/858*00078*13*00 e3*2018/858*00078*14*00, g11*2018/858*01117*00*00 g11*2018/858*01117*01*00"
+    },
+    {
+      "reference": "sr/00050/26",
+      "date": "2026-01-16T00:00:00+00:00",
+      "brand": "alfa romeo",
+      "model": "tonale  mhev / phev voiture de tourisme.",
+      "category": "automobiles, motos, scooters",
+      "defect": "l'ensemble de la pédale de frein pourrait s'effondrer lors du freinage. cela peut conduire à un accident.",
+      "risks": "blessures",
+      "conduct": null,
+      "info": "e3*2018/858*00061*02*00  tonale mhev, e3*2018/858*00061*02*00  tonale phev  , e3*2018/858*00061*03*00  tonale mhev, e3*2018/858*00061*04*00  tonale mhev, e3*2018/858*00061*05*00  tonale phev  , e3*2018/858*00061*06*00  tonale phev"
+    },
+    {
+      "reference": "sr/02933/25",
+      "date": "2025-12-15T09:43:26+00:00",
+      "brand": "alfa romeo",
+      "model": "junior voiture de tourisme.",
+      "category": "automobiles, motos, scooters",
+      "defect": "le véhicule peut présenter une fuite de carburant dans le tuyau à haute pression, entre la pompe à haute pression et le rail, en raison de l'absence d'écrou. cela peut provoquer un incendie dans le véhicule.",
+      "risks": "incendie",
+      "conduct": null,
+      "info": "e3*2018/858*00078*08, e3*2018/858*00078*11 - *13"
+    },
+    {
+      "reference": "a12/03349/24",
+      "date": "2025-03-24T09:49:31+00:00",
+      "brand": "alfa romeo",
+      "model": "tonale mhev and phev voiture particulière.",
+      "category": "automobiles, motos, scooters",
+      "defect": "un impact sur les pédales de frein peut entraîner le désengagement du bras de pédale et du levier de pédale de frein. de plus, le levier de déverrouillage a une faible rigidité due aux variations de force de serrage et de frottement. ces deux raisons peuvent entraîner l'effondrement des pédales de frein pendant le freinage, empêchant le conducteur d'activer les freins de service. cela pourrait altérer les performances de freinage, augmentant ainsi le risque d'accident.",
+      "risks": "blessures",
+      "conduct": null,
+      "info": "e3*2018/858*00061*02*00 (mhev and phev), e3*2018/858*00061*03*00 (mhev), e3*2018/858*00061*04*00 (mhev), e3*2018/858*00061*05*00 (phev), e3*2018/858*00061*06*00 (mhev and phev), e3*2018/858*00061*07*00 (mhev and phev), e3*2018/858*00061*09*00 (mhev)"
+    },
+    {
+      "reference": "a12/01312/21",
+      "date": "2022-06-15T11:21:16+00:00",
+      "brand": "alfa romeo",
+      "model": "giulia, stelvio voiture de tourisme",
+      "category": "automobiles, motos, scooters",
+      "defect": "le module ibs (système de freinage intégré) peut être défectueux. cela peut entraîner une défaillance de l’abs (système de freinage antiblocage), ce qui augmente le risque d’accident.",
+      "risks": "blessures",
+      "conduct": null,
+      "info": "e3*2007/46*0382*15, e3*2007/46*0435*18  types:  952, 949"
+    },
+    {
+      "reference": "a12/00196/21",
+      "date": "2022-06-15T00:45:40+00:00",
+      "brand": "alfa romeo",
+      "model": "giulia, stelvio voiture de tourisme",
+      "category": "automobiles, motos, scooters",
+      "defect": "les disques de frein arrière peuvent présenter des défauts de matériau. cela peut entraîner une réduction des performances de freinage, ce qui augmente le risque d’accident.",
+      "risks": "blessures",
+      "conduct": null,
+      "info": "type-approval number: e3*2007/46*0382*16, type: 952"
+    },
+    {
+      "reference": "a12/01833/21",
+      "date": "2022-06-15T00:41:58+00:00",
+      "brand": "alfa romeo",
+      "model": "giulia, stelvio voiture de tourisme.",
+      "category": "automobiles, motos, scooters",
+      "defect": "en raison d’un défaut de fabrication, le capteur intégré de pression et de température du carburant dans les véhicules concernés peut avoir une incidence sur la conduite d’alimentation en carburant. cela peut entraîner des fuites de carburant, ce qui augmente le risque d’incendie dans le compartiment moteur.",
+      "risks": "incendie",
+      "conduct": null,
+      "info": "e3*2007/46*0382*21, e3*2007/46*0435*13, type: 952,949"
+    }
+  ]
+}

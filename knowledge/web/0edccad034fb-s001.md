@@ -1,0 +1,52 @@
+        ---
+        title: 'Joint de Cardan - s001'
+        source_type: guide
+        category: knowledge
+        truth_level: L2
+        verification_status: unverified
+        slug_gamme: soufflet-de-cardan
+        source_uri: https://fr.wikipedia.org/wiki/Joint_de_Cardan
+        source_url: https://fr.wikipedia.org/wiki/Joint_de_Cardan
+        source_domain: fr.wikipedia.org
+        created_at: '2026-04-04T12:35:12.921192+00:00'
+        updated_at: '2026-04-04T12:35:12.921192+00:00'
+        ---
+
+        # Joint de Cardan
+
+        Le cardan (ou plus précisément le joint de Cardan ) est un dispositif mécanique qui permet la transmission d'une rotation angulaire entre deux arbres dont les axes géométriques concourent. C'est une manière de réaliser une liaison rotule à doigt .
+Cette technique (à ne pas confondre avec la suspension par cardan ) est utilisée sur les véhicules pour accoupler deux arbres tournants non alignés, ou dont les positions angulaires, l'un par rapport à l'autre, peuvent varier ; par exemple l'axe du volant et le boîtier de direction, surtout dans le cas d'un volant réglable en hauteur par rapport au conducteur.
+Sa conception est attribuée à Girolamo Cardano , ingénieur italien de la Renaissance.
+L'invention de ce joint en 1545 est attribuée au mathématicien italien Girolamo Cardano (1501-1576). Ce célèbre savant italien se serait inspiré d'un compas de marine fixé sur deux cercles articulés. Il a décrit l'articulation portant son nom dans un traité de physique intitulé De subtilitate rerum .
+
+## Propriétés mécaniques
+
+Les vitesses moyennes sur un tour sont identiques sur les deux arbres reliés par le joint, mais durant le tour, l'angle formé par les « fourchettes » provoque une non-linéarité de la vitesse angulaire d'un arbre par rapport à l'autre : le cardan unique n'est pas homocinétique [ 1 ] . On peut y remédier en ajoutant un second joint d'angle identique dans la transmission, les deux fourchettes de l'arbre médian étant alignées dans le cas particulier le plus courant, où tous les arbres sont dans le même plan. On passe ainsi de l'arbre d'entrée à l'arbre de sortie par deux demi-angles identiques, les variations angulaires entraînées par chacun des cardans étant égales et opposées.
+L'utilisation la plus connue du cardan est dans l'automobile, en tant que transmission de la puissance entre le moteur et les roues motrices : la présence d'une suspension sans essieu modifie la position des axes des roues par rapport à l'axe du différentiel . Dans le cas des roues directrices et motrices (cas des véhicules à traction ), l'emploi d'un joint de transmission devient incontournable.
+Le fait que le joint de Cardan ne soit pas homocinétique n'a pas empêché son utilisation : la Citroën 2 CV n'avait qu'un cardan par roue sur les premiers modèles, ce qui provoquait son déhanchement caractéristique lors de virages ou de démarrages roues braquées.
+On améliore considérablement l'absence d'homocinétisme du joint de Cardan en le montant en double, de chaque côté du véhicule (avec souvent une allonge coulissante additionnelle) comme ce fut le cas sur la 2 CV à partir des années 1970, puisque l'axe des roues reste approximativement parallèle à celui de l' arbre moteur. L'absence d'un parallélisme strict est due :
+- dans le cas d'une suspension de type MacPherson , au roulis du véhicule qui modifie l'angle entre la roue et le moteur
+- dans le cas de la traction avant, au changement de la position angulaire de l'axe des roues directrices, par définition variable vis-à-vis des arbres de sortie du différentiel .
+Un double cardan ne permettant pas d'annuler complètement les variations de vitesse dans ces conditions, l'industrie automobile a généralisé l'emploi de véritables joints homocinétiques ( tripodes ou Rzeppa par exemple).
+On utilise également les joints de cardans pour :
+- éviter la flexion d'un arbre de transmission lorsqu'une pièce monobloc ne pourrait pas bénéficier d'un guidage de qualité suffisante ;
+- transmettre une position angulaire lorsque les angles de battement et de rotation sont faibles ;
+- articulation à 2 degrés de liberté dans divers mécanismes complexes tels que des robots parallèles. Ce qui compte est davantage les grands débattements et aussi la capacité de charge longitudinale, plutôt que la transmission d'un couple puisqu'ils ne sont pas montés sur un axe en rotation.
+Il faut veiller à respecter quelques règles pour assurer la fiabilité d'un cardan :
+- l'angle ne doit pas dépasser 45 ° , sauf si le joint est spécialement conçu pour fonctionner au-delà de cette valeur
+- il est recommandé de donner un angle minimum de quelques degrés (1,5 à 2) afin de « faire travailler » la transmission. L'angle idéal se situe à environ 15 degrés. Au-delà, l'usure s'accentue et le cardan doit être surdimensionné. L'angle de fonctionnement maximum est 45 degrés. Valeur à partir de laquelle le cardan se bloque et casse.
+- la protection du joint est difficile de par l'amplitude des mouvements qu'il autorise. Un soufflet en caoutchouc est généralement utilisé mais constitue un point faible.
+- le couple de torsion efficace transmis est accompagné d'un couple de flexion tournant deux fois plus vite que les arbres, lequel est une source de vibrations même quand l'homocinétisme est respecté [ 2 ] .
+Dans le monde motocycliste, on parle souvent abusivement de « transmission à cardan » pour des modèles qui n'en sont pas équipés, du fait de la confusion entre arbre et cardan. Par exemple, les machines qui ne sont pas équipées de suspension arrière ont un arbre sans cardan [ 3 ] .
+De la même manière dans le monde automobile, on parle souvent abusivement de « cardan » alors que la transmission est très souvent assurée par un joint tripode [ 4 ] .
+- ↑ (es) junta Cardan - MecFunNet, voir la courbe de vitesse (bleu)
+- ↑ Analyse de divers joints homocinétiques courants
+- ↑ Ian Falloon 2015 , p. 13.
+- ↑ Philippe BÉRENGER , « Connaissances de base - Les joints de transmission », sur Anciennes Automobiles , 21 septembre 2023 (consulté le 23 septembre 2023 )
+- (en) Ian Falloon, The complete book of Bmw Motorcycles : Every model since 1923 , Minneapolis, Motorbooks, 2015 , 289 p. ( ISBN 978-0-76034-727-0 , lire en ligne ) .
+Joint de cardan , sur Sciences industrielles
+- Joint de transmission
+- Accouplement (mécanique)
+- Portail du génie mécanique
+- Portail de l’automobile
+- Portail des technologies

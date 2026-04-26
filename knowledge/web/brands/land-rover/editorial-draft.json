@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "land-rover",
+    "marque_id": 93,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Land Rover fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Land Rover fait partie du groupe Jaguar Land Rover (JLR), filiale du constructeur indien Tata Motors depuis 2008 (rachat à Ford). La marque s'est spécialisée dans les véhicules tout-terrain et SUV de luxe (Range Rover, Defender, Discovery)."
+    },
+    {
+      "q": "Les pièces Land Rover sont-elles compatibles avec Jaguar ?",
+      "a": "Land Rover et Jaguar appartiennent au même groupe Jaguar Land Rover (JLR) depuis 2008. Certaines pièces mécaniques (moteurs Ingenium, plateformes premium) sont partagées entre les deux marques. La compatibilité reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand Land Rover produit-il des véhicules ?",
+      "a": "Land Rover a été créée en 1948 par Rover Company avec le célèbre Land Rover Series I, inspiré de la Jeep Willys militaire. La marque s'est progressivement spécialisée dans les tout-terrains haut de gamme et a été propriété successive de British Leyland, BMW (1994-2000), Ford (2000-2008) puis Tata Motors (depuis 2008)."
+    },
+    {
+      "q": "Land Rover propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Land Rover couvre essence, diesel, hybride léger (mild-hybrid), hybride rechargeable (P400e, P440e) et 100 % électrique (Range Rover Electric annoncé pour 2025). La marque s'oriente vers une électrification accélérée tout en conservant son ADN tout-terrain."
+    },
+    {
+      "q": "Où se trouve le siège social de Land Rover ?",
+      "a": "Le siège social de Jaguar Land Rover (qui inclut Land Rover) est situé à Whitley, en banlieue de Coventry, en Angleterre (Royaume-Uni). Land Rover dispose d'usines au Royaume-Uni (Solihull, Halewood), en Slovaquie (Nitra), en Inde (Pune) et en Chine."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

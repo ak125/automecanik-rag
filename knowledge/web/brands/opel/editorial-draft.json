@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "opel",
+    "marque_id": 123,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Opel fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Opel est une filiale du groupe Stellantis depuis 2021. Avant cela, Opel a appartenu à General Motors de 1929 à 2017, puis au groupe PSA de 2017 à 2021, avant la fusion avec FCA donnant naissance à Stellantis. La marque jumelle britannique Vauxhall fait partie du même périmètre."
+    },
+    {
+      "q": "Les pièces Opel sont-elles compatibles avec Vauxhall, Peugeot ou Citroën ?",
+      "a": "Opel et Vauxhall sont juridiquement la même entreprise (rebadgeage entre les marchés continental et britannique) et partagent l'essentiel des pièces. Avec Peugeot, Citroën et DS Automobiles (groupe Stellantis depuis 2021), la convergence technique progresse rapidement. La compatibilité précise reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Opel produit-il des véhicules ?",
+      "a": "Opel a été fondée en 1862 par Adam Opel en Allemagne, initialement comme fabricant de machines à coudre puis de bicyclettes. Le constructeur a démarré son activité automobile en 1899, ce qui en fait l'un des plus anciens constructeurs européens encore en activité."
+    },
+    {
+      "q": "Opel propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Opel couvre l'ensemble de la gamme : essence, diesel, hybride et 100 % électrique. Depuis l'intégration au groupe Stellantis, la gamme Opel partage les plateformes techniques de l'ex-PSA (CMP, EMP2) et propose une électrification accélérée de toute sa gamme."
+    },
+    {
+      "q": "Où se trouve le siège social d'Opel ?",
+      "a": "Le siège social d'Opel est situé à Rüsselsheim, en Hesse (Allemagne), site historique du constructeur depuis le XIXe siècle. L'usine et le centre de R&D de Rüsselsheim restent au cœur des activités Opel au sein du groupe Stellantis."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

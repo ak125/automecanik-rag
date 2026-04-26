@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "volvo",
+    "marque_id": 172,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Volvo fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Volvo Cars (voitures particulières) appartient depuis 2010 au groupe chinois Geely Holding. Le conglomérat industriel suédois Volvo AB (Volvo Group), qui produit camions, autobus, engins de chantier et moteurs marins/industriels, est une entité distincte de Volvo Cars. Volvo AB et Volvo Cars ont été séparées en 1999."
+    },
+    {
+      "q": "Les pièces Volvo (voitures) sont-elles compatibles avec d'autres marques Geely ?",
+      "a": "Volvo Cars, Polestar, Lynk & Co et certains modèles Geely partagent la plateforme CMA (Compact Modular Architecture) développée conjointement. Polestar (marque premium électrique) est en grande partie issue de la technologie Volvo. Une compatibilité partielle existe donc avec Polestar et certains modèles Lynk & Co. À vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Volvo produit-il des véhicules ?",
+      "a": "Volvo AB a été fondée en 1927 en Suède avec l'aide du groupe SKF. Le mot volvo signifie « je roule » en latin (première personne du verbe volvere). La première voiture, la Volvo ÖV 4, est sortie en 1927. Volvo est connue mondialement pour son leadership historique en matière de sécurité automobile (ceinture trois points inventée et brevetée par Volvo en 1959)."
+    },
+    {
+      "q": "Volvo propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Volvo Cars couvre essence (mild-hybrid), hybride rechargeable (gamme Recharge) et 100 % électrique (gamme EX et EC). Volvo a annoncé l'arrêt de la production de moteurs diesel en 2024 et vise une gamme entièrement électrique à l'horizon 2030."
+    },
+    {
+      "q": "Où se trouve le siège social de Volvo Cars ?",
+      "a": "Le siège social de Volvo Cars est situé à Göteborg, en Suède. La marque dispose d'usines en Suède, en Belgique (Gand), en Chine et aux États-Unis (Caroline du Sud). Volvo AB (camions et engins industriels) a également son siège à Göteborg."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

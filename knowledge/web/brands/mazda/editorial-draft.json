@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "mazda",
+    "marque_id": 105,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Mazda fait-il partie d'un groupe automobile ?",
+      "a": "Mazda Motor Corporation est un constructeur japonais largement indépendant. Mazda a entretenu un partenariat capitalistique avec Ford de 1979 à 2015 (Ford détenait jusqu'à 33,4 %). Aujourd'hui, Toyota détient une participation minoritaire (~5 %) et coopère avec Mazda sur certains modèles, notamment électriques et SUV."
+    },
+    {
+      "q": "Quelles spécificités techniques Mazda propose-t-il ?",
+      "a": "Mazda est connu pour avoir développé et maintenu en série le moteur rotatif (type Wankel), introduit sur la Cosmo en 1967, puis emblématique des RX-7 et RX-8. La marque a relancé cette technologie en 2023 comme prolongateur d'autonomie sur la MX-30 e-Skyactiv R-EV. Mazda a également développé la famille de moteurs Skyactiv (essence, diesel et hybride)."
+    },
+    {
+      "q": "Depuis quand Mazda produit-il des véhicules ?",
+      "a": "Mazda Motor Corporation a été fondée en 1920 au Japon, à Hiroshima. Initialement fabricant de bouchons en liège (Toyo Cork Kogyo), l'entreprise s'est progressivement diversifiée vers les véhicules à moteur (motos puis camions) avant de se spécialiser dans l'automobile dans les années 1960."
+    },
+    {
+      "q": "Mazda propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Mazda couvre essence (Skyactiv-G), diesel (Skyactiv-D), hybride léger (mild-hybrid), hybride rechargeable et 100 % électrique (MX-30 EV). La marque a également un modèle équipé d'un prolongateur d'autonomie à moteur rotatif (MX-30 e-Skyactiv R-EV)."
+    },
+    {
+      "q": "Où se trouve le siège social de Mazda ?",
+      "a": "Le siège social de Mazda Motor Corporation est situé à Hiroshima, au Japon. Mazda dispose d'usines au Japon, au Mexique, en Thaïlande et coopère avec Toyota sur un site commun aux États-Unis (Huntsville, Alabama, depuis 2021)."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

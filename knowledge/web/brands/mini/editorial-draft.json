@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "mini",
+    "marque_id": 113,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Mini fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Mini est une filiale du Groupe BMW depuis 2000. Le Groupe BMW a relancé la marque Mini en 2001 avec une nouvelle génération produite à l'usine d'Oxford (Royaume-Uni), site historique de la marque."
+    },
+    {
+      "q": "Les pièces Mini sont-elles compatibles avec BMW ?",
+      "a": "Mini et BMW appartiennent au même Groupe BMW depuis 2000. Certaines pièces mécaniques (moteurs essence et diesel notamment) sont partagées entre les deux marques, en particulier sur les plateformes communes. La compatibilité reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand Mini produit-il des véhicules ?",
+      "a": "Le modèle Mini a été créé en 1959 par l'ingénieur Alec Issigonis, devenant une icône de l'automobile britannique. La marque Mini en tant qu'entité indépendante a été établie en 1969 par British Leyland. Le Groupe BMW a racheté Mini en 1994 (héritage de l'acquisition de Rover) et conservé la marque lors de la revente de Rover en 2000, lançant la nouvelle Mini en 2001."
+    },
+    {
+      "q": "Mini propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Mini couvre essence, diesel, hybride rechargeable (Countryman) et 100 % électrique (Mini Electric depuis 2020, nouvelle génération depuis 2024). La marque s'oriente vers une gamme entièrement électrique à l'horizon 2030."
+    },
+    {
+      "q": "Où se trouve le siège social et la principale usine Mini ?",
+      "a": "Le siège opérationnel de Mini et son principal site industriel sont situés à Oxford, en Angleterre (Royaume-Uni). L'usine d'Oxford produit la Mini 3-portes, Mini Cabrio, Mini Roadster et Mini Clubman. Le Groupe BMW, propriétaire de Mini, a son siège à Munich."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

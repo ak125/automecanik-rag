@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "honda",
+    "marque_id": 74,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Honda fait-il partie d'un groupe automobile ?",
+      "a": "Honda Motor Co., Ltd est un constructeur japonais indépendant. Honda n'appartient à aucun grand groupe automobile et conserve une stratégie de développement autonome. Honda est également un acteur majeur de l'industrie de la moto, des moteurs de bateaux, des générateurs électriques et des avions d'affaires."
+    },
+    {
+      "q": "Quelles activités Honda couvre-t-il en dehors de l'automobile ?",
+      "a": "Honda est un constructeur diversifié : automobiles, motocyclettes, scooters, quads, avions d'affaires (HondaJet), moteurs de bateaux, générateurs électriques et équipements de jardinage. En 2008, Honda a vendu plus de 17 millions de moteurs à quatre temps, en faisant l'un des plus grands fabricants mondiaux de moteurs."
+    },
+    {
+      "q": "Depuis quand Honda produit-il des véhicules ?",
+      "a": "Honda Motor Co., Ltd a été fondée en 1948 par Soichiro Honda au Japon. Initialement spécialisée dans les motocyclettes, la marque s'est étendue à l'automobile dans les années 1960 et est devenue un acteur mondial majeur de l'industrie automobile."
+    },
+    {
+      "q": "Honda propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Honda couvre essence, diesel, hybride (technologie e:HEV propriétaire), hybride rechargeable, 100 % électrique et hydrogène (Honda Clarity Fuel Cell, pile à combustible). La marque s'est historiquement distinguée par ses motorisations VTEC et ses petits moteurs essence très efficients."
+    },
+    {
+      "q": "Où se trouve le siège social de Honda ?",
+      "a": "Le siège social de Honda Motor Co., Ltd est situé à Tokyo, au Japon. Honda dispose d'usines au Japon, aux États-Unis (notamment Marysville, Ohio), au Canada, au Mexique, au Royaume-Uni (jusqu'en 2021), en Chine, en Inde et dans plusieurs autres pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

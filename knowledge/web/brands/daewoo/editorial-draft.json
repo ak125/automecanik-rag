@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "daewoo",
+    "marque_id": 48,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Daewoo est-il toujours en activité comme constructeur automobile ?",
+      "a": "Non. La marque Daewoo Motor a cessé d'exister en tant que constructeur indépendant. Après la faillite du conglomérat Daewoo en 1999, la division automobile a été rachetée par General Motors en 2002 et renommée GM Korea (anciennement GM Daewoo). La marque Daewoo a été progressivement remplacée par Chevrolet sur les marchés européens et internationaux à partir de 2011."
+    },
+    {
+      "q": "Quelles marques ont remplacé Daewoo sur les marchés européens ?",
+      "a": "À partir de 2011, les modèles précédemment vendus sous la marque Daewoo en Europe ont été commercialisés sous la marque Chevrolet (groupe General Motors). En Corée du Sud, GM Korea a continué à utiliser le nom Daewoo jusqu'en 2011, puis Chevrolet jusqu'en 2018. La marque Chevrolet a elle-même quitté le marché européen grand public fin 2015."
+    },
+    {
+      "q": "Depuis quand Daewoo a-t-il produit des véhicules ?",
+      "a": "Le conglomérat Daewoo a été fondé en 1967 en Corée du Sud par Kim Woo-choong, présent dans de nombreux secteurs (construction navale, BTP, armement, électroménager, électronique, automobile). L'activité automobile Daewoo Motor a été créée en 1972 (initialement Saehan Motor, devenu Daewoo Motor en 1983)."
+    },
+    {
+      "q": "Quels types de véhicules Daewoo a-t-il produits ?",
+      "a": "Daewoo a essentiellement produit des berlines, des compactes et des citadines à motorisation essence et diesel, souvent dérivées de plateformes Opel/General Motors (Opel Kadett pour la Daewoo Nexia, Opel Astra pour la Nubira, etc.). La marque s'est positionnée sur le segment entrée et milieu de gamme."
+    },
+    {
+      "q": "Où se trouvait le siège historique de Daewoo Motor ?",
+      "a": "Le siège historique de Daewoo Motor était situé à Bupyeong, près d'Incheon, en Corée du Sud. Les usines de production se trouvaient principalement à Bupyeong et Gunsan en Corée du Sud. Ces sites ont été repris par GM Korea après le rachat de 2002."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

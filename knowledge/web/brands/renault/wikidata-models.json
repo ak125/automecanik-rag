@@ -1,0 +1,1061 @@
+{
+  "_meta": {
+    "source_label": "wikidata-sparql-models",
+    "source_uri": "https://www.wikidata.org/wiki/Q6686",
+    "fetched_at": "2026-04-21T15:24:07.068113+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "qid": "Q65147399",
+      "name": "Renault Captur II",
+      "inception": "2019-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q29993764",
+      "name": "Renault Scénic IV",
+      "inception": "2016-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1515615",
+      "name": "Renault Egeus",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1592418",
+      "name": "Renault Nepta",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1810031",
+      "name": "Renault Altica",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143724",
+      "name": "Renault Mégane Coupé Concept",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143755",
+      "name": "Renault Ondelios",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589921",
+      "name": "Renault Master II",
+      "inception": "1997-11-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17651867",
+      "name": "Renault Espace III",
+      "inception": "1996-10-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1131842",
+      "name": "Renault Supercinq",
+      "inception": "1984-09-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1405138",
+      "name": "Alpine A108",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143751",
+      "name": "Renault Estafette",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q631247",
+      "name": "Renault Zoom",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17490421",
+      "name": "Renault Type C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17561174",
+      "name": "Renault Type L",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17561175",
+      "name": "Renault Type J",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17561176",
+      "name": "Renault Type I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17561178",
+      "name": "Renault Type G",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17561179",
+      "name": "Renault Type E",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17598348",
+      "name": "Renault AK",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17651866",
+      "name": "Renault Espace II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027223",
+      "name": "Renault Type AJ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027231",
+      "name": "Renault type AQ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027234",
+      "name": "Renault AT",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027241",
+      "name": "Renault Type BM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027260",
+      "name": "Renault Type CQ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027265",
+      "name": "Renault Type DM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027280",
+      "name": "Renault Type EF",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027282",
+      "name": "Renault Type EI",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027285",
+      "name": "Renault Type EK",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027292",
+      "name": "Renault Type M",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027294",
+      "name": "Renault Type N",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027300",
+      "name": "Renault Type P",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027302",
+      "name": "Renault Type Q",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027303",
+      "name": "Renault Type R",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027305",
+      "name": "Renault Type S",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027307",
+      "name": "Renault Type T",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027308",
+      "name": "Renault Type U",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027311",
+      "name": "Renault Type V",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18027313",
+      "name": "Renault Type Z",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18145995",
+      "name": "Renault Espace IV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18169658",
+      "name": "Renault Type HG",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18169665",
+      "name": "Renault Type FK",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18169669",
+      "name": "Renault Type FD",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18215790",
+      "name": "Renault Twingo I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18412544",
+      "name": "Renault Type IG",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18412545",
+      "name": "Renault Type II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18412570",
+      "name": "Renault MG",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589918",
+      "name": "Renault Master III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589924",
+      "name": "Renault Master I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18589929",
+      "name": "Renault Kangoo I",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18630144",
+      "name": "Renault Type JP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18630145",
+      "name": "Renault Type KR",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18745152",
+      "name": "Renault Espace V",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q18913449",
+      "name": "Renault Kadjar",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q19960305",
+      "name": "Renault Kwid",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20819636",
+      "name": "Renault Talisman (2015)",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q20899924",
+      "name": "Renault Mégane IV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q21028693",
+      "name": "Renault Alaskan",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q24928789",
+      "name": "Renault 11 Electronic",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q25158719",
+      "name": "Renault Talisman",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q215715",
+      "name": "Renault 25",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q247716",
+      "name": "Renault 4",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q282383",
+      "name": "Renault Vivastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q913559",
+      "name": "Renault 20",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q917677",
+      "name": "Renault 4CV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q926562",
+      "name": "Dacia Sandero",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q927657",
+      "name": "Renault Safrane",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q930510",
+      "name": "Renault Vel Satis",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q950506",
+      "name": "Dacia Duster",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q998614",
+      "name": "Renault 30",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1050584",
+      "name": "Renault Fluence",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1100585",
+      "name": "Renault KZ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1100625",
+      "name": "Renault Type C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1106501",
+      "name": "Renault Suprastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1117960",
+      "name": "Renault Vivasix",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1124536",
+      "name": "Renault 16",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130811",
+      "name": "Renault Avantime",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130825",
+      "name": "Renault 9 et 11",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1131890",
+      "name": "Renault Primastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1132584",
+      "name": "Renault Modus",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1276797",
+      "name": "Renault Medallion",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1276830",
+      "name": "Renault Premier",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1299603",
+      "name": "Renault 5 Turbo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1318830",
+      "name": "Renault Be Bop",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1333796",
+      "name": "Renault Fuego",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1338440",
+      "name": "Renault 6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1413466",
+      "name": "Renault Primaquatre",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1471855",
+      "name": "Renault 15 et 17",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1496020",
+      "name": "Renault Monasix",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1512155",
+      "name": "Renault Reinastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1512563",
+      "name": "Renault Monastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1515766",
+      "name": "Renault Viva Grand Sport",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1516380",
+      "name": "Renault Zoe",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1539719",
+      "name": "Renault Frégate",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1548685",
+      "name": "Renault Juvaquatre",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1550972",
+      "name": "Renault Monaquatre",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1582420",
+      "name": "Renault 40CV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1658712",
+      "name": "Renault Zo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q504143",
+      "name": "Renault 5",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q504166",
+      "name": "Renault 21",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q531131",
+      "name": "Renault 18",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q572290",
+      "name": "Renault 14",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q574479",
+      "name": "Renault Celtaquatre",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q578088",
+      "name": "Renault 8 et 10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q584354",
+      "name": "Renault 7",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q591145",
+      "name": "Renault 12",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q614939",
+      "name": "Renault Floride et Caravelle",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q642945",
+      "name": "Renault Latitude",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q655473",
+      "name": "Renault Wind",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q676767",
+      "name": "Renault Dauphine",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q728034",
+      "name": "Renault 19",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q738663",
+      "name": "SmILE",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q773870",
+      "name": "Renault Type Y",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q776185",
+      "name": "Renault Type AG",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q833123",
+      "name": "Renault Argos",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2452879",
+      "name": "Renault RS10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2541926",
+      "name": "Renault KJ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2702123",
+      "name": "Renault Symbol",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2726215",
+      "name": "Renault 10",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2914612",
+      "name": "Renault Fluence Z.E.",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2915002",
+      "name": "taxis de la Marne",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3058565",
+      "name": "Renault Alliance",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1751670",
+      "name": "Renault Type A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1781826",
+      "name": "Renault Twizy",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1850259",
+      "name": "Q1850259",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1855735",
+      "name": "Renault Colorale",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1898129",
+      "name": "Alpine A310",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1991289",
+      "name": "Renault R25",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2058369",
+      "name": "Renault AK",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2065194",
+      "name": "Renault NN",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2065205",
+      "name": "Alpine A106",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2077995",
+      "name": "Renault R23",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2085581",
+      "name": "Renault Clio III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2130042",
+      "name": "Renault Rambler",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143689",
+      "name": "Renault 17",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143715",
+      "name": "Renault 1 000 kg",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143718",
+      "name": "Renault Initiale",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143734",
+      "name": "Renault Nervahuit",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143744",
+      "name": "Renault Nervastella",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143822",
+      "name": "Renault 3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2143864",
+      "name": "Renault Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2267699",
+      "name": "Renault Voiturette",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2269192",
+      "name": "Renault R202",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2271081",
+      "name": "Renault MT",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2366830",
+      "name": "Renault Scénic III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q11349041",
+      "name": "Renault Pulse",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q14942366",
+      "name": "Renault Twin'Z Concept",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q15639499",
+      "name": "Renault Twingo III",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q15842158",
+      "name": "Renault Twizy Sport F1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    }
+  ]
+}
