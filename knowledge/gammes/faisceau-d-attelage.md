@@ -418,17 +418,3 @@ En cas de feux de remorque inactifs ou de degradation mesurable, il faut control
 
 **Puis-je monter Faisceau d'attelage sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/b3b535d2b31d 2026-04-03 -->
-### Données techniques OEM — Faisceau d'attelage
-
-# Données techniques OEM — Faisceau d'attelage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- pneumatique
-- électrique

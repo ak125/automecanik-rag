@@ -405,17 +405,3 @@ En cas de klaxon silencieux ou tres faible ou de degradation mesurable, il faut 
 
 **Puis-je monter Avertisseur sonore sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/e825a9366154 2026-04-03 -->
-### Données techniques OEM — Avertisseur sonore
-
-# Données techniques OEM — Avertisseur sonore
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- pneumatique
-- électrique

@@ -415,32 +415,3 @@ Oui, opération accessible. Débrancher la batterie, déposer le cache colonne d
 
 **Quelle erreur éviter avec la commande d'éclairage ?**
 Toujours vérifier les fusibles et ampoules avant de remplacer le commodo. Débrancher la batterie pour éviter les courts-circuits. Ne pas forcer sur les connecteurs.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/a744e5d73ba5 2026-04-03 -->
-### Données techniques OEM — Commande d'éclairage
-
-# Données techniques OEM — Commande d'éclairage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hall
-- électrique
-
-## Normes applicables
-- DIN 5035
-
-## Valeurs techniques de référence
-- 020 °C
-- 100 %
-- 11,9 %
-- 12 %
-- 12,5 %
-- 15,8 %
-- 2,5 %
-- 20 %
-- 23 %
-- 25 %

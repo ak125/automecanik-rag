@@ -359,17 +359,3 @@ En cas de bruit moteur ou de degradation mesurable, il faut controler rapidement
 
 **Puis-je monter Arbre à came sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/71924bfb5ea1 2026-04-03 -->
-### Données techniques OEM — Arbre à came
-
-# Données techniques OEM — Arbre à came
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- électrique

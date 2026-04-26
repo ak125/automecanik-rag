@@ -300,37 +300,3 @@ En cas de odeur de gasoil dans le compartiment moteur ou de degradation mesurabl
 
 **Puis-je monter Tuyau carburant de fuite sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/c4952a80b513 2026-03-26 -->
-### Gaines en caoutchouc cellulaire
-
-Gaines en caoutchouc cellulaire
-
-Les gaines en caoutchouc cellulaire assurent l’isolation thermique et acoustique ainsi qu’une protection mécanique dans les systèmes automobiles. Elles sont conçues à partir d’élastomères résistants au feu et offrent une bonne tenue aux températures extrêmes, à l’usure et à l’exposition au feu. Disponibles en plusieurs formes et formats, elles combinent flexibilité, durabilité et fiabilité.
-
-Principaux bénéfices
-Isolation acoustique et thermique
-Protection mécanique
-Légèreté et flexibilité
-Applications
-Moteur
-Réservoir
-Conduites de carburant
-Systèmes de climatisation
-Caractéristiques techniques
-Mousse élastomère à cellules fermées haute résilience
-Matériaux : EPDM, NBR PVC, CM
-Produits personnalisables
-Conformité FMVSS302
-Résistance jusqu’à 150 °C
-Densité : 150 à 350 kg/m³
-Résistance à la déchirure : 0,5 à 7 kN/m
-Conductivité thermique lambda : 0,043 à 0,062 W/m°K
-Atouts
-Conception sur mesure
-Processus entièrement intégré
-Marquage jet d’encre spécifique
-Normes : ISO 845:2006, NF EN ISO 21656, NF EN ISO 21654

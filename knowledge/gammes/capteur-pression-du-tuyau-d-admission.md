@@ -349,30 +349,3 @@ Oui, très accessible. Généralement sur le collecteur d'admission, une ou deux
 
 **Quelle erreur éviter avec le capteur MAP ?**
 Vérifier l'étanchéité du tuyau de dépression si présent. Ne pas confondre avec le débitmètre. Nettoyer avant de remplacer.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/d39de38b9b85 2026-04-03 -->
-### Données techniques OEM — Capteur pression du tuyau d'admission
-
-# Données techniques OEM — Capteur pression du tuyau d'admission
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

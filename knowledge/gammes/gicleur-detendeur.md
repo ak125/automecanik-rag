@@ -354,29 +354,3 @@ Confondre gicleur et détendeur (incompatibles). Ne pas changer l'accumulateur a
 
 **Comment faire un diagnostic rapide ?**
 Gicleur bouché → BP très basse, pas de froid. Gicleur usé → pressions instables. Filtre colmaté → débit faible.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/8198ade9ad34 2026-04-03 -->
-### Données techniques OEM — Gicleur détendeur
-
-# Données techniques OEM — Gicleur détendeur
-Source : denso-am.eu + fr.wikipedia.org (2 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- plein
-- électrique
-
-## Matériaux
-- aluminium
-
-## Valeurs techniques de référence
-- 100 °C
-- 25 %
-- 25 mm
-- 33 %
-- 400 bars
-- 6 mm
-- 625 °C

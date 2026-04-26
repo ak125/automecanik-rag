@@ -339,30 +339,3 @@ Oui, très facile si séparé. Sur le conduit d'admission, un connecteur, parfoi
 
 **Quelle erreur éviter avec le capteur IAT ?**
 Ne pas confondre avec la sonde de température moteur. Vérifier s'il est intégré au débitmètre avant de commander séparément.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/3089a2870969 2026-04-03 -->
-### Données techniques OEM — Capteur température d'air admission
-
-# Données techniques OEM — Capteur température d'air admission
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

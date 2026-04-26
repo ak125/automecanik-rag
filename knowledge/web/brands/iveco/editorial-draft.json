@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "iveco",
+    "marque_id": 84,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Iveco fait-il partie d'un groupe automobile ?",
+      "a": "Iveco S.p.A. fait partie d'Iveco Group, qui a été spinné de CNH Industrial en 2022. Depuis juillet 2025, Iveco Group est devenu une filiale du constructeur indien Tata Motors. Iveco se concentre sur les véhicules industriels, utilitaires lourds et autobus."
+    },
+    {
+      "q": "Iveco fabrique-t-il des voitures particulières ?",
+      "a": "Non. Iveco se concentre exclusivement sur les véhicules utilitaires (légers, moyens, lourds), les autobus pour le transport urbain et interurbain, les engins de chantier et les véhicules spéciaux (camions anti-incendie, tout-terrain, militaires). La marque ne produit pas de voitures particulières."
+    },
+    {
+      "q": "Depuis quand Iveco existe-t-il ?",
+      "a": "Iveco (acronyme d'Industrial Vehicles Corporation) a été créé en 1975 par la fusion de plusieurs constructeurs européens de poids lourds appartenant à Fiat (OM, Lancia Veicoli Speciali, Magirus-Deutz, Unic). La marque a unifié les activités utilitaires lourdes du groupe Fiat."
+    },
+    {
+      "q": "Quels segments de pièces Iveco couvre-t-il ?",
+      "a": "Iveco couvre l'ensemble des pièces pour véhicules utilitaires, des fourgons légers (Daily) aux camions lourds (S-WAY, Stralis) en passant par les autobus (Crossway, Urbanway). Les motorisations sont essentiellement diesel, avec une électrification croissante (eDaily, eBus)."
+    },
+    {
+      "q": "Où se trouve le siège social d'Iveco ?",
+      "a": "Le siège social d'Iveco S.p.A. est situé à Turin, en Italie. La marque exploite des usines en Italie, en France, en Espagne, en Allemagne et dans plusieurs autres pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

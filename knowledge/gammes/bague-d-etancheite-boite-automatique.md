@@ -448,27 +448,3 @@ En cas de fuites d huile sous la boite ou de degradation mesurable, il faut cont
 
 **Puis-je monter Bague d'étanchéité boîte automatique sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/d2988fbcf0e3 2026-04-03 -->
-### Données techniques OEM — Bague d'étanchéité boîte automatique
-
-# Données techniques OEM — Bague d'étanchéité boîte automatique
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- céramique
-- hydraulique
-- pneumatique
-
-## Normes applicables
-- ISO 5598
-
-## Matériaux
-- céramique
-
-## Valeurs techniques de référence
-- 1,5 mm

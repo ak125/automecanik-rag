@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "brand_alias": "audi",
+    "marque_id": 22,
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level strict"
+  },
+  "curated_by": "claude-code-2026-04-22-wave2",
+  "faq": [
+    {
+      "q": "Audi fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Audi est une filiale du groupe Volkswagen (VAG, Volkswagen Aktiengesellschaft) qui détient la marque à 99,55 %. Le groupe Volkswagen inclut également Volkswagen, SEAT, Škoda, Porsche, Bentley, Lamborghini et d'autres marques premium."
+    },
+    {
+      "q": "Les pièces Audi sont-elles compatibles avec Volkswagen, SEAT et Škoda ?",
+      "a": "Audi, Volkswagen, SEAT et Škoda appartiennent au même groupe Volkswagen et partagent de nombreuses plateformes techniques (MQB, MLB, etc.). Certaines pièces mécaniques sont effectivement interchangeables. La compatibilité précise reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand Audi produit-il des véhicules ?",
+      "a": "Audi a été fondée en 1909 par August Horch en Allemagne. Le 1er janvier 1985, Audi NSU Auto Union AG a été renommée Audi AG et son siège social transféré à Ingolstadt. Les quatre anneaux du logo représentent l'union de quatre constructeurs : Audi, DKW, Horch et Wanderer (Auto Union, 1932)."
+    },
+    {
+      "q": "Audi propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Audi couvre l'ensemble de la gamme : essence (TFSI), diesel (TDI), hybride rechargeable (TFSI e) et 100 % électrique (gamme Audi e-tron lancée en 2018). La marque s'est historiquement distinguée par ses motorisations turbocompressées et son système de transmission intégrale quattro."
+    },
+    {
+      "q": "Où se trouve le siège social d'Audi ?",
+      "a": "Le siège social d'Audi AG est situé à Ingolstadt, en Bavière (Allemagne), depuis 1985. Audi exploite également des sites majeurs à Neckarsulm (Allemagne), Györ (Hongrie), Bruxelles (Belgique) et plusieurs usines à l'international."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

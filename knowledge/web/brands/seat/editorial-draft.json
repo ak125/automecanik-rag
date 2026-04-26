@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "seat",
+    "marque_id": 147,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "SEAT fait-il partie d'un groupe automobile ?",
+      "a": "Oui. SEAT est une filiale du groupe allemand Volkswagen depuis 1986. Le groupe Volkswagen inclut également Volkswagen, Audi, Škoda, Porsche, Bentley, Lamborghini et d'autres marques. SEAT partage les plateformes techniques du groupe (MQB, MEB, etc.)."
+    },
+    {
+      "q": "Les pièces SEAT sont-elles compatibles avec Volkswagen, Audi et Škoda ?",
+      "a": "SEAT, Volkswagen, Audi et Škoda appartiennent au même groupe Volkswagen et partagent de nombreuses plateformes techniques. Beaucoup de pièces mécaniques (moteurs, organes de transmission, châssis) sont interchangeables entre ces marques. La compatibilité précise reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand SEAT produit-il des véhicules ?",
+      "a": "SEAT (Sociedad Española de Automóviles de Turismo) a été fondée en 1950 en Espagne. Initialement créée pour produire des Fiat sous licence en Espagne, la marque a été rachetée par Volkswagen en 1986, devenant ainsi sa première filiale étrangère."
+    },
+    {
+      "q": "SEAT propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. SEAT couvre l'ensemble de la gamme : essence (TSI), diesel (TDI), hybride rechargeable et électrique. La marque partage les motorisations du groupe Volkswagen. SEAT a également lancé la sous-marque CUPRA (autonomisée en 2018) pour ses modèles sportifs et électrifiés."
+    },
+    {
+      "q": "Où se trouve le siège social de SEAT ?",
+      "a": "Le siège social de SEAT S.A. est situé à Martorell, en province de Barcelone (Espagne). L'usine de Martorell, opérationnelle depuis 1993, est le principal site industriel de la marque."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

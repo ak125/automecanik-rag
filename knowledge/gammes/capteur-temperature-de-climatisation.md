@@ -343,30 +343,3 @@ Oui souvent. Le capteur d'évaporateur est dans le boîtier de ventilation, celu
 
 **Quelle erreur éviter avec le capteur clim ?**
 Ne pas confondre capteur d'évaporateur et capteur d'habitacle. Vérifier le code défaut exact avant remplacement.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/1af3af1753c4 2026-04-03 -->
-### Données techniques OEM — Capteur température de climatisation
-
-# Données techniques OEM — Capteur température de climatisation
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

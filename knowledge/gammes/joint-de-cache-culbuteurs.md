@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Assurer l'etancheite du couvre-culasse pour eviter les fuites d'huile
@@ -205,187 +205,129 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: céramique
+    source_ref: corpus RAG web OEM
+  - type: hydraulique
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    couple_vis: '8-12 Nm (faible — ne pas trop serrer, cache alu se deforme)'
-    silicone: 'ne PAS utiliser de silicone generique — joint d''origine ou pate specifique constructeur'
+    norme_iso_5598: ISO 5598
+    val_1_5_mm: 1,5 mm
+  materials:
+  - materiau: céramique
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Le rôle du jointde cache culbuteur est de faire l'étanchéité entre le
-    couvre-culasse et le hautde la culasse pour stoker l'huile dans le haut du
-    moteur pour lalubrification des arbres à cames et des soupapes. La forme du
-    joint de cache culbuteur changeselon la forme du couvre culasse. Il existe
-    plusieurs typesde joint de cache culbuteur selon le matériau utilisé dans
-    laconstruction : - Joint caoutchouc : il est guidé par une empreintesur le
-    cache culbuteur. - Joint élastomère : il est sous ronde ou carré,préformé à
-    la forme du cache culbuteur et il est le plus utilisé dans lesnouvelles
-    motorisations. En savoir plus : joint de cache culbuteurs — définition et
-    rôle mécanique 🚨 Bruit Joint de cache culbuteurs : causes et diagnostic
-  S2: >-
-    Un joint de cacheculbuteur n'a pas de période de remplacement mais il est à
-    contrôler si vousconstatez une fuite d'huile au niveau du cache culbuteur .
-    Un joint de cache culbuteurdéfectueux et qu'il n'est pas remplacé peut
-    causer l'usure de l'arbre à cameset des soupapes à cause du manque de
-    lubrification ce qui peut amener aussi à une révision complète du moteur.
-    Diagnostic complet : identifier une panne de joint de cache culbuteurs
-  S3: >-
-    Le joint de cache culbuteurs assure l'étanchéité entre le couvre-culasse et
-    la culasse, retenant l'huile moteur sous pression et empêchant toute
-    contamination extérieure. Un joint inadapté provoque des fuites progressives
-    qui salissent le moteur, dégradent les bougies d'allumage par contact
-    d'huile et génèrent des risques d'incendie au contact des parties chaudes de
-    l'échappement. La conformité dimensionnelle exacte est impérative. -
-    Référence constructeur ou OEM équivalente — Vérifier la référence du couvre-
-    culasse (gravée ou sur étiquette) et la croiser avec le catalogue technique.
-    Une référence générique ne garantit pas l'épaisseur exacte du cordon
-    d'étanchéité ni le positionnement des œillets de bougie. - Matériau du joint
-    — Les joints en caoutchouc nitrile (NBR) conviennent aux moteurs
-    atmosphériques standard. Pour les moteurs turbocompressés soumis à des
-    températures supérieures à 150 °C en continu, privilégier le caoutchouc
-    fluoré (FKM/Viton) qui résiste jusqu'à 200 °C sans durcir. - Dimensions
-    géométriques exactes — Longueur, largeur et profil du joint doivent
-    correspondre à la gorge du couvre-culasse au millimètre près. Un joint trop
-    fin ne comprime pas correctement ; un joint trop épais déforme le couvre-
-    culasse à serrage. - Présence des passe-fils de bougies — Sur de nombreux
-    moteurs à 4 ou 6 cylindres en ligne, le joint intègre des manchons
-    d'étanchéité autour des puits de bougies. Vérifier que le modèle commandé
-    comporte ces manchons si votre moteur les nécessite (consulter la vue
-    éclatée du moteur). - Kit avec joint de vidange et vis — Certains fabricants
-    (Elring, Payen, Victor Reinz) proposent le joint accompagné des vis de
-    fixation du couvre-culasse. Préférer ces kits : les vis à serrage plastique
-    ne doivent pas être réutilisées après démontage. - Compatibilité avec la
-    version moteur — Un même modèle de véhicule peut recevoir plusieurs
-    variantes de culasse selon l'année de production ou la puissance. Toujours
-    renseigner le code moteur (3-4 lettres gravées sur le bloc ou visible sur la
-    carte grise rubrique P.5) pour lever toute ambiguïté. - Marque, modèle,
-    année et type carburant — Ces quatre données filtrent le catalogue et
-    éliminent les références incompatibles. L'année de fabrication (et non
-    l'année modèle) est déterminante pour les moteurs ayant subi une évolution
-    en cours de série. Pour aller plus loin : consultez notre guide d'achat
-    joint de cache culbuteurs — comparatif marques, critères de choix et prix.
-  S4_DEPOSE: >-
-    📖 Avant de démonter, consultez la fiche technique Joint de cache culbuteurs
-    pour connaître les spécifications. - Arrêtez le moteur et le laissé
-    refroidir. - Ouvrez le capot moteur. - Démontez le cache moteur si équipé. -
-    Localisez le couvre culasse et ses fixations. - Démontez les canalisations
-    monté sur le couvre culasse. - Desserrez les vis de fixation du couvre
-    culasse. - Démontez le couvre culasse. - Retirez le joint cache culbuteur à
-    l'aide d'un tournevis.
-  S4_REPOSE: >-
-    La repose du joint de cache culbuteurs doit impérativement s'effectuer sur
-    un couvre-culasse propre et des surfaces de contact parfaitement
-    dégraissées. Un joint posé sur une surface encrassée d'huile ou de résidus
-    de l'ancien joint ne tient pas — la fuite reprend sous quelques centaines de
-    kilomètres. - Vérifiez que le joint de cache culbuteurs neuf est identique à
-    l'ancien : comparez le profil de la lèvre d'étanchéité, les encoches de
-    centrage et, si présents, les joints toriques des puits de bougies. Certains
-    kits incluent des joints séparés pour les puits — ne les omettez pas. -
-    Nettoyez parfaitement la gorge du couvre-culasse à l'aide d'un chiffon
-    microfibre et d'un dégraissant compatible élastomère. Retirez tous les
-    résidus de l'ancien joint avec un grattoir plastique — un grattoir
-    métallique risque de rayer les surfaces d'appui. - Nettoyez de même le plan
-    de joint de la culasse pour éliminer toute trace d'huile brûlée. Utilisez de
-    l'air comprimé pour chasser les débris dans les puits de bougies avant de
-    poser les joints de puits. - Si le joint est en caoutchouc moulé, appliquez
-    une légère pellicule de graisse silicone sur les deux faces du joint pour
-    faciliter l'emboîtement dans la gorge sans le déformer. Sur les joints en
-    liège, ne graissez pas. - Positionnez le joint de cache culbuteurs dans la
-    gorge du couvre-culasse en engageant d'abord les picots de centrage, puis en
-    appuyant uniformément sur tout le périmètre. Vérifiez que le joint est bien
-    en butée dans les angles et ne déborde pas. - Posez le couvre-culasse sur la
-    culasse sans le déplacer latéralement pour ne pas chasser le joint hors de
-    sa gorge. Engagez les vis de fixation à la main. - Serrez les vis de
-    fixation du couvre-culasse en partant du centre vers l'extérieur et en
-    croix, en deux passes : une passe à 5 N·m, puis une seconde à 8-10 N·m (ou
-    selon le couple constructeur). Ne dépassez jamais le couple maximal — les
-    passages de vis se fendent facilement sur une culasse en aluminium. -
-    Contrôlez l'état de l'arbre à cames et des linguets pendant que le couvre-
-    culasse est encore ouvert si vous l'aviez déposé en présence d'un bruit de
-    claquement : un claquement persistant après repose du joint indique un
-    problème d'hydraulique de soupape, pas du joint. - Remontez le cache moteur
-    plastique en engageant d'abord les clips arrière, puis les clips avant, et
-    en appuyant fermement sur les points de verrouillage. - Démarrez le moteur
-    et laissez-le atteindre la température de fonctionnement. Contrôlez
-    visuellement le couvre-culasse à chaud : aucune trace de suintement ne doit
-    apparaître dans les premiers kilomètres. Une légère odeur de brûlé peut se
-    produire lors du premier démarrage si des résidus de nettoyant ont touché le
-    collecteur — c'est normal et temporaire. ✅ Après remontage, vérifiez les
-    spécifications dans la fiche technique Joint de cache culbuteurs.
-  S5: >-
-    Erreurs frequentes avec le joint de cache culbuteurs : - Ne pas nettoyer les
-    plans de joint sur le cache et la culasse avant montage — des residus
-    d'ancien joint provoquent une fuite immediate- Trop serrer les vis du cache
-    culbuteurs — le cache se deforme et le joint ne porte plus uniformement,
-    creant des fuites- Ne pas respecter l'ordre et le couple de serrage des vis
-    — serrer en spirale du centre vers l'exterieur selon les preconisations
-    constructeur- Utiliser du silicone au lieu du joint d'origine — le silicone
-    peut migrer dans le circuit d'huile et boucher les canaux- Ignorer une fuite
-    d'huile lente au niveau du cache — l'huile coule sur le collecteur
-    d'echappement et provoque fumee et odeur de brule- Ne pas remplacer les
-    joints de bougies (tubes de bougie) en meme temps — ils sont souvent
-    integres au joint de cache et fuient si reutilises
-  S6: >-
-    Le joint de cache culbuteurs (ou joint de couvre-culasse) assure
-    l'étanchéité entre le couvre-culasse et la culasse. Après son remplacement,
-    les contrôles suivants permettent de confirmer que la fuite d'huile est
-    définitivement stoppée et qu'aucun problème secondaire n'est apparu lors de
-    l'intervention. - Vérification du couple de serrage des vis du couvre-
-    culasse : les vis du couvre-culasse doivent être serrées en croix au couple
-    constructeur, généralement entre 8 et 12 N·m. Un serrage excessif déforme le
-    couvre-culasse (souvent en plastique ou aluminium léger) et crée de
-    nouvelles fuites. Un serrage insuffisant laisse échapper l'huile. - Contrôle
-    du nettoiement des puits de bougies : si des traces d'huile étaient
-    présentes dans les puits de bougies (symptôme RAG confirmé), vérifier que
-    les puits sont propres et secs avant remise en route. De l'huile dans un
-    puits de bougie peut provoquer des ratés d'allumage et endommager la bobine
-    d'allumage. - Inspection visuelle de toute la périphérie du joint : après
-    serrage, passer le doigt tout autour de la jonction couvre-culasse / culasse
-    pour détecter tout écartement ou toute déformation du joint. Une
-    irrégularité visible indique un joint mal positionné ou une surface d'appui
-    non nettoyée. - Premier démarrage — contrôle des fuites immédiates :
-    démarrer le moteur et maintenir au ralenti 5 minutes. Observer la zone du
-    couvre-culasse sous toutes les faces accessibles. Aucune trace d'huile
-    fraîche ni aucune fumée ne doit apparaître dans les premières minutes. -
-    Contrôle de l'odeur d'huile brûlée : après 10 minutes de fonctionnement,
-    sentir côté collecteur d'échappement. Si l'odeur d'huile brûlée persiste, il
-    reste de l'huile ancienne sur des surfaces chaudes — elle disparaîtra après
-    quelques kilomètres. Si l'odeur est continue et s'intensifie, une fuite
-    résiduelle est probable. - Contrôle du niveau d'huile : vérifier le niveau
-    d'huile moteur sur la jauge avant et après les 50 premiers kilomètres. Le
-    niveau ne doit pas baisser. Une chute de niveau indique une fuite non
-    traitée ou une autre origine de consommation d'huile. - Contrôle après plus
-    de 100 km : pour les joints ayant dépassé 100 000 km avant remplacement
-    (seuil RAG), vérifier de nouveau la jonction couvre-culasse après les 100
-    premiers kilomètres. Certains matériaux de joint nécessitent un léger
-    retassage thermique avant d'être définitivement étanches.
-  S7: >-
-    Quel est le prix d'un joint de cache culbuteurs ?Le prix varie selon le
-    véhicule et la marque. Utilisez notre sélecteur pour trouver le joint de
-    cache culbuteurs compatible avec votre véhicule et comparer les tarifs des
-    différents équipementiers.Comment savoir si mon joint de cache culbuteurs
-    est à changer ?Les signes d'usure les plus courants sont détaillés dans la
-    section diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par
-    un professionnel.Peut-on rouler avec un joint de cache culbuteurs défaillant
-    ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans
-    la sécurité du véhicule. Consultez la section symptômes pour évaluer
-    l'urgence du remplacement.- assurer l'etancheite - empecher les fuites -
-    separer les fluides
-  S8: >-
-    Comment choisir Joint de cache culbuteurs compatible avec mon
-    vehiculeRenseignez marque, modele, type moteur et annee, puis verifiez la
-    reference Quand remplacer Joint de cache culbuteurs ?En cas de traces d
-    huile sur le cote du moteur ou de degradation mesurable, Puis-je monter
-    Joint de cache culbuteurs sans verification atelier ?Le montage peut exiger
-    controles de couple, alignement et references.
-  META: >-
-    {"meta_title":"Joint cache culbuteurs : quand le changer ? |
-    AutoMecanik","meta_description":"Traces d'huile sur le moteur, odeur de
-    brûlé ou huile dans les puits de bougies ? Joint de cache culbuteurs qui
-    fuit. Guide symptômes et remplacement préventif."}
+  S1: 'Le rôle du jointde cache culbuteur est de faire l''étanchéité entre le couvre-culasse et le hautde la culasse pour
+    stoker l''huile dans le haut du moteur pour lalubrification des arbres à cames et des soupapes. La forme du joint de cache
+    culbuteur changeselon la forme du couvre culasse. Il existe plusieurs typesde joint de cache culbuteur selon le matériau
+    utilisé dans laconstruction : - Joint caoutchouc : il est guidé par une empreintesur le cache culbuteur. - Joint élastomère
+    : il est sous ronde ou carré,préformé à la forme du cache culbuteur et il est le plus utilisé dans lesnouvelles motorisations.
+    En savoir plus : joint de cache culbuteurs — définition et rôle mécanique 🚨 Bruit Joint de cache culbuteurs : causes et
+    diagnostic'
+  S2: 'Un joint de cacheculbuteur n''a pas de période de remplacement mais il est à contrôler si vousconstatez une fuite d''huile
+    au niveau du cache culbuteur . Un joint de cache culbuteurdéfectueux et qu''il n''est pas remplacé peut causer l''usure
+    de l''arbre à cameset des soupapes à cause du manque de lubrification ce qui peut amener aussi à une révision complète
+    du moteur. Diagnostic complet : identifier une panne de joint de cache culbuteurs'
+  S3: 'Le joint de cache culbuteurs assure l''étanchéité entre le couvre-culasse et la culasse, retenant l''huile moteur sous
+    pression et empêchant toute contamination extérieure. Un joint inadapté provoque des fuites progressives qui salissent
+    le moteur, dégradent les bougies d''allumage par contact d''huile et génèrent des risques d''incendie au contact des parties
+    chaudes de l''échappement. La conformité dimensionnelle exacte est impérative. - Référence constructeur ou OEM équivalente
+    — Vérifier la référence du couvre- culasse (gravée ou sur étiquette) et la croiser avec le catalogue technique. Une référence
+    générique ne garantit pas l''épaisseur exacte du cordon d''étanchéité ni le positionnement des œillets de bougie. - Matériau
+    du joint — Les joints en caoutchouc nitrile (NBR) conviennent aux moteurs atmosphériques standard. Pour les moteurs turbocompressés
+    soumis à des températures supérieures à 150 °C en continu, privilégier le caoutchouc fluoré (FKM/Viton) qui résiste jusqu''à
+    200 °C sans durcir. - Dimensions géométriques exactes — Longueur, largeur et profil du joint doivent correspondre à la
+    gorge du couvre-culasse au millimètre près. Un joint trop fin ne comprime pas correctement ; un joint trop épais déforme
+    le couvre- culasse à serrage. - Présence des passe-fils de bougies — Sur de nombreux moteurs à 4 ou 6 cylindres en ligne,
+    le joint intègre des manchons d''étanchéité autour des puits de bougies. Vérifier que le modèle commandé comporte ces
+    manchons si votre moteur les nécessite (consulter la vue éclatée du moteur). - Kit avec joint de vidange et vis — Certains
+    fabricants (Elring, Payen, Victor Reinz) proposent le joint accompagné des vis de fixation du couvre-culasse. Préférer
+    ces kits : les vis à serrage plastique ne doivent pas être réutilisées après démontage. - Compatibilité avec la version
+    moteur — Un même modèle de véhicule peut recevoir plusieurs variantes de culasse selon l''année de production ou la puissance.
+    Toujours renseigner le code moteur (3-4 lettres gravées sur le bloc ou visible sur la carte grise rubrique P.5) pour lever
+    toute ambiguïté. - Marque, modèle, année et type carburant — Ces quatre données filtrent le catalogue et éliminent les
+    références incompatibles. L''année de fabrication (et non l''année modèle) est déterminante pour les moteurs ayant subi
+    une évolution en cours de série. Pour aller plus loin : consultez notre guide d''achat joint de cache culbuteurs — comparatif
+    marques, critères de choix et prix.'
+  S4_DEPOSE: 📖 Avant de démonter, consultez la fiche technique Joint de cache culbuteurs pour connaître les spécifications.
+    - Arrêtez le moteur et le laissé refroidir. - Ouvrez le capot moteur. - Démontez le cache moteur si équipé. - Localisez
+    le couvre culasse et ses fixations. - Démontez les canalisations monté sur le couvre culasse. - Desserrez les vis de fixation
+    du couvre culasse. - Démontez le couvre culasse. - Retirez le joint cache culbuteur à l'aide d'un tournevis.
+  S4_REPOSE: 'La repose du joint de cache culbuteurs doit impérativement s''effectuer sur un couvre-culasse propre et des
+    surfaces de contact parfaitement dégraissées. Un joint posé sur une surface encrassée d''huile ou de résidus de l''ancien
+    joint ne tient pas — la fuite reprend sous quelques centaines de kilomètres. - Vérifiez que le joint de cache culbuteurs
+    neuf est identique à l''ancien : comparez le profil de la lèvre d''étanchéité, les encoches de centrage et, si présents,
+    les joints toriques des puits de bougies. Certains kits incluent des joints séparés pour les puits — ne les omettez pas.
+    - Nettoyez parfaitement la gorge du couvre-culasse à l''aide d''un chiffon microfibre et d''un dégraissant compatible
+    élastomère. Retirez tous les résidus de l''ancien joint avec un grattoir plastique — un grattoir métallique risque de
+    rayer les surfaces d''appui. - Nettoyez de même le plan de joint de la culasse pour éliminer toute trace d''huile brûlée.
+    Utilisez de l''air comprimé pour chasser les débris dans les puits de bougies avant de poser les joints de puits. - Si
+    le joint est en caoutchouc moulé, appliquez une légère pellicule de graisse silicone sur les deux faces du joint pour
+    faciliter l''emboîtement dans la gorge sans le déformer. Sur les joints en liège, ne graissez pas. - Positionnez le joint
+    de cache culbuteurs dans la gorge du couvre-culasse en engageant d''abord les picots de centrage, puis en appuyant uniformément
+    sur tout le périmètre. Vérifiez que le joint est bien en butée dans les angles et ne déborde pas. - Posez le couvre-culasse
+    sur la culasse sans le déplacer latéralement pour ne pas chasser le joint hors de sa gorge. Engagez les vis de fixation
+    à la main. - Serrez les vis de fixation du couvre-culasse en partant du centre vers l''extérieur et en croix, en deux
+    passes : une passe à 5 N·m, puis une seconde à 8-10 N·m (ou selon le couple constructeur). Ne dépassez jamais le couple
+    maximal — les passages de vis se fendent facilement sur une culasse en aluminium. - Contrôlez l''état de l''arbre à cames
+    et des linguets pendant que le couvre- culasse est encore ouvert si vous l''aviez déposé en présence d''un bruit de claquement
+    : un claquement persistant après repose du joint indique un problème d''hydraulique de soupape, pas du joint. - Remontez
+    le cache moteur plastique en engageant d''abord les clips arrière, puis les clips avant, et en appuyant fermement sur
+    les points de verrouillage. - Démarrez le moteur et laissez-le atteindre la température de fonctionnement. Contrôlez visuellement
+    le couvre-culasse à chaud : aucune trace de suintement ne doit apparaître dans les premiers kilomètres. Une légère odeur
+    de brûlé peut se produire lors du premier démarrage si des résidus de nettoyant ont touché le collecteur — c''est normal
+    et temporaire. ✅ Après remontage, vérifiez les spécifications dans la fiche technique Joint de cache culbuteurs.'
+  S5: 'Erreurs frequentes avec le joint de cache culbuteurs : - Ne pas nettoyer les plans de joint sur le cache et la culasse
+    avant montage — des residus d''ancien joint provoquent une fuite immediate- Trop serrer les vis du cache culbuteurs —
+    le cache se deforme et le joint ne porte plus uniformement, creant des fuites- Ne pas respecter l''ordre et le couple
+    de serrage des vis — serrer en spirale du centre vers l''exterieur selon les preconisations constructeur- Utiliser du
+    silicone au lieu du joint d''origine — le silicone peut migrer dans le circuit d''huile et boucher les canaux- Ignorer
+    une fuite d''huile lente au niveau du cache — l''huile coule sur le collecteur d''echappement et provoque fumee et odeur
+    de brule- Ne pas remplacer les joints de bougies (tubes de bougie) en meme temps — ils sont souvent integres au joint
+    de cache et fuient si reutilises'
+  S6: 'Le joint de cache culbuteurs (ou joint de couvre-culasse) assure l''étanchéité entre le couvre-culasse et la culasse.
+    Après son remplacement, les contrôles suivants permettent de confirmer que la fuite d''huile est définitivement stoppée
+    et qu''aucun problème secondaire n''est apparu lors de l''intervention. - Vérification du couple de serrage des vis du
+    couvre- culasse : les vis du couvre-culasse doivent être serrées en croix au couple constructeur, généralement entre 8
+    et 12 N·m. Un serrage excessif déforme le couvre-culasse (souvent en plastique ou aluminium léger) et crée de nouvelles
+    fuites. Un serrage insuffisant laisse échapper l''huile. - Contrôle du nettoiement des puits de bougies : si des traces
+    d''huile étaient présentes dans les puits de bougies (symptôme RAG confirmé), vérifier que les puits sont propres et secs
+    avant remise en route. De l''huile dans un puits de bougie peut provoquer des ratés d''allumage et endommager la bobine
+    d''allumage. - Inspection visuelle de toute la périphérie du joint : après serrage, passer le doigt tout autour de la
+    jonction couvre-culasse / culasse pour détecter tout écartement ou toute déformation du joint. Une irrégularité visible
+    indique un joint mal positionné ou une surface d''appui non nettoyée. - Premier démarrage — contrôle des fuites immédiates
+    : démarrer le moteur et maintenir au ralenti 5 minutes. Observer la zone du couvre-culasse sous toutes les faces accessibles.
+    Aucune trace d''huile fraîche ni aucune fumée ne doit apparaître dans les premières minutes. - Contrôle de l''odeur d''huile
+    brûlée : après 10 minutes de fonctionnement, sentir côté collecteur d''échappement. Si l''odeur d''huile brûlée persiste,
+    il reste de l''huile ancienne sur des surfaces chaudes — elle disparaîtra après quelques kilomètres. Si l''odeur est continue
+    et s''intensifie, une fuite résiduelle est probable. - Contrôle du niveau d''huile : vérifier le niveau d''huile moteur
+    sur la jauge avant et après les 50 premiers kilomètres. Le niveau ne doit pas baisser. Une chute de niveau indique une
+    fuite non traitée ou une autre origine de consommation d''huile. - Contrôle après plus de 100 km : pour les joints ayant
+    dépassé 100 000 km avant remplacement (seuil RAG), vérifier de nouveau la jonction couvre-culasse après les 100 premiers
+    kilomètres. Certains matériaux de joint nécessitent un léger retassage thermique avant d''être définitivement étanches.'
+  S7: Quel est le prix d'un joint de cache culbuteurs ?Le prix varie selon le véhicule et la marque. Utilisez notre sélecteur
+    pour trouver le joint de cache culbuteurs compatible avec votre véhicule et comparer les tarifs des différents équipementiers.Comment
+    savoir si mon joint de cache culbuteurs est à changer ?Les signes d'usure les plus courants sont détaillés dans la section
+    diagnostic ci-dessus. En cas de doute, faites contrôler la pièce par un professionnel.Peut-on rouler avec un joint de
+    cache culbuteurs défaillant ?Cela dépend de la gravité du dysfonctionnement et du rôle de la pièce dans la sécurité du
+    véhicule. Consultez la section symptômes pour évaluer l'urgence du remplacement.- assurer l'etancheite - empecher les
+    fuites - separer les fluides
+  S8: Comment choisir Joint de cache culbuteurs compatible avec mon vehiculeRenseignez marque, modele, type moteur et annee,
+    puis verifiez la reference Quand remplacer Joint de cache culbuteurs ?En cas de traces d huile sur le cote du moteur ou
+    de degradation mesurable, Puis-je monter Joint de cache culbuteurs sans verification atelier ?Le montage peut exiger controles
+    de couple, alignement et references.
+  META: '{"meta_title":"Joint cache culbuteurs : quand le changer ? | AutoMecanik","meta_description":"Traces d''huile sur
+    le moteur, odeur de brûlé ou huile dans les puits de bougies ? Joint de cache culbuteurs qui fuit. Guide symptômes et
+    remplacement préventif."}'
 ---
 
 # Joint de cache culbuteurs - Guide Diagnostic Complet

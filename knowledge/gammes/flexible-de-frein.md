@@ -15,7 +15,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v4_converted
-  last_enriched_by: script:rag-enrich-metier-templates
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-26'
 domain:
   role: Transmettre la pression hydraulique entre les elements mobiles
@@ -222,6 +222,28 @@ installation:
   - pied a coulisse
   - cle dynamometrique
   prerequisite: Vehicule sur chandelles, roue demontee
+phase5_enrichment:
+  _source: ate-freinage.fr + delphiautoparts.com
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 6
+  _has_tech_data: true
+  types_variants:
+  - type: 'hydraulique'
+    source_ref: corpus RAG web OEM
+  technical_notes:
+    norme_fmvss_106.
+
+-_fabriqués_selon_la_norme_interne_d’ate: 'FMVSS 106.
+
+- Fabriqués selon la norme interne d’ATE'
+    val_100__: '100 %'
+    val_100_a: '100 a'
+    val_7_a: '7 a'
+    val_72_a: '72 a'
+  materials:
+  - materiau: 'EPDM'
+    source_ref: corpus RAG web OEM
 ---
 
 # Flexible de frein - Guide Diagnostic Complet
@@ -320,152 +342,3 @@ Oui, mais nécessite de purger le circuit après. Attention à ne pas vriller le
 
 **Quelle erreur éviter avec les flexibles ?**
 Ne jamais plier ou tordre un flexible. Ne pas utiliser de pince étau pour le pincer. Vérifier que le flexible ne frotte pas sur la roue en braquant.
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/freinage/vibration-au-freinage.md 2026-01-01 -->
-### Diagnostic - Vibrations véhicule
-
-# Vibrations véhicule - Diagnostic complet
-
-## Types de vibrations
-
-### Vibrations au volant
-- **À basse vitesse (< 50 km/h)** : Problème de pneus ou jantes
-- **À haute vitesse (> 80 km/h)** : Équilibrage ou géométrie
-- **Au freinage** : Disques voilés
-
-### Vibrations dans l'habitacle
-- **Moteur au ralenti** : Supports moteur
-- **En accélération** : Transmission, cardans
-- **À vitesse constante** : Pneus, roulements
-
-### Vibrations dans la pédale de frein
-- **Au freinage** : Disques voilés, plaquettes usées
-
-## Causes et solutions
-
-### 1. Pneus déséquilibrés
-- **Symptôme** : Vibration volant à partir de 80-100 km/h
-- **Vérification** : Visuel sur les masses d'équilibrage
-- **Solution** : Équilibrage des 4 pneus
-- **Coût** : 40-60€
-- **Urgence** : Moyenne
-
-### 2. Pneus usés irrégulièrement
-- **Symptôme** : Vibration + bruit de roulement
-- **Vérification** : Usure en "dents de scie"
-- **Solution** : Remplacement pneus + géométrie
-- **Urgence** : Haute
-
-### 3. Roulement de roue défaillant
-- **Symptôme** : Grondement augmentant avec la vitesse
-- **Vérification** : Jeu dans la roue, bruit en virage
-- **Solution** : Remplacement roulement
-- **Pièces** : Kit roulement de roue
-- **Urgence** : Haute - Sécurité
-
-### 4. Cardans usés
-- **Symptôme** : Claquement en braquant, vibration en accélération
-- **Vérification** : Soufflets déchirés, jeu
-- **Solution** : Remplacement cardan
-- **Pièces** : Cardan complet ou transmission
-- **Urgence** : Haute
-
-### 5. Disques de frein voilés
-- **Symptôme** : Vibration pédale au freinage
-- **Vérification** : Mesure au comparateur
-- **Solution** : Rectification ou remplacement
-- **Pièces** : Disques de frein
-- **Urgence** : Moyenne
-
-### 6. Supports moteur fatigués
-- **Symptôme** : Vibration au ralenti dans l'habitacle
-- **Vérification** : Visuel sur silent-blocs
-- **Solution** : Remplacement supports
-- **Pièces** : Support moteur, silent-bloc
-- **Urgence** : Basse
-
-## Arbre de décision
-
-```
-Vibration ?
-├── Au volant ?
-│   ├── À haute vitesse → Équilibrage / Géométrie
-│   ├── Au freinage → Disques voilés
-│   └── En virage → Roulement / Cardan
-├── Dans l'habitacle ?
-│   ├── Au ralenti → Supports moteur
-│   ├── En accélération → Cardan / Transmission
-│   └── Constant → Pneus / Roulements
-└── Pédale de frein ?
-    └── Au freinage → Disques voilés
-```
-
-<!-- materialized-from-db diagnostic/bruits-freinage.md 2026-01-01 -->
-### Diagnostic - Bruits de freinage
-
-# Bruits de freinage - Diagnostic complet
-
-## Symptômes courants
-
-### Grincement aigu au freinage
-- **Quand** : Au moment du freinage léger ou modéré
-- **Caractéristique** : Son métallique aigu, type "crissement"
-
-### Sifflement continu
-- **Quand** : Pendant tout le freinage
-- **Caractéristique** : Son aigu constant
-
-### Bruit sourd / grondement
-- **Quand** : Freinage appuyé
-- **Caractéristique** : Vibration ressentie dans la pédale
-
-### Claquement
-- **Quand** : Début ou fin de freinage
-- **Caractéristique** : Bruit sec, ponctuel
-
-## Causes possibles et solutions
-
-### 1. Plaquettes de frein usées
-- **Probabilité** : 70%
-- **Vérification** : Témoin usure allumé, épaisseur < 3mm
-- **Solution** : Remplacement des plaquettes
-- **Pièces** : Plaquettes de frein avant/arrière
-- **Urgence** : Haute - Sécurité
-
-### 2. Disques de frein voilés
-- **Probabilité** : 15%
-- **Vérification** : Vibration pédale, usure inégale visible
-- **Solution** : Rectification ou remplacement des disques
-- **Pièces** : Disques de frein
-- **Urgence** : Moyenne
-
-### 3. Étrier grippé
-- **Probabilité** : 10%
-- **Vérification** : Usure asymétrique des plaquettes
-- **Solution** : Nettoyage/graissage ou remplacement étrier
-- **Pièces** : Kit réparation étrier, étrier complet
-- **Urgence** : Haute
-
-### 4. Absence de graisse sur glissières
-- **Probabilité** : 5%
-- **Vérification** : Plaquettes difficiles à bouger
-- **Solution** : Nettoyage et graissage
-- **Pièces** : Graisse haute température
-- **Urgence** : Basse
-
-## Questions complémentaires pour affiner le diagnostic
-
-1. Le bruit apparaît-il à froid ou à chaud ?
-2. Le bruit est-il présent sur les 4 roues ou localisé ?
-3. Y a-t-il une vibration dans le volant ?
-4. Quand avez-vous changé vos plaquettes pour la dernière fois ?
-5. Avez-vous un témoin d'usure allumé au tableau de bord ?
-
-## Recommandations
-
-- **Contrôle visuel** : Vérifier l'épaisseur des plaquettes (minimum 3mm)
-- **Kilométrage** : Remplacement préventif tous les 30 000 - 50 000 km
-- **Qualité** : Privilégier les marques équipementier (Bosch, Brembo, TRW)

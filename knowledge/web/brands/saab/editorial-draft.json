@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "saab",
+    "marque_id": 145,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Saab est-il toujours en activité comme constructeur automobile ?",
+      "a": "Non. Saab Automobile a cessé son activité en 2012 après une faillite. La marque automobile Saab n'est plus produite depuis cette date. Le nom Saab continue d'être utilisé par Saab AB, groupe suédois indépendant spécialisé dans la défense aéronautique, maritime et terrestre, sans lien avec l'automobile."
+    },
+    {
+      "q": "À quel groupe Saab Automobile a-t-elle appartenu ?",
+      "a": "Saab Automobile a appartenu à General Motors de 1990 à 2010, puis a été reprise brièvement par le néerlandais Spyker Cars en 2010 avant de faire faillite en 2012. La technologie Saab a été partiellement reprise par le constructeur sino-suédois NEVS (National Electric Vehicle Sweden) entre 2012 et 2020, sans relance commerciale durable de la marque Saab."
+    },
+    {
+      "q": "Depuis quand Saab a-t-il produit des véhicules ?",
+      "a": "Saab a été fondée en 1945 en Suède sous le nom de Svenska Aeroplan Aktiebolaget (Société par actions d'aéroplanes suédois), à l'origine constructeur d'avions militaires. La division automobile Saab a démarré en 1947 avec la Saab 92 et est devenue célèbre pour ses berlines turbocompressées innovantes (900, 9000, 9-3, 9-5)."
+    },
+    {
+      "q": "Quels types de véhicules Saab a-t-il produits ?",
+      "a": "Saab a essentiellement produit des berlines et des breaks à motorisation essence et diesel, souvent turbocompressés. La marque s'est distinguée par son design aéronautique inspiré (cabines profilées), ses moteurs turbo et un positionnement premium scandinave. Saab a également proposé des versions cabriolet et SUV (9-7X)."
+    },
+    {
+      "q": "Où se trouvait le siège historique de Saab Automobile ?",
+      "a": "Le siège historique de Saab Automobile était situé à Trollhättan, en Suède. L'usine de Trollhättan a été le principal site de production des véhicules Saab pendant toute l'histoire de la marque. Le site a été repris par NEVS après la faillite de Saab Automobile en 2012."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

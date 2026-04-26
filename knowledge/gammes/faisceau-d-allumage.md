@@ -417,26 +417,3 @@ Oui, opération simple. Débrancher un par un pour ne pas mélanger l'ordre. Cli
 
 **Quelle erreur éviter avec les faisceaux d'allumage ?**
 Ne pas tirer sur le câble mais sur le capuchon. Respecter l'ordre de branchement. Vérifier l'absence de fissures avant remontage.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/863cdc55bd2d 2026-04-03 -->
-### Données techniques OEM — Faisceau d'allumage
-
-# Données techniques OEM — Faisceau d'allumage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- plein
-- pneumatique
-- électrique
-
-## Matériaux
-- platine
-
-## Valeurs techniques de référence
-- 400 °C

@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "brand_alias": "renault",
+    "marque_id": 140,
+    "status": "DRAFT — sourcé Wikipedia FR + RAG, marque-level strict",
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level — aucun modèle/motorisation cité"
+  },
+  "curated_by": "claude-code-2026-04-22",
+  "faq": [
+    {
+      "q": "Renault fait-il partie d'un groupe automobile ou d'une alliance ?",
+      "a": "Renault est lié au constructeur japonais Nissan depuis 1999 et à Mitsubishi depuis 2017, à travers l'Alliance Renault-Nissan-Mitsubishi (siège aux Pays-Bas). Renault Group commercialise également ses véhicules sous les marques Alpine, Dacia et Mobilize."
+    },
+    {
+      "q": "Les pièces Renault sont-elles compatibles avec Dacia et Alpine ?",
+      "a": "Renault, Dacia et Alpine appartiennent au même Renault Group. Certaines pièces mécaniques (plateformes, moteurs) sont partagées entre Renault et Dacia. Avec Alpine, le partage est plus limité car la marque conserve un positionnement sportif distinct. La compatibilité reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Renault produit-il des véhicules ?",
+      "a": "Renault a été fondée en 1898 à Boulogne-Billancourt par les frères Louis, Marcel et Fernand Renault. La Voiturette Type A équipée de la première boîte de vitesses en prise directe (invention brevetée par Louis Renault) marque le début de l'aventure. La société Renault Frères est officiellement fondée le 25 février 1899."
+    },
+    {
+      "q": "Renault propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Renault couvre l'ensemble de la gamme : essence, diesel, hybride et électrique. Le constructeur a été un pionnier européen du véhicule électrique grand public et conserve une gamme variée allant des citadines aux utilitaires."
+    },
+    {
+      "q": "Où se trouve le siège social de Renault et combien d'usines exploite le groupe ?",
+      "a": "Renault est historiquement implanté à Boulogne-Billancourt en France. En 2024, Renault Group exploite trente-quatre sites industriels à travers le monde. Le futur musée Renault renaîtra en 2027 sur le site de Flins-sur-Seine dans les Yvelines."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

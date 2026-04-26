@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "porsche",
+    "marque_id": 133,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Porsche fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Porsche AG est une filiale du groupe Volkswagen depuis 2012 (intégration définitive). Volkswagen détient environ 75 % de Porsche AG. Porsche a réalisé son introduction en bourse partielle en septembre 2022, devenant l'une des plus importantes IPO européennes de l'histoire."
+    },
+    {
+      "q": "Les pièces Porsche sont-elles compatibles avec d'autres marques du groupe Volkswagen ?",
+      "a": "Porsche et le groupe Volkswagen partagent certaines plateformes techniques, en particulier sur les SUV (plateforme MLB pour Cayenne / Touareg / Q7 / Bentayga / Urus) et sur les électriques (plateforme PPE pour Taycan / e-tron GT). Certaines pièces mécaniques sont partagées sur ces modèles. La compatibilité précise reste à vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Porsche produit-il des véhicules ?",
+      "a": "Porsche a été fondée en 1931 par Ferdinand Porsche en Allemagne (Stuttgart), initialement comme bureau d'études. La première voiture portant le nom Porsche, la 356, a été produite en 1948 en Autriche. Le constructeur s'est spécialisé dans les voitures de sport haut de gamme avec des icônes comme la 911, la Boxster et la Cayenne."
+    },
+    {
+      "q": "Porsche propose-t-il des véhicules essence, hybrides et électriques ?",
+      "a": "Oui. Porsche couvre essence, hybride rechargeable (Cayenne E-Hybrid, Panamera E-Hybrid) et 100 % électrique (Taycan depuis 2019, Macan Electric depuis 2024). Porsche n'a jamais commercialisé de modèles diesel en quantité significative (essai limité avec la Cayenne Diesel et Macan Diesel, abandonnés après le dieselgate)."
+    },
+    {
+      "q": "Où se trouve le siège social de Porsche ?",
+      "a": "Le siège social de Porsche AG est situé à Stuttgart-Zuffenhausen, en Allemagne (Bade-Wurtemberg). L'usine historique de Zuffenhausen produit la 911 et le Taycan. La marque dispose également d'usines à Leipzig (Macan, Panamera, Cayenne), ainsi que de centres de R&D à Weissach."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

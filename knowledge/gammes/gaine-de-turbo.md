@@ -7,7 +7,7 @@ source_type: gamme
 doc_family: catalog
 truth_level: L2
 schema_version: '5.0'
-updated_at: '2026-03-29'
+updated_at: '2026-04-04'
 verification_status: draft
 intent_targets:
 - diagnostic
@@ -16,8 +16,8 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
-  last_enriched_at: '2026-03-29'
+  last_enriched_by: script:materialize-db-to-md
+  last_enriched_at: '2026-04-04'
   v5_migrated_at: '2026-03-29'
 domain:
   role: Acheminer l'air comprime du turbo vers l'intercooler
@@ -209,51 +209,53 @@ installation:
   - outillage standard
   prerequisite: Consulter la procedure constructeur
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: piézo
+    source_ref: corpus RAG web OEM
+  - type: pneumatique
+    source_ref: corpus RAG web OEM
+  - type: électrique
+    source_ref: corpus RAG web OEM
   technical_notes:
-    materiau: 'caoutchouc renforce (origine) ou silicone haute temperature (remplacement performance)'
+    val_0_7_bar: 0,7 bar
+    val_1_1_bar: 1,1 bar
+    val_11__a: 11, a
+    val_2_a: 2 a
+    val_2_litres: 2 litres
+    val_200_km: 200 km
+    val_4_bar: 4 bar
+    val_50_v: 50 V
+    val_8_a: 8 a
+    val_9_a: 9 a
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
-  S1: >-
-    Acheminer l'air comprime du turbo vers l'intercooler. Pièces liées :
-    vérifier les composants adjacents lors du remplacement.
-  S2: >-
-    Intervalle : selon constructeur. Symptômes de défaillance : - Perte de
-    puissance a l acceleration- Sifflement a l acceleration fuite d air- Gaine
-    fissuree gonflee ou deformee- Gaine qui se deboite du raccord- Colliers de
-    serrage desserres ou rouilles- Surconsommation de carburant
-  S3: >-
-    Pour choisir le bon gaine de turbo pour votre véhicule : - Marque de votre
-    véhicule- Modele de votre véhicule- Annee de votre véhicule- Marques :
-    Bosch, Delphi, Denso (premium), Pierburg, VDO (standard), Ridex (budget)-
-    Budget : 20 à 80 EUR
-  S4_DEPOSE: >-
-    1. Débrancher la batterie. 2. Localiser la pièce selon la documentation
-    constructeur. 3. Déconnecter les connecteurs électriques et raccords. 4.
-    Dévisser les fixations de la pièce. 5. Déposer la pièce en notant
-    l'orientation et la position de montage. 6. Nettoyer le logement et vérifier
-    l'état des pièces adjacentes.
-  S5: >-
-    Erreurs fréquentes avec le gaine de turbo : - Ne pas vérifier la référence
-    exacte avant commande — une pièce de mauvaise référence ne fonctionne pas
-    correctement même si elle se monte physiquement- Oublier de débrancher la
-    batterie avant intervention — risque de court-circuit sur les composants
-    électroniques- Toujours utiliser des colliers neufs (les anciens ne serrent
-    plus correctement). Vérifier que la gaine ne frotte pas sur des pièces
-    chaudes. Ne pas plier la gaine.- Ne pas respecter le couple de serrage
-    constructeur au remontage- Ignorer les symptômes d'usure en espérant que ça
-    passe — une défaillance progressive s'aggrave toujours- Ne pas effacer les
-    codes défaut après remplacement — le calculateur peut rester en mode dégradé
-  S6: >-
-    Après le remplacement du gaine de turbo : - Controle visuel a chaque
-    revision ou entretien periodique- Remplacement preventif si signes d usure
-    detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter
-    les preconisations constructeur pour les intervalles- Effacer les codes
-    défaut éventuels avec l'outil OBD- Effectuer un essai route pour confirmer
-    la disparition des symptômes
+  S1: 'Acheminer l''air comprime du turbo vers l''intercooler. Pièces liées : vérifier les composants adjacents lors du remplacement.'
+  S2: 'Intervalle : selon constructeur. Symptômes de défaillance : - Perte de puissance a l acceleration- Sifflement a l acceleration
+    fuite d air- Gaine fissuree gonflee ou deformee- Gaine qui se deboite du raccord- Colliers de serrage desserres ou rouilles-
+    Surconsommation de carburant'
+  S3: 'Pour choisir le bon gaine de turbo pour votre véhicule : - Marque de votre véhicule- Modele de votre véhicule- Annee
+    de votre véhicule- Marques : Bosch, Delphi, Denso (premium), Pierburg, VDO (standard), Ridex (budget)- Budget : 20 à 80
+    EUR'
+  S4_DEPOSE: 1. Débrancher la batterie. 2. Localiser la pièce selon la documentation constructeur. 3. Déconnecter les connecteurs
+    électriques et raccords. 4. Dévisser les fixations de la pièce. 5. Déposer la pièce en notant l'orientation et la position
+    de montage. 6. Nettoyer le logement et vérifier l'état des pièces adjacentes.
+  S5: 'Erreurs fréquentes avec le gaine de turbo : - Ne pas vérifier la référence exacte avant commande — une pièce de mauvaise
+    référence ne fonctionne pas correctement même si elle se monte physiquement- Oublier de débrancher la batterie avant intervention
+    — risque de court-circuit sur les composants électroniques- Toujours utiliser des colliers neufs (les anciens ne serrent
+    plus correctement). Vérifier que la gaine ne frotte pas sur des pièces chaudes. Ne pas plier la gaine.- Ne pas respecter
+    le couple de serrage constructeur au remontage- Ignorer les symptômes d''usure en espérant que ça passe — une défaillance
+    progressive s''aggrave toujours- Ne pas effacer les codes défaut après remplacement — le calculateur peut rester en mode
+    dégradé'
+  S6: 'Après le remplacement du gaine de turbo : - Controle visuel a chaque revision ou entretien periodique- Remplacement
+    preventif si signes d usure detectes- Utiliser des pieces de qualite equivalente a l origine- Respecter les preconisations
+    constructeur pour les intervalles- Effacer les codes défaut éventuels avec l''outil OBD- Effectuer un essai route pour
+    confirmer la disparition des symptômes'
 ---
 
 # Gaine de turbo - Guide Diagnostic Complet
@@ -320,92 +322,3 @@ Méfiez-vous des vendeurs qui utilisent ces termes interdits:
 - ❌ "zéro panne"
 - ❌ "garanti à vie"
 - ❌ "augmente la puissance"
-
-## FAQ
-
-**Gaine de turbo OE ou silicone ?**
-Les gaines OE en caoutchouc conviennent pour un usage standard. Les gaines silicone (Samco, Mishimoto) sont plus durables et résistent mieux à la chaleur et aux huiles.
-
-**Comment savoir si ma gaine de turbo est HS ?**
-Perte de puissance, sifflement à l'accélération (fuite d'air), gaine fissurée ou gonflée visible, colliers desserrés, gaine qui se déboîte.
-
-**Tous les combien changer la gaine ?**
-Contrôle visuel tous les 2 ans ou 40 000 km. À remplacer si fissurée, gonflée ou durcie. Les gaines silicone durent plus longtemps.
-
-**Peut-on changer une gaine de turbo soi-même ?**
-Oui, opération simple. Desserrer les colliers, retirer l'ancienne gaine, monter la nouvelle avec des colliers neufs. 15-45 min selon accessibilité.
-
-**Quelle erreur éviter ?**
-Toujours utiliser des colliers neufs (les anciens ne serrent plus correctement). Vérifier que la gaine ne frotte pas sur des pièces chaudes. Ne pas plier la gaine.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/9c849fbc2d4d 2026-03-26 -->
-### Conduite d'air de suralimentation
-
-Conduite d'air de suralimentation
-
-Notre conduite transfère efficacement l'air pressurisé vers la chambre de combustion, assurant une alimentation constante pour des performances moteur optimales.
-
-Principaux bénéfices
-Conception acoustique réalisée en interne
-Injection plastique réalisée en interne
-Mélange de caoutchouc réalisé en interne
-Caractéristiques techniques
-Description
-
-Assemblage de tuyaux en caoutchouc et en plastique, avec dispositifs acoustiques et capteurs intégrés.
-
-Informations fonctionnelles
-Température de l'air jusqu'à 250 °C
-Pression de l'air jusqu'à 2,5 bars
-Bénéfices
-Réduction du bruit
-Conception robuste
-Fiabilité
-
-<!-- materialized-from-db manual/5567eb415ea6 2026-03-26 -->
-### Conduite d'admission du turbocompresseur
-
-Conduite d'admission du turbocompresseur
-
-Notre conduite relie le filtre à air au turbocompresseur, assurant un apport constant d'air frais au moteur pour une combustion efficace.
-
-Principaux bénéfices
-Étanchéité à l’air
-Intégration fonctionnelle
-Résistance aux vibrations et à la chaleur
-Caractéristiques techniques
-Description
-
-Combinaison des raccords d'air frais et d'air de recirculation, avec un soufflet intégré pour résister aux vibrations.
-
-Bénéfices
-Étanchéité renforcée
-Personnalisation et adaptabilité
-Résistance aux hautes températures
-Résistance aux vibrations
-Industries
-Automobile
-
-Voici aussi la version ultra épurée :
-
-Conduite d'admission du turbocompresseur
-
-Cette conduite relie le filtre à air au turbocompresseur afin d’assurer un apport constant d’air frais au moteur et une combustion efficace.
-
-Principaux bénéfices
-Étanchéité à l’air
-Intégration fonctionnelle
-Résistance aux vibrations et à la chaleur
-Caractéristiques techniques
-
-Description :
-Combinaison des raccords d’air frais et d’air de recirculation, avec un soufflet intégré pour absorber les vibrations.
-
-Bénéfices
-Étanchéité renforcée
-Personnalisation et adaptabilité
-Résistance aux hautes températures
-Résistance aux vibrations

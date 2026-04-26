@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "toyota",
+    "marque_id": 164,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave3",
+  "faq": [
+    {
+      "q": "Toyota fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Toyota Motor Corporation est la société mère du groupe Toyota, qui inclut également Lexus (marque premium lancée en 1989), Daihatsu (filiale à 100 % depuis 2016) et Hino Motors (poids lourds). Toyota détient également des participations dans Subaru et Mazda. Le groupe est le premier constructeur automobile mondial en volume."
+    },
+    {
+      "q": "Les pièces Toyota sont-elles compatibles avec Lexus ?",
+      "a": "Toyota et Lexus appartiennent au même groupe (Lexus est la marque premium de Toyota depuis 1989). De nombreuses pièces mécaniques, moteurs et plateformes sont partagés entre les deux marques. Avec Daihatsu, le partage est également étendu sur les petits modèles. La compatibilité reste à vérifier référence par référence selon les modèles."
+    },
+    {
+      "q": "Depuis quand Toyota produit-il des véhicules ?",
+      "a": "Toyota Motor Corporation a été fondée en 1937 par Kiichirō Toyoda au Japon, en tant que filiale automobile de l'entreprise familiale Toyoda Automatic Loom Works (textile). La société porte le nom Toyota plutôt que Toyoda pour des raisons typographiques et symboliques."
+    },
+    {
+      "q": "Toyota propose-t-il des véhicules essence, diesel, hybrides, électriques et hydrogène ?",
+      "a": "Oui. Toyota couvre l'ensemble des motorisations : essence, diesel, hybride (le constructeur a popularisé l'hybride avec la Prius en 1997), hybride rechargeable, 100 % électrique (gamme bZ) et hydrogène (Toyota Mirai à pile à combustible). Toyota est l'un des leaders mondiaux sur les motorisations alternatives."
+    },
+    {
+      "q": "Où se trouve le siège social de Toyota ?",
+      "a": "Le siège social de Toyota Motor Corporation est situé dans la ville de Toyota, dans la préfecture d'Aichi (Japon). La ville porte le nom du constructeur depuis 1959 (renommée à partir de Koromo). Toyota exploite des usines au Japon, aux États-Unis, en Europe, en Chine et dans plus de 30 pays."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

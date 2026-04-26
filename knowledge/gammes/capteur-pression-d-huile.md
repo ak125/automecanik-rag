@@ -189,30 +189,3 @@ conseil_v5:
 # Capteur pression d'huile
 
 <!-- A enrichir : Phase 5 -->
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/708b4ef3540b 2026-04-03 -->
-### Données techniques OEM — Capteur pression d''huile
-
-# Données techniques OEM — Capteur pression d''huile
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

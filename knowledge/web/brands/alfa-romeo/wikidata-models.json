@@ -1,0 +1,830 @@
+{
+  "_meta": {
+    "source_label": "wikidata-sparql-models",
+    "source_uri": "https://www.wikidata.org/wiki/Q26921",
+    "fetched_at": "2026-04-21T15:23:46.115242+00:00",
+    "script": "download-brand-oem-corpus",
+    "schema_version": 1
+  },
+  "data": [
+    {
+      "qid": "Q2312105",
+      "name": "Alfa Romeo Kamal",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4280744",
+      "name": "Alfa Romeo Vola",
+      "inception": "2005-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1124136",
+      "name": "Alfa Romeo 164",
+      "inception": "1987-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3611005",
+      "name": "Alfa Romeo Giulietta Sprint Speciale",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5666438",
+      "name": "Alfa Romeo Dauphine",
+      "inception": "1959-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1440279",
+      "name": "Alfa Romeo Nuvola",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2010791",
+      "name": "Alfa Romeo Scighera",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2400349",
+      "name": "Alfa Romeo 33.2",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2400425",
+      "name": "Alfa Romeo 2000 Sportiva",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2400609",
+      "name": "Alfa Romeo 33 Bertone Navajo",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2568937",
+      "name": "Alfa Romeo Carabo",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2589800",
+      "name": "Alfa Romeo Canguro",
+      "inception": "1950-01-01T00:00:00Z",
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q249483",
+      "name": "Alfa Romeo Sprint",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q174366",
+      "name": "Alfa Romeo 147",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q224953",
+      "name": "Alfa Romeo GTV",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q507227",
+      "name": "Alfa Romeo Romeo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q515339",
+      "name": "Alfa Romeo Alfa 6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q533495",
+      "name": "Alfa Romeo Visconti",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q543456",
+      "name": "Alfa Romeo Pandion",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q583315",
+      "name": "A.L.F.A 15-20 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q611019",
+      "name": "Alfa Romeo 2600",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q614521",
+      "name": "Alfa Romeo Montreal",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q622479",
+      "name": "Alfa Romeo 8C Competizione",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q636030",
+      "name": "Alfa Romeo Junior Z",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q648713",
+      "name": "Alfa Romeo 169",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q719600",
+      "name": "Alfa Romeo Giulietta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q745591",
+      "name": "Alfa Romeo 20-30 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q747595",
+      "name": "Alfa Romeo Alfetta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q772561",
+      "name": "Alfa Romeo 155",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q780597",
+      "name": "Alfa Romeo Giulia GTA",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q780626",
+      "name": "Alfa Romeo SZ/RZ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q796405",
+      "name": "Alfa Romeo 1750",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q926738",
+      "name": "Alfa Romeo 156",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q937090",
+      "name": "Alfa Romeo 40-60 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q945316",
+      "name": "Alfa Romeo 24 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q951091",
+      "name": "Alfa Romeo 2uettottanta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q980705",
+      "name": "Alfa Romeo 1900",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1093608",
+      "name": "Alfa Romeo Gran Sport Quattroruote",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1114476",
+      "name": "Alfa Romeo Mille",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130671",
+      "name": "Alfa Romeo 166",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1130996",
+      "name": "Alfa Romeo GT",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1133424",
+      "name": "Alfa Romeo Brera",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1137305",
+      "name": "Alfa Romeo MiTo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1292503",
+      "name": "Alfa Romeo 146",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1310718",
+      "name": "Alfa Romeo G1-G2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1358831",
+      "name": "Alfa Romeo 75",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1360881",
+      "name": "Alfa Romeo Alfasud",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1361433",
+      "name": "Alfa Romeo 145",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1362760",
+      "name": "Alfa Romeo 33",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1417241",
+      "name": "Alfa Romeo Giulietta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1421545",
+      "name": "Alfa Romeo Grand Prix",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1423569",
+      "name": "Alfa Romeo Giulia",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1423778",
+      "name": "Alfa Romeo Giulietta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1469037",
+      "name": "Alfa Romeo P1",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1472912",
+      "name": "Alfa Romeo 8C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1474175",
+      "name": "Alfa Romeo 90",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1477201",
+      "name": "Alfa Romeo Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1541700",
+      "name": "Alfa Romeo Arna",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1752108",
+      "name": "Alfa Romeo 6C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1784983",
+      "name": "Alfa Romeo BAT",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q1887809",
+      "name": "Alfa Romeo 2000",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2032829",
+      "name": "Alfa Romeo Dardo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2093066",
+      "name": "Alfa Romeo RL",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2140022",
+      "name": "Alfa Romeo AR51 Matta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2165508",
+      "name": "Alfa Romeo Disco Volante",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2211251",
+      "name": "Alfa Romeo RM",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2271412",
+      "name": "Alfa Romeo Proteo",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2301404",
+      "name": "Alfa Romeo Tipo 33",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2301895",
+      "name": "Alfa Romeo Giulia TZ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2306794",
+      "name": "Alfa Romeo 12C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2311069",
+      "name": "Alfa Romeo 12 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2312918",
+      "name": "Alfa Romeo station wagons",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2345925",
+      "name": "ALFA 15 HP",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2393607",
+      "name": "Alfa Romeo Diva",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2393950",
+      "name": "Alfa Romeo Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2434431",
+      "name": "Alfa Romeo 33 Stradale",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2456203",
+      "name": "Alfa Romeo Sportut",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2469805",
+      "name": "Alfa Romeo 4C",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2553983",
+      "name": "Alfa Romeo P2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2555011",
+      "name": "Alfa Romeo Tipo A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2560939",
+      "name": "Alfa Romeo P3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2575932",
+      "name": "Alfa Romeo Giulia",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2834753",
+      "name": "Alfa Romeo AR6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2834760",
+      "name": "Alfa Romeo Giulia GT",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2834767",
+      "name": "Alfa Romeo Tipo 103",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q2931608",
+      "name": "Q2931608",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3610968",
+      "name": "Alfa Romeo 450",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3610970",
+      "name": "Alfa Romeo 430",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3610976",
+      "name": "Alfa Romeo 80",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3610998",
+      "name": "Alfa Romeo Giulia Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3611000",
+      "name": "Alfa Romeo Giulietta Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3611012",
+      "name": "Alfa Romeo RZ",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3611022",
+      "name": "Alfa Romeo Tipo 312",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q3611027",
+      "name": "Alfa Romeo Tipo 512",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16039826",
+      "name": "Alfa Romeo 8C 2900",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q16827054",
+      "name": "Alfa Romeo New York Taxi",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q17147962",
+      "name": "SSZ Stradale",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q25382252",
+      "name": "Alfa Romeo AR8",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q27148804",
+      "name": "Alfa Romeo Giulietta",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q55603611",
+      "name": "Alfa Romeo Scarabeo II",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q56356073",
+      "name": "Alfa Romeo 8C 2600",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q60963937",
+      "name": "Alfa Romeo Castello",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q61983172",
+      "name": "Alfa Romeo Tonale Concept",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91023922",
+      "name": "Alfa Romeo 2600 Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91024034",
+      "name": "Alfa Romeo GTV6",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91024162",
+      "name": "Alfa Romeo Spider Mk2",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91024624",
+      "name": "Alfa Romeo 4C Spider",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91024662",
+      "name": "Alfa Romeo Giulia Quadrifoglio",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q91025153",
+      "name": "Alfa Romeo Spider Mk3",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q96755530",
+      "name": "Q96755530",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4033699",
+      "name": "Alfa Romeo Stelvio",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4721831",
+      "name": "Alfa Romeo 150A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4721835",
+      "name": "Alfa Romeo 500A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4721836",
+      "name": "Alfa Romeo 80A",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q4721844",
+      "name": "Alfa Romeo Issima",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q5666444",
+      "name": "Alfa Romeo Giulia GT Veloce",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    },
+    {
+      "qid": "Q109376667",
+      "name": "Alfa Romeo Giulietta Sprint",
+      "inception": null,
+      "engine": null,
+      "fuel": null
+    }
+  ]
+}

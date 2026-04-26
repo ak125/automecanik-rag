@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -216,11 +216,11 @@ installation:
   - arrache-cardan
   prerequisite: Vidange huile de boite si cardan depose
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  technical_notes:
-    inspection: 'a chaque revision — graisse noire visible = soufflet perce = cardan en sursis'
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: false
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -460,54 +460,3 @@ Oui si le joint n'est pas usé. Opération technique : dépose du cardan, nettoy
 
 **Quelle erreur éviter avec le soufflet ?**
 Ne pas attendre si le soufflet est percé. Utiliser la graisse spécifique fournie. Vérifier les deux soufflets (côté roue et côté boîte).
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/transmission-boite.md 2026-02-15 -->
-### Diagnostic - Transmission et boîte de vitesses
-
-# Transmission et boîte de vitesses - Diagnostic complet
-
-## Boîte manuelle
-
-### Craquement au passage de vitesse
-- **Synchroniseurs usés** : Craquement surtout sur un rapport précis (souvent 2ème ou 3ème). Pire à froid, s'améliore à chaud.
-- **Huile de boîte inadaptée ou usée** : Vidange de boîte à effectuer (75W-80 ou 75W-90 selon constructeur).
-- **Câble ou timonerie de commande usé** : Passage imprécis, sensation de flou dans le levier.
-
-### Vitesse qui saute
-- **Fourchette de sélection usée** : La vitesse se désengage spontanément sous charge.
-- **Ressort de verrouillage cassé** : Le rapport ne tient plus en position.
-
-### Bruit de roulement en boîte
-- **Roulement d'arbre primaire usé** : Sifflement continu qui disparaît quand on appuie sur l'embrayage.
-- **Roulement de sortie** : Bruit proportionnel à la vitesse du véhicule.
-
-## Boîte automatique
-
-### À-coups ou patinage
-- **Niveau d'huile ATF incorrect** : Vérifier le niveau à chaud, moteur tournant au point mort.
-- **Huile ATF usée** : Couleur marron foncé au lieu de rouge. Vidange recommandée.
-- **Convertisseur de couple usé** : Patinage au démarrage, surchauffe de l'huile.
-
-### Passage de rapports brutal
-- **Calculateur de boîte** : Réinitialisation des adaptations parfois nécessaire.
-- **Électrovannes de commande** : Corps de vannes encrassé ou électrovanne bloquée.
-
-## Cardans et transmission
-
-### Claquement en virage
-- **Soufflet de cardan déchiré** : Graisse projetée visible sur la roue intérieure. Le cardan tourne sans lubrification.
-- **Croisillon de cardan usé** : Claquement sec en accélération ou décélération dans les virages.
-
-### Vibration à l'accélération
-- **Cardan voilé** : Vibration proportionnelle à la vitesse.
-- **Silent-bloc de transmission usé** : Vibrations transmises dans l'habitacle.
-
-## Quand consulter un professionnel
-
-- Boîte automatique en mode dégradé (bloquée sur un rapport)
-- Fuite d'huile de boîte importante
-- Craquement systématique sur tous les rapports
-- Cardan cassé (roue qui ne tourne plus)

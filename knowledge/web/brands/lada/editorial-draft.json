@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "lada",
+    "marque_id": 90,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Lada fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Lada est la marque de voitures de la société AvtoVAZ, constructeur automobile russe historique. AvtoVAZ a été partiellement détenu par Renault Group de 2008 à 2022 (Renault détenait jusqu'à 67,7 % via une filiale). À la suite de la guerre en Ukraine, Renault a cédé sa participation à des entités russes en mai 2022. AvtoVAZ est aujourd'hui sous contrôle russe."
+    },
+    {
+      "q": "Les pièces Lada sont-elles compatibles avec Renault ?",
+      "a": "Pendant la période de propriété Renault (2008-2022), certains modèles Lada ont été développés sur des plateformes Renault (notamment la plateforme B0 utilisée par la Lada Largus, dérivée de la Dacia Logan). Une compatibilité existe donc sur ces modèles. Pour les modèles actuels Lada développés depuis 2022 sous contrôle russe, la compatibilité Renault diminue. À vérifier référence par référence."
+    },
+    {
+      "q": "Depuis quand Lada produit-il des véhicules ?",
+      "a": "AvtoVAZ a été fondée en 1966 en Union soviétique, à Togliatti (ville nommée en l'honneur de Palmiro Togliatti, dirigeant communiste italien). La première voiture de la marque, la VAZ-2101 (commercialisée en Europe sous le nom Lada 1200), a été lancée en 1970. Elle était dérivée de la Fiat 124."
+    },
+    {
+      "q": "Lada propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Lada produit essentiellement des véhicules à motorisation essence (tradition de moteurs simples et robustes adaptés au climat russe). Les versions diesel sont peu présentes. Quelques expérimentations électriques ont été menées (Lada Vesta EV) sans commercialisation massive. La gamme reste très orientée marché domestique russe."
+    },
+    {
+      "q": "Où se trouve le siège social de Lada ?",
+      "a": "Le siège social et l'usine principale d'AvtoVAZ (marque Lada) sont situés à Togliatti, dans l'oblast de Samara (Russie). C'est l'un des plus grands sites industriels automobiles d'Europe orientale, construit dans les années 1960 avec l'assistance de Fiat."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

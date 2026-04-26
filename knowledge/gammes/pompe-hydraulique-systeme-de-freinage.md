@@ -183,17 +183,3 @@ conseil_v5:
 # Pompe hydraulique système de freinage
 
 <!-- A enrichir : Phase 5 -->
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/39060ae233dc 2026-04-03 -->
-### Données techniques OEM — Pompe hydraulique système de freinage
-
-# Données techniques OEM — Pompe hydraulique système de freinage
-Source : bremboparts.com + fr.wikipedia.org (2 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- pneumatique

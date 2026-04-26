@@ -351,23 +351,3 @@ Oui, opération simple. Localiser le capteur sur le collecteur d'admission, déb
 
 **Quelle erreur éviter ?**
 Toujours vérifier la durite de pression avant de changer le capteur. Effacer les codes défaut après remplacement. Ne pas forcer sur le connecteur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/75a120d9ce5c 2026-04-03 -->
-### Données techniques OEM — Capteur de pression turbo
-
-# Données techniques OEM — Capteur de pression turbo
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- piézo
-- pneumatique
-- électrique
-
-## Valeurs techniques de référence
-- 0,7 bar
-- 1,1 bar
-- 4 bar

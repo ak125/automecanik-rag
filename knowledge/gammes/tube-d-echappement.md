@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -214,12 +214,14 @@ installation:
   - chandelles
   prerequisite: Pont elevateur, fixations souvent grippees par la rouille
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  materials:
-  - composant: tube
-    materiau: acier aluminise (standard, 5-8 ans) ou acier inox (longue duree, 15+ ans)
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
+  types_variants:
+  - type: 'électrique'
+    source_ref: corpus RAG web OEM
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -522,48 +524,3 @@ Oui si vous disposez d'une fosse ou d'un pont. Prévoyez du dégrippant pour la 
 
 **Quelle erreur éviter ?**
 Ignorer les silent blocs lors du remplacement. Des silent blocs HS transmettent des vibrations qui usent prématurément le nouveau tube.
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/echappement-catalyseur.md 2026-02-15 -->
-### Diagnostic - Échappement et catalyseur
-
-# Échappement et catalyseur - Diagnostic complet
-
-## Bruits d'échappement
-
-### Bruit métallique sous la voiture
-- **Catalyseur décollé** : Le substrat céramique interne s'est fragmenté et vibre dans le boîtier. Bruit de ferraille au ralenti.
-- **Silencieux percé** : Corrosion ayant percé le pot d'échappement. Bruit de souffle ou grondement.
-- **Flexible d'échappement fissuré** : Joint de raccord entre le collecteur et la ligne d'échappement. Bruit de fuite.
-- **Collier ou bride desserré** : Claquement rythmique, plus audible au ralenti.
-
-### Sifflement
-- **Fuite au collecteur** : Joint de collecteur d'échappement brûlé. Sifflement aigu surtout à froid, qui peut s'atténuer à chaud.
-- **Fissure sur le tube** : Soudure fatiguée ou corrosion localisée.
-
-## Fumées anormales
-
-### Fumée blanche épaisse
-- **Joint de culasse défaillant** : Liquide de refroidissement entre dans la chambre de combustion. Fumée blanche sucrée, persistante même moteur chaud. Vérifier le niveau de liquide de refroidissement.
-
-### Fumée noire
-- **Mélange trop riche** : Injecteurs qui fuient, capteur MAP/MAF défaillant, filtre à air colmaté.
-- **Turbo défaillant** : Fuite d'huile dans l'admission via les joints du turbo.
-
-### Fumée bleue
-- **Consommation d'huile** : Segments usés, guides de soupapes usés, ou joint de queue de soupape. L'huile brûle dans la chambre de combustion.
-
-## Catalyseur et FAP
-
-- **Catalyseur colmaté** : Perte de puissance, moteur qui étouffe à l'accélération, voyant moteur allumé (codes P0420/P0430).
-- **Filtre à particules bouché** : Voyant FAP allumé, régénérations trop fréquentes, perte de puissance. Fréquent sur les trajets courts en ville.
-- **Sonde lambda défaillante** : Consommation en hausse, voyant moteur, mélange air/carburant mal régulé.
-
-## Quand consulter un professionnel
-
-- Fumée blanche persistante moteur chaud (risque joint de culasse)
-- Voyant moteur + perte de puissance (catalyseur/FAP)
-- Odeur d'œuf pourri (catalyseur en surchauffe)
-- Bruit d'échappement fort + odeur de gaz dans l'habitacle

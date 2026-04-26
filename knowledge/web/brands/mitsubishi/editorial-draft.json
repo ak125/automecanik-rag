@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "mitsubishi",
+    "marque_id": 114,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Mitsubishi fait-il partie d'un groupe automobile ou d'une alliance ?",
+      "a": "Mitsubishi Motors fait partie de l'Alliance Renault-Nissan-Mitsubishi depuis 2017. Mitsubishi Motors est juridiquement distincte du conglomérat industriel Mitsubishi Group (keiretsu japonais), bien que liée historiquement. L'Alliance avec Renault et Nissan permet à Mitsubishi Motors de partager plateformes et synergies industrielles."
+    },
+    {
+      "q": "Les pièces Mitsubishi sont-elles compatibles avec Renault et Nissan ?",
+      "a": "Mitsubishi Motors fait partie de l'Alliance Renault-Nissan-Mitsubishi depuis 2017. Certaines plateformes (notamment CMF) et organes mécaniques sont partagés entre les trois marques, en particulier sur les modèles récents. La compatibilité de pièces existe sur certains modèles, mais reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand Mitsubishi produit-il des véhicules ?",
+      "a": "Mitsubishi Group, conglomérat japonais (keiretsu), a été fondé en 1870 par Iwasaki Yatarō. Mitsubishi Motors Corporation, la filiale automobile, a été établie en 1970 (auparavant, l'activité automobile était intégrée à Mitsubishi Heavy Industries). Le constructeur a une longue tradition de véhicules tout-terrain (Pajero, L200) et de pionniers de l'hybride rechargeable."
+    },
+    {
+      "q": "Mitsubishi propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Mitsubishi couvre essence, diesel, hybride rechargeable (Mitsubishi a été pionnier avec l'Outlander PHEV en 2013, premier SUV hybride rechargeable grand public) et 100 % électrique (i-MiEV, première voiture électrique commercialisée à grande échelle en 2009). La marque conserve une expertise tout-terrain forte."
+    },
+    {
+      "q": "Où se trouve le siège social de Mitsubishi Motors ?",
+      "a": "Le siège social de Mitsubishi Motors Corporation est situé à Minato, à Tokyo (Japon). Le constructeur dispose d'usines au Japon, en Thaïlande, aux Philippines, en Russie (jusqu'en 2022) et en Indonésie."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

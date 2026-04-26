@@ -315,24 +315,3 @@ En cas de pedale d embrayage dure ou de degradation mesurable, il faut controler
 
 **Puis-je monter Fourchette d'embrayage sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/21e9885f7043 2026-04-03 -->
-### Données techniques OEM — Fourchette d'embrayage
-
-# Données techniques OEM — Fourchette d'embrayage
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 15 %
-- 2 %
-- 54 %
-- 8 %

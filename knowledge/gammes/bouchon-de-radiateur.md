@@ -438,25 +438,3 @@ En cas de fuite de liquide par le bouchon ou de degradation mesurable, il faut c
 
 **Puis-je monter Bouchon de radiateur sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/48a46879c3cd 2026-04-03 -->
-### Données techniques OEM — Bouchon de radiateur
-
-# Données techniques OEM — Bouchon de radiateur
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hall
-- électrique
-
-## Matériaux
-- aluminium
-
-## Valeurs techniques de référence
-- 110 °C
-- 70 %
-- 80 %

@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "brand_alias": "peugeot",
+    "marque_id": 128,
+    "status": "DRAFT — NON PUBLIÉ. Curation humaine requise avant PUT /api/admin/r7/editorial/128",
+    "generated_at": "2026-04-21",
+    "generated_by": "download-brand-oem-corpus draft helper (session 2026-04-21)",
+    "sources_used": [
+      "/opt/automecanik/rag/knowledge/constructeurs/peugeot.md (RAG frontmatter Wikidata+DB)",
+      "/opt/automecanik/rag/knowledge/web/brands/peugeot/wikipedia-fr-main.md"
+    ],
+    "rule_applied": "R7 marque-level strict — aucune mention modèle/motorisation précise (cf. r7-vs-r8-content-rule)"
+  },
+  "curated_by": "admin-ui",
+  "faq": [
+    {
+      "q": "Peugeot fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Peugeot est une filiale du groupe Stellantis depuis 2021, qui inclut également Citroën, DS Automobiles, Opel et Vauxhall. Avant 2021, Peugeot formait avec Citroën le groupe PSA, créé en 1976 après l'acquisition de Citroën."
+    },
+    {
+      "q": "Les pièces Peugeot sont-elles compatibles avec Citroën et DS Automobiles ?",
+      "a": "Peugeot, Citroën et DS Automobiles appartiennent au même groupe (Stellantis depuis 2021, PSA depuis 1976). Certaines pièces mécaniques sont partagées entre ces marques. La compatibilité précise reste à vérifier référence par référence selon le modèle et la motorisation."
+    },
+    {
+      "q": "Depuis quand Peugeot produit-il des véhicules automobiles ?",
+      "a": "Peugeot a commercialisé sa première automobile en 1891, sous l'impulsion d'Armand Peugeot. La Société anonyme des automobiles Peugeot a été fondée en 1896. L'entreprise familiale Peugeot existe quant à elle depuis 1810, époque où elle produisait de l'acier dans le Doubs."
+    },
+    {
+      "q": "Peugeot propose-t-il des véhicules diesel, essence, hybrides et électriques ?",
+      "a": "Oui. Peugeot a été le premier constructeur français à commercialiser un véhicule de série diesel en 1939, et la 604 D Turbo en 1978 fut la première voiture à moteur turbo-diesel vendue en Europe. La gamme actuelle Peugeot couvre l'essence, le diesel, l'hybride et le 100 % électrique."
+    },
+    {
+      "q": "Où se trouve le siège social de Peugeot et son principal site industriel ?",
+      "a": "Le siège social de Peugeot est à Poissy, en France. Son principal site industriel historique est l'usine de Sochaux (inaugurée en 1912), qui regroupe encore aujourd'hui la recherche, le développement et la fabrication en série de la marque."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": [],
+  "_human_review_notes": {
+    "faq": "5 entrées proposées, toutes sourcées Wikipedia FR + RAG frontmatter. À valider mot-pour-mot avant publication. Le commentaire sur l'intervalle diesel historique (question 4) vient de Wikipedia FR (402 Taxi 1939, 604 D Turbo 1978) — si l'angle ne convient pas pour une FAQ R7, supprimer cette entrée.",
+    "common_issues": "Aucune entrée proposée. Le corpus rappel-conso-fr.json pour Peugeot contient 100 rappels mais tous sont modèle-spécifique (Boxer NG, 308 V3, Rifter, etc.) = R8, pas R7. Aucun signal marque-transversal exploitable sans expertise catalogue AutoMecanik (ex: couverture de référentiel pour modèles anciens). À curer à la main par un admin qui connaît le catalogue.",
+    "maintenance_tips": "Aucune entrée proposée. Pas de source OEM fiable librement accessible (intervalles entretien = Haynes/Autodata, payant). À curer à la main par un admin qui a accès aux préconisations constructeur officielles, OU laisser vide si l'info n'est pas transversale à toute la gamme."
+  }
+}

@@ -351,18 +351,3 @@ Oui mais opération délicate. Déposer le panneau de porte, débrancher les con
 
 **Quelle erreur éviter ?**
 Maintenir la vitre pendant l'opération (risque de chute). Vérifier l'interrupteur et le fusible avant de changer le mécanisme. Ne pas forcer une vitre bloquée.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/ee05ebeb8aca 2026-04-03 -->
-### Données techniques OEM — Lève-vitre
-
-# Données techniques OEM — Lève-vitre
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- pneumatique
-- électrique

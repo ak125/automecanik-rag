@@ -409,27 +409,3 @@ Forcer sur un tendeur automatique. Mal positionner le tendeur au remontage. Igno
 
 **Comment faire un diagnostic rapide ?**
 Tendeur qui ne bouge pas → ressort cassé ou galet grippé. Bruit de roulement → galet à changer. Courroie détendue → vérifier tendeur en premier.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/b93280730b16 2026-04-03 -->
-### Données techniques OEM — Galet tendeur de courroie d'accessoire
-
-# Données techniques OEM — Galet tendeur de courroie d'accessoire
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- rainuré
-- trapézoïdal
-- électrique
-
-## Matériaux
-- Kevlar
-- aramide
-- polyamide 
-
-## Valeurs techniques de référence
-- 96 %
-- 98 %

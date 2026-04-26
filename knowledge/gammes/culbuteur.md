@@ -406,17 +406,3 @@ En cas de claquement moteur regulier ou de degradation mesurable, il faut contro
 
 **Puis-je monter Culbuteur sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/1ebdbf2fcfc6 2026-04-03 -->
-### Données techniques OEM — Culbuteur
-
-# Données techniques OEM — Culbuteur
-Source : fr.wikipedia.org + gpa26.com (2 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- plein

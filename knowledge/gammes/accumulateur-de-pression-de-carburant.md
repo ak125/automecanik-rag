@@ -429,23 +429,3 @@ En cas de demarrage long apres arret prolonge ou de degradation mesurable, il fa
 
 **Puis-je monter Accumulateur de pression de carburant sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/5b586e73248a 2026-04-03 -->
-### Données techniques OEM — Accumulateur de pression de carburant
-
-# Données techniques OEM — Accumulateur de pression de carburant
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- piézo
-- plein
-- électrique
-
-## Valeurs techniques de référence
-- 200 bars
-- 500 bars

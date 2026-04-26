@@ -404,22 +404,3 @@ Oui, généralement accessible sur le boîtier papillon. Quelques vis, un connec
 
 **Quelle erreur éviter avec la vanne de ralenti ?**
 Essayer le nettoyage avant le remplacement. Vérifier aussi le boîtier papillon et le capteur de position papillon.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/a1644dacdc86 2026-04-03 -->
-### Données techniques OEM — Valve de réglage du ralenti
-
-# Données techniques OEM — Valve de réglage du ralenti
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- pneumatique
-- électrique
-
-## Valeurs techniques de référence
-- 1.0 bar
-- 10 %
-- 15 %

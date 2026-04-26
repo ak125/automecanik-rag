@@ -289,17 +289,3 @@ En cas de essuie-glaces declenches sans pluie ou de degradation mesurable, il fa
 
 **Puis-je monter Capteur de pluie sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/1fb197230ad4 2026-04-03 -->
-### Données techniques OEM — Capteur de pluie
-
-# Données techniques OEM — Capteur de pluie
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- plein
-- électrique

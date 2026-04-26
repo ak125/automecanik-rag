@@ -402,24 +402,3 @@ En cas de vibrations lors du freinage ou de degradation mesurable, il faut contr
 
 **Puis-je monter Boulon de roue sans verification atelier ?**
 Le montage peut exiger controles de couple, alignement et references. En cas de doute, appliquez la procedure constructeur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/e0077d830425 2026-04-03 -->
-### Données techniques OEM — Boulon de roue
-
-# Données techniques OEM — Boulon de roue
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- hydraulique
-- électrique
-
-## Valeurs techniques de référence
-- 100 mm
-- 15 %
-- 37 mm
-- 40 mm
-- 41,02 %

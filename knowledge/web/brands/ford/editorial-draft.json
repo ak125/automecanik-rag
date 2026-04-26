@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "brand_alias": "ford",
+    "marque_id": 60,
+    "generated_at": "2026-04-22",
+    "rule_applied": "R7 marque-level strict"
+  },
+  "curated_by": "claude-code-2026-04-22-wave2",
+  "faq": [
+    {
+      "q": "Ford fait-il partie d'un groupe automobile ?",
+      "a": "Ford Motor Company (FMC) est un constructeur automobile indépendant américain, fondé en 1903 par Henry Ford. Ford reste un constructeur autonome à part entière, sans appartenir à un conglomérat plus large, contrairement à de nombreux constructeurs européens et asiatiques."
+    },
+    {
+      "q": "Quelles marques Ford a-t-il possédé ?",
+      "a": "Ford a possédé au fil des décennies de nombreuses marques : Lincoln (toujours dans le groupe), Mercury (1939-2011, arrêtée), Aston Martin (1994-2007, revendue), Jaguar et Land Rover (1989/2000-2008, revendues à Tata), Volvo (1999-2010, revendue à Geely), Mazda (participation cédée en 2015). Aujourd'hui le portefeuille se concentre sur Ford et Lincoln."
+    },
+    {
+      "q": "Depuis quand Ford produit-il des véhicules ?",
+      "a": "Ford Motor Company a été fondée le 16 juin 1903 par Henry Ford à Détroit, dans le Michigan (États-Unis). Le constructeur est connu pour avoir révolutionné l'industrie automobile avec la production en série de la Ford T (1908-1927) et la chaîne de montage moderne."
+    },
+    {
+      "q": "Ford propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Ford couvre l'ensemble de la gamme : essence, diesel, hybride et 100 % électrique (gamme Mustang Mach-E depuis 2020, F-150 Lightning aux États-Unis). Le constructeur dispose d'une forte présence sur le marché des utilitaires et des pick-ups."
+    },
+    {
+      "q": "Où se trouve le siège social de Ford ?",
+      "a": "Le siège social de Ford Motor Company est situé à Dearborn, en banlieue de Détroit, dans l'État du Michigan (États-Unis). Ford Europe a son siège à Cologne en Allemagne."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}

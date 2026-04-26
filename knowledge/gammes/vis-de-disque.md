@@ -460,22 +460,3 @@ Forcer une vis Torx/Allen grippée sans outil → tête foirée. Oublier de nett
 
 **Comment faire un diagnostic rapide ?**
 Vis déjà arrondie/rouillée → prévoir vis neuves + embout neuf + dégrippant. Si elle casse : extraction/perçage (prévoir temps atelier).
-
-
-## References supplementaires
-
-<!-- materialized-from-db guides/freinage__quand-changer.md 2026-03-03 -->
-### Quand changer les plaquettes et disques
-
-## Signes d'usure
-
-- bruit metallique au freinage
-- vibration a la pedale
-- distance de freinage en hausse
-- epaisseur de garniture faible
-
-## Frequence de controle
-
-- controle visuel regulier
-- verification a chaque entretien periodique
-- remplacement selon usure reelle et recommandations constructeur

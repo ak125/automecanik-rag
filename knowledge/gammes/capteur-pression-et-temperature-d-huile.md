@@ -352,30 +352,3 @@ Oui, mais accès parfois difficile. Nécessite souvent de vidanger partiellement
 
 **Quelle erreur éviter avec le capteur combiné huile ?**
 Ne pas confondre avec le pressostat simple. Vérifier la pression réelle avec un manomètre avant de conclure à une panne capteur.
-
-
-## References supplementaires
-
-<!-- materialized-from-db manual/290d754d4e40 2026-04-03 -->
-### Données techniques OEM — Capteur pression et température d'huile
-
-# Données techniques OEM — Capteur pression et température d'huile
-Source : fr.wikipedia.org (1 fichiers OEM analysés)
-Validation : oem_verified
-
-## Variantes et types
-- Hall
-- inductif
-- pneumatique
-- électrique
-
-## Matériaux
-- aluminium
-- platine
-
-## Valeurs techniques de référence
-- 0,1 %
-- 1,5 %
-- 14 %
-- 4,5 %
-- 400 °C

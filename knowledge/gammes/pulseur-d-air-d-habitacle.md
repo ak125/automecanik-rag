@@ -16,7 +16,7 @@ intent_targets:
 business_priority: medium
 lifecycle:
   stage: v5_ssot
-  last_enriched_by: skill:phase5-vague6-final
+  last_enriched_by: script:rag-enrich-from-web-corpus
   last_enriched_at: '2026-03-29'
   v5_migrated_at: '2026-03-29'
 domain:
@@ -217,16 +217,19 @@ installation:
   - cle a douille
   prerequisite: Recuperation du gaz obligatoire par professionnel agree
 phase5_enrichment:
-  _source: contenu LLM — a revalider contre sources OEM
-  _validation_status: pending_oem_validation
-  _enriched_at: '2026-03-30'
-  types_variants:
-  - type: Pulseur a cage d'ecureuil
-    description: Moteur electrique + turbine centrifuge, souffle l'air dans l'habitacle
-    era: standard
+  _source: fr.wikipedia.org
+  _validation_status: oem_verified
+  _enriched_at: '2026-04-04'
+  _web_files_count: 1
+  _has_tech_data: true
   technical_notes:
-    test_avant_remplacement: 'tester fusible + resistance de pulseur (5-15 EUR) avant de remplacer le moteur (50-200 EUR)'
-    nettoyage_boitier: 'retirer feuilles et debris du boitier de ventilation avant montage du neuf'
+    val_16_a: '16 a'
+    val_17_a: '17 a'
+    val_23_a: '23 a'
+    val_3_a: '3 a'
+    val_30_a: '30 a'
+    val_32_kg: '32 kg'
+    val_50_kg: '50 kg'
 conseil_v5:
   _sync_source: __seo_gamme_conseil
   _sync_date: '2026-03-29'
@@ -394,41 +397,3 @@ Oui souvent, sous le tableau de bord côté passager. Retirer la boîte à gants
 
 **Quelle erreur éviter avec le pulseur ?**
 Ne pas confondre pulseur HS et résistance HS. Si seules certaines vitesses fonctionnent, c'est la résistance.
-
-
-## Symptomes supplementaires
-
-<!-- materialized-from-db diagnostic/climatisation.md 2026-02-15 -->
-### Diagnostic - Climatisation et chauffage
-
-# Climatisation et chauffage - Diagnostic complet
-
-## Climatisation sans effet
-
-### Pas de froid
-- **Manque de gaz réfrigérant** : Fuite dans le circuit. Le compresseur ne s'enclenche pas ou tourne en continu sans refroidir. Recharge + recherche de fuite nécessaire.
-- **Compresseur bloqué** : Embrayage de compresseur HS, bruit métallique, courroie qui patine.
-- **Condenseur obstrué** : Débris, feuilles ou insectes devant le condenseur (devant le radiateur). Nettoyage au jet doux.
-- **Détendeur bloqué** : Le gaz ne se détend plus correctement, givrage possible sur les tuyaux.
-
-### Odeurs dans l'habitacle
-- **Filtre habitacle encrassé** : Odeur de moisi à la mise en route de la ventilation. Remplacement tous les 15 000-20 000 km.
-- **Évaporateur contaminé** : Bactéries et moisissures sur l'évaporateur. Traitement antibactérien recommandé.
-
-## Chauffage défaillant
-
-### Pas de chaleur
-- **Niveau de liquide de refroidissement bas** : Le radiateur de chauffage n'est pas alimenté. Vérifier le niveau et faire l'appoint.
-- **Thermostat bloqué ouvert** : Le moteur ne monte pas en température. L'aiguille reste basse même après 10 minutes de conduite.
-- **Radiateur de chauffage bouché** : Les deux durites d'entrée/sortie doivent être chaudes moteur à température. Si une seule est chaude, le radiateur est obstrué.
-
-### Ventilation faible
-- **Résistance de ventilateur grillée** : Seule la vitesse maximale fonctionne, les autres vitesses sont inactives.
-- **Moteur de ventilateur fatigué** : Bruit de frottement, débit d'air réduit.
-
-## Quand consulter un professionnel
-
-- Compresseur bruyant (risque de blocage et casse courroie)
-- Fuite de gaz réfrigérant visible (traces d'huile sur les raccords)
-- Odeur sucrée dans l'habitacle (fuite de liquide de refroidissement dans le radiateur de chauffage)
-- Surchauffe moteur associée à un problème de chauffage

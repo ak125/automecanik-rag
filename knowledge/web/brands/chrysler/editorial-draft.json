@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "brand_alias": "chrysler",
+    "marque_id": 45,
+    "generated_at": "2026-04-22"
+  },
+  "curated_by": "claude-code-2026-04-22-wave4",
+  "faq": [
+    {
+      "q": "Chrysler fait-il partie d'un groupe automobile ?",
+      "a": "Oui. Chrysler appartient à Stellantis North America (ex-Groupe Chrysler), filiale de la multinationale franco-italienne Stellantis depuis 2021. Avant cela, Chrysler avait formé Fiat Chrysler Automobiles (FCA) avec Fiat en 2014, après une période sous contrôle de Daimler (1998-2007) puis de Cerberus (2007-2009)."
+    },
+    {
+      "q": "Les pièces Chrysler sont-elles compatibles avec Jeep, Dodge ou Ram ?",
+      "a": "Chrysler, Jeep, Dodge et Ram appartiennent au même périmètre Stellantis North America (ex-FCA). De nombreuses pièces mécaniques (moteurs, transmissions, plateformes) sont partagées entre ces marques nord-américaines. La compatibilité précise reste à vérifier référence par référence selon le modèle et l'année."
+    },
+    {
+      "q": "Depuis quand Chrysler produit-il des véhicules ?",
+      "a": "Chrysler a été fondée en 1925 par Walter Chrysler aux États-Unis. Constructeur historique de Detroit, Chrysler a connu plusieurs phases d'indépendance et d'intégration à de grands groupes (Daimler, Cerberus, FCA, Stellantis)."
+    },
+    {
+      "q": "Chrysler propose-t-il des véhicules essence, diesel, hybrides et électriques ?",
+      "a": "Oui. Chrysler couvre essentiellement essence et hybride rechargeable sur sa gamme actuelle (très réduite par rapport à son apogée). La marque s'oriente vers une électrification accélérée au sein de Stellantis."
+    },
+    {
+      "q": "Où se trouve le siège social de Chrysler ?",
+      "a": "Le siège historique de Chrysler est situé à Auburn Hills, dans le Michigan (États-Unis), banlieue de Detroit. Stellantis North America (qui regroupe les marques ex-FCA américaines) y est également implanté."
+    }
+  ],
+  "common_issues": [],
+  "maintenance_tips": []
+}
