@@ -1,0 +1,72 @@
+#!/bin/bash
+# .githooks/commit-msg — D22 garde-fou (ADR-031)
+#
+# Refuse commits that modify knowledge/<protected categories>/ unless the commit
+# message contains the literal string "rollback-documented".
+#
+# Background: post-Phase F, automecanik-rag/knowledge/ becomes a generated
+# directory. The canonical source is automecanik-wiki/exports/rag/, and the
+# nightly sync via scripts/rag/sync-from-wiki.py overwrites manual edits.
+# Allowing direct edits silently creates drift; allowing them documented gives
+# us an audit trail for incident-response rollbacks.
+#
+# Activation: per-clone, run once
+#   git config core.hooksPath .githooks
+# CI also enforces this via .github/workflows/d22-protected-paths.yml so the
+# rule is binding regardless of local setup.
+#
+# Usage on legitimate rollback:
+#   git commit -m "fix(rollback-documented): restore knowledge/gammes/X.md
+#
+#   <explanation of incident, link to ticket>"
+
+set -euo pipefail
+
+msg_file="${1:-.git/COMMIT_EDITMSG}"
+
+# Categories that become generated post-Phase F. Edits to these paths must be
+# either (a) a wiki sync or (b) a documented rollback — anything else is drift.
+PROTECTED_REGEX='^knowledge/(gammes|gamme|vehicles|vehicle|constructeurs|constructeur|support|diagnostic|faq|faqs|policies|reference|guides)/'
+
+# Files staged for the upcoming commit
+staged=$(git diff --cached --name-only --diff-filter=AMRD)
+
+if [ -z "$staged" ]; then
+  exit 0
+fi
+
+if ! echo "$staged" | grep -qE "$PROTECTED_REGEX"; then
+  exit 0
+fi
+
+# At least one staged file is in a protected category. Require the literal
+# "rollback-documented" in the commit message body or subject.
+if grep -q "rollback-documented" "$msg_file"; then
+  exit 0
+fi
+
+protected_files=$(echo "$staged" | grep -E "$PROTECTED_REGEX" | sed 's/^/  - /')
+
+cat >&2 <<EOF
+ERROR: D22 garde-fou (ADR-031) — manual edit of knowledge/<protected> rejected.
+
+Files staged that match protected categories:
+$protected_files
+
+After Phase F merges, knowledge/ is a generated directory whose canonical
+source is automecanik-wiki/exports/rag/. The nightly sync (scripts/rag/
+sync-from-wiki.py) will overwrite manual edits at the next run.
+
+If this is a deliberate incident-response rollback, add 'rollback-documented'
+to the commit message and explain why in the body:
+
+  git commit -m "fix(rollback-documented): <one-line subject>
+
+  Why: <incident reference / reasoning>"
+
+If this is wiki-sync output (sync-from-wiki.py --apply), commit it from the
+sync script with a message that includes 'rollback-documented' (e.g.
+'chore(rollback-documented): wiki-sync \$(date -I)') — the sync script
+itself produces a commit message that satisfies this rule.
+EOF
+exit 1

@@ -1,0 +1,80 @@
+# D22 protected paths — fail PRs that touch knowledge/<generated cats> without
+# 'rollback-documented' in any commit message of the PR. Backstop for the
+# .githooks/commit-msg hook (which is opt-in per-clone).
+#
+# ADR-031 §D22 reference.
+name: d22-protected-paths
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'knowledge/**'
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout PR with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute protected diff
+        id: diff
+        run: |
+          set -euo pipefail
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          changed=$(git diff --name-only --diff-filter=AMRD "$base" "$head")
+          echo "Changed files in PR:"
+          echo "$changed"
+          # Categories that become generated post-Phase F (ADR-031 §D22).
+          regex='^knowledge/(gammes|gamme|vehicles|vehicle|constructeurs|constructeur|support|diagnostic|faq|faqs|policies|reference|guides)/'
+          if echo "$changed" | grep -qE "$regex"; then
+            echo "protected=yes" >> "$GITHUB_OUTPUT"
+            protected=$(echo "$changed" | grep -E "$regex")
+            {
+              echo "files<<EOF"
+              echo "$protected"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "protected=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify rollback-documented label
+        if: steps.diff.outputs.protected == 'yes'
+        run: |
+          set -euo pipefail
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          # A PR is allowed if ANY commit in the PR range contains
+          # 'rollback-documented'. We do NOT trust the PR title or body — we
+          # require it in a signed commit message so it is part of the audit
+          # trail.
+          if git log --format=%B "$base..$head" | grep -q "rollback-documented"; then
+            echo "OK — at least one commit in this PR carries 'rollback-documented'."
+            exit 0
+          fi
+          echo "::error::D22 garde-fou (ADR-031): this PR modifies knowledge/<generated"
+          echo "::error::categories> but no commit message contains 'rollback-documented'."
+          echo ""
+          echo "Files in protected categories:"
+          echo "${{ steps.diff.outputs.files }}"
+          echo ""
+          echo "After Phase F merges, knowledge/ is a generated directory whose"
+          echo "canonical source is automecanik-wiki/exports/rag/. Manual edits"
+          echo "will be overwritten by scripts/rag/sync-from-wiki.py at the next"
+          echo "nightly sync."
+          echo ""
+          echo "If this PR is a deliberate incident-response rollback, amend a"
+          echo "commit (or add a fixup) so its message includes the literal:"
+          echo "    rollback-documented"
+          echo "and re-push. The .githooks/commit-msg hook (opt-in per-clone via"
+          echo "    git config core.hooksPath .githooks"
+          echo ") catches this locally before push."
+          exit 1
