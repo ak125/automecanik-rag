@@ -6,7 +6,7 @@ on:
       rag_url:
         description: "RAG API base URL (e.g. https://rag.example.com)"
         required: true
-        default: "http://127.0.0.1:8000"
+        default: "http://localhost:8000"
       eval_set:
         description: "Eval set file path"
         required: true
@@ -23,14 +23,25 @@ on:
         description: "Minimum satisfaction"
         required: true
         default: "0.90"
+  schedule:
+    # Nightly 04:00 UTC. Uses defaults below (localhost RAG on self-hosted runner).
+    - cron: '0 4 * * *'
 
 permissions:
   contents: read
 
+env:
+  RAG_URL: ${{ inputs.rag_url || 'http://localhost:8000' }}
+  EVAL_SET: ${{ inputs.eval_set || 'tests/eval_set.json' }}
+  MIN_CATALOG_RECALL: ${{ inputs.min_catalog_recall || '0.90' }}
+  MAX_NO_EVIDENCE_RATE: ${{ inputs.max_no_evidence_rate || '0.05' }}
+  MIN_SATISFACTION: ${{ inputs.min_satisfaction || '0.90' }}
+
 jobs:
   eval-gate:
     name: Eval + Threshold Gate
-    runs-on: ubuntu-latest
+    # Self-hosted to access localhost RAG on DEV VPS. Public ufw blocks 8000.
+    runs-on: [self-hosted, Linux, X64]
 
     steps:
       - name: Checkout
@@ -56,17 +67,17 @@ jobs:
             exit 1
           fi
           python tests/run_eval_set.py \
-            --url "${{ inputs.rag_url }}" \
-            --eval-set "${{ inputs.eval_set }}" \
+            --url "$RAG_URL" \
+            --eval-set "$EVAL_SET" \
             --out tests/eval_report_ci.json
 
       - name: Enforce quality gate
         run: |
           python tests/check_eval_thresholds.py \
             --report tests/eval_report_ci.json \
-            --min-catalog-recall "${{ inputs.min_catalog_recall }}" \
-            --max-no-evidence-rate "${{ inputs.max_no_evidence_rate }}" \
-            --min-satisfaction "${{ inputs.min_satisfaction }}"
+            --min-catalog-recall "$MIN_CATALOG_RECALL" \
+            --max-no-evidence-rate "$MAX_NO_EVIDENCE_RATE" \
+            --min-satisfaction "$MIN_SATISFACTION"
 
       - name: Publish summary
         if: always()
