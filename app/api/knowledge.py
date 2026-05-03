@@ -5,7 +5,7 @@ SECURITY:
 - Runtime Plane (PROD): Read-only access (GET only)
 """
 
-from fastapi import APIRouter, HTTPException, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from pydantic import BaseModel, Field
 from typing import Optional
 import logging
@@ -13,6 +13,7 @@ import subprocess
 
 from app.services.knowledge_service import get_knowledge_service, KnowledgeDocument
 from app.config import get_settings
+from app.dependencies import block_if_readonly_admin
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -205,9 +206,18 @@ async def get_document(doc_id: str):
     return doc_to_response(doc)
 
 
-@router.post("", response_model=DocumentResponse, status_code=201)
+@router.post(
+    "",
+    response_model=DocumentResponse,
+    status_code=201,
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def create_document(body: DocumentCreate):
-    """Create a new knowledge document. BUILD PLANE ONLY."""
+    """Create a new knowledge document. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : returns 410 Gone in default readonly mode. Use the
+    canonical pipeline `automecanik-raw → automecanik-wiki/exports/rag → rag indexer`.
+    """
     require_build_plane()
     service = get_knowledge_service()
     try:
@@ -229,9 +239,16 @@ async def create_document(body: DocumentCreate):
     return doc_to_response(doc)
 
 
-@router.put("/{doc_id}", response_model=DocumentResponse)
+@router.put(
+    "/{doc_id}",
+    response_model=DocumentResponse,
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def update_document(doc_id: str, body: DocumentUpdate):
-    """Update an existing document. BUILD PLANE ONLY."""
+    """Update an existing document. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode.
+    """
     require_build_plane()
     service = get_knowledge_service()
     try:
@@ -255,9 +272,15 @@ async def update_document(doc_id: str, body: DocumentUpdate):
     return doc_to_response(doc)
 
 
-@router.delete("/{doc_id}")
+@router.delete(
+    "/{doc_id}",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def delete_document(doc_id: str):
-    """Delete a document. BUILD PLANE ONLY."""
+    """Delete a document. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode.
+    """
     require_build_plane()
     service = get_knowledge_service()
     success = service.delete_document(doc_id)
@@ -269,13 +292,19 @@ async def delete_document(doc_id: str):
     return {"success": True, "message": f"Document {doc_id} deleted"}
 
 
-@router.post("/{doc_id}/promote", response_model=DocumentResponse)
+@router.post(
+    "/{doc_id}/promote",
+    response_model=DocumentResponse,
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def promote_document(doc_id: str):
     """
     Promote a document to the next truth level. BUILD PLANE ONLY.
 
-    Promotion order: L4 -> L3 -> L2 -> L1
-    Documents at L1 or L2 are automatically marked as verified.
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode. Promotion happens via
+    the wiki review workflow now (proposals → approved → exports/rag).
+
+    Promotion order (legacy mode only): L4 -> L3 -> L2 -> L1
     """
     require_build_plane()
     service = get_knowledge_service()
@@ -288,10 +317,16 @@ async def promote_document(doc_id: str):
     return doc_to_response(doc)
 
 
-@router.post("/{doc_id}/quarantine", response_model=DocumentResponse)
+@router.post(
+    "/{doc_id}/quarantine",
+    response_model=DocumentResponse,
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def quarantine_document(doc_id: str):
     """
     Quarantine a document (set verification_status to 'disputed'). BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode.
 
     Quarantined documents are excluded from search results when exclude_disputed=True.
     """
@@ -306,10 +341,16 @@ async def quarantine_document(doc_id: str):
     return doc_to_response(doc)
 
 
-@router.post("/{doc_id}/unquarantine", response_model=DocumentResponse)
+@router.post(
+    "/{doc_id}/unquarantine",
+    response_model=DocumentResponse,
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def unquarantine_document(doc_id: str):
     """
     Remove quarantine from a document. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode.
     """
     require_build_plane()
     service = get_knowledge_service()
@@ -339,9 +380,15 @@ async def list_tombstones():
     return {"tombstones": records, "total": len(records)}
 
 
-@router.post("/tombstones/revive")
+@router.post(
+    "/tombstones/revive",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def revive_tombstone(source_uri: str):
-    """Remove a tombstone so the document can be re-ingested. BUILD PLANE ONLY."""
+    """Remove a tombstone so the document can be re-ingested. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode.
+    """
     require_build_plane()
     service = get_knowledge_service()
     success = service.revive_tombstone(source_uri)
@@ -372,6 +419,13 @@ def run_reindex():
 async def reindex_documents(background_tasks: BackgroundTasks):
     """
     Trigger a reindex of all documents into Weaviate. BUILD PLANE ONLY.
+
+    Phase F.5 (ADR-031) — JUSTIFIED EXCEPTION (not 410):
+      Reindexing recompiles the derivative Weaviate index from already-validated
+      content ; it does NOT create or modify the documentary memory itself.
+      Therefore it remains active in readonly mode. Once PR-C `import_wiki_exports.py`
+      becomes the canonical indexer, this endpoint may be retired in a follow-up
+      PR (and replaced by a CLI invocation of `import_wiki_exports.py --apply`).
 
     This operation runs in the background and indexes all markdown files
     from the knowledge corpus into the Weaviate vector database.

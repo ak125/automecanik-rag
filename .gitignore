@@ -20,6 +20,12 @@ wheels/
 .installed.cfg
 *.egg
 
+# Phase F.5 (ADR-031) — dead-letter quarantine should NEVER be checked in.
+# Real path is /var/lib/automecanik-rag/quarantine/ (Docker volume) ; this guard
+# prevents accidental commit if the service is ever run with cwd inside the repo.
+/quarantine/
+quarantine/
+
 # Virtual environments
 .env
 .venv

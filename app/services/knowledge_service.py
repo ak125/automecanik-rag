@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 import frontmatter
 
 from app.config import get_settings
+from app.dependencies import assert_writeable  # Phase F.5 (ADR-031) — L5 service-layer guard
 
 logger = logging.getLogger(__name__)
 
@@ -618,7 +619,14 @@ class KnowledgeService:
         truth_level: str = "L3",
         source_uri: str = "",
     ) -> Optional[KnowledgeDocument]:
-        """Create a new knowledge document."""
+        """Create a new knowledge document.
+
+        Phase F.5 (ADR-031) L5 guard : raises ``RagReadOnlyError`` when
+        ``rag_write_mode == "readonly"`` (default). Fires regardless of
+        caller — HTTP route, cron, queue worker, M2M endpoint, ad-hoc
+        Python script.
+        """
+        assert_writeable("create_document")
         cleaned_content = self._clean_raw_content(content)
         resolved_source_type = source_type
         resolved_category = category
@@ -707,7 +715,11 @@ class KnowledgeService:
         truth_level: Optional[str] = None,
         verification_status: Optional[str] = None,
     ) -> Optional[KnowledgeDocument]:
-        """Update an existing document."""
+        """Update an existing document.
+
+        Phase F.5 (ADR-031) L5 guard.
+        """
+        assert_writeable("update_document")
         doc = self.get_document(doc_id)
         if not doc:
             return None
@@ -750,6 +762,8 @@ class KnowledgeService:
     def delete_document(self, doc_id: str, leave_tombstone: bool = True) -> bool:
         """Delete a document and optionally leave a tombstone to prevent re-ingestion.
 
+        Phase F.5 (ADR-031) L5 guard : raises ``RagReadOnlyError`` in readonly mode.
+
         Args:
             doc_id: Document identifier.
             leave_tombstone: If True, write a tombstone record so the same
@@ -758,6 +772,8 @@ class KnowledgeService:
         Returns:
             True if the document was deleted successfully.
         """
+        assert_writeable("delete_document")  # Phase F.5 (ADR-031) L5 guard
+
         doc = self.get_document(doc_id)
         if not doc:
             return False
@@ -809,7 +825,11 @@ class KnowledgeService:
         return self._tombstone_path(source_uri).exists()
 
     def revive_tombstone(self, source_uri: str) -> bool:
-        """Remove a tombstone so the document can be re-ingested."""
+        """Remove a tombstone so the document can be re-ingested.
+
+        Phase F.5 (ADR-031) L5 guard : raises ``RagReadOnlyError`` in readonly mode.
+        """
+        assert_writeable("revive_tombstone")
         path = self._tombstone_path(source_uri)
         if path.exists():
             path.unlink()
@@ -852,7 +872,13 @@ class KnowledgeService:
             logger.warning(f"Weaviate chunk cleanup failed: {exc}")
 
     def promote_document(self, doc_id: str) -> Optional[KnowledgeDocument]:
-        """Promote a document to the next truth level."""
+        """Promote a document to the next truth level.
+
+        Phase F.5 (ADR-031) L5 guard : raises ``RagReadOnlyError`` in readonly mode.
+        Promotion happens via the wiki review workflow now (proposals →
+        approved → exports/rag), not via direct mutation here.
+        """
+        assert_writeable("promote_document")
         doc = self.get_document(doc_id)
         if not doc:
             return None
