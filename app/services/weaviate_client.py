@@ -100,6 +100,14 @@ class WeaviateClient:
             # Page contract + media hints (Phase 3)
             "page_contract_id": props.get("page_contract_id") or "",
             "media_slots_hint": props.get("media_slots_hint") or "",
+            # Phase F.5 (ADR-031) — KB_Knowledge_v2 fields, backward-compat
+            # tolerant: returns None for v1 chunks that don't have them.
+            "canonical_source": props.get("canonical_source"),
+            "source_layer": props.get("source_layer"),
+            "source_commit": props.get("source_commit"),
+            "lineage_id": props.get("lineage_id"),
+            "embedding_model": props.get("embedding_model"),
+            "origin_batch_kind": props.get("origin_batch_kind"),
         }
 
     async def hybrid_search(
