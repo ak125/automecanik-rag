@@ -1,5 +1,18 @@
 # AutoMecanik RAG Service
 
+> ⚠️ **Phase F.5 (ADR-031) — RAG en mode `readonly` par défaut.** Toute écriture
+> de mémoire documentaire (CRUD admin, ingestion PDF directe) est dépréciée :
+> les routes admin retournent **410 Gone** + headers `Sunset` (RFC 8594) +
+> `Deprecation: true` (RFC 9745). Source canonique de la mémoire = `automecanik-wiki/exports/rag/`.
+>
+> Pour basculer temporairement en mode legacy (incident / migration), définir
+> les **4 variables ensemble** : `RAG_LEGACY_ADMIN_ENABLED=true`, `RAG_LEGACY_REASON`
+> (cite `INC-YYYY-NNN` ou `P0/P1`), `RAG_LEGACY_EXPIRES_AT` (ISO-8601, ≤ +14j),
+> `RAG_LEGACY_AUTHORIZED_BY` (handle GitHub). Pydantic refuse le boot si la
+> configuration est invalide ou expirée.
+>
+> Voir le runbook canonique : `governance-vault/ledger/knowledge/adr-031-migration-runbook-20260428.md` §"Phase F.5 Runtime hardening".
+
 Service RAG (Retrieval-Augmented Generation) pour le support client AutoMecanik.
 
 ## Architecture

@@ -1,7 +1,7 @@
 """RAG Admin Interface - NO LOGIN (auth via monorepo staff level 5)."""
 
 import hmac
-from fastapi import APIRouter, Request, HTTPException, Form, Query, UploadFile, File, Header
+from fastapi import APIRouter, Depends, Request, HTTPException, Form, Query, UploadFile, File, Header
 from fastapi.responses import HTMLResponse, RedirectResponse
 import csv
 import json
@@ -19,6 +19,7 @@ import yaml
 from pydantic import BaseModel
 
 from app.config import get_settings
+from app.dependencies import block_if_readonly_admin
 from app.services.knowledge_service import get_knowledge_service
 from app.services.embeddings import get_embeddings_service
 from app.admin.kp_service import KeywordPlannerService
@@ -359,7 +360,10 @@ async def document_create_form(request: Request):
     return templates.TemplateResponse("pages/documents/create.html", context)
 
 
-@router.post("/documents/new")
+@router.post(
+    "/documents/new",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def document_create_submit(
     title: str = Form(...),
     content: str = Form(...),
@@ -368,7 +372,7 @@ async def document_create_submit(
     doc_family: str = Form(""),
     truth_level: str = Form("L3"),
 ):
-    """Create document."""
+    """Create document. Phase F.5 (ADR-031) : 410 Gone in readonly mode."""
     service = get_knowledge_service()
     try:
         doc = service.create_document(
@@ -414,7 +418,10 @@ async def document_edit_form(request: Request, doc_id: str):
     return templates.TemplateResponse("pages/documents/edit.html", context)
 
 
-@router.post("/documents/{doc_id}/edit")
+@router.post(
+    "/documents/{doc_id}/edit",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def document_edit_submit(
     doc_id: str,
     title: str = Form(...),
@@ -424,7 +431,7 @@ async def document_edit_submit(
     doc_family: str = Form(""),
     truth_level: str = Form(...),
 ):
-    """Update document."""
+    """Update document. Phase F.5 (ADR-031) : 410 Gone in readonly mode."""
     service = get_knowledge_service()
     try:
         doc = service.update_document(
@@ -443,9 +450,12 @@ async def document_edit_submit(
     return RedirectResponse(url=f"/admin/documents/{doc_id}", status_code=303)
 
 
-@router.post("/documents/{doc_id}/delete")
+@router.post(
+    "/documents/{doc_id}/delete",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def document_delete(request: Request, doc_id: str):
-    """Delete document."""
+    """Delete document. Phase F.5 (ADR-031) : 410 Gone in readonly mode."""
     service = get_knowledge_service()
     success = service.delete_document(doc_id)
     if not success:
@@ -458,9 +468,16 @@ async def document_delete(request: Request, doc_id: str):
     return RedirectResponse(url="/admin/documents", status_code=303)
 
 
-@router.post("/documents/{doc_id}/promote")
+@router.post(
+    "/documents/{doc_id}/promote",
+    dependencies=[Depends(block_if_readonly_admin())],  # Phase F.5 (ADR-031)
+)
 async def document_promote(request: Request, doc_id: str):
-    """Promote document truth level (L4->L3->L2->L1)."""
+    """Promote document truth level (L4->L3->L2->L1).
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode. Promotion happens via
+    the wiki review workflow now (proposals → approved → exports/rag).
+    """
     service = get_knowledge_service()
     doc = service.promote_document(doc_id)
     if not doc:
@@ -528,9 +545,23 @@ async def trigger_reindex(request: Request):
 # ============================================
 # PDF Ingest API (Swagger)
 # ============================================
-@router.post("/ingest/pdf/run", response_model=PdfIngestRunResponse)
+@router.post(
+    "/ingest/pdf/run",
+    response_model=PdfIngestRunResponse,
+    dependencies=[Depends(  # Phase F.5 (ADR-031)
+        block_if_readonly_admin(
+            replacement="automecanik-raw/sources → automecanik-wiki/proposals → wiki/exports/rag"
+        )
+    )],
+)
 async def run_pdf_ingest(payload: PdfIngestRunRequest):
-    """Start PDF import+index pipeline in background."""
+    """Start PDF import+index pipeline in background.
+
+    Phase F.5 (ADR-031) : 410 Gone in readonly mode. Direct PDF ingestion
+    bypasses the canonical pipeline `raw → wiki → exports`. PDFs must first
+    land in `automecanik-raw/sources/<source>/<file>.pdf` (with manifest
+    update), then become `wiki/proposals/<slug>.md` after extraction.
+    """
     truth = payload.truth_level.strip().upper()
     if truth not in {"L1", "L2", "L3", "L4"}:
         raise HTTPException(status_code=400, detail="truth_level must be one of: L1, L2, L3, L4")

@@ -7,9 +7,11 @@ QUARANTINE MODE (v1.0.0):
 """
 
 from pydantic_settings import BaseSettings
+from pydantic import model_validator
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Literal
+from datetime import datetime, timedelta, timezone
 import logging
 import yaml
 
@@ -57,6 +59,33 @@ class Settings(BaseSettings):
     # KILL SWITCH - Blocks ALL writes in production
     # CRITICAL: This is the master switch for production safety
     ai_prod_write: bool = False
+
+    # ========== Phase F.5 — ADR-031 Runtime Hardening ==========
+    # Le RAG devient consumer/indexer readonly. Source canonique = automecanik-wiki/exports/rag/
+    # Voir governance-vault ledger/knowledge/adr-031-migration-runbook §Phase F.5
+
+    # Mode d'écriture documentaire (orthogonal à can_write() qui gère indexation derivative)
+    # readonly = défaut, bloque CRUD admin documentaire (create/update/delete/promote_document)
+    # legacy   = mode exception pour incident/migration (encadrement strict ci-dessous)
+    rag_write_mode: Literal["readonly", "legacy"] = "readonly"
+
+    # Source d'ingestion canonique
+    rag_index_source: Literal["wiki_exports_only", "legacy_filesystem"] = "wiki_exports_only"
+
+    # Routes admin HTTP (UI + API knowledge) déprecées RFC 8594/9745
+    # Si False (défaut) → 410 Gone + Sunset header
+    # Si True → laisse passer downstream + audit log (rollback temporaire encadré)
+    rag_legacy_admin_enabled: bool = False
+
+    # Date de Sunset des routes admin (J0 + 30j)
+    # Format ISO YYYY-MM-DD. Header HTTP `Sunset:` calculé depuis cette date
+    rag_admin_sunset_at: str = "2026-06-03"
+
+    # Encadrement strict du mode legacy (cf. model_validator ci-dessous)
+    # Obligatoires si rag_legacy_admin_enabled=True ou rag_write_mode="legacy"
+    rag_legacy_reason: Optional[str] = None  # cite INC-YYYY-NNN ou P0-XXX/P1-XXX
+    rag_legacy_expires_at: Optional[datetime] = None  # max +14j depuis maintenant
+    rag_legacy_authorized_by: Optional[str] = None  # GitHub handle de l'autorisateur (G3)
 
     # Weaviate Vector Database
     weaviate_url: str = "http://weaviate:8080"
@@ -270,6 +299,67 @@ class Settings(BaseSettings):
 
         return errors
 
+    # ========== Phase F.5 — Validators & helpers ==========
+
+    @model_validator(mode="after")
+    def _legacy_must_be_justified(self) -> "Settings":
+        """Anti-permanence : mode legacy exige 4 vars cohérentes au boot.
+
+        Refuse le démarrage si :
+        - legacy activé sans REASON (citation INC-/P0-/P1- attendue)
+        - legacy activé sans EXPIRES_AT
+        - legacy activé sans AUTHORIZED_BY (GitHub handle G3)
+        - EXPIRES_AT dans le passé (mode legacy expiré → revenir readonly)
+        - EXPIRES_AT > +14j (incidents doivent fermer plus vite)
+        """
+        legacy_active = (
+            self.rag_legacy_admin_enabled or self.rag_write_mode == "legacy"
+        )
+        if not legacy_active:
+            return self
+
+        if not self.rag_legacy_reason:
+            raise ValueError(
+                "F.5: legacy mode requires RAG_LEGACY_REASON (cite INC-YYYY-NNN or P0/P1 ticket id)"
+            )
+        if not self.rag_legacy_expires_at:
+            raise ValueError("F.5: legacy mode requires RAG_LEGACY_EXPIRES_AT (max +14d)")
+        if not self.rag_legacy_authorized_by:
+            raise ValueError(
+                "F.5: legacy mode requires RAG_LEGACY_AUTHORIZED_BY (GitHub handle, G3)"
+            )
+
+        now = datetime.now(timezone.utc)
+        expires_at = self.rag_legacy_expires_at
+        if expires_at.tzinfo is None:
+            expires_at = expires_at.replace(tzinfo=timezone.utc)
+
+        if expires_at <= now:
+            raise ValueError(
+                f"F.5: RAG_LEGACY_EXPIRES_AT={expires_at.isoformat()} is in the past — "
+                "refresh ticket or revert RAG_WRITE_MODE=readonly"
+            )
+        if (expires_at - now) > timedelta(days=14):
+            raise ValueError(
+                f"F.5: RAG_LEGACY_EXPIRES_AT={expires_at.isoformat()} exceeds +14d window — "
+                "incidents must close faster ; reduce window or split mitigation"
+            )
+        return self
+
+    @property
+    def is_rag_readonly(self) -> bool:
+        """True si le service est en mode readonly Phase F.5 (bloque CRUD admin documentaire)."""
+        return self.rag_write_mode == "readonly"
+
+    @property
+    def admin_sunset_http_date(self) -> str:
+        """Sunset date au format HTTP RFC 7231 (ex: 'Wed, 03 Jun 2026 00:00:00 GMT')."""
+        try:
+            d = datetime.fromisoformat(self.rag_admin_sunset_at)
+        except ValueError:
+            d = datetime(2026, 6, 3)
+        return d.strftime("%a, %d %b %Y 00:00:00 GMT")
+
     def log_startup_config(self) -> None:
         """Log configuration at startup for debugging."""
         logger.info("=" * 50)
@@ -298,6 +388,19 @@ class Settings(BaseSettings):
         logger.info(f"Min Results Required: {self.min_results_required}")
         logger.info(f"Kill Switch (ai_prod_write): {self.ai_prod_write}")
         logger.info(f"Tmp Base Dir: {self.tmp_base_dir}")
+        # Phase F.5
+        logger.info(f"[F.5] rag_write_mode: {self.rag_write_mode}")
+        logger.info(f"[F.5] rag_index_source: {self.rag_index_source}")
+        logger.info(f"[F.5] rag_legacy_admin_enabled: {self.rag_legacy_admin_enabled}")
+        logger.info(f"[F.5] rag_admin_sunset_at: {self.rag_admin_sunset_at}")
+        if self.rag_legacy_admin_enabled or self.rag_write_mode == "legacy":
+            logger.warning(
+                "[F.5] LEGACY MODE ACTIVE — reason=%r expires_at=%s authorized_by=%r "
+                "(see governance-vault ADR-031 runbook §Phase F.5)",
+                self.rag_legacy_reason,
+                self.rag_legacy_expires_at.isoformat() if self.rag_legacy_expires_at else None,
+                self.rag_legacy_authorized_by,
+            )
         logger.info("=" * 50)
 
 
