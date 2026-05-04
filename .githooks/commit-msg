@@ -39,9 +39,11 @@ if ! echo "$staged" | grep -qE "$PROTECTED_REGEX"; then
   exit 0
 fi
 
-# At least one staged file is in a protected category. Require the literal
-# "rollback-documented" in the commit message body or subject.
-if grep -q "rollback-documented" "$msg_file"; then
+# At least one staged file is in a protected category. 2 markers acceptés :
+#   - "synced-from-wiki:" — sync routinier via cron VPS DEV
+#     (monorepo scripts/cron/sync-rag-from-wiki.sh, plan v3 §Étape 7)
+#   - "rollback-documented" — incident-response manuel (audit trail)
+if grep -qE "synced-from-wiki:|rollback-documented" "$msg_file"; then
   exit 0
 fi
 
@@ -54,19 +56,20 @@ Files staged that match protected categories:
 $protected_files
 
 After Phase F merges, knowledge/ is a generated directory whose canonical
-source is automecanik-wiki/exports/rag/. The nightly sync (scripts/rag/
-sync-from-wiki.py) will overwrite manual edits at the next run.
+source is automecanik-wiki/exports/rag/. The cron sync (monorepo
+scripts/cron/sync-rag-from-wiki.sh) overwrites manual edits at the next run.
 
-If this is a deliberate incident-response rollback, add 'rollback-documented'
-to the commit message and explain why in the body:
+Acceptés pour bypass :
 
-  git commit -m "fix(rollback-documented): <one-line subject>
+  1. Sync routinier (cron VPS DEV — cas standard) :
+     git commit -m "synced-from-wiki: <wiki-sha>
 
-  Why: <incident reference / reasoning>"
+     Source: ak125/automecanik-wiki@<full-sha>
+     ..."
 
-If this is wiki-sync output (sync-from-wiki.py --apply), commit it from the
-sync script with a message that includes 'rollback-documented' (e.g.
-'chore(rollback-documented): wiki-sync \$(date -I)') — the sync script
-itself produces a commit message that satisfies this rule.
+  2. Incident-response rollback manuel :
+     git commit -m "fix(rollback-documented): <one-line subject>
+
+     Why: <incident reference / reasoning>"
 EOF
 exit 1

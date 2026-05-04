@@ -46,35 +46,40 @@ jobs:
             echo "protected=no" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Verify rollback-documented label
+      - name: Verify D22 marker (synced-from-wiki OR rollback-documented)
         if: steps.diff.outputs.protected == 'yes'
         run: |
           set -euo pipefail
           base="${{ github.event.pull_request.base.sha }}"
           head="${{ github.event.pull_request.head.sha }}"
-          # A PR is allowed if ANY commit in the PR range contains
-          # 'rollback-documented'. We do NOT trust the PR title or body — we
-          # require it in a signed commit message so it is part of the audit
-          # trail.
-          if git log --format=%B "$base..$head" | grep -q "rollback-documented"; then
-            echo "OK — at least one commit in this PR carries 'rollback-documented'."
+          # A PR is allowed if ANY commit in the PR range contains :
+          #   - 'synced-from-wiki:' : sync routinier via cron VPS DEV
+          #     (monorepo scripts/cron/sync-rag-from-wiki.sh, plan v3 §Étape 7)
+          #   - 'rollback-documented' : incident-response manuel (audit trail)
+          if git log --format=%B "$base..$head" | grep -qE "synced-from-wiki:|rollback-documented"; then
+            echo "OK — at least one commit in this PR carries 'synced-from-wiki:' or 'rollback-documented'."
             exit 0
           fi
           echo "::error::D22 garde-fou (ADR-031): this PR modifies knowledge/<generated"
-          echo "::error::categories> but no commit message contains 'rollback-documented'."
+          echo "::error::categories> but no commit message contains 'synced-from-wiki:' or 'rollback-documented'."
           echo ""
           echo "Files in protected categories:"
           echo "${{ steps.diff.outputs.files }}"
           echo ""
-          echo "After Phase F merges, knowledge/ is a generated directory whose"
-          echo "canonical source is automecanik-wiki/exports/rag/. Manual edits"
-          echo "will be overwritten by scripts/rag/sync-from-wiki.py at the next"
-          echo "nightly sync."
+          echo "knowledge/ is a generated directory whose canonical source is"
+          echo "automecanik-wiki/exports/rag/. Manual edits will be overwritten"
+          echo "by the cron sync (monorepo scripts/cron/sync-rag-from-wiki.sh)"
+          echo "at the next hourly run."
           echo ""
-          echo "If this PR is a deliberate incident-response rollback, amend a"
-          echo "commit (or add a fixup) so its message includes the literal:"
-          echo "    rollback-documented"
-          echo "and re-push. The .githooks/commit-msg hook (opt-in per-clone via"
+          echo "Accepted markers :"
+          echo ""
+          echo "  1. Routine sync (cron VPS DEV) :"
+          echo "       synced-from-wiki: <wiki-sha>"
+          echo ""
+          echo "  2. Incident-response manual rollback :"
+          echo "       fix(rollback-documented): <subject>"
+          echo ""
+          echo "The .githooks/commit-msg hook (opt-in per-clone via"
           echo "    git config core.hooksPath .githooks"
           echo ") catches this locally before push."
           exit 1
