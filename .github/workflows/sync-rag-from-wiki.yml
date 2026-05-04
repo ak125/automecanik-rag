@@ -1,0 +1,124 @@
+name: Sync rag/knowledge ← wiki/exports/rag/
+
+# Mirror automecanik-wiki/exports/rag/ → automecanik-rag/knowledge/.
+# ADR-031 §D20 enforce : la seule porte d'entrée légitime vers
+# automecanik-rag/knowledge/ est le script sync-wiki-exports-to-rag.py
+# (anciennement sync-from-wiki.py) hébergé dans nestjs-remix-monorepo.
+#
+# Plan v3 §Étape 2 + §Étape 7 (activation premier run).
+
+on:
+  # Trigger principal : push wiki main qui modifie exports/rag/**.
+  # Le dispatch est envoyé par .github/workflows/dispatch-rag-sync.yml
+  # côté automecanik-wiki (PAT RAG_DISPATCH_PAT requis pour activation).
+  repository_dispatch:
+    types: [wiki-exports-rag-changed]
+
+  # Invocation manuelle DEV (option dry-run pour tests).
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply changes (false = dry-run)"
+        type: boolean
+        default: true
+
+  # Safety net quotidien : catch-up si dispatch loupé / désactivé temporairement.
+  schedule:
+    - cron: "0 6 * * *" # 06:00 UTC daily
+
+permissions:
+  contents: write # commit + push sur main rag
+
+concurrency:
+  group: sync-rag-from-wiki
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout automecanik-rag (target)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout automecanik-wiki (source, public)
+        uses: actions/checkout@v4
+        with:
+          repository: ak125/automecanik-wiki
+          path: _wiki
+          ref: main
+          fetch-depth: 1
+
+      - name: Checkout nestjs-remix-monorepo (script host, public)
+        uses: actions/checkout@v4
+        with:
+          repository: ak125/nestjs-remix-monorepo
+          path: _monorepo
+          ref: main
+          sparse-checkout: scripts/rag-sync
+          sparse-checkout-cone-mode: false
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Determine apply flag
+        id: mode
+        run: |
+          # repository_dispatch + schedule → toujours apply
+          # workflow_dispatch → respecte input.apply
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.apply }}" != "true" ]; then
+            echo "apply_flag=" >> $GITHUB_OUTPUT
+            echo "mode=dry-run" >> $GITHUB_OUTPUT
+          else
+            echo "apply_flag=--apply" >> $GITHUB_OUTPUT
+            echo "mode=apply" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run sync (mode=${{ steps.mode.outputs.mode }})
+        run: |
+          python3 _monorepo/scripts/rag-sync/sync-wiki-exports-to-rag.py \
+            --wiki-repo "$GITHUB_WORKSPACE/_wiki" \
+            --rag-repo "$GITHUB_WORKSPACE" \
+            ${{ steps.mode.outputs.apply_flag }}
+
+      - name: Compute wiki HEAD sha for marker
+        id: wiki_sha
+        run: |
+          cd _wiki
+          echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "full_sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Commit + push if changes detected
+        if: steps.mode.outputs.mode == 'apply'
+        run: |
+          if git diff --quiet -- knowledge/ && git diff --cached --quiet -- knowledge/; then
+            echo "No changes under knowledge/ — nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  "automecanik-sync-bot"
+          git config user.email "noreply@automecanik.com"
+          git add knowledge/
+          git commit -m "synced-from-wiki: ${{ steps.wiki_sha.outputs.sha }}
+
+          Source: ak125/automecanik-wiki@${{ steps.wiki_sha.outputs.full_sha }}
+          Trigger: ${{ github.event_name }}
+          Workflow run: ${{ github.run_id }}
+
+          Marker 'synced-from-wiki:' enforce ADR-031 §D22 (Étape 9 plan v3 future).
+          Aucune écriture humaine directe acceptée dans knowledge/."
+
+          git push origin HEAD:main
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Sync rag ← wiki summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Trigger: \`${{ github.event_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Mode: \`${{ steps.mode.outputs.mode }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Wiki SHA: \`${{ steps.wiki_sha.outputs.sha }}\`" >> $GITHUB_STEP_SUMMARY
