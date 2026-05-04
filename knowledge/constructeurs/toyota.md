@@ -1,63 +1,83 @@
 ---
-category: constructeur
 slug: toyota
 brand_id: 164
 brand_name: TOYOTA
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: japon
-groupe: toyota-motor
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees TOYOTA : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - TOYOTA est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: be920fcf-cf56-56ce-ad53-2b2eb83e6827
-content_hash: sha256:5ad0e00ab8595769
+category: constructeur
 lang: fr
+wikidata_qid: Q53268
+country: Japon
+founded_year: 1937
+headquarters:
+  city: Toyota
+  country: Japon
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Toyota.svg
+top_models:
+- modele_id: 164449
+  name: Avensis Iii
+  years: 2015-2018
+- modele_id: 164387
+  name: Yaris Ii
+  years: 2005-2012
+- modele_id: 164307
+  name: Rav 4 Iii
+  years: 2008-2013
+- modele_id: 164036
+  name: Aygo I
+  years: 2005-2010
+- modele_id: 164386
+  name: Yaris I
+  years: 2001-2005
+- modele_id: 164455
+  name: Aygo Ii
+  years: 2014-
+- modele_id: 164020
+  name: Auris Ii
+  years: 2015-2018
+- modele_id: 164308
+  name: Rav 4 Iv
+  years: 2012-2018
+top_engines:
+- code: 90ch diesel
+  fuel: diesel
+  power_ps: 90
+- code: 69ch essence
+  fuel: essence
+  power_ps: 69
+- code: 112ch diesel
+  fuel: diesel
+  power_ps: 112
+- code: 150ch diesel
+  fuel: diesel
+  power_ps: 150
+- code: 126ch diesel
+  fuel: diesel
+  power_ps: 126
+- code: 68ch essence
+  fuel: essence
+  power_ps: 68
+history: Toyota, officiellement Toyota Motor Corporation (トヨタ自動車株式会社, Toyota jidōsha kabushiki gaisha), est un constructeur
+  automobile originaire du Japon. Le siège du groupe est situé dans la ville de Toyota. Il est en 2017 le premier constructeur
+  automobile mondial pour les performances financières devant Volkswagen et Daimler. En 2014, Toyota écoule 10,23 millions
+  d'unités, le Groupe demeure le premier constructeur mondial en nombre de véhicules vendus. En 2017, Toyota possède la valorisation
+  la plus élevée au monde dans le secteur automobile et la huitième mondiale toutes activités confondues avec 41,1 milliards
+  de dollars, selon le classement Forbes. Pourtant, fin 2016, Volkswagen détrône Toyota et devient le premier constructeur
+  automobile mondial en nombre d'unités vendues. Elle est, selon le Forbes Global 2000, la dixième entreprise mondiale au
+  1er mai 2017. En juin 2020, Tesla détrône Toyota et devient le premier constructeur automobile mondial en capitalisation
+  boursière. En septembre 2023, Toyota est le premier constructeur automobile de l'histoire à passer la barre des 300 millions
+  de véhicules produits.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: unknown
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:4ef46b8ff4371b35
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules TOYOTA. Le constructeur, base en japon, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 55 modeles TOYOTA avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece TOYOTA, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma TOYOTA ?**
-Selectionnez votre modele TOYOTA et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces TOYOTA sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles TOYOTA sont couverts ?**
-Notre catalogue couvre 55 modeles TOYOTA disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces TOYOTA ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

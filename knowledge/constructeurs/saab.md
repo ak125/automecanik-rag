@@ -1,63 +1,57 @@
 ---
-category: constructeur
 slug: saab
 brand_id: 145
 brand_name: SAAB
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: suede
-groupe: independent
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees SAAB : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - SAAB est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 60e6df79-8592-5db4-bc03-644f9a803fa5
-content_hash: sha256:30f29e8336a425fa
+category: constructeur
 lang: fr
+wikidata_qid: Q48957
+country: Suède
+founded_year: 1945
+group: Saab-Scania
+headquarters:
+  city: Trollhättan
+  country: Suède
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Saab%20wordmark%20grey.svg
+top_models:
+- modele_id: 145004
+  name: 9-3 Ii
+  years: 2007-2015
+- modele_id: 145006
+  name: 9-3X
+  years: 2009-2012
+top_engines:
+- code: 130ch diesel
+  fuel: diesel
+  power_ps: 130
+- code: 180ch diesel
+  fuel: diesel
+  power_ps: 180
+- code: 150ch diesel
+  fuel: diesel
+  power_ps: 150
+- code: 120ch diesel
+  fuel: diesel
+  power_ps: 120
+- code: 125ch diesel
+  fuel: diesel
+  power_ps: 125
+history: Saab Automobile était le nom d'un constructeur automobile suédois issu du constructeur aéronautique du même nom.
+  Ce nom est l'acronyme de Svenska Aeroplan AktieBolaget, qui peut se traduire par « société par actions d'aéroplanes suédois ».
+  L'entité industrielle appartient à NEVS depuis l'été 2012 et continue ses activités sous la marque NEVS de l'été 2016 jusqu'à
+  la disparition de NEVS en 2023.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:418404153a4e4692
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules SAAB. Le constructeur, base en suede, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 9 modeles SAAB avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece SAAB, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma SAAB ?**
-Selectionnez votre modele SAAB et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces SAAB sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles SAAB sont couverts ?**
-Notre catalogue couvre 9 modeles SAAB disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces SAAB ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

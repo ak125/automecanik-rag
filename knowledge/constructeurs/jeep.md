@@ -1,63 +1,70 @@
 ---
-category: constructeur
 slug: jeep
 brand_id: 86
 brand_name: JEEP
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: etats-unis
-groupe: stellantis
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees JEEP : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - JEEP est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: c79aef5d-e23f-5c32-aa83-ed21a4a586c8
-content_hash: sha256:ac7aab4568a2e6d9
+category: constructeur
 lang: fr
+wikidata_qid: Q30113
+country: États-Unis
+founded_year: 1941
+group: Stellantis North America
+headquarters:
+  city: Toledo
+  country: États-Unis
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Jeep%20wordmark.svg
+top_models:
+- modele_id: 86002
+  name: Cherokee Iii
+  years: 2004-2008
+- modele_id: 86030
+  name: Renegade
+  years: 2014-
+- modele_id: 86017
+  name: Wrangler Iii
+  years: 2010-
+- modele_id: 86011
+  name: Grand Cherokee Iii
+  years: 2006-2010
+- modele_id: 86004
+  name: Cherokee V
+  years: 2014-2018
+- modele_id: 86003
+  name: Cherokee Iv
+  years: 2008-
+top_engines:
+- code: 140ch diesel
+  fuel: diesel
+  power_ps: 140
+- code: 177ch diesel
+  fuel: diesel
+  power_ps: 177
+- code: 120ch diesel
+  fuel: diesel
+  power_ps: 120
+- code: 200ch diesel
+  fuel: diesel
+  power_ps: 200
+- code: 211ch diesel
+  fuel: diesel
+  power_ps: 211
+- code: 218ch diesel
+  fuel: diesel
+  power_ps: 218
+history: Jeep est un constructeur automobile américain appartenant depuis 2010 au groupe Fiat, devenu Stellantis en 2021 à
+  la suite de la fusion des groupes Fiat-Chrysler Automobiles et PSA.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:0ca9afb0fcfd0cc0
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules JEEP. Le constructeur, base en etats-unis, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 20 modeles JEEP avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece JEEP, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma JEEP ?**
-Selectionnez votre modele JEEP et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces JEEP sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles JEEP sont couverts ?**
-Notre catalogue couvre 20 modeles JEEP disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces JEEP ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

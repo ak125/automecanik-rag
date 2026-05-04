@@ -1,63 +1,57 @@
 ---
-category: constructeur
 slug: lancia
 brand_id: 92
 brand_name: LANCIA
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: italie
-groupe: stellantis
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees LANCIA : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - LANCIA est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 1bcb55c4-4986-5206-93c2-1f35666d7d63
-content_hash: sha256:5d29585fb48b2a89
+category: constructeur
 lang: fr
+wikidata_qid: Q35896
+country: Italie
+founded_year: 1906
+group: Stellantis
+headquarters:
+  city: Turin
+  country: Italie
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Lancia%20Logo%202023.svg
+top_models:
+- modele_id: 92048
+  name: Ypsilon I
+  years: 2006-2011
+- modele_id: 92051
+  name: Musa
+  years: 2006-2012
+- modele_id: 92049
+  name: Ypsilon Ii
+  years: 2011-
+top_engines:
+- code: 90ch diesel
+  fuel: diesel
+  power_ps: 90
+- code: 75ch diesel
+  fuel: diesel
+  power_ps: 75
+- code: 78ch essence
+  fuel: essence
+  power_ps: 78
+- code: 80ch essence
+  fuel: essence
+  power_ps: 80
+- code: 95ch diesel
+  fuel: diesel
+  power_ps: 95
+history: Lancia est un constructeur automobile italien fondé à Turin le 27 novembre 1906 par Vincenzo Lancia.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:b4b93f62a0b271e5
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules LANCIA. Le constructeur, base en italie, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 12 modeles LANCIA avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece LANCIA, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma LANCIA ?**
-Selectionnez votre modele LANCIA et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces LANCIA sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles LANCIA sont couverts ?**
-Notre catalogue couvre 12 modeles LANCIA disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces LANCIA ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

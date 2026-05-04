@@ -1,63 +1,74 @@
 ---
-category: constructeur
 slug: honda
 brand_id: 74
 brand_name: HONDA
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: japon
-groupe: honda-motor
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees HONDA : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - HONDA est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 32f79554-7600-5d80-aca6-32827bc8d82f
-content_hash: sha256:b3561651fb90f307
+category: constructeur
 lang: fr
+wikidata_qid: Q9584
+country: Japon
+founded_year: 1948
+headquarters:
+  city: arrondissement de Minato
+  country: Japon
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Honda%20logo.svg
+top_models:
+- modele_id: 74048
+  name: Civic Ix
+  years: 2013-
+- modele_id: 74062
+  name: Civic Viii
+  years: 2012-
+- modele_id: 74091
+  name: Jazz Iii
+  years: 2008-
+- modele_id: 74019
+  name: Accord Viii
+  years: 2008-2015
+- modele_id: 74068
+  name: Cr-V Iii
+  years: 2007-
+- modele_id: 74017
+  name: Accord Vii
+  years: 2004-2008
+top_engines:
+- code: 150ch diesel
+  fuel: diesel
+  power_ps: 150
+- code: 140ch diesel
+  fuel: diesel
+  power_ps: 140
+- code: 120ch diesel
+  fuel: diesel
+  power_ps: 120
+- code: 125ch essence
+  fuel: essence
+  power_ps: 125
+- code: 120ch essence
+  fuel: essence
+  power_ps: 120
+- code: 90ch essence
+  fuel: essence
+  power_ps: 90
+history: Honda Motor Co., Ltd (本田技研工業株式会社, Honda Giken Kōgyō kabushiki gaisha, Honda Technology Research Institute Company,
+  Limited), ou plus simplement Honda, est un constructeur automobile japonais. C'est également un constructeur de motocyclettes,
+  de quads, de scooters, d'avions d'affaires, de générateurs électriques, de moteurs de bateaux et d'équipements de jardinage
+  et de bricolage. En 2008, Honda a vendu plus de dix-sept millions de moteurs à quatre temps, ce qui en a fait le plus important
+  producteur du monde. En 2026, Honda a été classé comme le constructeur automobile le plus écoénergétique parmi les fabricants
+  généralistes selon le rapport annuel de l’Environnementale Protection Agency (EPA) des États-Unis, basé sur les véhicules
+  de l’année-modèle 2024.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: unknown
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:94b4c7c24449265b
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules HONDA. Le constructeur, base en japon, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 40 modeles HONDA avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece HONDA, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma HONDA ?**
-Selectionnez votre modele HONDA et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces HONDA sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles HONDA sont couverts ?**
-Notre catalogue couvre 40 modeles HONDA disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces HONDA ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

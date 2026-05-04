@@ -1,63 +1,48 @@
 ---
-category: constructeur
 slug: porsche
 brand_id: 133
 brand_name: PORSCHE
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: allemagne
-groupe: volkswagen-group
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees PORSCHE : selection par modele, annee et motorisation, avec filtrage par
-    gamme de pieces compatibles'
-  must_be_true:
-  - PORSCHE est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 61b87281-5d39-5851-a2d7-eaed0c172844
-content_hash: sha256:95abf220eaa9550e
+category: constructeur
 lang: fr
+wikidata_qid: Q40993
+country: Allemagne
+founded_year: 1931
+group: Volkswagen
+headquarters:
+  city: Stuttgart
+  country: Allemagne
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Newporschecrest.jpg
+top_models:
+- modele_id: 133035
+  name: Cayenne (92A)
+  years: 2014-
+- modele_id: 133036
+  name: Cayenne (9Pa)
+  years: 2009-2010
+top_engines:
+- code: 250ch diesel
+  fuel: diesel
+  power_ps: 250
+- code: 240ch diesel
+  fuel: diesel
+  power_ps: 240
+- code: 211ch diesel
+  fuel: diesel
+  power_ps: 211
+history: Dr. Ing. hc F. Porsche AG, généralement abrégé en Porsche, est un constructeur d'automobiles de sport allemand.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:0ff26a7c655a19c1
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules PORSCHE. Le constructeur, base en allemagne, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 29 modeles PORSCHE avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece PORSCHE, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma PORSCHE ?**
-Selectionnez votre modele PORSCHE et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces PORSCHE sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles PORSCHE sont couverts ?**
-Notre catalogue couvre 29 modeles PORSCHE disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces PORSCHE ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

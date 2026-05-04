@@ -1,63 +1,79 @@
 ---
-category: constructeur
 slug: citroen
 brand_id: 46
 brand_name: CITROËN
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: france
-groupe: stellantis
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees CITROËN : selection par modele, annee et motorisation, avec filtrage par
-    gamme de pieces compatibles'
-  must_be_true:
-  - CITROËN est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 819aa0e5-f794-5e02-b434-dd35d9f0c69d
-content_hash: sha256:932e258644d644a5
+category: constructeur
 lang: fr
+wikidata_qid: Q6746
+country: France
+founded_year: 1919
+group: Stellantis
+headquarters:
+  city: usine automobile de Poissy
+  country: France
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Citroen%202022.svg
+top_models:
+- modele_id: 46094
+  name: C4 Cactus
+  years: 2014-
+- modele_id: 46033
+  name: C4 Picasso Ii
+  years: 2014-
+- modele_id: 46051
+  name: Ds4
+  years: 2011-2015
+- modele_id: 46084
+  name: XSARA Break
+  years: 1997-2000
+- modele_id: 46007
+  name: Berlingo Ii - Berlingo Multispace (B9)
+  years: 2010-
+- modele_id: 46083
+  name: Xsara
+  years: 1997-2000
+- modele_id: 46022
+  name: C3 Picasso
+  years: 2010-
+- modele_id: 46070
+  name: Saxo
+  years: 1996-2003
+top_engines:
+- code: 90ch diesel
+  fuel: diesel
+  power_ps: 90
+- code: 92ch diesel
+  fuel: diesel
+  power_ps: 92
+- code: 112ch diesel
+  fuel: diesel
+  power_ps: 112
+- code: 114ch diesel
+  fuel: diesel
+  power_ps: 114
+- code: 68ch diesel
+  fuel: diesel
+  power_ps: 68
+- code: 75ch essence
+  fuel: essence
+  power_ps: 75
+history: Citroën est un constructeur automobile français, aujourd'hui filiale du groupe Stellantis. Son nom en forme longue
+  est Automobiles Citroën SA. L'entreprise a été fondée en juin 1919 par André Citroën. La marque a toujours été réputée pour
+  ses technologies d'avant-garde et, à plusieurs reprises, a révolutionné le monde de l'industrie de l'automobile. Citroën
+  a notamment créé la Traction Avant, l'utilitaire H, les 2 CV, DS, Méhari, SM, GS, CX, BX, AX, Saxo ou encore la XM, qui
+  sont toutes des créations d'avant-garde.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:38f783c3f90c494e
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules CITROËN. Le constructeur, base en france, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 70 modeles CITROËN avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece CITROËN, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma CITROËN ?**
-Selectionnez votre modele CITROËN et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces CITROËN sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles CITROËN sont couverts ?**
-Notre catalogue couvre 70 modeles CITROËN disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces CITROËN ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

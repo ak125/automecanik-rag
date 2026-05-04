@@ -1,63 +1,80 @@
 ---
-category: constructeur
 slug: audi
 brand_id: 22
 brand_name: AUDI
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: allemagne
-groupe: volkswagen-group
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees AUDI : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - AUDI est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 9db7bb4e-fef8-5792-a4b5-7e932b718c07
-content_hash: sha256:d33043b8c772dfff
+category: constructeur
 lang: fr
+wikidata_qid: Q23317
+country: Allemagne
+founded_year: 1909
+group: Volkswagen
+headquarters:
+  city: Ingolstadt
+  country: Allemagne
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Audi-Logo%202016.svg
+top_models:
+- modele_id: 22025
+  name: A1
+  years: 2011-2015
+- modele_id: 22102
+  name: A4 V B9
+  years: 2015-
+- modele_id: 22046
+  name: A5 I
+  years: 2013-2017
+- modele_id: 22032
+  name: A3 Iii
+  years: 2013-2016
+- modele_id: 22030
+  name: A3 I
+  years: 1997-2001
+- modele_id: 22070
+  name: Q5 I
+  years: 2013-2017
+- modele_id: 22071
+  name: Q7 I
+  years: 2009-2012
+- modele_id: 22078
+  name: Tt Ii
+  years: 2010-2014
+top_engines:
+- code: 150ch diesel
+  fuel: diesel
+  power_ps: 150
+- code: 90ch diesel
+  fuel: diesel
+  power_ps: 90
+- code: 105ch diesel
+  fuel: diesel
+  power_ps: 105
+- code: 204ch diesel
+  fuel: diesel
+  power_ps: 204
+- code: 110ch diesel
+  fuel: diesel
+  power_ps: 110
+- code: 136ch diesel
+  fuel: diesel
+  power_ps: 136
+history: 'Audi AG est un constructeur d''automobiles sportives allemand, filiale du groupe Volkswagen appelé VAG qui détient
+  la marque à 99,55 %. Le siège social se situe à Ingolstadt en Bavière.
+
+  Implanté dans 55 pays du monde, Audi est présent sur la plupart des segments du marché des véhicules particuliers, y compris
+  sur celui des sportives de prestige grâce à ses deux filiales que sont Lamborghini et Audi Sport. En 2012, l’entreprise
+  a vendu 1 524 635 véhicules, un record depuis sa création en 1909, et se classe parmi les constructeurs les plus rentables.'
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:e6259537fb05e7fa
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules AUDI. Le constructeur, base en allemagne, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 81 modeles AUDI avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece AUDI, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma AUDI ?**
-Selectionnez votre modele AUDI et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces AUDI sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles AUDI sont couverts ?**
-Notre catalogue couvre 81 modeles AUDI disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces AUDI ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

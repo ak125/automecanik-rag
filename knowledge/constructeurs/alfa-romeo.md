@@ -1,63 +1,74 @@
 ---
-category: constructeur
 slug: alfa-romeo
 brand_id: 13
 brand_name: ALFA ROMEO
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: italie
-groupe: stellantis
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees ALFA ROMEO : selection par modele, annee et motorisation, avec filtrage par
-    gamme de pieces compatibles'
-  must_be_true:
-  - ALFA ROMEO est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 987a396e-71a1-5c84-8e3c-86b3977caae4
-content_hash: sha256:cb1e7e6a001ddd48
+category: constructeur
 lang: fr
+wikidata_qid: Q26921
+country: Italie
+founded_year: 1910
+group: Stellantis
+headquarters:
+  city: Turin
+  country: Italie
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/ALFA%20ROMEO%20badge%20on%20a%20car%20%28cropped%29.jpg
+top_models:
+- modele_id: 13002
+  name: '147'
+  years: 2004-2010
+- modele_id: 13004
+  name: '156'
+  years: 1997-2000
+- modele_id: 13006
+  name: '159'
+  years: 2005-2011
+- modele_id: 13044
+  name: Giulietta Ii
+  years: 2010-2016
+- modele_id: 13054
+  name: Mito
+  years: 2009-2018
+- modele_id: 13007
+  name: 159 SportWagon
+  years: 2006-2011
+- modele_id: 13009
+  name: '166'
+  years: 1998-2000
+top_engines:
+- code: 136ch diesel
+  fuel: diesel
+  power_ps: 136
+- code: 120ch diesel
+  fuel: diesel
+  power_ps: 120
+- code: 150ch diesel
+  fuel: diesel
+  power_ps: 150
+- code: 115ch diesel
+  fuel: diesel
+  power_ps: 115
+- code: 140ch diesel
+  fuel: diesel
+  power_ps: 140
+- code: 105ch diesel
+  fuel: diesel
+  power_ps: 105
+history: Alfa Romeo est un constructeur automobile italien fondé le 24 juin 1910 à Milan, filiale du groupe Stellantis depuis
+  janvier 2021 après avoir fait partie du groupe Fiat SpA et du groupe Fiat Chrysler Automobiles (FCA) de 2014 à 2021. Il
+  était auparavant la propriété de l'État italien, à travers sa holding publique IRI, de 1933 à 1986.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:97cc33f5af9c0a56
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules ALFA ROMEO. Le constructeur, base en italie, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 23 modeles ALFA ROMEO avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece ALFA ROMEO, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma ALFA ROMEO ?**
-Selectionnez votre modele ALFA ROMEO et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces ALFA ROMEO sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles ALFA ROMEO sont couverts ?**
-Notre catalogue couvre 23 modeles ALFA ROMEO disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces ALFA ROMEO ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

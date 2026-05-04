@@ -1,63 +1,65 @@
 ---
-category: constructeur
 slug: chevrolet
 brand_id: 44
 brand_name: CHEVROLET
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: etats-unis
-groupe: general-motors
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees CHEVROLET : selection par modele, annee et motorisation, avec filtrage par
-    gamme de pieces compatibles'
-  must_be_true:
-  - CHEVROLET est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 0d49d8de-6665-5805-8b3c-dd92ae738d0c
-content_hash: sha256:1588907f98e186d2
+category: constructeur
 lang: fr
+wikidata_qid: Q29570
+country: États-Unis
+founded_year: 1911
+group: General Motors
+headquarters:
+  city: Détroit
+  country: États-Unis
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Chevrolet%20simple%20logo.svg
+top_models:
+- modele_id: 44046
+  name: Captiva I
+  years: 2011-
+- modele_id: 44087
+  name: Cruze Ii (J300)
+  years: 2013-
+- modele_id: 44011
+  name: Aveo Ii
+  years: 2008-
+- modele_id: 44184
+  name: Spark Iii
+  years: 2010-
+- modele_id: 44183
+  name: Spark Ii
+  years: 2005-
+top_engines:
+- code: 184ch diesel
+  fuel: diesel
+  power_ps: 184
+- code: 163ch diesel
+  fuel: diesel
+  power_ps: 163
+- code: 110ch diesel
+  fuel: diesel
+  power_ps: 110
+- code: 125ch diesel
+  fuel: diesel
+  power_ps: 125
+- code: 68ch essence
+  fuel: essence
+  power_ps: 68
+- code: 126ch diesel
+  fuel: diesel
+  power_ps: 126
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: unknown
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:09c8237b00572abe
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules CHEVROLET. Le constructeur, base en etats-unis, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 22 modeles CHEVROLET avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece CHEVROLET, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma CHEVROLET ?**
-Selectionnez votre modele CHEVROLET et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces CHEVROLET sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles CHEVROLET sont couverts ?**
-Notre catalogue couvre 22 modeles CHEVROLET disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces CHEVROLET ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

@@ -1,63 +1,76 @@
 ---
-category: constructeur
 slug: opel
 brand_id: 123
 brand_name: OPEL
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: allemagne
-groupe: stellantis
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees OPEL : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - OPEL est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: 5a4c8c45-d9ff-5f86-952a-c3496b3f7afc
-content_hash: sha256:dafbe68436cd3bba
+category: constructeur
 lang: fr
+wikidata_qid: Q40966
+country: Allemagne
+founded_year: 1862
+group: Stellantis
+headquarters:
+  city: Rüsselsheim am Main
+  country: Allemagne
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/Opel%20logo%202023.svg
+top_models:
+- modele_id: 123059
+  name: Insignia A
+  years: 2015-2017
+- modele_id: 123084
+  name: Meriva B
+  years: 2010-2013
+- modele_id: 123044
+  name: Corsa B
+  years: 1998-2000
+- modele_id: 123159
+  name: Corsa E
+  years: 2015-
+- modele_id: 123025
+  name: Astra J
+  years: 2009-2015
+- modele_id: 123017
+  name: Astra G
+  years: 2002-2005
+- modele_id: 123152
+  name: Astra K
+  years: 2015-
+- modele_id: 123085
+  name: Mokka-Mokka X
+  years: 2015-
+top_engines:
+- code: 110ch diesel
+  fuel: diesel
+  power_ps: 110
+- code: 125ch diesel
+  fuel: diesel
+  power_ps: 125
+- code: 95ch diesel
+  fuel: diesel
+  power_ps: 95
+- code: 117ch diesel
+  fuel: diesel
+  power_ps: 117
+- code: 136ch diesel
+  fuel: diesel
+  power_ps: 136
+- code: 131ch diesel
+  fuel: diesel
+  power_ps: 131
+history: Opel est une entreprise allemande fondée en 1862 par Adam Opel et un constructeur automobile depuis 1899. Depuis
+  2021, la marque est une filiale de la multinationale franco-italienne Stellantis.
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: wikidata
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:d11aeb6a66c4abe5
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules OPEL. Le constructeur, base en allemagne, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 95 modeles OPEL avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece OPEL, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma OPEL ?**
-Selectionnez votre modele OPEL et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces OPEL sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles OPEL sont couverts ?**
-Notre catalogue couvre 95 modeles OPEL disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces OPEL ?**
-La livraison standard est de 24 a 48h en France metropolitaine.

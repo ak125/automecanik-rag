@@ -1,63 +1,77 @@
 ---
-category: constructeur
 slug: mini
 brand_id: 113
 brand_name: MINI
-doc_family: catalog
-source_type: constructeur
-truth_level: L2
-updated_at: '2026-03-21'
-verification_status: draft
-pays: royaume-uni
-groupe: bmw-group
-intent_targets:
-- brand_selection
-- navigational
-- commercial_investigation
-business_priority: high
-lifecycle:
-  stage: v1_generated
-  last_enriched_by: r7-brand-rag-generator
-  last_enriched_at: '2026-03-21'
-domain:
-  role: 'Hub de navigation pour pieces detachees MINI : selection par modele, annee et motorisation, avec filtrage par gamme
-    de pieces compatibles'
-  must_be_true:
-  - MINI est un constructeur automobile
-  - Pieces detachees compatibles disponibles par vehicule et motorisation
-  must_not_contain:
-  - diagnostic
-  - symptome
-  - tutoriel
-  - montage
-  - reparation
-  - comment reparer
-  - comment changer
-  - comment remplacer
-doc_id: de72e5b5-1238-5ca0-96f8-c65ea8a4bf6d
-content_hash: sha256:4d57d0d574f17ac5
+category: constructeur
 lang: fr
+wikidata_qid: Q116232
+country: Royaume-Uni
+founded_year: 1969
+headquarters:
+  city: Munich
+  country: Allemagne
+logo_uri: http://commons.wikimedia.org/wiki/Special:FilePath/MINI%20logo.svg
+top_models:
+- modele_id: 113002
+  name: (R56)
+  years: 2009-2010
+- modele_id: 113001
+  name: (R50-R53)
+  years: 2003-2006
+- modele_id: 113005
+  name: Countryman (R60)
+  years: 2014-2016
+- modele_id: 113012
+  name: (F55)
+  years: 2013-
+- modele_id: 113009
+  name: Paceman (R61)
+  years: 2012-2016
+- modele_id: 113003
+  name: Clubman (R55)
+  years: 2010-2014
+- modele_id: 113006
+  name: Coupé (R58)
+  years: 2010-2015
+- modele_id: 113000
+  name: (F56)
+  years: 2013-
+top_engines:
+- code: 112ch diesel
+  fuel: diesel
+  power_ps: 112
+- code: 184ch essence
+  fuel: essence
+  power_ps: 184
+- code: 192ch essence
+  fuel: essence
+  power_ps: 192
+- code: 143ch diesel
+  fuel: diesel
+  power_ps: 143
+- code: 109ch diesel
+  fuel: diesel
+  power_ps: 109
+- code: 170ch essence
+  fuel: essence
+  power_ps: 170
+history: 'Mini est un constructeur automobile britannique fondé à Oxford en 1969 par British Leyland, et en même temps un
+  modèle d''automobile créé en 1959 par l''ingénieur Alec Issigonis.
+
+  Le constructeur fait partie du groupe allemand BMW depuis 2000 avec Rolls-Royce.'
+source_of_truth:
+  country: wikidata
+  founded_year: wikidata
+  group: unknown
+  headquarters: wikidata
+  top_models: db
+  top_engines: db
+  history: wikipedia
+lifecycle:
+  last_enriched_at: '2026-05-04'
+  last_enriched_by: build-brand-rag
+  content_hash: sha256:653a21320c495efe
+  schema_version: 1
+verification_status: oem_verified
+updated_at: '2026-05-04'
 ---
-
-
-## S2_MICRO_SEO_ROUTER
-
-AutoMecanik propose un catalogue complet de pieces detachees pour vehicules MINI. Le constructeur, base en royaume-uni, equipe un parc automobile important en France et en Europe. Notre catalogue couvre 15 modeles MINI avec toutes les motorisations disponibles.
-
-## S7_COMPATIBILITY
-
-Pour trouver la bonne piece MINI, selectionnez votre modele puis votre motorisation. Le systeme verifie automatiquement la compatibilite avec votre vehicule. En cas de doute, verifiez le code moteur sur votre carte grise (champ D.2).
-
-## S9_FAQ
-
-**Comment trouver la bonne piece pour ma MINI ?**
-Selectionnez votre modele MINI et votre motorisation dans notre configurateur. Le systeme verifie automatiquement la compatibilite.
-
-**Les pieces MINI sont-elles d'origine ?**
-Nous proposons des pieces OEM et des pieces de qualite equivalente certifiees par les grands equipementiers (Bosch, Valeo, TRW, etc.).
-
-**Quels modeles MINI sont couverts ?**
-Notre catalogue couvre 15 modeles MINI disponibles sur le marche francais.
-
-**Quel delai de livraison pour les pieces MINI ?**
-La livraison standard est de 24 a 48h en France metropolitaine.
