@@ -45,14 +45,18 @@ DRY_RUN_FLAG=""
 log "=== Phase F start (DRY_RUN=$DRY_RUN) ==="
 
 # ── Étape 1 : Download corpus OEM (warning possible, non bloquant) ────────────
+# Refactor placement (PR monorepo #270) : scripts/rag/ → scripts/raw-downloaders/
 log "[1/4] download-oem-corpus.py"
-python3 "$APP_DIR/scripts/rag/download-oem-corpus.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
+python3 "$APP_DIR/scripts/raw-downloaders/download-oem-corpus.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
 STEP1_CODE=${PIPESTATUS[0]}
 [ $STEP1_CODE -ne 0 ] && log "WARN: step 1 exited $STEP1_CODE (non-blocking)"
 
-# ── Étape 2 : Enrichir les gammes .md (bloquant si échec) ────────────────────
-log "[2/4] rag-enrich-from-web-corpus.py"
-python3 "$APP_DIR/scripts/rag/rag-enrich-from-web-corpus.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
+# ── Étape 2 : Générer les gammes .md depuis corpus web (bloquant si échec) ───
+# Refactor placement (PR monorepo #270) + redirection OUTPUT (PR #275) :
+# scripts/rag/rag-enrich-from-web-corpus.py → scripts/wiki-generators/gamme-from-web-corpus-generator.py
+# OUTPUT path passe désormais à automecanik-wiki/exports/rag/gammes/ (ADR-031 §D20).
+log "[2/4] gamme-from-web-corpus-generator.py"
+python3 "$APP_DIR/scripts/wiki-generators/gamme-from-web-corpus-generator.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
 STEP2_CODE=${PIPESTATUS[0]}
 if [ $STEP2_CODE -ne 0 ]; then
   log "ERROR: step 2 (enrich) exited $STEP2_CODE — aborting"; exit $STEP2_CODE
