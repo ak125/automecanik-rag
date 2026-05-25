@@ -14,7 +14,7 @@ log() { echo "[$(date -Is)] $*" | tee -a "$LOG"; }
 
 # Précondition : .env doit contenir uniquement des affectations shell simples
 if [ ! -f "$ENV_FILE" ]; then
-  log "ERROR: $ENV_FILE not found"; exit 1
+  log "[FAILED] $ENV_FILE not found"; exit 1
 fi
 set -a
 # shellcheck disable=SC1090
@@ -23,33 +23,38 @@ set +a
 
 # Vérifier les secrets requis
 if [ -z "${INTERNAL_API_KEY:-}" ]; then
-  log "ERROR: INTERNAL_API_KEY not set"; exit 1
+  log "[FAILED] INTERNAL_API_KEY not set"; exit 1
 fi
 
 # Nom du conteneur RAG (configurable)
 RAG_CONTAINER="${RAG_CONTAINER_NAME:-rag-api-prod}"
 if ! docker ps --format '{{.Names}}' | grep -q "^${RAG_CONTAINER}$"; then
-  log "ERROR: container $RAG_CONTAINER not running"; exit 1
+  log "[FAILED] container $RAG_CONTAINER not running"; exit 1
 fi
 
-# Global lock (ne pas tourner en même temps que le pipeline PDF)
-GLOBAL_LOCK="/tmp/rag-global.lock"
-exec 8>"$GLOBAL_LOCK"
+# Phase F lock dédié (séparation du /tmp/rag-global.lock détenu en permanence
+# par auto-enrich-pipeline.sh cron */30 ; collision permanente observée 3 dimanches
+# consécutifs 2026-05-10/17/24, runs skip silently). Le lock dédié permet à Phase F
+# et auto-enrich de tourner en parallèle — leurs étapes 3-4 hitting le NestJS API
+# sont déjà sérialisées côté serveur (HTTP 409 lock_active si conflit réel).
+PHASE_F_LOCK="/tmp/rag-phase-f.lock"
+exec 8>"$PHASE_F_LOCK"
 if ! flock -n 8; then
-  log "Another RAG operation active, skipping Phase F"; exit 0
+  log "[SKIP] Phase F déjà en cours (lock $PHASE_F_LOCK détenu) — exit 0"
+  exit 0
 fi
 
 DRY_RUN_FLAG=""
 [ "$DRY_RUN" = "true" ] && DRY_RUN_FLAG="--dry-run"
 
-log "=== Phase F start (DRY_RUN=$DRY_RUN) ==="
+log "[START] Phase F (DRY_RUN=$DRY_RUN)"
 
 # ── Étape 1 : Download corpus OEM (warning possible, non bloquant) ────────────
 # Refactor placement (PR monorepo #270) : scripts/rag/ → scripts/raw-downloaders/
 log "[1/4] download-oem-corpus.py"
 python3 "$APP_DIR/scripts/raw-downloaders/download-oem-corpus.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
 STEP1_CODE=${PIPESTATUS[0]}
-[ $STEP1_CODE -ne 0 ] && log "WARN: step 1 exited $STEP1_CODE (non-blocking)"
+[ $STEP1_CODE -ne 0 ] && log "[WARN] step 1 exited $STEP1_CODE (non-blocking)"
 
 # ── Étape 2 : Générer les gammes .md depuis corpus web (bloquant si échec) ───
 # Refactor placement (PR monorepo #270) + redirection OUTPUT (PR #275) :
@@ -59,12 +64,11 @@ log "[2/4] gamme-from-web-corpus-generator.py"
 python3 "$APP_DIR/scripts/wiki-generators/gamme-from-web-corpus-generator.py" $DRY_RUN_FLAG 2>&1 | tee -a "$LOG"
 STEP2_CODE=${PIPESTATUS[0]}
 if [ $STEP2_CODE -ne 0 ]; then
-  log "ERROR: step 2 (enrich) exited $STEP2_CODE — aborting"; exit $STEP2_CODE
+  log "[FAILED] step 2 (enrich) exited $STEP2_CODE — aborting"; exit $STEP2_CODE
 fi
 
 if [ "$DRY_RUN" = "true" ]; then
-  log "DRY_RUN=true — skipping reindex and ingest"
-  log "=== Phase F dry-run complete ==="
+  log "[DONE] Phase F dry-run complete (skipped reindex + ingest)"
   exit 0
 fi
 
@@ -82,18 +86,18 @@ HTTP_CODE="$REINDEX_BODY"
 REINDEX_RESP=$(cat /tmp/phase-f-launch-body.txt 2>/dev/null || echo '{}')
 
 case "$HTTP_CODE" in
-  201|200) ;;  # OK
-  409) log "ERROR: launch failed: http=409 lock_active — pipeline already running"; exit 1 ;;
-  401) log "ERROR: launch failed: http=401 unauthorized — check INTERNAL_API_KEY"; exit 1 ;;
-  403) log "ERROR: launch failed: http=403 forbidden"; exit 1 ;;
-  000) log "ERROR: launch failed: http=000 network/timeout — NestJS reachable?"; exit 1 ;;
-  *)   log "ERROR: launch failed: http=$HTTP_CODE — $REINDEX_RESP"; exit 1 ;;
+  200|201|202) ;;  # OK — 202 = Accepted (async run queued, normal NestJS endpoint response)
+  409) log "[FAILED] launch http=409 lock_active — pipeline already running"; exit 1 ;;
+  401) log "[FAILED] launch http=401 unauthorized — check INTERNAL_API_KEY"; exit 1 ;;
+  403) log "[FAILED] launch http=403 forbidden"; exit 1 ;;
+  000) log "[FAILED] launch http=000 network/timeout — NestJS reachable?"; exit 1 ;;
+  *)   log "[FAILED] launch http=$HTTP_CODE — $REINDEX_RESP"; exit 1 ;;
 esac
 
 RUN_ID=$(echo "$REINDEX_RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('run_id',''))" 2>/dev/null || true)
 
 if [ -z "$RUN_ID" ]; then
-  log "ERROR: launch returned $HTTP_CODE but no run_id — $REINDEX_RESP"; exit 1
+  log "[FAILED] launch returned $HTTP_CODE but no run_id — $REINDEX_RESP"; exit 1
 fi
 log "  → reindex queued (run_id=$RUN_ID)"
 
@@ -131,11 +135,11 @@ PYEOF
       log "  reindex done ✓"
       break ;;
     failed|cancelled|abandoned|error)
-      log "ERROR: reindex $STATUS — aborting"; exit 1 ;;
+      log "[FAILED] reindex $STATUS — aborting"; exit 1 ;;
   esac
 
   if [ $i -eq $POLL_MAX ]; then
-    log "ERROR: reindex timed out after $((POLL_MAX * POLL_INTERVAL / 60)) min"; exit 1
+    log "[FAILED] reindex timed out after $((POLL_MAX * POLL_INTERVAL / 60)) min"; exit 1
   fi
 done
 
@@ -144,7 +148,7 @@ log "[4/4] ingest-oem-enriched-gammes.py"
 python3 "$APP_DIR/scripts/rag/ingest-oem-enriched-gammes.py" 2>&1 | tee -a "$LOG"
 STEP4_CODE=${PIPESTATUS[0]}
 if [ $STEP4_CODE -ne 0 ]; then
-  log "ERROR: step 4 (ingest) exited $STEP4_CODE"; exit $STEP4_CODE
+  log "[FAILED] step 4 (ingest) exited $STEP4_CODE"; exit $STEP4_CODE
 fi
 
-log "=== Phase F done ==="
+log "[DONE] Phase F complete"
