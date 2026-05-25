@@ -1,6 +1,37 @@
 #!/usr/bin/env bash
 # Phase F — OEM corpus download + enrich + reindex + ingest (weekly Sunday 02:00)
 # DRY_RUN=true → steps 1-2 en simulation, steps 3-4 non exécutés
+
+# ── Opt-in guard 2026-05-25 ──────────────────────────────────────────────────
+# Bundled pipeline (RAW + WIKI + RAG reindex + RAG ingest) requires explicit
+# opt-in via ALLOW_RAG_REINDEX=true, per feedback_no_rag_for_content_legacy_code_is_not_strategy
+# (Layer 0 STRICT) : RAG = chatbot uniquement, jamais source contenu/SEO.
+# DRY_RUN=true bypasse le guard car Steps 3+4 sont déjà skipped en DRY_RUN
+# (ligne ~65 du script : "DRY_RUN=true — skipping reindex and ingest").
+if [ "${DRY_RUN:-false}" = "true" ]; then
+  : # DRY_RUN bypass — Steps 3+4 (RAG) déjà skipped par logique existante
+elif [ "${ALLOW_RAG_REINDEX:-false}" != "true" ]; then
+  echo "[BLOCKED] run-phase-f.sh bundled pipeline (RAW + WIKI + RAG) is opt-in only."
+  echo ""
+  echo "For RAW refresh only (write into automecanik-raw/recycled/rag-knowledge/web/):"
+  echo "  AUTOMECANIK_RAW_PATH=/opt/automecanik/automecanik-raw/recycled/rag-knowledge \\"
+  echo "    python3 /opt/automecanik/app/scripts/raw-downloaders/download-oem-corpus.py"
+  echo ""
+  echo "For WIKI generation only (write into automecanik-wiki/exports/rag/gammes/):"
+  echo "  python3 /opt/automecanik/app/scripts/wiki-generators/gamme-from-web-corpus-generator.py"
+  echo ""
+  echo "For RAW + WIKI dry-run test (steps 3+4 auto-skipped, no RAG touch):"
+  echo "  DRY_RUN=true $0"
+  echo ""
+  echo "For full bundled pipeline INCLUDING RAG reindex + ingest into __rag_knowledge"
+  echo "(only legitimate when chatbot consumer is active):"
+  echo "  ALLOW_RAG_REINDEX=true $0"
+  echo ""
+  echo "See: feedback_no_rag_for_content_legacy_code_is_not_strategy (Layer 0 STRICT)"
+  exit 1
+fi
+# ── End opt-in guard ─────────────────────────────────────────────────────────
+
 set -euo pipefail
 
 APP_DIR="/opt/automecanik/app"
