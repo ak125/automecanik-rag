@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "synced_at": "2026-06-01T13:00:02.502440+00:00",
+  "synced_at": "2026-06-03T10:00:02.611644+00:00",
   "source": "/opt/automecanik/automecanik-wiki/exports/rag",
   "stats": {
     "exports_total": 36,
-    "written": 34,
-    "skipped": 2,
+    "written": 0,
+    "skipped": 36,
     "failed": 0
   },
   "topic_counts": {
