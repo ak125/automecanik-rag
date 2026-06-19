@@ -80,8 +80,20 @@ fi
 #   docker exec -e ENV=dev <rag-api> python3 /app/scripts/reindex.py --path /knowledge --cpu-strict
 # ENV=dev = kill-switch enforce_build_plane() ; /knowledge = mapping conteneur de
 # /opt/automecanik/rag/knowledge ; scope=all → tout /knowledge. Synchrone (plus de polling
-# ni de dépendance au NestJS ; la sérialisation Phase F est assurée par PHASE_F_LOCK ci-dessus).
+# ni de dépendance au NestJS).
 log "[3/4] reindex Weaviate (docker exec reindex.py --path /knowledge, scope=all)"
+
+# Sérialisation cross-process : l'ancien wrapper NestJS sérialisait reindex ↔ auto-enrich
+# via son lock serveur (HTTP 409). En direct, on réutilise le MÊME lock host que
+# auto-enrich-pipeline.sh détient pendant son run (*/30) : /tmp/rag-global.lock — sinon le
+# reindex pourrait lire /knowledge pendant un ingest concurrent (index Weaviate partiel).
+# Attente bornée puis échec (parité sémantique avec l'ancien 409 lock_active). fd 9 (fd 8 = PHASE_F_LOCK).
+RAG_GLOBAL_LOCK="/tmp/rag-global.lock"
+RAG_LOCK_WAIT_S="${RAG_GLOBAL_LOCK_WAIT_S:-1800}"  # 30 min
+exec 9>"$RAG_GLOBAL_LOCK"
+if ! flock -w "$RAG_LOCK_WAIT_S" 9; then
+  log "[FAILED] reindex — /tmp/rag-global.lock détenu >$((RAG_LOCK_WAIT_S / 60)) min (auto-enrich actif ?)"; exit 1
+fi
 
 QUARANTINE_LOG="/tmp/rag_quarantine_phase-f.jsonl"
 REINDEX_TIMEOUT_S="${RAG_REINDEX_TIMEOUT_S:-5400}"  # 90 min (parité avec l'ancien polling max)
@@ -116,6 +128,10 @@ else
   log "  reindex completed cleanly (no blocked docs/chunks)"
 fi
 log "  reindex done ✓"
+
+# Libère le lock global RAG dès le reindex terminé (le step 4 = script python direct,
+# non concerné par la sérialisation serveur historique).
+exec 9>&-
 
 # ── Étape 4 : Ingest phase5_enrichment → __rag_knowledge (bloquant si échec) ─
 log "[4/4] ingest-oem-enriched-gammes.py"
