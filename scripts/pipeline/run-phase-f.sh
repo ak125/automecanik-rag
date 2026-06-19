@@ -72,76 +72,50 @@ if [ "$DRY_RUN" = "true" ]; then
   exit 0
 fi
 
-# ── Étape 3 : Reindex via pipeline API + polling (bloquant si échec) ─────────
-log "[3/4] pipeline launch reindex (scope=all)"
+# ── Étape 3 : Reindex Weaviate — appel DIRECT reindex.py dans le conteneur RAG ─
+# Repoint 2026-06-19 : l'ancien wrapper NestJS `POST /api/rag/admin/pipeline/launch`
+# a été RETIRÉ (rag-purge B8, monorepo #1028 — RAG ≠ source de contenu, ADR-031/046),
+# d'où des 403 récurrents quand ce cron l'appelait encore. On invoque désormais
+# reindex.py exactement comme le faisait RagPipelineService.executeReindex :
+#   docker exec -e ENV=dev <rag-api> python3 /app/scripts/reindex.py --path /knowledge --cpu-strict
+# ENV=dev = kill-switch enforce_build_plane() ; /knowledge = mapping conteneur de
+# /opt/automecanik/rag/knowledge ; scope=all → tout /knowledge. Synchrone (plus de polling
+# ni de dépendance au NestJS ; la sérialisation Phase F est assurée par PHASE_F_LOCK ci-dessus).
+log "[3/4] reindex Weaviate (docker exec reindex.py --path /knowledge, scope=all)"
 
-# Capturer body + code HTTP séparément pour diagnostic précis
-REINDEX_BODY=$(curl -s -o /tmp/phase-f-launch-body.txt -w "%{http_code}" \
-  -X POST \
-  -H "Content-Type: application/json" \
-  -H "X-Internal-Key: $INTERNAL_API_KEY" \
-  -d '{"step":"reindex","scope":"all"}' \
-  "http://localhost:3000/api/rag/admin/pipeline/launch" 2>/dev/null || echo "000")
-HTTP_CODE="$REINDEX_BODY"
-REINDEX_RESP=$(cat /tmp/phase-f-launch-body.txt 2>/dev/null || echo '{}')
+QUARANTINE_LOG="/tmp/rag_quarantine_phase-f.jsonl"
+REINDEX_TIMEOUT_S="${RAG_REINDEX_TIMEOUT_S:-5400}"  # 90 min (parité avec l'ancien polling max)
+REINDEX_OUT="$(mktemp)"
 
-case "$HTTP_CODE" in
-  200|201|202) ;;  # OK — 202 = Accepted (async run queued, normal NestJS endpoint response)
-  409) log "[FAILED] launch http=409 lock_active — pipeline already running"; exit 1 ;;
-  401) log "[FAILED] launch http=401 unauthorized — check INTERNAL_API_KEY"; exit 1 ;;
-  403) log "[FAILED] launch http=403 forbidden"; exit 1 ;;
-  000) log "[FAILED] launch http=000 network/timeout — NestJS reachable?"; exit 1 ;;
-  *)   log "[FAILED] launch http=$HTTP_CODE — $REINDEX_RESP"; exit 1 ;;
-esac
+set +e
+timeout "$REINDEX_TIMEOUT_S" docker exec -e ENV=dev "$RAG_CONTAINER" \
+  python3 /app/scripts/reindex.py \
+  --path /knowledge \
+  --cpu-strict \
+  --quarantine-log "$QUARANTINE_LOG" >"$REINDEX_OUT" 2>&1
+REINDEX_CODE=$?
+set -e
+cat "$REINDEX_OUT" >> "$LOG"
 
-RUN_ID=$(echo "$REINDEX_RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('run_id',''))" 2>/dev/null || true)
-
-if [ -z "$RUN_ID" ]; then
-  log "[FAILED] launch returned $HTTP_CODE but no run_id — $REINDEX_RESP"; exit 1
+if [ "$REINDEX_CODE" -eq 124 ]; then
+  rm -f "$REINDEX_OUT"
+  log "[FAILED] reindex timed out after $((REINDEX_TIMEOUT_S / 60)) min"; exit 1
 fi
-log "  → reindex queued (run_id=$RUN_ID)"
+if [ "$REINDEX_CODE" -ne 0 ]; then
+  rm -f "$REINDEX_OUT"
+  log "[FAILED] reindex exited $REINDEX_CODE — aborting"; exit 1
+fi
 
-# Polling jusqu'à done ou failed (max 90 min = 180 × 30s)
-POLL_MAX=180
-POLL_INTERVAL=30
-for i in $(seq 1 $POLL_MAX); do
-  sleep $POLL_INTERVAL
-  RUN_DETAIL=$(curl -sf \
-    -H "X-Internal-Key: $INTERNAL_API_KEY" \
-    "http://localhost:3000/api/rag/admin/pipeline/runs/$RUN_ID" 2>/dev/null || echo '{"status":"error"}')
-  STATUS=$(echo "$RUN_DETAIL" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('status','unknown'))" 2>/dev/null || echo "error")
-
-  log "  poll #$i → $STATUS"
-
-  case "$STATUS" in
-    done|completed)
-      # Lire le détail du run pour détecter faux succès (blocked_docs/chunks > 0)
-      echo "$RUN_DETAIL" | python3 - <<'PYEOF' 2>/dev/null | while IFS= read -r line; do log "  $line"; done
-import sys, json
-d = json.load(sys.stdin)
-summary = d.get('summary') or {}
-errors = summary.get('errors') or []
-blocked_docs = summary.get('blocked_docs', 0)
-blocked_chunks = summary.get('blocked_chunks', 0)
-if errors:
-    print(f"WARN: summary.errors = {errors}")
-if blocked_docs:
-    print(f"WARN: blocked_docs = {blocked_docs}")
-if blocked_chunks:
-    print(f"WARN: blocked_chunks = {blocked_chunks}")
-if not errors and not blocked_docs and not blocked_chunks:
-    print("reindex completed cleanly (no errors, no blocked docs)")
-PYEOF
-      log "  reindex done ✓"
-      break ;;
-    failed|cancelled|abandoned|error)
-      log "[FAILED] reindex $STATUS — aborting"; exit 1 ;;
-  esac
-
-  if [ $i -eq $POLL_MAX ]; then
-    log "[FAILED] reindex timed out after $((POLL_MAX * POLL_INTERVAL / 60)) min"; exit 1
-  fi
-done
+# Détection faux-succès : reindex.py logge "Blocked docs: N" / "Blocked chunks: N"
+BLOCKED=$(grep -E "Blocked (docs|chunks): [1-9]" "$REINDEX_OUT" || true)
+rm -f "$REINDEX_OUT"
+if [ -n "$BLOCKED" ]; then
+  log "[WARN] reindex — éléments bloqués détectés :"
+  echo "$BLOCKED" | while IFS= read -r l; do log "  $l"; done
+else
+  log "  reindex completed cleanly (no blocked docs/chunks)"
+fi
+log "  reindex done ✓"
 
 # ── Étape 4 : Ingest phase5_enrichment → __rag_knowledge (bloquant si échec) ─
 log "[4/4] ingest-oem-enriched-gammes.py"
