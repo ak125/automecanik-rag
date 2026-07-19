@@ -74,3 +74,10 @@ knowledge/_raw/
 
 # Backup dirs from enrichment scripts
 knowledge/gammes/.backup-*/
+
+# Runtime freshness manifest — rewritten every sync run with a fresh `synced_at`
+# and read *from disk* by RagMirrorFreshnessService (36h mirror-freshness SLO).
+# It is runtime observability state, NOT versioned content. Tracking it turned
+# every hourly no-op sync into a `synced-from-wiki:` churn commit. Untracked here
+# (companion: monorepo scripts/cron/sync-rag-from-wiki.sh excludes it too).
+knowledge/.last-sync.json
